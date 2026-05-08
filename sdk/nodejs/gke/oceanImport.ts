@@ -232,73 +232,73 @@ export interface OceanImportState {
     /**
      * The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
      */
-    autoUpdates?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportAutoUpdate>[]>;
+    autoUpdates?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportAutoUpdate>[] | undefined>;
     /**
      * The Ocean Kubernetes Autoscaler object.
      */
-    autoscaler?: pulumi.Input<inputs.gke.OceanImportAutoscaler>;
+    autoscaler?: pulumi.Input<inputs.gke.OceanImportAutoscaler | undefined>;
     /**
      * Describes the backend service configurations.
      */
-    backendServices?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportBackendService>[]>;
+    backendServices?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportBackendService>[] | undefined>;
     /**
      * Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
      */
-    blacklists?: pulumi.Input<pulumi.Input<string>[]>;
-    clusterControllerId?: pulumi.Input<string>;
+    blacklists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    clusterControllerId?: pulumi.Input<string | undefined>;
     /**
      * The GKE cluster name.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
      */
-    controllerClusterId?: pulumi.Input<string>;
+    controllerClusterId?: pulumi.Input<string | undefined>;
     /**
      * The number of instances to launch and maintain in the cluster.
      */
-    desiredCapacity?: pulumi.Input<number>;
+    desiredCapacity?: pulumi.Input<number | undefined>;
     /**
      * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
      */
-    filters?: pulumi.Input<inputs.gke.OceanImportFilters>;
+    filters?: pulumi.Input<inputs.gke.OceanImportFilters | undefined>;
     /**
      * The zone the master cluster is located in.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The upper limit of instances the cluster can scale up to.
      */
-    maxSize?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number | undefined>;
     /**
      * The lower limit of instances the cluster can scale down to.
      */
-    minSize?: pulumi.Input<number>;
+    minSize?: pulumi.Input<number | undefined>;
     /**
      * The root volume disk type.
      */
-    rootVolumeType?: pulumi.Input<string>;
+    rootVolumeType?: pulumi.Input<string | undefined>;
     /**
      * Set scheduling object.
      */
-    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTask>[]>;
+    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTask>[] | undefined>;
     /**
      * The Ocean shielded instance configuration object.
      */
-    shieldedInstanceConfig?: pulumi.Input<inputs.gke.OceanImportShieldedInstanceConfig>;
+    shieldedInstanceConfig?: pulumi.Input<inputs.gke.OceanImportShieldedInstanceConfig | undefined>;
     /**
      * Strategy object.
      */
-    strategies?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportStrategy>[]>;
-    updatePolicy?: pulumi.Input<inputs.gke.OceanImportUpdatePolicy>;
+    strategies?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportStrategy>[] | undefined>;
+    updatePolicy?: pulumi.Input<inputs.gke.OceanImportUpdatePolicy | undefined>;
     /**
      * launch specification defined on the Ocean object will function only as a template for virtual node groups.
      */
-    useAsTemplateOnly?: pulumi.Input<boolean>;
+    useAsTemplateOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
      */
-    whitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    whitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -308,19 +308,19 @@ export interface OceanImportArgs {
     /**
      * The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
      */
-    autoUpdates?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportAutoUpdate>[]>;
+    autoUpdates?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportAutoUpdate>[] | undefined>;
     /**
      * The Ocean Kubernetes Autoscaler object.
      */
-    autoscaler?: pulumi.Input<inputs.gke.OceanImportAutoscaler>;
+    autoscaler?: pulumi.Input<inputs.gke.OceanImportAutoscaler | undefined>;
     /**
      * Describes the backend service configurations.
      */
-    backendServices?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportBackendService>[]>;
+    backendServices?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportBackendService>[] | undefined>;
     /**
      * Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
      */
-    blacklists?: pulumi.Input<pulumi.Input<string>[]>;
+    blacklists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The GKE cluster name.
      */
@@ -328,15 +328,15 @@ export interface OceanImportArgs {
     /**
      * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
      */
-    controllerClusterId?: pulumi.Input<string>;
+    controllerClusterId?: pulumi.Input<string | undefined>;
     /**
      * The number of instances to launch and maintain in the cluster.
      */
-    desiredCapacity?: pulumi.Input<number>;
+    desiredCapacity?: pulumi.Input<number | undefined>;
     /**
      * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
      */
-    filters?: pulumi.Input<inputs.gke.OceanImportFilters>;
+    filters?: pulumi.Input<inputs.gke.OceanImportFilters | undefined>;
     /**
      * The zone the master cluster is located in.
      */
@@ -344,34 +344,34 @@ export interface OceanImportArgs {
     /**
      * The upper limit of instances the cluster can scale up to.
      */
-    maxSize?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number | undefined>;
     /**
      * The lower limit of instances the cluster can scale down to.
      */
-    minSize?: pulumi.Input<number>;
+    minSize?: pulumi.Input<number | undefined>;
     /**
      * The root volume disk type.
      */
-    rootVolumeType?: pulumi.Input<string>;
+    rootVolumeType?: pulumi.Input<string | undefined>;
     /**
      * Set scheduling object.
      */
-    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTask>[]>;
+    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTask>[] | undefined>;
     /**
      * The Ocean shielded instance configuration object.
      */
-    shieldedInstanceConfig?: pulumi.Input<inputs.gke.OceanImportShieldedInstanceConfig>;
+    shieldedInstanceConfig?: pulumi.Input<inputs.gke.OceanImportShieldedInstanceConfig | undefined>;
     /**
      * Strategy object.
      */
-    strategies?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportStrategy>[]>;
-    updatePolicy?: pulumi.Input<inputs.gke.OceanImportUpdatePolicy>;
+    strategies?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportStrategy>[] | undefined>;
+    updatePolicy?: pulumi.Input<inputs.gke.OceanImportUpdatePolicy | undefined>;
     /**
      * launch specification defined on the Ocean object will function only as a template for virtual node groups.
      */
-    useAsTemplateOnly?: pulumi.Input<boolean>;
+    useAsTemplateOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
      */
-    whitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    whitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

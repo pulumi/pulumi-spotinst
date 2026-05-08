@@ -22,8 +22,8 @@ __all__ = ['StrategyArgs', 'Strategy']
 class StrategyArgs:
     def __init__(__self__, *,
                  strategy_name: pulumi.Input[_builtins.str],
-                 canary: Optional[pulumi.Input['StrategyCanaryArgs']] = None,
-                 rolling: Optional[pulumi.Input['StrategyRollingArgs']] = None):
+                 canary: pulumi.Input[Optional['StrategyCanaryArgs']] = None,
+                 rolling: pulumi.Input[Optional['StrategyRollingArgs']] = None):
         """
         The set of arguments for constructing a Strategy resource.
 
@@ -47,35 +47,35 @@ class StrategyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def canary(self) -> Optional[pulumi.Input['StrategyCanaryArgs']]:
+    def canary(self) -> pulumi.Input[Optional['StrategyCanaryArgs']]:
         """
         Represents Canary strategy. Cannot be defined when Rolling object is defined.
         """
         return pulumi.get(self, "canary")
 
     @canary.setter
-    def canary(self, value: Optional[pulumi.Input['StrategyCanaryArgs']]):
+    def canary(self, value: pulumi.Input[Optional['StrategyCanaryArgs']]):
         pulumi.set(self, "canary", value)
 
     @_builtins.property
     @pulumi.getter
-    def rolling(self) -> Optional[pulumi.Input['StrategyRollingArgs']]:
+    def rolling(self) -> pulumi.Input[Optional['StrategyRollingArgs']]:
         """
         Represents Rolling Update strategy. Cannot be defined when Canary object is defined.
         """
         return pulumi.get(self, "rolling")
 
     @rolling.setter
-    def rolling(self, value: Optional[pulumi.Input['StrategyRollingArgs']]):
+    def rolling(self, value: pulumi.Input[Optional['StrategyRollingArgs']]):
         pulumi.set(self, "rolling", value)
 
 
 @pulumi.input_type
 class _StrategyState:
     def __init__(__self__, *,
-                 canary: Optional[pulumi.Input['StrategyCanaryArgs']] = None,
-                 rolling: Optional[pulumi.Input['StrategyRollingArgs']] = None,
-                 strategy_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 canary: pulumi.Input[Optional['StrategyCanaryArgs']] = None,
+                 rolling: pulumi.Input[Optional['StrategyRollingArgs']] = None,
+                 strategy_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Strategy resources.
 
@@ -91,35 +91,35 @@ class _StrategyState:
 
     @_builtins.property
     @pulumi.getter
-    def canary(self) -> Optional[pulumi.Input['StrategyCanaryArgs']]:
+    def canary(self) -> pulumi.Input[Optional['StrategyCanaryArgs']]:
         """
         Represents Canary strategy. Cannot be defined when Rolling object is defined.
         """
         return pulumi.get(self, "canary")
 
     @canary.setter
-    def canary(self, value: Optional[pulumi.Input['StrategyCanaryArgs']]):
+    def canary(self, value: pulumi.Input[Optional['StrategyCanaryArgs']]):
         pulumi.set(self, "canary", value)
 
     @_builtins.property
     @pulumi.getter
-    def rolling(self) -> Optional[pulumi.Input['StrategyRollingArgs']]:
+    def rolling(self) -> pulumi.Input[Optional['StrategyRollingArgs']]:
         """
         Represents Rolling Update strategy. Cannot be defined when Canary object is defined.
         """
         return pulumi.get(self, "rolling")
 
     @rolling.setter
-    def rolling(self, value: Optional[pulumi.Input['StrategyRollingArgs']]):
+    def rolling(self, value: pulumi.Input[Optional['StrategyRollingArgs']]):
         pulumi.set(self, "rolling", value)
 
     @_builtins.property
     @pulumi.getter(name="strategyName")
-    def strategy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def strategy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "strategy_name")
 
     @strategy_name.setter
-    def strategy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def strategy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "strategy_name", value)
 
 
@@ -129,9 +129,9 @@ class Strategy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 canary: Optional[pulumi.Input[Union['StrategyCanaryArgs', 'StrategyCanaryArgsDict']]] = None,
-                 rolling: Optional[pulumi.Input[Union['StrategyRollingArgs', 'StrategyRollingArgsDict']]] = None,
-                 strategy_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 canary: pulumi.Input[Optional[Union['StrategyCanaryArgs', 'StrategyCanaryArgsDict']]] = None,
+                 rolling: pulumi.Input[Optional[Union['StrategyRollingArgs', 'StrategyRollingArgsDict']]] = None,
+                 strategy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a Spotinst OceanCD Strategy resource.
@@ -167,9 +167,9 @@ class Strategy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 canary: Optional[pulumi.Input[Union['StrategyCanaryArgs', 'StrategyCanaryArgsDict']]] = None,
-                 rolling: Optional[pulumi.Input[Union['StrategyRollingArgs', 'StrategyRollingArgsDict']]] = None,
-                 strategy_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 canary: pulumi.Input[Optional[Union['StrategyCanaryArgs', 'StrategyCanaryArgsDict']]] = None,
+                 rolling: pulumi.Input[Optional[Union['StrategyRollingArgs', 'StrategyRollingArgsDict']]] = None,
+                 strategy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -194,9 +194,9 @@ class Strategy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            canary: Optional[pulumi.Input[Union['StrategyCanaryArgs', 'StrategyCanaryArgsDict']]] = None,
-            rolling: Optional[pulumi.Input[Union['StrategyRollingArgs', 'StrategyRollingArgsDict']]] = None,
-            strategy_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Strategy':
+            canary: pulumi.Input[Optional[Union['StrategyCanaryArgs', 'StrategyCanaryArgsDict']]] = None,
+            rolling: pulumi.Input[Optional[Union['StrategyRollingArgs', 'StrategyRollingArgsDict']]] = None,
+            strategy_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Strategy':
         """
         Get an existing Strategy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

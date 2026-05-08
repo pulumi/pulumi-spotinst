@@ -181,7 +181,7 @@ class ProgrammaticUserPolicyArgsDict(TypedDict):
     """
     Policy ID the programmatic user will have access to.
     """
-    policy_account_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    policy_account_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of the accounts that the policy should be
     enforced for the user.
@@ -191,7 +191,7 @@ class ProgrammaticUserPolicyArgsDict(TypedDict):
 class ProgrammaticUserPolicyArgs:
     def __init__(__self__, *,
                  policy_id: pulumi.Input[_builtins.str],
-                 policy_account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 policy_account_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] policy_id: Policy ID the programmatic user will have access to.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] policy_account_ids: A list of the accounts that the policy should be
@@ -215,7 +215,7 @@ class ProgrammaticUserPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="policyAccountIds")
-    def policy_account_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def policy_account_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of the accounts that the policy should be
         enforced for the user.
@@ -223,7 +223,7 @@ class ProgrammaticUserPolicyArgs:
         return pulumi.get(self, "policy_account_ids")
 
     @policy_account_ids.setter
-    def policy_account_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def policy_account_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "policy_account_ids", value)
 
 

@@ -50,8 +50,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.ecs.inputs.OceanTagArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanLoggingArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanLoggingExportArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -71,20 +71,20 @@ import javax.annotation.Nullable;
  *             .maxSize(1)
  *             .desiredCapacity(0)
  *             .subnetIds("subnet-12345")
- *             .instanceTypes(List.of(Map.of("filters", List.of(Map.ofEntries(
- *                 Map.entry("architectures", List.of(                
+ *             .instanceTypes(Arrays.asList(Map.of("filters", Arrays.asList(Map.ofEntries(
+ *                 Map.entry("architectures", Arrays.asList(                
  *                     "x86_64",
  *                     "i386")),
- *                 Map.entry("categories", List.of(                
+ *                 Map.entry("categories", Arrays.asList(                
  *                     "Accelerated_computing",
  *                     "Compute_optimized")),
- *                 Map.entry("diskTypes", List.of(                
+ *                 Map.entry("diskTypes", Arrays.asList(                
  *                     "EBS",
  *                     "SSD")),
- *                 Map.entry("excludeFamilies", List.of("m*")),
+ *                 Map.entry("excludeFamilies", Arrays.asList("m*")),
  *                 Map.entry("excludeMetal", false),
- *                 Map.entry("hypervisor", List.of("xen")),
- *                 Map.entry("includeFamilies", List.of(                
+ *                 Map.entry("hypervisor", Arrays.asList("xen")),
+ *                 Map.entry("includeFamilies", Arrays.asList(                
  *                     "c*",
  *                     "t*")),
  *                 Map.entry("isEnaSupported", false),
@@ -97,8 +97,8 @@ import javax.annotation.Nullable;
  *                 Map.entry("minMemoryGib", 8),
  *                 Map.entry("minNetworkPerformance", 2),
  *                 Map.entry("minVcpu", 2),
- *                 Map.entry("rootDeviceTypes", List.of("ebs")),
- *                 Map.entry("virtualizationTypes", List.of("hvm"))
+ *                 Map.entry("rootDeviceTypes", Arrays.asList("ebs")),
+ *                 Map.entry("virtualizationTypes", Arrays.asList("hvm"))
  *             )))))
  *             .securityGroupIds("sg-12345")
  *             .imageId("ami-12345")

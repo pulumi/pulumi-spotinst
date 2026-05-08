@@ -630,250 +630,250 @@ export interface ElastigroupState {
     /**
      * Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
      */
-    autoHealing?: pulumi.Input<boolean>;
+    autoHealing?: pulumi.Input<boolean | undefined>;
     /**
      * List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
      * Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
      * `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
      */
-    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
-    blockDevicesMode?: pulumi.Input<string>;
+    availabilityZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    blockDevicesMode?: pulumi.Input<string | undefined>;
     /**
      * The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
      */
-    capacityUnit?: pulumi.Input<string>;
-    considerOdPricing?: pulumi.Input<boolean>;
+    capacityUnit?: pulumi.Input<string | undefined>;
+    considerOdPricing?: pulumi.Input<boolean | undefined>;
     /**
      * Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
      */
-    cpuCredits?: pulumi.Input<string>;
+    cpuCredits?: pulumi.Input<string | undefined>;
     /**
      * The CPU options for the instances that are launched within the group:
      */
-    cpuOptions?: pulumi.Input<inputs.aws.ElastigroupCpuOptions>;
+    cpuOptions?: pulumi.Input<inputs.aws.ElastigroupCpuOptions | undefined>;
     /**
      * The group description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The desired number of instances the group should have at any time.
      */
-    desiredCapacity?: pulumi.Input<number>;
+    desiredCapacity?: pulumi.Input<number | undefined>;
     /**
      * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      */
-    drainingTimeout?: pulumi.Input<number>;
-    ebsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupEbsBlockDevice>[]>;
+    drainingTimeout?: pulumi.Input<number | undefined>;
+    ebsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupEbsBlockDevice>[] | undefined>;
     /**
      * Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
      */
-    ebsOptimized?: pulumi.Input<boolean>;
+    ebsOptimized?: pulumi.Input<boolean | undefined>;
     /**
      * A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
      */
-    elasticIps?: pulumi.Input<pulumi.Input<string>[]>;
-    elasticLoadBalancers?: pulumi.Input<pulumi.Input<string>[]>;
+    elasticIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    elasticLoadBalancers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether monitoring is enabled for the instance.
      */
-    enableMonitoring?: pulumi.Input<boolean>;
-    ephemeralBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupEphemeralBlockDevice>[]>;
+    enableMonitoring?: pulumi.Input<boolean | undefined>;
+    ephemeralBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupEphemeralBlockDevice>[] | undefined>;
     /**
      * In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
      */
-    fallbackToOndemand?: pulumi.Input<boolean>;
+    fallbackToOndemand?: pulumi.Input<boolean | undefined>;
     /**
      * The amount of time, in seconds, after the instance has launched to starts and check its health.
      */
-    healthCheckGracePeriod?: pulumi.Input<number>;
+    healthCheckGracePeriod?: pulumi.Input<number | undefined>;
     /**
      * The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
      */
-    healthCheckType?: pulumi.Input<string>;
+    healthCheckType?: pulumi.Input<string | undefined>;
     /**
      * The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
      */
-    healthCheckUnhealthyDurationBeforeReplacement?: pulumi.Input<number>;
+    healthCheckUnhealthyDurationBeforeReplacement?: pulumi.Input<number | undefined>;
     /**
      * The ARN or name of an IAM instance profile to associate with launched instances.
      */
-    iamInstanceProfile?: pulumi.Input<string>;
+    iamInstanceProfile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the AMI used to launch the instance.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * An array of image objects. 
      * Note: Elastigroup can be configured with either imageId or images, but not both.
      */
-    images?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupImage>[]>;
-    immediateOdRecoverThreshold?: pulumi.Input<number>;
+    images?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupImage>[] | undefined>;
+    immediateOdRecoverThreshold?: pulumi.Input<number | undefined>;
     /**
      * The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
      */
-    instanceTypesOndemand?: pulumi.Input<string>;
+    instanceTypesOndemand?: pulumi.Input<string | undefined>;
     /**
      * Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
      */
-    instanceTypesPreferredSpots?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceTypesPreferredSpots?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
      */
-    instanceTypesSpots?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceTypesSpots?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
      */
-    instanceTypesWeights?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupInstanceTypesWeight>[]>;
-    integrationBeanstalk?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalk>;
-    integrationCodedeploy?: pulumi.Input<inputs.aws.ElastigroupIntegrationCodedeploy>;
-    integrationDockerSwarm?: pulumi.Input<inputs.aws.ElastigroupIntegrationDockerSwarm>;
-    integrationEcs?: pulumi.Input<inputs.aws.ElastigroupIntegrationEcs>;
-    integrationGitlab?: pulumi.Input<inputs.aws.ElastigroupIntegrationGitlab>;
-    integrationKubernetes?: pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetes>;
-    integrationMesosphere?: pulumi.Input<inputs.aws.ElastigroupIntegrationMesosphere>;
-    integrationNomad?: pulumi.Input<inputs.aws.ElastigroupIntegrationNomad>;
-    integrationRancher?: pulumi.Input<inputs.aws.ElastigroupIntegrationRancher>;
-    integrationRoute53?: pulumi.Input<inputs.aws.ElastigroupIntegrationRoute53>;
-    itfs?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItf>[]>;
+    instanceTypesWeights?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupInstanceTypesWeight>[] | undefined>;
+    integrationBeanstalk?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalk | undefined>;
+    integrationCodedeploy?: pulumi.Input<inputs.aws.ElastigroupIntegrationCodedeploy | undefined>;
+    integrationDockerSwarm?: pulumi.Input<inputs.aws.ElastigroupIntegrationDockerSwarm | undefined>;
+    integrationEcs?: pulumi.Input<inputs.aws.ElastigroupIntegrationEcs | undefined>;
+    integrationGitlab?: pulumi.Input<inputs.aws.ElastigroupIntegrationGitlab | undefined>;
+    integrationKubernetes?: pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetes | undefined>;
+    integrationMesosphere?: pulumi.Input<inputs.aws.ElastigroupIntegrationMesosphere | undefined>;
+    integrationNomad?: pulumi.Input<inputs.aws.ElastigroupIntegrationNomad | undefined>;
+    integrationRancher?: pulumi.Input<inputs.aws.ElastigroupIntegrationRancher | undefined>;
+    integrationRoute53?: pulumi.Input<inputs.aws.ElastigroupIntegrationRoute53 | undefined>;
+    itfs?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItf>[] | undefined>;
     /**
      * The key name that should be used for the instance.
      */
-    keyName?: pulumi.Input<string>;
-    lifetimePeriod?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
+    lifetimePeriod?: pulumi.Input<string | undefined>;
     /**
      * Logging configuration.
      */
-    logging?: pulumi.Input<inputs.aws.ElastigroupLogging>;
+    logging?: pulumi.Input<inputs.aws.ElastigroupLogging | undefined>;
     /**
      * The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
      */
-    maxReplacementsPercentage?: pulumi.Input<number>;
+    maxReplacementsPercentage?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of instances the group should have at any time.
      */
-    maxSize?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number | undefined>;
     /**
      * Data that used to configure or manage the running instances:
      */
-    metadataOptions?: pulumi.Input<inputs.aws.ElastigroupMetadataOptions>;
+    metadataOptions?: pulumi.Input<inputs.aws.ElastigroupMetadataOptions | undefined>;
     /**
      * The minimum number of instances the group should have at any time.
      */
-    minSize?: pulumi.Input<number>;
+    minSize?: pulumi.Input<number | undefined>;
     /**
      * Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
      */
-    minimumInstanceLifetime?: pulumi.Input<number>;
-    multipleMetrics?: pulumi.Input<inputs.aws.ElastigroupMultipleMetrics>;
+    minimumInstanceLifetime?: pulumi.Input<number | undefined>;
+    multipleMetrics?: pulumi.Input<inputs.aws.ElastigroupMultipleMetrics | undefined>;
     /**
      * The group name.
      */
-    name?: pulumi.Input<string>;
-    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupNetworkInterface>[]>;
+    name?: pulumi.Input<string | undefined>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupNetworkInterface>[] | undefined>;
     /**
      * Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
      */
-    onDemandTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    onDemandTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
      */
-    ondemandCount?: pulumi.Input<number>;
+    ondemandCount?: pulumi.Input<number | undefined>;
     /**
      * Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
      */
-    orientation?: pulumi.Input<string>;
-    persistBlockDevices?: pulumi.Input<boolean>;
-    persistPrivateIp?: pulumi.Input<boolean>;
-    persistRootDevice?: pulumi.Input<boolean>;
+    orientation?: pulumi.Input<string | undefined>;
+    persistBlockDevices?: pulumi.Input<boolean | undefined>;
+    persistPrivateIp?: pulumi.Input<boolean | undefined>;
+    persistRootDevice?: pulumi.Input<boolean | undefined>;
     /**
      * Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
      */
-    placementTenancy?: pulumi.Input<string>;
+    placementTenancy?: pulumi.Input<string | undefined>;
     /**
      * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
      * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
      */
-    preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
-    privateIps?: pulumi.Input<pulumi.Input<string>[]>;
+    preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    privateIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
      * For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
      */
-    product?: pulumi.Input<string>;
+    product?: pulumi.Input<string | undefined>;
     /**
      * The AWS region your group will be created in.
      * Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Required instance attributes. Instance types will be selected based on these requirements.
      */
-    resourceRequirements?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupResourceRequirement>[]>;
+    resourceRequirements?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupResourceRequirement>[] | undefined>;
     /**
      * User will specify which resources should be tagged with group tags.
      */
-    resourceTagSpecifications?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupResourceTagSpecification>[]>;
+    resourceTagSpecifications?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupResourceTagSpecification>[] | undefined>;
     /**
      * Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
      */
-    restrictSingleAz?: pulumi.Input<boolean>;
+    restrictSingleAz?: pulumi.Input<boolean | undefined>;
     /**
      * Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
      */
-    revertToSpot?: pulumi.Input<inputs.aws.ElastigroupRevertToSpot>;
-    scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingDownPolicy>[]>;
+    revertToSpot?: pulumi.Input<inputs.aws.ElastigroupRevertToSpot | undefined>;
+    scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingDownPolicy>[] | undefined>;
     /**
      * Set termination policy.
      */
-    scalingStrategies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingStrategy>[]>;
-    scalingTargetPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingTargetPolicy>[]>;
-    scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingUpPolicy>[]>;
-    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScheduledTask>[]>;
+    scalingStrategies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingStrategy>[] | undefined>;
+    scalingTargetPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingTargetPolicy>[] | undefined>;
+    scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingUpPolicy>[] | undefined>;
+    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScheduledTask>[] | undefined>;
     /**
      * A list of associated security group IDS.
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
      */
-    shutdownScript?: pulumi.Input<string>;
-    signals?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupSignal>[]>;
+    shutdownScript?: pulumi.Input<string | undefined>;
+    signals?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupSignal>[] | undefined>;
     /**
      * The percentage of Spot instances that would spin up from the `desiredCapacity` number.
      */
-    spotPercentage?: pulumi.Input<number>;
-    statefulDeallocation?: pulumi.Input<inputs.aws.ElastigroupStatefulDeallocation>;
-    statefulInstanceActions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupStatefulInstanceAction>[]>;
+    spotPercentage?: pulumi.Input<number | undefined>;
+    statefulDeallocation?: pulumi.Input<inputs.aws.ElastigroupStatefulDeallocation | undefined>;
+    statefulInstanceActions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupStatefulInstanceAction>[] | undefined>;
     /**
      * List of Strings of subnet identifiers.
      * Note: When this parameter is set, `availabilityZones` should be left unused.
      *
      * @deprecated This field will soon be deprecated and handled by availability_zones
      */
-    subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    subnetIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A key/value mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupTag>[]>;
-    targetGroupArns?: pulumi.Input<pulumi.Input<string>[]>;
-    updatePolicy?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicy>;
+    tags?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupTag>[] | undefined>;
+    targetGroupArns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    updatePolicy?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicy | undefined>;
     /**
      * The user data to provide when launching the instance.
      */
-    userData?: pulumi.Input<string>;
-    utilizeCommitments?: pulumi.Input<boolean>;
+    userData?: pulumi.Input<string | undefined>;
+    utilizeCommitments?: pulumi.Input<boolean | undefined>;
     /**
      * In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
      */
-    utilizeReservedInstances?: pulumi.Input<boolean>;
+    utilizeReservedInstances?: pulumi.Input<boolean | undefined>;
     /**
      * Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desiredCapacity`.
      */
-    waitForCapacity?: pulumi.Input<number>;
+    waitForCapacity?: pulumi.Input<number | undefined>;
     /**
      * Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
      */
-    waitForCapacityTimeout?: pulumi.Input<number>;
+    waitForCapacityTimeout?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -883,54 +883,54 @@ export interface ElastigroupArgs {
     /**
      * Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
      */
-    autoHealing?: pulumi.Input<boolean>;
+    autoHealing?: pulumi.Input<boolean | undefined>;
     /**
      * List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
      * Note: `availabilityZones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
      * `availabilityZones = ["us-east-1a:subnet-123456:ClusterI03"]`
      */
-    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
-    blockDevicesMode?: pulumi.Input<string>;
+    availabilityZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    blockDevicesMode?: pulumi.Input<string | undefined>;
     /**
      * The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
      */
-    capacityUnit?: pulumi.Input<string>;
-    considerOdPricing?: pulumi.Input<boolean>;
+    capacityUnit?: pulumi.Input<string | undefined>;
+    considerOdPricing?: pulumi.Input<boolean | undefined>;
     /**
      * Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
      */
-    cpuCredits?: pulumi.Input<string>;
+    cpuCredits?: pulumi.Input<string | undefined>;
     /**
      * The CPU options for the instances that are launched within the group:
      */
-    cpuOptions?: pulumi.Input<inputs.aws.ElastigroupCpuOptions>;
+    cpuOptions?: pulumi.Input<inputs.aws.ElastigroupCpuOptions | undefined>;
     /**
      * The group description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The desired number of instances the group should have at any time.
      */
-    desiredCapacity?: pulumi.Input<number>;
+    desiredCapacity?: pulumi.Input<number | undefined>;
     /**
      * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      */
-    drainingTimeout?: pulumi.Input<number>;
-    ebsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupEbsBlockDevice>[]>;
+    drainingTimeout?: pulumi.Input<number | undefined>;
+    ebsBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupEbsBlockDevice>[] | undefined>;
     /**
      * Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
      */
-    ebsOptimized?: pulumi.Input<boolean>;
+    ebsOptimized?: pulumi.Input<boolean | undefined>;
     /**
      * A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
      */
-    elasticIps?: pulumi.Input<pulumi.Input<string>[]>;
-    elasticLoadBalancers?: pulumi.Input<pulumi.Input<string>[]>;
+    elasticIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    elasticLoadBalancers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether monitoring is enabled for the instance.
      */
-    enableMonitoring?: pulumi.Input<boolean>;
-    ephemeralBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupEphemeralBlockDevice>[]>;
+    enableMonitoring?: pulumi.Input<boolean | undefined>;
+    ephemeralBlockDevices?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupEphemeralBlockDevice>[] | undefined>;
     /**
      * In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
      */
@@ -938,116 +938,116 @@ export interface ElastigroupArgs {
     /**
      * The amount of time, in seconds, after the instance has launched to starts and check its health.
      */
-    healthCheckGracePeriod?: pulumi.Input<number>;
+    healthCheckGracePeriod?: pulumi.Input<number | undefined>;
     /**
      * The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
      */
-    healthCheckType?: pulumi.Input<string>;
+    healthCheckType?: pulumi.Input<string | undefined>;
     /**
      * The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
      */
-    healthCheckUnhealthyDurationBeforeReplacement?: pulumi.Input<number>;
+    healthCheckUnhealthyDurationBeforeReplacement?: pulumi.Input<number | undefined>;
     /**
      * The ARN or name of an IAM instance profile to associate with launched instances.
      */
-    iamInstanceProfile?: pulumi.Input<string>;
+    iamInstanceProfile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the AMI used to launch the instance.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * An array of image objects. 
      * Note: Elastigroup can be configured with either imageId or images, but not both.
      */
-    images?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupImage>[]>;
-    immediateOdRecoverThreshold?: pulumi.Input<number>;
+    images?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupImage>[] | undefined>;
+    immediateOdRecoverThreshold?: pulumi.Input<number | undefined>;
     /**
      * The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
      */
-    instanceTypesOndemand?: pulumi.Input<string>;
+    instanceTypesOndemand?: pulumi.Input<string | undefined>;
     /**
      * Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
      */
-    instanceTypesPreferredSpots?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceTypesPreferredSpots?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
      */
-    instanceTypesSpots?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceTypesSpots?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
      */
-    instanceTypesWeights?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupInstanceTypesWeight>[]>;
-    integrationBeanstalk?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalk>;
-    integrationCodedeploy?: pulumi.Input<inputs.aws.ElastigroupIntegrationCodedeploy>;
-    integrationDockerSwarm?: pulumi.Input<inputs.aws.ElastigroupIntegrationDockerSwarm>;
-    integrationEcs?: pulumi.Input<inputs.aws.ElastigroupIntegrationEcs>;
-    integrationGitlab?: pulumi.Input<inputs.aws.ElastigroupIntegrationGitlab>;
-    integrationKubernetes?: pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetes>;
-    integrationMesosphere?: pulumi.Input<inputs.aws.ElastigroupIntegrationMesosphere>;
-    integrationNomad?: pulumi.Input<inputs.aws.ElastigroupIntegrationNomad>;
-    integrationRancher?: pulumi.Input<inputs.aws.ElastigroupIntegrationRancher>;
-    integrationRoute53?: pulumi.Input<inputs.aws.ElastigroupIntegrationRoute53>;
-    itfs?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItf>[]>;
+    instanceTypesWeights?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupInstanceTypesWeight>[] | undefined>;
+    integrationBeanstalk?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalk | undefined>;
+    integrationCodedeploy?: pulumi.Input<inputs.aws.ElastigroupIntegrationCodedeploy | undefined>;
+    integrationDockerSwarm?: pulumi.Input<inputs.aws.ElastigroupIntegrationDockerSwarm | undefined>;
+    integrationEcs?: pulumi.Input<inputs.aws.ElastigroupIntegrationEcs | undefined>;
+    integrationGitlab?: pulumi.Input<inputs.aws.ElastigroupIntegrationGitlab | undefined>;
+    integrationKubernetes?: pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetes | undefined>;
+    integrationMesosphere?: pulumi.Input<inputs.aws.ElastigroupIntegrationMesosphere | undefined>;
+    integrationNomad?: pulumi.Input<inputs.aws.ElastigroupIntegrationNomad | undefined>;
+    integrationRancher?: pulumi.Input<inputs.aws.ElastigroupIntegrationRancher | undefined>;
+    integrationRoute53?: pulumi.Input<inputs.aws.ElastigroupIntegrationRoute53 | undefined>;
+    itfs?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItf>[] | undefined>;
     /**
      * The key name that should be used for the instance.
      */
-    keyName?: pulumi.Input<string>;
-    lifetimePeriod?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
+    lifetimePeriod?: pulumi.Input<string | undefined>;
     /**
      * Logging configuration.
      */
-    logging?: pulumi.Input<inputs.aws.ElastigroupLogging>;
+    logging?: pulumi.Input<inputs.aws.ElastigroupLogging | undefined>;
     /**
      * The percentage of active instances that can be replaced in parallel. This is used to prevent a large number of instances from being replaced at once. Default value is set to -1 intentionally, which will appear in the terminal during a pulumi preview if this field is not configured. This prevents confusion, as Terraform otherwise defaults integer data types to 0 when a field is not explicitly set.
      */
-    maxReplacementsPercentage?: pulumi.Input<number>;
+    maxReplacementsPercentage?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of instances the group should have at any time.
      */
-    maxSize?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number | undefined>;
     /**
      * Data that used to configure or manage the running instances:
      */
-    metadataOptions?: pulumi.Input<inputs.aws.ElastigroupMetadataOptions>;
+    metadataOptions?: pulumi.Input<inputs.aws.ElastigroupMetadataOptions | undefined>;
     /**
      * The minimum number of instances the group should have at any time.
      */
-    minSize?: pulumi.Input<number>;
+    minSize?: pulumi.Input<number | undefined>;
     /**
      * Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
      */
-    minimumInstanceLifetime?: pulumi.Input<number>;
-    multipleMetrics?: pulumi.Input<inputs.aws.ElastigroupMultipleMetrics>;
+    minimumInstanceLifetime?: pulumi.Input<number | undefined>;
+    multipleMetrics?: pulumi.Input<inputs.aws.ElastigroupMultipleMetrics | undefined>;
     /**
      * The group name.
      */
-    name?: pulumi.Input<string>;
-    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupNetworkInterface>[]>;
+    name?: pulumi.Input<string | undefined>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupNetworkInterface>[] | undefined>;
     /**
      * Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
      */
-    onDemandTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    onDemandTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
      */
-    ondemandCount?: pulumi.Input<number>;
+    ondemandCount?: pulumi.Input<number | undefined>;
     /**
      * Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
      */
     orientation: pulumi.Input<string>;
-    persistBlockDevices?: pulumi.Input<boolean>;
-    persistPrivateIp?: pulumi.Input<boolean>;
-    persistRootDevice?: pulumi.Input<boolean>;
+    persistBlockDevices?: pulumi.Input<boolean | undefined>;
+    persistPrivateIp?: pulumi.Input<boolean | undefined>;
+    persistRootDevice?: pulumi.Input<boolean | undefined>;
     /**
      * Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
      */
-    placementTenancy?: pulumi.Input<string>;
+    placementTenancy?: pulumi.Input<string | undefined>;
     /**
      * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
      * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
      */
-    preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
-    privateIps?: pulumi.Input<pulumi.Input<string>[]>;
+    preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    privateIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
      * For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
@@ -1057,31 +1057,31 @@ export interface ElastigroupArgs {
      * The AWS region your group will be created in.
      * Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Required instance attributes. Instance types will be selected based on these requirements.
      */
-    resourceRequirements?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupResourceRequirement>[]>;
+    resourceRequirements?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupResourceRequirement>[] | undefined>;
     /**
      * User will specify which resources should be tagged with group tags.
      */
-    resourceTagSpecifications?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupResourceTagSpecification>[]>;
+    resourceTagSpecifications?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupResourceTagSpecification>[] | undefined>;
     /**
      * Elastigroup will automatically scale your instances in the most available and cost efficient availability zone. Every evaluation will be done when there are no active instances in the group.
      */
-    restrictSingleAz?: pulumi.Input<boolean>;
+    restrictSingleAz?: pulumi.Input<boolean | undefined>;
     /**
      * Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
      */
-    revertToSpot?: pulumi.Input<inputs.aws.ElastigroupRevertToSpot>;
-    scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingDownPolicy>[]>;
+    revertToSpot?: pulumi.Input<inputs.aws.ElastigroupRevertToSpot | undefined>;
+    scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingDownPolicy>[] | undefined>;
     /**
      * Set termination policy.
      */
-    scalingStrategies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingStrategy>[]>;
-    scalingTargetPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingTargetPolicy>[]>;
-    scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingUpPolicy>[]>;
-    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScheduledTask>[]>;
+    scalingStrategies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingStrategy>[] | undefined>;
+    scalingTargetPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingTargetPolicy>[] | undefined>;
+    scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingUpPolicy>[] | undefined>;
+    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScheduledTask>[] | undefined>;
     /**
      * A list of associated security group IDS.
      */
@@ -1089,42 +1089,42 @@ export interface ElastigroupArgs {
     /**
      * The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
      */
-    shutdownScript?: pulumi.Input<string>;
-    signals?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupSignal>[]>;
+    shutdownScript?: pulumi.Input<string | undefined>;
+    signals?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupSignal>[] | undefined>;
     /**
      * The percentage of Spot instances that would spin up from the `desiredCapacity` number.
      */
-    spotPercentage?: pulumi.Input<number>;
-    statefulDeallocation?: pulumi.Input<inputs.aws.ElastigroupStatefulDeallocation>;
-    statefulInstanceActions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupStatefulInstanceAction>[]>;
+    spotPercentage?: pulumi.Input<number | undefined>;
+    statefulDeallocation?: pulumi.Input<inputs.aws.ElastigroupStatefulDeallocation | undefined>;
+    statefulInstanceActions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupStatefulInstanceAction>[] | undefined>;
     /**
      * List of Strings of subnet identifiers.
      * Note: When this parameter is set, `availabilityZones` should be left unused.
      *
      * @deprecated This field will soon be deprecated and handled by availability_zones
      */
-    subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    subnetIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A key/value mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupTag>[]>;
-    targetGroupArns?: pulumi.Input<pulumi.Input<string>[]>;
-    updatePolicy?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicy>;
+    tags?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupTag>[] | undefined>;
+    targetGroupArns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    updatePolicy?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicy | undefined>;
     /**
      * The user data to provide when launching the instance.
      */
-    userData?: pulumi.Input<string>;
-    utilizeCommitments?: pulumi.Input<boolean>;
+    userData?: pulumi.Input<string | undefined>;
+    utilizeCommitments?: pulumi.Input<boolean | undefined>;
     /**
      * In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
      */
-    utilizeReservedInstances?: pulumi.Input<boolean>;
+    utilizeReservedInstances?: pulumi.Input<boolean | undefined>;
     /**
      * Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desiredCapacity`.
      */
-    waitForCapacity?: pulumi.Input<number>;
+    waitForCapacity?: pulumi.Input<number | undefined>;
     /**
      * Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
      */
-    waitForCapacityTimeout?: pulumi.Input<number>;
+    waitForCapacityTimeout?: pulumi.Input<number | undefined>;
 }

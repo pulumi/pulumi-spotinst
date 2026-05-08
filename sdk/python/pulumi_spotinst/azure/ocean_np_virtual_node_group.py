@@ -22,31 +22,31 @@ __all__ = ['OceanNpVirtualNodeGroupArgs', 'OceanNpVirtualNodeGroup']
 class OceanNpVirtualNodeGroupArgs:
     def __init__(__self__, *,
                  ocean_id: pulumi.Input[_builtins.str],
-                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_node_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filters: Optional[pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs']] = None,
-                 headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]] = None,
-                 kubernetes_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 linux_os_configs: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]] = None,
-                 max_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_pods_per_node: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 os_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_sku: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 scheduling: Optional[pulumi.Input['OceanNpVirtualNodeGroupSchedulingArgs']] = None,
-                 should_utilize_commitments: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spot_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]] = None,
-                 update_policy: Optional[pulumi.Input['OceanNpVirtualNodeGroupUpdatePolicyArgs']] = None,
-                 vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filters: pulumi.Input[Optional['OceanNpVirtualNodeGroupFiltersArgs']] = None,
+                 headrooms: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]] = None,
+                 kubernetes_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]] = None,
+                 max_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 os_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_sku: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 scheduling: pulumi.Input[Optional['OceanNpVirtualNodeGroupSchedulingArgs']] = None,
+                 should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]] = None,
+                 update_policy: pulumi.Input[Optional['OceanNpVirtualNodeGroupUpdatePolicyArgs']] = None,
+                 vnet_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a OceanNpVirtualNodeGroup resource.
 
@@ -141,328 +141,328 @@ class OceanNpVirtualNodeGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="availabilityZones")
-    def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def availability_zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
         """
         return pulumi.get(self, "availability_zones")
 
     @availability_zones.setter
-    def availability_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def availability_zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "availability_zones", value)
 
     @_builtins.property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def draining_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
         """
         return pulumi.get(self, "draining_timeout")
 
     @draining_timeout.setter
-    def draining_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def draining_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "draining_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="enableNodePublicIp")
-    def enable_node_public_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_node_public_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable node public IP.
         """
         return pulumi.get(self, "enable_node_public_ip")
 
     @enable_node_public_ip.setter
-    def enable_node_public_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_node_public_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_node_public_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="fallbackToOndemand")
-    def fallback_to_ondemand(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fallback_to_ondemand(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
         """
         return pulumi.get(self, "fallback_to_ondemand")
 
     @fallback_to_ondemand.setter
-    def fallback_to_ondemand(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fallback_to_ondemand(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fallback_to_ondemand", value)
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs']]:
+    def filters(self) -> pulumi.Input[Optional['OceanNpVirtualNodeGroupFiltersArgs']]:
         """
         Filters for the VM sizes that can be launched from the virtual node group.
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs']]):
+    def filters(self, value: pulumi.Input[Optional['OceanNpVirtualNodeGroupFiltersArgs']]):
         pulumi.set(self, "filters", value)
 
     @_builtins.property
     @pulumi.getter
-    def headrooms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]]:
+    def headrooms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]]:
         """
         Specify the custom headroom per VNG. Provide a list of headroom objects.
         """
         return pulumi.get(self, "headrooms")
 
     @headrooms.setter
-    def headrooms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]]):
+    def headrooms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]]):
         pulumi.set(self, "headrooms", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesVersion")
-    def kubernetes_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kubernetes_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
         """
         return pulumi.get(self, "kubernetes_version")
 
     @kubernetes_version.setter
-    def kubernetes_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kubernetes_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kubernetes_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="linuxOsConfigs")
-    def linux_os_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]]:
+    def linux_os_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]]:
         """
         Custom Linux OS configuration.
         """
         return pulumi.get(self, "linux_os_configs")
 
     @linux_os_configs.setter
-    def linux_os_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]]):
+    def linux_os_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]]):
         pulumi.set(self, "linux_os_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="maxCount")
-    def max_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum node count limit.
         """
         return pulumi.get(self, "max_count")
 
     @max_count.setter
-    def max_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_count", value)
 
     @_builtins.property
     @pulumi.getter(name="maxPodsPerNode")
-    def max_pods_per_node(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_pods_per_node(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of pods per node in the node pools.
         """
         return pulumi.get(self, "max_pods_per_node")
 
     @max_pods_per_node.setter
-    def max_pods_per_node(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_pods_per_node(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_pods_per_node", value)
 
     @_builtins.property
     @pulumi.getter(name="minCount")
-    def min_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum node count limit.
         """
         return pulumi.get(self, "min_count")
 
     @min_count.setter
-    def min_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enter a name for the virtual node group.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="osDiskSizeGb")
-    def os_disk_size_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def os_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the OS disk in GB.
         """
         return pulumi.get(self, "os_disk_size_gb")
 
     @os_disk_size_gb.setter
-    def os_disk_size_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def os_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "os_disk_size_gb", value)
 
     @_builtins.property
     @pulumi.getter(name="osDiskType")
-    def os_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the OS disk.
         """
         return pulumi.get(self, "os_disk_type")
 
     @os_disk_type.setter
-    def os_disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="osSku")
-    def os_sku(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_sku(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OS SKU of the OS type. Must correlate with the os type.
         """
         return pulumi.get(self, "os_sku")
 
     @os_sku.setter
-    def os_sku(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_sku(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_sku", value)
 
     @_builtins.property
     @pulumi.getter(name="osType")
-    def os_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OS type of the OS disk. Can't be modified once set.
         """
         return pulumi.get(self, "os_type")
 
     @os_type.setter
-    def os_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_type", value)
 
     @_builtins.property
     @pulumi.getter(name="podSubnetIds")
-    def pod_subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def pod_subnet_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
         """
         return pulumi.get(self, "pod_subnet_ids")
 
     @pod_subnet_ids.setter
-    def pod_subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def pod_subnet_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pod_subnet_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheduling(self) -> Optional[pulumi.Input['OceanNpVirtualNodeGroupSchedulingArgs']]:
+    def scheduling(self) -> pulumi.Input[Optional['OceanNpVirtualNodeGroupSchedulingArgs']]:
         """
         An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         """
         return pulumi.get(self, "scheduling")
 
     @scheduling.setter
-    def scheduling(self, value: Optional[pulumi.Input['OceanNpVirtualNodeGroupSchedulingArgs']]):
+    def scheduling(self, value: pulumi.Input[Optional['OceanNpVirtualNodeGroupSchedulingArgs']]):
         pulumi.set(self, "scheduling", value)
 
     @_builtins.property
     @pulumi.getter(name="shouldUtilizeCommitments")
-    def should_utilize_commitments(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def should_utilize_commitments(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
         """
         return pulumi.get(self, "should_utilize_commitments")
 
     @should_utilize_commitments.setter
-    def should_utilize_commitments(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def should_utilize_commitments(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "should_utilize_commitments", value)
 
     @_builtins.property
     @pulumi.getter(name="spotPercentage")
-    def spot_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def spot_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Percentage of spot VMs to maintain.
         """
         return pulumi.get(self, "spot_percentage")
 
     @spot_percentage.setter
-    def spot_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def spot_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "spot_percentage", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]]:
+    def taints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]]:
         """
         Add taints to a virtual node group.
         """
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]]):
+    def taints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]]):
         pulumi.set(self, "taints", value)
 
     @_builtins.property
     @pulumi.getter(name="updatePolicy")
-    def update_policy(self) -> Optional[pulumi.Input['OceanNpVirtualNodeGroupUpdatePolicyArgs']]:
+    def update_policy(self) -> pulumi.Input[Optional['OceanNpVirtualNodeGroupUpdatePolicyArgs']]:
         return pulumi.get(self, "update_policy")
 
     @update_policy.setter
-    def update_policy(self, value: Optional[pulumi.Input['OceanNpVirtualNodeGroupUpdatePolicyArgs']]):
+    def update_policy(self, value: pulumi.Input[Optional['OceanNpVirtualNodeGroupUpdatePolicyArgs']]):
         pulumi.set(self, "update_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="vnetSubnetIds")
-    def vnet_subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vnet_subnet_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
         """
         return pulumi.get(self, "vnet_subnet_ids")
 
     @vnet_subnet_ids.setter
-    def vnet_subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vnet_subnet_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vnet_subnet_ids", value)
 
 
 @pulumi.input_type
 class _OceanNpVirtualNodeGroupState:
     def __init__(__self__, *,
-                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_node_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filters: Optional[pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs']] = None,
-                 headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]] = None,
-                 kubernetes_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 linux_os_configs: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]] = None,
-                 max_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_pods_per_node: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 os_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_sku: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 scheduling: Optional[pulumi.Input['OceanNpVirtualNodeGroupSchedulingArgs']] = None,
-                 should_utilize_commitments: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spot_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]] = None,
-                 update_policy: Optional[pulumi.Input['OceanNpVirtualNodeGroupUpdatePolicyArgs']] = None,
-                 vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filters: pulumi.Input[Optional['OceanNpVirtualNodeGroupFiltersArgs']] = None,
+                 headrooms: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]] = None,
+                 kubernetes_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]] = None,
+                 max_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 os_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_sku: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 scheduling: pulumi.Input[Optional['OceanNpVirtualNodeGroupSchedulingArgs']] = None,
+                 should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]] = None,
+                 update_policy: pulumi.Input[Optional['OceanNpVirtualNodeGroupUpdatePolicyArgs']] = None,
+                 vnet_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering OceanNpVirtualNodeGroup resources.
 
@@ -546,308 +546,308 @@ class _OceanNpVirtualNodeGroupState:
 
     @_builtins.property
     @pulumi.getter(name="availabilityZones")
-    def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def availability_zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
         """
         return pulumi.get(self, "availability_zones")
 
     @availability_zones.setter
-    def availability_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def availability_zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "availability_zones", value)
 
     @_builtins.property
     @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def draining_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
         """
         return pulumi.get(self, "draining_timeout")
 
     @draining_timeout.setter
-    def draining_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def draining_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "draining_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="enableNodePublicIp")
-    def enable_node_public_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_node_public_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable node public IP.
         """
         return pulumi.get(self, "enable_node_public_ip")
 
     @enable_node_public_ip.setter
-    def enable_node_public_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_node_public_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_node_public_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="fallbackToOndemand")
-    def fallback_to_ondemand(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fallback_to_ondemand(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
         """
         return pulumi.get(self, "fallback_to_ondemand")
 
     @fallback_to_ondemand.setter
-    def fallback_to_ondemand(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fallback_to_ondemand(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fallback_to_ondemand", value)
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs']]:
+    def filters(self) -> pulumi.Input[Optional['OceanNpVirtualNodeGroupFiltersArgs']]:
         """
         Filters for the VM sizes that can be launched from the virtual node group.
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs']]):
+    def filters(self, value: pulumi.Input[Optional['OceanNpVirtualNodeGroupFiltersArgs']]):
         pulumi.set(self, "filters", value)
 
     @_builtins.property
     @pulumi.getter
-    def headrooms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]]:
+    def headrooms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]]:
         """
         Specify the custom headroom per VNG. Provide a list of headroom objects.
         """
         return pulumi.get(self, "headrooms")
 
     @headrooms.setter
-    def headrooms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]]):
+    def headrooms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]]):
         pulumi.set(self, "headrooms", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesVersion")
-    def kubernetes_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kubernetes_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
         """
         return pulumi.get(self, "kubernetes_version")
 
     @kubernetes_version.setter
-    def kubernetes_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kubernetes_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kubernetes_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="linuxOsConfigs")
-    def linux_os_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]]:
+    def linux_os_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]]:
         """
         Custom Linux OS configuration.
         """
         return pulumi.get(self, "linux_os_configs")
 
     @linux_os_configs.setter
-    def linux_os_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]]):
+    def linux_os_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]]):
         pulumi.set(self, "linux_os_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="maxCount")
-    def max_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum node count limit.
         """
         return pulumi.get(self, "max_count")
 
     @max_count.setter
-    def max_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_count", value)
 
     @_builtins.property
     @pulumi.getter(name="maxPodsPerNode")
-    def max_pods_per_node(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_pods_per_node(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of pods per node in the node pools.
         """
         return pulumi.get(self, "max_pods_per_node")
 
     @max_pods_per_node.setter
-    def max_pods_per_node(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_pods_per_node(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_pods_per_node", value)
 
     @_builtins.property
     @pulumi.getter(name="minCount")
-    def min_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum node count limit.
         """
         return pulumi.get(self, "min_count")
 
     @min_count.setter
-    def min_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enter a name for the virtual node group.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="oceanId")
-    def ocean_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ocean_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Ocean cluster identifier. Required for Launch Spec creation.
         """
         return pulumi.get(self, "ocean_id")
 
     @ocean_id.setter
-    def ocean_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ocean_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ocean_id", value)
 
     @_builtins.property
     @pulumi.getter(name="osDiskSizeGb")
-    def os_disk_size_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def os_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the OS disk in GB.
         """
         return pulumi.get(self, "os_disk_size_gb")
 
     @os_disk_size_gb.setter
-    def os_disk_size_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def os_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "os_disk_size_gb", value)
 
     @_builtins.property
     @pulumi.getter(name="osDiskType")
-    def os_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the OS disk.
         """
         return pulumi.get(self, "os_disk_type")
 
     @os_disk_type.setter
-    def os_disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="osSku")
-    def os_sku(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_sku(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OS SKU of the OS type. Must correlate with the os type.
         """
         return pulumi.get(self, "os_sku")
 
     @os_sku.setter
-    def os_sku(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_sku(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_sku", value)
 
     @_builtins.property
     @pulumi.getter(name="osType")
-    def os_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OS type of the OS disk. Can't be modified once set.
         """
         return pulumi.get(self, "os_type")
 
     @os_type.setter
-    def os_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_type", value)
 
     @_builtins.property
     @pulumi.getter(name="podSubnetIds")
-    def pod_subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def pod_subnet_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
         """
         return pulumi.get(self, "pod_subnet_ids")
 
     @pod_subnet_ids.setter
-    def pod_subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def pod_subnet_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pod_subnet_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheduling(self) -> Optional[pulumi.Input['OceanNpVirtualNodeGroupSchedulingArgs']]:
+    def scheduling(self) -> pulumi.Input[Optional['OceanNpVirtualNodeGroupSchedulingArgs']]:
         """
         An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         """
         return pulumi.get(self, "scheduling")
 
     @scheduling.setter
-    def scheduling(self, value: Optional[pulumi.Input['OceanNpVirtualNodeGroupSchedulingArgs']]):
+    def scheduling(self, value: pulumi.Input[Optional['OceanNpVirtualNodeGroupSchedulingArgs']]):
         pulumi.set(self, "scheduling", value)
 
     @_builtins.property
     @pulumi.getter(name="shouldUtilizeCommitments")
-    def should_utilize_commitments(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def should_utilize_commitments(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
         """
         return pulumi.get(self, "should_utilize_commitments")
 
     @should_utilize_commitments.setter
-    def should_utilize_commitments(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def should_utilize_commitments(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "should_utilize_commitments", value)
 
     @_builtins.property
     @pulumi.getter(name="spotPercentage")
-    def spot_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def spot_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Percentage of spot VMs to maintain.
         """
         return pulumi.get(self, "spot_percentage")
 
     @spot_percentage.setter
-    def spot_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def spot_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "spot_percentage", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]]:
+    def taints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]]:
         """
         Add taints to a virtual node group.
         """
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]]):
+    def taints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]]):
         pulumi.set(self, "taints", value)
 
     @_builtins.property
     @pulumi.getter(name="updatePolicy")
-    def update_policy(self) -> Optional[pulumi.Input['OceanNpVirtualNodeGroupUpdatePolicyArgs']]:
+    def update_policy(self) -> pulumi.Input[Optional['OceanNpVirtualNodeGroupUpdatePolicyArgs']]:
         return pulumi.get(self, "update_policy")
 
     @update_policy.setter
-    def update_policy(self, value: Optional[pulumi.Input['OceanNpVirtualNodeGroupUpdatePolicyArgs']]):
+    def update_policy(self, value: pulumi.Input[Optional['OceanNpVirtualNodeGroupUpdatePolicyArgs']]):
         pulumi.set(self, "update_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="vnetSubnetIds")
-    def vnet_subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vnet_subnet_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
         """
         return pulumi.get(self, "vnet_subnet_ids")
 
     @vnet_subnet_ids.setter
-    def vnet_subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vnet_subnet_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vnet_subnet_ids", value)
 
 
@@ -857,32 +857,32 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_node_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filters: Optional[pulumi.Input[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict']]] = None,
-                 headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupHeadroomArgs', 'OceanNpVirtualNodeGroupHeadroomArgsDict']]]]] = None,
-                 kubernetes_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 linux_os_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLinuxOsConfigArgs', 'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict']]]]] = None,
-                 max_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_pods_per_node: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 os_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_sku: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 scheduling: Optional[pulumi.Input[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']]] = None,
-                 should_utilize_commitments: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spot_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict']]]]] = None,
-                 update_policy: Optional[pulumi.Input[Union['OceanNpVirtualNodeGroupUpdatePolicyArgs', 'OceanNpVirtualNodeGroupUpdatePolicyArgsDict']]] = None,
-                 vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filters: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict']]] = None,
+                 headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupHeadroomArgs', 'OceanNpVirtualNodeGroupHeadroomArgsDict']]]]] = None,
+                 kubernetes_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLinuxOsConfigArgs', 'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict']]]]] = None,
+                 max_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 os_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_sku: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 scheduling: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']]] = None,
+                 should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict']]]]] = None,
+                 update_policy: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupUpdatePolicyArgs', 'OceanNpVirtualNodeGroupUpdatePolicyArgsDict']]] = None,
+                 vnet_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Manages a Spotinst Ocean AKS Virtual Node Groups resource.
@@ -943,8 +943,8 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             filters={
                 "min_vcpu": 2,
                 "max_vcpu": 16,
-                "min_memory_gib": 8,
-                "max_memory_gib": 128,
+                "min_memory_gib": float(8),
+                "max_memory_gib": float(128),
                 "architectures": [
                     "x86_64",
                     "arm64",
@@ -963,8 +963,8 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                 ],
                 "accelerated_networking": "Enabled",
                 "disk_performance": "Premium",
-                "min_gpu": 1,
-                "max_gpu": 2,
+                "min_gpu": float(1),
+                "max_gpu": float(2),
                 "min_nics": 1,
                 "vm_types": [
                     "generalPurpose",
@@ -1077,8 +1077,8 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             filters={
                 "min_vcpu": 2,
                 "max_vcpu": 16,
-                "min_memory_gib": 8,
-                "max_memory_gib": 128,
+                "min_memory_gib": float(8),
+                "max_memory_gib": float(128),
                 "architectures": [
                     "x86_64",
                     "arm64",
@@ -1097,8 +1097,8 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                 ],
                 "accelerated_networking": "Enabled",
                 "disk_performance": "Premium",
-                "min_gpu": 1,
-                "max_gpu": 2,
+                "min_gpu": float(1),
+                "max_gpu": float(2),
                 "min_nics": 1,
                 "vm_types": [
                     "generalPurpose",
@@ -1134,32 +1134,32 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_node_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filters: Optional[pulumi.Input[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict']]] = None,
-                 headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupHeadroomArgs', 'OceanNpVirtualNodeGroupHeadroomArgsDict']]]]] = None,
-                 kubernetes_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 linux_os_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLinuxOsConfigArgs', 'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict']]]]] = None,
-                 max_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_pods_per_node: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 os_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_sku: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 scheduling: Optional[pulumi.Input[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']]] = None,
-                 should_utilize_commitments: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spot_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict']]]]] = None,
-                 update_policy: Optional[pulumi.Input[Union['OceanNpVirtualNodeGroupUpdatePolicyArgs', 'OceanNpVirtualNodeGroupUpdatePolicyArgsDict']]] = None,
-                 vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filters: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict']]] = None,
+                 headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupHeadroomArgs', 'OceanNpVirtualNodeGroupHeadroomArgsDict']]]]] = None,
+                 kubernetes_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLinuxOsConfigArgs', 'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict']]]]] = None,
+                 max_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 os_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_sku: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 scheduling: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']]] = None,
+                 should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict']]]]] = None,
+                 update_policy: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupUpdatePolicyArgs', 'OceanNpVirtualNodeGroupUpdatePolicyArgsDict']]] = None,
+                 vnet_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1207,32 +1207,32 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            draining_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            enable_node_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-            fallback_to_ondemand: Optional[pulumi.Input[_builtins.bool]] = None,
-            filters: Optional[pulumi.Input[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict']]] = None,
-            headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupHeadroomArgs', 'OceanNpVirtualNodeGroupHeadroomArgsDict']]]]] = None,
-            kubernetes_version: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            linux_os_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLinuxOsConfigArgs', 'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict']]]]] = None,
-            max_count: Optional[pulumi.Input[_builtins.int]] = None,
-            max_pods_per_node: Optional[pulumi.Input[_builtins.int]] = None,
-            min_count: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            ocean_id: Optional[pulumi.Input[_builtins.str]] = None,
-            os_disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-            os_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-            os_sku: Optional[pulumi.Input[_builtins.str]] = None,
-            os_type: Optional[pulumi.Input[_builtins.str]] = None,
-            pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            scheduling: Optional[pulumi.Input[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']]] = None,
-            should_utilize_commitments: Optional[pulumi.Input[_builtins.bool]] = None,
-            spot_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict']]]]] = None,
-            update_policy: Optional[pulumi.Input[Union['OceanNpVirtualNodeGroupUpdatePolicyArgs', 'OceanNpVirtualNodeGroupUpdatePolicyArgsDict']]] = None,
-            vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'OceanNpVirtualNodeGroup':
+            availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+            filters: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict']]] = None,
+            headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupHeadroomArgs', 'OceanNpVirtualNodeGroupHeadroomArgsDict']]]]] = None,
+            kubernetes_version: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLinuxOsConfigArgs', 'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict']]]]] = None,
+            max_count: pulumi.Input[Optional[_builtins.int]] = None,
+            max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+            min_count: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
+            os_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+            os_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+            os_sku: pulumi.Input[Optional[_builtins.str]] = None,
+            os_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            scheduling: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']]] = None,
+            should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
+            spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict']]]]] = None,
+            update_policy: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupUpdatePolicyArgs', 'OceanNpVirtualNodeGroupUpdatePolicyArgsDict']]] = None,
+            vnet_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'OceanNpVirtualNodeGroup':
         """
         Get an existing OceanNpVirtualNodeGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

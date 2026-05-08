@@ -109,21 +109,21 @@ export interface UserGroupState {
     /**
      * User group description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User group name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The policies to register under the given group
      * (should be existing policies only).
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.organization.UserGroupPolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.organization.UserGroupPolicy>[] | undefined>;
     /**
      * The users to register under the created group
      * (should be existing users only).
      */
-    userIds?: pulumi.Input<pulumi.Input<string>[]>;
+    userIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -133,19 +133,19 @@ export interface UserGroupArgs {
     /**
      * User group description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User group name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The policies to register under the given group
      * (should be existing policies only).
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.organization.UserGroupPolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.organization.UserGroupPolicy>[] | undefined>;
     /**
      * The users to register under the created group
      * (should be existing users only).
      */
-    userIds?: pulumi.Input<pulumi.Input<string>[]>;
+    userIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

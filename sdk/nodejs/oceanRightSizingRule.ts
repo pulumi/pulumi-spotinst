@@ -212,78 +212,78 @@ export class OceanRightSizingRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OceanRightSizingRule resources.
  */
 export interface OceanRightSizingRuleState {
-    attachWorkloads?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAttachWorkload>[]>;
+    attachWorkloads?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAttachWorkload>[] | undefined>;
     /**
      * Ocean Rightsizing Rule Auto Apply Configuration.
      */
-    autoApplyDefinitions?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAutoApplyDefinition>[]>;
-    detachWorkloads?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleDetachWorkload>[]>;
-    downsideOnly?: pulumi.Input<boolean>;
+    autoApplyDefinitions?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAutoApplyDefinition>[] | undefined>;
+    detachWorkloads?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleDetachWorkload>[] | undefined>;
+    downsideOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
      */
-    excludePreliminaryRecommendations?: pulumi.Input<boolean>;
+    excludePreliminaryRecommendations?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier of the Ocean cluster.
      */
-    oceanId?: pulumi.Input<string>;
+    oceanId?: pulumi.Input<string | undefined>;
     /**
      * Determines the Ocean Rightsizing rule recommendation application boundaries.
      */
-    recommendationApplicationBoundaries?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationBoundary>[]>;
+    recommendationApplicationBoundaries?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationBoundary>[] | undefined>;
     /**
      * HPA Rightsizing Rule Recommendation Configuration
      */
-    recommendationApplicationHpas?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationHpa>[]>;
+    recommendationApplicationHpas?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationHpa>[] | undefined>;
     /**
      * Determines the Ocean Rightsizing rule recommendation application intervals.
      */
-    recommendationApplicationIntervals?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationInterval>[]>;
+    recommendationApplicationIntervals?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationInterval>[] | undefined>;
     /**
      * Determines the extent of difference between current request and recommendation to trigger a change in percentage.
      */
-    recommendationApplicationMinThresholds?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationMinThreshold>[]>;
+    recommendationApplicationMinThresholds?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationMinThreshold>[] | undefined>;
     /**
      * Determines the Ocean Rightsizing rule recommendation application overhead values.
      */
-    recommendationApplicationOverheadValues?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationOverheadValue>[]>;
+    recommendationApplicationOverheadValues?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationOverheadValue>[] | undefined>;
     /**
      * Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
      */
-    restartReplicas?: pulumi.Input<string>;
+    restartReplicas?: pulumi.Input<string | undefined>;
     /**
      * The unique name of the rule.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a OceanRightSizingRule resource.
  */
 export interface OceanRightSizingRuleArgs {
-    attachWorkloads?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAttachWorkload>[]>;
+    attachWorkloads?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAttachWorkload>[] | undefined>;
     /**
      * Ocean Rightsizing Rule Auto Apply Configuration.
      */
-    autoApplyDefinitions?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAutoApplyDefinition>[]>;
-    detachWorkloads?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleDetachWorkload>[]>;
-    downsideOnly?: pulumi.Input<boolean>;
+    autoApplyDefinitions?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAutoApplyDefinition>[] | undefined>;
+    detachWorkloads?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleDetachWorkload>[] | undefined>;
+    downsideOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
      */
-    excludePreliminaryRecommendations?: pulumi.Input<boolean>;
+    excludePreliminaryRecommendations?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier of the Ocean cluster.
      */
-    oceanId?: pulumi.Input<string>;
+    oceanId?: pulumi.Input<string | undefined>;
     /**
      * Determines the Ocean Rightsizing rule recommendation application boundaries.
      */
-    recommendationApplicationBoundaries?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationBoundary>[]>;
+    recommendationApplicationBoundaries?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationBoundary>[] | undefined>;
     /**
      * HPA Rightsizing Rule Recommendation Configuration
      */
-    recommendationApplicationHpas?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationHpa>[]>;
+    recommendationApplicationHpas?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationHpa>[] | undefined>;
     /**
      * Determines the Ocean Rightsizing rule recommendation application intervals.
      */
@@ -291,15 +291,15 @@ export interface OceanRightSizingRuleArgs {
     /**
      * Determines the extent of difference between current request and recommendation to trigger a change in percentage.
      */
-    recommendationApplicationMinThresholds?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationMinThreshold>[]>;
+    recommendationApplicationMinThresholds?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationMinThreshold>[] | undefined>;
     /**
      * Determines the Ocean Rightsizing rule recommendation application overhead values.
      */
-    recommendationApplicationOverheadValues?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationOverheadValue>[]>;
+    recommendationApplicationOverheadValues?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationOverheadValue>[] | undefined>;
     /**
      * Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
      */
-    restartReplicas?: pulumi.Input<string>;
+    restartReplicas?: pulumi.Input<string | undefined>;
     /**
      * The unique name of the rule.
      */

@@ -22,8 +22,8 @@ __all__ = ['PolicyArgs', 'Policy']
 class PolicyArgs:
     def __init__(__self__, *,
                  policy_contents: pulumi.Input[Sequence[pulumi.Input['PolicyPolicyContentArgs']]],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Policy resource.
 
@@ -51,35 +51,35 @@ class PolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Short description of policy.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Policy.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _PolicyState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_contents: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyPolicyContentArgs']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_contents: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyPolicyContentArgs']]]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
 
@@ -96,38 +96,38 @@ class _PolicyState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Short description of policy.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Policy.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="policyContents")
-    def policy_contents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyPolicyContentArgs']]]]:
+    def policy_contents(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PolicyPolicyContentArgs']]]]:
         """
         Set permissions objects list.
         """
         return pulumi.get(self, "policy_contents")
 
     @policy_contents.setter
-    def policy_contents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyPolicyContentArgs']]]]):
+    def policy_contents(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyPolicyContentArgs']]]]):
         pulumi.set(self, "policy_contents", value)
 
 
@@ -137,9 +137,9 @@ class Policy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_contents: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyPolicyContentArgs', 'PolicyPolicyContentArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_contents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyPolicyContentArgs', 'PolicyPolicyContentArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Spotinst access policy.
@@ -238,9 +238,9 @@ class Policy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_contents: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyPolicyContentArgs', 'PolicyPolicyContentArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_contents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyPolicyContentArgs', 'PolicyPolicyContentArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -265,9 +265,9 @@ class Policy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_contents: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyPolicyContentArgs', 'PolicyPolicyContentArgsDict']]]]] = None) -> 'Policy':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_contents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyPolicyContentArgs', 'PolicyPolicyContentArgsDict']]]]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

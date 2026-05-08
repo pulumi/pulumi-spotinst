@@ -108,27 +108,27 @@ export interface RolloutSpecState {
     /**
      * Holds information on how to react when failure happens.
      */
-    failurePolicy?: pulumi.Input<inputs.oceancd.RolloutSpecFailurePolicy>;
+    failurePolicy?: pulumi.Input<inputs.oceancd.RolloutSpecFailurePolicy | undefined>;
     /**
      * Identifier name for Ocean CD Rollout Spec. Must be unique
      */
-    rolloutSpecName?: pulumi.Input<string>;
+    rolloutSpecName?: pulumi.Input<string | undefined>;
     /**
      * Represents the SpotDeployment selector.
      */
-    spotDeployment?: pulumi.Input<inputs.oceancd.RolloutSpecSpotDeployment>;
+    spotDeployment?: pulumi.Input<inputs.oceancd.RolloutSpecSpotDeployment | undefined>;
     /**
      * You must specify either `spotDeployment` OR `spotDeployments` but not both. Every SpotDeployment has to be unique. If more than one `SpotDeployment` has been configured, no `traffic` managers can be set as part of the RolloutSpec.For such case ensure that each of the chosen SpotDeployments are being exposed with different Kubernetes services.
      */
-    spotDeployments?: pulumi.Input<pulumi.Input<inputs.oceancd.RolloutSpecSpotDeployment>[]>;
+    spotDeployments?: pulumi.Input<pulumi.Input<inputs.oceancd.RolloutSpecSpotDeployment>[] | undefined>;
     /**
      * Determines the Ocean CD strategy
      */
-    strategy?: pulumi.Input<inputs.oceancd.RolloutSpecStrategy>;
+    strategy?: pulumi.Input<inputs.oceancd.RolloutSpecStrategy | undefined>;
     /**
      * Hosts all of the supported service meshes needed to enable more fine-grained traffic routing. In case `SpotDeployments` contains more than one SpotDeployment the `traffic` manager may not be configured.
      */
-    traffic?: pulumi.Input<inputs.oceancd.RolloutSpecTraffic>;
+    traffic?: pulumi.Input<inputs.oceancd.RolloutSpecTraffic | undefined>;
 }
 
 /**
@@ -138,7 +138,7 @@ export interface RolloutSpecArgs {
     /**
      * Holds information on how to react when failure happens.
      */
-    failurePolicy?: pulumi.Input<inputs.oceancd.RolloutSpecFailurePolicy>;
+    failurePolicy?: pulumi.Input<inputs.oceancd.RolloutSpecFailurePolicy | undefined>;
     /**
      * Identifier name for Ocean CD Rollout Spec. Must be unique
      */
@@ -146,11 +146,11 @@ export interface RolloutSpecArgs {
     /**
      * Represents the SpotDeployment selector.
      */
-    spotDeployment?: pulumi.Input<inputs.oceancd.RolloutSpecSpotDeployment>;
+    spotDeployment?: pulumi.Input<inputs.oceancd.RolloutSpecSpotDeployment | undefined>;
     /**
      * You must specify either `spotDeployment` OR `spotDeployments` but not both. Every SpotDeployment has to be unique. If more than one `SpotDeployment` has been configured, no `traffic` managers can be set as part of the RolloutSpec.For such case ensure that each of the chosen SpotDeployments are being exposed with different Kubernetes services.
      */
-    spotDeployments?: pulumi.Input<pulumi.Input<inputs.oceancd.RolloutSpecSpotDeployment>[]>;
+    spotDeployments?: pulumi.Input<pulumi.Input<inputs.oceancd.RolloutSpecSpotDeployment>[] | undefined>;
     /**
      * Determines the Ocean CD strategy
      */
@@ -158,5 +158,5 @@ export interface RolloutSpecArgs {
     /**
      * Hosts all of the supported service meshes needed to enable more fine-grained traffic routing. In case `SpotDeployments` contains more than one SpotDeployment the `traffic` manager may not be configured.
      */
-    traffic?: pulumi.Input<inputs.oceancd.RolloutSpecTraffic>;
+    traffic?: pulumi.Input<inputs.oceancd.RolloutSpecTraffic | undefined>;
 }

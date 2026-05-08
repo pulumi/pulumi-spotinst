@@ -96,11 +96,11 @@ export interface OceanExtendedResourceDefinitionState {
      * The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
      * The name should be a valid Kubernetes extended resource name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A mapping between AWS instanceType or * as default and its value for the given extended resource.
      */
-    resourceMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    resourceMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -111,7 +111,7 @@ export interface OceanExtendedResourceDefinitionArgs {
      * The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
      * The name should be a valid Kubernetes extended resource name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A mapping between AWS instanceType or * as default and its value for the given extended resource.
      */

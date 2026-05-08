@@ -22,12 +22,12 @@ __all__ = ['OceanArgs', 'Ocean']
 class OceanArgs:
     def __init__(__self__, *,
                  ocean_cluster_id: pulumi.Input[_builtins.str],
-                 compute: Optional[pulumi.Input['OceanComputeArgs']] = None,
-                 ingress: Optional[pulumi.Input['OceanIngressArgs']] = None,
-                 log_collection: Optional[pulumi.Input['OceanLogCollectionArgs']] = None,
-                 spark: Optional[pulumi.Input['OceanSparkArgs']] = None,
-                 webhook: Optional[pulumi.Input['OceanWebhookArgs']] = None,
-                 workspaces: Optional[pulumi.Input['OceanWorkspacesArgs']] = None):
+                 compute: pulumi.Input[Optional['OceanComputeArgs']] = None,
+                 ingress: pulumi.Input[Optional['OceanIngressArgs']] = None,
+                 log_collection: pulumi.Input[Optional['OceanLogCollectionArgs']] = None,
+                 spark: pulumi.Input[Optional['OceanSparkArgs']] = None,
+                 webhook: pulumi.Input[Optional['OceanWebhookArgs']] = None,
+                 workspaces: pulumi.Input[Optional['OceanWorkspacesArgs']] = None):
         """
         The set of arguments for constructing a Ocean resource.
 
@@ -61,69 +61,69 @@ class OceanArgs:
 
     @_builtins.property
     @pulumi.getter
-    def compute(self) -> Optional[pulumi.Input['OceanComputeArgs']]:
+    def compute(self) -> pulumi.Input[Optional['OceanComputeArgs']]:
         return pulumi.get(self, "compute")
 
     @compute.setter
-    def compute(self, value: Optional[pulumi.Input['OceanComputeArgs']]):
+    def compute(self, value: pulumi.Input[Optional['OceanComputeArgs']]):
         pulumi.set(self, "compute", value)
 
     @_builtins.property
     @pulumi.getter
-    def ingress(self) -> Optional[pulumi.Input['OceanIngressArgs']]:
+    def ingress(self) -> pulumi.Input[Optional['OceanIngressArgs']]:
         return pulumi.get(self, "ingress")
 
     @ingress.setter
-    def ingress(self, value: Optional[pulumi.Input['OceanIngressArgs']]):
+    def ingress(self, value: pulumi.Input[Optional['OceanIngressArgs']]):
         pulumi.set(self, "ingress", value)
 
     @_builtins.property
     @pulumi.getter(name="logCollection")
-    def log_collection(self) -> Optional[pulumi.Input['OceanLogCollectionArgs']]:
+    def log_collection(self) -> pulumi.Input[Optional['OceanLogCollectionArgs']]:
         return pulumi.get(self, "log_collection")
 
     @log_collection.setter
-    def log_collection(self, value: Optional[pulumi.Input['OceanLogCollectionArgs']]):
+    def log_collection(self, value: pulumi.Input[Optional['OceanLogCollectionArgs']]):
         pulumi.set(self, "log_collection", value)
 
     @_builtins.property
     @pulumi.getter
-    def spark(self) -> Optional[pulumi.Input['OceanSparkArgs']]:
+    def spark(self) -> pulumi.Input[Optional['OceanSparkArgs']]:
         return pulumi.get(self, "spark")
 
     @spark.setter
-    def spark(self, value: Optional[pulumi.Input['OceanSparkArgs']]):
+    def spark(self, value: pulumi.Input[Optional['OceanSparkArgs']]):
         pulumi.set(self, "spark", value)
 
     @_builtins.property
     @pulumi.getter
-    def webhook(self) -> Optional[pulumi.Input['OceanWebhookArgs']]:
+    def webhook(self) -> pulumi.Input[Optional['OceanWebhookArgs']]:
         return pulumi.get(self, "webhook")
 
     @webhook.setter
-    def webhook(self, value: Optional[pulumi.Input['OceanWebhookArgs']]):
+    def webhook(self, value: pulumi.Input[Optional['OceanWebhookArgs']]):
         pulumi.set(self, "webhook", value)
 
     @_builtins.property
     @pulumi.getter
-    def workspaces(self) -> Optional[pulumi.Input['OceanWorkspacesArgs']]:
+    def workspaces(self) -> pulumi.Input[Optional['OceanWorkspacesArgs']]:
         return pulumi.get(self, "workspaces")
 
     @workspaces.setter
-    def workspaces(self, value: Optional[pulumi.Input['OceanWorkspacesArgs']]):
+    def workspaces(self, value: pulumi.Input[Optional['OceanWorkspacesArgs']]):
         pulumi.set(self, "workspaces", value)
 
 
 @pulumi.input_type
 class _OceanState:
     def __init__(__self__, *,
-                 compute: Optional[pulumi.Input['OceanComputeArgs']] = None,
-                 ingress: Optional[pulumi.Input['OceanIngressArgs']] = None,
-                 log_collection: Optional[pulumi.Input['OceanLogCollectionArgs']] = None,
-                 ocean_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spark: Optional[pulumi.Input['OceanSparkArgs']] = None,
-                 webhook: Optional[pulumi.Input['OceanWebhookArgs']] = None,
-                 workspaces: Optional[pulumi.Input['OceanWorkspacesArgs']] = None):
+                 compute: pulumi.Input[Optional['OceanComputeArgs']] = None,
+                 ingress: pulumi.Input[Optional['OceanIngressArgs']] = None,
+                 log_collection: pulumi.Input[Optional['OceanLogCollectionArgs']] = None,
+                 ocean_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spark: pulumi.Input[Optional['OceanSparkArgs']] = None,
+                 webhook: pulumi.Input[Optional['OceanWebhookArgs']] = None,
+                 workspaces: pulumi.Input[Optional['OceanWorkspacesArgs']] = None):
         """
         Input properties used for looking up and filtering Ocean resources.
 
@@ -146,68 +146,68 @@ class _OceanState:
 
     @_builtins.property
     @pulumi.getter
-    def compute(self) -> Optional[pulumi.Input['OceanComputeArgs']]:
+    def compute(self) -> pulumi.Input[Optional['OceanComputeArgs']]:
         return pulumi.get(self, "compute")
 
     @compute.setter
-    def compute(self, value: Optional[pulumi.Input['OceanComputeArgs']]):
+    def compute(self, value: pulumi.Input[Optional['OceanComputeArgs']]):
         pulumi.set(self, "compute", value)
 
     @_builtins.property
     @pulumi.getter
-    def ingress(self) -> Optional[pulumi.Input['OceanIngressArgs']]:
+    def ingress(self) -> pulumi.Input[Optional['OceanIngressArgs']]:
         return pulumi.get(self, "ingress")
 
     @ingress.setter
-    def ingress(self, value: Optional[pulumi.Input['OceanIngressArgs']]):
+    def ingress(self, value: pulumi.Input[Optional['OceanIngressArgs']]):
         pulumi.set(self, "ingress", value)
 
     @_builtins.property
     @pulumi.getter(name="logCollection")
-    def log_collection(self) -> Optional[pulumi.Input['OceanLogCollectionArgs']]:
+    def log_collection(self) -> pulumi.Input[Optional['OceanLogCollectionArgs']]:
         return pulumi.get(self, "log_collection")
 
     @log_collection.setter
-    def log_collection(self, value: Optional[pulumi.Input['OceanLogCollectionArgs']]):
+    def log_collection(self, value: pulumi.Input[Optional['OceanLogCollectionArgs']]):
         pulumi.set(self, "log_collection", value)
 
     @_builtins.property
     @pulumi.getter(name="oceanClusterId")
-    def ocean_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ocean_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
         """
         return pulumi.get(self, "ocean_cluster_id")
 
     @ocean_cluster_id.setter
-    def ocean_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ocean_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ocean_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def spark(self) -> Optional[pulumi.Input['OceanSparkArgs']]:
+    def spark(self) -> pulumi.Input[Optional['OceanSparkArgs']]:
         return pulumi.get(self, "spark")
 
     @spark.setter
-    def spark(self, value: Optional[pulumi.Input['OceanSparkArgs']]):
+    def spark(self, value: pulumi.Input[Optional['OceanSparkArgs']]):
         pulumi.set(self, "spark", value)
 
     @_builtins.property
     @pulumi.getter
-    def webhook(self) -> Optional[pulumi.Input['OceanWebhookArgs']]:
+    def webhook(self) -> pulumi.Input[Optional['OceanWebhookArgs']]:
         return pulumi.get(self, "webhook")
 
     @webhook.setter
-    def webhook(self, value: Optional[pulumi.Input['OceanWebhookArgs']]):
+    def webhook(self, value: pulumi.Input[Optional['OceanWebhookArgs']]):
         pulumi.set(self, "webhook", value)
 
     @_builtins.property
     @pulumi.getter
-    def workspaces(self) -> Optional[pulumi.Input['OceanWorkspacesArgs']]:
+    def workspaces(self) -> pulumi.Input[Optional['OceanWorkspacesArgs']]:
         return pulumi.get(self, "workspaces")
 
     @workspaces.setter
-    def workspaces(self, value: Optional[pulumi.Input['OceanWorkspacesArgs']]):
+    def workspaces(self, value: pulumi.Input[Optional['OceanWorkspacesArgs']]):
         pulumi.set(self, "workspaces", value)
 
 
@@ -217,13 +217,13 @@ class Ocean(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute: Optional[pulumi.Input[Union['OceanComputeArgs', 'OceanComputeArgsDict']]] = None,
-                 ingress: Optional[pulumi.Input[Union['OceanIngressArgs', 'OceanIngressArgsDict']]] = None,
-                 log_collection: Optional[pulumi.Input[Union['OceanLogCollectionArgs', 'OceanLogCollectionArgsDict']]] = None,
-                 ocean_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spark: Optional[pulumi.Input[Union['OceanSparkArgs', 'OceanSparkArgsDict']]] = None,
-                 webhook: Optional[pulumi.Input[Union['OceanWebhookArgs', 'OceanWebhookArgsDict']]] = None,
-                 workspaces: Optional[pulumi.Input[Union['OceanWorkspacesArgs', 'OceanWorkspacesArgsDict']]] = None,
+                 compute: pulumi.Input[Optional[Union['OceanComputeArgs', 'OceanComputeArgsDict']]] = None,
+                 ingress: pulumi.Input[Optional[Union['OceanIngressArgs', 'OceanIngressArgsDict']]] = None,
+                 log_collection: pulumi.Input[Optional[Union['OceanLogCollectionArgs', 'OceanLogCollectionArgsDict']]] = None,
+                 ocean_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spark: pulumi.Input[Optional[Union['OceanSparkArgs', 'OceanSparkArgsDict']]] = None,
+                 webhook: pulumi.Input[Optional[Union['OceanWebhookArgs', 'OceanWebhookArgsDict']]] = None,
+                 workspaces: pulumi.Input[Optional[Union['OceanWorkspacesArgs', 'OceanWorkspacesArgsDict']]] = None,
                  __props__=None):
         """
         Manages a Spotinst Ocean Spark resource on AWS or GCP.
@@ -376,13 +376,13 @@ class Ocean(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute: Optional[pulumi.Input[Union['OceanComputeArgs', 'OceanComputeArgsDict']]] = None,
-                 ingress: Optional[pulumi.Input[Union['OceanIngressArgs', 'OceanIngressArgsDict']]] = None,
-                 log_collection: Optional[pulumi.Input[Union['OceanLogCollectionArgs', 'OceanLogCollectionArgsDict']]] = None,
-                 ocean_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spark: Optional[pulumi.Input[Union['OceanSparkArgs', 'OceanSparkArgsDict']]] = None,
-                 webhook: Optional[pulumi.Input[Union['OceanWebhookArgs', 'OceanWebhookArgsDict']]] = None,
-                 workspaces: Optional[pulumi.Input[Union['OceanWorkspacesArgs', 'OceanWorkspacesArgsDict']]] = None,
+                 compute: pulumi.Input[Optional[Union['OceanComputeArgs', 'OceanComputeArgsDict']]] = None,
+                 ingress: pulumi.Input[Optional[Union['OceanIngressArgs', 'OceanIngressArgsDict']]] = None,
+                 log_collection: pulumi.Input[Optional[Union['OceanLogCollectionArgs', 'OceanLogCollectionArgsDict']]] = None,
+                 ocean_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spark: pulumi.Input[Optional[Union['OceanSparkArgs', 'OceanSparkArgsDict']]] = None,
+                 webhook: pulumi.Input[Optional[Union['OceanWebhookArgs', 'OceanWebhookArgsDict']]] = None,
+                 workspaces: pulumi.Input[Optional[Union['OceanWorkspacesArgs', 'OceanWorkspacesArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -411,13 +411,13 @@ class Ocean(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            compute: Optional[pulumi.Input[Union['OceanComputeArgs', 'OceanComputeArgsDict']]] = None,
-            ingress: Optional[pulumi.Input[Union['OceanIngressArgs', 'OceanIngressArgsDict']]] = None,
-            log_collection: Optional[pulumi.Input[Union['OceanLogCollectionArgs', 'OceanLogCollectionArgsDict']]] = None,
-            ocean_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            spark: Optional[pulumi.Input[Union['OceanSparkArgs', 'OceanSparkArgsDict']]] = None,
-            webhook: Optional[pulumi.Input[Union['OceanWebhookArgs', 'OceanWebhookArgsDict']]] = None,
-            workspaces: Optional[pulumi.Input[Union['OceanWorkspacesArgs', 'OceanWorkspacesArgsDict']]] = None) -> 'Ocean':
+            compute: pulumi.Input[Optional[Union['OceanComputeArgs', 'OceanComputeArgsDict']]] = None,
+            ingress: pulumi.Input[Optional[Union['OceanIngressArgs', 'OceanIngressArgsDict']]] = None,
+            log_collection: pulumi.Input[Optional[Union['OceanLogCollectionArgs', 'OceanLogCollectionArgsDict']]] = None,
+            ocean_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            spark: pulumi.Input[Optional[Union['OceanSparkArgs', 'OceanSparkArgsDict']]] = None,
+            webhook: pulumi.Input[Optional[Union['OceanWebhookArgs', 'OceanWebhookArgsDict']]] = None,
+            workspaces: pulumi.Input[Optional[Union['OceanWorkspacesArgs', 'OceanWorkspacesArgsDict']]] = None) -> 'Ocean':
         """
         Get an existing Ocean resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

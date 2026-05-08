@@ -10,17 +10,17 @@ export interface DataIntegrationS3 {
     /**
      * The subdirectory in which your files will be stored within the bucket. Adds the prefix subdir/ to new objects' keys. Can't be null or contain '/'.
      */
-    subdir?: pulumi.Input<string>;
+    subdir?: pulumi.Input<string | undefined>;
 }
 
 export interface ElastigroupAzureV3BootDiagnostic {
     isEnabled: pulumi.Input<boolean>;
-    storageUrl?: pulumi.Input<string>;
+    storageUrl?: pulumi.Input<string | undefined>;
     type: pulumi.Input<string>;
 }
 
 export interface ElastigroupAzureV3CapacityReservation {
-    capacityReservationGroups?: pulumi.Input<inputs.ElastigroupAzureV3CapacityReservationCapacityReservationGroups>;
+    capacityReservationGroups?: pulumi.Input<inputs.ElastigroupAzureV3CapacityReservationCapacityReservationGroups | undefined>;
     shouldUtilize: pulumi.Input<boolean>;
     utilizationStrategy: pulumi.Input<string>;
 }
@@ -28,7 +28,7 @@ export interface ElastigroupAzureV3CapacityReservation {
 export interface ElastigroupAzureV3CapacityReservationCapacityReservationGroups {
     crgName: pulumi.Input<string>;
     crgResourceGroupName: pulumi.Input<string>;
-    crgShouldPrioritize?: pulumi.Input<boolean>;
+    crgShouldPrioritize?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ElastigroupAzureV3DataDisk {
@@ -39,12 +39,12 @@ export interface ElastigroupAzureV3DataDisk {
 
 export interface ElastigroupAzureV3Extension {
     apiVersion: pulumi.Input<string>;
-    enableAutomaticUpgrade?: pulumi.Input<boolean>;
+    enableAutomaticUpgrade?: pulumi.Input<boolean | undefined>;
     minorVersionAutoUpgrade: pulumi.Input<boolean>;
     name: pulumi.Input<string>;
-    protectedSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    protectedSettingsFromKeyVault?: pulumi.Input<inputs.ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault>;
-    publicSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    protectedSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    protectedSettingsFromKeyVault?: pulumi.Input<inputs.ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault | undefined>;
+    publicSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     publisher: pulumi.Input<string>;
     type: pulumi.Input<string>;
 }
@@ -55,16 +55,16 @@ export interface ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVault {
 }
 
 export interface ElastigroupAzureV3Health {
-    autoHealing?: pulumi.Input<boolean>;
-    gracePeriod?: pulumi.Input<number>;
-    healthCheckTypes?: pulumi.Input<pulumi.Input<string>[]>;
-    unhealthyDuration?: pulumi.Input<number>;
+    autoHealing?: pulumi.Input<boolean | undefined>;
+    gracePeriod?: pulumi.Input<number | undefined>;
+    healthCheckTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    unhealthyDuration?: pulumi.Input<number | undefined>;
 }
 
 export interface ElastigroupAzureV3Image {
-    customs?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ImageCustom>[]>;
-    galleryImages?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ImageGalleryImage>[]>;
-    marketplaces?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ImageMarketplace>[]>;
+    customs?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ImageCustom>[] | undefined>;
+    galleryImages?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ImageGalleryImage>[] | undefined>;
+    marketplaces?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ImageMarketplace>[] | undefined>;
 }
 
 export interface ElastigroupAzureV3ImageCustom {
@@ -76,7 +76,7 @@ export interface ElastigroupAzureV3ImageGalleryImage {
     galleryName: pulumi.Input<string>;
     imageName: pulumi.Input<string>;
     resourceGroupName: pulumi.Input<string>;
-    spotAccountId?: pulumi.Input<string>;
+    spotAccountId?: pulumi.Input<string | undefined>;
     version: pulumi.Input<string>;
 }
 
@@ -88,16 +88,16 @@ export interface ElastigroupAzureV3ImageMarketplace {
 }
 
 export interface ElastigroupAzureV3LoadBalancer {
-    backendPoolNames?: pulumi.Input<pulumi.Input<string>[]>;
+    backendPoolNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     name: pulumi.Input<string>;
     resourceGroupName: pulumi.Input<string>;
-    sku?: pulumi.Input<string>;
+    sku?: pulumi.Input<string | undefined>;
     type: pulumi.Input<string>;
 }
 
 export interface ElastigroupAzureV3Login {
-    password?: pulumi.Input<string>;
-    sshPublicKey?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
+    sshPublicKey?: pulumi.Input<string | undefined>;
     userName: pulumi.Input<string>;
 }
 
@@ -113,20 +113,20 @@ export interface ElastigroupAzureV3Network {
 }
 
 export interface ElastigroupAzureV3NetworkNetworkInterface {
-    additionalIpConfigs?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig>[]>;
-    applicationSecurityGroups?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup>[]>;
+    additionalIpConfigs?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig>[] | undefined>;
+    applicationSecurityGroups?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup>[] | undefined>;
     assignPublicIp: pulumi.Input<boolean>;
-    enableIpForwarding?: pulumi.Input<boolean>;
+    enableIpForwarding?: pulumi.Input<boolean | undefined>;
     isPrimary: pulumi.Input<boolean>;
-    privateIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
-    publicIpSku?: pulumi.Input<string>;
-    securityGroups?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup>[]>;
+    privateIpAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    publicIpSku?: pulumi.Input<string | undefined>;
+    securityGroups?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup>[] | undefined>;
     subnetName: pulumi.Input<string>;
 }
 
 export interface ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig {
     name: pulumi.Input<string>;
-    privateIpVersion?: pulumi.Input<string>;
+    privateIpVersion?: pulumi.Input<string | undefined>;
 }
 
 export interface ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup {
@@ -135,12 +135,12 @@ export interface ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGro
 }
 
 export interface ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroup {
-    name?: pulumi.Input<string>;
-    resourceGroupName?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    resourceGroupName?: pulumi.Input<string | undefined>;
 }
 
 export interface ElastigroupAzureV3OsDisk {
-    sizeGb?: pulumi.Input<number>;
+    sizeGb?: pulumi.Input<number | undefined>;
     type: pulumi.Input<string>;
 }
 
@@ -156,73 +156,73 @@ export interface ElastigroupAzureV3RevertToSpot {
 export interface ElastigroupAzureV3ScalingDownPolicy {
     action: pulumi.Input<inputs.ElastigroupAzureV3ScalingDownPolicyAction>;
     cooldown: pulumi.Input<number>;
-    dimensions?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ScalingDownPolicyDimension>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ScalingDownPolicyDimension>[] | undefined>;
     evaluationPeriods: pulumi.Input<number>;
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     metricName: pulumi.Input<string>;
     namespace: pulumi.Input<string>;
     operator: pulumi.Input<string>;
     period: pulumi.Input<number>;
     policyName: pulumi.Input<string>;
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     statistic: pulumi.Input<string>;
     threshold: pulumi.Input<number>;
-    unit?: pulumi.Input<string>;
+    unit?: pulumi.Input<string | undefined>;
 }
 
 export interface ElastigroupAzureV3ScalingDownPolicyAction {
-    adjustment?: pulumi.Input<string>;
-    maximum?: pulumi.Input<string>;
-    minimum?: pulumi.Input<string>;
-    target?: pulumi.Input<string>;
-    type?: pulumi.Input<string>;
+    adjustment?: pulumi.Input<string | undefined>;
+    maximum?: pulumi.Input<string | undefined>;
+    minimum?: pulumi.Input<string | undefined>;
+    target?: pulumi.Input<string | undefined>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface ElastigroupAzureV3ScalingDownPolicyDimension {
-    name?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface ElastigroupAzureV3ScalingUpPolicy {
     action: pulumi.Input<inputs.ElastigroupAzureV3ScalingUpPolicyAction>;
     cooldown: pulumi.Input<number>;
-    dimensions?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ScalingUpPolicyDimension>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ScalingUpPolicyDimension>[] | undefined>;
     evaluationPeriods: pulumi.Input<number>;
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     metricName: pulumi.Input<string>;
     namespace: pulumi.Input<string>;
     operator: pulumi.Input<string>;
     period: pulumi.Input<number>;
     policyName: pulumi.Input<string>;
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     statistic: pulumi.Input<string>;
     threshold: pulumi.Input<number>;
-    unit?: pulumi.Input<string>;
+    unit?: pulumi.Input<string | undefined>;
 }
 
 export interface ElastigroupAzureV3ScalingUpPolicyAction {
-    adjustment?: pulumi.Input<string>;
-    maximum?: pulumi.Input<string>;
-    minimum?: pulumi.Input<string>;
-    target?: pulumi.Input<string>;
-    type?: pulumi.Input<string>;
+    adjustment?: pulumi.Input<string | undefined>;
+    maximum?: pulumi.Input<string | undefined>;
+    minimum?: pulumi.Input<string | undefined>;
+    target?: pulumi.Input<string | undefined>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface ElastigroupAzureV3ScalingUpPolicyDimension {
-    name?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface ElastigroupAzureV3SchedulingTask {
-    adjustment?: pulumi.Input<string>;
-    adjustmentPercentage?: pulumi.Input<string>;
-    batchSizePercentage?: pulumi.Input<string>;
+    adjustment?: pulumi.Input<string | undefined>;
+    adjustmentPercentage?: pulumi.Input<string | undefined>;
+    batchSizePercentage?: pulumi.Input<string | undefined>;
     cronExpression: pulumi.Input<string>;
-    gracePeriod?: pulumi.Input<string>;
+    gracePeriod?: pulumi.Input<string | undefined>;
     isEnabled: pulumi.Input<boolean>;
-    scaleMaxCapacity?: pulumi.Input<string>;
-    scaleMinCapacity?: pulumi.Input<string>;
-    scaleTargetCapacity?: pulumi.Input<string>;
+    scaleMaxCapacity?: pulumi.Input<string | undefined>;
+    scaleMinCapacity?: pulumi.Input<string | undefined>;
+    scaleTargetCapacity?: pulumi.Input<string | undefined>;
     type: pulumi.Input<string>;
 }
 
@@ -242,11 +242,11 @@ export interface ElastigroupAzureV3SecretVaultCertificate {
 }
 
 export interface ElastigroupAzureV3Security {
-    confidentialOsDiskEncryption?: pulumi.Input<boolean>;
-    encryptionAtHost?: pulumi.Input<boolean>;
-    secureBootEnabled?: pulumi.Input<boolean>;
-    securityType?: pulumi.Input<string>;
-    vtpmEnabled?: pulumi.Input<boolean>;
+    confidentialOsDiskEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionAtHost?: pulumi.Input<boolean | undefined>;
+    secureBootEnabled?: pulumi.Input<boolean | undefined>;
+    securityType?: pulumi.Input<string | undefined>;
+    vtpmEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ElastigroupAzureV3Signal {
@@ -260,28 +260,28 @@ export interface ElastigroupAzureV3Tag {
 }
 
 export interface ElastigroupAzureV3VmSizes {
-    excludedVmSizes?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedVmSizes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     odSizes: pulumi.Input<pulumi.Input<string>[]>;
-    preferredSpotSizes?: pulumi.Input<pulumi.Input<string>[]>;
-    spotSizeAttributes?: pulumi.Input<inputs.ElastigroupAzureV3VmSizesSpotSizeAttributes>;
-    spotSizes?: pulumi.Input<pulumi.Input<string>[]>;
+    preferredSpotSizes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    spotSizeAttributes?: pulumi.Input<inputs.ElastigroupAzureV3VmSizesSpotSizeAttributes | undefined>;
+    spotSizes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ElastigroupAzureV3VmSizesSpotSizeAttributes {
-    maxCpu?: pulumi.Input<number>;
-    maxMemory?: pulumi.Input<number>;
-    maxStorage?: pulumi.Input<number>;
-    minCpu?: pulumi.Input<number>;
-    minMemory?: pulumi.Input<number>;
-    minStorage?: pulumi.Input<number>;
+    maxCpu?: pulumi.Input<number | undefined>;
+    maxMemory?: pulumi.Input<number | undefined>;
+    maxStorage?: pulumi.Input<number | undefined>;
+    minCpu?: pulumi.Input<number | undefined>;
+    minMemory?: pulumi.Input<number | undefined>;
+    minStorage?: pulumi.Input<number | undefined>;
 }
 
 export interface HealthCheckCheck {
-    endPoint?: pulumi.Input<string>;
+    endPoint?: pulumi.Input<string | undefined>;
     /**
      * The destination for the request.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * The number of consecutive successful health checks that must occur before declaring an instance healthy.
      */
@@ -298,11 +298,11 @@ export interface HealthCheckCheck {
      * The protocol to use to connect with the instance. Valid values: http, https.
      */
     protocol: pulumi.Input<string>;
-    timeOut?: pulumi.Input<number>;
+    timeOut?: pulumi.Input<number | undefined>;
     /**
      * the amount of time (in seconds) to wait when receiving a response from the health check.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
      */
@@ -310,35 +310,35 @@ export interface HealthCheckCheck {
 }
 
 export interface NotificationCenterComputePolicyConfig {
-    dynamicRules?: pulumi.Input<pulumi.Input<inputs.NotificationCenterComputePolicyConfigDynamicRule>[]>;
+    dynamicRules?: pulumi.Input<pulumi.Input<inputs.NotificationCenterComputePolicyConfigDynamicRule>[] | undefined>;
     events: pulumi.Input<pulumi.Input<inputs.NotificationCenterComputePolicyConfigEvent>[]>;
-    resourceIds?: pulumi.Input<pulumi.Input<string>[]>;
-    shouldIncludeAllResources?: pulumi.Input<boolean>;
+    resourceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    shouldIncludeAllResources?: pulumi.Input<boolean | undefined>;
 }
 
 export interface NotificationCenterComputePolicyConfigDynamicRule {
-    filterConditions?: pulumi.Input<pulumi.Input<inputs.NotificationCenterComputePolicyConfigDynamicRuleFilterCondition>[]>;
+    filterConditions?: pulumi.Input<pulumi.Input<inputs.NotificationCenterComputePolicyConfigDynamicRuleFilterCondition>[] | undefined>;
 }
 
 export interface NotificationCenterComputePolicyConfigDynamicRuleFilterCondition {
-    expression?: pulumi.Input<string>;
-    identifier?: pulumi.Input<string>;
-    operator?: pulumi.Input<string>;
+    expression?: pulumi.Input<string | undefined>;
+    identifier?: pulumi.Input<string | undefined>;
+    operator?: pulumi.Input<string | undefined>;
 }
 
 export interface NotificationCenterComputePolicyConfigEvent {
-    event?: pulumi.Input<string>;
-    eventType?: pulumi.Input<string>;
+    event?: pulumi.Input<string | undefined>;
+    eventType?: pulumi.Input<string | undefined>;
 }
 
 export interface NotificationCenterRegisteredUser {
-    subscriptionTypes?: pulumi.Input<pulumi.Input<string>[]>;
-    userEmail?: pulumi.Input<string>;
+    subscriptionTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    userEmail?: pulumi.Input<string | undefined>;
 }
 
 export interface NotificationCenterSubscription {
-    endpoint?: pulumi.Input<string>;
-    subscriptionType?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
+    subscriptionType?: pulumi.Input<string | undefined>;
 }
 
 export interface OceanRightSizingRuleAttachWorkload {
@@ -354,9 +354,9 @@ export interface OceanRightSizingRuleAttachWorkloadNamespace {
      *
      * <a id="attachWorkloads"></a>
      */
-    labels?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAttachWorkloadNamespaceLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAttachWorkloadNamespaceLabel>[] | undefined>;
     namespaceName: pulumi.Input<string>;
-    workloads?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAttachWorkloadNamespaceWorkload>[]>;
+    workloads?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAttachWorkloadNamespaceWorkload>[] | undefined>;
 }
 
 export interface OceanRightSizingRuleAttachWorkloadNamespaceLabel {
@@ -365,8 +365,8 @@ export interface OceanRightSizingRuleAttachWorkloadNamespaceLabel {
 }
 
 export interface OceanRightSizingRuleAttachWorkloadNamespaceWorkload {
-    regexName?: pulumi.Input<string>;
-    workloadName?: pulumi.Input<string>;
+    regexName?: pulumi.Input<string | undefined>;
+    workloadName?: pulumi.Input<string | undefined>;
     workloadType: pulumi.Input<string>;
 }
 
@@ -374,17 +374,17 @@ export interface OceanRightSizingRuleAutoApplyDefinition {
     /**
      * Determines if auto apply is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
      *
      * <a id="attachWorkloads"></a>
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * List of namespaces that match the auto-apply rule.
      */
-    namespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    namespaces?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface OceanRightSizingRuleDetachWorkload {
@@ -400,9 +400,9 @@ export interface OceanRightSizingRuleDetachWorkloadNamespace {
      *
      * <a id="attachWorkloads"></a>
      */
-    labels?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleDetachWorkloadNamespaceLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleDetachWorkloadNamespaceLabel>[] | undefined>;
     namespaceName: pulumi.Input<string>;
-    workloads?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleDetachWorkloadNamespaceWorkload>[]>;
+    workloads?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleDetachWorkloadNamespaceWorkload>[] | undefined>;
 }
 
 export interface OceanRightSizingRuleDetachWorkloadNamespaceLabel {
@@ -411,8 +411,8 @@ export interface OceanRightSizingRuleDetachWorkloadNamespaceLabel {
 }
 
 export interface OceanRightSizingRuleDetachWorkloadNamespaceWorkload {
-    regexName?: pulumi.Input<string>;
-    workloadName?: pulumi.Input<string>;
+    regexName?: pulumi.Input<string | undefined>;
+    workloadName?: pulumi.Input<string | undefined>;
     workloadType: pulumi.Input<string>;
 }
 
@@ -420,33 +420,33 @@ export interface OceanRightSizingRuleRecommendationApplicationBoundary {
     /**
      * the maximal value of cpu in vCpu.
      */
-    cpuMax?: pulumi.Input<number>;
+    cpuMax?: pulumi.Input<number | undefined>;
     /**
      * the minimal value of cpu in vCpu.
      */
-    cpuMin?: pulumi.Input<number>;
+    cpuMin?: pulumi.Input<number | undefined>;
     /**
      * the maximal value of memory in Gib.
      */
-    memoryMax?: pulumi.Input<number>;
+    memoryMax?: pulumi.Input<number | undefined>;
     /**
      * the minimal value of memory in Gib.
      */
-    memoryMin?: pulumi.Input<number>;
+    memoryMin?: pulumi.Input<number | undefined>;
 }
 
 export interface OceanRightSizingRuleRecommendationApplicationHpa {
     /**
      * Determines by the rule if recommendation application is allowed for workloads with HPA definition.
      */
-    allowHpaRecommendations?: pulumi.Input<boolean>;
+    allowHpaRecommendations?: pulumi.Input<boolean | undefined>;
 }
 
 export interface OceanRightSizingRuleRecommendationApplicationInterval {
     /**
      * Determines the Ocean Rightsizing rule monthly repetition basis.
      */
-    monthlyRepetitionBases?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase>[]>;
+    monthlyRepetitionBases?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase>[] | undefined>;
     /**
      * Valid values: "WEEKLY" "MONTHLY". The repetition basis.
      */
@@ -454,7 +454,7 @@ export interface OceanRightSizingRuleRecommendationApplicationInterval {
     /**
      * Determines the Ocean Rightsizing rule weekly repetition basis.
      */
-    weeklyRepetitionBases?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase>[]>;
+    weeklyRepetitionBases?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBase>[] | undefined>;
 }
 
 export interface OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase {
@@ -469,7 +469,7 @@ export interface OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRep
     /**
      * Determines the Ocean Rightsizing rule weekly repetition basis.
      */
-    weeklyRepetitionBases?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase>[]>;
+    weeklyRepetitionBases?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase>[] | undefined>;
 }
 
 export interface OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBase {
@@ -506,37 +506,37 @@ export interface OceanRightSizingRuleRecommendationApplicationMinThreshold {
     /**
      * .
      */
-    cpuPercentage?: pulumi.Input<number>;
+    cpuPercentage?: pulumi.Input<number | undefined>;
     /**
      * .
      */
-    memoryPercentage?: pulumi.Input<number>;
+    memoryPercentage?: pulumi.Input<number | undefined>;
 }
 
 export interface OceanRightSizingRuleRecommendationApplicationOverheadValue {
     /**
      * .
      */
-    cpuPercentage?: pulumi.Input<number>;
+    cpuPercentage?: pulumi.Input<number | undefined>;
     /**
      * .
      */
-    memoryPercentage?: pulumi.Input<number>;
+    memoryPercentage?: pulumi.Input<number | undefined>;
 }
 
 export interface StatefulNodeAzureAttachDataDisk {
     dataDiskName: pulumi.Input<string>;
     dataDiskResourceGroupName: pulumi.Input<string>;
-    lun?: pulumi.Input<number>;
+    lun?: pulumi.Input<number | undefined>;
     sizeGb: pulumi.Input<number>;
     storageAccountType: pulumi.Input<string>;
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 export interface StatefulNodeAzureBootDiagnostic {
-    isEnabled?: pulumi.Input<boolean>;
-    storageUrl?: pulumi.Input<string>;
-    type?: pulumi.Input<string>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
+    storageUrl?: pulumi.Input<string | undefined>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface StatefulNodeAzureDataDisk {
@@ -546,47 +546,47 @@ export interface StatefulNodeAzureDataDisk {
 }
 
 export interface StatefulNodeAzureDelete {
-    diskShouldDeallocate?: pulumi.Input<boolean>;
-    diskTtlInHours?: pulumi.Input<number>;
-    networkShouldDeallocate?: pulumi.Input<boolean>;
-    networkTtlInHours?: pulumi.Input<number>;
-    publicIpShouldDeallocate?: pulumi.Input<boolean>;
-    publicIpTtlInHours?: pulumi.Input<number>;
-    shouldDeregisterFromLb?: pulumi.Input<boolean>;
-    shouldRevertToOd?: pulumi.Input<boolean>;
+    diskShouldDeallocate?: pulumi.Input<boolean | undefined>;
+    diskTtlInHours?: pulumi.Input<number | undefined>;
+    networkShouldDeallocate?: pulumi.Input<boolean | undefined>;
+    networkTtlInHours?: pulumi.Input<number | undefined>;
+    publicIpShouldDeallocate?: pulumi.Input<boolean | undefined>;
+    publicIpTtlInHours?: pulumi.Input<number | undefined>;
+    shouldDeregisterFromLb?: pulumi.Input<boolean | undefined>;
+    shouldRevertToOd?: pulumi.Input<boolean | undefined>;
     shouldTerminateVm: pulumi.Input<boolean>;
-    snapshotShouldDeallocate?: pulumi.Input<boolean>;
-    snapshotTtlInHours?: pulumi.Input<number>;
+    snapshotShouldDeallocate?: pulumi.Input<boolean | undefined>;
+    snapshotTtlInHours?: pulumi.Input<number | undefined>;
 }
 
 export interface StatefulNodeAzureDetachDataDisk {
     dataDiskName: pulumi.Input<string>;
     dataDiskResourceGroupName: pulumi.Input<string>;
     shouldDeallocate: pulumi.Input<boolean>;
-    ttlInHours?: pulumi.Input<number>;
+    ttlInHours?: pulumi.Input<number | undefined>;
 }
 
 export interface StatefulNodeAzureExtension {
     apiVersion: pulumi.Input<string>;
     minorVersionAutoUpgrade: pulumi.Input<boolean>;
     name: pulumi.Input<string>;
-    protectedSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    publicSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    protectedSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    publicSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     publisher: pulumi.Input<string>;
     type: pulumi.Input<string>;
 }
 
 export interface StatefulNodeAzureHealth {
     autoHealing: pulumi.Input<boolean>;
-    gracePeriod?: pulumi.Input<number>;
+    gracePeriod?: pulumi.Input<number | undefined>;
     healthCheckTypes: pulumi.Input<pulumi.Input<string>[]>;
-    unhealthyDuration?: pulumi.Input<number>;
+    unhealthyDuration?: pulumi.Input<number | undefined>;
 }
 
 export interface StatefulNodeAzureImage {
-    customImages?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureImageCustomImage>[]>;
-    galleries?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureImageGallery>[]>;
-    marketplaceImages?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureImageMarketplaceImage>[]>;
+    customImages?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureImageCustomImage>[] | undefined>;
+    galleries?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureImageGallery>[] | undefined>;
+    marketplaceImages?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureImageMarketplaceImage>[] | undefined>;
 }
 
 export interface StatefulNodeAzureImageCustomImage {
@@ -598,7 +598,7 @@ export interface StatefulNodeAzureImageGallery {
     galleryName: pulumi.Input<string>;
     galleryResourceGroupName: pulumi.Input<string>;
     imageName: pulumi.Input<string>;
-    spotAccountId?: pulumi.Input<string>;
+    spotAccountId?: pulumi.Input<string | undefined>;
     versionName: pulumi.Input<string>;
 }
 
@@ -610,30 +610,30 @@ export interface StatefulNodeAzureImageMarketplaceImage {
 }
 
 export interface StatefulNodeAzureImportVm {
-    drainingTimeout?: pulumi.Input<number>;
+    drainingTimeout?: pulumi.Input<number | undefined>;
     originalVmName: pulumi.Input<string>;
     resourceGroupName: pulumi.Input<string>;
-    resourcesRetentionTime?: pulumi.Input<number>;
+    resourcesRetentionTime?: pulumi.Input<number | undefined>;
 }
 
 export interface StatefulNodeAzureLoadBalancer {
     backendPoolNames: pulumi.Input<pulumi.Input<string>[]>;
     name: pulumi.Input<string>;
     resourceGroupName: pulumi.Input<string>;
-    sku?: pulumi.Input<string>;
+    sku?: pulumi.Input<string | undefined>;
     type: pulumi.Input<string>;
 }
 
 export interface StatefulNodeAzureLogin {
-    password?: pulumi.Input<string>;
-    sshPublicKey?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
+    sshPublicKey?: pulumi.Input<string | undefined>;
     userName: pulumi.Input<string>;
 }
 
 export interface StatefulNodeAzureManagedServiceIdentity {
     name: pulumi.Input<string>;
     resourceGroupName: pulumi.Input<string>;
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
 }
 
 export interface StatefulNodeAzureNetwork {
@@ -643,15 +643,15 @@ export interface StatefulNodeAzureNetwork {
 }
 
 export interface StatefulNodeAzureNetworkNetworkInterface {
-    additionalIpConfigurations?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration>[]>;
-    applicationSecurityGroups?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup>[]>;
-    assignPublicIp?: pulumi.Input<boolean>;
-    enableIpForwarding?: pulumi.Input<boolean>;
+    additionalIpConfigurations?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration>[] | undefined>;
+    applicationSecurityGroups?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup>[] | undefined>;
+    assignPublicIp?: pulumi.Input<boolean | undefined>;
+    enableIpForwarding?: pulumi.Input<boolean | undefined>;
     isPrimary: pulumi.Input<boolean>;
-    networkSecurityGroups?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup>[]>;
-    privateIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
-    publicIpSku?: pulumi.Input<string>;
-    publicIps?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureNetworkNetworkInterfacePublicIp>[]>;
+    networkSecurityGroups?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup>[] | undefined>;
+    privateIpAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    publicIpSku?: pulumi.Input<string | undefined>;
+    publicIps?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureNetworkNetworkInterfacePublicIp>[] | undefined>;
     subnetName: pulumi.Input<string>;
 }
 
@@ -666,8 +666,8 @@ export interface StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGrou
 }
 
 export interface StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup {
-    name?: pulumi.Input<string>;
-    networkResourceGroupName?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    networkResourceGroupName?: pulumi.Input<string | undefined>;
 }
 
 export interface StatefulNodeAzureNetworkNetworkInterfacePublicIp {
@@ -676,8 +676,8 @@ export interface StatefulNodeAzureNetworkNetworkInterfacePublicIp {
 }
 
 export interface StatefulNodeAzureOsDisk {
-    caching?: pulumi.Input<string>;
-    sizeGb?: pulumi.Input<number>;
+    caching?: pulumi.Input<string | undefined>;
+    sizeGb?: pulumi.Input<number | undefined>;
     type: pulumi.Input<string>;
 }
 
@@ -703,16 +703,16 @@ export interface StatefulNodeAzureSecretSourceVault {
 }
 
 export interface StatefulNodeAzureSecretVaultCertificate {
-    certificateStore?: pulumi.Input<string>;
-    certificateUrl?: pulumi.Input<string>;
+    certificateStore?: pulumi.Input<string | undefined>;
+    certificateUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface StatefulNodeAzureSecurity {
-    confidentialOsDiskEncryption?: pulumi.Input<string>;
-    encryptionAtHost?: pulumi.Input<boolean>;
-    secureBootEnabled?: pulumi.Input<boolean>;
-    securityType?: pulumi.Input<string>;
-    vtpmEnabled?: pulumi.Input<boolean>;
+    confidentialOsDiskEncryption?: pulumi.Input<string | undefined>;
+    encryptionAtHost?: pulumi.Input<boolean | undefined>;
+    secureBootEnabled?: pulumi.Input<boolean | undefined>;
+    securityType?: pulumi.Input<string | undefined>;
+    vtpmEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface StatefulNodeAzureSignal {
@@ -721,20 +721,20 @@ export interface StatefulNodeAzureSignal {
 }
 
 export interface StatefulNodeAzureStrategy {
-    availabilityVsCost?: pulumi.Input<number>;
-    capacityReservations?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureStrategyCapacityReservation>[]>;
-    drainingTimeout?: pulumi.Input<number>;
+    availabilityVsCost?: pulumi.Input<number | undefined>;
+    capacityReservations?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureStrategyCapacityReservation>[] | undefined>;
+    drainingTimeout?: pulumi.Input<number | undefined>;
     fallbackToOnDemand: pulumi.Input<boolean>;
-    interruptionToleration?: pulumi.Input<inputs.StatefulNodeAzureStrategyInterruptionToleration>;
-    odWindows?: pulumi.Input<pulumi.Input<string>[]>;
-    optimizationWindows?: pulumi.Input<pulumi.Input<string>[]>;
-    preferredLifeCycle?: pulumi.Input<string>;
-    revertToSpot?: pulumi.Input<inputs.StatefulNodeAzureStrategyRevertToSpot>;
-    vmAdmins?: pulumi.Input<pulumi.Input<string>[]>;
+    interruptionToleration?: pulumi.Input<inputs.StatefulNodeAzureStrategyInterruptionToleration | undefined>;
+    odWindows?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    optimizationWindows?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    preferredLifeCycle?: pulumi.Input<string | undefined>;
+    revertToSpot?: pulumi.Input<inputs.StatefulNodeAzureStrategyRevertToSpot | undefined>;
+    vmAdmins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface StatefulNodeAzureStrategyCapacityReservation {
-    capacityReservationGroups?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup>[]>;
+    capacityReservationGroups?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup>[] | undefined>;
     shouldUtilize: pulumi.Input<boolean>;
     utilizationStrategy: pulumi.Input<string>;
 }
@@ -742,14 +742,14 @@ export interface StatefulNodeAzureStrategyCapacityReservation {
 export interface StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup {
     crgName: pulumi.Input<string>;
     crgResourceGroupName: pulumi.Input<string>;
-    crgShouldPrioritize?: pulumi.Input<boolean>;
+    crgShouldPrioritize?: pulumi.Input<boolean | undefined>;
 }
 
 export interface StatefulNodeAzureStrategyInterruptionToleration {
-    cooldown?: pulumi.Input<number>;
-    evaluationPeriod?: pulumi.Input<number>;
-    isEnabled?: pulumi.Input<boolean>;
-    threshold?: pulumi.Input<number>;
+    cooldown?: pulumi.Input<number | undefined>;
+    evaluationPeriod?: pulumi.Input<number | undefined>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
+    threshold?: pulumi.Input<number | undefined>;
 }
 
 export interface StatefulNodeAzureStrategyRevertToSpot {
@@ -758,7 +758,7 @@ export interface StatefulNodeAzureStrategyRevertToSpot {
 
 export interface StatefulNodeAzureTag {
     tagKey: pulumi.Input<string>;
-    tagValue?: pulumi.Input<string>;
+    tagValue?: pulumi.Input<string | undefined>;
 }
 
 export interface StatefulNodeAzureUpdateState {
@@ -766,133 +766,133 @@ export interface StatefulNodeAzureUpdateState {
 }
 
 export interface StatefulNodeAzureVmSizes {
-    excludedVmSizes?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedVmSizes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     odSizes: pulumi.Input<pulumi.Input<string>[]>;
-    preferredSpotSizes?: pulumi.Input<pulumi.Input<string>[]>;
-    spotSizeAttributes?: pulumi.Input<inputs.StatefulNodeAzureVmSizesSpotSizeAttributes>;
-    spotSizes?: pulumi.Input<pulumi.Input<string>[]>;
+    preferredSpotSizes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    spotSizeAttributes?: pulumi.Input<inputs.StatefulNodeAzureVmSizesSpotSizeAttributes | undefined>;
+    spotSizes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface StatefulNodeAzureVmSizesSpotSizeAttributes {
-    maxCpu?: pulumi.Input<number>;
-    maxMemory?: pulumi.Input<number>;
-    maxStorage?: pulumi.Input<number>;
-    minCpu?: pulumi.Input<number>;
-    minMemory?: pulumi.Input<number>;
-    minStorage?: pulumi.Input<number>;
+    maxCpu?: pulumi.Input<number | undefined>;
+    maxMemory?: pulumi.Input<number | undefined>;
+    maxStorage?: pulumi.Input<number | undefined>;
+    minCpu?: pulumi.Input<number | undefined>;
+    minMemory?: pulumi.Input<number | undefined>;
+    minStorage?: pulumi.Input<number | undefined>;
 }
 export namespace aws {
     export interface BeanstalkDeploymentPreferences {
         /**
          * Should roll perform automatically
          */
-        automaticRoll?: pulumi.Input<boolean>;
+        automaticRoll?: pulumi.Input<boolean | undefined>;
         /**
          * Percent size of each batch
          */
-        batchSizePercentage?: pulumi.Input<number>;
+        batchSizePercentage?: pulumi.Input<number | undefined>;
         /**
          * Amount of time to wait between batches
          */
-        gracePeriod?: pulumi.Input<number>;
+        gracePeriod?: pulumi.Input<number | undefined>;
         /**
          * Strategy parameters
          */
-        strategies?: pulumi.Input<pulumi.Input<inputs.aws.BeanstalkDeploymentPreferencesStrategy>[]>;
+        strategies?: pulumi.Input<pulumi.Input<inputs.aws.BeanstalkDeploymentPreferencesStrategy>[] | undefined>;
     }
 
     export interface BeanstalkDeploymentPreferencesStrategy {
         /**
          * Action to take
          */
-        action?: pulumi.Input<string>;
+        action?: pulumi.Input<string | undefined>;
         /**
          * Bool value if to wait to drain instance
          */
-        shouldDrainInstances?: pulumi.Input<boolean>;
+        shouldDrainInstances?: pulumi.Input<boolean | undefined>;
     }
 
     export interface BeanstalkManagedActions {
         /**
          * Platform Update parameters
          */
-        platformUpdate?: pulumi.Input<inputs.aws.BeanstalkManagedActionsPlatformUpdate>;
+        platformUpdate?: pulumi.Input<inputs.aws.BeanstalkManagedActionsPlatformUpdate | undefined>;
     }
 
     export interface BeanstalkManagedActionsPlatformUpdate {
         /**
          * Actions to perform (options: timeWindow, never)
          */
-        performAt?: pulumi.Input<string>;
+        performAt?: pulumi.Input<string | undefined>;
         /**
          * Time Window for when action occurs ex. Mon:23:50-Tue:00:20
          */
-        timeWindow?: pulumi.Input<string>;
+        timeWindow?: pulumi.Input<string | undefined>;
         /**
          * Level to update
          */
-        updateLevel?: pulumi.Input<string>;
+        updateLevel?: pulumi.Input<string | undefined>;
     }
 
     export interface BeanstalkScheduledTask {
         /**
          * The number of instances to add or remove.
          */
-        adjustment?: pulumi.Input<string>;
+        adjustment?: pulumi.Input<string | undefined>;
         /**
          * The percentage of instances to add or remove.
          *
          * Usage:
          */
-        adjustmentPercentage?: pulumi.Input<string>;
+        adjustmentPercentage?: pulumi.Input<string | undefined>;
         /**
          * The percentage size of each batch in the scheduled deployment roll.
          */
-        batchSizePercentage?: pulumi.Input<string>;
+        batchSizePercentage?: pulumi.Input<string | undefined>;
         /**
          * A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
          */
-        cronExpression?: pulumi.Input<string>;
+        cronExpression?: pulumi.Input<string | undefined>;
         /**
          * The recurrence frequency to run this task. Supported values are `"hourly"`, `"daily"`, `"weekly"` and `"continuous"`.
          */
-        frequency?: pulumi.Input<string>;
+        frequency?: pulumi.Input<string | undefined>;
         /**
          * The period of time (seconds) to wait before checking a batch's health after it's deployment.
          */
-        gracePeriod?: pulumi.Input<string>;
+        gracePeriod?: pulumi.Input<string | undefined>;
         /**
          * Setting the task to being enabled or disabled.
          */
-        isEnabled?: pulumi.Input<boolean>;
+        isEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * The maximum number of instances the group should have.
          */
-        maxCapacity?: pulumi.Input<string>;
+        maxCapacity?: pulumi.Input<string | undefined>;
         /**
          * The minimum number of instances the group should have.
          */
-        minCapacity?: pulumi.Input<string>;
+        minCapacity?: pulumi.Input<string | undefined>;
         /**
          * The maximum number of instances the group should have.
          */
-        scaleMaxCapacity?: pulumi.Input<string>;
+        scaleMaxCapacity?: pulumi.Input<string | undefined>;
         /**
          * The minimum number of instances the group should have.
          */
-        scaleMinCapacity?: pulumi.Input<string>;
+        scaleMinCapacity?: pulumi.Input<string | undefined>;
         /**
          * The desired number of instances the group should have.
          */
-        scaleTargetCapacity?: pulumi.Input<string>;
+        scaleTargetCapacity?: pulumi.Input<string | undefined>;
         /**
          * Set a start time for one time tasks.
          */
-        startTime?: pulumi.Input<string>;
+        startTime?: pulumi.Input<string | undefined>;
         /**
          * The desired number of instances the group should have.
          */
-        targetCapacity?: pulumi.Input<string>;
+        targetCapacity?: pulumi.Input<string | undefined>;
         /**
          * The task type to run. Supported task types are: `"scale"`, `"backupAmi"`, `"roll"`, `"scaleUp"`, `"percentageScaleUp"`, `"scaleDown"`, `"percentageScaleDown"`, `"statefulUpdateCapacity"`.
          */
@@ -910,7 +910,7 @@ export namespace aws {
         /**
          * Whether the volume should be destroyed on instance termination.
          */
-        deleteOnTermination?: pulumi.Input<boolean>;
+        deleteOnTermination?: pulumi.Input<boolean | undefined>;
         /**
          * The name of the device to mount.
          */
@@ -918,50 +918,50 @@ export namespace aws {
         /**
          * Set dynamic IOPS properties. When using this object, you cannot use the `iops` object. You must use one or the other.
          */
-        dynamicIops?: pulumi.Input<inputs.aws.ElastigroupEbsBlockDeviceDynamicIops>;
+        dynamicIops?: pulumi.Input<inputs.aws.ElastigroupEbsBlockDeviceDynamicIops | undefined>;
         /**
          * Set dynamic volume size properties. When using this object, you cannot use `volumeSize`. You must use one or the other.
          */
-        dynamicVolumeSize?: pulumi.Input<inputs.aws.ElastigroupEbsBlockDeviceDynamicVolumeSize>;
+        dynamicVolumeSize?: pulumi.Input<inputs.aws.ElastigroupEbsBlockDeviceDynamicVolumeSize | undefined>;
         /**
          * Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
          */
-        encrypted?: pulumi.Input<boolean>;
+        encrypted?: pulumi.Input<boolean | undefined>;
         /**
          * The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volumeType` of `"io1"`.
          */
-        iops?: pulumi.Input<number>;
+        iops?: pulumi.Input<number | undefined>;
         /**
          * ID for a user managed CMK under which the EBS Volume is encrypted
          */
-        kmsKeyId?: pulumi.Input<string>;
+        kmsKeyId?: pulumi.Input<string | undefined>;
         /**
          * The Snapshot ID to mount.
          */
-        snapshotId?: pulumi.Input<string>;
+        snapshotId?: pulumi.Input<string | undefined>;
         /**
          * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
          */
-        throughput?: pulumi.Input<number>;
+        throughput?: pulumi.Input<number | undefined>;
         /**
          * The size of the volume in gigabytes.
          */
-        volumeSize?: pulumi.Input<number>;
+        volumeSize?: pulumi.Input<number | undefined>;
         /**
          * The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
          */
-        volumeType?: pulumi.Input<string>;
+        volumeType?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupEbsBlockDeviceDynamicIops {
         /**
          * Initial size for IOPS.
          */
-        baseSize?: pulumi.Input<number>;
+        baseSize?: pulumi.Input<number | undefined>;
         /**
          * Type of resource, valid values: `"CPU", "MEMORY"`.
          */
-        resource?: pulumi.Input<string>;
+        resource?: pulumi.Input<string | undefined>;
         /**
          * Additional size per resource unit (in IOPS).
          *
@@ -969,22 +969,22 @@ export namespace aws {
          *
          * Usage:
          */
-        sizePerResourceUnit?: pulumi.Input<number>;
+        sizePerResourceUnit?: pulumi.Input<number | undefined>;
     }
 
     export interface ElastigroupEbsBlockDeviceDynamicVolumeSize {
         /**
          * Initial size for volume.
          */
-        baseSize?: pulumi.Input<number>;
+        baseSize?: pulumi.Input<number | undefined>;
         /**
          * Type of resource, valid values: `"CPU", "MEMORY"`.
          */
-        resource?: pulumi.Input<string>;
+        resource?: pulumi.Input<string | undefined>;
         /**
          * Additional size per resource unit (in GB).
          */
-        sizePerResourceUnit?: pulumi.Input<number>;
+        sizePerResourceUnit?: pulumi.Input<number | undefined>;
     }
 
     export interface ElastigroupEphemeralBlockDevice {
@@ -1027,48 +1027,48 @@ export namespace aws {
         /**
          * Preferences when performing a roll
          */
-        deploymentPreferences?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalkDeploymentPreferences>;
-        environmentId?: pulumi.Input<string>;
+        deploymentPreferences?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalkDeploymentPreferences | undefined>;
+        environmentId?: pulumi.Input<string | undefined>;
         /**
          * Managed Actions parameters
          */
-        managedActions?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalkManagedActions>;
+        managedActions?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalkManagedActions | undefined>;
     }
 
     export interface ElastigroupIntegrationBeanstalkDeploymentPreferences {
         /**
          * Should roll perform automatically
          */
-        automaticRoll?: pulumi.Input<boolean>;
-        batchSizePercentage?: pulumi.Input<number>;
-        gracePeriod?: pulumi.Input<number>;
-        strategy?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy>;
+        automaticRoll?: pulumi.Input<boolean | undefined>;
+        batchSizePercentage?: pulumi.Input<number | undefined>;
+        gracePeriod?: pulumi.Input<number | undefined>;
+        strategy?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy | undefined>;
     }
 
     export interface ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy {
-        action?: pulumi.Input<string>;
-        shouldDrainInstances?: pulumi.Input<boolean>;
+        action?: pulumi.Input<string | undefined>;
+        shouldDrainInstances?: pulumi.Input<boolean | undefined>;
     }
 
     export interface ElastigroupIntegrationBeanstalkManagedActions {
         /**
          * Platform Update parameters
          */
-        platformUpdate?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate>;
+        platformUpdate?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate | undefined>;
     }
 
     export interface ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate {
-        performAt?: pulumi.Input<string>;
+        performAt?: pulumi.Input<string | undefined>;
         /**
          * Time Window for when action occurs ex. Mon:23:50-Tue:00:20
          */
-        timeWindow?: pulumi.Input<string>;
+        timeWindow?: pulumi.Input<string | undefined>;
         /**
          * Level to update
          *
          * Usage:
          */
-        updateLevel?: pulumi.Input<string>;
+        updateLevel?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupIntegrationCodedeploy {
@@ -1100,43 +1100,43 @@ export namespace aws {
     }
 
     export interface ElastigroupIntegrationDockerSwarm {
-        autoscaleCooldown?: pulumi.Input<number>;
-        autoscaleDown?: pulumi.Input<inputs.aws.ElastigroupIntegrationDockerSwarmAutoscaleDown>;
-        autoscaleHeadroom?: pulumi.Input<inputs.aws.ElastigroupIntegrationDockerSwarmAutoscaleHeadroom>;
-        autoscaleIsEnabled?: pulumi.Input<boolean>;
+        autoscaleCooldown?: pulumi.Input<number | undefined>;
+        autoscaleDown?: pulumi.Input<inputs.aws.ElastigroupIntegrationDockerSwarmAutoscaleDown | undefined>;
+        autoscaleHeadroom?: pulumi.Input<inputs.aws.ElastigroupIntegrationDockerSwarmAutoscaleHeadroom | undefined>;
+        autoscaleIsEnabled?: pulumi.Input<boolean | undefined>;
         masterHost: pulumi.Input<string>;
         masterPort: pulumi.Input<number>;
     }
 
     export interface ElastigroupIntegrationDockerSwarmAutoscaleDown {
-        evaluationPeriods?: pulumi.Input<number>;
-        maxScaleDownPercentage?: pulumi.Input<number>;
+        evaluationPeriods?: pulumi.Input<number | undefined>;
+        maxScaleDownPercentage?: pulumi.Input<number | undefined>;
     }
 
     export interface ElastigroupIntegrationDockerSwarmAutoscaleHeadroom {
-        cpuPerUnit?: pulumi.Input<number>;
-        memoryPerUnit?: pulumi.Input<number>;
-        numOfUnits?: pulumi.Input<number>;
+        cpuPerUnit?: pulumi.Input<number | undefined>;
+        memoryPerUnit?: pulumi.Input<number | undefined>;
+        numOfUnits?: pulumi.Input<number | undefined>;
     }
 
     export interface ElastigroupIntegrationEcs {
         /**
          * A key/value mapping of tags to assign to the resource.
          */
-        autoscaleAttributes?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupIntegrationEcsAutoscaleAttribute>[]>;
-        autoscaleCooldown?: pulumi.Input<number>;
-        autoscaleDown?: pulumi.Input<inputs.aws.ElastigroupIntegrationEcsAutoscaleDown>;
-        autoscaleHeadroom?: pulumi.Input<inputs.aws.ElastigroupIntegrationEcsAutoscaleHeadroom>;
-        autoscaleIsAutoConfig?: pulumi.Input<boolean>;
-        autoscaleIsEnabled?: pulumi.Input<boolean>;
+        autoscaleAttributes?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupIntegrationEcsAutoscaleAttribute>[] | undefined>;
+        autoscaleCooldown?: pulumi.Input<number | undefined>;
+        autoscaleDown?: pulumi.Input<inputs.aws.ElastigroupIntegrationEcsAutoscaleDown | undefined>;
+        autoscaleHeadroom?: pulumi.Input<inputs.aws.ElastigroupIntegrationEcsAutoscaleHeadroom | undefined>;
+        autoscaleIsAutoConfig?: pulumi.Input<boolean | undefined>;
+        autoscaleIsEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * Determines whether to scale down non-service tasks.
          */
-        autoscaleScaleDownNonServiceTasks?: pulumi.Input<boolean>;
+        autoscaleScaleDownNonServiceTasks?: pulumi.Input<boolean | undefined>;
         /**
          * Batch configuration object:
          */
-        batch?: pulumi.Input<inputs.aws.ElastigroupIntegrationEcsBatch>;
+        batch?: pulumi.Input<inputs.aws.ElastigroupIntegrationEcsBatch | undefined>;
         /**
          * The name of the EC2 Container Service cluster.
          */
@@ -1149,14 +1149,14 @@ export namespace aws {
     }
 
     export interface ElastigroupIntegrationEcsAutoscaleDown {
-        evaluationPeriods?: pulumi.Input<number>;
-        maxScaleDownPercentage?: pulumi.Input<number>;
+        evaluationPeriods?: pulumi.Input<number | undefined>;
+        maxScaleDownPercentage?: pulumi.Input<number | undefined>;
     }
 
     export interface ElastigroupIntegrationEcsAutoscaleHeadroom {
-        cpuPerUnit?: pulumi.Input<number>;
-        memoryPerUnit?: pulumi.Input<number>;
-        numOfUnits?: pulumi.Input<number>;
+        cpuPerUnit?: pulumi.Input<number | undefined>;
+        memoryPerUnit?: pulumi.Input<number | undefined>;
+        numOfUnits?: pulumi.Input<number | undefined>;
     }
 
     export interface ElastigroupIntegrationEcsBatch {
@@ -1172,46 +1172,46 @@ export namespace aws {
         /**
          * Settings for Gitlab runner.
          */
-        runner?: pulumi.Input<inputs.aws.ElastigroupIntegrationGitlabRunner>;
+        runner?: pulumi.Input<inputs.aws.ElastigroupIntegrationGitlabRunner | undefined>;
     }
 
     export interface ElastigroupIntegrationGitlabRunner {
-        isEnabled?: pulumi.Input<boolean>;
+        isEnabled?: pulumi.Input<boolean | undefined>;
     }
 
     export interface ElastigroupIntegrationKubernetes {
-        apiServer?: pulumi.Input<string>;
-        autoscaleCooldown?: pulumi.Input<number>;
-        autoscaleDown?: pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetesAutoscaleDown>;
-        autoscaleHeadroom?: pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetesAutoscaleHeadroom>;
-        autoscaleIsAutoConfig?: pulumi.Input<boolean>;
-        autoscaleIsEnabled?: pulumi.Input<boolean>;
+        apiServer?: pulumi.Input<string | undefined>;
+        autoscaleCooldown?: pulumi.Input<number | undefined>;
+        autoscaleDown?: pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetesAutoscaleDown | undefined>;
+        autoscaleHeadroom?: pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetesAutoscaleHeadroom | undefined>;
+        autoscaleIsAutoConfig?: pulumi.Input<boolean | undefined>;
+        autoscaleIsEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * A key/value mapping of tags to assign to the resource.
          *
          * Usage:
          */
-        autoscaleLabels?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetesAutoscaleLabel>[]>;
-        clusterIdentifier?: pulumi.Input<string>;
+        autoscaleLabels?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetesAutoscaleLabel>[] | undefined>;
+        clusterIdentifier?: pulumi.Input<string | undefined>;
         /**
          * Valid values: `"saas"`, `"pod"`.
          */
-        integrationMode?: pulumi.Input<string>;
+        integrationMode?: pulumi.Input<string | undefined>;
         /**
          * Kubernetes Token
          */
-        token?: pulumi.Input<string>;
+        token?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupIntegrationKubernetesAutoscaleDown {
-        evaluationPeriods?: pulumi.Input<number>;
-        maxScaleDownPercentage?: pulumi.Input<number>;
+        evaluationPeriods?: pulumi.Input<number | undefined>;
+        maxScaleDownPercentage?: pulumi.Input<number | undefined>;
     }
 
     export interface ElastigroupIntegrationKubernetesAutoscaleHeadroom {
-        cpuPerUnit?: pulumi.Input<number>;
-        memoryPerUnit?: pulumi.Input<number>;
-        numOfUnits?: pulumi.Input<number>;
+        cpuPerUnit?: pulumi.Input<number | undefined>;
+        memoryPerUnit?: pulumi.Input<number | undefined>;
+        numOfUnits?: pulumi.Input<number | undefined>;
     }
 
     export interface ElastigroupIntegrationKubernetesAutoscaleLabel {
@@ -1227,17 +1227,17 @@ export namespace aws {
         /**
          * Nomad ACL Token
          */
-        aclToken?: pulumi.Input<string>;
+        aclToken?: pulumi.Input<string | undefined>;
         /**
          * A key/value mapping of tags to assign to the resource.
          *
          * Usage:
          */
-        autoscaleConstraints?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupIntegrationNomadAutoscaleConstraint>[]>;
-        autoscaleCooldown?: pulumi.Input<number>;
-        autoscaleDown?: pulumi.Input<inputs.aws.ElastigroupIntegrationNomadAutoscaleDown>;
-        autoscaleHeadroom?: pulumi.Input<inputs.aws.ElastigroupIntegrationNomadAutoscaleHeadroom>;
-        autoscaleIsEnabled?: pulumi.Input<boolean>;
+        autoscaleConstraints?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupIntegrationNomadAutoscaleConstraint>[] | undefined>;
+        autoscaleCooldown?: pulumi.Input<number | undefined>;
+        autoscaleDown?: pulumi.Input<inputs.aws.ElastigroupIntegrationNomadAutoscaleDown | undefined>;
+        autoscaleHeadroom?: pulumi.Input<inputs.aws.ElastigroupIntegrationNomadAutoscaleHeadroom | undefined>;
+        autoscaleIsEnabled?: pulumi.Input<boolean | undefined>;
         masterHost: pulumi.Input<string>;
         masterPort: pulumi.Input<number>;
     }
@@ -1248,13 +1248,13 @@ export namespace aws {
     }
 
     export interface ElastigroupIntegrationNomadAutoscaleDown {
-        evaluationPeriods?: pulumi.Input<number>;
+        evaluationPeriods?: pulumi.Input<number | undefined>;
     }
 
     export interface ElastigroupIntegrationNomadAutoscaleHeadroom {
-        cpuPerUnit?: pulumi.Input<number>;
-        memoryPerUnit?: pulumi.Input<number>;
-        numOfUnits?: pulumi.Input<number>;
+        cpuPerUnit?: pulumi.Input<number | undefined>;
+        memoryPerUnit?: pulumi.Input<number | undefined>;
+        numOfUnits?: pulumi.Input<number | undefined>;
     }
 
     export interface ElastigroupIntegrationRancher {
@@ -1271,7 +1271,7 @@ export namespace aws {
          * The Rancher version. Must be `"1"` or `"2"`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
          * Usage:
          */
-        version?: pulumi.Input<string>;
+        version?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupIntegrationRoute53 {
@@ -1289,7 +1289,7 @@ export namespace aws {
         /**
          * The type of the record set. Valid values: `"a"`, `"cname"`.
          */
-        recordSetType?: pulumi.Input<string>;
+        recordSetType?: pulumi.Input<string | undefined>;
         /**
          * Collection of records containing authoritative DNS information for the specified domain name.
          */
@@ -1297,7 +1297,7 @@ export namespace aws {
         /**
          * The Spotinst account ID that is linked to the AWS account that holds the Route 53 Hosted Zone ID. The default is the user Spotinst account provided as a URL parameter.
          */
-        spotinstAcctId?: pulumi.Input<string>;
+        spotinstAcctId?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupIntegrationRoute53DomainRecordSet {
@@ -1310,18 +1310,18 @@ export namespace aws {
          *
          * Usage:
          */
-        usePublicDns?: pulumi.Input<boolean>;
+        usePublicDns?: pulumi.Input<boolean | undefined>;
         /**
          * Designates whether the IP address should be exposed to connections outside the VPC.
          */
-        usePublicIp?: pulumi.Input<boolean>;
+        usePublicIp?: pulumi.Input<boolean | undefined>;
     }
 
     export interface ElastigroupItf {
-        defaultStaticTargetGroup?: pulumi.Input<inputs.aws.ElastigroupItfDefaultStaticTargetGroup>;
+        defaultStaticTargetGroup?: pulumi.Input<inputs.aws.ElastigroupItfDefaultStaticTargetGroup | undefined>;
         fixedTargetGroups: pulumi.Input<boolean>;
         loadBalancers: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItfLoadBalancer>[]>;
-        migrationHealthinessThreshold?: pulumi.Input<number>;
+        migrationHealthinessThreshold?: pulumi.Input<number | undefined>;
         targetGroupConfigs: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItfTargetGroupConfig>[]>;
         weightStrategy: pulumi.Input<string>;
     }
@@ -1338,7 +1338,7 @@ export namespace aws {
 
     export interface ElastigroupItfLoadBalancerListenerRule {
         ruleArn: pulumi.Input<string>;
-        staticTargetGroup?: pulumi.Input<inputs.aws.ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup>;
+        staticTargetGroup?: pulumi.Input<inputs.aws.ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup | undefined>;
     }
 
     export interface ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup {
@@ -1347,46 +1347,46 @@ export namespace aws {
     }
 
     export interface ElastigroupItfTargetGroupConfig {
-        healthCheckIntervalSeconds?: pulumi.Input<number>;
+        healthCheckIntervalSeconds?: pulumi.Input<number | undefined>;
         healthCheckPath: pulumi.Input<string>;
-        healthCheckPort?: pulumi.Input<string>;
-        healthCheckProtocol?: pulumi.Input<string>;
-        healthCheckTimeoutSeconds?: pulumi.Input<number>;
-        healthyThresholdCount?: pulumi.Input<number>;
-        matchers?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItfTargetGroupConfigMatcher>[]>;
+        healthCheckPort?: pulumi.Input<string | undefined>;
+        healthCheckProtocol?: pulumi.Input<string | undefined>;
+        healthCheckTimeoutSeconds?: pulumi.Input<number | undefined>;
+        healthyThresholdCount?: pulumi.Input<number | undefined>;
+        matchers?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItfTargetGroupConfigMatcher>[] | undefined>;
         port: pulumi.Input<number>;
         protocol: pulumi.Input<string>;
-        protocolVersion?: pulumi.Input<string>;
+        protocolVersion?: pulumi.Input<string | undefined>;
         /**
          * A key/value mapping of tags to assign to the resource.
          */
-        tags?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItfTargetGroupConfigTag>[]>;
-        unhealthyThresholdCount?: pulumi.Input<number>;
+        tags?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupItfTargetGroupConfigTag>[] | undefined>;
+        unhealthyThresholdCount?: pulumi.Input<number | undefined>;
         vpcId: pulumi.Input<string>;
     }
 
     export interface ElastigroupItfTargetGroupConfigMatcher {
-        grpcCode?: pulumi.Input<string>;
-        httpCode?: pulumi.Input<string>;
+        grpcCode?: pulumi.Input<string | undefined>;
+        httpCode?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupItfTargetGroupConfigTag {
         tagKey: pulumi.Input<string>;
-        tagValue?: pulumi.Input<string>;
+        tagValue?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupLogging {
         /**
          * Logging Export configuration.
          */
-        export?: pulumi.Input<inputs.aws.ElastigroupLoggingExport>;
+        export?: pulumi.Input<inputs.aws.ElastigroupLoggingExport | undefined>;
     }
 
     export interface ElastigroupLoggingExport {
         /**
          * Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
          */
-        s3s?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupLoggingExportS3>[]>;
+        s3s?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupLoggingExportS3>[] | undefined>;
     }
 
     export interface ElastigroupLoggingExportS3 {
@@ -1400,7 +1400,7 @@ export namespace aws {
         /**
          * The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Valid values: Integers from `1` to `64`.
          */
-        httpPutResponseHopLimit?: pulumi.Input<number>;
+        httpPutResponseHopLimit?: pulumi.Input<number | undefined>;
         /**
          * The state of token usage for your instance metadata requests. Valid values: `optional` or `required`.
          */
@@ -1408,18 +1408,18 @@ export namespace aws {
         /**
          * Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
          */
-        instanceMetadataTags?: pulumi.Input<string>;
+        instanceMetadataTags?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupMultipleMetrics {
         /**
          * Array of objects (Expression config)
          */
-        expressions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupMultipleMetricsExpression>[]>;
+        expressions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupMultipleMetricsExpression>[] | undefined>;
         /**
          * Array of objects (Metric config)
          */
-        metrics?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupMultipleMetricsMetric>[]>;
+        metrics?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupMultipleMetricsMetric>[] | undefined>;
     }
 
     export interface ElastigroupMultipleMetricsExpression {
@@ -1434,19 +1434,19 @@ export namespace aws {
     }
 
     export interface ElastigroupMultipleMetricsMetric {
-        dimensions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupMultipleMetricsMetricDimension>[]>;
+        dimensions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupMultipleMetricsMetricDimension>[] | undefined>;
         /**
          * Percentile statistic. Valid values: `"p0.1"` - `"p100"`.
          */
-        extendedStatistic?: pulumi.Input<string>;
+        extendedStatistic?: pulumi.Input<string | undefined>;
         metricName: pulumi.Input<string>;
         /**
          * The group name.
          */
         name: pulumi.Input<string>;
         namespace: pulumi.Input<string>;
-        statistic?: pulumi.Input<string>;
-        unit?: pulumi.Input<string>;
+        statistic?: pulumi.Input<string | undefined>;
+        unit?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupMultipleMetricsMetricDimension {
@@ -1454,7 +1454,7 @@ export namespace aws {
          * The group name.
          */
         name: pulumi.Input<string>;
-        value?: pulumi.Input<string>;
+        value?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupNetworkInterface {
@@ -1463,19 +1463,19 @@ export namespace aws {
          *
          * Usage:
          */
-        associateIpv6Address?: pulumi.Input<boolean>;
+        associateIpv6Address?: pulumi.Input<boolean | undefined>;
         /**
          * Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one.
          */
-        associatePublicIpAddress?: pulumi.Input<boolean>;
+        associatePublicIpAddress?: pulumi.Input<boolean | undefined>;
         /**
          * If set to true, the interface is deleted when the instance is terminated.
          */
-        deleteOnTermination?: pulumi.Input<boolean>;
+        deleteOnTermination?: pulumi.Input<boolean | undefined>;
         /**
          * The description of the network interface.
          */
-        description?: pulumi.Input<string>;
+        description?: pulumi.Input<string | undefined>;
         /**
          * The index of the device on the instance for the network interface attachment.
          */
@@ -1483,38 +1483,38 @@ export namespace aws {
         /**
          * The ID of the network interface.
          */
-        networkInterfaceId?: pulumi.Input<string>;
+        networkInterfaceId?: pulumi.Input<string | undefined>;
         /**
          * The private IP address of the network interface.
          */
-        privateIpAddress?: pulumi.Input<string>;
+        privateIpAddress?: pulumi.Input<string | undefined>;
         /**
          * The number of secondary private IP addresses.
          */
-        secondaryPrivateIpAddressCount?: pulumi.Input<string>;
+        secondaryPrivateIpAddressCount?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupResourceRequirement {
         /**
          * Instance families to exclude
          */
-        excludedInstanceFamilies?: pulumi.Input<pulumi.Input<string>[]>;
+        excludedInstanceFamilies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Instance generations to exclude
          */
-        excludedInstanceGenerations?: pulumi.Input<pulumi.Input<string>[]>;
+        excludedInstanceGenerations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Instance types to exclude
          */
-        excludedInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        excludedInstanceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Required maximum instance GPU (<=16)
          */
-        requiredGpuMaximum?: pulumi.Input<number>;
+        requiredGpuMaximum?: pulumi.Input<number | undefined>;
         /**
          * Required minimum instance GPU (>=1)
          */
-        requiredGpuMinimum?: pulumi.Input<number>;
+        requiredGpuMinimum?: pulumi.Input<number | undefined>;
         /**
          * Required maximum instance memory (<=512)
          */
@@ -1537,19 +1537,19 @@ export namespace aws {
         /**
          * Tag specification for AMI resources.
          */
-        shouldTagAmis?: pulumi.Input<boolean>;
+        shouldTagAmis?: pulumi.Input<boolean | undefined>;
         /**
          * Tag specification for ENI resources.
          */
-        shouldTagEnis?: pulumi.Input<boolean>;
+        shouldTagEnis?: pulumi.Input<boolean | undefined>;
         /**
          * Tag specification for Snapshot resources.
          */
-        shouldTagSnapshots?: pulumi.Input<boolean>;
+        shouldTagSnapshots?: pulumi.Input<boolean | undefined>;
         /**
          * Tag specification for Volume resources.
          */
-        shouldTagVolumes?: pulumi.Input<boolean>;
+        shouldTagVolumes?: pulumi.Input<boolean | undefined>;
     }
 
     export interface ElastigroupRevertToSpot {
@@ -1560,51 +1560,51 @@ export namespace aws {
         /**
          * Specify a list of time windows for to execute revertToSpot strategy. Time window format: `ddd:hh:mm-ddd:hh:mm`. Example: `Mon:03:00-Wed:02:30`
          */
-        timeWindows?: pulumi.Input<pulumi.Input<string>[]>;
+        timeWindows?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface ElastigroupScalingDownPolicy {
         /**
          * The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `stepAdjustment` object is defined, then it cannot be specified.
          */
-        actionType?: pulumi.Input<string>;
+        actionType?: pulumi.Input<string | undefined>;
         /**
          * The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `"MAX(currCapacity / 5, value * 10)"`
          */
-        adjustment?: pulumi.Input<string>;
+        adjustment?: pulumi.Input<string | undefined>;
         /**
          * The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
          */
-        cooldown?: pulumi.Input<number>;
+        cooldown?: pulumi.Input<number | undefined>;
         /**
          * A list of dimensions describing qualities of the metric.
          */
-        dimensions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingDownPolicyDimension>[]>;
+        dimensions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingDownPolicyDimension>[] | undefined>;
         /**
          * The number of periods over which data is compared to the specified threshold.
          */
-        evaluationPeriods?: pulumi.Input<number>;
+        evaluationPeriods?: pulumi.Input<number | undefined>;
         /**
          * Specifies whether the scaling policy described in this block is enabled.
          */
-        isEnabled?: pulumi.Input<boolean>;
+        isEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * . The number of the desired target (and maximum) capacity
          */
-        maxTargetCapacity?: pulumi.Input<string>;
+        maxTargetCapacity?: pulumi.Input<string | undefined>;
         /**
          * The maximal number of instances to have in the group.
          */
-        maximum?: pulumi.Input<string>;
+        maximum?: pulumi.Input<string | undefined>;
         /**
          * The name of the metric, with or without spaces.
          */
         metricName: pulumi.Input<string>;
-        minTargetCapacity?: pulumi.Input<string>;
+        minTargetCapacity?: pulumi.Input<string | undefined>;
         /**
          * The minimal number of instances to have in the group.
          */
-        minimum?: pulumi.Input<string>;
+        minimum?: pulumi.Input<string | undefined>;
         /**
          * The namespace for the alarm's associated metric.
          */
@@ -1612,11 +1612,11 @@ export namespace aws {
         /**
          * The operator to use in order to determine if the scaling policy is applicable. Valid values: `"gt"`, `"gte"`, `"lt"`, `"lte"`.
          */
-        operator?: pulumi.Input<string>;
+        operator?: pulumi.Input<string | undefined>;
         /**
          * The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
          */
-        period?: pulumi.Input<number>;
+        period?: pulumi.Input<number | undefined>;
         /**
          * The name of the policy.
          */
@@ -1624,24 +1624,24 @@ export namespace aws {
         /**
          * The source of the metric. Valid values: `"cloudWatch"`, `"spectrum"`.
          */
-        source?: pulumi.Input<string>;
+        source?: pulumi.Input<string | undefined>;
         /**
          * The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
          */
-        statistic?: pulumi.Input<string>;
-        stepAdjustments?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingDownPolicyStepAdjustment>[]>;
+        statistic?: pulumi.Input<string | undefined>;
+        stepAdjustments?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingDownPolicyStepAdjustment>[] | undefined>;
         /**
          * The target number of instances to have in the group.
          */
-        target?: pulumi.Input<string>;
+        target?: pulumi.Input<string | undefined>;
         /**
          * The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
          */
-        threshold?: pulumi.Input<number>;
+        threshold?: pulumi.Input<number | undefined>;
         /**
          * The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
          */
-        unit?: pulumi.Input<string>;
+        unit?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupScalingDownPolicyDimension {
@@ -1652,7 +1652,7 @@ export namespace aws {
         /**
          * The dimension value.
          */
-        value?: pulumi.Input<string>;
+        value?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupScalingDownPolicyStepAdjustment {
@@ -1661,12 +1661,12 @@ export namespace aws {
     }
 
     export interface ElastigroupScalingDownPolicyStepAdjustmentAction {
-        adjustment?: pulumi.Input<string>;
-        maxTargetCapacity?: pulumi.Input<string>;
-        maximum?: pulumi.Input<string>;
-        minTargetCapacity?: pulumi.Input<string>;
-        minimum?: pulumi.Input<string>;
-        target?: pulumi.Input<string>;
+        adjustment?: pulumi.Input<string | undefined>;
+        maxTargetCapacity?: pulumi.Input<string | undefined>;
+        maximum?: pulumi.Input<string | undefined>;
+        minTargetCapacity?: pulumi.Input<string | undefined>;
+        minimum?: pulumi.Input<string | undefined>;
+        target?: pulumi.Input<string | undefined>;
         type: pulumi.Input<string>;
     }
 
@@ -1674,32 +1674,32 @@ export namespace aws {
         /**
          * Specify whether to terminate instances at the end of each billing hour.
          */
-        terminateAtEndOfBillingHour?: pulumi.Input<boolean>;
+        terminateAtEndOfBillingHour?: pulumi.Input<boolean | undefined>;
         /**
          * Determines whether to terminate the newest instances when performing a scaling action. Valid values: `"default"`, `"newestInstance"`.
          */
-        terminationPolicy?: pulumi.Input<string>;
+        terminationPolicy?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupScalingTargetPolicy {
         /**
          * Integer the amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
          */
-        cooldown?: pulumi.Input<number>;
+        cooldown?: pulumi.Input<number | undefined>;
         /**
          * A list of dimensions describing qualities of the metric.
          */
-        dimensions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingTargetPolicyDimension>[]>;
+        dimensions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingTargetPolicyDimension>[] | undefined>;
         /**
          * The number of periods over which data is compared to the specified threshold.
          */
-        evaluationPeriods?: pulumi.Input<number>;
+        evaluationPeriods?: pulumi.Input<number | undefined>;
         /**
          * String, restrict the maximal number of instances which can be added in each scale-up action.
          *
          * `scalingTargetPolicies` support predictive scaling:
          */
-        maxCapacityPerScale?: pulumi.Input<string>;
+        maxCapacityPerScale?: pulumi.Input<string | undefined>;
         /**
          * String, the name of the metric, with or without spaces.
          */
@@ -1711,7 +1711,7 @@ export namespace aws {
         /**
          * The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
          */
-        period?: pulumi.Input<number>;
+        period?: pulumi.Input<number | undefined>;
         /**
          * String, the name of the policy.
          */
@@ -1721,15 +1721,15 @@ export namespace aws {
          *
          * Usage:
          */
-        predictiveMode?: pulumi.Input<string>;
+        predictiveMode?: pulumi.Input<string | undefined>;
         /**
          * String, the source of the metric. Valid values: `"cloudWatch"`, `"spectrum"`.
          */
-        source?: pulumi.Input<string>;
+        source?: pulumi.Input<string | undefined>;
         /**
          * String, the metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
          */
-        statistic?: pulumi.Input<string>;
+        statistic?: pulumi.Input<string | undefined>;
         /**
          * The target number of instances to have in the group.
          */
@@ -1737,7 +1737,7 @@ export namespace aws {
         /**
          * String, tThe unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
          */
-        unit?: pulumi.Input<string>;
+        unit?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupScalingTargetPolicyDimension {
@@ -1748,39 +1748,39 @@ export namespace aws {
         /**
          * String, the dimension value.
          */
-        value?: pulumi.Input<string>;
+        value?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupScalingUpPolicy {
         /**
          * The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `stepAdjustment` object is defined, then it cannot be specified.
          */
-        actionType?: pulumi.Input<string>;
+        actionType?: pulumi.Input<string | undefined>;
         /**
          * The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `"MAX(currCapacity / 5, value * 10)"`
          */
-        adjustment?: pulumi.Input<string>;
+        adjustment?: pulumi.Input<string | undefined>;
         /**
          * The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
          */
-        cooldown?: pulumi.Input<number>;
+        cooldown?: pulumi.Input<number | undefined>;
         /**
          * A list of dimensions describing qualities of the metric.
          */
-        dimensions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingUpPolicyDimension>[]>;
+        dimensions?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingUpPolicyDimension>[] | undefined>;
         /**
          * The number of periods over which data is compared to the specified threshold.
          */
-        evaluationPeriods?: pulumi.Input<number>;
+        evaluationPeriods?: pulumi.Input<number | undefined>;
         /**
          * Specifies whether the scaling policy described in this block is enabled.
          */
-        isEnabled?: pulumi.Input<boolean>;
-        maxTargetCapacity?: pulumi.Input<string>;
+        isEnabled?: pulumi.Input<boolean | undefined>;
+        maxTargetCapacity?: pulumi.Input<string | undefined>;
         /**
          * The maximal number of instances to have in the group.
          */
-        maximum?: pulumi.Input<string>;
+        maximum?: pulumi.Input<string | undefined>;
         /**
          * The name of the metric, with or without spaces.
          */
@@ -1788,11 +1788,11 @@ export namespace aws {
         /**
          * . The number of the desired target (and minimum) capacity
          */
-        minTargetCapacity?: pulumi.Input<string>;
+        minTargetCapacity?: pulumi.Input<string | undefined>;
         /**
          * The minimal number of instances to have in the group.
          */
-        minimum?: pulumi.Input<string>;
+        minimum?: pulumi.Input<string | undefined>;
         /**
          * The namespace for the alarm's associated metric.
          */
@@ -1800,11 +1800,11 @@ export namespace aws {
         /**
          * The operator to use in order to determine if the scaling policy is applicable. Valid values: `"gt"`, `"gte"`, `"lt"`, `"lte"`.
          */
-        operator?: pulumi.Input<string>;
+        operator?: pulumi.Input<string | undefined>;
         /**
          * The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
          */
-        period?: pulumi.Input<number>;
+        period?: pulumi.Input<number | undefined>;
         /**
          * The name of the policy.
          */
@@ -1812,24 +1812,24 @@ export namespace aws {
         /**
          * The source of the metric. Valid values: `"cloudWatch"`, `"spectrum"`.
          */
-        source?: pulumi.Input<string>;
+        source?: pulumi.Input<string | undefined>;
         /**
          * The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
          */
-        statistic?: pulumi.Input<string>;
-        stepAdjustments?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingUpPolicyStepAdjustment>[]>;
+        statistic?: pulumi.Input<string | undefined>;
+        stepAdjustments?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupScalingUpPolicyStepAdjustment>[] | undefined>;
         /**
          * The target number of instances to have in the group.
          */
-        target?: pulumi.Input<string>;
+        target?: pulumi.Input<string | undefined>;
         /**
          * The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
          */
-        threshold?: pulumi.Input<number>;
+        threshold?: pulumi.Input<number | undefined>;
         /**
          * The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
          */
-        unit?: pulumi.Input<string>;
+        unit?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupScalingUpPolicyDimension {
@@ -1840,7 +1840,7 @@ export namespace aws {
         /**
          * The dimension value.
          */
-        value?: pulumi.Input<string>;
+        value?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupScalingUpPolicyStepAdjustment {
@@ -1849,12 +1849,12 @@ export namespace aws {
     }
 
     export interface ElastigroupScalingUpPolicyStepAdjustmentAction {
-        adjustment?: pulumi.Input<string>;
-        maxTargetCapacity?: pulumi.Input<string>;
-        maximum?: pulumi.Input<string>;
-        minTargetCapacity?: pulumi.Input<string>;
-        minimum?: pulumi.Input<string>;
-        target?: pulumi.Input<string>;
+        adjustment?: pulumi.Input<string | undefined>;
+        maxTargetCapacity?: pulumi.Input<string | undefined>;
+        maximum?: pulumi.Input<string | undefined>;
+        minTargetCapacity?: pulumi.Input<string | undefined>;
+        minimum?: pulumi.Input<string | undefined>;
+        target?: pulumi.Input<string | undefined>;
         type: pulumi.Input<string>;
     }
 
@@ -1862,61 +1862,61 @@ export namespace aws {
         /**
          * The number of instances to add or remove.
          */
-        adjustment?: pulumi.Input<string>;
+        adjustment?: pulumi.Input<string | undefined>;
         /**
          * The percentage of instances to add or remove.
          *
          * Usage:
          */
-        adjustmentPercentage?: pulumi.Input<string>;
+        adjustmentPercentage?: pulumi.Input<string | undefined>;
         /**
          * The percentage size of each batch in the scheduled deployment roll.
          */
-        batchSizePercentage?: pulumi.Input<string>;
+        batchSizePercentage?: pulumi.Input<string | undefined>;
         /**
          * A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
          */
-        cronExpression?: pulumi.Input<string>;
+        cronExpression?: pulumi.Input<string | undefined>;
         /**
          * The recurrence frequency to run this task. Supported values are `"hourly"`, `"daily"`, `"weekly"` and `"continuous"`.
          */
-        frequency?: pulumi.Input<string>;
+        frequency?: pulumi.Input<string | undefined>;
         /**
          * The period of time (seconds) to wait before checking a batch's health after it's deployment.
          */
-        gracePeriod?: pulumi.Input<string>;
+        gracePeriod?: pulumi.Input<string | undefined>;
         /**
          * Setting the task to being enabled or disabled.
          */
-        isEnabled?: pulumi.Input<boolean>;
+        isEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * The maximum number of instances the group should have.
          */
-        maxCapacity?: pulumi.Input<string>;
+        maxCapacity?: pulumi.Input<string | undefined>;
         /**
          * The minimum number of instances the group should have.
          */
-        minCapacity?: pulumi.Input<string>;
+        minCapacity?: pulumi.Input<string | undefined>;
         /**
          * The maximum number of instances the group should have.
          */
-        scaleMaxCapacity?: pulumi.Input<string>;
+        scaleMaxCapacity?: pulumi.Input<string | undefined>;
         /**
          * The minimum number of instances the group should have.
          */
-        scaleMinCapacity?: pulumi.Input<string>;
+        scaleMinCapacity?: pulumi.Input<string | undefined>;
         /**
          * The desired number of instances the group should have.
          */
-        scaleTargetCapacity?: pulumi.Input<string>;
+        scaleTargetCapacity?: pulumi.Input<string | undefined>;
         /**
          * Set a start time for one time tasks.
          */
-        startTime?: pulumi.Input<string>;
+        startTime?: pulumi.Input<string | undefined>;
         /**
          * The desired number of instances the group should have.
          */
-        targetCapacity?: pulumi.Input<string>;
+        targetCapacity?: pulumi.Input<string | undefined>;
         /**
          * The task type to run. Supported task types are: `"scale"`, `"backupAmi"`, `"roll"`, `"scaleUp"`, `"percentageScaleUp"`, `"scaleDown"`, `"percentageScaleDown"`, `"statefulUpdateCapacity"`.
          */
@@ -1933,28 +1933,28 @@ export namespace aws {
          *
          * Usage:
          */
-        timeout?: pulumi.Input<number>;
+        timeout?: pulumi.Input<number | undefined>;
     }
 
     export interface ElastigroupStatefulDeallocation {
         /**
          * For stateful groups: remove persistent images.
          */
-        shouldDeleteImages?: pulumi.Input<boolean>;
+        shouldDeleteImages?: pulumi.Input<boolean | undefined>;
         /**
          * For stateful groups: remove network interfaces.
          */
-        shouldDeleteNetworkInterfaces?: pulumi.Input<boolean>;
+        shouldDeleteNetworkInterfaces?: pulumi.Input<boolean | undefined>;
         /**
          * For stateful groups: remove snapshots.
          *
          * Usage:
          */
-        shouldDeleteSnapshots?: pulumi.Input<boolean>;
+        shouldDeleteSnapshots?: pulumi.Input<boolean | undefined>;
         /**
          * For stateful groups: remove persistent volumes.
          */
-        shouldDeleteVolumes?: pulumi.Input<boolean>;
+        shouldDeleteVolumes?: pulumi.Input<boolean | undefined>;
     }
 
     export interface ElastigroupStatefulInstanceAction {
@@ -1971,19 +1971,19 @@ export namespace aws {
     }
 
     export interface ElastigroupTag {
-        key?: pulumi.Input<string>;
-        value?: pulumi.Input<string>;
+        key?: pulumi.Input<string | undefined>;
+        value?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupUpdatePolicy {
         /**
          * Enables updates to tags without rolling the group when set to `true`.
          */
-        autoApplyTags?: pulumi.Input<boolean>;
+        autoApplyTags?: pulumi.Input<boolean | undefined>;
         /**
          * While used, you can control whether the group should perform a deployment after an update to the configuration.
          */
-        rollConfig?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicyRollConfig>;
+        rollConfig?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicyRollConfig | undefined>;
         /**
          * This will apply resuming action for Stateful instances in the Elastigroup upon scale up or capacity changes. Example usage will be for Elastigroups that will have scheduling rules to set a target capacity of 0 instances in the night and automatically restore the same state of the instances in the morning.
          */
@@ -2002,23 +2002,23 @@ export namespace aws {
         /**
          * Sets the grace period for new instances to become healthy.
          */
-        gracePeriod?: pulumi.Input<number>;
+        gracePeriod?: pulumi.Input<number | undefined>;
         /**
          * Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"NONE"`.
          */
-        healthCheckType?: pulumi.Input<string>;
+        healthCheckType?: pulumi.Input<string | undefined>;
         /**
          * Strategy parameters
          */
-        strategy?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicyRollConfigStrategy>;
+        strategy?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicyRollConfigStrategy | undefined>;
         /**
          * For use with `shouldRoll`. Sets minimum % of roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
          */
-        waitForRollPercentage?: pulumi.Input<number>;
+        waitForRollPercentage?: pulumi.Input<number | undefined>;
         /**
          * For use with `shouldRoll`. Sets how long to wait for the deployed % of a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
          */
-        waitForRollTimeout?: pulumi.Input<number>;
+        waitForRollTimeout?: pulumi.Input<number | undefined>;
     }
 
     export interface ElastigroupUpdatePolicyRollConfigStrategy {
@@ -2029,15 +2029,15 @@ export namespace aws {
         /**
          * Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
          */
-        batchMinHealthyPercentage?: pulumi.Input<number>;
+        batchMinHealthyPercentage?: pulumi.Input<number | undefined>;
         /**
          * Set detach options to the deployment.
          */
-        onFailure?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicyRollConfigStrategyOnFailure>;
+        onFailure?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicyRollConfigStrategyOnFailure | undefined>;
         /**
          * Specify whether to drain incoming TCP connections before terminating a server.
          */
-        shouldDrainInstances?: pulumi.Input<boolean>;
+        shouldDrainInstances?: pulumi.Input<boolean | undefined>;
     }
 
     export interface ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
@@ -2045,44 +2045,44 @@ export namespace aws {
          * Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
          */
         actionType: pulumi.Input<string>;
-        batchNum?: pulumi.Input<number>;
+        batchNum?: pulumi.Input<number | undefined>;
         /**
          * Indicates (in seconds) the timeout to wait until instance are detached.
          */
-        drainingTimeout?: pulumi.Input<number>;
+        drainingTimeout?: pulumi.Input<number | undefined>;
         /**
          * Decrementing the group target capacity after detaching the instances.
          */
-        shouldDecrementTargetCapacity?: pulumi.Input<boolean>;
+        shouldDecrementTargetCapacity?: pulumi.Input<boolean | undefined>;
         /**
          * Indicator if the action should apply to all batches of the deployment or only the latest batch.
          */
-        shouldHandleAllBatches?: pulumi.Input<boolean>;
+        shouldHandleAllBatches?: pulumi.Input<boolean | undefined>;
     }
 
     export interface ManagedInstanceBlockDeviceMapping {
         deviceName: pulumi.Input<string>;
-        ebs?: pulumi.Input<inputs.aws.ManagedInstanceBlockDeviceMappingEbs>;
+        ebs?: pulumi.Input<inputs.aws.ManagedInstanceBlockDeviceMappingEbs | undefined>;
     }
 
     export interface ManagedInstanceBlockDeviceMappingEbs {
-        deleteOnTermination?: pulumi.Input<boolean>;
-        encrypted?: pulumi.Input<boolean>;
-        iops?: pulumi.Input<number>;
-        kmsKeyId?: pulumi.Input<string>;
-        snapshotId?: pulumi.Input<string>;
-        throughput?: pulumi.Input<number>;
-        volumeSize?: pulumi.Input<number>;
-        volumeType?: pulumi.Input<string>;
+        deleteOnTermination?: pulumi.Input<boolean | undefined>;
+        encrypted?: pulumi.Input<boolean | undefined>;
+        iops?: pulumi.Input<number | undefined>;
+        kmsKeyId?: pulumi.Input<string | undefined>;
+        snapshotId?: pulumi.Input<string | undefined>;
+        throughput?: pulumi.Input<number | undefined>;
+        volumeSize?: pulumi.Input<number | undefined>;
+        volumeType?: pulumi.Input<string | undefined>;
     }
 
     export interface ManagedInstanceDelete {
-        amiBackupShouldDeleteImages?: pulumi.Input<boolean>;
-        deallocationConfigShouldDeleteImages?: pulumi.Input<boolean>;
-        shouldDeleteNetworkInterfaces?: pulumi.Input<boolean>;
-        shouldDeleteSnapshots?: pulumi.Input<boolean>;
-        shouldDeleteVolumes?: pulumi.Input<boolean>;
-        shouldTerminateInstance?: pulumi.Input<boolean>;
+        amiBackupShouldDeleteImages?: pulumi.Input<boolean | undefined>;
+        deallocationConfigShouldDeleteImages?: pulumi.Input<boolean | undefined>;
+        shouldDeleteNetworkInterfaces?: pulumi.Input<boolean | undefined>;
+        shouldDeleteSnapshots?: pulumi.Input<boolean | undefined>;
+        shouldDeleteVolumes?: pulumi.Input<boolean | undefined>;
+        shouldTerminateInstance?: pulumi.Input<boolean | undefined>;
     }
 
     export interface ManagedInstanceIntegrationRoute53 {
@@ -2091,20 +2091,20 @@ export namespace aws {
 
     export interface ManagedInstanceIntegrationRoute53Domain {
         hostedZoneId: pulumi.Input<string>;
-        recordSetType?: pulumi.Input<string>;
+        recordSetType?: pulumi.Input<string | undefined>;
         recordSets: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceIntegrationRoute53DomainRecordSet>[]>;
-        spotinstAcctId?: pulumi.Input<string>;
+        spotinstAcctId?: pulumi.Input<string | undefined>;
     }
 
     export interface ManagedInstanceIntegrationRoute53DomainRecordSet {
         name: pulumi.Input<string>;
-        usePublicDns?: pulumi.Input<boolean>;
-        usePublicIp?: pulumi.Input<boolean>;
+        usePublicDns?: pulumi.Input<boolean | undefined>;
+        usePublicIp?: pulumi.Input<boolean | undefined>;
     }
 
     export interface ManagedInstanceLoadBalancer {
-        arn?: pulumi.Input<string>;
-        name?: pulumi.Input<string>;
+        arn?: pulumi.Input<string | undefined>;
+        name?: pulumi.Input<string | undefined>;
         type: pulumi.Input<string>;
     }
 
@@ -2113,23 +2113,23 @@ export namespace aws {
     }
 
     export interface ManagedInstanceMetadataOptions {
-        httpPutResponseHopLimit?: pulumi.Input<number>;
+        httpPutResponseHopLimit?: pulumi.Input<number | undefined>;
         httpTokens: pulumi.Input<string>;
-        instanceMetadataTags?: pulumi.Input<string>;
+        instanceMetadataTags?: pulumi.Input<string | undefined>;
     }
 
     export interface ManagedInstanceNetworkInterface {
-        associateIpv6Address?: pulumi.Input<boolean>;
-        associatePublicIpAddress?: pulumi.Input<boolean>;
+        associateIpv6Address?: pulumi.Input<boolean | undefined>;
+        associatePublicIpAddress?: pulumi.Input<boolean | undefined>;
         deviceIndex: pulumi.Input<string>;
     }
 
     export interface ManagedInstanceResourceRequirement {
-        excludedInstanceFamilies?: pulumi.Input<pulumi.Input<string>[]>;
-        excludedInstanceGenerations?: pulumi.Input<pulumi.Input<string>[]>;
-        excludedInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
-        requiredGpuMaximum?: pulumi.Input<number>;
-        requiredGpuMinimum?: pulumi.Input<number>;
+        excludedInstanceFamilies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        excludedInstanceGenerations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        excludedInstanceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        requiredGpuMaximum?: pulumi.Input<number | undefined>;
+        requiredGpuMinimum?: pulumi.Input<number | undefined>;
         requiredMemoryMaximum: pulumi.Input<number>;
         requiredMemoryMinimum: pulumi.Input<number>;
         requiredVcpuMaximum: pulumi.Input<number>;
@@ -2137,10 +2137,10 @@ export namespace aws {
     }
 
     export interface ManagedInstanceResourceTagSpecification {
-        shouldTagAmis?: pulumi.Input<boolean>;
-        shouldTagEnis?: pulumi.Input<boolean>;
-        shouldTagSnapshots?: pulumi.Input<boolean>;
-        shouldTagVolumes?: pulumi.Input<boolean>;
+        shouldTagAmis?: pulumi.Input<boolean | undefined>;
+        shouldTagEnis?: pulumi.Input<boolean | undefined>;
+        shouldTagSnapshots?: pulumi.Input<boolean | undefined>;
+        shouldTagVolumes?: pulumi.Input<boolean | undefined>;
     }
 
     export interface ManagedInstanceRevertToSpot {
@@ -2148,23 +2148,23 @@ export namespace aws {
     }
 
     export interface ManagedInstanceScheduledTask {
-        cronExpression?: pulumi.Input<string>;
-        frequency?: pulumi.Input<string>;
-        isEnabled?: pulumi.Input<boolean>;
-        startTime?: pulumi.Input<string>;
+        cronExpression?: pulumi.Input<string | undefined>;
+        frequency?: pulumi.Input<string | undefined>;
+        isEnabled?: pulumi.Input<boolean | undefined>;
+        startTime?: pulumi.Input<string | undefined>;
         taskType: pulumi.Input<string>;
     }
 
     export interface ManagedInstanceTag {
-        key?: pulumi.Input<string>;
-        value?: pulumi.Input<string>;
+        key?: pulumi.Input<string | undefined>;
+        value?: pulumi.Input<string | undefined>;
     }
 
     export interface MrScalarApplication {
         /**
          * Arguments for EMR to pass to the application.
          */
-        args?: pulumi.Input<pulumi.Input<string>[]>;
+        args?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * The MrScaler name.
          */
@@ -2172,7 +2172,7 @@ export namespace aws {
         /**
          * T he version of the application.
          */
-        version?: pulumi.Input<string>;
+        version?: pulumi.Input<string | undefined>;
     }
 
     export interface MrScalarBootstrapActionsFile {
@@ -2186,59 +2186,59 @@ export namespace aws {
     }
 
     export interface MrScalarCoreEbsBlockDevice {
-        iops?: pulumi.Input<number>;
+        iops?: pulumi.Input<number | undefined>;
         sizeInGb: pulumi.Input<number>;
         volumeType: pulumi.Input<string>;
-        volumesPerInstance?: pulumi.Input<number>;
+        volumesPerInstance?: pulumi.Input<number | undefined>;
     }
 
     export interface MrScalarCoreScalingDownPolicy {
         /**
          * The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
          */
-        actionType?: pulumi.Input<string>;
+        actionType?: pulumi.Input<string | undefined>;
         /**
          * The number of instances to add/remove to/from the target capacity when scale is needed.
          */
-        adjustment?: pulumi.Input<string>;
+        adjustment?: pulumi.Input<string | undefined>;
         /**
          * The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
          */
-        cooldown?: pulumi.Input<number>;
+        cooldown?: pulumi.Input<number | undefined>;
         /**
          * A mapping of dimensions describing qualities of the metric.
          */
-        dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-        evaluationPeriods?: pulumi.Input<number>;
+        dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        evaluationPeriods?: pulumi.Input<number | undefined>;
         /**
          * Max target capacity for scale down.
          */
-        maxTargetCapacity?: pulumi.Input<string>;
+        maxTargetCapacity?: pulumi.Input<string | undefined>;
         /**
          * The maximum to set when scale is needed.
          */
-        maximum?: pulumi.Input<string>;
+        maximum?: pulumi.Input<string | undefined>;
         metricName: pulumi.Input<string>;
         /**
          * Min target capacity for scale up.
          */
-        minTargetCapacity?: pulumi.Input<string>;
+        minTargetCapacity?: pulumi.Input<string | undefined>;
         /**
          * The minimum to set when scale is needed.
          */
-        minimum?: pulumi.Input<string>;
+        minimum?: pulumi.Input<string | undefined>;
         namespace: pulumi.Input<string>;
-        operator?: pulumi.Input<string>;
-        period?: pulumi.Input<number>;
+        operator?: pulumi.Input<string | undefined>;
+        period?: pulumi.Input<number | undefined>;
         /**
          * The name of the policy.
          */
         policyName: pulumi.Input<string>;
-        statistic?: pulumi.Input<string>;
+        statistic?: pulumi.Input<string | undefined>;
         /**
          * The number of instances to set when scale is needed.
          */
-        target?: pulumi.Input<string>;
+        target?: pulumi.Input<string | undefined>;
         threshold: pulumi.Input<number>;
         unit: pulumi.Input<string>;
     }
@@ -2247,49 +2247,49 @@ export namespace aws {
         /**
          * The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
          */
-        actionType?: pulumi.Input<string>;
+        actionType?: pulumi.Input<string | undefined>;
         /**
          * The number of instances to add/remove to/from the target capacity when scale is needed.
          */
-        adjustment?: pulumi.Input<string>;
+        adjustment?: pulumi.Input<string | undefined>;
         /**
          * The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
          */
-        cooldown?: pulumi.Input<number>;
+        cooldown?: pulumi.Input<number | undefined>;
         /**
          * A mapping of dimensions describing qualities of the metric.
          */
-        dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-        evaluationPeriods?: pulumi.Input<number>;
+        dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        evaluationPeriods?: pulumi.Input<number | undefined>;
         /**
          * Max target capacity for scale down.
          */
-        maxTargetCapacity?: pulumi.Input<string>;
+        maxTargetCapacity?: pulumi.Input<string | undefined>;
         /**
          * The maximum to set when scale is needed.
          */
-        maximum?: pulumi.Input<string>;
+        maximum?: pulumi.Input<string | undefined>;
         metricName: pulumi.Input<string>;
         /**
          * Min target capacity for scale up.
          */
-        minTargetCapacity?: pulumi.Input<string>;
+        minTargetCapacity?: pulumi.Input<string | undefined>;
         /**
          * The minimum to set when scale is needed.
          */
-        minimum?: pulumi.Input<string>;
+        minimum?: pulumi.Input<string | undefined>;
         namespace: pulumi.Input<string>;
-        operator?: pulumi.Input<string>;
-        period?: pulumi.Input<number>;
+        operator?: pulumi.Input<string | undefined>;
+        period?: pulumi.Input<number | undefined>;
         /**
          * The name of the policy.
          */
         policyName: pulumi.Input<string>;
-        statistic?: pulumi.Input<string>;
+        statistic?: pulumi.Input<string | undefined>;
         /**
          * The number of instances to set when scale is needed.
          */
-        target?: pulumi.Input<string>;
+        target?: pulumi.Input<string | undefined>;
         threshold: pulumi.Input<number>;
         unit: pulumi.Input<string>;
     }
@@ -2306,10 +2306,10 @@ export namespace aws {
     }
 
     export interface MrScalarMasterEbsBlockDevice {
-        iops?: pulumi.Input<number>;
+        iops?: pulumi.Input<number | undefined>;
         sizeInGb: pulumi.Input<number>;
         volumeType: pulumi.Input<string>;
-        volumesPerInstance?: pulumi.Input<number>;
+        volumesPerInstance?: pulumi.Input<number | undefined>;
     }
 
     export interface MrScalarProvisioningTimeout {
@@ -2331,7 +2331,7 @@ export namespace aws {
         /**
          * New desired capacity for the elastigroup.
          */
-        desiredCapacity?: pulumi.Input<string>;
+        desiredCapacity?: pulumi.Input<string | undefined>;
         /**
          * Select the EMR instance groups to execute the scheduled task on. Valid values: `task`.
          */
@@ -2339,15 +2339,15 @@ export namespace aws {
         /**
          * Enable/Disable the specified scheduling task.
          */
-        isEnabled?: pulumi.Input<boolean>;
+        isEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * New max capacity for the elastigroup.
          */
-        maxCapacity?: pulumi.Input<string>;
+        maxCapacity?: pulumi.Input<string | undefined>;
         /**
          * New min capacity for the elastigroup.
          */
-        minCapacity?: pulumi.Input<string>;
+        minCapacity?: pulumi.Input<string | undefined>;
         /**
          * The type of task to be scheduled. Valid values: `setCapacity`.
          */
@@ -2370,59 +2370,59 @@ export namespace aws {
     }
 
     export interface MrScalarTaskEbsBlockDevice {
-        iops?: pulumi.Input<number>;
+        iops?: pulumi.Input<number | undefined>;
         sizeInGb: pulumi.Input<number>;
         volumeType: pulumi.Input<string>;
-        volumesPerInstance?: pulumi.Input<number>;
+        volumesPerInstance?: pulumi.Input<number | undefined>;
     }
 
     export interface MrScalarTaskScalingDownPolicy {
         /**
          * The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
          */
-        actionType?: pulumi.Input<string>;
+        actionType?: pulumi.Input<string | undefined>;
         /**
          * The number of instances to add/remove to/from the target capacity when scale is needed.
          */
-        adjustment?: pulumi.Input<string>;
+        adjustment?: pulumi.Input<string | undefined>;
         /**
          * The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
          */
-        cooldown?: pulumi.Input<number>;
+        cooldown?: pulumi.Input<number | undefined>;
         /**
          * A mapping of dimensions describing qualities of the metric.
          */
-        dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-        evaluationPeriods?: pulumi.Input<number>;
+        dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        evaluationPeriods?: pulumi.Input<number | undefined>;
         /**
          * Max target capacity for scale down.
          */
-        maxTargetCapacity?: pulumi.Input<string>;
+        maxTargetCapacity?: pulumi.Input<string | undefined>;
         /**
          * The maximum to set when scale is needed.
          */
-        maximum?: pulumi.Input<string>;
+        maximum?: pulumi.Input<string | undefined>;
         metricName: pulumi.Input<string>;
         /**
          * Min target capacity for scale up.
          */
-        minTargetCapacity?: pulumi.Input<string>;
+        minTargetCapacity?: pulumi.Input<string | undefined>;
         /**
          * The minimum to set when scale is needed.
          */
-        minimum?: pulumi.Input<string>;
+        minimum?: pulumi.Input<string | undefined>;
         namespace: pulumi.Input<string>;
-        operator?: pulumi.Input<string>;
-        period?: pulumi.Input<number>;
+        operator?: pulumi.Input<string | undefined>;
+        period?: pulumi.Input<number | undefined>;
         /**
          * The name of the policy.
          */
         policyName: pulumi.Input<string>;
-        statistic?: pulumi.Input<string>;
+        statistic?: pulumi.Input<string | undefined>;
         /**
          * The number of instances to set when scale is needed.
          */
-        target?: pulumi.Input<string>;
+        target?: pulumi.Input<string | undefined>;
         threshold: pulumi.Input<number>;
         unit: pulumi.Input<string>;
     }
@@ -2431,49 +2431,49 @@ export namespace aws {
         /**
          * The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
          */
-        actionType?: pulumi.Input<string>;
+        actionType?: pulumi.Input<string | undefined>;
         /**
          * The number of instances to add/remove to/from the target capacity when scale is needed.
          */
-        adjustment?: pulumi.Input<string>;
+        adjustment?: pulumi.Input<string | undefined>;
         /**
          * The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
          */
-        cooldown?: pulumi.Input<number>;
+        cooldown?: pulumi.Input<number | undefined>;
         /**
          * A mapping of dimensions describing qualities of the metric.
          */
-        dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-        evaluationPeriods?: pulumi.Input<number>;
+        dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        evaluationPeriods?: pulumi.Input<number | undefined>;
         /**
          * Max target capacity for scale down.
          */
-        maxTargetCapacity?: pulumi.Input<string>;
+        maxTargetCapacity?: pulumi.Input<string | undefined>;
         /**
          * The maximum to set when scale is needed.
          */
-        maximum?: pulumi.Input<string>;
+        maximum?: pulumi.Input<string | undefined>;
         metricName: pulumi.Input<string>;
         /**
          * Min target capacity for scale up.
          */
-        minTargetCapacity?: pulumi.Input<string>;
+        minTargetCapacity?: pulumi.Input<string | undefined>;
         /**
          * The minimum to set when scale is needed.
          */
-        minimum?: pulumi.Input<string>;
+        minimum?: pulumi.Input<string | undefined>;
         namespace: pulumi.Input<string>;
-        operator?: pulumi.Input<string>;
-        period?: pulumi.Input<number>;
+        operator?: pulumi.Input<string | undefined>;
+        period?: pulumi.Input<number | undefined>;
         /**
          * The name of the policy.
          */
         policyName: pulumi.Input<string>;
-        statistic?: pulumi.Input<string>;
+        statistic?: pulumi.Input<string | undefined>;
         /**
          * The number of instances to set when scale is needed.
          */
-        target?: pulumi.Input<string>;
+        target?: pulumi.Input<string | undefined>;
         threshold: pulumi.Input<number>;
         unit: pulumi.Input<string>;
     }
@@ -2486,7 +2486,7 @@ export namespace aws {
         /**
          * The number of periods over which data is compared to the specified threshold.
          */
-        evaluationPeriods?: pulumi.Input<number>;
+        evaluationPeriods?: pulumi.Input<number | undefined>;
         /**
          * The name of the metric in CloudWatch which the statement will be based on.
          */
@@ -2498,15 +2498,15 @@ export namespace aws {
         /**
          * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
          */
-        operator?: pulumi.Input<string>;
+        operator?: pulumi.Input<string | undefined>;
         /**
          * The time window in seconds over which the statistic is applied.
          */
-        period?: pulumi.Input<number>;
+        period?: pulumi.Input<number | undefined>;
         /**
          * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
          */
-        statistic?: pulumi.Input<string>;
+        statistic?: pulumi.Input<string | undefined>;
         /**
          * The value that the specified statistic is compared to.
          */
@@ -2514,18 +2514,18 @@ export namespace aws {
         /**
          * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
          */
-        unit?: pulumi.Input<string>;
+        unit?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanAttachLoadBalancer {
         /**
          * If type is "TARGET_GROUP" then an ARN is required. Otherwise is not allowed.
          */
-        arn?: pulumi.Input<string>;
+        arn?: pulumi.Input<string | undefined>;
         /**
          * If type is "CLASSIC" then a name is required. Otherwise is not allowed.
          */
-        name?: pulumi.Input<string>;
+        name?: pulumi.Input<string | undefined>;
         /**
          * Type of load balancer to use.
          */
@@ -2536,135 +2536,135 @@ export namespace aws {
         /**
          * Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
          */
-        autoHeadroomPercentage?: pulumi.Input<number>;
+        autoHeadroomPercentage?: pulumi.Input<number | undefined>;
         /**
          * Cooldown period between scaling actions.
          */
-        autoscaleCooldown?: pulumi.Input<number>;
+        autoscaleCooldown?: pulumi.Input<number | undefined>;
         /**
          * Auto Scaling scale down operations.
          */
-        autoscaleDown?: pulumi.Input<inputs.aws.OceanAutoscalerAutoscaleDown>;
+        autoscaleDown?: pulumi.Input<inputs.aws.OceanAutoscalerAutoscaleDown | undefined>;
         /**
          * Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
          */
-        autoscaleHeadroom?: pulumi.Input<inputs.aws.OceanAutoscalerAutoscaleHeadroom>;
+        autoscaleHeadroom?: pulumi.Input<inputs.aws.OceanAutoscalerAutoscaleHeadroom | undefined>;
         /**
          * Automatically configure and optimize headroom resources.
          */
-        autoscaleIsAutoConfig?: pulumi.Input<boolean>;
+        autoscaleIsAutoConfig?: pulumi.Input<boolean | undefined>;
         /**
          * Enable the Ocean Kubernetes Auto Scaler.
          */
-        autoscaleIsEnabled?: pulumi.Input<boolean>;
+        autoscaleIsEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
          */
-        enableAutomaticAndManualHeadroom?: pulumi.Input<boolean>;
+        enableAutomaticAndManualHeadroom?: pulumi.Input<boolean | undefined>;
         /**
          * List of Ocean extended resource definitions to use in this cluster.
          */
-        extendedResourceDefinitions?: pulumi.Input<pulumi.Input<string>[]>;
+        extendedResourceDefinitions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Optionally set upper and lower bounds on the resource usage of the cluster.
          */
-        resourceLimits?: pulumi.Input<inputs.aws.OceanAutoscalerResourceLimits>;
+        resourceLimits?: pulumi.Input<inputs.aws.OceanAutoscalerResourceLimits | undefined>;
     }
 
     export interface OceanAutoscalerAutoscaleDown {
-        evaluationPeriods?: pulumi.Input<number>;
+        evaluationPeriods?: pulumi.Input<number | undefined>;
         /**
          * When set to 'true', the Aggressive Scale Down feature is enabled.
          */
-        isAggressiveScaleDownEnabled?: pulumi.Input<boolean>;
+        isAggressiveScaleDownEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * Would represent the maximum % to scale-down. Number between 1-100.
          */
-        maxScaleDownPercentage?: pulumi.Input<number>;
+        maxScaleDownPercentage?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanAutoscalerAutoscaleHeadroom {
         /**
          * Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
          */
-        cpuPerUnit?: pulumi.Input<number>;
+        cpuPerUnit?: pulumi.Input<number | undefined>;
         /**
          * Optionally configure the number of GPUs to allocate the headroom.
          */
-        gpuPerUnit?: pulumi.Input<number>;
+        gpuPerUnit?: pulumi.Input<number | undefined>;
         /**
          * Optionally configure the amount of memory (MB) to allocate the headroom.
          */
-        memoryPerUnit?: pulumi.Input<number>;
+        memoryPerUnit?: pulumi.Input<number | undefined>;
         /**
          * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
          */
-        numOfUnits?: pulumi.Input<number>;
+        numOfUnits?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanAutoscalerResourceLimits {
         /**
          * The maximum memory in GiB units that can be allocated to the cluster.
          */
-        maxMemoryGib?: pulumi.Input<number>;
+        maxMemoryGib?: pulumi.Input<number | undefined>;
         /**
          * The maximum cpu in vCPU units that can be allocated to the cluster.
          */
-        maxVcpu?: pulumi.Input<number>;
+        maxVcpu?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanBlockDeviceMapping {
         /**
          * String. Set device name. (Example: `/dev/xvda`).
          */
-        deviceName?: pulumi.Input<string>;
+        deviceName?: pulumi.Input<string | undefined>;
         /**
          * Object. Set Elastic Block Store properties .
          */
-        ebs?: pulumi.Input<inputs.aws.OceanBlockDeviceMappingEbs>;
+        ebs?: pulumi.Input<inputs.aws.OceanBlockDeviceMappingEbs | undefined>;
     }
 
     export interface OceanBlockDeviceMappingEbs {
         /**
          * Boolean. Flag to delete the EBS on instance termination.
          */
-        deleteOnTermination?: pulumi.Input<boolean>;
+        deleteOnTermination?: pulumi.Input<boolean | undefined>;
         /**
          * Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
          */
-        dynamicIops?: pulumi.Input<inputs.aws.OceanBlockDeviceMappingEbsDynamicIops>;
+        dynamicIops?: pulumi.Input<inputs.aws.OceanBlockDeviceMappingEbsDynamicIops | undefined>;
         /**
          * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
          */
-        dynamicVolumeSize?: pulumi.Input<inputs.aws.OceanBlockDeviceMappingEbsDynamicVolumeSize>;
+        dynamicVolumeSize?: pulumi.Input<inputs.aws.OceanBlockDeviceMappingEbsDynamicVolumeSize | undefined>;
         /**
          * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
          */
-        encrypted?: pulumi.Input<boolean>;
+        encrypted?: pulumi.Input<boolean | undefined>;
         /**
          * Must be greater than or equal to 0.
          */
-        iops?: pulumi.Input<number>;
+        iops?: pulumi.Input<number | undefined>;
         /**
          * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
          */
-        kmsKeyId?: pulumi.Input<string>;
+        kmsKeyId?: pulumi.Input<string | undefined>;
         /**
          * (Optional) String. The Snapshot ID to mount by.
          */
-        snapshotId?: pulumi.Input<string>;
+        snapshotId?: pulumi.Input<string | undefined>;
         /**
          * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
          */
-        throughput?: pulumi.Input<number>;
+        throughput?: pulumi.Input<number | undefined>;
         /**
          * Int. The size, in GB of the volume.
          */
-        volumeSize?: pulumi.Input<number>;
+        volumeSize?: pulumi.Input<number | undefined>;
         /**
          * String. The type of the volume. (Example: `gp2`).
          */
-        volumeType?: pulumi.Input<string>;
+        volumeType?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanBlockDeviceMappingEbsDynamicIops {
@@ -2698,18 +2698,18 @@ export namespace aws {
         /**
          * You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`balanced`,`cheapest`.
          */
-        availabilityVsCost?: pulumi.Input<string>;
+        availabilityVsCost?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanDetachLoadBalancer {
         /**
          * If type is "TARGET_GROUP" then an ARN is required. Otherwise is not allowed.
          */
-        arn?: pulumi.Input<string>;
+        arn?: pulumi.Input<string | undefined>;
         /**
          * If type is "CLASSIC" then a name is required. Otherwise is not allowed.
          */
-        name?: pulumi.Input<string>;
+        name?: pulumi.Input<string | undefined>;
         /**
          * Type of load balancer to use.
          */
@@ -2720,80 +2720,80 @@ export namespace aws {
         /**
          * The filtered instance types will support at least one of the architectures from this list.
          */
-        architectures?: pulumi.Input<pulumi.Input<string>[]>;
+        architectures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * The filtered instance types will belong to one of the categories types from this list.
          */
-        categories?: pulumi.Input<pulumi.Input<string>[]>;
+        categories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * The filtered instance types will have one of the disk type from this list.
          */
-        diskTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        diskTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
          */
-        excludeFamilies?: pulumi.Input<pulumi.Input<string>[]>;
+        excludeFamilies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * In case excludeMetal is set to true, metal types will not be available for scaling.
          */
-        excludeMetal?: pulumi.Input<boolean>;
+        excludeMetal?: pulumi.Input<boolean | undefined>;
         /**
          * The filtered instance types will have a hypervisor type from this list.
          */
-        hypervisors?: pulumi.Input<pulumi.Input<string>[]>;
+        hypervisors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
          */
-        includeFamilies?: pulumi.Input<pulumi.Input<string>[]>;
+        includeFamilies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Ena is supported or not.
          */
-        isEnaSupported?: pulumi.Input<string>;
+        isEnaSupported?: pulumi.Input<string | undefined>;
         /**
          * Maximum total number of GPUs.
          */
-        maxGpu?: pulumi.Input<number>;
-        maxMemoryGib?: pulumi.Input<number>;
+        maxGpu?: pulumi.Input<number | undefined>;
+        maxMemoryGib?: pulumi.Input<number | undefined>;
         /**
          * Maximum Bandwidth in Gib/s of network performance.
          */
-        maxNetworkPerformance?: pulumi.Input<number>;
-        maxVcpu?: pulumi.Input<number>;
+        maxNetworkPerformance?: pulumi.Input<number | undefined>;
+        maxVcpu?: pulumi.Input<number | undefined>;
         /**
          * Minimum number of network interfaces (ENIs).
          */
-        minEnis?: pulumi.Input<number>;
+        minEnis?: pulumi.Input<number | undefined>;
         /**
          * Minimum total number of GPUs.
          */
-        minGpu?: pulumi.Input<number>;
+        minGpu?: pulumi.Input<number | undefined>;
         /**
          * Minimum amount of Memory (GiB).
          */
-        minMemoryGib?: pulumi.Input<number>;
+        minMemoryGib?: pulumi.Input<number | undefined>;
         /**
          * Minimum Bandwidth in Gib/s of network performance.
          */
-        minNetworkPerformance?: pulumi.Input<number>;
+        minNetworkPerformance?: pulumi.Input<number | undefined>;
         /**
          * Minimum number of vcpus available.
          */
-        minVcpu?: pulumi.Input<number>;
+        minVcpu?: pulumi.Input<number | undefined>;
         /**
          * The filtered instance types will have a root device types from this list.
          */
-        rootDeviceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        rootDeviceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * The filtered instance types will support at least one of the virtualization types from this list.
          */
-        virtualizationTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        virtualizationTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface OceanInstanceMetadataOptions {
         /**
          * An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
          */
-        httpPutResponseHopLimit?: pulumi.Input<number>;
+        httpPutResponseHopLimit?: pulumi.Input<number | undefined>;
         /**
          * Determines if a signed token is required or not. Valid values: `optional` or `required`.
          */
@@ -2804,33 +2804,33 @@ export namespace aws {
         /**
          * Value: `"RAID0"` The method for using the instance store volumes (must also be defined in the userData).
          */
-        instanceStorePolicyType?: pulumi.Input<string>;
+        instanceStorePolicyType?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanLaunchSpecAutoscaleDown {
         /**
          * When set to 'true', the Aggressive Scale Down feature is enabled.
          */
-        isAggressiveScaleDownEnabled?: pulumi.Input<boolean>;
+        isAggressiveScaleDownEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * The maximum percentage allowed to scale down in a single scaling action on the nodes running in a specific VNG. Allowed only if maxScaleDownPercentage is set to null at the cluster level. Number between [0.1-100].
          */
-        maxScaleDownPercentage?: pulumi.Input<number>;
+        maxScaleDownPercentage?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanLaunchSpecAutoscaleHeadroom {
         /**
          * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
          */
-        cpuPerUnit?: pulumi.Input<number>;
+        cpuPerUnit?: pulumi.Input<number | undefined>;
         /**
          * Optionally configure the number of GPUS to allocate for each headroom unit.
          */
-        gpuPerUnit?: pulumi.Input<number>;
+        gpuPerUnit?: pulumi.Input<number | undefined>;
         /**
          * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
          */
-        memoryPerUnit?: pulumi.Input<number>;
+        memoryPerUnit?: pulumi.Input<number | undefined>;
         /**
          * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
          */
@@ -2841,66 +2841,66 @@ export namespace aws {
         /**
          * Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
          */
-        autoHeadroomPercentage?: pulumi.Input<number>;
+        autoHeadroomPercentage?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanLaunchSpecBlockDeviceMapping {
         /**
          * String. Set device name. (Example: `/dev/xvda`).
          */
-        deviceName?: pulumi.Input<string>;
+        deviceName?: pulumi.Input<string | undefined>;
         /**
          * Object. Set Elastic Block Store properties .
          */
-        ebs?: pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMappingEbs>;
+        ebs?: pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMappingEbs | undefined>;
         /**
          * String. Suppresses the specified device included in the block device mapping of the AMI. Default value is set to `unset` intentionally, which will appear in the terminal during a pulumi preview if this field is not configured or removed. This prevents confusion, as Terraform otherwise considers empty string as null.
          */
-        noDevice?: pulumi.Input<string>;
-        virtualName?: pulumi.Input<string>;
+        noDevice?: pulumi.Input<string | undefined>;
+        virtualName?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanLaunchSpecBlockDeviceMappingEbs {
         /**
          * Boolean. Flag to delete the EBS on instance termination.
          */
-        deleteOnTermination?: pulumi.Input<boolean>;
+        deleteOnTermination?: pulumi.Input<boolean | undefined>;
         /**
          * Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
          */
-        dynamicIops?: pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicIops>;
+        dynamicIops?: pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicIops | undefined>;
         /**
          * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
          */
-        dynamicVolumeSize?: pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize>;
+        dynamicVolumeSize?: pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize | undefined>;
         /**
          * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
          */
-        encrypted?: pulumi.Input<boolean>;
+        encrypted?: pulumi.Input<boolean | undefined>;
         /**
          * Int. The number of I/O operations per second (IOPS) that the volume supports.
          */
-        iops?: pulumi.Input<number>;
+        iops?: pulumi.Input<number | undefined>;
         /**
          * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
          */
-        kmsKeyId?: pulumi.Input<string>;
+        kmsKeyId?: pulumi.Input<string | undefined>;
         /**
          * (Optional) String. The Snapshot ID to mount by.
          */
-        snapshotId?: pulumi.Input<string>;
+        snapshotId?: pulumi.Input<string | undefined>;
         /**
          * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
          */
-        throughput?: pulumi.Input<number>;
+        throughput?: pulumi.Input<number | undefined>;
         /**
          * Int. The size, in GB of the volume.
          */
-        volumeSize?: pulumi.Input<number>;
+        volumeSize?: pulumi.Input<number | undefined>;
         /**
          * String. The type of the volume. (Example: `gp2`).
          */
-        volumeType?: pulumi.Input<string>;
+        volumeType?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanLaunchSpecBlockDeviceMappingEbsDynamicIops {
@@ -2934,14 +2934,14 @@ export namespace aws {
         /**
          * When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group. The parameter is recommended in case the useAsTemplateOnly (in spotinst.aws.Ocean resource) is set to true during Ocean resource creation.
          */
-        initialNodes?: pulumi.Input<number>;
+        initialNodes?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanLaunchSpecDeleteOptions {
         /**
          * When set to "true", all instances belonging to the deleted launch specification will be drained, detached, and terminated.
          */
-        deleteNodes?: pulumi.Input<boolean>;
+        deleteNodes?: pulumi.Input<boolean | undefined>;
         /**
          * When set to `true`, delete even if it is the last Virtual Node Group (also, the default Virtual Node Group must be configured with `useAsTemlateOnly = true`). Should be set at creation or update, but will be used only at deletion.
          */
@@ -2952,7 +2952,7 @@ export namespace aws {
         /**
          * A key-value pair, which defines an Elastic IP from the customer pool. Can be null.
          */
-        tagSelector?: pulumi.Input<inputs.aws.OceanLaunchSpecElasticIpPoolTagSelector>;
+        tagSelector?: pulumi.Input<inputs.aws.OceanLaunchSpecElasticIpPoolTagSelector | undefined>;
     }
 
     export interface OceanLaunchSpecElasticIpPoolTagSelector {
@@ -2963,28 +2963,28 @@ export namespace aws {
         /**
          * Elastic IP tag value. Can be null.
          */
-        tagValue?: pulumi.Input<string>;
+        tagValue?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanLaunchSpecEphemeralStorage {
         /**
          * Specify an alternative device name from which ephemeral storage calculations should be derived. This parameter is used when the ephemeral storage should not utilize the root device. Provide the device name configured in the VNG's BDM or AMI's BDM that differs from the default root device.
          */
-        ephemeralStorageDeviceName?: pulumi.Input<string>;
+        ephemeralStorageDeviceName?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanLaunchSpecImage {
         /**
          * Identifier of the image in AWS. Valid values: any string which is not empty or null.
          */
-        imageId?: pulumi.Input<string>;
+        imageId?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanLaunchSpecInstanceMetadataOptions {
         /**
          * An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
          */
-        httpPutResponseHopLimit?: pulumi.Input<number>;
+        httpPutResponseHopLimit?: pulumi.Input<number | undefined>;
         /**
          * Determines if a signed token is required or not. Valid values: `optional` or `required`.
          */
@@ -2995,82 +2995,82 @@ export namespace aws {
         /**
          * Value: `"RAID0"` The method for using the instance store volumes (must also be defined in the userData).
          */
-        instanceStorePolicyType?: pulumi.Input<string>;
+        instanceStorePolicyType?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanLaunchSpecInstanceTypesFilters {
         /**
          * The filtered instance types will belong to one of the categories types from this list. Valid values: `Accelerated_computing`, `Compute_optimized`, `General_purpose`, `Memory_optimized`, `Storage_optimized`.
          */
-        categories?: pulumi.Input<pulumi.Input<string>[]>;
+        categories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * The filtered instance types will have one of the disk type from this list. Valid values: `NVMe`, `EBS`, `SSD`, `HDD`.
          */
-        diskTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        diskTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
          */
-        excludeFamilies?: pulumi.Input<pulumi.Input<string>[]>;
+        excludeFamilies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * In case excludeMetal is set to true, metal types will not be available for scaling.
          */
-        excludeMetal?: pulumi.Input<boolean>;
+        excludeMetal?: pulumi.Input<boolean | undefined>;
         /**
          * The filtered instance types will have a hypervisor type from this list. Valid values: `nitro`, `xen`.
          */
-        hypervisors?: pulumi.Input<pulumi.Input<string>[]>;
+        hypervisors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
          */
-        includeFamilies?: pulumi.Input<pulumi.Input<string>[]>;
+        includeFamilies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Ena is supported or not.
          */
-        isEnaSupported?: pulumi.Input<string>;
+        isEnaSupported?: pulumi.Input<string | undefined>;
         /**
          * Maximum total number of GPUs.
          */
-        maxGpu?: pulumi.Input<number>;
+        maxGpu?: pulumi.Input<number | undefined>;
         /**
          * Maximum amount of Memory (GiB).
          */
-        maxMemoryGib?: pulumi.Input<number>;
+        maxMemoryGib?: pulumi.Input<number | undefined>;
         /**
          * Maximum Bandwidth in Gib/s of network performance.
          */
-        maxNetworkPerformance?: pulumi.Input<number>;
+        maxNetworkPerformance?: pulumi.Input<number | undefined>;
         /**
          * Maximum number of vcpus available.
          */
-        maxVcpu?: pulumi.Input<number>;
+        maxVcpu?: pulumi.Input<number | undefined>;
         /**
          * Minimum number of network interfaces (ENIs).
          */
-        minEnis?: pulumi.Input<number>;
+        minEnis?: pulumi.Input<number | undefined>;
         /**
          * Minimum total number of GPUs.
          */
-        minGpu?: pulumi.Input<number>;
+        minGpu?: pulumi.Input<number | undefined>;
         /**
          * Minimum amount of Memory (GiB).
          */
-        minMemoryGib?: pulumi.Input<number>;
+        minMemoryGib?: pulumi.Input<number | undefined>;
         /**
          * Minimum Bandwidth in Gib/s of network performance.
          */
-        minNetworkPerformance?: pulumi.Input<number>;
+        minNetworkPerformance?: pulumi.Input<number | undefined>;
         /**
          * Minimum number of vcpus available.
          */
-        minVcpu?: pulumi.Input<number>;
+        minVcpu?: pulumi.Input<number | undefined>;
         /**
          * The filtered instance types will have a root device types from this list. Valid values: `ebs`, or `instance-store`.
          */
-        rootDeviceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        rootDeviceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
          */
-        virtualizationTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        virtualizationTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface OceanLaunchSpecLabel {
@@ -3088,11 +3088,11 @@ export namespace aws {
         /**
          * Required if type is set to `TARGET_GROUP`
          */
-        arn?: pulumi.Input<string>;
+        arn?: pulumi.Input<string | undefined>;
         /**
          * Required if type is set to `CLASSIC`
          */
-        name?: pulumi.Input<string>;
+        name?: pulumi.Input<string | undefined>;
         /**
          * Can be set to `CLASSIC` or `TARGET_GROUP`
          */
@@ -3107,7 +3107,7 @@ export namespace aws {
         /**
          * The times when the optimization windows will apply. Required if `isEnabled` is `true`.
          */
-        windows?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecOptimizationWindowsWindow>[]>;
+        windows?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecOptimizationWindowsWindow>[] | undefined>;
     }
 
     export interface OceanLaunchSpecOptimizationWindowsWindow {
@@ -3126,18 +3126,18 @@ export namespace aws {
         /**
          * Set a maximum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
          */
-        maxInstanceCount?: pulumi.Input<number>;
+        maxInstanceCount?: pulumi.Input<number | undefined>;
         /**
          * Set a minimum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
          */
-        minInstanceCount?: pulumi.Input<number>;
+        minInstanceCount?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanLaunchSpecSchedulingShutdownHours {
         /**
          * Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node group remains in its current state.
          */
-        isEnabled?: pulumi.Input<boolean>;
+        isEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * The times that the shutdown hours will apply.
          */
@@ -3156,7 +3156,7 @@ export namespace aws {
         /**
          * The config of this scheduled task. Depends on the value of taskType.
          */
-        taskHeadrooms?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecSchedulingTaskTaskHeadroom>[]>;
+        taskHeadrooms?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecSchedulingTaskTaskHeadroom>[] | undefined>;
         /**
          * The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
          */
@@ -3167,15 +3167,15 @@ export namespace aws {
         /**
          * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
          */
-        cpuPerUnit?: pulumi.Input<number>;
+        cpuPerUnit?: pulumi.Input<number | undefined>;
         /**
          * Optionally configure the number of GPUS to allocate for each headroom unit.
          */
-        gpuPerUnit?: pulumi.Input<number>;
+        gpuPerUnit?: pulumi.Input<number | undefined>;
         /**
          * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
          */
-        memoryPerUnit?: pulumi.Input<number>;
+        memoryPerUnit?: pulumi.Input<number | undefined>;
         /**
          * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
          */
@@ -3186,45 +3186,45 @@ export namespace aws {
         /**
          * Set startup taint effect.
          */
-        effect?: pulumi.Input<string>;
+        effect?: pulumi.Input<string | undefined>;
         /**
          * Set startup taint key.
          */
-        key?: pulumi.Input<string>;
+        key?: pulumi.Input<string | undefined>;
         /**
          * Set startup taint value.
          */
-        value?: pulumi.Input<string>;
+        value?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanLaunchSpecStrategy {
         /**
          * The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
          */
-        drainingTimeout?: pulumi.Input<number>;
+        drainingTimeout?: pulumi.Input<number | undefined>;
         /**
          * Vng orientation configuration.
          */
-        orientation?: pulumi.Input<inputs.aws.OceanLaunchSpecStrategyOrientation>;
+        orientation?: pulumi.Input<inputs.aws.OceanLaunchSpecStrategyOrientation | undefined>;
         /**
          * The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
          */
-        spotPercentage?: pulumi.Input<number>;
+        spotPercentage?: pulumi.Input<number | undefined>;
         /**
          * When set as ‘true’, if savings plans commitments have available capacity, Ocean will utilize them alongside RIs (if exist) to maximize cost efficiency. If the value is set as 'null', it will automatically be inherited from the cluster level.
          */
-        utilizeCommitments?: pulumi.Input<boolean>;
+        utilizeCommitments?: pulumi.Input<boolean | undefined>;
         /**
          * When set as ‘true’, if reserved instances exist, Ocean will utilize them before launching spot instances. If the value is set as 'null', it will automatically be inherited from the cluster level.
          */
-        utilizeReservedInstances?: pulumi.Input<boolean>;
+        utilizeReservedInstances?: pulumi.Input<boolean | undefined>;
     }
 
     export interface OceanLaunchSpecStrategyOrientation {
         /**
          * Set this value to control the approach that Ocean takes while launching nodes. Valid values: `"costOriented"`, `"cheapest"`, `"balanced"`.
          */
-        availabilityVsCost?: pulumi.Input<string>;
+        availabilityVsCost?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanLaunchSpecTag {
@@ -3251,7 +3251,7 @@ export namespace aws {
         /**
          * Holds the roll configuration.
          */
-        rollConfig?: pulumi.Input<inputs.aws.OceanLaunchSpecUpdatePolicyRollConfig>;
+        rollConfig?: pulumi.Input<inputs.aws.OceanLaunchSpecUpdatePolicyRollConfig | undefined>;
         /**
          * Enables the roll.
          */
@@ -3266,36 +3266,36 @@ export namespace aws {
         /**
          * During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
          */
-        respectPdb?: pulumi.Input<boolean>;
+        respectPdb?: pulumi.Input<boolean | undefined>;
     }
 
     export interface OceanLoadBalancer {
         /**
          * Required if type is set to `TARGET_GROUP`
          */
-        arn?: pulumi.Input<string>;
+        arn?: pulumi.Input<string | undefined>;
         /**
          * Required if type is set to `CLASSIC`
          */
-        name?: pulumi.Input<string>;
+        name?: pulumi.Input<string | undefined>;
         /**
          * Can be set to `CLASSIC` or `TARGET_GROUP`
          */
-        type?: pulumi.Input<string>;
+        type?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanLogging {
         /**
          * Logging Export configuration.
          */
-        export?: pulumi.Input<inputs.aws.OceanLoggingExport>;
+        export?: pulumi.Input<inputs.aws.OceanLoggingExport | undefined>;
     }
 
     export interface OceanLoggingExport {
         /**
          * Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
          */
-        s3s?: pulumi.Input<pulumi.Input<inputs.aws.OceanLoggingExportS3>[]>;
+        s3s?: pulumi.Input<pulumi.Input<inputs.aws.OceanLoggingExportS3>[] | undefined>;
     }
 
     export interface OceanLoggingExportS3 {
@@ -3309,22 +3309,22 @@ export namespace aws {
         /**
          * Specify if Volume resources will be tagged with Virtual Node Group tags or Ocean tags.
          */
-        shouldTagVolumes?: pulumi.Input<boolean>;
+        shouldTagVolumes?: pulumi.Input<boolean | undefined>;
     }
 
     export interface OceanScheduledTask {
         /**
          * An object used to specify time windows during which certain optimization constraints can be eased.
          */
-        optimizationWindows?: pulumi.Input<inputs.aws.OceanScheduledTaskOptimizationWindows>;
+        optimizationWindows?: pulumi.Input<inputs.aws.OceanScheduledTaskOptimizationWindows | undefined>;
         /**
          * Set shutdown hours for cluster object.
          */
-        shutdownHours?: pulumi.Input<inputs.aws.OceanScheduledTaskShutdownHours>;
+        shutdownHours?: pulumi.Input<inputs.aws.OceanScheduledTaskShutdownHours | undefined>;
         /**
          * The scheduling tasks for the cluster.
          */
-        tasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanScheduledTaskTask>[]>;
+        tasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanScheduledTaskTask>[] | undefined>;
     }
 
     export interface OceanScheduledTaskOptimizationWindows {
@@ -3335,7 +3335,7 @@ export namespace aws {
         /**
          * The times when the optimization windows will apply. Required if `isEnabled` is `true`.
          */
-        windows?: pulumi.Input<pulumi.Input<inputs.aws.OceanScheduledTaskOptimizationWindowsWindow>[]>;
+        windows?: pulumi.Input<pulumi.Input<inputs.aws.OceanScheduledTaskOptimizationWindowsWindow>[] | undefined>;
     }
 
     export interface OceanScheduledTaskOptimizationWindowsWindow {
@@ -3357,7 +3357,7 @@ export namespace aws {
         /**
          * Toggle the shutdown hours task. (Example: `true`).
          */
-        isEnabled?: pulumi.Input<boolean>;
+        isEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
          */
@@ -3376,7 +3376,7 @@ export namespace aws {
         /**
          * This filed will be compatible to the `taskType` field. If `taskType` is defined as `clusterRoll`, user cluster roll object in parameters.
          */
-        parameters?: pulumi.Input<inputs.aws.OceanScheduledTaskTaskParameters>;
+        parameters?: pulumi.Input<inputs.aws.OceanScheduledTaskTaskParameters | undefined>;
         /**
          * Valid values: `clusterRoll` `amiAutoUpdate`. Required for `cluster.scheduling.tasks`
          */
@@ -3387,83 +3387,83 @@ export namespace aws {
         /**
          * Set amiAutoUpdate object
          */
-        amiAutoUpdate?: pulumi.Input<inputs.aws.OceanScheduledTaskTaskParametersAmiAutoUpdate>;
+        amiAutoUpdate?: pulumi.Input<inputs.aws.OceanScheduledTaskTaskParametersAmiAutoUpdate | undefined>;
         /**
          * Set clusterRoll object
          */
-        parametersClusterRoll?: pulumi.Input<inputs.aws.OceanScheduledTaskTaskParametersParametersClusterRoll>;
+        parametersClusterRoll?: pulumi.Input<inputs.aws.OceanScheduledTaskTaskParametersParametersClusterRoll | undefined>;
     }
 
     export interface OceanScheduledTaskTaskParametersAmiAutoUpdate {
         /**
          * Set clusterRoll object
          */
-        amiAutoUpdateClusterRoll?: pulumi.Input<inputs.aws.OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll>;
+        amiAutoUpdateClusterRoll?: pulumi.Input<inputs.aws.OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll | undefined>;
         /**
          * When the AMI is updated according to the configuration set, a cluster roll can be triggered
          */
-        applyRoll?: pulumi.Input<boolean>;
+        applyRoll?: pulumi.Input<boolean | undefined>;
         /**
          * When set to 'true', the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either "patch" or "minorVersion" must be true.
          */
-        minorVersion?: pulumi.Input<boolean>;
+        minorVersion?: pulumi.Input<boolean | undefined>;
         /**
          * When set to 'true', the auto-update process will update the VNGs’ images with the latest security patches. either "patch" or "minorVersion" must be true.
          */
-        patch?: pulumi.Input<boolean>;
+        patch?: pulumi.Input<boolean | undefined>;
     }
 
     export interface OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll {
         /**
          * Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
          */
-        batchMinHealthyPercentage?: pulumi.Input<number>;
+        batchMinHealthyPercentage?: pulumi.Input<number | undefined>;
         /**
          * Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
          */
-        batchSizePercentage?: pulumi.Input<number>;
+        batchSizePercentage?: pulumi.Input<number | undefined>;
         /**
          * Add a `comment` description for the roll. The `comment` is limited to 256 chars
          */
-        comment?: pulumi.Input<string>;
+        comment?: pulumi.Input<string | undefined>;
         /**
          * During the roll, if the parameter is set to true we honor PDB during the instance replacement.
          */
-        respectPdb?: pulumi.Input<boolean>;
+        respectPdb?: pulumi.Input<boolean | undefined>;
     }
 
     export interface OceanScheduledTaskTaskParametersParametersClusterRoll {
         /**
          * Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
          */
-        batchMinHealthyPercentage?: pulumi.Input<number>;
+        batchMinHealthyPercentage?: pulumi.Input<number | undefined>;
         /**
          * Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
          */
-        batchSizePercentage?: pulumi.Input<number>;
+        batchSizePercentage?: pulumi.Input<number | undefined>;
         /**
          * Add a `comment` description for the roll. The `comment` is limited to 256 chars
          */
-        comment?: pulumi.Input<string>;
+        comment?: pulumi.Input<string | undefined>;
         /**
          * During the roll, if the parameter is set to true we honor PDB during the instance replacement.
          */
-        respectPdb?: pulumi.Input<boolean>;
+        respectPdb?: pulumi.Input<boolean | undefined>;
     }
 
     export interface OceanStartupTaint {
         /**
          * Set startup taint effect.
          */
-        effect?: pulumi.Input<string>;
+        effect?: pulumi.Input<string | undefined>;
         /**
          * Set startup taint key.
          */
-        key?: pulumi.Input<string>;
+        key?: pulumi.Input<string | undefined>;
         /**
          * Set startup taint value.
          */
-        value?: pulumi.Input<string>;
+        value?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanTag {
@@ -3481,19 +3481,19 @@ export namespace aws {
         /**
          * will update instance tags on the fly without rolling the cluster.
          */
-        autoApplyTags?: pulumi.Input<boolean>;
+        autoApplyTags?: pulumi.Input<boolean | undefined>;
         /**
          * Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
          */
-        conditionedRoll?: pulumi.Input<boolean>;
+        conditionedRoll?: pulumi.Input<boolean | undefined>;
         /**
          * A custom list of attributes will trigger the cluster roll operation (overrides the predefined list of parameters). Valid only when the `conditionedRoll` parameter is set to true. (Valid values: `"subnetIds"`,`"whitelist"`,`"blacklist"`,`"userData"`,`"imageId"`,`"securityGroups"`,`"keyName"`,`"iamInstanceProfile"`,`"associatePublicIpAddress"`,`"loadBalancers"`,`"instanceMetadataOptions"`,`"ebsOptimized"`,`"rootVolumeSize"`)
          */
-        conditionedRollParams?: pulumi.Input<pulumi.Input<string>[]>;
+        conditionedRollParams?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * While used, you can control whether the group should perform a deployment after an update to the configuration.
          */
-        rollConfig?: pulumi.Input<inputs.aws.OceanUpdatePolicyRollConfig>;
+        rollConfig?: pulumi.Input<inputs.aws.OceanUpdatePolicyRollConfig | undefined>;
         /**
          * Enables the roll.
          */
@@ -3504,7 +3504,7 @@ export namespace aws {
         /**
          * Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
          */
-        batchMinHealthyPercentage?: pulumi.Input<number>;
+        batchMinHealthyPercentage?: pulumi.Input<number | undefined>;
         /**
          * Sets the percentage of the instances to deploy in each batch.
          */
@@ -3512,11 +3512,11 @@ export namespace aws {
         /**
          * List of virtual node group identifiers to be rolled.
          */
-        launchSpecIds?: pulumi.Input<pulumi.Input<string>[]>;
+        launchSpecIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
          */
-        respectPdb?: pulumi.Input<boolean>;
+        respectPdb?: pulumi.Input<boolean | undefined>;
     }
 
     export interface SuspensionSuspension {
@@ -3532,280 +3532,280 @@ export namespace azure {
         /**
          * Auto Scaling scale down operations.
          */
-        autoscaleDown?: pulumi.Input<inputs.azure.OceanNpAutoscalerAutoscaleDown>;
+        autoscaleDown?: pulumi.Input<inputs.azure.OceanNpAutoscalerAutoscaleDown | undefined>;
         /**
          * Spare resource capacity management enabling fast assignment of pods without waiting for new resources to launch.
          */
-        autoscaleHeadroom?: pulumi.Input<inputs.azure.OceanNpAutoscalerAutoscaleHeadroom>;
+        autoscaleHeadroom?: pulumi.Input<inputs.azure.OceanNpAutoscalerAutoscaleHeadroom | undefined>;
         /**
          * Enable the Ocean Kubernetes Autoscaler.
          */
-        autoscaleIsEnabled?: pulumi.Input<boolean>;
+        autoscaleIsEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * Optionally set upper and lower bounds on the resource usage of the cluster.
          */
-        resourceLimits?: pulumi.Input<inputs.azure.OceanNpAutoscalerResourceLimits>;
+        resourceLimits?: pulumi.Input<inputs.azure.OceanNpAutoscalerResourceLimits | undefined>;
     }
 
     export interface OceanNpAutoscalerAutoscaleDown {
         /**
          * The maximum percentage allowed to scale down in a single scaling action.
          */
-        maxScaleDownPercentage?: pulumi.Input<number>;
+        maxScaleDownPercentage?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanNpAutoscalerAutoscaleHeadroom {
         /**
          * [Automatic headroom](https://docs.spot.io/ocean/features/headroom?id=automatic-headroom) configuration.
          */
-        automatic?: pulumi.Input<inputs.azure.OceanNpAutoscalerAutoscaleHeadroomAutomatic>;
+        automatic?: pulumi.Input<inputs.azure.OceanNpAutoscalerAutoscaleHeadroomAutomatic | undefined>;
     }
 
     export interface OceanNpAutoscalerAutoscaleHeadroomAutomatic {
         /**
          * Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
          */
-        isEnabled?: pulumi.Input<boolean>;
+        isEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom.
          */
-        percentage?: pulumi.Input<number>;
+        percentage?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanNpAutoscalerResourceLimits {
         /**
          * The maximum memory in GiB units that can be allocated to the cluster.
          */
-        maxMemoryGib?: pulumi.Input<number>;
+        maxMemoryGib?: pulumi.Input<number | undefined>;
         /**
          * The maximum cpu in vCpu units that can be allocated to the cluster.
          */
-        maxVcpu?: pulumi.Input<number>;
+        maxVcpu?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanNpFilters {
         /**
          * In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
          */
-        acceleratedNetworking?: pulumi.Input<string>;
+        acceleratedNetworking?: pulumi.Input<string | undefined>;
         /**
          * The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
          */
-        architectures?: pulumi.Input<pulumi.Input<string>[]>;
+        architectures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * The filtered vm sizes will support at least one of the classes from this list.
          */
-        diskPerformance?: pulumi.Input<string>;
+        diskPerformance?: pulumi.Input<string | undefined>;
         /**
          * Vm sizes belonging to a series from the list will not be available for scaling
          */
-        excludeSeries?: pulumi.Input<pulumi.Input<string>[]>;
+        excludeSeries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * The filtered gpu types will belong to one of the gpu types from this list.
          */
-        gpuTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        gpuTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Maximum number of GPUs available.
          */
-        maxGpu?: pulumi.Input<number>;
+        maxGpu?: pulumi.Input<number | undefined>;
         /**
          * Maximum amount of Memory (GiB).
          */
-        maxMemoryGib?: pulumi.Input<number>;
+        maxMemoryGib?: pulumi.Input<number | undefined>;
         /**
          * Maximum number of vcpus available.
          */
-        maxVcpu?: pulumi.Input<number>;
+        maxVcpu?: pulumi.Input<number | undefined>;
         /**
          * Minimum number of data disks available.
          */
-        minDisk?: pulumi.Input<number>;
+        minDisk?: pulumi.Input<number | undefined>;
         /**
          * Minimum number of GPUs available.
          */
-        minGpu?: pulumi.Input<number>;
+        minGpu?: pulumi.Input<number | undefined>;
         /**
          * Minimum amount of Memory (GiB).
          */
-        minMemoryGib?: pulumi.Input<number>;
+        minMemoryGib?: pulumi.Input<number | undefined>;
         /**
          * Minimum number of network interfaces.
          */
-        minNics?: pulumi.Input<number>;
+        minNics?: pulumi.Input<number | undefined>;
         /**
          * Minimum number of vcpus available.
          */
-        minVcpu?: pulumi.Input<number>;
+        minVcpu?: pulumi.Input<number | undefined>;
         /**
          * Vm sizes belonging to a series from the list will be available for scaling. We can specify include list and series can be specified with capital or small letters, with space, without space or with underscore '_' .  For example all of these "DSv2", "Ds v2", "dsV2" refer to same DS_v2 series.
          */
-        series?: pulumi.Input<pulumi.Input<string>[]>;
+        series?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * The filtered vm types will belong to one of the vm types from this list.
          */
-        vmTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        vmTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface OceanNpHeadroom {
         /**
          * Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
          */
-        cpuPerUnit?: pulumi.Input<number>;
+        cpuPerUnit?: pulumi.Input<number | undefined>;
         /**
          * Amount of GPU to allocate for headroom unit.
          */
-        gpuPerUnit?: pulumi.Input<number>;
+        gpuPerUnit?: pulumi.Input<number | undefined>;
         /**
          * Configure the amount of memory (MiB) to allocate the headroom.
          */
-        memoryPerUnit?: pulumi.Input<number>;
+        memoryPerUnit?: pulumi.Input<number | undefined>;
         /**
          * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
          */
-        numOfUnits?: pulumi.Input<number>;
+        numOfUnits?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanNpHealth {
         /**
          * The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.
          */
-        gracePeriod?: pulumi.Input<number>;
+        gracePeriod?: pulumi.Input<number | undefined>;
         /**
          * The amount of time, in seconds, a node is allowed to remain unhealthy after the grace period has elapsed before Ocean automatically replaces it. Valid values are in range `[120-3600]`.
          */
-        healthCheckUnhealthyDurationBeforeReplacement?: pulumi.Input<number>;
+        healthCheckUnhealthyDurationBeforeReplacement?: pulumi.Input<number | undefined>;
         /**
          * Indicates whether Ocean automatically replaces nodes that remain in a NotReady or Unschedulable state. When `false`, unhealthy nodes are detected but not replaced. When `true`, unhealthy nodes are automatically replaced.
          */
-        shouldReplaceUnhealthyInstances?: pulumi.Input<boolean>;
+        shouldReplaceUnhealthyInstances?: pulumi.Input<boolean | undefined>;
     }
 
     export interface OceanNpLinuxOsConfig {
         /**
          * System Controls
          */
-        sysctls?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpLinuxOsConfigSysctl>[]>;
+        sysctls?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpLinuxOsConfigSysctl>[] | undefined>;
     }
 
     export interface OceanNpLinuxOsConfigSysctl {
         /**
          * Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
          */
-        vmMaxMapCount?: pulumi.Input<number>;
+        vmMaxMapCount?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanNpLogging {
         /**
          * The Ocean AKS Logging Export object.
          */
-        export?: pulumi.Input<inputs.azure.OceanNpLoggingExport>;
+        export?: pulumi.Input<inputs.azure.OceanNpLoggingExport | undefined>;
     }
 
     export interface OceanNpLoggingExport {
         /**
          * Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/ocean/features/log-integration-with-azure-blob?id=log-integration-with-azure-blob) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
          */
-        azureBlobs?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpLoggingExportAzureBlob>[]>;
+        azureBlobs?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpLoggingExportAzureBlob>[] | undefined>;
     }
 
     export interface OceanNpLoggingExportAzureBlob {
         /**
          * The identifier of The Azure Blob data integration to export the logs to.
          */
-        id?: pulumi.Input<string>;
+        id?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanNpScheduling {
         /**
          * An object used to specify times that the nodes in the virtual node group will be stopped.
          */
-        shutdownHours?: pulumi.Input<inputs.azure.OceanNpSchedulingShutdownHours>;
-        suspensionHours?: pulumi.Input<inputs.azure.OceanNpSchedulingSuspensionHours>;
-        tasks?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpSchedulingTask>[]>;
+        shutdownHours?: pulumi.Input<inputs.azure.OceanNpSchedulingShutdownHours | undefined>;
+        suspensionHours?: pulumi.Input<inputs.azure.OceanNpSchedulingSuspensionHours | undefined>;
+        tasks?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpSchedulingTask>[] | undefined>;
     }
 
     export interface OceanNpSchedulingShutdownHours {
-        isEnabled?: pulumi.Input<boolean>;
+        isEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * The times that the shutdown hours will apply. Required if `isEnabled` is true.
          */
-        timeWindows?: pulumi.Input<pulumi.Input<string>[]>;
+        timeWindows?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface OceanNpSchedulingSuspensionHours {
-        isEnabled?: pulumi.Input<boolean>;
+        isEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * The times that the shutdown hours will apply. Required if `isEnabled` is true.
          */
-        timeWindows?: pulumi.Input<pulumi.Input<string>[]>;
+        timeWindows?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface OceanNpSchedulingTask {
         cronExpression: pulumi.Input<string>;
         isEnabled: pulumi.Input<boolean>;
-        parameters?: pulumi.Input<inputs.azure.OceanNpSchedulingTaskParameters>;
+        parameters?: pulumi.Input<inputs.azure.OceanNpSchedulingTaskParameters | undefined>;
         taskType: pulumi.Input<string>;
     }
 
     export interface OceanNpSchedulingTaskParameters {
-        parametersClusterRoll?: pulumi.Input<inputs.azure.OceanNpSchedulingTaskParametersParametersClusterRoll>;
-        parametersUpgradeConfig?: pulumi.Input<inputs.azure.OceanNpSchedulingTaskParametersParametersUpgradeConfig>;
+        parametersClusterRoll?: pulumi.Input<inputs.azure.OceanNpSchedulingTaskParametersParametersClusterRoll | undefined>;
+        parametersUpgradeConfig?: pulumi.Input<inputs.azure.OceanNpSchedulingTaskParametersParametersUpgradeConfig | undefined>;
     }
 
     export interface OceanNpSchedulingTaskParametersParametersClusterRoll {
         /**
          * Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
          */
-        batchMinHealthyPercentage?: pulumi.Input<number>;
+        batchMinHealthyPercentage?: pulumi.Input<number | undefined>;
         /**
          * Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
          */
-        batchSizePercentage?: pulumi.Input<number>;
+        batchSizePercentage?: pulumi.Input<number | undefined>;
         /**
          * Add a comment description for the roll. The comment is limited to 256 chars and optional.
          */
-        comment?: pulumi.Input<string>;
+        comment?: pulumi.Input<string | undefined>;
         /**
          * During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
          */
-        respectPdb?: pulumi.Input<boolean>;
+        respectPdb?: pulumi.Input<boolean | undefined>;
         /**
          * During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
          */
-        respectRestrictScaleDown?: pulumi.Input<boolean>;
+        respectRestrictScaleDown?: pulumi.Input<boolean | undefined>;
         /**
          * List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
          */
-        vngIds?: pulumi.Input<pulumi.Input<string>[]>;
+        vngIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface OceanNpSchedulingTaskParametersParametersUpgradeConfig {
-        applyRoll?: pulumi.Input<boolean>;
-        rollParameters?: pulumi.Input<inputs.azure.OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters>;
-        scopeVersion?: pulumi.Input<string>;
+        applyRoll?: pulumi.Input<boolean | undefined>;
+        rollParameters?: pulumi.Input<inputs.azure.OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters | undefined>;
+        scopeVersion?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParameters {
         /**
          * Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
          */
-        batchMinHealthyPercentage?: pulumi.Input<number>;
+        batchMinHealthyPercentage?: pulumi.Input<number | undefined>;
         /**
          * Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
          */
-        batchSizePercentage?: pulumi.Input<number>;
+        batchSizePercentage?: pulumi.Input<number | undefined>;
         /**
          * Add a comment description for the roll. The comment is limited to 256 chars and optional.
          */
-        comment?: pulumi.Input<string>;
+        comment?: pulumi.Input<string | undefined>;
         /**
          * During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
          */
-        respectPdb?: pulumi.Input<boolean>;
+        respectPdb?: pulumi.Input<boolean | undefined>;
         /**
          * During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
          */
-        respectRestrictScaleDown?: pulumi.Input<boolean>;
+        respectRestrictScaleDown?: pulumi.Input<boolean | undefined>;
     }
 
     export interface OceanNpTaint {
@@ -3827,11 +3827,11 @@ export namespace azure {
         /**
          * Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
          */
-        conditionedRoll?: pulumi.Input<boolean>;
+        conditionedRoll?: pulumi.Input<boolean | undefined>;
         /**
          * While used, you can control whether the group should perform a deployment after an update to the configuration.
          */
-        rollConfig?: pulumi.Input<inputs.azure.OceanNpUpdatePolicyRollConfig>;
+        rollConfig?: pulumi.Input<inputs.azure.OceanNpUpdatePolicyRollConfig | undefined>;
         /**
          * If set to true along with the cluster update, roll will be triggered.
          */
@@ -3842,149 +3842,149 @@ export namespace azure {
         /**
          * Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
          */
-        batchMinHealthyPercentage?: pulumi.Input<number>;
+        batchMinHealthyPercentage?: pulumi.Input<number | undefined>;
         /**
          * Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
          */
-        batchSizePercentage?: pulumi.Input<number>;
+        batchSizePercentage?: pulumi.Input<number | undefined>;
         /**
          * Add a comment description for the roll. The comment is limited to 256 chars and optional.
          */
-        comment?: pulumi.Input<string>;
+        comment?: pulumi.Input<string | undefined>;
         /**
          * List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
          */
-        nodeNames?: pulumi.Input<pulumi.Input<string>[]>;
+        nodeNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
          */
-        nodePoolNames?: pulumi.Input<pulumi.Input<string>[]>;
+        nodePoolNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
          */
-        respectPdb?: pulumi.Input<boolean>;
+        respectPdb?: pulumi.Input<boolean | undefined>;
         /**
          * During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
          */
-        respectRestrictScaleDown?: pulumi.Input<boolean>;
+        respectRestrictScaleDown?: pulumi.Input<boolean | undefined>;
         /**
          * List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
          */
-        vngIds?: pulumi.Input<pulumi.Input<string>[]>;
+        vngIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface OceanNpVirtualNodeGroupFilters {
         /**
          * In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.
          */
-        acceleratedNetworking?: pulumi.Input<string>;
+        acceleratedNetworking?: pulumi.Input<string | undefined>;
         /**
          * The filtered vm sizes will support at least one of the architectures from this list. x8664 includes both intel64 and amd64.
          */
-        architectures?: pulumi.Input<pulumi.Input<string>[]>;
+        architectures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * The filtered vm sizes will support at least one of the classes from this list.
          */
-        diskPerformance?: pulumi.Input<string>;
+        diskPerformance?: pulumi.Input<string | undefined>;
         /**
          * Vm sizes belonging to a series from the list will not be available for scaling.
          */
-        excludeSeries?: pulumi.Input<pulumi.Input<string>[]>;
+        excludeSeries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * The filtered gpu types will belong to one of the gpu types from this list.
          */
-        gpuTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        gpuTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Maximum number of GPUs available.
          */
-        maxGpu?: pulumi.Input<number>;
+        maxGpu?: pulumi.Input<number | undefined>;
         /**
          * Maximum amount of Memory (GiB).
          */
-        maxMemoryGib?: pulumi.Input<number>;
+        maxMemoryGib?: pulumi.Input<number | undefined>;
         /**
          * Maximum number of vcpus available.
          */
-        maxVcpu?: pulumi.Input<number>;
+        maxVcpu?: pulumi.Input<number | undefined>;
         /**
          * Minimum number of data disks available.
          */
-        minDisk?: pulumi.Input<number>;
+        minDisk?: pulumi.Input<number | undefined>;
         /**
          * Minimum number of GPUs available.
          */
-        minGpu?: pulumi.Input<number>;
+        minGpu?: pulumi.Input<number | undefined>;
         /**
          * Minimum amount of Memory (GiB).
          */
-        minMemoryGib?: pulumi.Input<number>;
+        minMemoryGib?: pulumi.Input<number | undefined>;
         /**
          * Minimum number of network interfaces.
          */
-        minNics?: pulumi.Input<number>;
+        minNics?: pulumi.Input<number | undefined>;
         /**
          * Minimum number of vcpus available.
          */
-        minVcpu?: pulumi.Input<number>;
+        minVcpu?: pulumi.Input<number | undefined>;
         /**
          * Vm sizes belonging to a series from the list will be available for scaling.
          */
-        series?: pulumi.Input<pulumi.Input<string>[]>;
+        series?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * The filtered vm types will belong to one of the vm types from this list.
          */
-        vmTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        vmTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface OceanNpVirtualNodeGroupHeadroom {
         /**
          * Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
          */
-        cpuPerUnit?: pulumi.Input<number>;
+        cpuPerUnit?: pulumi.Input<number | undefined>;
         /**
          * Amount of GPU to allocate for headroom unit.
          */
-        gpuPerUnit?: pulumi.Input<number>;
+        gpuPerUnit?: pulumi.Input<number | undefined>;
         /**
          * Configure the amount of memory (MiB) to allocate the headroom.
          */
-        memoryPerUnit?: pulumi.Input<number>;
+        memoryPerUnit?: pulumi.Input<number | undefined>;
         /**
          * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
          */
-        numOfUnits?: pulumi.Input<number>;
+        numOfUnits?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanNpVirtualNodeGroupLinuxOsConfig {
         /**
          * System Controls
          */
-        sysctls?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupLinuxOsConfigSysctl>[]>;
+        sysctls?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupLinuxOsConfigSysctl>[] | undefined>;
     }
 
     export interface OceanNpVirtualNodeGroupLinuxOsConfigSysctl {
         /**
          * Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
          */
-        vmMaxMapCount?: pulumi.Input<number>;
+        vmMaxMapCount?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanNpVirtualNodeGroupScheduling {
         /**
          * An object used to specify times that the nodes in the virtual node group will be stopped.
          */
-        shutdownHours?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupSchedulingShutdownHours>;
+        shutdownHours?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupSchedulingShutdownHours | undefined>;
     }
 
     export interface OceanNpVirtualNodeGroupSchedulingShutdownHours {
         /**
          * Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node gorup remains in its current state.
          */
-        isEnabled?: pulumi.Input<boolean>;
+        isEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * The times that the shutdown hours will apply. Required if isEnabled is true.
          */
-        timeWindows?: pulumi.Input<pulumi.Input<string>[]>;
+        timeWindows?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface OceanNpVirtualNodeGroupTaint {
@@ -4006,11 +4006,11 @@ export namespace azure {
         /**
          * Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
          */
-        conditionedRoll?: pulumi.Input<boolean>;
+        conditionedRoll?: pulumi.Input<boolean | undefined>;
         /**
          * While used, you can control whether the group should perform a deployment after an update to the configuration.
          */
-        rollConfig?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupUpdatePolicyRollConfig>;
+        rollConfig?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupUpdatePolicyRollConfig | undefined>;
         /**
          * If set to true along with the vng update, roll will be triggered.
          */
@@ -4021,47 +4021,47 @@ export namespace azure {
         /**
          * Indicates the threshold of minimum healthy nodes in single batch. If the amount of healthy nodes in single batch is under the threshold, the roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
          */
-        batchMinHealthyPercentage?: pulumi.Input<number>;
+        batchMinHealthyPercentage?: pulumi.Input<number | undefined>;
         /**
          * Value as a percent to set the size of a batch in a roll. Valid values are 0-100. In case of null as value, the default value in the backend will be 20%.
          */
-        batchSizePercentage?: pulumi.Input<number>;
+        batchSizePercentage?: pulumi.Input<number | undefined>;
         /**
          * Add a comment description for the roll. The comment is limited to 256 chars and optional.
          */
-        comment?: pulumi.Input<string>;
+        comment?: pulumi.Input<string | undefined>;
         /**
          * List of node names to be rolled. Each identifier is a string. nodeNames can be null, and cannot be used together with nodePoolNames and vngIds.
          */
-        nodeNames?: pulumi.Input<pulumi.Input<string>[]>;
+        nodeNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * List of node pools to be rolled. Each node pool name is a string. nodePoolNames can be null, and cannot be used together with nodeNames and vngIds.
          */
-        nodePoolNames?: pulumi.Input<pulumi.Input<string>[]>;
+        nodePoolNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * During the roll, if the parameter is set to true we honor PDB during the nodes replacement.
          */
-        respectPdb?: pulumi.Input<boolean>;
+        respectPdb?: pulumi.Input<boolean | undefined>;
         /**
          * During the roll, if the parameter is set to true we honor Restrict Scale Down label during the nodes replacement.
          */
-        respectRestrictScaleDown?: pulumi.Input<boolean>;
+        respectRestrictScaleDown?: pulumi.Input<boolean | undefined>;
         /**
          * List of virtual node group identifiers to be rolled. Each identifier is a string. vngIds can be null, and cannot be used together with nodeNames and nodePoolNames.
          */
-        vngIds?: pulumi.Input<pulumi.Input<string>[]>;
+        vngIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface OceanNpVngTemplateScheduling {
-        vngTemplateShutdownHours?: pulumi.Input<inputs.azure.OceanNpVngTemplateSchedulingVngTemplateShutdownHours>;
+        vngTemplateShutdownHours?: pulumi.Input<inputs.azure.OceanNpVngTemplateSchedulingVngTemplateShutdownHours | undefined>;
     }
 
     export interface OceanNpVngTemplateSchedulingVngTemplateShutdownHours {
-        isEnabled?: pulumi.Input<boolean>;
+        isEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * The times that the shutdown hours will apply. Required if `isEnabled` is true.
          */
-        timeWindows?: pulumi.Input<pulumi.Input<string>[]>;
+        timeWindows?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 }
 
@@ -4070,72 +4070,72 @@ export namespace ecs {
         /**
          * The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
          */
-        autoHeadroomPercentage?: pulumi.Input<number>;
+        autoHeadroomPercentage?: pulumi.Input<number | undefined>;
         /**
          * Cooldown period between scaling actions.
          */
-        cooldown?: pulumi.Input<number>;
+        cooldown?: pulumi.Input<number | undefined>;
         /**
          * Auto Scaling scale down operations.
          */
-        down?: pulumi.Input<inputs.ecs.OceanAutoscalerDown>;
+        down?: pulumi.Input<inputs.ecs.OceanAutoscalerDown | undefined>;
         /**
          * When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
          */
-        enableAutomaticAndManualHeadroom?: pulumi.Input<boolean>;
+        enableAutomaticAndManualHeadroom?: pulumi.Input<boolean | undefined>;
         /**
          * Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
          */
-        headroom?: pulumi.Input<inputs.ecs.OceanAutoscalerHeadroom>;
+        headroom?: pulumi.Input<inputs.ecs.OceanAutoscalerHeadroom | undefined>;
         /**
          * Automatically configure and optimize headroom resources.
          */
-        isAutoConfig?: pulumi.Input<boolean>;
+        isAutoConfig?: pulumi.Input<boolean | undefined>;
         /**
          * Enable the Ocean ECS autoscaler.
          */
-        isEnabled?: pulumi.Input<boolean>;
+        isEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * Optionally set upper and lower bounds on the resource usage of the cluster.
          */
-        resourceLimits?: pulumi.Input<inputs.ecs.OceanAutoscalerResourceLimits>;
+        resourceLimits?: pulumi.Input<inputs.ecs.OceanAutoscalerResourceLimits | undefined>;
         /**
          * Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
          */
-        shouldScaleDownNonServiceTasks?: pulumi.Input<boolean>;
+        shouldScaleDownNonServiceTasks?: pulumi.Input<boolean | undefined>;
     }
 
     export interface OceanAutoscalerDown {
         /**
          * Would represent the maximum % to scale-down. Number between 1-100.
          */
-        maxScaleDownPercentage?: pulumi.Input<number>;
+        maxScaleDownPercentage?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanAutoscalerHeadroom {
         /**
          * Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
          */
-        cpuPerUnit?: pulumi.Input<number>;
+        cpuPerUnit?: pulumi.Input<number | undefined>;
         /**
          * Optionally configure the amount of memory (MB) to allocate the headroom.
          */
-        memoryPerUnit?: pulumi.Input<number>;
+        memoryPerUnit?: pulumi.Input<number | undefined>;
         /**
          * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
          */
-        numOfUnits?: pulumi.Input<number>;
+        numOfUnits?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanAutoscalerResourceLimits {
         /**
          * The maximum memory in GiB units that can be allocated to the cluster.
          */
-        maxMemoryGib?: pulumi.Input<number>;
+        maxMemoryGib?: pulumi.Input<number | undefined>;
         /**
          * The maximum cpu in vCPU units that can be allocated to the cluster.
          */
-        maxVcpu?: pulumi.Input<number>;
+        maxVcpu?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanBlockDeviceMapping {
@@ -4146,51 +4146,51 @@ export namespace ecs {
         /**
          * Object. Set Elastic Block Store properties.
          */
-        ebs?: pulumi.Input<inputs.ecs.OceanBlockDeviceMappingEbs>;
+        ebs?: pulumi.Input<inputs.ecs.OceanBlockDeviceMappingEbs | undefined>;
         /**
          * String. Suppresses the specified device included in the block device mapping of the AMI.
          */
-        noDevice?: pulumi.Input<string>;
-        virtualName?: pulumi.Input<string>;
+        noDevice?: pulumi.Input<string | undefined>;
+        virtualName?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanBlockDeviceMappingEbs {
         /**
          * Boolean. Toggles EBS deletion upon instance termination.
          */
-        deleteOnTermination?: pulumi.Input<boolean>;
+        deleteOnTermination?: pulumi.Input<boolean | undefined>;
         /**
          * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
          */
-        dynamicVolumeSize?: pulumi.Input<inputs.ecs.OceanBlockDeviceMappingEbsDynamicVolumeSize>;
+        dynamicVolumeSize?: pulumi.Input<inputs.ecs.OceanBlockDeviceMappingEbsDynamicVolumeSize | undefined>;
         /**
          * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
          */
-        encrypted?: pulumi.Input<boolean>;
+        encrypted?: pulumi.Input<boolean | undefined>;
         /**
          * Int. The number of I/O operations per second (IOPS) that the volume supports.
          */
-        iops?: pulumi.Input<number>;
+        iops?: pulumi.Input<number | undefined>;
         /**
          * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
          */
-        kmsKeyId?: pulumi.Input<string>;
+        kmsKeyId?: pulumi.Input<string | undefined>;
         /**
          * (Optional) String. The snapshot ID to mount by.
          */
-        snapshotId?: pulumi.Input<string>;
+        snapshotId?: pulumi.Input<string | undefined>;
         /**
          * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
          */
-        throughput?: pulumi.Input<number>;
+        throughput?: pulumi.Input<number | undefined>;
         /**
          * Int. The size (in GB) of the volume.
          */
-        volumeSize?: pulumi.Input<number>;
+        volumeSize?: pulumi.Input<number | undefined>;
         /**
          * String. The type of the volume. Example: `gp2`.
          */
-        volumeType?: pulumi.Input<string>;
+        volumeType?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanBlockDeviceMappingEbsDynamicVolumeSize {
@@ -4212,87 +4212,87 @@ export namespace ecs {
         /**
          * You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`balanced`,`cheapest`.
          */
-        availabilityVsCost?: pulumi.Input<string>;
+        availabilityVsCost?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanFilters {
         /**
          * The filtered instance types will support at least one of the architectures from this list.
          */
-        architectures?: pulumi.Input<pulumi.Input<string>[]>;
+        architectures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * The filtered instance types will belong to one of the categories types from this list.
          */
-        categories?: pulumi.Input<pulumi.Input<string>[]>;
+        categories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * The filtered instance types will have one of the disk type from this list.
          */
-        diskTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        diskTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
          */
-        excludeFamilies?: pulumi.Input<pulumi.Input<string>[]>;
+        excludeFamilies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * In case excludeMetal is set to true, metal types will not be available for scaling.
          */
-        excludeMetal?: pulumi.Input<boolean>;
+        excludeMetal?: pulumi.Input<boolean | undefined>;
         /**
          * The filtered instance types will have a hypervisor type from this list.
          */
-        hypervisors?: pulumi.Input<pulumi.Input<string>[]>;
+        hypervisors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
          */
-        includeFamilies?: pulumi.Input<pulumi.Input<string>[]>;
+        includeFamilies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Ena is supported or not.
          */
-        isEnaSupported?: pulumi.Input<string>;
+        isEnaSupported?: pulumi.Input<string | undefined>;
         /**
          * Maximum total number of GPUs.
          */
-        maxGpu?: pulumi.Input<number>;
-        maxMemoryGib?: pulumi.Input<number>;
+        maxGpu?: pulumi.Input<number | undefined>;
+        maxMemoryGib?: pulumi.Input<number | undefined>;
         /**
          * Maximum Bandwidth in Gib/s of network performance.
          */
-        maxNetworkPerformance?: pulumi.Input<number>;
-        maxVcpu?: pulumi.Input<number>;
+        maxNetworkPerformance?: pulumi.Input<number | undefined>;
+        maxVcpu?: pulumi.Input<number | undefined>;
         /**
          * Minimum number of network interfaces (ENIs).
          */
-        minEnis?: pulumi.Input<number>;
+        minEnis?: pulumi.Input<number | undefined>;
         /**
          * Minimum total number of GPUs.
          */
-        minGpu?: pulumi.Input<number>;
+        minGpu?: pulumi.Input<number | undefined>;
         /**
          * Minimum amount of Memory (GiB).
          */
-        minMemoryGib?: pulumi.Input<number>;
+        minMemoryGib?: pulumi.Input<number | undefined>;
         /**
          * Minimum Bandwidth in Gib/s of network performance.
          */
-        minNetworkPerformance?: pulumi.Input<number>;
+        minNetworkPerformance?: pulumi.Input<number | undefined>;
         /**
          * Minimum number of vcpus available.
          */
-        minVcpu?: pulumi.Input<number>;
+        minVcpu?: pulumi.Input<number | undefined>;
         /**
          * The filtered instance types will have a root device types from this list.
          */
-        rootDeviceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        rootDeviceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * The filtered instance types will support at least one of the virtualization types from this list.
          */
-        virtualizationTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        virtualizationTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface OceanInstanceMetadataOptions {
         /**
          * An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
          */
-        httpPutResponseHopLimit?: pulumi.Input<number>;
+        httpPutResponseHopLimit?: pulumi.Input<number | undefined>;
         /**
          * Determines if a signed token is required or not. Valid values: `optional` or `required`.
          */
@@ -4314,11 +4314,11 @@ export namespace ecs {
         /**
          * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
          */
-        cpuPerUnit?: pulumi.Input<number>;
+        cpuPerUnit?: pulumi.Input<number | undefined>;
         /**
          * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
          */
-        memoryPerUnit?: pulumi.Input<number>;
+        memoryPerUnit?: pulumi.Input<number | undefined>;
         /**
          * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
          */
@@ -4333,51 +4333,51 @@ export namespace ecs {
         /**
          * Object. Set Elastic Block Store properties .
          */
-        ebs?: pulumi.Input<inputs.ecs.OceanLaunchSpecBlockDeviceMappingEbs>;
+        ebs?: pulumi.Input<inputs.ecs.OceanLaunchSpecBlockDeviceMappingEbs | undefined>;
         /**
          * String. suppresses the specified device included in the block device mapping of the AMI.
          */
-        noDevice?: pulumi.Input<string>;
-        virtualName?: pulumi.Input<string>;
+        noDevice?: pulumi.Input<string | undefined>;
+        virtualName?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanLaunchSpecBlockDeviceMappingEbs {
         /**
          * Boolean. Flag to delete the EBS on instance termination.
          */
-        deleteOnTermination?: pulumi.Input<boolean>;
+        deleteOnTermination?: pulumi.Input<boolean | undefined>;
         /**
          * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
          */
-        dynamicVolumeSize?: pulumi.Input<inputs.ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize>;
+        dynamicVolumeSize?: pulumi.Input<inputs.ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize | undefined>;
         /**
          * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
          */
-        encrypted?: pulumi.Input<boolean>;
+        encrypted?: pulumi.Input<boolean | undefined>;
         /**
          * Int. The number of I/O operations per second (IOPS) that the volume supports.
          */
-        iops?: pulumi.Input<number>;
+        iops?: pulumi.Input<number | undefined>;
         /**
          * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
          */
-        kmsKeyId?: pulumi.Input<string>;
+        kmsKeyId?: pulumi.Input<string | undefined>;
         /**
          * (Optional) String. The Snapshot ID to mount by.
          */
-        snapshotId?: pulumi.Input<string>;
+        snapshotId?: pulumi.Input<string | undefined>;
         /**
          * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
          */
-        throughput?: pulumi.Input<number>;
+        throughput?: pulumi.Input<number | undefined>;
         /**
          * Int. The size, in GB of the volume.
          */
-        volumeSize?: pulumi.Input<number>;
+        volumeSize?: pulumi.Input<number | undefined>;
         /**
          * String. The type of the volume (example: "gp2").
          */
-        volumeType?: pulumi.Input<string>;
+        volumeType?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
@@ -4399,14 +4399,14 @@ export namespace ecs {
         /**
          * Identifier of the image in AWS. Valid values: any string which is not empty or null.
          */
-        imageId?: pulumi.Input<string>;
+        imageId?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanLaunchSpecInstanceMetadataOptions {
         /**
          * An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
          */
-        httpPutResponseHopLimit?: pulumi.Input<number>;
+        httpPutResponseHopLimit?: pulumi.Input<number | undefined>;
         /**
          * Determines if a signed token is required or not. Valid values: `optional` or `required`.
          */
@@ -4425,7 +4425,7 @@ export namespace ecs {
         /**
          * The config of this scheduled task. Depends on the value of taskType.
          */
-        taskHeadrooms?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecSchedulingTaskTaskHeadroom>[]>;
+        taskHeadrooms?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecSchedulingTaskTaskHeadroom>[] | undefined>;
         /**
          * The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
          */
@@ -4436,11 +4436,11 @@ export namespace ecs {
         /**
          * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
          */
-        cpuPerUnit?: pulumi.Input<number>;
+        cpuPerUnit?: pulumi.Input<number | undefined>;
         /**
          * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
          */
-        memoryPerUnit?: pulumi.Input<number>;
+        memoryPerUnit?: pulumi.Input<number | undefined>;
         /**
          * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
          */
@@ -4451,7 +4451,7 @@ export namespace ecs {
         /**
          * When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
          */
-        spotPercentage?: pulumi.Input<number>;
+        spotPercentage?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanLaunchSpecTag {
@@ -4469,14 +4469,14 @@ export namespace ecs {
         /**
          * Logging Export configuration.
          */
-        export?: pulumi.Input<inputs.ecs.OceanLoggingExport>;
+        export?: pulumi.Input<inputs.ecs.OceanLoggingExport | undefined>;
     }
 
     export interface OceanLoggingExport {
         /**
          * Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
          */
-        s3s?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLoggingExportS3>[]>;
+        s3s?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLoggingExportS3>[] | undefined>;
     }
 
     export interface OceanLoggingExportS3 {
@@ -4498,25 +4498,25 @@ export namespace ecs {
         /**
          * Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
          */
-        timeWindows?: pulumi.Input<pulumi.Input<string>[]>;
+        timeWindows?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface OceanScheduledTask {
         /**
          * Set shutdown hours for cluster object.
          */
-        shutdownHours?: pulumi.Input<inputs.ecs.OceanScheduledTaskShutdownHours>;
+        shutdownHours?: pulumi.Input<inputs.ecs.OceanScheduledTaskShutdownHours | undefined>;
         /**
          * The scheduling tasks for the cluster.
          */
-        tasks?: pulumi.Input<pulumi.Input<inputs.ecs.OceanScheduledTaskTask>[]>;
+        tasks?: pulumi.Input<pulumi.Input<inputs.ecs.OceanScheduledTaskTask>[] | undefined>;
     }
 
     export interface OceanScheduledTaskShutdownHours {
         /**
          * Flag to enable / disable the shutdown hours.
          */
-        isEnabled?: pulumi.Input<boolean>;
+        isEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59). Time windows should not overlap. Required when `cluster.scheduling.isEnabled` is true. API Times are in UTC. Example: `Fri:15:30-Wed:14:30`.
          */
@@ -4554,12 +4554,12 @@ export namespace ecs {
         /**
          * will update instance tags on the fly without rolling the cluster.
          */
-        autoApplyTags?: pulumi.Input<boolean>;
+        autoApplyTags?: pulumi.Input<boolean | undefined>;
         /**
          * Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
          */
-        conditionedRoll?: pulumi.Input<boolean>;
-        rollConfig?: pulumi.Input<inputs.ecs.OceanUpdatePolicyRollConfig>;
+        conditionedRoll?: pulumi.Input<boolean | undefined>;
+        rollConfig?: pulumi.Input<inputs.ecs.OceanUpdatePolicyRollConfig | undefined>;
         /**
          * Enables the roll.
          */
@@ -4570,7 +4570,7 @@ export namespace ecs {
         /**
          * Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
          */
-        batchMinHealthyPercentage?: pulumi.Input<number>;
+        batchMinHealthyPercentage?: pulumi.Input<number | undefined>;
         /**
          * Sets the percentage of the instances to deploy in each batch.
          */
@@ -4583,19 +4583,19 @@ export namespace gcp {
         /**
          * Configure how traffic is distributed across instance groups.
          */
-        backendBalancing?: pulumi.Input<inputs.gcp.ElastigroupBackendServiceBackendBalancing>;
+        backendBalancing?: pulumi.Input<inputs.gcp.ElastigroupBackendServiceBackendBalancing | undefined>;
         /**
          * Sets which location the backend services will be active. Valid values: `regional`, `global`.
          */
-        locationType?: pulumi.Input<string>;
+        locationType?: pulumi.Input<string | undefined>;
         /**
          * Describes a named port and a list of ports.
          */
-        namedPorts?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupBackendServiceNamedPort>[]>;
+        namedPorts?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupBackendServiceNamedPort>[] | undefined>;
         /**
          * Use when `locationType` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
          */
-        scheme?: pulumi.Input<string>;
+        scheme?: pulumi.Input<string | undefined>;
         /**
          * The name of the backend service.
          */
@@ -4606,13 +4606,13 @@ export namespace gcp {
         /**
          * The backend balancing mode. Valid values: `RATE`, `UTILIZATION`.
          */
-        backendBalancingMode?: pulumi.Input<string>;
+        backendBalancingMode?: pulumi.Input<string | undefined>;
         /**
          * If the backendBalancingMode is set to RATE, this field is required.
          *
          * Usage:
          */
-        maxRatePerInstance?: pulumi.Input<number>;
+        maxRatePerInstance?: pulumi.Input<number | undefined>;
     }
 
     export interface ElastigroupBackendServiceNamedPort {
@@ -4630,46 +4630,46 @@ export namespace gcp {
         /**
          * Specifies whether the disk will be auto-deleted when the instance is deleted.
          */
-        autoDelete?: pulumi.Input<boolean>;
+        autoDelete?: pulumi.Input<boolean | undefined>;
         /**
          * Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
          */
-        boot?: pulumi.Input<boolean>;
+        boot?: pulumi.Input<boolean | undefined>;
         /**
          * Specifies a unique device name of your choice.
          */
-        deviceName?: pulumi.Input<string>;
+        deviceName?: pulumi.Input<string | undefined>;
         /**
          * Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
          */
-        initializeParams?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupDiskInitializeParam>[]>;
+        initializeParams?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupDiskInitializeParam>[] | undefined>;
         /**
          * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
          */
-        interface?: pulumi.Input<string>;
+        interface?: pulumi.Input<string | undefined>;
         /**
          * The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
          */
-        mode?: pulumi.Input<string>;
+        mode?: pulumi.Input<string | undefined>;
         /**
          * Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
          */
-        source?: pulumi.Input<string>;
+        source?: pulumi.Input<string | undefined>;
         /**
          * Specifies the type of disk, either SCRATCH or PERSISTENT.
          */
-        type?: pulumi.Input<string>;
+        type?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupDiskInitializeParam {
         /**
          * Specifies disk size in gigabytes. Must be in increments of 2.
          */
-        diskSizeGb?: pulumi.Input<string>;
+        diskSizeGb?: pulumi.Input<string | undefined>;
         /**
          * Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
          */
-        diskType?: pulumi.Input<string>;
+        diskType?: pulumi.Input<string | undefined>;
         /**
          * A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
          *
@@ -4713,28 +4713,28 @@ export namespace gcp {
     }
 
     export interface ElastigroupIntegrationGke {
-        autoUpdate?: pulumi.Input<boolean>;
-        autoscaleCooldown?: pulumi.Input<number>;
-        autoscaleDown?: pulumi.Input<inputs.gcp.ElastigroupIntegrationGkeAutoscaleDown>;
-        autoscaleHeadroom?: pulumi.Input<inputs.gcp.ElastigroupIntegrationGkeAutoscaleHeadroom>;
-        autoscaleIsAutoConfig?: pulumi.Input<boolean>;
-        autoscaleIsEnabled?: pulumi.Input<boolean>;
-        autoscaleLabels?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupIntegrationGkeAutoscaleLabel>[]>;
-        clusterId?: pulumi.Input<string>;
-        location?: pulumi.Input<string>;
+        autoUpdate?: pulumi.Input<boolean | undefined>;
+        autoscaleCooldown?: pulumi.Input<number | undefined>;
+        autoscaleDown?: pulumi.Input<inputs.gcp.ElastigroupIntegrationGkeAutoscaleDown | undefined>;
+        autoscaleHeadroom?: pulumi.Input<inputs.gcp.ElastigroupIntegrationGkeAutoscaleHeadroom | undefined>;
+        autoscaleIsAutoConfig?: pulumi.Input<boolean | undefined>;
+        autoscaleIsEnabled?: pulumi.Input<boolean | undefined>;
+        autoscaleLabels?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupIntegrationGkeAutoscaleLabel>[] | undefined>;
+        clusterId?: pulumi.Input<string | undefined>;
+        location?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupIntegrationGkeAutoscaleDown {
         /**
          * Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
          */
-        evaluationPeriods?: pulumi.Input<number>;
+        evaluationPeriods?: pulumi.Input<number | undefined>;
     }
 
     export interface ElastigroupIntegrationGkeAutoscaleHeadroom {
-        cpuPerUnit?: pulumi.Input<number>;
-        memoryPerUnit?: pulumi.Input<number>;
-        numOfUnits?: pulumi.Input<number>;
+        cpuPerUnit?: pulumi.Input<number | undefined>;
+        memoryPerUnit?: pulumi.Input<number | undefined>;
+        numOfUnits?: pulumi.Input<number | undefined>;
     }
 
     export interface ElastigroupIntegrationGkeAutoscaleLabel {
@@ -4768,8 +4768,8 @@ export namespace gcp {
         /**
          * Array of configurations.
          */
-        accessConfigs?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupNetworkInterfaceAccessConfig>[]>;
-        aliasIpRanges?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupNetworkInterfaceAliasIpRange>[]>;
+        accessConfigs?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupNetworkInterfaceAccessConfig>[] | undefined>;
+        aliasIpRanges?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupNetworkInterfaceAliasIpRange>[] | undefined>;
         /**
          * Network resource for this group.
          */
@@ -4780,8 +4780,8 @@ export namespace gcp {
         /**
          * The group name.
          */
-        name?: pulumi.Input<string>;
-        type?: pulumi.Input<string>;
+        name?: pulumi.Input<string | undefined>;
+        type?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupNetworkInterfaceAliasIpRange {
@@ -4800,23 +4800,23 @@ export namespace gcp {
         /**
          * Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
          */
-        actionType?: pulumi.Input<string>;
+        actionType?: pulumi.Input<string | undefined>;
         /**
          * Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
          */
-        adjustment?: pulumi.Input<number>;
+        adjustment?: pulumi.Input<number | undefined>;
         /**
          * Time (seconds) to wait after a scaling action before resuming monitoring.
          */
-        cooldown?: pulumi.Input<number>;
+        cooldown?: pulumi.Input<number | undefined>;
         /**
          * A list of dimensions describing qualities of the metric.
          */
-        dimensions?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingDownPolicyDimension>[]>;
+        dimensions?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingDownPolicyDimension>[] | undefined>;
         /**
          * Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
          */
-        evaluationPeriods?: pulumi.Input<number>;
+        evaluationPeriods?: pulumi.Input<number | undefined>;
         /**
          * Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
          */
@@ -4825,11 +4825,11 @@ export namespace gcp {
         /**
          * The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
          */
-        operator?: pulumi.Input<string>;
+        operator?: pulumi.Input<string | undefined>;
         /**
          * Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
          */
-        period?: pulumi.Input<number>;
+        period?: pulumi.Input<number | undefined>;
         /**
          * Name of scaling policy.
          */
@@ -4837,11 +4837,11 @@ export namespace gcp {
         /**
          * Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
          */
-        source?: pulumi.Input<string>;
+        source?: pulumi.Input<string | undefined>;
         /**
          * Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
          */
-        statistic?: pulumi.Input<string>;
+        statistic?: pulumi.Input<string | undefined>;
         /**
          * The value at which the scaling action is triggered.
          */
@@ -4854,30 +4854,30 @@ export namespace gcp {
          * The group name.
          */
         name: pulumi.Input<string>;
-        value?: pulumi.Input<string>;
+        value?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupScalingUpPolicy {
         /**
          * Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
          */
-        actionType?: pulumi.Input<string>;
+        actionType?: pulumi.Input<string | undefined>;
         /**
          * Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
          */
-        adjustment?: pulumi.Input<number>;
+        adjustment?: pulumi.Input<number | undefined>;
         /**
          * Time (seconds) to wait after a scaling action before resuming monitoring.
          */
-        cooldown?: pulumi.Input<number>;
+        cooldown?: pulumi.Input<number | undefined>;
         /**
          * A list of dimensions describing qualities of the metric.
          */
-        dimensions?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingUpPolicyDimension>[]>;
+        dimensions?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingUpPolicyDimension>[] | undefined>;
         /**
          * Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
          */
-        evaluationPeriods?: pulumi.Input<number>;
+        evaluationPeriods?: pulumi.Input<number | undefined>;
         /**
          * Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
          */
@@ -4886,11 +4886,11 @@ export namespace gcp {
         /**
          * The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
          */
-        operator?: pulumi.Input<string>;
+        operator?: pulumi.Input<string | undefined>;
         /**
          * Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
          */
-        period?: pulumi.Input<number>;
+        period?: pulumi.Input<number | undefined>;
         /**
          * Name of scaling policy.
          */
@@ -4898,11 +4898,11 @@ export namespace gcp {
         /**
          * Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
          */
-        source?: pulumi.Input<string>;
+        source?: pulumi.Input<string | undefined>;
         /**
          * Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
          */
-        statistic?: pulumi.Input<string>;
+        statistic?: pulumi.Input<string | undefined>;
         /**
          * The value at which the scaling action is triggered.
          */
@@ -4920,32 +4920,32 @@ export namespace gcp {
          *
          * Usage:
          */
-        value?: pulumi.Input<string>;
+        value?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupScheduledTask {
         /**
          * A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
          */
-        cronExpression?: pulumi.Input<string>;
+        cronExpression?: pulumi.Input<string | undefined>;
         /**
          * Setting the task to being enabled or disabled.
          */
-        isEnabled?: pulumi.Input<boolean>;
+        isEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * The maximum number of instances the group should have.
          *
          * Usage:
          */
-        maxCapacity?: pulumi.Input<string>;
+        maxCapacity?: pulumi.Input<string | undefined>;
         /**
          * The minimum number of instances the group should have.
          */
-        minCapacity?: pulumi.Input<string>;
+        minCapacity?: pulumi.Input<string | undefined>;
         /**
          * The desired number of instances the group should have.
          */
-        targetCapacity?: pulumi.Input<string>;
+        targetCapacity?: pulumi.Input<string | undefined>;
         /**
          * The task type to run. Valid values: `"setCapacity"`.
          */
@@ -4956,11 +4956,11 @@ export namespace gcp {
         /**
          * Default: false
          */
-        enableIntegrityMonitoring?: pulumi.Input<boolean>;
+        enableIntegrityMonitoring?: pulumi.Input<boolean | undefined>;
         /**
          * Default: false
          */
-        enableSecureBoot?: pulumi.Input<boolean>;
+        enableSecureBoot?: pulumi.Input<boolean | undefined>;
     }
 
     export interface ElastigroupSubnet {
@@ -4977,16 +4977,16 @@ export namespace gcp {
 
 export namespace gke {
     export interface ElastigroupBackendService {
-        backendBalancing?: pulumi.Input<inputs.gke.ElastigroupBackendServiceBackendBalancing>;
-        locationType?: pulumi.Input<string>;
-        namedPorts?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendServiceNamedPort>[]>;
-        scheme?: pulumi.Input<string>;
+        backendBalancing?: pulumi.Input<inputs.gke.ElastigroupBackendServiceBackendBalancing | undefined>;
+        locationType?: pulumi.Input<string | undefined>;
+        namedPorts?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendServiceNamedPort>[] | undefined>;
+        scheme?: pulumi.Input<string | undefined>;
         serviceName: pulumi.Input<string>;
     }
 
     export interface ElastigroupBackendServiceBackendBalancing {
-        backendBalancingMode?: pulumi.Input<string>;
-        maxRatePerInstance?: pulumi.Input<number>;
+        backendBalancingMode?: pulumi.Input<string | undefined>;
+        maxRatePerInstance?: pulumi.Input<number | undefined>;
     }
 
     export interface ElastigroupBackendServiceNamedPort {
@@ -4995,19 +4995,19 @@ export namespace gke {
     }
 
     export interface ElastigroupDisk {
-        autoDelete?: pulumi.Input<boolean>;
-        boot?: pulumi.Input<boolean>;
-        deviceName?: pulumi.Input<string>;
-        initializeParams?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupDiskInitializeParam>[]>;
-        interface?: pulumi.Input<string>;
-        mode?: pulumi.Input<string>;
-        source?: pulumi.Input<string>;
-        type?: pulumi.Input<string>;
+        autoDelete?: pulumi.Input<boolean | undefined>;
+        boot?: pulumi.Input<boolean | undefined>;
+        deviceName?: pulumi.Input<string | undefined>;
+        initializeParams?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupDiskInitializeParam>[] | undefined>;
+        interface?: pulumi.Input<string | undefined>;
+        mode?: pulumi.Input<string | undefined>;
+        source?: pulumi.Input<string | undefined>;
+        type?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupDiskInitializeParam {
-        diskSizeGb?: pulumi.Input<string>;
-        diskType?: pulumi.Input<string>;
+        diskSizeGb?: pulumi.Input<string | undefined>;
+        diskType?: pulumi.Input<string | undefined>;
         sourceImage: pulumi.Input<string>;
     }
 
@@ -5027,55 +5027,55 @@ export namespace gke {
     }
 
     export interface ElastigroupIntegrationGke {
-        autoUpdate?: pulumi.Input<boolean>;
+        autoUpdate?: pulumi.Input<boolean | undefined>;
         /**
          * The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
          */
-        autoscaleCooldown?: pulumi.Input<number>;
+        autoscaleCooldown?: pulumi.Input<number | undefined>;
         /**
          * Enabling scale down.
          */
-        autoscaleDown?: pulumi.Input<inputs.gke.ElastigroupIntegrationGkeAutoscaleDown>;
+        autoscaleDown?: pulumi.Input<inputs.gke.ElastigroupIntegrationGkeAutoscaleDown | undefined>;
         /**
          * Headroom for the cluster.
          */
-        autoscaleHeadroom?: pulumi.Input<inputs.gke.ElastigroupIntegrationGkeAutoscaleHeadroom>;
-        autoscaleIsAutoConfig?: pulumi.Input<boolean>;
+        autoscaleHeadroom?: pulumi.Input<inputs.gke.ElastigroupIntegrationGkeAutoscaleHeadroom | undefined>;
+        autoscaleIsAutoConfig?: pulumi.Input<boolean | undefined>;
         /**
          * Specifies whether the auto scaling feature is enabled.
          */
-        autoscaleIsEnabled?: pulumi.Input<boolean>;
+        autoscaleIsEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * Labels to assign to the resource.
          */
-        autoscaleLabels?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupIntegrationGkeAutoscaleLabel>[]>;
-        clusterId?: pulumi.Input<string>;
+        autoscaleLabels?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupIntegrationGkeAutoscaleLabel>[] | undefined>;
+        clusterId?: pulumi.Input<string | undefined>;
         /**
          * The location of your GKE cluster.
          */
-        location?: pulumi.Input<string>;
+        location?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupIntegrationGkeAutoscaleDown {
         /**
          * Amount of cooldown evaluation periods for scale down.
          */
-        evaluationPeriods?: pulumi.Input<number>;
+        evaluationPeriods?: pulumi.Input<number | undefined>;
     }
 
     export interface ElastigroupIntegrationGkeAutoscaleHeadroom {
         /**
          * Cpu units for compute.
          */
-        cpuPerUnit?: pulumi.Input<number>;
+        cpuPerUnit?: pulumi.Input<number | undefined>;
         /**
          * RAM units for compute.
          */
-        memoryPerUnit?: pulumi.Input<number>;
+        memoryPerUnit?: pulumi.Input<number | undefined>;
         /**
          * Amount of units for compute.
          */
-        numOfUnits?: pulumi.Input<number>;
+        numOfUnits?: pulumi.Input<number | undefined>;
     }
 
     export interface ElastigroupIntegrationGkeAutoscaleLabel {
@@ -5094,14 +5094,14 @@ export namespace gke {
     }
 
     export interface ElastigroupNetworkInterface {
-        accessConfigs?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupNetworkInterfaceAccessConfig>[]>;
-        aliasIpRanges?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupNetworkInterfaceAliasIpRange>[]>;
+        accessConfigs?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupNetworkInterfaceAccessConfig>[] | undefined>;
+        aliasIpRanges?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupNetworkInterfaceAliasIpRange>[] | undefined>;
         network: pulumi.Input<string>;
     }
 
     export interface ElastigroupNetworkInterfaceAccessConfig {
-        name?: pulumi.Input<string>;
-        type?: pulumi.Input<string>;
+        name?: pulumi.Input<string | undefined>;
+        type?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupNetworkInterfaceAliasIpRange {
@@ -5114,157 +5114,157 @@ export namespace gke {
     }
 
     export interface ElastigroupScalingDownPolicy {
-        actionType?: pulumi.Input<string>;
-        adjustment?: pulumi.Input<number>;
-        cooldown?: pulumi.Input<number>;
-        dimensions?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingDownPolicyDimension>[]>;
+        actionType?: pulumi.Input<string | undefined>;
+        adjustment?: pulumi.Input<number | undefined>;
+        cooldown?: pulumi.Input<number | undefined>;
+        dimensions?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingDownPolicyDimension>[] | undefined>;
         /**
          * Amount of cooldown evaluation periods for scale down.
          */
-        evaluationPeriods?: pulumi.Input<number>;
+        evaluationPeriods?: pulumi.Input<number | undefined>;
         metricName: pulumi.Input<string>;
         namespace: pulumi.Input<string>;
-        operator?: pulumi.Input<string>;
-        period?: pulumi.Input<number>;
+        operator?: pulumi.Input<string | undefined>;
+        period?: pulumi.Input<number | undefined>;
         policyName: pulumi.Input<string>;
-        source?: pulumi.Input<string>;
-        statistic?: pulumi.Input<string>;
+        source?: pulumi.Input<string | undefined>;
+        statistic?: pulumi.Input<string | undefined>;
         threshold: pulumi.Input<number>;
         unit: pulumi.Input<string>;
     }
 
     export interface ElastigroupScalingDownPolicyDimension {
         name: pulumi.Input<string>;
-        value?: pulumi.Input<string>;
+        value?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupScalingUpPolicy {
-        actionType?: pulumi.Input<string>;
-        adjustment?: pulumi.Input<number>;
-        cooldown?: pulumi.Input<number>;
-        dimensions?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingUpPolicyDimension>[]>;
+        actionType?: pulumi.Input<string | undefined>;
+        adjustment?: pulumi.Input<number | undefined>;
+        cooldown?: pulumi.Input<number | undefined>;
+        dimensions?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupScalingUpPolicyDimension>[] | undefined>;
         /**
          * Amount of cooldown evaluation periods for scale down.
          */
-        evaluationPeriods?: pulumi.Input<number>;
+        evaluationPeriods?: pulumi.Input<number | undefined>;
         metricName: pulumi.Input<string>;
         namespace: pulumi.Input<string>;
-        operator?: pulumi.Input<string>;
-        period?: pulumi.Input<number>;
+        operator?: pulumi.Input<string | undefined>;
+        period?: pulumi.Input<number | undefined>;
         policyName: pulumi.Input<string>;
-        source?: pulumi.Input<string>;
-        statistic?: pulumi.Input<string>;
+        source?: pulumi.Input<string | undefined>;
+        statistic?: pulumi.Input<string | undefined>;
         threshold: pulumi.Input<number>;
         unit: pulumi.Input<string>;
     }
 
     export interface ElastigroupScalingUpPolicyDimension {
         name: pulumi.Input<string>;
-        value?: pulumi.Input<string>;
+        value?: pulumi.Input<string | undefined>;
     }
 
     export interface ElastigroupShieldedInstanceConfig {
-        enableIntegrityMonitoring?: pulumi.Input<boolean>;
-        enableSecureBoot?: pulumi.Input<boolean>;
+        enableIntegrityMonitoring?: pulumi.Input<boolean | undefined>;
+        enableSecureBoot?: pulumi.Input<boolean | undefined>;
     }
 
     export interface OceanImportAutoUpdate {
         /**
          * Enable the Ocean Kubernetes AutoUpdate.
          */
-        isEnabled?: pulumi.Input<boolean>;
+        isEnabled?: pulumi.Input<boolean | undefined>;
     }
 
     export interface OceanImportAutoscaler {
         /**
          * Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
          */
-        autoHeadroomPercentage?: pulumi.Input<number>;
+        autoHeadroomPercentage?: pulumi.Input<number | undefined>;
         /**
          * Cooldown period between scaling actions.
          */
-        cooldown?: pulumi.Input<number>;
+        cooldown?: pulumi.Input<number | undefined>;
         /**
          * Auto Scaling scale down operations.
          */
-        down?: pulumi.Input<inputs.gke.OceanImportAutoscalerDown>;
+        down?: pulumi.Input<inputs.gke.OceanImportAutoscalerDown | undefined>;
         /**
          * enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
          */
-        enableAutomaticAndManualHeadroom?: pulumi.Input<boolean>;
+        enableAutomaticAndManualHeadroom?: pulumi.Input<boolean | undefined>;
         /**
          * Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
          */
-        headroom?: pulumi.Input<inputs.gke.OceanImportAutoscalerHeadroom>;
+        headroom?: pulumi.Input<inputs.gke.OceanImportAutoscalerHeadroom | undefined>;
         /**
          * Automatically configure and optimize headroom resources.
          */
-        isAutoConfig?: pulumi.Input<boolean>;
+        isAutoConfig?: pulumi.Input<boolean | undefined>;
         /**
          * Enable the Ocean Kubernetes Autoscaler.
          */
-        isEnabled?: pulumi.Input<boolean>;
+        isEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * Optionally set upper and lower bounds on the resource usage of the cluster.
          */
-        resourceLimits?: pulumi.Input<inputs.gke.OceanImportAutoscalerResourceLimits>;
+        resourceLimits?: pulumi.Input<inputs.gke.OceanImportAutoscalerResourceLimits | undefined>;
     }
 
     export interface OceanImportAutoscalerDown {
         /**
          * The number of evaluation periods that should accumulate before a scale down action takes place.
          */
-        evaluationPeriods?: pulumi.Input<number>;
+        evaluationPeriods?: pulumi.Input<number | undefined>;
         /**
          * When set to 'true', the Aggressive Scale Down feature is enabled.
          */
-        isAggressiveScaleDownEnabled?: pulumi.Input<boolean>;
+        isAggressiveScaleDownEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * Would represent the maximum % to scale-down. Number between 1-100.
          */
-        maxScaleDownPercentage?: pulumi.Input<number>;
+        maxScaleDownPercentage?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanImportAutoscalerHeadroom {
         /**
          * Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
          */
-        cpuPerUnit?: pulumi.Input<number>;
+        cpuPerUnit?: pulumi.Input<number | undefined>;
         /**
          * How much GPU allocate for headroom unit.
          */
-        gpuPerUnit?: pulumi.Input<number>;
+        gpuPerUnit?: pulumi.Input<number | undefined>;
         /**
          * Optionally configure the amount of memory (MiB) to allocate the headroom.
          */
-        memoryPerUnit?: pulumi.Input<number>;
+        memoryPerUnit?: pulumi.Input<number | undefined>;
         /**
          * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
          */
-        numOfUnits?: pulumi.Input<number>;
+        numOfUnits?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanImportAutoscalerResourceLimits {
         /**
          * The maximum memory in GiB units that can be allocated to the cluster.
          */
-        maxMemoryGib?: pulumi.Input<number>;
+        maxMemoryGib?: pulumi.Input<number | undefined>;
         /**
          * The maximum cpu in vCpu units that can be allocated to the cluster.
          */
-        maxVcpu?: pulumi.Input<number>;
+        maxVcpu?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanImportBackendService {
         /**
          * Sets which location the backend services will be active. Valid values: `regional`, `global`.
          */
-        locationType?: pulumi.Input<string>;
-        namedPorts?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportBackendServiceNamedPort>[]>;
+        locationType?: pulumi.Input<string | undefined>;
+        namedPorts?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportBackendServiceNamedPort>[] | undefined>;
         /**
          * Use when `locationType` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
          */
-        scheme?: pulumi.Input<string>;
+        scheme?: pulumi.Input<string | undefined>;
         /**
          * The name of the backend service.
          */
@@ -5283,38 +5283,38 @@ export namespace gke {
         /**
          * Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
          */
-        excludeFamilies?: pulumi.Input<pulumi.Input<string>[]>;
+        excludeFamilies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
          */
-        includeFamilies?: pulumi.Input<pulumi.Input<string>[]>;
+        includeFamilies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Maximum amount of Memory (GiB).
          */
-        maxMemoryGib?: pulumi.Input<number>;
+        maxMemoryGib?: pulumi.Input<number | undefined>;
         /**
          * Maximum number of vcpus available.
          */
-        maxVcpu?: pulumi.Input<number>;
+        maxVcpu?: pulumi.Input<number | undefined>;
         /**
          * Minimum amount of Memory (GiB).
          */
-        minMemoryGib?: pulumi.Input<number>;
+        minMemoryGib?: pulumi.Input<number | undefined>;
         /**
          * Minimum number of vcpus available.
          */
-        minVcpu?: pulumi.Input<number>;
+        minVcpu?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanImportScheduledTask {
         /**
          * Set shutdown hours for cluster object.
          */
-        shutdownHours?: pulumi.Input<inputs.gke.OceanImportScheduledTaskShutdownHours>;
+        shutdownHours?: pulumi.Input<inputs.gke.OceanImportScheduledTaskShutdownHours | undefined>;
         /**
          * The scheduling tasks for the cluster.
          */
-        tasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTaskTask>[]>;
+        tasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTaskTask>[] | undefined>;
     }
 
     export interface OceanImportScheduledTaskShutdownHours {
@@ -5322,7 +5322,7 @@ export namespace gke {
          * Flag to enable / disable the shutdown hours.
          * Example: `true`
          */
-        isEnabled?: pulumi.Input<boolean>;
+        isEnabled?: pulumi.Input<boolean | undefined>;
         /**
          * Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = `true`. API Times are in UTC
          * Example: Fri:15:30-Wed:14:30
@@ -5343,7 +5343,7 @@ export namespace gke {
         /**
          * The scheduling parameters for the cluster.
          */
-        taskParameters?: pulumi.Input<inputs.gke.OceanImportScheduledTaskTaskTaskParameters>;
+        taskParameters?: pulumi.Input<inputs.gke.OceanImportScheduledTaskTaskTaskParameters | undefined>;
         /**
          * Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
          */
@@ -5354,71 +5354,71 @@ export namespace gke {
         /**
          * The cluster roll parameters for the cluster.
          */
-        clusterRoll?: pulumi.Input<inputs.gke.OceanImportScheduledTaskTaskTaskParametersClusterRoll>;
+        clusterRoll?: pulumi.Input<inputs.gke.OceanImportScheduledTaskTaskTaskParametersClusterRoll | undefined>;
     }
 
     export interface OceanImportScheduledTaskTaskTaskParametersClusterRoll {
         /**
          * Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
          */
-        batchMinHealthyPercentage?: pulumi.Input<number>;
+        batchMinHealthyPercentage?: pulumi.Input<number | undefined>;
         /**
          * Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
          */
-        batchSizePercentage?: pulumi.Input<number>;
+        batchSizePercentage?: pulumi.Input<number | undefined>;
         /**
          * Add a comment description for the roll. The comment is limited to 256 chars.
          */
-        comment?: pulumi.Input<string>;
+        comment?: pulumi.Input<string | undefined>;
         /**
          * During the roll, if the parameter is set to true we honor PDB during the instance replacement.
          */
-        respectPdb?: pulumi.Input<boolean>;
+        respectPdb?: pulumi.Input<boolean | undefined>;
     }
 
     export interface OceanImportShieldedInstanceConfig {
         /**
          * Boolean. Enable the integrity monitoring parameter on the GCP instances.
          */
-        enableIntegrityMonitoring?: pulumi.Input<boolean>;
+        enableIntegrityMonitoring?: pulumi.Input<boolean | undefined>;
         /**
          * Boolean. Enable the secure boot parameter on the GCP instances.
          */
-        enableSecureBoot?: pulumi.Input<boolean>;
+        enableSecureBoot?: pulumi.Input<boolean | undefined>;
     }
 
     export interface OceanImportStrategy {
         /**
          * The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
          */
-        drainingTimeout?: pulumi.Input<number>;
+        drainingTimeout?: pulumi.Input<number | undefined>;
         /**
          * Defines the desired preemptible percentage for the cluster.
          */
-        preemptiblePercentage?: pulumi.Input<number>;
+        preemptiblePercentage?: pulumi.Input<number | undefined>;
         /**
          * Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
          */
-        provisioningModel?: pulumi.Input<string>;
+        provisioningModel?: pulumi.Input<string | undefined>;
         /**
          * Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
          */
-        scalingOrientation?: pulumi.Input<string>;
+        scalingOrientation?: pulumi.Input<string | undefined>;
         /**
          * Enable committed use discounts utilization.
          */
-        shouldUtilizeCommitments?: pulumi.Input<boolean>;
+        shouldUtilizeCommitments?: pulumi.Input<boolean | undefined>;
     }
 
     export interface OceanImportUpdatePolicy {
         /**
          * Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
          */
-        conditionedRoll?: pulumi.Input<boolean>;
+        conditionedRoll?: pulumi.Input<boolean | undefined>;
         /**
          * Holds the roll configuration.
          */
-        rollConfig?: pulumi.Input<inputs.gke.OceanImportUpdatePolicyRollConfig>;
+        rollConfig?: pulumi.Input<inputs.gke.OceanImportUpdatePolicyRollConfig | undefined>;
         /**
          * Enables the roll.
          */
@@ -5429,7 +5429,7 @@ export namespace gke {
         /**
          * Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
          */
-        batchMinHealthyPercentage?: pulumi.Input<number>;
+        batchMinHealthyPercentage?: pulumi.Input<number | undefined>;
         /**
          * Sets the percentage of the instances to deploy in each batch.
          */
@@ -5437,26 +5437,26 @@ export namespace gke {
         /**
          * List of Virtual Node Group identifiers to be rolled.
          */
-        launchSpecIds?: pulumi.Input<pulumi.Input<string>[]>;
+        launchSpecIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Default: `false`. During the roll, if the parameter is set to `true` we honor PDB during the instance replacement.
          */
-        respectPdb?: pulumi.Input<boolean>;
+        respectPdb?: pulumi.Input<boolean | undefined>;
     }
 
     export interface OceanLaunchSpecAutoscaleHeadroom {
         /**
          * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
          */
-        cpuPerUnit?: pulumi.Input<number>;
+        cpuPerUnit?: pulumi.Input<number | undefined>;
         /**
          * Optionally configure the number of GPUS to allocate for each headroom unit.
          */
-        gpuPerUnit?: pulumi.Input<number>;
+        gpuPerUnit?: pulumi.Input<number | undefined>;
         /**
          * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
          */
-        memoryPerUnit?: pulumi.Input<number>;
+        memoryPerUnit?: pulumi.Input<number | undefined>;
         /**
          * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
          */
@@ -5467,74 +5467,74 @@ export namespace gke {
         /**
          * Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
          */
-        autoHeadroomPercentage?: pulumi.Input<number>;
+        autoHeadroomPercentage?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanLaunchSpecCreateOptions {
         /**
          * When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
          */
-        initialNodes?: pulumi.Input<number>;
+        initialNodes?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanLaunchSpecFilters {
         /**
          * Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
          */
-        excludeFamilies?: pulumi.Input<pulumi.Input<string>[]>;
+        excludeFamilies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
          */
-        includeFamilies?: pulumi.Input<pulumi.Input<string>[]>;
+        includeFamilies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Maximum amount of Memory (GiB).
          */
-        maxMemoryGib?: pulumi.Input<number>;
+        maxMemoryGib?: pulumi.Input<number | undefined>;
         /**
          * Maximum number of vcpus available.
          */
-        maxVcpu?: pulumi.Input<number>;
+        maxVcpu?: pulumi.Input<number | undefined>;
         /**
          * Minimum amount of Memory (GiB).
          */
-        minMemoryGib?: pulumi.Input<number>;
+        minMemoryGib?: pulumi.Input<number | undefined>;
         /**
          * Minimum number of vcpus available.
          */
-        minVcpu?: pulumi.Input<number>;
+        minVcpu?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanLaunchSpecLabel {
         /**
          * The label key.
          */
-        key?: pulumi.Input<string>;
+        key?: pulumi.Input<string | undefined>;
         /**
          * The label value.
          */
-        value?: pulumi.Input<string>;
+        value?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanLaunchSpecMetadata {
         /**
          * The metadata key.
          */
-        key?: pulumi.Input<string>;
+        key?: pulumi.Input<string | undefined>;
         /**
          * The metadata value.
          */
-        value?: pulumi.Input<string>;
+        value?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanLaunchSpecNetworkInterface {
         /**
          * The network protocol of the VNG.
          */
-        accessConfigs?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecNetworkInterfaceAccessConfig>[]>;
+        accessConfigs?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecNetworkInterfaceAccessConfig>[] | undefined>;
         /**
          * use the imported node pool’s associated aliasIpRange to assign secondary IP addresses to the nodes. Cannot be changed after VNG creation.
          */
-        aliasIpRanges?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecNetworkInterfaceAliasIpRange>[]>;
+        aliasIpRanges?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecNetworkInterfaceAliasIpRange>[] | undefined>;
         /**
          * The name of the network.
          */
@@ -5542,18 +5542,18 @@ export namespace gke {
         /**
          * Use a network resource from a different project. Set the project identifier to use its network resource. This parameter is relevant only if the network resource is in a different project.
          */
-        projectId?: pulumi.Input<string>;
+        projectId?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanLaunchSpecNetworkInterfaceAccessConfig {
         /**
          * The name of the access configuration.
          */
-        name?: pulumi.Input<string>;
+        name?: pulumi.Input<string | undefined>;
         /**
          * The type of the access configuration.
          */
-        type?: pulumi.Input<string>;
+        type?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanLaunchSpecNetworkInterfaceAliasIpRange {
@@ -5571,11 +5571,11 @@ export namespace gke {
         /**
          * Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
          */
-        maxInstanceCount?: pulumi.Input<number>;
+        maxInstanceCount?: pulumi.Input<number | undefined>;
         /**
          * Option to set a minimum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
          */
-        minInstanceCount?: pulumi.Input<number>;
+        minInstanceCount?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanLaunchSpecSchedulingTask {
@@ -5590,7 +5590,7 @@ export namespace gke {
         /**
          * The config of this scheduled task. Depends on the value of taskType.
          */
-        taskHeadrooms?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecSchedulingTaskTaskHeadroom>[]>;
+        taskHeadrooms?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecSchedulingTaskTaskHeadroom>[] | undefined>;
         /**
          * The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
          */
@@ -5601,15 +5601,15 @@ export namespace gke {
         /**
          * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
          */
-        cpuPerUnit?: pulumi.Input<number>;
+        cpuPerUnit?: pulumi.Input<number | undefined>;
         /**
          * Optionally configure the number of GPUS to allocate for each headroom unit.
          */
-        gpuPerUnit?: pulumi.Input<number>;
+        gpuPerUnit?: pulumi.Input<number | undefined>;
         /**
          * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
          */
-        memoryPerUnit?: pulumi.Input<number>;
+        memoryPerUnit?: pulumi.Input<number | undefined>;
         /**
          * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
          */
@@ -5620,51 +5620,51 @@ export namespace gke {
         /**
          * Boolean. Enable the integrity monitoring parameter on the GCP instances.
          */
-        enableIntegrityMonitoring?: pulumi.Input<boolean>;
+        enableIntegrityMonitoring?: pulumi.Input<boolean | undefined>;
         /**
          * Boolean. Enable the secure boot parameter on the GCP instances.
          */
-        enableSecureBoot?: pulumi.Input<boolean>;
+        enableSecureBoot?: pulumi.Input<boolean | undefined>;
     }
 
     export interface OceanLaunchSpecStorage {
         /**
          * Defines the number of local SSDs to be attached per node for this VNG.
          */
-        localSsdCount?: pulumi.Input<number>;
+        localSsdCount?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanLaunchSpecStrategy {
         /**
          * Defines the desired preemptible percentage for this launch specification.
          */
-        preemptiblePercentage?: pulumi.Input<number>;
+        preemptiblePercentage?: pulumi.Input<number | undefined>;
         /**
          * Valid Values: `"cost", "availability", "balanced"`. Set this value to control the approach that Ocean takes when launching nodes.
          */
-        scalingOrientation?: pulumi.Input<string>;
+        scalingOrientation?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanLaunchSpecTaint {
         /**
          * The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
          */
-        effect?: pulumi.Input<string>;
+        effect?: pulumi.Input<string | undefined>;
         /**
          * The taint key.
          */
-        key?: pulumi.Input<string>;
+        key?: pulumi.Input<string | undefined>;
         /**
          * The taint value.
          */
-        value?: pulumi.Input<string>;
+        value?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanLaunchSpecUpdatePolicy {
         /**
          * Holds the roll configuration.
          */
-        rollConfig?: pulumi.Input<inputs.gke.OceanLaunchSpecUpdatePolicyRollConfig>;
+        rollConfig?: pulumi.Input<inputs.gke.OceanLaunchSpecUpdatePolicyRollConfig | undefined>;
         /**
          * Enables the roll.
          */
@@ -5691,22 +5691,22 @@ export namespace oceancd {
         /**
          * Ocean CD cluster identifier for the references `SpotDeployment`.
          */
-        spotDeploymentsClusterId?: pulumi.Input<string>;
+        spotDeploymentsClusterId?: pulumi.Input<string | undefined>;
         /**
          * The name of the `SpotDeployment` resource
          */
-        spotDeploymentsName?: pulumi.Input<string>;
+        spotDeploymentsName?: pulumi.Input<string | undefined>;
         /**
          * The namespace which the `SpotDeployment` resource exists within.
          */
-        spotDeploymentsNamespace?: pulumi.Input<string>;
+        spotDeploymentsNamespace?: pulumi.Input<string | undefined>;
     }
 
     export interface RolloutSpecStrategy {
         /**
          * Arguments defined in Verification Templates.
          */
-        args?: pulumi.Input<pulumi.Input<inputs.oceancd.RolloutSpecStrategyArg>[]>;
+        args?: pulumi.Input<pulumi.Input<inputs.oceancd.RolloutSpecStrategyArg>[] | undefined>;
         /**
          * Ocean CD strategy name identifier.
          */
@@ -5721,11 +5721,11 @@ export namespace oceancd {
         /**
          * Value of an argument.
          */
-        argValue?: pulumi.Input<string>;
+        argValue?: pulumi.Input<string | undefined>;
         /**
          * Defines from where to get the value of an argument.
          */
-        valueFrom?: pulumi.Input<inputs.oceancd.RolloutSpecStrategyArgValueFrom>;
+        valueFrom?: pulumi.Input<inputs.oceancd.RolloutSpecStrategyArgValueFrom | undefined>;
     }
 
     export interface RolloutSpecStrategyArgValueFrom {
@@ -5746,42 +5746,42 @@ export namespace oceancd {
         /**
          * Holds ALB Ingress specific configuration to route traffic.
          */
-        alb?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficAlb>;
+        alb?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficAlb | undefined>;
         /**
          * Holds specific configuration to use Ambassador to route traffic.
          */
-        ambassador?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficAmbassador>;
+        ambassador?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficAmbassador | undefined>;
         /**
          * The canary service name.
          */
-        canaryService?: pulumi.Input<string>;
+        canaryService?: pulumi.Input<string | undefined>;
         /**
          * Holds Istio specific configuration to route traffic.
          */
-        istio?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficIstio>;
+        istio?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficIstio | undefined>;
         /**
          * Holds Nginx Ingress specific configuration to route traffic.
          */
-        nginx?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficNginx>;
+        nginx?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficNginx | undefined>;
         /**
          * Holds the ping and pong services. You can use `pingPong` field only when using ALB as a traffic manager with the IP Mode approach.
          */
-        pingPong?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficPingPong>;
+        pingPong?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficPingPong | undefined>;
         /**
          * Holds TrafficSplit specific configuration to route traffic.
          */
-        smi?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficSmi>;
+        smi?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficSmi | undefined>;
         /**
          * The stable service name.
          */
-        stableService?: pulumi.Input<string>;
+        stableService?: pulumi.Input<string | undefined>;
     }
 
     export interface RolloutSpecTrafficAlb {
         /**
          * Has to match the configured annotation prefix on the alb ingress controller.
          */
-        albAnnotationPrefix?: pulumi.Input<string>;
+        albAnnotationPrefix?: pulumi.Input<string | undefined>;
         /**
          * Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
          */
@@ -5797,18 +5797,18 @@ export namespace oceancd {
         /**
          * Allows to specify further settings on the ForwardConfig.
          */
-        stickinessConfig?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficAlbStickinessConfig>;
+        stickinessConfig?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficAlbStickinessConfig | undefined>;
     }
 
     export interface RolloutSpecTrafficAlbStickinessConfig {
         /**
          * Defines how long the load balancer should consistently route the user's request to the same target.
          */
-        durationSeconds?: pulumi.Input<number>;
+        durationSeconds?: pulumi.Input<number | undefined>;
         /**
          * Enables the load balancer to bind a user's session to a specific target.
          */
-        enabled?: pulumi.Input<boolean>;
+        enabled?: pulumi.Input<boolean | undefined>;
     }
 
     export interface RolloutSpecTrafficAmbassador {
@@ -5822,7 +5822,7 @@ export namespace oceancd {
         /**
          * It references to an Istio DestinationRule to modify and shape traffic. `DestinationRule` field belongs only to the Subset Level approach.
          */
-        destinationRule?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficIstioDestinationRule>;
+        destinationRule?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficIstioDestinationRule | undefined>;
         /**
          * Defines a set of traffic routing rules to apply when a host is addressed.
          */
@@ -5848,7 +5848,7 @@ export namespace oceancd {
         /**
          * A list of HTTPS routes within VirtualService.
          */
-        tlsRoutes?: pulumi.Input<pulumi.Input<inputs.oceancd.RolloutSpecTrafficIstioVirtualServiceTlsRoute>[]>;
+        tlsRoutes?: pulumi.Input<pulumi.Input<inputs.oceancd.RolloutSpecTrafficIstioVirtualServiceTlsRoute>[] | undefined>;
         /**
          * Holds the name of the VirtualService.
          */
@@ -5856,29 +5856,29 @@ export namespace oceancd {
         /**
          * A list of HTTP routes within VirtualService.
          */
-        virtualServiceRoutes?: pulumi.Input<pulumi.Input<string>[]>;
+        virtualServiceRoutes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface RolloutSpecTrafficIstioVirtualServiceTlsRoute {
         /**
          * The port of the TLS Route desired to be matched in the given Istio VirtualService.
          */
-        port?: pulumi.Input<number>;
+        port?: pulumi.Input<number | undefined>;
         /**
          * A list of all the SNI Hosts of the TLS Route desired to be matched in the given Istio VirtualService.
          */
-        sniHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        sniHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface RolloutSpecTrafficNginx {
         /**
          * Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary.
          */
-        additionalIngressAnnotation?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficNginxAdditionalIngressAnnotation>;
+        additionalIngressAnnotation?: pulumi.Input<inputs.oceancd.RolloutSpecTrafficNginxAdditionalIngressAnnotation | undefined>;
         /**
          * Has to match the configured annotation prefix on the Nginx ingress controller.
          */
-        nginxAnnotationPrefix?: pulumi.Input<string>;
+        nginxAnnotationPrefix?: pulumi.Input<string | undefined>;
         /**
          * Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
          */
@@ -5889,11 +5889,11 @@ export namespace oceancd {
         /**
          * Allows customizing the header value instead of using hardcoded values.
          */
-        canaryByHeader?: pulumi.Input<string>;
+        canaryByHeader?: pulumi.Input<string | undefined>;
         /**
          * Any of supported annotations.
          */
-        key1?: pulumi.Input<string>;
+        key1?: pulumi.Input<string | undefined>;
     }
 
     export interface RolloutSpecTrafficPingPong {
@@ -5911,18 +5911,18 @@ export namespace oceancd {
         /**
          * Holds the name of service that clients use to communicate.
          */
-        smiRootService?: pulumi.Input<string>;
+        smiRootService?: pulumi.Input<string | undefined>;
         /**
          * Holds the name of the TrafficSplit.
          */
-        trafficSplitName?: pulumi.Input<string>;
+        trafficSplitName?: pulumi.Input<string | undefined>;
     }
 
     export interface StrategyCanary {
         /**
          * A list of background verifications.
          */
-        backgroundVerification?: pulumi.Input<inputs.oceancd.StrategyCanaryBackgroundVerification>;
+        backgroundVerification?: pulumi.Input<inputs.oceancd.StrategyCanaryBackgroundVerification | undefined>;
         /**
          * A set of separate conditions of rollout processing.
          */
@@ -5940,46 +5940,46 @@ export namespace oceancd {
         /**
          * Defines the duration of time to freeze the rollout.
          */
-        pause?: pulumi.Input<inputs.oceancd.StrategyCanaryStepPause>;
+        pause?: pulumi.Input<inputs.oceancd.StrategyCanaryStepPause | undefined>;
         /**
          * Defines how to scale the version without traffic weight changing.
          */
-        setCanaryScale?: pulumi.Input<inputs.oceancd.StrategyCanaryStepSetCanaryScale>;
+        setCanaryScale?: pulumi.Input<inputs.oceancd.StrategyCanaryStepSetCanaryScale | undefined>;
         /**
          * Defines the list of HeaderRoutes to add to the Rollout.
          */
-        setHeaderRoute?: pulumi.Input<inputs.oceancd.StrategyCanaryStepSetHeaderRoute>;
+        setHeaderRoute?: pulumi.Input<inputs.oceancd.StrategyCanaryStepSetHeaderRoute | undefined>;
         /**
          * Defines the percentage that the new version should receive.
          */
-        setWeight?: pulumi.Input<number>;
-        stepName?: pulumi.Input<string>;
+        setWeight?: pulumi.Input<number | undefined>;
+        stepName?: pulumi.Input<string | undefined>;
         /**
          * Represents the list of verifications to run in a step.
          */
-        verification?: pulumi.Input<inputs.oceancd.StrategyCanaryStepVerification>;
+        verification?: pulumi.Input<inputs.oceancd.StrategyCanaryStepVerification | undefined>;
     }
 
     export interface StrategyCanaryStepPause {
         /**
          * The amount of time to wait before moving to the next step.
          */
-        duration?: pulumi.Input<string>;
+        duration?: pulumi.Input<string | undefined>;
     }
 
     export interface StrategyCanaryStepSetCanaryScale {
         /**
          * Defines whether a rollout should match the current canary's setWeight step.
          */
-        matchTrafficWeight?: pulumi.Input<boolean>;
+        matchTrafficWeight?: pulumi.Input<boolean | undefined>;
         /**
          * Sets the number of replicas the new version should have.
          */
-        replicas?: pulumi.Input<number>;
+        replicas?: pulumi.Input<number | undefined>;
         /**
          * Sets the percentage of replicas the new version should have.
          */
-        weight?: pulumi.Input<number>;
+        weight?: pulumi.Input<number | undefined>;
     }
 
     export interface StrategyCanaryStepSetHeaderRoute {
@@ -6008,15 +6008,15 @@ export namespace oceancd {
         /**
          * The exact header value.
          */
-        exact?: pulumi.Input<string>;
+        exact?: pulumi.Input<string | undefined>;
         /**
          * The prefix of the value.
          */
-        prefix?: pulumi.Input<string>;
+        prefix?: pulumi.Input<string | undefined>;
         /**
          * The value in a regex format.
          */
-        regex?: pulumi.Input<string>;
+        regex?: pulumi.Input<string | undefined>;
     }
 
     export interface StrategyCanaryStepVerification {
@@ -6037,19 +6037,19 @@ export namespace oceancd {
         /**
          * Defines the duration of time to freeze the rollout.
          */
-        pause?: pulumi.Input<inputs.oceancd.StrategyRollingStepPause>;
-        stepsName?: pulumi.Input<string>;
+        pause?: pulumi.Input<inputs.oceancd.StrategyRollingStepPause | undefined>;
+        stepsName?: pulumi.Input<string | undefined>;
         /**
          * Represents the list of verifications to run in a step.
          */
-        verification?: pulumi.Input<inputs.oceancd.StrategyRollingStepVerification>;
+        verification?: pulumi.Input<inputs.oceancd.StrategyRollingStepVerification | undefined>;
     }
 
     export interface StrategyRollingStepPause {
         /**
          * The amount of time to wait before moving to the next step.
          */
-        duration?: pulumi.Input<string>;
+        duration?: pulumi.Input<string | undefined>;
     }
 
     export interface StrategyRollingStepVerification {
@@ -6101,11 +6101,11 @@ export namespace oceancd {
         /**
          * The base URL for NerdGraph for a proxy.
          */
-        baseUrlNerdGraph?: pulumi.Input<string>;
+        baseUrlNerdGraph?: pulumi.Input<string | undefined>;
         /**
          * The base URL of the New Relic REST API for a proxy.
          */
-        baseUrlRest?: pulumi.Input<string>;
+        baseUrlRest?: pulumi.Input<string | undefined>;
         /**
          * The NewRelic user key
          */
@@ -6113,7 +6113,7 @@ export namespace oceancd {
         /**
          * A region which the account is attached to. Default is "us".
          */
-        region?: pulumi.Input<string>;
+        region?: pulumi.Input<string | undefined>;
     }
 
     export interface VerificationProviderPrometheus {
@@ -6131,18 +6131,18 @@ export namespace oceancd {
         /**
          * String representation of data.
          */
-        value?: pulumi.Input<string>;
+        value?: pulumi.Input<string | undefined>;
         /**
          * ValueFrom object.
          */
-        valueFrom?: pulumi.Input<inputs.oceancd.VerificationTemplateArgValueFrom>;
+        valueFrom?: pulumi.Input<inputs.oceancd.VerificationTemplateArgValueFrom | undefined>;
     }
 
     export interface VerificationTemplateArgValueFrom {
         /**
          * Secret key to use.
          */
-        secretKeyRef?: pulumi.Input<inputs.oceancd.VerificationTemplateArgValueFromSecretKeyRef>;
+        secretKeyRef?: pulumi.Input<inputs.oceancd.VerificationTemplateArgValueFromSecretKeyRef | undefined>;
     }
 
     export interface VerificationTemplateArgValueFromSecretKeyRef {
@@ -6160,35 +6160,35 @@ export namespace oceancd {
         /**
          * Baseline Object.
          */
-        baseline?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricBaseline>;
+        baseline?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricBaseline | undefined>;
         /**
          * The maximum number of times the measurement is allowed to error in succession, before the metric is considered error.Default is 4.When choosing `Jenkins` as the provider, there is no need to send this variable.
          */
-        consecutiveErrorLimit?: pulumi.Input<number>;
+        consecutiveErrorLimit?: pulumi.Input<number | undefined>;
         /**
          * The number of times to run the measurement. If both interval and count are omitted, the effective count is 1. If only interval is specified, metric runs indefinitely. If count > 1, interval must be specified. When choosing `Jenkins` as the provider, there is no need to send this variable.
          */
-        count?: pulumi.Input<number>;
+        count?: pulumi.Input<number | undefined>;
         /**
          * Defines whether the metric should have an impact on the result of the rollout.
          */
-        dryRun?: pulumi.Input<boolean>;
+        dryRun?: pulumi.Input<boolean | undefined>;
         /**
          * An expression which determines if a measurement is considered failed.If failureCondition is set, then successCondition is not allowed. When choosing Jenkins as the provider, there is no need to send this variable.
          */
-        failureCondition?: pulumi.Input<string>;
+        failureCondition?: pulumi.Input<string | undefined>;
         /**
          * The maximum number of times the measurement is allowed to fail, before the entire metric is considered failed.Default is 0. When choosing `Jenkins` as the provider, there is no need to send this variable.
          */
-        failureLimit?: pulumi.Input<number>;
+        failureLimit?: pulumi.Input<number | undefined>;
         /**
          * How long to wait before starting this metric measurements. When choosing Jenkins as the provider, there is no need to send this variable.
          */
-        initialDelay?: pulumi.Input<string>;
+        initialDelay?: pulumi.Input<string | undefined>;
         /**
          * Defines an interval string (30s, 5m, 1h) between each verification measurements. If omitted, will perform a single measurement.When choosing Jenkins as the provider, there is no need to send this variable.
          */
-        interval?: pulumi.Input<string>;
+        interval?: pulumi.Input<string | undefined>;
         /**
          * The name of the verification metric.
          */
@@ -6200,7 +6200,7 @@ export namespace oceancd {
         /**
          * An expression which determines if a measurement is considered successful. The keyword `result` is a variable reference to the value of measurement. Results can be both structured data or primitive. If successCondition is set, then failureCondition is not allowed. When choosing `Jenkins` as the provider, there is no need to send this variable.
          */
-        successCondition?: pulumi.Input<string>;
+        successCondition?: pulumi.Input<string | undefined>;
     }
 
     export interface VerificationTemplateMetricBaseline {
@@ -6211,11 +6211,11 @@ export namespace oceancd {
         /**
          * Number in percent we allow the new version’s data result to be under baseline data result.
          */
-        maxRange?: pulumi.Input<number>;
+        maxRange?: pulumi.Input<number | undefined>;
         /**
          * Number in percent we allow the new version’s data result to be under baseline data result.*
          */
-        minRange?: pulumi.Input<number>;
+        minRange?: pulumi.Input<number | undefined>;
         /**
          * A mathematical expression needed for the comparison. Enum: "<" ">" "<=" ">=" "=" "range"
          */
@@ -6226,15 +6226,15 @@ export namespace oceancd {
         /**
          * The datadog provider.
          */
-        datadog?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricBaselineBaselineProviderDatadog>;
+        datadog?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricBaselineBaselineProviderDatadog | undefined>;
         /**
          * The New Relic provider.
          */
-        newRelic?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricBaselineBaselineProviderNewRelic>;
+        newRelic?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricBaselineBaselineProviderNewRelic | undefined>;
         /**
          * The Prometheus provider.
          */
-        prometheus?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricBaselineBaselineProviderPrometheus>;
+        prometheus?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricBaselineBaselineProviderPrometheus | undefined>;
     }
 
     export interface VerificationTemplateMetricBaselineBaselineProviderDatadog {
@@ -6245,7 +6245,7 @@ export namespace oceancd {
         /**
          * The window of time we are looking at in DataDog.
          */
-        duration?: pulumi.Input<string>;
+        duration?: pulumi.Input<string | undefined>;
     }
 
     export interface VerificationTemplateMetricBaselineBaselineProviderNewRelic {
@@ -6256,7 +6256,7 @@ export namespace oceancd {
         /**
          * The name of the secret holding NR account configuration.
          */
-        profile?: pulumi.Input<string>;
+        profile?: pulumi.Input<string | undefined>;
     }
 
     export interface VerificationTemplateMetricBaselineBaselineProviderPrometheus {
@@ -6270,38 +6270,38 @@ export namespace oceancd {
         /**
          * The CloudWatch provider.
          */
-        cloudWatch?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderCloudWatch>;
+        cloudWatch?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderCloudWatch | undefined>;
         /**
          * The datadog provider.
          */
-        datadog?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderDatadog>;
+        datadog?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderDatadog | undefined>;
         /**
          * The Jenkins provider. Default is "{$}"
          */
-        jenkins?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderJenkins>;
+        jenkins?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderJenkins | undefined>;
         /**
          * The Job provider.
          */
-        job?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderJob>;
+        job?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderJob | undefined>;
         /**
          * The New Relic provider.
          */
-        newRelic?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderNewRelic>;
+        newRelic?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderNewRelic | undefined>;
         /**
          * The Prometheus provider.
          */
-        prometheus?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderPrometheus>;
+        prometheus?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderPrometheus | undefined>;
         /**
          * The Web provider.
          */
-        web?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderWeb>;
+        web?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderWeb | undefined>;
     }
 
     export interface VerificationTemplateMetricProviderCloudWatch {
         /**
          * The window of time we are looking at in CloudWatch.
          */
-        duration?: pulumi.Input<string>;
+        duration?: pulumi.Input<string | undefined>;
         /**
          * The metric queries to be returned. A single MetricData call can include as many as 500 MetricDataQuery structures. Each of these structures can specify either a metric to retrieve, a Metrics Insights query, or a math expression to perform on retrieved data.
          */
@@ -6312,7 +6312,7 @@ export namespace oceancd {
         /**
          * This field can contain either a Metrics Insights query, or a metric math expression to be performed on the returned data. Within one metricdataquery object, you must specify either expression or metricstat but not both.
          */
-        expression?: pulumi.Input<string>;
+        expression?: pulumi.Input<string | undefined>;
         /**
          * The response ID. Must be unique and not null. This object can contain characters, letters, numbers and underscore. The first letter must be a lowercase letter.
          */
@@ -6320,45 +6320,45 @@ export namespace oceancd {
         /**
          * A human-readable label for this metric or expression. If the metric or expression is shown in a CloudWatch dashboard widget, the label is shown
          */
-        label?: pulumi.Input<string>;
+        label?: pulumi.Input<string | undefined>;
         /**
          * The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.Within one metricdataquery object, you must specify either expression or metricstat but not both.
          */
-        metricStat?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat>;
+        metricStat?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat | undefined>;
         /**
          * The granularity, in seconds, of the returned data points.
          */
-        period?: pulumi.Input<number>;
+        period?: pulumi.Input<number | undefined>;
         /**
          * This option indicates whether to return the timestamps and raw data values of this metric. If you are performing this call just to do math expressions and do not also need the raw data returned, you can specify `false`. If you omit this, the default of `true` is used.
          */
-        returnData?: pulumi.Input<boolean>;
+        returnData?: pulumi.Input<boolean | undefined>;
     }
 
     export interface VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStat {
         /**
          * The metric to return, including the metric name, namespace, and dimensions.
          */
-        metric?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric>;
+        metric?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric | undefined>;
         /**
          * The granularity, in seconds, of the returned data points.
          */
-        metricPeriod?: pulumi.Input<number>;
+        metricPeriod?: pulumi.Input<number | undefined>;
         /**
          * The statistic to return. It can include any CloudWatch statistic or extended statistic.
          */
-        stat?: pulumi.Input<string>;
+        stat?: pulumi.Input<string | undefined>;
         /**
          * This defines what unit you want to use when storing the metric.  Enum: `"Seconds" "Microseconds" "Milliseconds" "Bytes" "Kilobytes" "Megabytes" "Gigabytes" "Terabytes" "Bits" "Kilobits" "Megabits" "Gigabits" "Terabits" "Percent" "Count" "Bytes/Second" "Kilobytes/Second" "Megabytes/Second" "Gigabytes/Second" "Terabytes/Second" "Bits/Second" "Kilobits/Second" "Megabits/Second" "Gigabits/Second" "Terabits/Second" "Count/Second" "None"`
          */
-        unit?: pulumi.Input<string>;
+        unit?: pulumi.Input<string | undefined>;
     }
 
     export interface VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetric {
         /**
          * A dimension is a name/value pair that is part of the identity of a metric.You can assign upto 30 dimensions to a metric
          */
-        dimensions?: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension>[]>;
+        dimensions?: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension>[] | undefined>;
         /**
          * The name of the metric.
          */
@@ -6366,7 +6366,7 @@ export namespace oceancd {
         /**
          * The namespace of the metric.
          */
-        namespace?: pulumi.Input<string>;
+        namespace?: pulumi.Input<string | undefined>;
     }
 
     export interface VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimension {
@@ -6384,11 +6384,11 @@ export namespace oceancd {
         /**
          * A request for information retrieved from Datadog.
          */
-        datadogQuery?: pulumi.Input<string>;
+        datadogQuery?: pulumi.Input<string | undefined>;
         /**
          * The window of time we are looking at in DataDog.
          */
-        duration?: pulumi.Input<string>;
+        duration?: pulumi.Input<string | undefined>;
     }
 
     export interface VerificationTemplateMetricProviderJenkins {
@@ -6399,7 +6399,7 @@ export namespace oceancd {
         /**
          * List of parameters.
          */
-        jenkinsParameters?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderJenkinsJenkinsParameters>;
+        jenkinsParameters?: pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderJenkinsJenkinsParameters | undefined>;
         /**
          * The Jenkins pipeline name.
          */
@@ -6411,7 +6411,7 @@ export namespace oceancd {
         /**
          * Host TLS verification.
          */
-        tlsVerification?: pulumi.Input<boolean>;
+        tlsVerification?: pulumi.Input<boolean | undefined>;
     }
 
     export interface VerificationTemplateMetricProviderJenkinsJenkinsParameters {
@@ -6436,7 +6436,7 @@ export namespace oceancd {
         /**
          * Specifies the number of retries before marking this job failed.
          */
-        backoffLimit?: pulumi.Input<number>;
+        backoffLimit?: pulumi.Input<number | undefined>;
         /**
          * Describes the pod that will be created when executing a job.
          */
@@ -6484,7 +6484,7 @@ export namespace oceancd {
         /**
          * The name of the secret holding NR account configuration.
          */
-        profile?: pulumi.Input<string>;
+        profile?: pulumi.Input<string | undefined>;
     }
 
     export interface VerificationTemplateMetricProviderPrometheus {
@@ -6498,23 +6498,23 @@ export namespace oceancd {
         /**
          * The body of the web metric.
          */
-        body?: pulumi.Input<string>;
+        body?: pulumi.Input<string | undefined>;
         /**
          * Skips host TLS verification.
          */
-        insecure?: pulumi.Input<boolean>;
+        insecure?: pulumi.Input<boolean | undefined>;
         /**
          * A JSON Path to use as the result variable. Default is "{$}"
          */
-        jsonPath?: pulumi.Input<string>;
+        jsonPath?: pulumi.Input<string | undefined>;
         /**
          * The method of the web metric.  Enum: "GET" "POST" "PUT"
          */
-        method?: pulumi.Input<string>;
+        method?: pulumi.Input<string | undefined>;
         /**
          * The timeout for the request in seconds. Default is 10.
          */
-        timeoutSeconds?: pulumi.Input<number>;
+        timeoutSeconds?: pulumi.Input<number | undefined>;
         /**
          * The address of the web metric.
          */
@@ -6522,7 +6522,7 @@ export namespace oceancd {
         /**
          * Optional HTTP headers to use in the request.
          */
-        webHeaders?: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderWebWebHeader>[]>;
+        webHeaders?: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetricProviderWebWebHeader>[] | undefined>;
     }
 
     export interface VerificationTemplateMetricProviderWebWebHeader {
@@ -6578,7 +6578,7 @@ export namespace organization {
          * A list of the accounts that the policy should be
          * enforced for the user.
          */
-        policyAccountIds?: pulumi.Input<pulumi.Input<string>[]>;
+        policyAccountIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Policy ID the programmatic user will have access to.
          */
@@ -6613,105 +6613,105 @@ export namespace spark {
         /**
          * - Enable/disable the creation of Ocean Spark VNGs during cluster creation.
          */
-        createVngs?: pulumi.Input<boolean>;
+        createVngs?: pulumi.Input<boolean | undefined>;
         /**
          * - Enable/disable Ocean Spark taints on the Ocean Spark VNGs. By default, Ocean Spark uses taints to prevent non-Spark workloads from running on Ocean Spark VNGs.
          */
-        useTaints?: pulumi.Input<boolean>;
+        useTaints?: pulumi.Input<boolean | undefined>;
     }
 
     export interface OceanIngress {
-        controller?: pulumi.Input<inputs.spark.OceanIngressController>;
-        customEndpoint?: pulumi.Input<inputs.spark.OceanIngressCustomEndpoint>;
-        loadBalancer?: pulumi.Input<inputs.spark.OceanIngressLoadBalancer>;
-        privateLink?: pulumi.Input<inputs.spark.OceanIngressPrivateLink>;
+        controller?: pulumi.Input<inputs.spark.OceanIngressController | undefined>;
+        customEndpoint?: pulumi.Input<inputs.spark.OceanIngressCustomEndpoint | undefined>;
+        loadBalancer?: pulumi.Input<inputs.spark.OceanIngressLoadBalancer | undefined>;
+        privateLink?: pulumi.Input<inputs.spark.OceanIngressPrivateLink | undefined>;
         /**
          * - **DEPRECATED**: Use `load_balancer.service_annotations` instead.
          */
-        serviceAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        serviceAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     }
 
     export interface OceanIngressController {
         /**
          * - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
          */
-        managed?: pulumi.Input<boolean>;
+        managed?: pulumi.Input<boolean | undefined>;
     }
 
     export interface OceanIngressCustomEndpoint {
         /**
          * - The address the Ocean for Apache Spark control plane will use when addressing the cluster.
          */
-        address?: pulumi.Input<string>;
+        address?: pulumi.Input<string | undefined>;
         /**
          * - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
          */
-        enabled?: pulumi.Input<boolean>;
+        enabled?: pulumi.Input<boolean | undefined>;
     }
 
     export interface OceanIngressLoadBalancer {
         /**
          * - Should a load balancer managed by Ocean for Apache Spark be provisioned for the cluster. Set this to false if you want to use an existing load balancer (only available on AWS).
          */
-        managed?: pulumi.Input<boolean>;
+        managed?: pulumi.Input<boolean | undefined>;
         /**
          * - Annotations to add to the ingress controller load balancer service. This is useful to configure properties of the managed load balancer, like the nature of the load balancer (e.g. ELB, NLB, ALB on AWS), the security groups, or various timeouts.
          */
-        serviceAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        serviceAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
         /**
          * - The ARN of a target group that the Ocean for Apache Spark ingress controller will be bound to. Set this to use an existing load balancer with Ocean for Apache Spark. Has no effect if using a managed load balancer. Only available on AWS.
          */
-        targetGroupArn?: pulumi.Input<string>;
+        targetGroupArn?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanIngressPrivateLink {
         /**
          * - Should the Ocean for Apache Spark control plane address the cluster via an AWS Private Link. Only available on AWS.
          */
-        enabled?: pulumi.Input<boolean>;
+        enabled?: pulumi.Input<boolean | undefined>;
         /**
          * - The name of the VPC Endpoint Service the Ocean for Apache Spark control plane should bind to.
          */
-        vpcEndpointService?: pulumi.Input<string>;
+        vpcEndpointService?: pulumi.Input<string | undefined>;
     }
 
     export interface OceanLogCollection {
         /**
          * - Enable/Disable collecting driver and executor logs. When enabled, logs are stored by NetApp and can be downloaded from the Spot console web interface. The logs are deleted after 30 days.
          */
-        collectAppLogs?: pulumi.Input<boolean>;
+        collectAppLogs?: pulumi.Input<boolean | undefined>;
     }
 
     export interface OceanSpark {
         /**
          * - List of Kubernetes namespaces that should be configured to run Spark applications, in addition to the default Spark application namespace `spark-apps`.
          */
-        additionalAppNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
+        additionalAppNamespaces?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface OceanWebhook {
         /**
          * - List of ports allowed to use on the host network - if empty default is `25554`.
          */
-        hostNetworkPorts?: pulumi.Input<pulumi.Input<number>[]>;
+        hostNetworkPorts?: pulumi.Input<pulumi.Input<number>[] | undefined>;
         /**
          * - Enable/disable host networking for the Spark Operator. Host networking can be useful when using custom CNI plugins like Calico on EKS.
          */
-        useHostNetwork?: pulumi.Input<boolean>;
+        useHostNetwork?: pulumi.Input<boolean | undefined>;
     }
 
     export interface OceanWorkspaces {
-        storage?: pulumi.Input<inputs.spark.OceanWorkspacesStorage>;
+        storage?: pulumi.Input<inputs.spark.OceanWorkspacesStorage | undefined>;
     }
 
     export interface OceanWorkspacesStorage {
-        defaults?: pulumi.Input<inputs.spark.OceanWorkspacesStorageDefaults>;
+        defaults?: pulumi.Input<inputs.spark.OceanWorkspacesStorageDefaults | undefined>;
     }
 
     export interface OceanWorkspacesStorageDefaults {
         /**
          * - The name of the default storage class to use for new workspaces. If not specified, the default storage class of the Kubernetes cluster will be used.
          */
-        storageClassName?: pulumi.Input<string>;
+        storageClassName?: pulumi.Input<string | undefined>;
     }
 }

@@ -150,31 +150,31 @@ export interface VerificationProviderState {
     /**
      * Specify the credentials for CloudWatch verification provider.
      */
-    cloudWatch?: pulumi.Input<inputs.oceancd.VerificationProviderCloudWatch>;
+    cloudWatch?: pulumi.Input<inputs.oceancd.VerificationProviderCloudWatch | undefined>;
     /**
      * List of cluster IDs that this Verification Provider will be applied to.
      */
-    clusterIds?: pulumi.Input<pulumi.Input<string>[]>;
+    clusterIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specify the credentials for datadog verification provider.
      */
-    datadog?: pulumi.Input<inputs.oceancd.VerificationProviderDatadog>;
+    datadog?: pulumi.Input<inputs.oceancd.VerificationProviderDatadog | undefined>;
     /**
      * Specify the credentials for Jenkins verification provider.
      */
-    jenkins?: pulumi.Input<inputs.oceancd.VerificationProviderJenkins>;
+    jenkins?: pulumi.Input<inputs.oceancd.VerificationProviderJenkins | undefined>;
     /**
      * Identifier name for Ocean CD Verification Provider. Must be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specify the credentials for New Relic verification provider.
      */
-    newRelic?: pulumi.Input<inputs.oceancd.VerificationProviderNewRelic>;
+    newRelic?: pulumi.Input<inputs.oceancd.VerificationProviderNewRelic | undefined>;
     /**
      * Specify the credentials for prometheus verification provider.
      */
-    prometheus?: pulumi.Input<inputs.oceancd.VerificationProviderPrometheus>;
+    prometheus?: pulumi.Input<inputs.oceancd.VerificationProviderPrometheus | undefined>;
 }
 
 /**
@@ -184,7 +184,7 @@ export interface VerificationProviderArgs {
     /**
      * Specify the credentials for CloudWatch verification provider.
      */
-    cloudWatch?: pulumi.Input<inputs.oceancd.VerificationProviderCloudWatch>;
+    cloudWatch?: pulumi.Input<inputs.oceancd.VerificationProviderCloudWatch | undefined>;
     /**
      * List of cluster IDs that this Verification Provider will be applied to.
      */
@@ -192,21 +192,21 @@ export interface VerificationProviderArgs {
     /**
      * Specify the credentials for datadog verification provider.
      */
-    datadog?: pulumi.Input<inputs.oceancd.VerificationProviderDatadog>;
+    datadog?: pulumi.Input<inputs.oceancd.VerificationProviderDatadog | undefined>;
     /**
      * Specify the credentials for Jenkins verification provider.
      */
-    jenkins?: pulumi.Input<inputs.oceancd.VerificationProviderJenkins>;
+    jenkins?: pulumi.Input<inputs.oceancd.VerificationProviderJenkins | undefined>;
     /**
      * Identifier name for Ocean CD Verification Provider. Must be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specify the credentials for New Relic verification provider.
      */
-    newRelic?: pulumi.Input<inputs.oceancd.VerificationProviderNewRelic>;
+    newRelic?: pulumi.Input<inputs.oceancd.VerificationProviderNewRelic | undefined>;
     /**
      * Specify the credentials for prometheus verification provider.
      */
-    prometheus?: pulumi.Input<inputs.oceancd.VerificationProviderPrometheus>;
+    prometheus?: pulumi.Input<inputs.oceancd.VerificationProviderPrometheus | undefined>;
 }

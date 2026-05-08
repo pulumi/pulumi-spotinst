@@ -21,11 +21,11 @@ __all__ = ['ProgrammaticUserArgs', 'ProgrammaticUser']
 @pulumi.input_type
 class ProgrammaticUserArgs:
     def __init__(__self__, *,
-                 accounts: Optional[pulumi.Input[Sequence[pulumi.Input['ProgrammaticUserAccountArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input['ProgrammaticUserPolicyArgs']]]] = None,
-                 user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 accounts: pulumi.Input[Optional[Sequence[pulumi.Input['ProgrammaticUserAccountArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input['ProgrammaticUserPolicyArgs']]]] = None,
+                 user_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ProgrammaticUser resource.
 
@@ -50,7 +50,7 @@ class ProgrammaticUserArgs:
 
     @_builtins.property
     @pulumi.getter
-    def accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProgrammaticUserAccountArgs']]]]:
+    def accounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProgrammaticUserAccountArgs']]]]:
         """
         All the accounts the programmatic user will have access to.
         If used - Cannot be empty.
@@ -58,36 +58,36 @@ class ProgrammaticUserArgs:
         return pulumi.get(self, "accounts")
 
     @accounts.setter
-    def accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProgrammaticUserAccountArgs']]]]):
+    def accounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProgrammaticUserAccountArgs']]]]):
         pulumi.set(self, "accounts", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Brief description of the user.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the programmatic user.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProgrammaticUserPolicyArgs']]]]:
+    def policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProgrammaticUserPolicyArgs']]]]:
         """
         All the policies the programmatic user will have access to.
         If used - Cannot be empty.
@@ -95,30 +95,30 @@ class ProgrammaticUserArgs:
         return pulumi.get(self, "policies")
 
     @policies.setter
-    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProgrammaticUserPolicyArgs']]]]):
+    def policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProgrammaticUserPolicyArgs']]]]):
         pulumi.set(self, "policies", value)
 
     @_builtins.property
     @pulumi.getter(name="userGroupIds")
-    def user_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def user_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of the user groups to register the given user to (should be existing user groups only)
         """
         return pulumi.get(self, "user_group_ids")
 
     @user_group_ids.setter
-    def user_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def user_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_group_ids", value)
 
 
 @pulumi.input_type
 class _ProgrammaticUserState:
     def __init__(__self__, *,
-                 accounts: Optional[pulumi.Input[Sequence[pulumi.Input['ProgrammaticUserAccountArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input['ProgrammaticUserPolicyArgs']]]] = None,
-                 user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 accounts: pulumi.Input[Optional[Sequence[pulumi.Input['ProgrammaticUserAccountArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input['ProgrammaticUserPolicyArgs']]]] = None,
+                 user_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ProgrammaticUser resources.
 
@@ -143,7 +143,7 @@ class _ProgrammaticUserState:
 
     @_builtins.property
     @pulumi.getter
-    def accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProgrammaticUserAccountArgs']]]]:
+    def accounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProgrammaticUserAccountArgs']]]]:
         """
         All the accounts the programmatic user will have access to.
         If used - Cannot be empty.
@@ -151,36 +151,36 @@ class _ProgrammaticUserState:
         return pulumi.get(self, "accounts")
 
     @accounts.setter
-    def accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProgrammaticUserAccountArgs']]]]):
+    def accounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProgrammaticUserAccountArgs']]]]):
         pulumi.set(self, "accounts", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Brief description of the user.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the programmatic user.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProgrammaticUserPolicyArgs']]]]:
+    def policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProgrammaticUserPolicyArgs']]]]:
         """
         All the policies the programmatic user will have access to.
         If used - Cannot be empty.
@@ -188,19 +188,19 @@ class _ProgrammaticUserState:
         return pulumi.get(self, "policies")
 
     @policies.setter
-    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProgrammaticUserPolicyArgs']]]]):
+    def policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProgrammaticUserPolicyArgs']]]]):
         pulumi.set(self, "policies", value)
 
     @_builtins.property
     @pulumi.getter(name="userGroupIds")
-    def user_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def user_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of the user groups to register the given user to (should be existing user groups only)
         """
         return pulumi.get(self, "user_group_ids")
 
     @user_group_ids.setter
-    def user_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def user_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_group_ids", value)
 
 
@@ -210,11 +210,11 @@ class ProgrammaticUser(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accounts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserPolicyArgs', 'ProgrammaticUserPolicyArgsDict']]]]] = None,
-                 user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 accounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProgrammaticUserPolicyArgs', 'ProgrammaticUserPolicyArgsDict']]]]] = None,
+                 user_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Spotinst programmatic user in the creator's organization.
@@ -293,11 +293,11 @@ class ProgrammaticUser(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accounts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserPolicyArgs', 'ProgrammaticUserPolicyArgsDict']]]]] = None,
-                 user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 accounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProgrammaticUserPolicyArgs', 'ProgrammaticUserPolicyArgsDict']]]]] = None,
+                 user_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -322,11 +322,11 @@ class ProgrammaticUser(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accounts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserPolicyArgs', 'ProgrammaticUserPolicyArgsDict']]]]] = None,
-            user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ProgrammaticUser':
+            accounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProgrammaticUserPolicyArgs', 'ProgrammaticUserPolicyArgsDict']]]]] = None,
+            user_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ProgrammaticUser':
         """
         Get an existing ProgrammaticUser resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

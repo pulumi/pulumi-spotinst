@@ -101,16 +101,16 @@ export interface DataIntegrationState {
     /**
      * The name of the data integration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * When vendor value is s3, the following fields are included:
      * * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
      */
-    s3?: pulumi.Input<inputs.DataIntegrationS3>;
+    s3?: pulumi.Input<inputs.DataIntegrationS3 | undefined>;
     /**
      * Determines if this data integration is on or off. Valid values: `"enabled"`, `"disabled"`
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -120,14 +120,14 @@ export interface DataIntegrationArgs {
     /**
      * The name of the data integration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * When vendor value is s3, the following fields are included:
      * * `bucketName` - (Required) The name of the bucket to use. Your spot IAM Role policy needs to include s3:putObject permissions for this bucket. Can't be null.
      */
-    s3?: pulumi.Input<inputs.DataIntegrationS3>;
+    s3?: pulumi.Input<inputs.DataIntegrationS3 | undefined>;
     /**
      * Determines if this data integration is on or off. Valid values: `"enabled"`, `"disabled"`
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

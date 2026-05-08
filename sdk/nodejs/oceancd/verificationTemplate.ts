@@ -210,15 +210,15 @@ export interface VerificationTemplateState {
     /**
      * List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
      */
-    args?: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateArg>[]>;
+    args?: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateArg>[] | undefined>;
     /**
      * List of verification metrics.
      */
-    metrics?: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetric>[]>;
+    metrics?: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetric>[] | undefined>;
     /**
      * Identifier name for Ocean CD Verification Template. Must be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -228,13 +228,13 @@ export interface VerificationTemplateArgs {
     /**
      * List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
      */
-    args?: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateArg>[]>;
+    args?: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateArg>[] | undefined>;
     /**
      * List of verification metrics.
      */
-    metrics?: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetric>[]>;
+    metrics?: pulumi.Input<pulumi.Input<inputs.oceancd.VerificationTemplateMetric>[] | undefined>;
     /**
      * Identifier name for Ocean CD Verification Template. Must be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

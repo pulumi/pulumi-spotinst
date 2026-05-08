@@ -332,170 +332,170 @@ export interface OceanState {
     /**
      * Configure IPv6 address allocation.
      */
-    associateIpv6Address?: pulumi.Input<boolean>;
+    associateIpv6Address?: pulumi.Input<boolean | undefined>;
     /**
      * Configure public IP address allocation.
      */
-    associatePublicIpAddress?: pulumi.Input<boolean>;
+    associatePublicIpAddress?: pulumi.Input<boolean | undefined>;
     /**
      * Attach load balancers to the cluster.
      */
-    attachLoadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanAttachLoadBalancer>[]>;
+    attachLoadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanAttachLoadBalancer>[] | undefined>;
     /**
      * Describes the Ocean Kubernetes Auto Scaler.
      */
-    autoscaler?: pulumi.Input<inputs.aws.OceanAutoscaler>;
-    blacklists?: pulumi.Input<pulumi.Input<string>[]>;
+    autoscaler?: pulumi.Input<inputs.aws.OceanAutoscaler | undefined>;
+    blacklists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
      */
-    blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.OceanBlockDeviceMapping>[]>;
-    clusterOrientations?: pulumi.Input<pulumi.Input<inputs.aws.OceanClusterOrientation>[]>;
+    blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.OceanBlockDeviceMapping>[] | undefined>;
+    clusterOrientations?: pulumi.Input<pulumi.Input<inputs.aws.OceanClusterOrientation>[] | undefined>;
     /**
      * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
      */
-    controllerId?: pulumi.Input<string>;
+    controllerId?: pulumi.Input<string | undefined>;
     /**
      * The number of instances to launch and maintain in the cluster.
      */
-    desiredCapacity?: pulumi.Input<number>;
+    desiredCapacity?: pulumi.Input<number | undefined>;
     /**
      * Detach load balancers from the cluster.
      */
-    detachLoadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanDetachLoadBalancer>[]>;
+    detachLoadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanDetachLoadBalancer>[] | undefined>;
     /**
      * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      */
-    drainingTimeout?: pulumi.Input<number>;
+    drainingTimeout?: pulumi.Input<number | undefined>;
     /**
      * Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
      */
-    ebsOptimized?: pulumi.Input<boolean>;
+    ebsOptimized?: pulumi.Input<boolean | undefined>;
     /**
      * If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
      */
-    fallbackToOndemand?: pulumi.Input<boolean>;
-    filters?: pulumi.Input<inputs.aws.OceanFilters>;
+    fallbackToOndemand?: pulumi.Input<boolean | undefined>;
+    filters?: pulumi.Input<inputs.aws.OceanFilters | undefined>;
     /**
      * The amount of time, in seconds, after the instance has launched to start checking its health.
      */
-    gracePeriod?: pulumi.Input<number>;
+    gracePeriod?: pulumi.Input<number | undefined>;
     /**
      * The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
      */
-    healthCheckUnhealthyDurationBeforeReplacement?: pulumi.Input<number>;
+    healthCheckUnhealthyDurationBeforeReplacement?: pulumi.Input<number | undefined>;
     /**
      * The instance profile iam role.
      */
-    iamInstanceProfile?: pulumi.Input<string>;
+    iamInstanceProfile?: pulumi.Input<string | undefined>;
     /**
      * ID of the image used to launch the instances.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * Ocean instance metadata options object for IMDSv2.
      */
-    instanceMetadataOptions?: pulumi.Input<inputs.aws.OceanInstanceMetadataOptions>;
+    instanceMetadataOptions?: pulumi.Input<inputs.aws.OceanInstanceMetadataOptions | undefined>;
     /**
      * Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
      */
-    instanceStorePolicy?: pulumi.Input<inputs.aws.OceanInstanceStorePolicy>;
+    instanceStorePolicy?: pulumi.Input<inputs.aws.OceanInstanceStorePolicy | undefined>;
     /**
      * The key pair to attach the instances.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * Array of load balancer objects to add to ocean cluster
      */
-    loadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanLoadBalancer>[]>;
+    loadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanLoadBalancer>[] | undefined>;
     /**
      * Logging configuration.
      */
-    logging?: pulumi.Input<inputs.aws.OceanLogging>;
+    logging?: pulumi.Input<inputs.aws.OceanLogging | undefined>;
     /**
      * The upper limit of instances the cluster can scale up to.
      */
-    maxSize?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number | undefined>;
     /**
      * The lower limit of instances the cluster can scale down to.
      */
-    minSize?: pulumi.Input<number>;
+    minSize?: pulumi.Input<number | undefined>;
     /**
      * Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
      */
-    monitoring?: pulumi.Input<boolean>;
+    monitoring?: pulumi.Input<boolean | undefined>;
     /**
      * The cluster name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associateIpv6Address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
      */
-    primaryIpv6?: pulumi.Input<boolean>;
+    primaryIpv6?: pulumi.Input<boolean | undefined>;
     /**
      * The region the cluster will run in.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Specifies the count of ENIs to reserve per instance type for scaling purposes.
      */
-    reservedEnis?: pulumi.Input<number>;
+    reservedEnis?: pulumi.Input<number | undefined>;
     /**
      * Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
      */
-    resourceTagSpecifications?: pulumi.Input<pulumi.Input<inputs.aws.OceanResourceTagSpecification>[]>;
+    resourceTagSpecifications?: pulumi.Input<pulumi.Input<inputs.aws.OceanResourceTagSpecification>[] | undefined>;
     /**
      * The size (in Gb) to allocate for the root volume. Minimum `20`.
      */
-    rootVolumeSize?: pulumi.Input<number>;
+    rootVolumeSize?: pulumi.Input<number | undefined>;
     /**
      * Set scheduling object.
      */
-    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanScheduledTask>[]>;
+    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanScheduledTask>[] | undefined>;
     /**
      * One or more security group ids.
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
      */
-    spotPercentage?: pulumi.Input<number>;
+    spotPercentage?: pulumi.Input<number | undefined>;
     /**
      * Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
      */
-    spreadNodesBy?: pulumi.Input<string>;
+    spreadNodesBy?: pulumi.Input<string | undefined>;
     /**
      * Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
      */
-    startupTaints?: pulumi.Input<pulumi.Input<inputs.aws.OceanStartupTaint>[]>;
+    startupTaints?: pulumi.Input<pulumi.Input<inputs.aws.OceanStartupTaint>[] | undefined>;
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
      * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
      */
-    subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    subnetIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Optionally adds tags to instances launched in an Ocean cluster.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.aws.OceanTag>[]>;
-    updatePolicy?: pulumi.Input<inputs.aws.OceanUpdatePolicy>;
+    tags?: pulumi.Input<pulumi.Input<inputs.aws.OceanTag>[] | undefined>;
+    updatePolicy?: pulumi.Input<inputs.aws.OceanUpdatePolicy | undefined>;
     /**
      * launch specification defined on the Ocean object will function only as a template for virtual node groups.
      * When set to true, on Ocean resource creation please make sure your custom VNG has an initialNodes parameter to create nodes for your VNG.
      */
-    useAsTemplateOnly?: pulumi.Input<boolean>;
+    useAsTemplateOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Base64-encoded MIME user data to make available to the instances.
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * If savings plans exist, Ocean will utilize them before launching Spot instances.
      */
-    utilizeCommitments?: pulumi.Input<boolean>;
+    utilizeCommitments?: pulumi.Input<boolean | undefined>;
     /**
      * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
      */
-    utilizeReservedInstances?: pulumi.Input<boolean>;
-    whitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    utilizeReservedInstances?: pulumi.Input<boolean | undefined>;
+    whitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -505,62 +505,62 @@ export interface OceanArgs {
     /**
      * Configure IPv6 address allocation.
      */
-    associateIpv6Address?: pulumi.Input<boolean>;
+    associateIpv6Address?: pulumi.Input<boolean | undefined>;
     /**
      * Configure public IP address allocation.
      */
-    associatePublicIpAddress?: pulumi.Input<boolean>;
+    associatePublicIpAddress?: pulumi.Input<boolean | undefined>;
     /**
      * Attach load balancers to the cluster.
      */
-    attachLoadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanAttachLoadBalancer>[]>;
+    attachLoadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanAttachLoadBalancer>[] | undefined>;
     /**
      * Describes the Ocean Kubernetes Auto Scaler.
      */
-    autoscaler?: pulumi.Input<inputs.aws.OceanAutoscaler>;
-    blacklists?: pulumi.Input<pulumi.Input<string>[]>;
+    autoscaler?: pulumi.Input<inputs.aws.OceanAutoscaler | undefined>;
+    blacklists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
      */
-    blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.OceanBlockDeviceMapping>[]>;
-    clusterOrientations?: pulumi.Input<pulumi.Input<inputs.aws.OceanClusterOrientation>[]>;
+    blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.OceanBlockDeviceMapping>[] | undefined>;
+    clusterOrientations?: pulumi.Input<pulumi.Input<inputs.aws.OceanClusterOrientation>[] | undefined>;
     /**
      * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
      */
-    controllerId?: pulumi.Input<string>;
+    controllerId?: pulumi.Input<string | undefined>;
     /**
      * The number of instances to launch and maintain in the cluster.
      */
-    desiredCapacity?: pulumi.Input<number>;
+    desiredCapacity?: pulumi.Input<number | undefined>;
     /**
      * Detach load balancers from the cluster.
      */
-    detachLoadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanDetachLoadBalancer>[]>;
+    detachLoadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanDetachLoadBalancer>[] | undefined>;
     /**
      * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      */
-    drainingTimeout?: pulumi.Input<number>;
+    drainingTimeout?: pulumi.Input<number | undefined>;
     /**
      * Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
      */
-    ebsOptimized?: pulumi.Input<boolean>;
+    ebsOptimized?: pulumi.Input<boolean | undefined>;
     /**
      * If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
      */
-    fallbackToOndemand?: pulumi.Input<boolean>;
-    filters?: pulumi.Input<inputs.aws.OceanFilters>;
+    fallbackToOndemand?: pulumi.Input<boolean | undefined>;
+    filters?: pulumi.Input<inputs.aws.OceanFilters | undefined>;
     /**
      * The amount of time, in seconds, after the instance has launched to start checking its health.
      */
-    gracePeriod?: pulumi.Input<number>;
+    gracePeriod?: pulumi.Input<number | undefined>;
     /**
      * The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
      */
-    healthCheckUnhealthyDurationBeforeReplacement?: pulumi.Input<number>;
+    healthCheckUnhealthyDurationBeforeReplacement?: pulumi.Input<number | undefined>;
     /**
      * The instance profile iam role.
      */
-    iamInstanceProfile?: pulumi.Input<string>;
+    iamInstanceProfile?: pulumi.Input<string | undefined>;
     /**
      * ID of the image used to launch the instances.
      */
@@ -568,63 +568,63 @@ export interface OceanArgs {
     /**
      * Ocean instance metadata options object for IMDSv2.
      */
-    instanceMetadataOptions?: pulumi.Input<inputs.aws.OceanInstanceMetadataOptions>;
+    instanceMetadataOptions?: pulumi.Input<inputs.aws.OceanInstanceMetadataOptions | undefined>;
     /**
      * Determines the utilization of instance store volumes. If not defined, instance store volumes will not be used.
      */
-    instanceStorePolicy?: pulumi.Input<inputs.aws.OceanInstanceStorePolicy>;
+    instanceStorePolicy?: pulumi.Input<inputs.aws.OceanInstanceStorePolicy | undefined>;
     /**
      * The key pair to attach the instances.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * Array of load balancer objects to add to ocean cluster
      */
-    loadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanLoadBalancer>[]>;
+    loadBalancers?: pulumi.Input<pulumi.Input<inputs.aws.OceanLoadBalancer>[] | undefined>;
     /**
      * Logging configuration.
      */
-    logging?: pulumi.Input<inputs.aws.OceanLogging>;
+    logging?: pulumi.Input<inputs.aws.OceanLogging | undefined>;
     /**
      * The upper limit of instances the cluster can scale up to.
      */
-    maxSize?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number | undefined>;
     /**
      * The lower limit of instances the cluster can scale down to.
      */
-    minSize?: pulumi.Input<number>;
+    minSize?: pulumi.Input<number | undefined>;
     /**
      * Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
      */
-    monitoring?: pulumi.Input<boolean>;
+    monitoring?: pulumi.Input<boolean | undefined>;
     /**
      * The cluster name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Enables assignment of a primary IPv6 address to the cluster. This feature is only available when `associateIpv6Address` is explicitly set to true. Additionally, the cluster must have been initially created as an EKS cluster in IPv6 mode.
      */
-    primaryIpv6?: pulumi.Input<boolean>;
+    primaryIpv6?: pulumi.Input<boolean | undefined>;
     /**
      * The region the cluster will run in.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Specifies the count of ENIs to reserve per instance type for scaling purposes.
      */
-    reservedEnis?: pulumi.Input<number>;
+    reservedEnis?: pulumi.Input<number | undefined>;
     /**
      * Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
      */
-    resourceTagSpecifications?: pulumi.Input<pulumi.Input<inputs.aws.OceanResourceTagSpecification>[]>;
+    resourceTagSpecifications?: pulumi.Input<pulumi.Input<inputs.aws.OceanResourceTagSpecification>[] | undefined>;
     /**
      * The size (in Gb) to allocate for the root volume. Minimum `20`.
      */
-    rootVolumeSize?: pulumi.Input<number>;
+    rootVolumeSize?: pulumi.Input<number | undefined>;
     /**
      * Set scheduling object.
      */
-    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanScheduledTask>[]>;
+    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.OceanScheduledTask>[] | undefined>;
     /**
      * One or more security group ids.
      */
@@ -632,15 +632,15 @@ export interface OceanArgs {
     /**
      * The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
      */
-    spotPercentage?: pulumi.Input<number>;
+    spotPercentage?: pulumi.Input<number | undefined>;
     /**
      * Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
      */
-    spreadNodesBy?: pulumi.Input<string>;
+    spreadNodesBy?: pulumi.Input<string | undefined>;
     /**
      * Temporary taints applied to a node during its initialization phase. For a startup taint to work, it must also be set as a regular taint in the userData for the cluster.
      */
-    startupTaints?: pulumi.Input<pulumi.Input<inputs.aws.OceanStartupTaint>[]>;
+    startupTaints?: pulumi.Input<pulumi.Input<inputs.aws.OceanStartupTaint>[] | undefined>;
     /**
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
      * * `instanceTypes` - (Optional) The type of instances that may or may not be a part of the Ocean cluster.
@@ -649,24 +649,24 @@ export interface OceanArgs {
     /**
      * Optionally adds tags to instances launched in an Ocean cluster.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.aws.OceanTag>[]>;
-    updatePolicy?: pulumi.Input<inputs.aws.OceanUpdatePolicy>;
+    tags?: pulumi.Input<pulumi.Input<inputs.aws.OceanTag>[] | undefined>;
+    updatePolicy?: pulumi.Input<inputs.aws.OceanUpdatePolicy | undefined>;
     /**
      * launch specification defined on the Ocean object will function only as a template for virtual node groups.
      * When set to true, on Ocean resource creation please make sure your custom VNG has an initialNodes parameter to create nodes for your VNG.
      */
-    useAsTemplateOnly?: pulumi.Input<boolean>;
+    useAsTemplateOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Base64-encoded MIME user data to make available to the instances.
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * If savings plans exist, Ocean will utilize them before launching Spot instances.
      */
-    utilizeCommitments?: pulumi.Input<boolean>;
+    utilizeCommitments?: pulumi.Input<boolean | undefined>;
     /**
      * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
      */
-    utilizeReservedInstances?: pulumi.Input<boolean>;
-    whitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    utilizeReservedInstances?: pulumi.Input<boolean | undefined>;
+    whitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

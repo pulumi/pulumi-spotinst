@@ -87,13 +87,13 @@ export class NotificationCenter extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NotificationCenter resources.
  */
 export interface NotificationCenterState {
-    computePolicyConfig?: pulumi.Input<inputs.NotificationCenterComputePolicyConfig>;
-    description?: pulumi.Input<string>;
-    isActive?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
-    privacyLevel?: pulumi.Input<string>;
-    registeredUsers?: pulumi.Input<pulumi.Input<inputs.NotificationCenterRegisteredUser>[]>;
-    subscriptions?: pulumi.Input<pulumi.Input<inputs.NotificationCenterSubscription>[]>;
+    computePolicyConfig?: pulumi.Input<inputs.NotificationCenterComputePolicyConfig | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    isActive?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    privacyLevel?: pulumi.Input<string | undefined>;
+    registeredUsers?: pulumi.Input<pulumi.Input<inputs.NotificationCenterRegisteredUser>[] | undefined>;
+    subscriptions?: pulumi.Input<pulumi.Input<inputs.NotificationCenterSubscription>[] | undefined>;
 }
 
 /**
@@ -101,10 +101,10 @@ export interface NotificationCenterState {
  */
 export interface NotificationCenterArgs {
     computePolicyConfig: pulumi.Input<inputs.NotificationCenterComputePolicyConfig>;
-    description?: pulumi.Input<string>;
-    isActive?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    isActive?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
     privacyLevel: pulumi.Input<string>;
-    registeredUsers?: pulumi.Input<pulumi.Input<inputs.NotificationCenterRegisteredUser>[]>;
-    subscriptions?: pulumi.Input<pulumi.Input<inputs.NotificationCenterSubscription>[]>;
+    registeredUsers?: pulumi.Input<pulumi.Input<inputs.NotificationCenterRegisteredUser>[] | undefined>;
+    subscriptions?: pulumi.Input<pulumi.Input<inputs.NotificationCenterSubscription>[] | undefined>;
 }

@@ -23,9 +23,9 @@ class HealthCheckArgs:
     def __init__(__self__, *,
                  proxy_address: pulumi.Input[_builtins.str],
                  resource_id: pulumi.Input[_builtins.str],
-                 check: Optional[pulumi.Input['HealthCheckCheckArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_port: Optional[pulumi.Input[_builtins.int]] = None):
+                 check: pulumi.Input[Optional['HealthCheckCheckArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a HealthCheck resource.
 
@@ -65,46 +65,46 @@ class HealthCheckArgs:
 
     @_builtins.property
     @pulumi.getter
-    def check(self) -> Optional[pulumi.Input['HealthCheckCheckArgs']]:
+    def check(self) -> pulumi.Input[Optional['HealthCheckCheckArgs']]:
         """
         Describes the check to execute.
         """
         return pulumi.get(self, "check")
 
     @check.setter
-    def check(self, value: Optional[pulumi.Input['HealthCheckCheckArgs']]):
+    def check(self, value: pulumi.Input[Optional['HealthCheckCheckArgs']]):
         pulumi.set(self, "check", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the health check.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyPort")
-    def proxy_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def proxy_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "proxy_port")
 
     @proxy_port.setter
-    def proxy_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def proxy_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "proxy_port", value)
 
 
 @pulumi.input_type
 class _HealthCheckState:
     def __init__(__self__, *,
-                 check: Optional[pulumi.Input['HealthCheckCheckArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 check: pulumi.Input[Optional['HealthCheckCheckArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HealthCheck resources.
 
@@ -125,56 +125,56 @@ class _HealthCheckState:
 
     @_builtins.property
     @pulumi.getter
-    def check(self) -> Optional[pulumi.Input['HealthCheckCheckArgs']]:
+    def check(self) -> pulumi.Input[Optional['HealthCheckCheckArgs']]:
         """
         Describes the check to execute.
         """
         return pulumi.get(self, "check")
 
     @check.setter
-    def check(self, value: Optional[pulumi.Input['HealthCheckCheckArgs']]):
+    def check(self, value: pulumi.Input[Optional['HealthCheckCheckArgs']]):
         pulumi.set(self, "check", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the health check.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyAddress")
-    def proxy_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "proxy_address")
 
     @proxy_address.setter
-    def proxy_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_address", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyPort")
-    def proxy_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def proxy_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "proxy_port")
 
     @proxy_port.setter
-    def proxy_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def proxy_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "proxy_port", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource to check.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
 
@@ -184,11 +184,11 @@ class HealthCheck(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 check: Optional[pulumi.Input[Union['HealthCheckCheckArgs', 'HealthCheckCheckArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 check: pulumi.Input[Optional[Union['HealthCheckCheckArgs', 'HealthCheckCheckArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Spotinst Health Check resource.
@@ -269,11 +269,11 @@ class HealthCheck(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 check: Optional[pulumi.Input[Union['HealthCheckCheckArgs', 'HealthCheckCheckArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 check: pulumi.Input[Optional[Union['HealthCheckCheckArgs', 'HealthCheckCheckArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -302,11 +302,11 @@ class HealthCheck(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            check: Optional[pulumi.Input[Union['HealthCheckCheckArgs', 'HealthCheckCheckArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy_address: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy_port: Optional[pulumi.Input[_builtins.int]] = None,
-            resource_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'HealthCheck':
+            check: pulumi.Input[Optional[Union['HealthCheckCheckArgs', 'HealthCheckCheckArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_address: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_port: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'HealthCheck':
         """
         Get an existing HealthCheck resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

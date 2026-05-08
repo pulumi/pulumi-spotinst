@@ -196,50 +196,50 @@ export interface BeanstalkState {
     /**
      * The id of an existing Beanstalk environment.
      */
-    beanstalkEnvironmentId?: pulumi.Input<string>;
+    beanstalkEnvironmentId?: pulumi.Input<string | undefined>;
     /**
      * The name of an existing Beanstalk environment.
      */
-    beanstalkEnvironmentName?: pulumi.Input<string>;
+    beanstalkEnvironmentName?: pulumi.Input<string | undefined>;
     /**
      * Preferences when performing a roll
      */
-    deploymentPreferences?: pulumi.Input<inputs.aws.BeanstalkDeploymentPreferences>;
+    deploymentPreferences?: pulumi.Input<inputs.aws.BeanstalkDeploymentPreferences | undefined>;
     /**
      * The desired number of instances the group should have at any time.
      */
-    desiredCapacity?: pulumi.Input<number>;
+    desiredCapacity?: pulumi.Input<number | undefined>;
     /**
      * One or more instance types. To maximize the availability of Spot instances, select as many instance types as possible.
      */
-    instanceTypesSpots?: pulumi.Input<pulumi.Input<string>[]>;
-    maintenance?: pulumi.Input<string>;
+    instanceTypesSpots?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    maintenance?: pulumi.Input<string | undefined>;
     /**
      * Managed Actions parameters
      */
-    managedActions?: pulumi.Input<inputs.aws.BeanstalkManagedActions>;
+    managedActions?: pulumi.Input<inputs.aws.BeanstalkManagedActions | undefined>;
     /**
      * The maximum number of instances the group should have at any time.
      */
-    maxSize?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of instances the group should have at any time.
      */
-    minSize?: pulumi.Input<number>;
+    minSize?: pulumi.Input<number | undefined>;
     /**
      * The group name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
      * For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
      */
-    product?: pulumi.Input<string>;
+    product?: pulumi.Input<string | undefined>;
     /**
      * The AWS region your group will be created in. Cannot be changed after the group has been created.
      */
-    region?: pulumi.Input<string>;
-    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.BeanstalkScheduledTask>[]>;
+    region?: pulumi.Input<string | undefined>;
+    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.BeanstalkScheduledTask>[] | undefined>;
 }
 
 /**
@@ -249,15 +249,15 @@ export interface BeanstalkArgs {
     /**
      * The id of an existing Beanstalk environment.
      */
-    beanstalkEnvironmentId?: pulumi.Input<string>;
+    beanstalkEnvironmentId?: pulumi.Input<string | undefined>;
     /**
      * The name of an existing Beanstalk environment.
      */
-    beanstalkEnvironmentName?: pulumi.Input<string>;
+    beanstalkEnvironmentName?: pulumi.Input<string | undefined>;
     /**
      * Preferences when performing a roll
      */
-    deploymentPreferences?: pulumi.Input<inputs.aws.BeanstalkDeploymentPreferences>;
+    deploymentPreferences?: pulumi.Input<inputs.aws.BeanstalkDeploymentPreferences | undefined>;
     /**
      * The desired number of instances the group should have at any time.
      */
@@ -266,11 +266,11 @@ export interface BeanstalkArgs {
      * One or more instance types. To maximize the availability of Spot instances, select as many instance types as possible.
      */
     instanceTypesSpots: pulumi.Input<pulumi.Input<string>[]>;
-    maintenance?: pulumi.Input<string>;
+    maintenance?: pulumi.Input<string | undefined>;
     /**
      * Managed Actions parameters
      */
-    managedActions?: pulumi.Input<inputs.aws.BeanstalkManagedActions>;
+    managedActions?: pulumi.Input<inputs.aws.BeanstalkManagedActions | undefined>;
     /**
      * The maximum number of instances the group should have at any time.
      */
@@ -282,7 +282,7 @@ export interface BeanstalkArgs {
     /**
      * The group name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
      * For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
@@ -292,5 +292,5 @@ export interface BeanstalkArgs {
      * The AWS region your group will be created in. Cannot be changed after the group has been created.
      */
     region: pulumi.Input<string>;
-    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.BeanstalkScheduledTask>[]>;
+    scheduledTasks?: pulumi.Input<pulumi.Input<inputs.aws.BeanstalkScheduledTask>[] | undefined>;
 }

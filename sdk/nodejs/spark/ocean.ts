@@ -150,30 +150,30 @@ export class Ocean extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Ocean resources.
  */
 export interface OceanState {
-    compute?: pulumi.Input<inputs.spark.OceanCompute>;
-    ingress?: pulumi.Input<inputs.spark.OceanIngress>;
-    logCollection?: pulumi.Input<inputs.spark.OceanLogCollection>;
+    compute?: pulumi.Input<inputs.spark.OceanCompute | undefined>;
+    ingress?: pulumi.Input<inputs.spark.OceanIngress | undefined>;
+    logCollection?: pulumi.Input<inputs.spark.OceanLogCollection | undefined>;
     /**
      * - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
      */
-    oceanClusterId?: pulumi.Input<string>;
-    spark?: pulumi.Input<inputs.spark.OceanSpark>;
-    webhook?: pulumi.Input<inputs.spark.OceanWebhook>;
-    workspaces?: pulumi.Input<inputs.spark.OceanWorkspaces>;
+    oceanClusterId?: pulumi.Input<string | undefined>;
+    spark?: pulumi.Input<inputs.spark.OceanSpark | undefined>;
+    webhook?: pulumi.Input<inputs.spark.OceanWebhook | undefined>;
+    workspaces?: pulumi.Input<inputs.spark.OceanWorkspaces | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Ocean resource.
  */
 export interface OceanArgs {
-    compute?: pulumi.Input<inputs.spark.OceanCompute>;
-    ingress?: pulumi.Input<inputs.spark.OceanIngress>;
-    logCollection?: pulumi.Input<inputs.spark.OceanLogCollection>;
+    compute?: pulumi.Input<inputs.spark.OceanCompute | undefined>;
+    ingress?: pulumi.Input<inputs.spark.OceanIngress | undefined>;
+    logCollection?: pulumi.Input<inputs.spark.OceanLogCollection | undefined>;
     /**
      * - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
      */
     oceanClusterId: pulumi.Input<string>;
-    spark?: pulumi.Input<inputs.spark.OceanSpark>;
-    webhook?: pulumi.Input<inputs.spark.OceanWebhook>;
-    workspaces?: pulumi.Input<inputs.spark.OceanWorkspaces>;
+    spark?: pulumi.Input<inputs.spark.OceanSpark | undefined>;
+    webhook?: pulumi.Input<inputs.spark.OceanWebhook | undefined>;
+    workspaces?: pulumi.Input<inputs.spark.OceanWorkspaces | undefined>;
 }
