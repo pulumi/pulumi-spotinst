@@ -121,6 +121,10 @@ export class Ocean extends pulumi.CustomResource {
      */
     declare public readonly logging: pulumi.Output<outputs.aws.OceanLogging | undefined>;
     /**
+     * Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
+     */
+    declare public readonly maxReplacementLimitPercentage: pulumi.Output<number | undefined>;
+    /**
      * The upper limit of instances the cluster can scale up to.
      */
     declare public readonly maxSize: pulumi.Output<number | undefined>;
@@ -241,6 +245,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["keyName"] = state?.keyName;
             resourceInputs["loadBalancers"] = state?.loadBalancers;
             resourceInputs["logging"] = state?.logging;
+            resourceInputs["maxReplacementLimitPercentage"] = state?.maxReplacementLimitPercentage;
             resourceInputs["maxSize"] = state?.maxSize;
             resourceInputs["minSize"] = state?.minSize;
             resourceInputs["monitoring"] = state?.monitoring;
@@ -297,6 +302,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["keyName"] = args?.keyName;
             resourceInputs["loadBalancers"] = args?.loadBalancers;
             resourceInputs["logging"] = args?.logging;
+            resourceInputs["maxReplacementLimitPercentage"] = args?.maxReplacementLimitPercentage;
             resourceInputs["maxSize"] = args?.maxSize;
             resourceInputs["minSize"] = args?.minSize;
             resourceInputs["monitoring"] = args?.monitoring;
@@ -412,6 +418,10 @@ export interface OceanState {
      * Logging configuration.
      */
     logging?: pulumi.Input<inputs.aws.OceanLogging | undefined>;
+    /**
+     * Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
+     */
+    maxReplacementLimitPercentage?: pulumi.Input<number | undefined>;
     /**
      * The upper limit of instances the cluster can scale up to.
      */
@@ -585,6 +595,10 @@ export interface OceanArgs {
      * Logging configuration.
      */
     logging?: pulumi.Input<inputs.aws.OceanLogging | undefined>;
+    /**
+     * Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
+     */
+    maxReplacementLimitPercentage?: pulumi.Input<number | undefined>;
     /**
      * The upper limit of instances the cluster can scale up to.
      */

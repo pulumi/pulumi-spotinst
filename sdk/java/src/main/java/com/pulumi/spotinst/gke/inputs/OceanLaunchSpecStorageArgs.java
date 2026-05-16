@@ -16,6 +16,21 @@ public final class OceanLaunchSpecStorageArgs extends com.pulumi.resources.Resou
     public static final OceanLaunchSpecStorageArgs Empty = new OceanLaunchSpecStorageArgs();
 
     /**
+     * Defines the number of local NVMe SSDs to be attached per node in raw block mode for this VNG. All `instanceTypes` configured in this VNG must support the value of `localNvmeSsdCount`. Otherwise, if the Ocean cluster has `instanceTypes` on a permit list, at least one must support the value of `localNvmeSsdCount`.
+     * 
+     */
+    @Import(name="localNvmeSsdCount")
+    private @Nullable Output<Integer> localNvmeSsdCount;
+
+    /**
+     * @return Defines the number of local NVMe SSDs to be attached per node in raw block mode for this VNG. All `instanceTypes` configured in this VNG must support the value of `localNvmeSsdCount`. Otherwise, if the Ocean cluster has `instanceTypes` on a permit list, at least one must support the value of `localNvmeSsdCount`.
+     * 
+     */
+    public Optional<Output<Integer>> localNvmeSsdCount() {
+        return Optional.ofNullable(this.localNvmeSsdCount);
+    }
+
+    /**
      * Defines the number of local SSDs to be attached per node for this VNG.
      * 
      */
@@ -30,10 +45,27 @@ public final class OceanLaunchSpecStorageArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.localSsdCount);
     }
 
+    /**
+     * Defines the number of local SSDs to be used as ephemeral storage per node for this VNG. All `instanceTypes` configured in this VNG must support the value of `localSsdEphemeralStorageCount`. Otherwise, if the Ocean cluster has `instanceTypes` on a permit list, at least one must support the value of `localSsdEphemeralStorageCount`.
+     * 
+     */
+    @Import(name="localSsdEphemeralStorageCount")
+    private @Nullable Output<Integer> localSsdEphemeralStorageCount;
+
+    /**
+     * @return Defines the number of local SSDs to be used as ephemeral storage per node for this VNG. All `instanceTypes` configured in this VNG must support the value of `localSsdEphemeralStorageCount`. Otherwise, if the Ocean cluster has `instanceTypes` on a permit list, at least one must support the value of `localSsdEphemeralStorageCount`.
+     * 
+     */
+    public Optional<Output<Integer>> localSsdEphemeralStorageCount() {
+        return Optional.ofNullable(this.localSsdEphemeralStorageCount);
+    }
+
     private OceanLaunchSpecStorageArgs() {}
 
     private OceanLaunchSpecStorageArgs(OceanLaunchSpecStorageArgs $) {
+        this.localNvmeSsdCount = $.localNvmeSsdCount;
         this.localSsdCount = $.localSsdCount;
+        this.localSsdEphemeralStorageCount = $.localSsdEphemeralStorageCount;
     }
 
     public static Builder builder() {
@@ -55,6 +87,27 @@ public final class OceanLaunchSpecStorageArgs extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param localNvmeSsdCount Defines the number of local NVMe SSDs to be attached per node in raw block mode for this VNG. All `instanceTypes` configured in this VNG must support the value of `localNvmeSsdCount`. Otherwise, if the Ocean cluster has `instanceTypes` on a permit list, at least one must support the value of `localNvmeSsdCount`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localNvmeSsdCount(@Nullable Output<Integer> localNvmeSsdCount) {
+            $.localNvmeSsdCount = localNvmeSsdCount;
+            return this;
+        }
+
+        /**
+         * @param localNvmeSsdCount Defines the number of local NVMe SSDs to be attached per node in raw block mode for this VNG. All `instanceTypes` configured in this VNG must support the value of `localNvmeSsdCount`. Otherwise, if the Ocean cluster has `instanceTypes` on a permit list, at least one must support the value of `localNvmeSsdCount`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localNvmeSsdCount(Integer localNvmeSsdCount) {
+            return localNvmeSsdCount(Output.of(localNvmeSsdCount));
+        }
+
+        /**
          * @param localSsdCount Defines the number of local SSDs to be attached per node for this VNG.
          * 
          * @return builder
@@ -73,6 +126,27 @@ public final class OceanLaunchSpecStorageArgs extends com.pulumi.resources.Resou
          */
         public Builder localSsdCount(Integer localSsdCount) {
             return localSsdCount(Output.of(localSsdCount));
+        }
+
+        /**
+         * @param localSsdEphemeralStorageCount Defines the number of local SSDs to be used as ephemeral storage per node for this VNG. All `instanceTypes` configured in this VNG must support the value of `localSsdEphemeralStorageCount`. Otherwise, if the Ocean cluster has `instanceTypes` on a permit list, at least one must support the value of `localSsdEphemeralStorageCount`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localSsdEphemeralStorageCount(@Nullable Output<Integer> localSsdEphemeralStorageCount) {
+            $.localSsdEphemeralStorageCount = localSsdEphemeralStorageCount;
+            return this;
+        }
+
+        /**
+         * @param localSsdEphemeralStorageCount Defines the number of local SSDs to be used as ephemeral storage per node for this VNG. All `instanceTypes` configured in this VNG must support the value of `localSsdEphemeralStorageCount`. Otherwise, if the Ocean cluster has `instanceTypes` on a permit list, at least one must support the value of `localSsdEphemeralStorageCount`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localSsdEphemeralStorageCount(Integer localSsdEphemeralStorageCount) {
+            return localSsdEphemeralStorageCount(Output.of(localSsdEphemeralStorageCount));
         }
 
         public OceanLaunchSpecStorageArgs build() {

@@ -5,7 +5,7 @@ go 1.25.9
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.129.2
 	github.com/pulumi/pulumi/sdk/v3 v3.236.0
-	github.com/spotinst/terraform-provider-spotinst v1.235.0
+	github.com/spotinst/terraform-provider-spotinst v1.236.0
 )
 
 replace (
@@ -197,7 +197,7 @@ require (
 	github.com/spf13/cobra v1.10.2 // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/spiffe/go-spiffe/v2 v2.6.0 // indirect
-	github.com/spotinst/spotinst-sdk-go v1.409.0 // indirect
+	github.com/spotinst/spotinst-sdk-go v1.410.0 // indirect
 	github.com/teekennedy/goldmark-markdown v0.3.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
 	github.com/uber/jaeger-client-go v2.30.0+incompatible // indirect

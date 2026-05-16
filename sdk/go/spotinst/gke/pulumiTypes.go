@@ -7403,8 +7403,12 @@ func (o OceanLaunchSpecShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulum
 }
 
 type OceanLaunchSpecStorage struct {
+	// Defines the number of local NVMe SSDs to be attached per node in raw block mode for this VNG. All `instanceTypes` configured in this VNG must support the value of `localNvmeSsdCount`. Otherwise, if the Ocean cluster has `instanceTypes` on a permit list, at least one must support the value of `localNvmeSsdCount`.
+	LocalNvmeSsdCount *int `pulumi:"localNvmeSsdCount"`
 	// Defines the number of local SSDs to be attached per node for this VNG.
 	LocalSsdCount *int `pulumi:"localSsdCount"`
+	// Defines the number of local SSDs to be used as ephemeral storage per node for this VNG. All `instanceTypes` configured in this VNG must support the value of `localSsdEphemeralStorageCount`. Otherwise, if the Ocean cluster has `instanceTypes` on a permit list, at least one must support the value of `localSsdEphemeralStorageCount`.
+	LocalSsdEphemeralStorageCount *int `pulumi:"localSsdEphemeralStorageCount"`
 }
 
 // OceanLaunchSpecStorageInput is an input type that accepts OceanLaunchSpecStorageArgs and OceanLaunchSpecStorageOutput values.
@@ -7419,8 +7423,12 @@ type OceanLaunchSpecStorageInput interface {
 }
 
 type OceanLaunchSpecStorageArgs struct {
+	// Defines the number of local NVMe SSDs to be attached per node in raw block mode for this VNG. All `instanceTypes` configured in this VNG must support the value of `localNvmeSsdCount`. Otherwise, if the Ocean cluster has `instanceTypes` on a permit list, at least one must support the value of `localNvmeSsdCount`.
+	LocalNvmeSsdCount pulumi.IntPtrInput `pulumi:"localNvmeSsdCount"`
 	// Defines the number of local SSDs to be attached per node for this VNG.
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
+	// Defines the number of local SSDs to be used as ephemeral storage per node for this VNG. All `instanceTypes` configured in this VNG must support the value of `localSsdEphemeralStorageCount`. Otherwise, if the Ocean cluster has `instanceTypes` on a permit list, at least one must support the value of `localSsdEphemeralStorageCount`.
+	LocalSsdEphemeralStorageCount pulumi.IntPtrInput `pulumi:"localSsdEphemeralStorageCount"`
 }
 
 func (OceanLaunchSpecStorageArgs) ElementType() reflect.Type {
@@ -7500,9 +7508,19 @@ func (o OceanLaunchSpecStorageOutput) ToOceanLaunchSpecStoragePtrOutputWithConte
 	}).(OceanLaunchSpecStoragePtrOutput)
 }
 
+// Defines the number of local NVMe SSDs to be attached per node in raw block mode for this VNG. All `instanceTypes` configured in this VNG must support the value of `localNvmeSsdCount`. Otherwise, if the Ocean cluster has `instanceTypes` on a permit list, at least one must support the value of `localNvmeSsdCount`.
+func (o OceanLaunchSpecStorageOutput) LocalNvmeSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecStorage) *int { return v.LocalNvmeSsdCount }).(pulumi.IntPtrOutput)
+}
+
 // Defines the number of local SSDs to be attached per node for this VNG.
 func (o OceanLaunchSpecStorageOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecStorage) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+}
+
+// Defines the number of local SSDs to be used as ephemeral storage per node for this VNG. All `instanceTypes` configured in this VNG must support the value of `localSsdEphemeralStorageCount`. Otherwise, if the Ocean cluster has `instanceTypes` on a permit list, at least one must support the value of `localSsdEphemeralStorageCount`.
+func (o OceanLaunchSpecStorageOutput) LocalSsdEphemeralStorageCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecStorage) *int { return v.LocalSsdEphemeralStorageCount }).(pulumi.IntPtrOutput)
 }
 
 type OceanLaunchSpecStoragePtrOutput struct{ *pulumi.OutputState }
@@ -7529,6 +7547,16 @@ func (o OceanLaunchSpecStoragePtrOutput) Elem() OceanLaunchSpecStorageOutput {
 	}).(OceanLaunchSpecStorageOutput)
 }
 
+// Defines the number of local NVMe SSDs to be attached per node in raw block mode for this VNG. All `instanceTypes` configured in this VNG must support the value of `localNvmeSsdCount`. Otherwise, if the Ocean cluster has `instanceTypes` on a permit list, at least one must support the value of `localNvmeSsdCount`.
+func (o OceanLaunchSpecStoragePtrOutput) LocalNvmeSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecStorage) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LocalNvmeSsdCount
+	}).(pulumi.IntPtrOutput)
+}
+
 // Defines the number of local SSDs to be attached per node for this VNG.
 func (o OceanLaunchSpecStoragePtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecStorage) *int {
@@ -7536,6 +7564,16 @@ func (o OceanLaunchSpecStoragePtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
 			return nil
 		}
 		return v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Defines the number of local SSDs to be used as ephemeral storage per node for this VNG. All `instanceTypes` configured in this VNG must support the value of `localSsdEphemeralStorageCount`. Otherwise, if the Ocean cluster has `instanceTypes` on a permit list, at least one must support the value of `localSsdEphemeralStorageCount`.
+func (o OceanLaunchSpecStoragePtrOutput) LocalSsdEphemeralStorageCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecStorage) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdEphemeralStorageCount
 	}).(pulumi.IntPtrOutput)
 }
 

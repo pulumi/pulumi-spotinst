@@ -145,6 +145,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<Outputs.OceanLogging?> Logging { get; private set; } = null!;
 
         /// <summary>
+        /// Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
+        /// </summary>
+        [Output("maxReplacementLimitPercentage")]
+        public Output<int?> MaxReplacementLimitPercentage { get; private set; } = null!;
+
+        /// <summary>
         /// The upper limit of instances the cluster can scale up to.
         /// </summary>
         [Output("maxSize")]
@@ -480,6 +486,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("logging")]
         public Input<Inputs.OceanLoggingArgs>? Logging { get; set; }
+
+        /// <summary>
+        /// Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
+        /// </summary>
+        [Input("maxReplacementLimitPercentage")]
+        public Input<int>? MaxReplacementLimitPercentage { get; set; }
 
         /// <summary>
         /// The upper limit of instances the cluster can scale up to.
@@ -820,6 +832,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("logging")]
         public Input<Inputs.OceanLoggingGetArgs>? Logging { get; set; }
+
+        /// <summary>
+        /// Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
+        /// </summary>
+        [Input("maxReplacementLimitPercentage")]
+        public Input<int>? MaxReplacementLimitPercentage { get; set; }
 
         /// <summary>
         /// The upper limit of instances the cluster can scale up to.

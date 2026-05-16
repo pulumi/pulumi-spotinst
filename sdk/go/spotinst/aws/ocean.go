@@ -59,6 +59,8 @@ type Ocean struct {
 	LoadBalancers OceanLoadBalancerArrayOutput `pulumi:"loadBalancers"`
 	// Logging configuration.
 	Logging OceanLoggingPtrOutput `pulumi:"logging"`
+	// Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
+	MaxReplacementLimitPercentage pulumi.IntPtrOutput `pulumi:"maxReplacementLimitPercentage"`
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize pulumi.IntPtrOutput `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
@@ -187,6 +189,8 @@ type oceanState struct {
 	LoadBalancers []OceanLoadBalancer `pulumi:"loadBalancers"`
 	// Logging configuration.
 	Logging *OceanLogging `pulumi:"logging"`
+	// Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
+	MaxReplacementLimitPercentage *int `pulumi:"maxReplacementLimitPercentage"`
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize *int `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
@@ -277,6 +281,8 @@ type OceanState struct {
 	LoadBalancers OceanLoadBalancerArrayInput
 	// Logging configuration.
 	Logging OceanLoggingPtrInput
+	// Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
+	MaxReplacementLimitPercentage pulumi.IntPtrInput
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize pulumi.IntPtrInput
 	// The lower limit of instances the cluster can scale down to.
@@ -371,6 +377,8 @@ type oceanArgs struct {
 	LoadBalancers []OceanLoadBalancer `pulumi:"loadBalancers"`
 	// Logging configuration.
 	Logging *OceanLogging `pulumi:"logging"`
+	// Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
+	MaxReplacementLimitPercentage *int `pulumi:"maxReplacementLimitPercentage"`
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize *int `pulumi:"maxSize"`
 	// The lower limit of instances the cluster can scale down to.
@@ -462,6 +470,8 @@ type OceanArgs struct {
 	LoadBalancers OceanLoadBalancerArrayInput
 	// Logging configuration.
 	Logging OceanLoggingPtrInput
+	// Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
+	MaxReplacementLimitPercentage pulumi.IntPtrInput
 	// The upper limit of instances the cluster can scale up to.
 	MaxSize pulumi.IntPtrInput
 	// The lower limit of instances the cluster can scale down to.
@@ -705,6 +715,11 @@ func (o OceanOutput) LoadBalancers() OceanLoadBalancerArrayOutput {
 // Logging configuration.
 func (o OceanOutput) Logging() OceanLoggingPtrOutput {
 	return o.ApplyT(func(v *Ocean) OceanLoggingPtrOutput { return v.Logging }).(OceanLoggingPtrOutput)
+}
+
+// Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
+func (o OceanOutput) MaxReplacementLimitPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.IntPtrOutput { return v.MaxReplacementLimitPercentage }).(pulumi.IntPtrOutput)
 }
 
 // The upper limit of instances the cluster can scale up to.

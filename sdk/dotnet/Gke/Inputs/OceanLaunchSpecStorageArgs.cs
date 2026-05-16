@@ -13,10 +13,22 @@ namespace Pulumi.SpotInst.Gke.Inputs
     public sealed class OceanLaunchSpecStorageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Defines the number of local NVMe SSDs to be attached per node in raw block mode for this VNG. All `InstanceTypes` configured in this VNG must support the value of `LocalNvmeSsdCount`. Otherwise, if the Ocean cluster has `InstanceTypes` on a permit list, at least one must support the value of `LocalNvmeSsdCount`.
+        /// </summary>
+        [Input("localNvmeSsdCount")]
+        public Input<int>? LocalNvmeSsdCount { get; set; }
+
+        /// <summary>
         /// Defines the number of local SSDs to be attached per node for this VNG.
         /// </summary>
         [Input("localSsdCount")]
         public Input<int>? LocalSsdCount { get; set; }
+
+        /// <summary>
+        /// Defines the number of local SSDs to be used as ephemeral storage per node for this VNG. All `InstanceTypes` configured in this VNG must support the value of `LocalSsdEphemeralStorageCount`. Otherwise, if the Ocean cluster has `InstanceTypes` on a permit list, at least one must support the value of `LocalSsdEphemeralStorageCount`.
+        /// </summary>
+        [Input("localSsdEphemeralStorageCount")]
+        public Input<int>? LocalSsdEphemeralStorageCount { get; set; }
 
         public OceanLaunchSpecStorageArgs()
         {

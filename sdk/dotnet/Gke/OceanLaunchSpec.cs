@@ -54,6 +54,8 @@ namespace Pulumi.SpotInst.Gke
     ///         Storage = new SpotInst.Gke.Inputs.OceanLaunchSpecStorageArgs
     ///         {
     ///             LocalSsdCount = 5,
+    ///             LocalNvmeSsdCount = 2,
+    ///             LocalSsdEphemeralStorageCount = 2,
     ///         },
     ///         ResourceLimits = new SpotInst.Gke.Inputs.OceanLaunchSpecResourceLimitsArgs
     ///         {

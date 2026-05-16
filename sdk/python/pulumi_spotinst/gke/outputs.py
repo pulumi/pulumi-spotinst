@@ -3080,8 +3080,12 @@ class OceanLaunchSpecStorage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "localSsdCount":
+        if key == "localNvmeSsdCount":
+            suggest = "local_nvme_ssd_count"
+        elif key == "localSsdCount":
             suggest = "local_ssd_count"
+        elif key == "localSsdEphemeralStorageCount":
+            suggest = "local_ssd_ephemeral_storage_count"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecStorage. Access the value via the '{suggest}' property getter instead.")
@@ -3095,12 +3099,28 @@ class OceanLaunchSpecStorage(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 local_ssd_count: Optional[_builtins.int] = None):
+                 local_nvme_ssd_count: Optional[_builtins.int] = None,
+                 local_ssd_count: Optional[_builtins.int] = None,
+                 local_ssd_ephemeral_storage_count: Optional[_builtins.int] = None):
         """
+        :param _builtins.int local_nvme_ssd_count: Defines the number of local NVMe SSDs to be attached per node in raw block mode for this VNG. All `instance_types` configured in this VNG must support the value of `local_nvme_ssd_count`. Otherwise, if the Ocean cluster has `instance_types` on a permit list, at least one must support the value of `local_nvme_ssd_count`.
         :param _builtins.int local_ssd_count: Defines the number of local SSDs to be attached per node for this VNG.
+        :param _builtins.int local_ssd_ephemeral_storage_count: Defines the number of local SSDs to be used as ephemeral storage per node for this VNG. All `instance_types` configured in this VNG must support the value of `local_ssd_ephemeral_storage_count`. Otherwise, if the Ocean cluster has `instance_types` on a permit list, at least one must support the value of `local_ssd_ephemeral_storage_count`.
         """
+        if local_nvme_ssd_count is not None:
+            pulumi.set(__self__, "local_nvme_ssd_count", local_nvme_ssd_count)
         if local_ssd_count is not None:
             pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+        if local_ssd_ephemeral_storage_count is not None:
+            pulumi.set(__self__, "local_ssd_ephemeral_storage_count", local_ssd_ephemeral_storage_count)
+
+    @_builtins.property
+    @pulumi.getter(name="localNvmeSsdCount")
+    def local_nvme_ssd_count(self) -> Optional[_builtins.int]:
+        """
+        Defines the number of local NVMe SSDs to be attached per node in raw block mode for this VNG. All `instance_types` configured in this VNG must support the value of `local_nvme_ssd_count`. Otherwise, if the Ocean cluster has `instance_types` on a permit list, at least one must support the value of `local_nvme_ssd_count`.
+        """
+        return pulumi.get(self, "local_nvme_ssd_count")
 
     @_builtins.property
     @pulumi.getter(name="localSsdCount")
@@ -3109,6 +3129,14 @@ class OceanLaunchSpecStorage(dict):
         Defines the number of local SSDs to be attached per node for this VNG.
         """
         return pulumi.get(self, "local_ssd_count")
+
+    @_builtins.property
+    @pulumi.getter(name="localSsdEphemeralStorageCount")
+    def local_ssd_ephemeral_storage_count(self) -> Optional[_builtins.int]:
+        """
+        Defines the number of local SSDs to be used as ephemeral storage per node for this VNG. All `instance_types` configured in this VNG must support the value of `local_ssd_ephemeral_storage_count`. Otherwise, if the Ocean cluster has `instance_types` on a permit list, at least one must support the value of `local_ssd_ephemeral_storage_count`.
+        """
+        return pulumi.get(self, "local_ssd_ephemeral_storage_count")
 
 
 @pulumi.output_type
