@@ -355,6 +355,21 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
+     * 
+     */
+    @Import(name="maxReplacementLimitPercentage")
+    private @Nullable Output<Integer> maxReplacementLimitPercentage;
+
+    /**
+     * @return Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
+     * 
+     */
+    public Optional<Output<Integer>> maxReplacementLimitPercentage() {
+        return Optional.ofNullable(this.maxReplacementLimitPercentage);
+    }
+
+    /**
      * The upper limit of instances the cluster can scale up to.
      * 
      */
@@ -698,6 +713,7 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
         this.keyName = $.keyName;
         this.loadBalancers = $.loadBalancers;
         this.logging = $.logging;
+        this.maxReplacementLimitPercentage = $.maxReplacementLimitPercentage;
         this.maxSize = $.maxSize;
         this.minSize = $.minSize;
         this.monitoring = $.monitoring;
@@ -1233,6 +1249,27 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder logging(OceanLoggingArgs logging) {
             return logging(Output.of(logging));
+        }
+
+        /**
+         * @param maxReplacementLimitPercentage Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxReplacementLimitPercentage(@Nullable Output<Integer> maxReplacementLimitPercentage) {
+            $.maxReplacementLimitPercentage = maxReplacementLimitPercentage;
+            return this;
+        }
+
+        /**
+         * @param maxReplacementLimitPercentage Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxReplacementLimitPercentage(Integer maxReplacementLimitPercentage) {
+            return maxReplacementLimitPercentage(Output.of(maxReplacementLimitPercentage));
         }
 
         /**

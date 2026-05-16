@@ -94,6 +94,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .storage(OceanLaunchSpecStorageArgs.builder()
  *                 .localSsdCount(5)
+ *                 .localNvmeSsdCount(2)
+ *                 .localSsdEphemeralStorageCount(2)
  *                 .build())
  *             .resourceLimits(OceanLaunchSpecResourceLimitsArgs.builder()
  *                 .maxInstanceCount(3)

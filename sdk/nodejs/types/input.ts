@@ -5629,9 +5629,17 @@ export namespace gke {
 
     export interface OceanLaunchSpecStorage {
         /**
+         * Defines the number of local NVMe SSDs to be attached per node in raw block mode for this VNG. All `instanceTypes` configured in this VNG must support the value of `localNvmeSsdCount`. Otherwise, if the Ocean cluster has `instanceTypes` on a permit list, at least one must support the value of `localNvmeSsdCount`.
+         */
+        localNvmeSsdCount?: pulumi.Input<number | undefined>;
+        /**
          * Defines the number of local SSDs to be attached per node for this VNG.
          */
         localSsdCount?: pulumi.Input<number | undefined>;
+        /**
+         * Defines the number of local SSDs to be used as ephemeral storage per node for this VNG. All `instanceTypes` configured in this VNG must support the value of `localSsdEphemeralStorageCount`. Otherwise, if the Ocean cluster has `instanceTypes` on a permit list, at least one must support the value of `localSsdEphemeralStorageCount`.
+         */
+        localSsdEphemeralStorageCount?: pulumi.Input<number | undefined>;
     }
 
     export interface OceanLaunchSpecStrategy {

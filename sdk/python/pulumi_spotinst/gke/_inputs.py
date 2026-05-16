@@ -3596,20 +3596,48 @@ class OceanLaunchSpecShieldedInstanceConfigArgs:
 
 
 class OceanLaunchSpecStorageArgsDict(TypedDict):
+    local_nvme_ssd_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Defines the number of local NVMe SSDs to be attached per node in raw block mode for this VNG. All `instance_types` configured in this VNG must support the value of `local_nvme_ssd_count`. Otherwise, if the Ocean cluster has `instance_types` on a permit list, at least one must support the value of `local_nvme_ssd_count`.
+    """
     local_ssd_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Defines the number of local SSDs to be attached per node for this VNG.
+    """
+    local_ssd_ephemeral_storage_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Defines the number of local SSDs to be used as ephemeral storage per node for this VNG. All `instance_types` configured in this VNG must support the value of `local_ssd_ephemeral_storage_count`. Otherwise, if the Ocean cluster has `instance_types` on a permit list, at least one must support the value of `local_ssd_ephemeral_storage_count`.
     """
 
 @pulumi.input_type
 class OceanLaunchSpecStorageArgs:
     def __init__(__self__, *,
-                 local_ssd_count: pulumi.Input[Optional[_builtins.int]] = None):
+                 local_nvme_ssd_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 local_ssd_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 local_ssd_ephemeral_storage_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
+        :param pulumi.Input[_builtins.int] local_nvme_ssd_count: Defines the number of local NVMe SSDs to be attached per node in raw block mode for this VNG. All `instance_types` configured in this VNG must support the value of `local_nvme_ssd_count`. Otherwise, if the Ocean cluster has `instance_types` on a permit list, at least one must support the value of `local_nvme_ssd_count`.
         :param pulumi.Input[_builtins.int] local_ssd_count: Defines the number of local SSDs to be attached per node for this VNG.
+        :param pulumi.Input[_builtins.int] local_ssd_ephemeral_storage_count: Defines the number of local SSDs to be used as ephemeral storage per node for this VNG. All `instance_types` configured in this VNG must support the value of `local_ssd_ephemeral_storage_count`. Otherwise, if the Ocean cluster has `instance_types` on a permit list, at least one must support the value of `local_ssd_ephemeral_storage_count`.
         """
+        if local_nvme_ssd_count is not None:
+            pulumi.set(__self__, "local_nvme_ssd_count", local_nvme_ssd_count)
         if local_ssd_count is not None:
             pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+        if local_ssd_ephemeral_storage_count is not None:
+            pulumi.set(__self__, "local_ssd_ephemeral_storage_count", local_ssd_ephemeral_storage_count)
+
+    @_builtins.property
+    @pulumi.getter(name="localNvmeSsdCount")
+    def local_nvme_ssd_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Defines the number of local NVMe SSDs to be attached per node in raw block mode for this VNG. All `instance_types` configured in this VNG must support the value of `local_nvme_ssd_count`. Otherwise, if the Ocean cluster has `instance_types` on a permit list, at least one must support the value of `local_nvme_ssd_count`.
+        """
+        return pulumi.get(self, "local_nvme_ssd_count")
+
+    @local_nvme_ssd_count.setter
+    def local_nvme_ssd_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "local_nvme_ssd_count", value)
 
     @_builtins.property
     @pulumi.getter(name="localSsdCount")
@@ -3622,6 +3650,18 @@ class OceanLaunchSpecStorageArgs:
     @local_ssd_count.setter
     def local_ssd_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "local_ssd_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="localSsdEphemeralStorageCount")
+    def local_ssd_ephemeral_storage_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Defines the number of local SSDs to be used as ephemeral storage per node for this VNG. All `instance_types` configured in this VNG must support the value of `local_ssd_ephemeral_storage_count`. Otherwise, if the Ocean cluster has `instance_types` on a permit list, at least one must support the value of `local_ssd_ephemeral_storage_count`.
+        """
+        return pulumi.get(self, "local_ssd_ephemeral_storage_count")
+
+    @local_ssd_ephemeral_storage_count.setter
+    def local_ssd_ephemeral_storage_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "local_ssd_ephemeral_storage_count", value)
 
 
 class OceanLaunchSpecStrategyArgsDict(TypedDict):

@@ -851,6 +851,8 @@ class OceanLaunchSpec(pulumi.CustomResource):
             },
             storage={
                 "local_ssd_count": 5,
+                "local_nvme_ssd_count": 2,
+                "local_ssd_ephemeral_storage_count": 2,
             },
             resource_limits={
                 "max_instance_count": 3,
@@ -984,6 +986,8 @@ class OceanLaunchSpec(pulumi.CustomResource):
             },
             storage={
                 "local_ssd_count": 5,
+                "local_nvme_ssd_count": 2,
+                "local_ssd_ephemeral_storage_count": 2,
             },
             resource_limits={
                 "max_instance_count": 3,

@@ -53,7 +53,9 @@ import (
 //					EnableIntegrityMonitoring: pulumi.Bool(true),
 //				},
 //				Storage: &gke.OceanLaunchSpecStorageArgs{
-//					LocalSsdCount: pulumi.Int(5),
+//					LocalSsdCount:                 pulumi.Int(5),
+//					LocalNvmeSsdCount:             pulumi.Int(2),
+//					LocalSsdEphemeralStorageCount: pulumi.Int(2),
 //				},
 //				ResourceLimits: &gke.OceanLaunchSpecResourceLimitsArgs{
 //					MaxInstanceCount: pulumi.Int(3),

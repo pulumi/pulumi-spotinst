@@ -39,6 +39,8 @@ import * as utilities from "../utilities";
  *     },
  *     storage: {
  *         localSsdCount: 5,
+ *         localNvmeSsdCount: 2,
+ *         localSsdEphemeralStorageCount: 2,
  *     },
  *     resourceLimits: {
  *         maxInstanceCount: 3,

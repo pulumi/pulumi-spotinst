@@ -46,6 +46,7 @@ class OceanArgs:
                  key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]] = None,
                  logging: pulumi.Input[Optional['OceanLoggingArgs']] = None,
+                 max_replacement_limit_percentage: pulumi.Input[Optional[_builtins.int]] = None,
                  max_size: pulumi.Input[Optional[_builtins.int]] = None,
                  min_size: pulumi.Input[Optional[_builtins.int]] = None,
                  monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -92,6 +93,7 @@ class OceanArgs:
         :param pulumi.Input[_builtins.str] key_name: The key pair to attach the instances.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]] load_balancers: Array of load balancer objects to add to ocean cluster
         :param pulumi.Input['OceanLoggingArgs'] logging: Logging configuration.
+        :param pulumi.Input[_builtins.int] max_replacement_limit_percentage: Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
         :param pulumi.Input[_builtins.int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[_builtins.int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[_builtins.bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
@@ -159,6 +161,8 @@ class OceanArgs:
             pulumi.set(__self__, "load_balancers", load_balancers)
         if logging is not None:
             pulumi.set(__self__, "logging", logging)
+        if max_replacement_limit_percentage is not None:
+            pulumi.set(__self__, "max_replacement_limit_percentage", max_replacement_limit_percentage)
         if max_size is not None:
             pulumi.set(__self__, "max_size", max_size)
         if min_size is not None:
@@ -493,6 +497,18 @@ class OceanArgs:
         pulumi.set(self, "logging", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxReplacementLimitPercentage")
+    def max_replacement_limit_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
+        """
+        return pulumi.get(self, "max_replacement_limit_percentage")
+
+    @max_replacement_limit_percentage.setter
+    def max_replacement_limit_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_replacement_limit_percentage", value)
+
+    @_builtins.property
     @pulumi.getter(name="maxSize")
     def max_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -754,6 +770,7 @@ class _OceanState:
                  key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]] = None,
                  logging: pulumi.Input[Optional['OceanLoggingArgs']] = None,
+                 max_replacement_limit_percentage: pulumi.Input[Optional[_builtins.int]] = None,
                  max_size: pulumi.Input[Optional[_builtins.int]] = None,
                  min_size: pulumi.Input[Optional[_builtins.int]] = None,
                  monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -799,6 +816,7 @@ class _OceanState:
         :param pulumi.Input[_builtins.str] key_name: The key pair to attach the instances.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]] load_balancers: Array of load balancer objects to add to ocean cluster
         :param pulumi.Input['OceanLoggingArgs'] logging: Logging configuration.
+        :param pulumi.Input[_builtins.int] max_replacement_limit_percentage: Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
         :param pulumi.Input[_builtins.int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[_builtins.int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[_builtins.bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
@@ -868,6 +886,8 @@ class _OceanState:
             pulumi.set(__self__, "load_balancers", load_balancers)
         if logging is not None:
             pulumi.set(__self__, "logging", logging)
+        if max_replacement_limit_percentage is not None:
+            pulumi.set(__self__, "max_replacement_limit_percentage", max_replacement_limit_percentage)
         if max_size is not None:
             pulumi.set(__self__, "max_size", max_size)
         if min_size is not None:
@@ -1181,6 +1201,18 @@ class _OceanState:
         pulumi.set(self, "logging", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxReplacementLimitPercentage")
+    def max_replacement_limit_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
+        """
+        return pulumi.get(self, "max_replacement_limit_percentage")
+
+    @max_replacement_limit_percentage.setter
+    def max_replacement_limit_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_replacement_limit_percentage", value)
+
+    @_builtins.property
     @pulumi.getter(name="maxSize")
     def max_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -1470,6 +1502,7 @@ class Ocean(pulumi.CustomResource):
                  key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLoadBalancerArgs', 'OceanLoadBalancerArgsDict']]]]] = None,
                  logging: pulumi.Input[Optional[Union['OceanLoggingArgs', 'OceanLoggingArgsDict']]] = None,
+                 max_replacement_limit_percentage: pulumi.Input[Optional[_builtins.int]] = None,
                  max_size: pulumi.Input[Optional[_builtins.int]] = None,
                  min_size: pulumi.Input[Optional[_builtins.int]] = None,
                  monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1519,6 +1552,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] key_name: The key pair to attach the instances.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLoadBalancerArgs', 'OceanLoadBalancerArgsDict']]]] load_balancers: Array of load balancer objects to add to ocean cluster
         :param pulumi.Input[Union['OceanLoggingArgs', 'OceanLoggingArgsDict']] logging: Logging configuration.
+        :param pulumi.Input[_builtins.int] max_replacement_limit_percentage: Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
         :param pulumi.Input[_builtins.int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[_builtins.int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[_builtins.bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
@@ -1590,6 +1624,7 @@ class Ocean(pulumi.CustomResource):
                  key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLoadBalancerArgs', 'OceanLoadBalancerArgsDict']]]]] = None,
                  logging: pulumi.Input[Optional[Union['OceanLoggingArgs', 'OceanLoggingArgsDict']]] = None,
+                 max_replacement_limit_percentage: pulumi.Input[Optional[_builtins.int]] = None,
                  max_size: pulumi.Input[Optional[_builtins.int]] = None,
                  min_size: pulumi.Input[Optional[_builtins.int]] = None,
                  monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1646,6 +1681,7 @@ class Ocean(pulumi.CustomResource):
             __props__.__dict__["key_name"] = key_name
             __props__.__dict__["load_balancers"] = load_balancers
             __props__.__dict__["logging"] = logging
+            __props__.__dict__["max_replacement_limit_percentage"] = max_replacement_limit_percentage
             __props__.__dict__["max_size"] = max_size
             __props__.__dict__["min_size"] = min_size
             __props__.__dict__["monitoring"] = monitoring
@@ -1705,6 +1741,7 @@ class Ocean(pulumi.CustomResource):
             key_name: pulumi.Input[Optional[_builtins.str]] = None,
             load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLoadBalancerArgs', 'OceanLoadBalancerArgsDict']]]]] = None,
             logging: pulumi.Input[Optional[Union['OceanLoggingArgs', 'OceanLoggingArgsDict']]] = None,
+            max_replacement_limit_percentage: pulumi.Input[Optional[_builtins.int]] = None,
             max_size: pulumi.Input[Optional[_builtins.int]] = None,
             min_size: pulumi.Input[Optional[_builtins.int]] = None,
             monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1754,6 +1791,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] key_name: The key pair to attach the instances.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLoadBalancerArgs', 'OceanLoadBalancerArgsDict']]]] load_balancers: Array of load balancer objects to add to ocean cluster
         :param pulumi.Input[Union['OceanLoggingArgs', 'OceanLoggingArgsDict']] logging: Logging configuration.
+        :param pulumi.Input[_builtins.int] max_replacement_limit_percentage: Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
         :param pulumi.Input[_builtins.int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[_builtins.int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[_builtins.bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
@@ -1804,6 +1842,7 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["key_name"] = key_name
         __props__.__dict__["load_balancers"] = load_balancers
         __props__.__dict__["logging"] = logging
+        __props__.__dict__["max_replacement_limit_percentage"] = max_replacement_limit_percentage
         __props__.__dict__["max_size"] = max_size
         __props__.__dict__["min_size"] = min_size
         __props__.__dict__["monitoring"] = monitoring
@@ -2002,6 +2041,14 @@ class Ocean(pulumi.CustomResource):
         Logging configuration.
         """
         return pulumi.get(self, "logging")
+
+    @_builtins.property
+    @pulumi.getter(name="maxReplacementLimitPercentage")
+    def max_replacement_limit_percentage(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
+        """
+        return pulumi.get(self, "max_replacement_limit_percentage")
 
     @_builtins.property
     @pulumi.getter(name="maxSize")

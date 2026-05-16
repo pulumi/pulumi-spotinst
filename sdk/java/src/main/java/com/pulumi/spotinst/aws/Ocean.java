@@ -337,6 +337,20 @@ public class Ocean extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.logging);
     }
     /**
+     * Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
+     * 
+     */
+    @Export(name="maxReplacementLimitPercentage", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> maxReplacementLimitPercentage;
+
+    /**
+     * @return Limits the percentage of instances that can be replaced at once during a run cycle. Range: `[1 .. 100]`.
+     * 
+     */
+    public Output<Optional<Integer>> maxReplacementLimitPercentage() {
+        return Codegen.optional(this.maxReplacementLimitPercentage);
+    }
+    /**
      * The upper limit of instances the cluster can scale up to.
      * 
      */
