@@ -91,10 +91,10 @@ class OceanComputeArgs:
 
 
 class OceanIngressArgsDict(TypedDict):
-    controller: NotRequired[pulumi.Input[Optional['OceanIngressControllerArgs']]]
-    custom_endpoint: NotRequired[pulumi.Input[Optional['OceanIngressCustomEndpointArgs']]]
-    load_balancer: NotRequired[pulumi.Input[Optional['OceanIngressLoadBalancerArgs']]]
-    private_link: NotRequired[pulumi.Input[Optional['OceanIngressPrivateLinkArgs']]]
+    controller: NotRequired[pulumi.Input[Optional['OceanIngressControllerArgsDict']]]
+    custom_endpoint: NotRequired[pulumi.Input[Optional['OceanIngressCustomEndpointArgsDict']]]
+    load_balancer: NotRequired[pulumi.Input[Optional['OceanIngressLoadBalancerArgsDict']]]
+    private_link: NotRequired[pulumi.Input[Optional['OceanIngressPrivateLinkArgsDict']]]
     service_annotations: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     - **DEPRECATED**: Use `load_balancer.service_annotations` instead.
@@ -475,7 +475,7 @@ class OceanWebhookArgs:
 
 
 class OceanWorkspacesArgsDict(TypedDict):
-    storage: NotRequired[pulumi.Input[Optional['OceanWorkspacesStorageArgs']]]
+    storage: NotRequired[pulumi.Input[Optional['OceanWorkspacesStorageArgsDict']]]
 
 @pulumi.input_type
 class OceanWorkspacesArgs:
@@ -495,7 +495,7 @@ class OceanWorkspacesArgs:
 
 
 class OceanWorkspacesStorageArgsDict(TypedDict):
-    defaults: NotRequired[pulumi.Input[Optional['OceanWorkspacesStorageDefaultsArgs']]]
+    defaults: NotRequired[pulumi.Input[Optional['OceanWorkspacesStorageDefaultsArgsDict']]]
 
 @pulumi.input_type
 class OceanWorkspacesStorageArgs:

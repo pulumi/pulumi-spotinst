@@ -245,7 +245,7 @@ class RolloutSpecStrategyArgsDict(TypedDict):
     """
     Ocean CD strategy name identifier.
     """
-    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RolloutSpecStrategyArgArgs']]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RolloutSpecStrategyArgArgsDict']]]]]
     """
     Arguments defined in Verification Templates.
     """
@@ -297,7 +297,7 @@ class RolloutSpecStrategyArgArgsDict(TypedDict):
     """
     Value of an argument.
     """
-    value_from: NotRequired[pulumi.Input[Optional['RolloutSpecStrategyArgValueFromArgs']]]
+    value_from: NotRequired[pulumi.Input[Optional['RolloutSpecStrategyArgValueFromArgsDict']]]
     """
     Defines from where to get the value of an argument.
     """
@@ -413,11 +413,11 @@ class RolloutSpecStrategyArgValueFromFieldRefArgs:
 
 
 class RolloutSpecTrafficArgsDict(TypedDict):
-    alb: NotRequired[pulumi.Input[Optional['RolloutSpecTrafficAlbArgs']]]
+    alb: NotRequired[pulumi.Input[Optional['RolloutSpecTrafficAlbArgsDict']]]
     """
     Holds ALB Ingress specific configuration to route traffic.
     """
-    ambassador: NotRequired[pulumi.Input[Optional['RolloutSpecTrafficAmbassadorArgs']]]
+    ambassador: NotRequired[pulumi.Input[Optional['RolloutSpecTrafficAmbassadorArgsDict']]]
     """
     Holds specific configuration to use Ambassador to route traffic.
     """
@@ -425,19 +425,19 @@ class RolloutSpecTrafficArgsDict(TypedDict):
     """
     The canary service name.
     """
-    istio: NotRequired[pulumi.Input[Optional['RolloutSpecTrafficIstioArgs']]]
+    istio: NotRequired[pulumi.Input[Optional['RolloutSpecTrafficIstioArgsDict']]]
     """
     Holds Istio specific configuration to route traffic.
     """
-    nginx: NotRequired[pulumi.Input[Optional['RolloutSpecTrafficNginxArgs']]]
+    nginx: NotRequired[pulumi.Input[Optional['RolloutSpecTrafficNginxArgsDict']]]
     """
     Holds Nginx Ingress specific configuration to route traffic.
     """
-    ping_pong: NotRequired[pulumi.Input[Optional['RolloutSpecTrafficPingPongArgs']]]
+    ping_pong: NotRequired[pulumi.Input[Optional['RolloutSpecTrafficPingPongArgsDict']]]
     """
     Holds the ping and pong services. You can use `pingPong` field only when using ALB as a traffic manager with the IP Mode approach.
     """
-    smi: NotRequired[pulumi.Input[Optional['RolloutSpecTrafficSmiArgs']]]
+    smi: NotRequired[pulumi.Input[Optional['RolloutSpecTrafficSmiArgsDict']]]
     """
     Holds TrafficSplit specific configuration to route traffic.
     """
@@ -598,7 +598,7 @@ class RolloutSpecTrafficAlbArgsDict(TypedDict):
     """
     Has to match the configured annotation prefix on the alb ingress controller.
     """
-    stickiness_config: NotRequired[pulumi.Input[Optional['RolloutSpecTrafficAlbStickinessConfigArgs']]]
+    stickiness_config: NotRequired[pulumi.Input[Optional['RolloutSpecTrafficAlbStickinessConfigArgsDict']]]
     """
     Allows to specify further settings on the ForwardConfig.
     """
@@ -769,7 +769,7 @@ class RolloutSpecTrafficIstioArgsDict(TypedDict):
     """
     Defines a set of traffic routing rules to apply when a host is addressed.
     """
-    destination_rule: NotRequired[pulumi.Input[Optional['RolloutSpecTrafficIstioDestinationRuleArgs']]]
+    destination_rule: NotRequired[pulumi.Input[Optional['RolloutSpecTrafficIstioDestinationRuleArgsDict']]]
     """
     It references to an Istio DestinationRule to modify and shape traffic. `DestinationRule` field belongs only to the Subset Level approach.
     """
@@ -883,7 +883,7 @@ class RolloutSpecTrafficIstioVirtualServiceArgsDict(TypedDict):
     """
     Holds the name of the VirtualService.
     """
-    tls_routes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RolloutSpecTrafficIstioVirtualServiceTlsRouteArgs']]]]]
+    tls_routes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RolloutSpecTrafficIstioVirtualServiceTlsRouteArgsDict']]]]]
     """
     A list of HTTPS routes within VirtualService.
     """
@@ -1000,7 +1000,7 @@ class RolloutSpecTrafficNginxArgsDict(TypedDict):
     """
     Refers to the name of an `Ingress` resource in the same namespace as the `SpotDeployment`.
     """
-    additional_ingress_annotation: NotRequired[pulumi.Input[Optional['RolloutSpecTrafficNginxAdditionalIngressAnnotationArgs']]]
+    additional_ingress_annotation: NotRequired[pulumi.Input[Optional['RolloutSpecTrafficNginxAdditionalIngressAnnotationArgsDict']]]
     """
     Provides additional features to add to the canary ingress (such as routing by header, cookie, etc). You can add these Kubernetes annotations to specific Ingress objects to customize their behavior. Above are found examples of accepted k8s keys.For the full list of supported keys, you may reach the following documentation - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary.
     """
@@ -1213,7 +1213,7 @@ class StrategyCanaryArgsDict(TypedDict):
     """
     A set of separate conditions of rollout processing.
     """
-    background_verification: NotRequired[pulumi.Input[Optional['StrategyCanaryBackgroundVerificationArgs']]]
+    background_verification: NotRequired[pulumi.Input[Optional['StrategyCanaryBackgroundVerificationArgsDict']]]
     """
     A list of background verifications.
     """
@@ -1285,15 +1285,15 @@ class StrategyCanaryBackgroundVerificationArgs:
 
 
 class StrategyCanaryStepArgsDict(TypedDict):
-    pause: NotRequired[pulumi.Input[Optional['StrategyCanaryStepPauseArgs']]]
+    pause: NotRequired[pulumi.Input[Optional['StrategyCanaryStepPauseArgsDict']]]
     """
     Defines the duration of time to freeze the rollout.
     """
-    set_canary_scale: NotRequired[pulumi.Input[Optional['StrategyCanaryStepSetCanaryScaleArgs']]]
+    set_canary_scale: NotRequired[pulumi.Input[Optional['StrategyCanaryStepSetCanaryScaleArgsDict']]]
     """
     Defines how to scale the version without traffic weight changing.
     """
-    set_header_route: NotRequired[pulumi.Input[Optional['StrategyCanaryStepSetHeaderRouteArgs']]]
+    set_header_route: NotRequired[pulumi.Input[Optional['StrategyCanaryStepSetHeaderRouteArgsDict']]]
     """
     Defines the list of HeaderRoutes to add to the Rollout.
     """
@@ -1302,7 +1302,7 @@ class StrategyCanaryStepArgsDict(TypedDict):
     Defines the percentage that the new version should receive.
     """
     step_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    verification: NotRequired[pulumi.Input[Optional['StrategyCanaryStepVerificationArgs']]]
+    verification: NotRequired[pulumi.Input[Optional['StrategyCanaryStepVerificationArgsDict']]]
     """
     Represents the list of verifications to run in a step.
     """
@@ -1724,12 +1724,12 @@ class StrategyRollingArgs:
 
 
 class StrategyRollingStepArgsDict(TypedDict):
-    pause: NotRequired[pulumi.Input[Optional['StrategyRollingStepPauseArgs']]]
+    pause: NotRequired[pulumi.Input[Optional['StrategyRollingStepPauseArgsDict']]]
     """
     Defines the duration of time to freeze the rollout.
     """
     steps_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    verification: NotRequired[pulumi.Input[Optional['StrategyRollingStepVerificationArgs']]]
+    verification: NotRequired[pulumi.Input[Optional['StrategyRollingStepVerificationArgsDict']]]
     """
     Represents the list of verifications to run in a step.
     """
@@ -2139,7 +2139,7 @@ class VerificationTemplateArgArgsDict(TypedDict):
     """
     String representation of data.
     """
-    value_from: NotRequired[pulumi.Input[Optional['VerificationTemplateArgValueFromArgs']]]
+    value_from: NotRequired[pulumi.Input[Optional['VerificationTemplateArgValueFromArgsDict']]]
     """
     ValueFrom object.
     """
@@ -2199,7 +2199,7 @@ class VerificationTemplateArgArgs:
 
 
 class VerificationTemplateArgValueFromArgsDict(TypedDict):
-    secret_key_ref: NotRequired[pulumi.Input[Optional['VerificationTemplateArgValueFromSecretKeyRefArgs']]]
+    secret_key_ref: NotRequired[pulumi.Input[Optional['VerificationTemplateArgValueFromSecretKeyRefArgsDict']]]
     """
     Secret key to use.
     """
@@ -2283,7 +2283,7 @@ class VerificationTemplateMetricArgsDict(TypedDict):
     """
     The name of the monitoring tool chosen for the metric.
     """
-    baseline: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricBaselineArgs']]]
+    baseline: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricBaselineArgsDict']]]
     """
     Baseline Object.
     """
@@ -2589,15 +2589,15 @@ class VerificationTemplateMetricBaselineArgs:
 
 
 class VerificationTemplateMetricBaselineBaselineProviderArgsDict(TypedDict):
-    datadog: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricBaselineBaselineProviderDatadogArgs']]]
+    datadog: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricBaselineBaselineProviderDatadogArgsDict']]]
     """
     The datadog provider.
     """
-    new_relic: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricBaselineBaselineProviderNewRelicArgs']]]
+    new_relic: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricBaselineBaselineProviderNewRelicArgsDict']]]
     """
     The New Relic provider.
     """
-    prometheus: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs']]]
+    prometheus: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricBaselineBaselineProviderPrometheusArgsDict']]]
     """
     The Prometheus provider.
     """
@@ -2782,31 +2782,31 @@ class VerificationTemplateMetricBaselineBaselineProviderPrometheusArgs:
 
 
 class VerificationTemplateMetricProviderArgsDict(TypedDict):
-    cloud_watch: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricProviderCloudWatchArgs']]]
+    cloud_watch: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricProviderCloudWatchArgsDict']]]
     """
     The CloudWatch provider.
     """
-    datadog: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricProviderDatadogArgs']]]
+    datadog: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricProviderDatadogArgsDict']]]
     """
     The datadog provider.
     """
-    jenkins: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricProviderJenkinsArgs']]]
+    jenkins: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricProviderJenkinsArgsDict']]]
     """
     The Jenkins provider. Default is "{$}"
     """
-    job: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricProviderJobArgs']]]
+    job: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricProviderJobArgsDict']]]
     """
     The Job provider.
     """
-    new_relic: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricProviderNewRelicArgs']]]
+    new_relic: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricProviderNewRelicArgsDict']]]
     """
     The New Relic provider.
     """
-    prometheus: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricProviderPrometheusArgs']]]
+    prometheus: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricProviderPrometheusArgsDict']]]
     """
     The Prometheus provider.
     """
-    web: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricProviderWebArgs']]]
+    web: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricProviderWebArgsDict']]]
     """
     The Web provider.
     """
@@ -2991,7 +2991,7 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgsDict(TypedD
     """
     A human-readable label for this metric or expression. If the metric or expression is shown in a CloudWatch dashboard widget, the label is shown
     """
-    metric_stat: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgs']]]
+    metric_stat: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgsDict']]]
     """
     The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.Within one metricdataquery object, you must specify either expression or metricstat but not both.
     """
@@ -3107,7 +3107,7 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryArgs:
 
 
 class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatArgsDict(TypedDict):
-    metric: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgs']]]
+    metric: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricArgsDict']]]
     """
     The metric to return, including the metric name, namespace, and dimensions.
     """
@@ -3200,7 +3200,7 @@ class VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetri
     """
     The name of the metric.
     """
-    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgs']]]]]
+    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VerificationTemplateMetricProviderCloudWatchMetricDataQueryMetricStatMetricDimensionArgsDict']]]]]
     """
     A dimension is a name/value pair that is part of the identity of a metric.You can assign upto 30 dimensions to a metric
     """
@@ -3372,7 +3372,7 @@ class VerificationTemplateMetricProviderJenkinsArgsDict(TypedDict):
     """
     The total jenkins timeout.
     """
-    jenkins_parameters: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricProviderJenkinsJenkinsParametersArgs']]]
+    jenkins_parameters: NotRequired[pulumi.Input[Optional['VerificationTemplateMetricProviderJenkinsJenkinsParametersArgsDict']]]
     """
     List of parameters.
     """
@@ -3830,7 +3830,7 @@ class VerificationTemplateMetricProviderWebArgsDict(TypedDict):
     """
     The timeout for the request in seconds. Default is 10.
     """
-    web_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VerificationTemplateMetricProviderWebWebHeaderArgs']]]]]
+    web_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VerificationTemplateMetricProviderWebWebHeaderArgsDict']]]]]
     """
     Optional HTTP headers to use in the request.
     """

@@ -88,11 +88,11 @@ __all__ = [
 ]
 
 class OceanNpAutoscalerArgsDict(TypedDict):
-    autoscale_down: NotRequired[pulumi.Input[Optional['OceanNpAutoscalerAutoscaleDownArgs']]]
+    autoscale_down: NotRequired[pulumi.Input[Optional['OceanNpAutoscalerAutoscaleDownArgsDict']]]
     """
     Auto Scaling scale down operations.
     """
-    autoscale_headroom: NotRequired[pulumi.Input[Optional['OceanNpAutoscalerAutoscaleHeadroomArgs']]]
+    autoscale_headroom: NotRequired[pulumi.Input[Optional['OceanNpAutoscalerAutoscaleHeadroomArgsDict']]]
     """
     Spare resource capacity management enabling fast assignment of pods without waiting for new resources to launch.
     """
@@ -100,7 +100,7 @@ class OceanNpAutoscalerArgsDict(TypedDict):
     """
     Enable the Ocean Kubernetes Autoscaler.
     """
-    resource_limits: NotRequired[pulumi.Input[Optional['OceanNpAutoscalerResourceLimitsArgs']]]
+    resource_limits: NotRequired[pulumi.Input[Optional['OceanNpAutoscalerResourceLimitsArgsDict']]]
     """
     Optionally set upper and lower bounds on the resource usage of the cluster.
     """
@@ -206,7 +206,7 @@ class OceanNpAutoscalerAutoscaleDownArgs:
 
 
 class OceanNpAutoscalerAutoscaleHeadroomArgsDict(TypedDict):
-    automatic: NotRequired[pulumi.Input[Optional['OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs']]]
+    automatic: NotRequired[pulumi.Input[Optional['OceanNpAutoscalerAutoscaleHeadroomAutomaticArgsDict']]]
     """
     [Automatic headroom](https://docs.spot.io/ocean/features/headroom?id=automatic-headroom) configuration.
     """
@@ -800,7 +800,7 @@ class OceanNpHealthArgs:
 
 
 class OceanNpLinuxOsConfigArgsDict(TypedDict):
-    sysctls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpLinuxOsConfigSysctlArgs']]]]]
+    sysctls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpLinuxOsConfigSysctlArgsDict']]]]]
     """
     System Controls
     """
@@ -858,7 +858,7 @@ class OceanNpLinuxOsConfigSysctlArgs:
 
 
 class OceanNpLoggingArgsDict(TypedDict):
-    export: NotRequired[pulumi.Input[Optional['OceanNpLoggingExportArgs']]]
+    export: NotRequired[pulumi.Input[Optional['OceanNpLoggingExportArgsDict']]]
     """
     The Ocean AKS Logging Export object.
     """
@@ -887,7 +887,7 @@ class OceanNpLoggingArgs:
 
 
 class OceanNpLoggingExportArgsDict(TypedDict):
-    azure_blobs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpLoggingExportAzureBlobArgs']]]]]
+    azure_blobs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpLoggingExportAzureBlobArgsDict']]]]]
     """
     Exports your cluster's logs to the storage account and container configured on the storage account [data integration](https://docs.spot.io/ocean/features/log-integration-with-azure-blob?id=log-integration-with-azure-blob) given. Each file contains logs of 3 minutes where each log is separated by a new line and saved as a JSON. The file formats are `container`/`accountId``oceanId``oceanName`_`startTime`.log
     """
@@ -945,12 +945,12 @@ class OceanNpLoggingExportAzureBlobArgs:
 
 
 class OceanNpSchedulingArgsDict(TypedDict):
-    shutdown_hours: NotRequired[pulumi.Input[Optional['OceanNpSchedulingShutdownHoursArgs']]]
+    shutdown_hours: NotRequired[pulumi.Input[Optional['OceanNpSchedulingShutdownHoursArgsDict']]]
     """
     An object used to specify times that the nodes in the virtual node group will be stopped.
     """
-    suspension_hours: NotRequired[pulumi.Input[Optional['OceanNpSchedulingSuspensionHoursArgs']]]
-    tasks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpSchedulingTaskArgs']]]]]
+    suspension_hours: NotRequired[pulumi.Input[Optional['OceanNpSchedulingSuspensionHoursArgsDict']]]
+    tasks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpSchedulingTaskArgsDict']]]]]
 
 @pulumi.input_type
 class OceanNpSchedulingArgs:
@@ -1087,7 +1087,7 @@ class OceanNpSchedulingTaskArgsDict(TypedDict):
     cron_expression: pulumi.Input[_builtins.str]
     is_enabled: pulumi.Input[_builtins.bool]
     task_type: pulumi.Input[_builtins.str]
-    parameters: NotRequired[pulumi.Input[Optional['OceanNpSchedulingTaskParametersArgs']]]
+    parameters: NotRequired[pulumi.Input[Optional['OceanNpSchedulingTaskParametersArgsDict']]]
 
 @pulumi.input_type
 class OceanNpSchedulingTaskArgs:
@@ -1140,8 +1140,8 @@ class OceanNpSchedulingTaskArgs:
 
 
 class OceanNpSchedulingTaskParametersArgsDict(TypedDict):
-    parameters_cluster_roll: NotRequired[pulumi.Input[Optional['OceanNpSchedulingTaskParametersParametersClusterRollArgs']]]
-    parameters_upgrade_config: NotRequired[pulumi.Input[Optional['OceanNpSchedulingTaskParametersParametersUpgradeConfigArgs']]]
+    parameters_cluster_roll: NotRequired[pulumi.Input[Optional['OceanNpSchedulingTaskParametersParametersClusterRollArgsDict']]]
+    parameters_upgrade_config: NotRequired[pulumi.Input[Optional['OceanNpSchedulingTaskParametersParametersUpgradeConfigArgsDict']]]
 
 @pulumi.input_type
 class OceanNpSchedulingTaskParametersArgs:
@@ -1303,7 +1303,7 @@ class OceanNpSchedulingTaskParametersParametersClusterRollArgs:
 
 class OceanNpSchedulingTaskParametersParametersUpgradeConfigArgsDict(TypedDict):
     apply_roll: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    roll_parameters: NotRequired[pulumi.Input[Optional['OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgs']]]
+    roll_parameters: NotRequired[pulumi.Input[Optional['OceanNpSchedulingTaskParametersParametersUpgradeConfigRollParametersArgsDict']]]
     scope_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
@@ -1531,7 +1531,7 @@ class OceanNpUpdatePolicyArgsDict(TypedDict):
     """
     Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
     """
-    roll_config: NotRequired[pulumi.Input[Optional['OceanNpUpdatePolicyRollConfigArgs']]]
+    roll_config: NotRequired[pulumi.Input[Optional['OceanNpUpdatePolicyRollConfigArgsDict']]]
     """
     While used, you can control whether the group should perform a deployment after an update to the configuration.
     """
@@ -2158,7 +2158,7 @@ class OceanNpVirtualNodeGroupHeadroomArgs:
 
 
 class OceanNpVirtualNodeGroupLinuxOsConfigArgsDict(TypedDict):
-    sysctls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs']]]]]
+    sysctls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgsDict']]]]]
     """
     System Controls
     """
@@ -2216,7 +2216,7 @@ class OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs:
 
 
 class OceanNpVirtualNodeGroupSchedulingArgsDict(TypedDict):
-    shutdown_hours: NotRequired[pulumi.Input[Optional['OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs']]]
+    shutdown_hours: NotRequired[pulumi.Input[Optional['OceanNpVirtualNodeGroupSchedulingShutdownHoursArgsDict']]]
     """
     An object used to specify times that the nodes in the virtual node group will be stopped.
     """
@@ -2368,7 +2368,7 @@ class OceanNpVirtualNodeGroupUpdatePolicyArgsDict(TypedDict):
     """
     Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as availability_zones, max_pods_per_node, enable_node_public_ip, os_disk_size_gb, os_disk_type, os_sku, kubernetes_version, vnet_subnet_ids, pod_subnet_ids, labels, taints and tags).
     """
-    roll_config: NotRequired[pulumi.Input[Optional['OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs']]]
+    roll_config: NotRequired[pulumi.Input[Optional['OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgsDict']]]
     """
     While used, you can control whether the group should perform a deployment after an update to the configuration.
     """
@@ -2597,7 +2597,7 @@ class OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs:
 
 
 class OceanNpVngTemplateSchedulingArgsDict(TypedDict):
-    vng_template_shutdown_hours: NotRequired[pulumi.Input[Optional['OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs']]]
+    vng_template_shutdown_hours: NotRequired[pulumi.Input[Optional['OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgsDict']]]
 
 @pulumi.input_type
 class OceanNpVngTemplateSchedulingArgs:

@@ -72,7 +72,7 @@ class ElastigroupBackendServiceArgsDict(TypedDict):
     """
     The name of the backend service.
     """
-    backend_balancing: NotRequired[pulumi.Input[Optional['ElastigroupBackendServiceBackendBalancingArgs']]]
+    backend_balancing: NotRequired[pulumi.Input[Optional['ElastigroupBackendServiceBackendBalancingArgsDict']]]
     """
     Configure how traffic is distributed across instance groups.
     """
@@ -80,7 +80,7 @@ class ElastigroupBackendServiceArgsDict(TypedDict):
     """
     Sets which location the backend services will be active. Valid values: `regional`, `global`.
     """
-    named_ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgs']]]]]
+    named_ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgsDict']]]]]
     """
     Describes a named port and a list of ports.
     """
@@ -290,7 +290,7 @@ class ElastigroupDiskArgsDict(TypedDict):
     """
     Specifies a unique device name of your choice.
     """
-    initialize_params: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupDiskInitializeParamArgs']]]]]
+    initialize_params: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupDiskInitializeParamArgsDict']]]]]
     """
     Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
     """
@@ -669,11 +669,11 @@ class ElastigroupIntegrationDockerSwarmArgs:
 class ElastigroupIntegrationGkeArgsDict(TypedDict):
     auto_update: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     autoscale_cooldown: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    autoscale_down: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationGkeAutoscaleDownArgs']]]
-    autoscale_headroom: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationGkeAutoscaleHeadroomArgs']]]
+    autoscale_down: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationGkeAutoscaleDownArgsDict']]]
+    autoscale_headroom: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationGkeAutoscaleHeadroomArgsDict']]]
     autoscale_is_auto_config: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     autoscale_is_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    autoscale_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgs']]]]]
+    autoscale_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgsDict']]]]]
     cluster_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
@@ -995,11 +995,11 @@ class ElastigroupNetworkInterfaceArgsDict(TypedDict):
     """
     Network resource for this group.
     """
-    access_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgs']]]]]
+    access_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgsDict']]]]]
     """
     Array of configurations.
     """
-    alias_ip_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgs']]]]]
+    alias_ip_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgsDict']]]]]
 
 @pulumi.input_type
 class ElastigroupNetworkInterfaceArgs:
@@ -1179,7 +1179,7 @@ class ElastigroupScalingDownPolicyArgsDict(TypedDict):
     """
     Time (seconds) to wait after a scaling action before resuming monitoring.
     """
-    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]]]
+    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgsDict']]]]]
     """
     A list of dimensions describing qualities of the metric.
     """
@@ -1490,7 +1490,7 @@ class ElastigroupScalingUpPolicyArgsDict(TypedDict):
     """
     Time (seconds) to wait after a scaling action before resuming monitoring.
     """
-    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]]]
+    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgsDict']]]]]
     """
     A list of dimensions describing qualities of the metric.
     """
