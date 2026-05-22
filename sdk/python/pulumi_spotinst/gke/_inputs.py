@@ -135,9 +135,9 @@ __all__ = [
 
 class ElastigroupBackendServiceArgsDict(TypedDict):
     service_name: pulumi.Input[_builtins.str]
-    backend_balancing: NotRequired[pulumi.Input[Optional['ElastigroupBackendServiceBackendBalancingArgs']]]
+    backend_balancing: NotRequired[pulumi.Input[Optional['ElastigroupBackendServiceBackendBalancingArgsDict']]]
     location_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    named_ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgs']]]]]
+    named_ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgsDict']]]]]
     scheme: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
@@ -272,7 +272,7 @@ class ElastigroupDiskArgsDict(TypedDict):
     auto_delete: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     boot: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     device_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    initialize_params: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupDiskInitializeParamArgs']]]]]
+    initialize_params: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupDiskInitializeParamArgsDict']]]]]
     interface: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     source: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -523,11 +523,11 @@ class ElastigroupIntegrationGkeArgsDict(TypedDict):
     """
     The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
     """
-    autoscale_down: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationGkeAutoscaleDownArgs']]]
+    autoscale_down: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationGkeAutoscaleDownArgsDict']]]
     """
     Enabling scale down.
     """
-    autoscale_headroom: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationGkeAutoscaleHeadroomArgs']]]
+    autoscale_headroom: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationGkeAutoscaleHeadroomArgsDict']]]
     """
     Headroom for the cluster.
     """
@@ -536,7 +536,7 @@ class ElastigroupIntegrationGkeArgsDict(TypedDict):
     """
     Specifies whether the auto scaling feature is enabled.
     """
-    autoscale_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgs']]]]]
+    autoscale_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgsDict']]]]]
     """
     Labels to assign to the resource.
     """
@@ -878,8 +878,8 @@ class ElastigroupMetadataArgs:
 
 class ElastigroupNetworkInterfaceArgsDict(TypedDict):
     network: pulumi.Input[_builtins.str]
-    access_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgs']]]]]
-    alias_ip_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgs']]]]]
+    access_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgsDict']]]]]
+    alias_ip_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgsDict']]]]]
 
 @pulumi.input_type
 class ElastigroupNetworkInterfaceArgs:
@@ -1013,7 +1013,7 @@ class ElastigroupScalingDownPolicyArgsDict(TypedDict):
     action_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     adjustment: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     cooldown: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]]]
+    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgsDict']]]]]
     evaluation_periods: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Amount of cooldown evaluation periods for scale down.
@@ -1238,7 +1238,7 @@ class ElastigroupScalingUpPolicyArgsDict(TypedDict):
     action_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     adjustment: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     cooldown: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]]]
+    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgsDict']]]]]
     evaluation_periods: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Amount of cooldown evaluation periods for scale down.
@@ -1525,7 +1525,7 @@ class OceanImportAutoscalerArgsDict(TypedDict):
     """
     Cooldown period between scaling actions.
     """
-    down: NotRequired[pulumi.Input[Optional['OceanImportAutoscalerDownArgs']]]
+    down: NotRequired[pulumi.Input[Optional['OceanImportAutoscalerDownArgsDict']]]
     """
     Auto Scaling scale down operations.
     """
@@ -1533,7 +1533,7 @@ class OceanImportAutoscalerArgsDict(TypedDict):
     """
     enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
     """
-    headroom: NotRequired[pulumi.Input[Optional['OceanImportAutoscalerHeadroomArgs']]]
+    headroom: NotRequired[pulumi.Input[Optional['OceanImportAutoscalerHeadroomArgsDict']]]
     """
     Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
     """
@@ -1545,7 +1545,7 @@ class OceanImportAutoscalerArgsDict(TypedDict):
     """
     Enable the Ocean Kubernetes Autoscaler.
     """
-    resource_limits: NotRequired[pulumi.Input[Optional['OceanImportAutoscalerResourceLimitsArgs']]]
+    resource_limits: NotRequired[pulumi.Input[Optional['OceanImportAutoscalerResourceLimitsArgsDict']]]
     """
     Optionally set upper and lower bounds on the resource usage of the cluster.
     """
@@ -1901,7 +1901,7 @@ class OceanImportBackendServiceArgsDict(TypedDict):
     """
     Sets which location the backend services will be active. Valid values: `regional`, `global`.
     """
-    named_ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportBackendServiceNamedPortArgs']]]]]
+    named_ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportBackendServiceNamedPortArgsDict']]]]]
     scheme: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Use when `location_type` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
@@ -2143,11 +2143,11 @@ class OceanImportFiltersArgs:
 
 
 class OceanImportScheduledTaskArgsDict(TypedDict):
-    shutdown_hours: NotRequired[pulumi.Input[Optional['OceanImportScheduledTaskShutdownHoursArgs']]]
+    shutdown_hours: NotRequired[pulumi.Input[Optional['OceanImportScheduledTaskShutdownHoursArgsDict']]]
     """
     Set shutdown hours for cluster object.
     """
-    tasks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportScheduledTaskTaskArgs']]]]]
+    tasks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanImportScheduledTaskTaskArgsDict']]]]]
     """
     The scheduling tasks for the cluster.
     """
@@ -2259,7 +2259,7 @@ class OceanImportScheduledTaskTaskArgsDict(TypedDict):
     """
     Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
     """
-    task_parameters: NotRequired[pulumi.Input[Optional['OceanImportScheduledTaskTaskTaskParametersArgs']]]
+    task_parameters: NotRequired[pulumi.Input[Optional['OceanImportScheduledTaskTaskTaskParametersArgsDict']]]
     """
     The scheduling parameters for the cluster.
     """
@@ -2335,7 +2335,7 @@ class OceanImportScheduledTaskTaskArgs:
 
 
 class OceanImportScheduledTaskTaskTaskParametersArgsDict(TypedDict):
-    cluster_roll: NotRequired[pulumi.Input[Optional['OceanImportScheduledTaskTaskTaskParametersClusterRollArgs']]]
+    cluster_roll: NotRequired[pulumi.Input[Optional['OceanImportScheduledTaskTaskTaskParametersClusterRollArgsDict']]]
     """
     The cluster roll parameters for the cluster.
     """
@@ -2619,7 +2619,7 @@ class OceanImportUpdatePolicyArgsDict(TypedDict):
     """
     Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
     """
-    roll_config: NotRequired[pulumi.Input[Optional['OceanImportUpdatePolicyRollConfigArgs']]]
+    roll_config: NotRequired[pulumi.Input[Optional['OceanImportUpdatePolicyRollConfigArgsDict']]]
     """
     Holds the roll configuration.
     """
@@ -3144,11 +3144,11 @@ class OceanLaunchSpecNetworkInterfaceArgsDict(TypedDict):
     """
     The name of the network.
     """
-    access_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAccessConfigArgs']]]]]
+    access_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAccessConfigArgsDict']]]]]
     """
     The network protocol of the VNG.
     """
-    alias_ip_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs']]]]]
+    alias_ip_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceAliasIpRangeArgsDict']]]]]
     """
     use the imported node pool’s associated aliasIpRange to assign secondary IP addresses to the nodes. Cannot be changed after VNG creation.
     """
@@ -3385,7 +3385,7 @@ class OceanLaunchSpecSchedulingTaskArgsDict(TypedDict):
     """
     The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
     """
-    task_headrooms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs']]]]]
+    task_headrooms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgsDict']]]]]
     """
     The config of this scheduled task. Depends on the value of taskType.
     """
@@ -3787,7 +3787,7 @@ class OceanLaunchSpecUpdatePolicyArgsDict(TypedDict):
     """
     Enables the roll.
     """
-    roll_config: NotRequired[pulumi.Input[Optional['OceanLaunchSpecUpdatePolicyRollConfigArgs']]]
+    roll_config: NotRequired[pulumi.Input[Optional['OceanLaunchSpecUpdatePolicyRollConfigArgsDict']]]
     """
     Holds the roll configuration.
     """

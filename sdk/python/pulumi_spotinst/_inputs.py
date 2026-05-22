@@ -305,7 +305,7 @@ class ElastigroupAzureV3BootDiagnosticArgs:
 class ElastigroupAzureV3CapacityReservationArgsDict(TypedDict):
     should_utilize: pulumi.Input[_builtins.bool]
     utilization_strategy: pulumi.Input[_builtins.str]
-    capacity_reservation_groups: NotRequired[pulumi.Input[Optional['ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgs']]]
+    capacity_reservation_groups: NotRequired[pulumi.Input[Optional['ElastigroupAzureV3CapacityReservationCapacityReservationGroupsArgsDict']]]
 
 @pulumi.input_type
 class ElastigroupAzureV3CapacityReservationArgs:
@@ -441,7 +441,7 @@ class ElastigroupAzureV3ExtensionArgsDict(TypedDict):
     type: pulumi.Input[_builtins.str]
     enable_automatic_upgrade: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     protected_settings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
-    protected_settings_from_key_vault: NotRequired[pulumi.Input[Optional['ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgs']]]
+    protected_settings_from_key_vault: NotRequired[pulumi.Input[Optional['ElastigroupAzureV3ExtensionProtectedSettingsFromKeyVaultArgsDict']]]
     public_settings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
@@ -643,9 +643,9 @@ class ElastigroupAzureV3HealthArgs:
 
 
 class ElastigroupAzureV3ImageArgsDict(TypedDict):
-    customs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageCustomArgs']]]]]
-    gallery_images: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageGalleryImageArgs']]]]]
-    marketplaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageMarketplaceArgs']]]]]
+    customs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageCustomArgsDict']]]]]
+    gallery_images: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageGalleryImageArgsDict']]]]]
+    marketplaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageMarketplaceArgsDict']]]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3ImageArgs:
@@ -1034,12 +1034,12 @@ class ElastigroupAzureV3NetworkNetworkInterfaceArgsDict(TypedDict):
     assign_public_ip: pulumi.Input[_builtins.bool]
     is_primary: pulumi.Input[_builtins.bool]
     subnet_name: pulumi.Input[_builtins.str]
-    additional_ip_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs']]]]]
-    application_security_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs']]]]]
+    additional_ip_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgsDict']]]]]
+    application_security_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgsDict']]]]]
     enable_ip_forwarding: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     private_ip_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     public_ip_sku: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    security_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgs']]]]]
+    security_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceSecurityGroupArgsDict']]]]]
 
 @pulumi.input_type
 class ElastigroupAzureV3NetworkNetworkInterfaceArgs:
@@ -1340,7 +1340,7 @@ class ElastigroupAzureV3ScalingDownPolicyArgsDict(TypedDict):
     policy_name: pulumi.Input[_builtins.str]
     statistic: pulumi.Input[_builtins.str]
     threshold: pulumi.Input[_builtins.float]
-    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyDimensionArgs']]]]]
+    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingDownPolicyDimensionArgsDict']]]]]
     is_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     source: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -1624,7 +1624,7 @@ class ElastigroupAzureV3ScalingUpPolicyArgsDict(TypedDict):
     policy_name: pulumi.Input[_builtins.str]
     statistic: pulumi.Input[_builtins.str]
     threshold: pulumi.Input[_builtins.float]
-    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyDimensionArgs']]]]]
+    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ScalingUpPolicyDimensionArgsDict']]]]]
     is_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     source: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -2262,7 +2262,7 @@ class ElastigroupAzureV3VmSizesArgsDict(TypedDict):
     od_sizes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
     excluded_vm_sizes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     preferred_spot_sizes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
-    spot_size_attributes: NotRequired[pulumi.Input[Optional['ElastigroupAzureV3VmSizesSpotSizeAttributesArgs']]]
+    spot_size_attributes: NotRequired[pulumi.Input[Optional['ElastigroupAzureV3VmSizesSpotSizeAttributesArgsDict']]]
     spot_sizes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
@@ -2586,7 +2586,7 @@ class HealthCheckCheckArgs:
 
 class NotificationCenterComputePolicyConfigArgsDict(TypedDict):
     events: pulumi.Input[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigEventArgsDict']]]
-    dynamic_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleArgs']]]]]
+    dynamic_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleArgsDict']]]]]
     resource_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     should_include_all_resources: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
 
@@ -2643,7 +2643,7 @@ class NotificationCenterComputePolicyConfigArgs:
 
 
 class NotificationCenterComputePolicyConfigDynamicRuleArgsDict(TypedDict):
-    filter_conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgs']]]]]
+    filter_conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NotificationCenterComputePolicyConfigDynamicRuleFilterConditionArgsDict']]]]]
 
 @pulumi.input_type
 class NotificationCenterComputePolicyConfigDynamicRuleArgs:
@@ -2837,13 +2837,13 @@ class OceanRightSizingRuleAttachWorkloadArgs:
 
 class OceanRightSizingRuleAttachWorkloadNamespaceArgsDict(TypedDict):
     namespace_name: pulumi.Input[_builtins.str]
-    labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceLabelArgs']]]]]
+    labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceLabelArgsDict']]]]]
     """
     A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
 
     <a id="attach_workloads"></a>
     """
-    workloads: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgs']]]]]
+    workloads: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadNamespaceWorkloadArgsDict']]]]]
 
 @pulumi.input_type
 class OceanRightSizingRuleAttachWorkloadNamespaceArgs:
@@ -3076,13 +3076,13 @@ class OceanRightSizingRuleDetachWorkloadArgs:
 
 class OceanRightSizingRuleDetachWorkloadNamespaceArgsDict(TypedDict):
     namespace_name: pulumi.Input[_builtins.str]
-    labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceLabelArgs']]]]]
+    labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceLabelArgsDict']]]]]
     """
     A set of key-value label pairs used to automatically apply this rule to all workloads in the cluster that match these labels.
 
     <a id="attach_workloads"></a>
     """
-    workloads: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgs']]]]]
+    workloads: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadNamespaceWorkloadArgsDict']]]]]
 
 @pulumi.input_type
 class OceanRightSizingRuleDetachWorkloadNamespaceArgs:
@@ -3333,11 +3333,11 @@ class OceanRightSizingRuleRecommendationApplicationIntervalArgsDict(TypedDict):
     """
     Valid values: "WEEKLY" "MONTHLY". The repetition basis.
     """
-    monthly_repetition_bases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgs']]]]]
+    monthly_repetition_bases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseArgsDict']]]]]
     """
     Determines the Ocean Rightsizing rule monthly repetition basis.
     """
-    weekly_repetition_bases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgs']]]]]
+    weekly_repetition_bases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalWeeklyRepetitionBaseArgsDict']]]]]
     """
     Determines the Ocean Rightsizing rule weekly repetition basis.
     """
@@ -3405,7 +3405,7 @@ class OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBase
     """
     Valid values: "FIRST" "SECOND" "THIRD" "FOURTH" "LAST". Array of the weeks in the month, when we want to trigger the apply recommendations.
     """
-    weekly_repetition_bases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgs']]]]]
+    weekly_repetition_bases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalMonthlyRepetitionBaseWeeklyRepetitionBaseArgsDict']]]]]
     """
     Determines the Ocean Rightsizing rule weekly repetition basis.
     """
@@ -4219,9 +4219,9 @@ class StatefulNodeAzureHealthArgs:
 
 
 class StatefulNodeAzureImageArgsDict(TypedDict):
-    custom_images: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImageCustomImageArgs']]]]]
-    galleries: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImageGalleryArgs']]]]]
-    marketplace_images: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImageMarketplaceImageArgs']]]]]
+    custom_images: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImageCustomImageArgsDict']]]]]
+    galleries: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImageGalleryArgsDict']]]]]
+    marketplace_images: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureImageMarketplaceImageArgsDict']]]]]
 
 @pulumi.input_type
 class StatefulNodeAzureImageArgs:
@@ -4678,14 +4678,14 @@ class StatefulNodeAzureNetworkArgs:
 class StatefulNodeAzureNetworkNetworkInterfaceArgsDict(TypedDict):
     is_primary: pulumi.Input[_builtins.bool]
     subnet_name: pulumi.Input[_builtins.str]
-    additional_ip_configurations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs']]]]]
-    application_security_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs']]]]]
+    additional_ip_configurations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgsDict']]]]]
+    application_security_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgsDict']]]]]
     assign_public_ip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     enable_ip_forwarding: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    network_security_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs']]]]]
+    network_security_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgsDict']]]]]
     private_ip_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     public_ip_sku: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    public_ips: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs']]]]]
+    public_ips: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfacePublicIpArgsDict']]]]]
 
 @pulumi.input_type
 class StatefulNodeAzureNetworkNetworkInterfaceArgs:
@@ -5256,13 +5256,13 @@ class StatefulNodeAzureSignalArgs:
 class StatefulNodeAzureStrategyArgsDict(TypedDict):
     fallback_to_on_demand: pulumi.Input[_builtins.bool]
     availability_vs_cost: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    capacity_reservations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationArgs']]]]]
+    capacity_reservations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationArgsDict']]]]]
     draining_timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    interruption_toleration: NotRequired[pulumi.Input[Optional['StatefulNodeAzureStrategyInterruptionTolerationArgs']]]
+    interruption_toleration: NotRequired[pulumi.Input[Optional['StatefulNodeAzureStrategyInterruptionTolerationArgsDict']]]
     od_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     optimization_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     preferred_life_cycle: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    revert_to_spot: NotRequired[pulumi.Input[Optional['StatefulNodeAzureStrategyRevertToSpotArgs']]]
+    revert_to_spot: NotRequired[pulumi.Input[Optional['StatefulNodeAzureStrategyRevertToSpotArgsDict']]]
     vm_admins: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
@@ -5392,7 +5392,7 @@ class StatefulNodeAzureStrategyArgs:
 class StatefulNodeAzureStrategyCapacityReservationArgsDict(TypedDict):
     should_utilize: pulumi.Input[_builtins.bool]
     utilization_strategy: pulumi.Input[_builtins.str]
-    capacity_reservation_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs']]]]]
+    capacity_reservation_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgsDict']]]]]
 
 @pulumi.input_type
 class StatefulNodeAzureStrategyCapacityReservationArgs:
@@ -5610,7 +5610,7 @@ class StatefulNodeAzureVmSizesArgsDict(TypedDict):
     od_sizes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
     excluded_vm_sizes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     preferred_spot_sizes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
-    spot_size_attributes: NotRequired[pulumi.Input[Optional['StatefulNodeAzureVmSizesSpotSizeAttributesArgs']]]
+    spot_size_attributes: NotRequired[pulumi.Input[Optional['StatefulNodeAzureVmSizesSpotSizeAttributesArgsDict']]]
     spot_sizes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type

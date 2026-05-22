@@ -388,7 +388,7 @@ class BeanstalkDeploymentPreferencesArgsDict(TypedDict):
     """
     Amount of time to wait between batches
     """
-    strategies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BeanstalkDeploymentPreferencesStrategyArgs']]]]]
+    strategies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BeanstalkDeploymentPreferencesStrategyArgsDict']]]]]
     """
     Strategy parameters
     """
@@ -514,7 +514,7 @@ class BeanstalkDeploymentPreferencesStrategyArgs:
 
 
 class BeanstalkManagedActionsArgsDict(TypedDict):
-    platform_update: NotRequired[pulumi.Input[Optional['BeanstalkManagedActionsPlatformUpdateArgs']]]
+    platform_update: NotRequired[pulumi.Input[Optional['BeanstalkManagedActionsPlatformUpdateArgsDict']]]
     """
     Platform Update parameters
     """
@@ -962,11 +962,11 @@ class ElastigroupEbsBlockDeviceArgsDict(TypedDict):
     """
     Whether the volume should be destroyed on instance termination.
     """
-    dynamic_iops: NotRequired[pulumi.Input[Optional['ElastigroupEbsBlockDeviceDynamicIopsArgs']]]
+    dynamic_iops: NotRequired[pulumi.Input[Optional['ElastigroupEbsBlockDeviceDynamicIopsArgsDict']]]
     """
     Set dynamic IOPS properties. When using this object, you cannot use the `iops` object. You must use one or the other.
     """
-    dynamic_volume_size: NotRequired[pulumi.Input[Optional['ElastigroupEbsBlockDeviceDynamicVolumeSizeArgs']]]
+    dynamic_volume_size: NotRequired[pulumi.Input[Optional['ElastigroupEbsBlockDeviceDynamicVolumeSizeArgsDict']]]
     """
     Set dynamic volume size properties. When using this object, you cannot use `volume_size`. You must use one or the other.
     """
@@ -1482,12 +1482,12 @@ class ElastigroupInstanceTypesWeightArgs:
 
 
 class ElastigroupIntegrationBeanstalkArgsDict(TypedDict):
-    deployment_preferences: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs']]]
+    deployment_preferences: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationBeanstalkDeploymentPreferencesArgsDict']]]
     """
     Preferences when performing a roll
     """
     environment_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    managed_actions: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationBeanstalkManagedActionsArgs']]]
+    managed_actions: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationBeanstalkManagedActionsArgsDict']]]
     """
     Managed Actions parameters
     """
@@ -1550,7 +1550,7 @@ class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgsDict(TypedDict):
     """
     batch_size_percentage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     grace_period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    strategy: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs']]]
+    strategy: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgsDict']]]
 
 @pulumi.input_type
 class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs:
@@ -1645,7 +1645,7 @@ class ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs:
 
 
 class ElastigroupIntegrationBeanstalkManagedActionsArgsDict(TypedDict):
-    platform_update: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs']]]
+    platform_update: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgsDict']]]
     """
     Platform Update parameters
     """
@@ -1864,8 +1864,8 @@ class ElastigroupIntegrationDockerSwarmArgsDict(TypedDict):
     master_host: pulumi.Input[_builtins.str]
     master_port: pulumi.Input[_builtins.int]
     autoscale_cooldown: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    autoscale_down: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationDockerSwarmAutoscaleDownArgs']]]
-    autoscale_headroom: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs']]]
+    autoscale_down: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationDockerSwarmAutoscaleDownArgsDict']]]
+    autoscale_headroom: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgsDict']]]
     autoscale_is_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
 
 @pulumi.input_type
@@ -2027,20 +2027,20 @@ class ElastigroupIntegrationEcsArgsDict(TypedDict):
     """
     The name of the EC2 Container Service cluster.
     """
-    autoscale_attributes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupIntegrationEcsAutoscaleAttributeArgs']]]]]
+    autoscale_attributes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupIntegrationEcsAutoscaleAttributeArgsDict']]]]]
     """
     A key/value mapping of tags to assign to the resource.
     """
     autoscale_cooldown: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    autoscale_down: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationEcsAutoscaleDownArgs']]]
-    autoscale_headroom: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationEcsAutoscaleHeadroomArgs']]]
+    autoscale_down: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationEcsAutoscaleDownArgsDict']]]
+    autoscale_headroom: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationEcsAutoscaleHeadroomArgsDict']]]
     autoscale_is_auto_config: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     autoscale_is_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     autoscale_scale_down_non_service_tasks: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Determines whether to scale down non-service tasks.
     """
-    batch: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationEcsBatchArgs']]]
+    batch: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationEcsBatchArgsDict']]]
     """
     Batch configuration object:
     """
@@ -2320,7 +2320,7 @@ class ElastigroupIntegrationEcsBatchArgs:
 
 
 class ElastigroupIntegrationGitlabArgsDict(TypedDict):
-    runner: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationGitlabRunnerArgs']]]
+    runner: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationGitlabRunnerArgsDict']]]
     """
     Settings for Gitlab runner.
     """
@@ -2371,11 +2371,11 @@ class ElastigroupIntegrationGitlabRunnerArgs:
 class ElastigroupIntegrationKubernetesArgsDict(TypedDict):
     api_server: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     autoscale_cooldown: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    autoscale_down: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationKubernetesAutoscaleDownArgs']]]
-    autoscale_headroom: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs']]]
+    autoscale_down: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationKubernetesAutoscaleDownArgsDict']]]
+    autoscale_headroom: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationKubernetesAutoscaleHeadroomArgsDict']]]
     autoscale_is_auto_config: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     autoscale_is_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    autoscale_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupIntegrationKubernetesAutoscaleLabelArgs']]]]]
+    autoscale_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupIntegrationKubernetesAutoscaleLabelArgsDict']]]]]
     """
     A key/value mapping of tags to assign to the resource.
 
@@ -2670,15 +2670,15 @@ class ElastigroupIntegrationNomadArgsDict(TypedDict):
     """
     Nomad ACL Token
     """
-    autoscale_constraints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupIntegrationNomadAutoscaleConstraintArgs']]]]]
+    autoscale_constraints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupIntegrationNomadAutoscaleConstraintArgsDict']]]]]
     """
     A key/value mapping of tags to assign to the resource.
 
     Usage:
     """
     autoscale_cooldown: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    autoscale_down: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationNomadAutoscaleDownArgs']]]
-    autoscale_headroom: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationNomadAutoscaleHeadroomArgs']]]
+    autoscale_down: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationNomadAutoscaleDownArgsDict']]]
+    autoscale_headroom: NotRequired[pulumi.Input[Optional['ElastigroupIntegrationNomadAutoscaleHeadroomArgsDict']]]
     autoscale_is_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
 
 @pulumi.input_type
@@ -3167,7 +3167,7 @@ class ElastigroupItfArgsDict(TypedDict):
     load_balancers: pulumi.Input[Sequence[pulumi.Input['ElastigroupItfLoadBalancerArgsDict']]]
     target_group_configs: pulumi.Input[Sequence[pulumi.Input['ElastigroupItfTargetGroupConfigArgsDict']]]
     weight_strategy: pulumi.Input[_builtins.str]
-    default_static_target_group: NotRequired[pulumi.Input[Optional['ElastigroupItfDefaultStaticTargetGroupArgs']]]
+    default_static_target_group: NotRequired[pulumi.Input[Optional['ElastigroupItfDefaultStaticTargetGroupArgsDict']]]
     migration_healthiness_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
@@ -3307,7 +3307,7 @@ class ElastigroupItfLoadBalancerArgs:
 
 class ElastigroupItfLoadBalancerListenerRuleArgsDict(TypedDict):
     rule_arn: pulumi.Input[_builtins.str]
-    static_target_group: NotRequired[pulumi.Input[Optional['ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgs']]]
+    static_target_group: NotRequired[pulumi.Input[Optional['ElastigroupItfLoadBalancerListenerRuleStaticTargetGroupArgsDict']]]
 
 @pulumi.input_type
 class ElastigroupItfLoadBalancerListenerRuleArgs:
@@ -3378,9 +3378,9 @@ class ElastigroupItfTargetGroupConfigArgsDict(TypedDict):
     health_check_protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     health_check_timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     healthy_threshold_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    matchers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupItfTargetGroupConfigMatcherArgs']]]]]
+    matchers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupItfTargetGroupConfigMatcherArgsDict']]]]]
     protocol_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupItfTargetGroupConfigTagArgs']]]]]
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupItfTargetGroupConfigTagArgsDict']]]]]
     """
     A key/value mapping of tags to assign to the resource.
     """
@@ -3615,7 +3615,7 @@ class ElastigroupItfTargetGroupConfigTagArgs:
 
 
 class ElastigroupLoggingArgsDict(TypedDict):
-    export: NotRequired[pulumi.Input[Optional['ElastigroupLoggingExportArgs']]]
+    export: NotRequired[pulumi.Input[Optional['ElastigroupLoggingExportArgsDict']]]
     """
     Logging Export configuration.
     """
@@ -3644,7 +3644,7 @@ class ElastigroupLoggingArgs:
 
 
 class ElastigroupLoggingExportArgsDict(TypedDict):
-    s3s: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupLoggingExportS3Args']]]]]
+    s3s: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupLoggingExportS3ArgsDict']]]]]
     """
     Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
     """
@@ -3769,11 +3769,11 @@ class ElastigroupMetadataOptionsArgs:
 
 
 class ElastigroupMultipleMetricsArgsDict(TypedDict):
-    expressions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupMultipleMetricsExpressionArgs']]]]]
+    expressions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupMultipleMetricsExpressionArgsDict']]]]]
     """
     Array of objects (Expression config)
     """
-    metrics: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupMultipleMetricsMetricArgs']]]]]
+    metrics: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupMultipleMetricsMetricArgsDict']]]]]
     """
     Array of objects (Metric config)
     """
@@ -3871,7 +3871,7 @@ class ElastigroupMultipleMetricsMetricArgsDict(TypedDict):
     The group name.
     """
     namespace: pulumi.Input[_builtins.str]
-    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupMultipleMetricsMetricDimensionArgs']]]]]
+    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupMultipleMetricsMetricDimensionArgsDict']]]]]
     extended_statistic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Percentile statistic. Valid values: `"p0.1"` - `"p100"`.
@@ -4537,7 +4537,7 @@ class ElastigroupScalingDownPolicyArgsDict(TypedDict):
     """
     The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
     """
-    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]]]
+    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgsDict']]]]]
     """
     A list of dimensions describing qualities of the metric.
     """
@@ -4578,7 +4578,7 @@ class ElastigroupScalingDownPolicyArgsDict(TypedDict):
     """
     The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
     """
-    step_adjustments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingDownPolicyStepAdjustmentArgs']]]]]
+    step_adjustments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingDownPolicyStepAdjustmentArgsDict']]]]]
     target: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The target number of instances to have in the group.
@@ -5170,7 +5170,7 @@ class ElastigroupScalingTargetPolicyArgsDict(TypedDict):
     """
     Integer the amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
     """
-    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingTargetPolicyDimensionArgs']]]]]
+    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingTargetPolicyDimensionArgsDict']]]]]
     """
     A list of dimensions describing qualities of the metric.
     """
@@ -5499,7 +5499,7 @@ class ElastigroupScalingUpPolicyArgsDict(TypedDict):
     """
     The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
     """
-    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]]]
+    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgsDict']]]]]
     """
     A list of dimensions describing qualities of the metric.
     """
@@ -5540,7 +5540,7 @@ class ElastigroupScalingUpPolicyArgsDict(TypedDict):
     """
     The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
     """
-    step_adjustments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingUpPolicyStepAdjustmentArgs']]]]]
+    step_adjustments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupScalingUpPolicyStepAdjustmentArgsDict']]]]]
     target: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The target number of instances to have in the group.
@@ -6624,7 +6624,7 @@ class ElastigroupUpdatePolicyArgsDict(TypedDict):
     """
     Enables updates to tags without rolling the group when set to `true`.
     """
-    roll_config: NotRequired[pulumi.Input[Optional['ElastigroupUpdatePolicyRollConfigArgs']]]
+    roll_config: NotRequired[pulumi.Input[Optional['ElastigroupUpdatePolicyRollConfigArgsDict']]]
     """
     While used, you can control whether the group should perform a deployment after an update to the configuration.
     """
@@ -6711,7 +6711,7 @@ class ElastigroupUpdatePolicyRollConfigArgsDict(TypedDict):
     """
     Sets the health check type to use. Valid values: `"EC2"`, `"ECS_CLUSTER_INSTANCE"`, `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"NONE"`.
     """
-    strategy: NotRequired[pulumi.Input[Optional['ElastigroupUpdatePolicyRollConfigStrategyArgs']]]
+    strategy: NotRequired[pulumi.Input[Optional['ElastigroupUpdatePolicyRollConfigStrategyArgsDict']]]
     """
     Strategy parameters
     """
@@ -6835,7 +6835,7 @@ class ElastigroupUpdatePolicyRollConfigStrategyArgsDict(TypedDict):
     """
     Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
     """
-    on_failure: NotRequired[pulumi.Input[Optional['ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs']]]
+    on_failure: NotRequired[pulumi.Input[Optional['ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgsDict']]]
     """
     Set detach options to the deployment.
     """
@@ -7017,7 +7017,7 @@ class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs:
 
 class ManagedInstanceBlockDeviceMappingArgsDict(TypedDict):
     device_name: pulumi.Input[_builtins.str]
-    ebs: NotRequired[pulumi.Input[Optional['ManagedInstanceBlockDeviceMappingEbsArgs']]]
+    ebs: NotRequired[pulumi.Input[Optional['ManagedInstanceBlockDeviceMappingEbsArgsDict']]]
 
 @pulumi.input_type
 class ManagedInstanceBlockDeviceMappingArgs:
@@ -9932,11 +9932,11 @@ class OceanAutoscalerArgsDict(TypedDict):
     """
     Cooldown period between scaling actions.
     """
-    autoscale_down: NotRequired[pulumi.Input[Optional['OceanAutoscalerAutoscaleDownArgs']]]
+    autoscale_down: NotRequired[pulumi.Input[Optional['OceanAutoscalerAutoscaleDownArgsDict']]]
     """
     Auto Scaling scale down operations.
     """
-    autoscale_headroom: NotRequired[pulumi.Input[Optional['OceanAutoscalerAutoscaleHeadroomArgs']]]
+    autoscale_headroom: NotRequired[pulumi.Input[Optional['OceanAutoscalerAutoscaleHeadroomArgsDict']]]
     """
     Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
     """
@@ -9956,7 +9956,7 @@ class OceanAutoscalerArgsDict(TypedDict):
     """
     List of Ocean extended resource definitions to use in this cluster.
     """
-    resource_limits: NotRequired[pulumi.Input[Optional['OceanAutoscalerResourceLimitsArgs']]]
+    resource_limits: NotRequired[pulumi.Input[Optional['OceanAutoscalerResourceLimitsArgsDict']]]
     """
     Optionally set upper and lower bounds on the resource usage of the cluster.
     """
@@ -10317,7 +10317,7 @@ class OceanBlockDeviceMappingArgsDict(TypedDict):
     """
     String. Set device name. (Example: `/dev/xvda`).
     """
-    ebs: NotRequired[pulumi.Input[Optional['OceanBlockDeviceMappingEbsArgs']]]
+    ebs: NotRequired[pulumi.Input[Optional['OceanBlockDeviceMappingEbsArgsDict']]]
     """
     Object. Set Elastic Block Store properties .
     """
@@ -10366,11 +10366,11 @@ class OceanBlockDeviceMappingEbsArgsDict(TypedDict):
     """
     Boolean. Flag to delete the EBS on instance termination.
     """
-    dynamic_iops: NotRequired[pulumi.Input[Optional['OceanBlockDeviceMappingEbsDynamicIopsArgs']]]
+    dynamic_iops: NotRequired[pulumi.Input[Optional['OceanBlockDeviceMappingEbsDynamicIopsArgsDict']]]
     """
     Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
     """
-    dynamic_volume_size: NotRequired[pulumi.Input[Optional['OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs']]]
+    dynamic_volume_size: NotRequired[pulumi.Input[Optional['OceanBlockDeviceMappingEbsDynamicVolumeSizeArgsDict']]]
     """
     Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
     """
@@ -11415,7 +11415,7 @@ class OceanLaunchSpecBlockDeviceMappingArgsDict(TypedDict):
     """
     String. Set device name. (Example: `/dev/xvda`).
     """
-    ebs: NotRequired[pulumi.Input[Optional['OceanLaunchSpecBlockDeviceMappingEbsArgs']]]
+    ebs: NotRequired[pulumi.Input[Optional['OceanLaunchSpecBlockDeviceMappingEbsArgsDict']]]
     """
     Object. Set Elastic Block Store properties .
     """
@@ -11497,11 +11497,11 @@ class OceanLaunchSpecBlockDeviceMappingEbsArgsDict(TypedDict):
     """
     Boolean. Flag to delete the EBS on instance termination.
     """
-    dynamic_iops: NotRequired[pulumi.Input[Optional['OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgs']]]
+    dynamic_iops: NotRequired[pulumi.Input[Optional['OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgsDict']]]
     """
     Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
     """
-    dynamic_volume_size: NotRequired[pulumi.Input[Optional['OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs']]]
+    dynamic_volume_size: NotRequired[pulumi.Input[Optional['OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgsDict']]]
     """
     Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
     """
@@ -11904,7 +11904,7 @@ class OceanLaunchSpecDeleteOptionsArgs:
 
 
 class OceanLaunchSpecElasticIpPoolArgsDict(TypedDict):
-    tag_selector: NotRequired[pulumi.Input[Optional['OceanLaunchSpecElasticIpPoolTagSelectorArgs']]]
+    tag_selector: NotRequired[pulumi.Input[Optional['OceanLaunchSpecElasticIpPoolTagSelectorArgsDict']]]
     """
     A key-value pair, which defines an Elastic IP from the customer pool. Can be null.
     """
@@ -12604,7 +12604,7 @@ class OceanLaunchSpecOptimizationWindowsArgsDict(TypedDict):
     """
     Used to enable or disable the optimization windows mechanism. Must be a boolean (null is invalid). When `true`, at least one window must be defined. When `false`, windows can be empty or omitted.
     """
-    windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecOptimizationWindowsWindowArgs']]]]]
+    windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecOptimizationWindowsWindowArgsDict']]]]]
     """
     The times when the optimization windows will apply. Required if `is_enabled` is `true`.
     """
@@ -12816,7 +12816,7 @@ class OceanLaunchSpecSchedulingTaskArgsDict(TypedDict):
     """
     The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
     """
-    task_headrooms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs']]]]]
+    task_headrooms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgsDict']]]]]
     """
     The config of this scheduled task. Depends on the value of taskType.
     """
@@ -13051,7 +13051,7 @@ class OceanLaunchSpecStrategyArgsDict(TypedDict):
     """
     The configurable amount of time that Ocean will wait for the draining process to complete before terminating an instance. If you have not defined a draining timeout, the default of 300 seconds will be used.
     """
-    orientation: NotRequired[pulumi.Input[Optional['OceanLaunchSpecStrategyOrientationArgs']]]
+    orientation: NotRequired[pulumi.Input[Optional['OceanLaunchSpecStrategyOrientationArgsDict']]]
     """
     Vng orientation configuration.
     """
@@ -13286,7 +13286,7 @@ class OceanLaunchSpecUpdatePolicyArgsDict(TypedDict):
     """
     Enables the roll.
     """
-    roll_config: NotRequired[pulumi.Input[Optional['OceanLaunchSpecUpdatePolicyRollConfigArgs']]]
+    roll_config: NotRequired[pulumi.Input[Optional['OceanLaunchSpecUpdatePolicyRollConfigArgsDict']]]
     """
     Holds the roll configuration.
     """
@@ -13447,7 +13447,7 @@ class OceanLoadBalancerArgs:
 
 
 class OceanLoggingArgsDict(TypedDict):
-    export: NotRequired[pulumi.Input[Optional['OceanLoggingExportArgs']]]
+    export: NotRequired[pulumi.Input[Optional['OceanLoggingExportArgsDict']]]
     """
     Logging Export configuration.
     """
@@ -13476,7 +13476,7 @@ class OceanLoggingArgs:
 
 
 class OceanLoggingExportArgsDict(TypedDict):
-    s3s: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanLoggingExportS3Args']]]]]
+    s3s: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanLoggingExportS3ArgsDict']]]]]
     """
     Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
     """
@@ -13562,15 +13562,15 @@ class OceanResourceTagSpecificationArgs:
 
 
 class OceanScheduledTaskArgsDict(TypedDict):
-    optimization_windows: NotRequired[pulumi.Input[Optional['OceanScheduledTaskOptimizationWindowsArgs']]]
+    optimization_windows: NotRequired[pulumi.Input[Optional['OceanScheduledTaskOptimizationWindowsArgsDict']]]
     """
     An object used to specify time windows during which certain optimization constraints can be eased.
     """
-    shutdown_hours: NotRequired[pulumi.Input[Optional['OceanScheduledTaskShutdownHoursArgs']]]
+    shutdown_hours: NotRequired[pulumi.Input[Optional['OceanScheduledTaskShutdownHoursArgsDict']]]
     """
     Set shutdown hours for cluster object.
     """
-    tasks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanScheduledTaskTaskArgs']]]]]
+    tasks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanScheduledTaskTaskArgsDict']]]]]
     """
     The scheduling tasks for the cluster.
     """
@@ -13635,7 +13635,7 @@ class OceanScheduledTaskOptimizationWindowsArgsDict(TypedDict):
     """
     Used to enable or disable the optimization windows mechanism. Must be a boolean (null is invalid). When `true`, at least one window must be defined. When `false`, windows can be empty or omitted.
     """
-    windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanScheduledTaskOptimizationWindowsWindowArgs']]]]]
+    windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanScheduledTaskOptimizationWindowsWindowArgsDict']]]]]
     """
     The times when the optimization windows will apply. Required if `is_enabled` is `true`.
     """
@@ -13805,7 +13805,7 @@ class OceanScheduledTaskTaskArgsDict(TypedDict):
     """
     Valid values: `clusterRoll` `amiAutoUpdate`. Required for `cluster.scheduling.tasks`
     """
-    parameters: NotRequired[pulumi.Input[Optional['OceanScheduledTaskTaskParametersArgs']]]
+    parameters: NotRequired[pulumi.Input[Optional['OceanScheduledTaskTaskParametersArgsDict']]]
     """
     This filed will be compatible to the `task_type` field. If `task_type` is defined as `clusterRoll`, user cluster roll object in parameters.
     """
@@ -13879,11 +13879,11 @@ class OceanScheduledTaskTaskArgs:
 
 
 class OceanScheduledTaskTaskParametersArgsDict(TypedDict):
-    ami_auto_update: NotRequired[pulumi.Input[Optional['OceanScheduledTaskTaskParametersAmiAutoUpdateArgs']]]
+    ami_auto_update: NotRequired[pulumi.Input[Optional['OceanScheduledTaskTaskParametersAmiAutoUpdateArgsDict']]]
     """
     Set amiAutoUpdate object
     """
-    parameters_cluster_roll: NotRequired[pulumi.Input[Optional['OceanScheduledTaskTaskParametersParametersClusterRollArgs']]]
+    parameters_cluster_roll: NotRequired[pulumi.Input[Optional['OceanScheduledTaskTaskParametersParametersClusterRollArgsDict']]]
     """
     Set clusterRoll object
     """
@@ -13928,7 +13928,7 @@ class OceanScheduledTaskTaskParametersArgs:
 
 
 class OceanScheduledTaskTaskParametersAmiAutoUpdateArgsDict(TypedDict):
-    ami_auto_update_cluster_roll: NotRequired[pulumi.Input[Optional['OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgs']]]
+    ami_auto_update_cluster_roll: NotRequired[pulumi.Input[Optional['OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgsDict']]]
     """
     Set clusterRoll object
     """
@@ -14327,7 +14327,7 @@ class OceanUpdatePolicyArgsDict(TypedDict):
     """
     A custom list of attributes will trigger the cluster roll operation (overrides the predefined list of parameters). Valid only when the `conditioned_roll` parameter is set to true. (Valid values: `"subnet_ids"`,`"whitelist"`,`"blacklist"`,`"user_data"`,`"image_id"`,`"security_groups"`,`"key_name"`,`"iam_instance_profile"`,`"associate_public_ip_address"`,`"load_balancers"`,`"instance_metadata_options"`,`"ebs_optimized"`,`"root_volume_size"`)
     """
-    roll_config: NotRequired[pulumi.Input[Optional['OceanUpdatePolicyRollConfigArgs']]]
+    roll_config: NotRequired[pulumi.Input[Optional['OceanUpdatePolicyRollConfigArgsDict']]]
     """
     While used, you can control whether the group should perform a deployment after an update to the configuration.
     """

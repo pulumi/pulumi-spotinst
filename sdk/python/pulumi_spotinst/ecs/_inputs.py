@@ -88,7 +88,7 @@ class OceanAutoscalerArgsDict(TypedDict):
     """
     Cooldown period between scaling actions.
     """
-    down: NotRequired[pulumi.Input[Optional['OceanAutoscalerDownArgs']]]
+    down: NotRequired[pulumi.Input[Optional['OceanAutoscalerDownArgsDict']]]
     """
     Auto Scaling scale down operations.
     """
@@ -96,7 +96,7 @@ class OceanAutoscalerArgsDict(TypedDict):
     """
     When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
     """
-    headroom: NotRequired[pulumi.Input[Optional['OceanAutoscalerHeadroomArgs']]]
+    headroom: NotRequired[pulumi.Input[Optional['OceanAutoscalerHeadroomArgsDict']]]
     """
     Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
     """
@@ -108,7 +108,7 @@ class OceanAutoscalerArgsDict(TypedDict):
     """
     Enable the Ocean ECS autoscaler.
     """
-    resource_limits: NotRequired[pulumi.Input[Optional['OceanAutoscalerResourceLimitsArgs']]]
+    resource_limits: NotRequired[pulumi.Input[Optional['OceanAutoscalerResourceLimitsArgsDict']]]
     """
     Optionally set upper and lower bounds on the resource usage of the cluster.
     """
@@ -420,7 +420,7 @@ class OceanBlockDeviceMappingArgsDict(TypedDict):
     """
     String. Set device name. Example: `/dev/xvda1`.
     """
-    ebs: NotRequired[pulumi.Input[Optional['OceanBlockDeviceMappingEbsArgs']]]
+    ebs: NotRequired[pulumi.Input[Optional['OceanBlockDeviceMappingEbsArgsDict']]]
     """
     Object. Set Elastic Block Store properties.
     """
@@ -501,7 +501,7 @@ class OceanBlockDeviceMappingEbsArgsDict(TypedDict):
     """
     Boolean. Toggles EBS deletion upon instance termination.
     """
-    dynamic_volume_size: NotRequired[pulumi.Input[Optional['OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs']]]
+    dynamic_volume_size: NotRequired[pulumi.Input[Optional['OceanBlockDeviceMappingEbsDynamicVolumeSizeArgsDict']]]
     """
     Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
     """
@@ -1323,7 +1323,7 @@ class OceanLaunchSpecBlockDeviceMappingArgsDict(TypedDict):
     """
     String. Set device name. (Example: "/dev/xvda1").
     """
-    ebs: NotRequired[pulumi.Input[Optional['OceanLaunchSpecBlockDeviceMappingEbsArgs']]]
+    ebs: NotRequired[pulumi.Input[Optional['OceanLaunchSpecBlockDeviceMappingEbsArgsDict']]]
     """
     Object. Set Elastic Block Store properties .
     """
@@ -1404,7 +1404,7 @@ class OceanLaunchSpecBlockDeviceMappingEbsArgsDict(TypedDict):
     """
     Boolean. Flag to delete the EBS on instance termination.
     """
-    dynamic_volume_size: NotRequired[pulumi.Input[Optional['OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs']]]
+    dynamic_volume_size: NotRequired[pulumi.Input[Optional['OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgsDict']]]
     """
     Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
     """
@@ -1744,7 +1744,7 @@ class OceanLaunchSpecSchedulingTaskArgsDict(TypedDict):
     """
     The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
     """
-    task_headrooms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs']]]]]
+    task_headrooms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskTaskHeadroomArgsDict']]]]]
     """
     The config of this scheduled task. Depends on the value of taskType.
     """
@@ -1962,7 +1962,7 @@ class OceanLaunchSpecTagArgs:
 
 
 class OceanLoggingArgsDict(TypedDict):
-    export: NotRequired[pulumi.Input[Optional['OceanLoggingExportArgs']]]
+    export: NotRequired[pulumi.Input[Optional['OceanLoggingExportArgsDict']]]
     """
     Logging Export configuration.
     """
@@ -1991,7 +1991,7 @@ class OceanLoggingArgs:
 
 
 class OceanLoggingExportArgsDict(TypedDict):
-    s3s: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanLoggingExportS3Args']]]]]
+    s3s: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanLoggingExportS3ArgsDict']]]]]
     """
     Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
     """
@@ -2115,11 +2115,11 @@ class OceanOptimizeImagesArgs:
 
 
 class OceanScheduledTaskArgsDict(TypedDict):
-    shutdown_hours: NotRequired[pulumi.Input[Optional['OceanScheduledTaskShutdownHoursArgs']]]
+    shutdown_hours: NotRequired[pulumi.Input[Optional['OceanScheduledTaskShutdownHoursArgsDict']]]
     """
     Set shutdown hours for cluster object.
     """
-    tasks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanScheduledTaskTaskArgs']]]]]
+    tasks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanScheduledTaskTaskArgsDict']]]]]
     """
     The scheduling tasks for the cluster.
     """
@@ -2340,7 +2340,7 @@ class OceanUpdatePolicyArgsDict(TypedDict):
     """
     Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
     """
-    roll_config: NotRequired[pulumi.Input[Optional['OceanUpdatePolicyRollConfigArgs']]]
+    roll_config: NotRequired[pulumi.Input[Optional['OceanUpdatePolicyRollConfigArgsDict']]]
 
 @pulumi.input_type
 class OceanUpdatePolicyArgs:
