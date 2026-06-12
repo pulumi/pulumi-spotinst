@@ -76,6 +76,7 @@ import (
 //				FallbackToOndemand:       pulumi.Bool(true),
 //				DrainingTimeout:          pulumi.Int(600),
 //				ShouldUtilizeCommitments: pulumi.Bool(true),
+//				RestrictScaleDown:        pulumi.Bool(true),
 //				Taints: azure.OceanNpVirtualNodeGroupTaintArray{
 //					&azure.OceanNpVirtualNodeGroupTaintArgs{
 //						Key:    pulumi.String("taintKey"),
@@ -181,6 +182,8 @@ type OceanNpVirtualNodeGroup struct {
 	OsType pulumi.StringPtrOutput `pulumi:"osType"`
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 	PodSubnetIds pulumi.StringArrayOutput `pulumi:"podSubnetIds"`
+	// When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
+	RestrictScaleDown pulumi.BoolPtrOutput `pulumi:"restrictScaleDown"`
 	// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
 	Scheduling OceanNpVirtualNodeGroupSchedulingPtrOutput `pulumi:"scheduling"`
 	// Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
@@ -266,6 +269,8 @@ type oceanNpVirtualNodeGroupState struct {
 	OsType *string `pulumi:"osType"`
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 	PodSubnetIds []string `pulumi:"podSubnetIds"`
+	// When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
+	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
 	Scheduling *OceanNpVirtualNodeGroupScheduling `pulumi:"scheduling"`
 	// Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
@@ -319,6 +324,8 @@ type OceanNpVirtualNodeGroupState struct {
 	OsType pulumi.StringPtrInput
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 	PodSubnetIds pulumi.StringArrayInput
+	// When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
+	RestrictScaleDown pulumi.BoolPtrInput
 	// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
 	Scheduling OceanNpVirtualNodeGroupSchedulingPtrInput
 	// Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
@@ -376,6 +383,8 @@ type oceanNpVirtualNodeGroupArgs struct {
 	OsType *string `pulumi:"osType"`
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 	PodSubnetIds []string `pulumi:"podSubnetIds"`
+	// When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
+	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
 	Scheduling *OceanNpVirtualNodeGroupScheduling `pulumi:"scheduling"`
 	// Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
@@ -430,6 +439,8 @@ type OceanNpVirtualNodeGroupArgs struct {
 	OsType pulumi.StringPtrInput
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 	PodSubnetIds pulumi.StringArrayInput
+	// When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
+	RestrictScaleDown pulumi.BoolPtrInput
 	// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
 	Scheduling OceanNpVirtualNodeGroupSchedulingPtrInput
 	// Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
@@ -626,6 +637,11 @@ func (o OceanNpVirtualNodeGroupOutput) OsType() pulumi.StringPtrOutput {
 // The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 func (o OceanNpVirtualNodeGroupOutput) PodSubnetIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.StringArrayOutput { return v.PodSubnetIds }).(pulumi.StringArrayOutput)
+}
+
+// When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
+func (o OceanNpVirtualNodeGroupOutput) RestrictScaleDown() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.BoolPtrOutput { return v.RestrictScaleDown }).(pulumi.BoolPtrOutput)
 }
 
 // An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.

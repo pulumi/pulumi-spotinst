@@ -40,6 +40,7 @@ class OceanNpVirtualNodeGroupArgs:
                  os_sku: pulumi.Input[Optional[_builtins.str]] = None,
                  os_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 restrict_scale_down: pulumi.Input[Optional[_builtins.bool]] = None,
                  scheduling: pulumi.Input[Optional['OceanNpVirtualNodeGroupSchedulingArgs']] = None,
                  should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
                  spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
@@ -69,6 +70,7 @@ class OceanNpVirtualNodeGroupArgs:
         :param pulumi.Input[_builtins.str] os_sku: The OS SKU of the OS type. Must correlate with the os type.
         :param pulumi.Input[_builtins.str] os_type: The OS type of the OS disk. Can't be modified once set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_subnet_ids: The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+        :param pulumi.Input[_builtins.bool] restrict_scale_down: When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
         :param pulumi.Input['OceanNpVirtualNodeGroupSchedulingArgs'] scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         :param pulumi.Input[_builtins.bool] should_utilize_commitments: Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
         :param pulumi.Input[_builtins.int] spot_percentage: Percentage of spot VMs to maintain.
@@ -112,6 +114,8 @@ class OceanNpVirtualNodeGroupArgs:
             pulumi.set(__self__, "os_type", os_type)
         if pod_subnet_ids is not None:
             pulumi.set(__self__, "pod_subnet_ids", pod_subnet_ids)
+        if restrict_scale_down is not None:
+            pulumi.set(__self__, "restrict_scale_down", restrict_scale_down)
         if scheduling is not None:
             pulumi.set(__self__, "scheduling", scheduling)
         if should_utilize_commitments is not None:
@@ -356,6 +360,18 @@ class OceanNpVirtualNodeGroupArgs:
         pulumi.set(self, "pod_subnet_ids", value)
 
     @_builtins.property
+    @pulumi.getter(name="restrictScaleDown")
+    def restrict_scale_down(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
+        """
+        return pulumi.get(self, "restrict_scale_down")
+
+    @restrict_scale_down.setter
+    def restrict_scale_down(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "restrict_scale_down", value)
+
+    @_builtins.property
     @pulumi.getter
     def scheduling(self) -> pulumi.Input[Optional['OceanNpVirtualNodeGroupSchedulingArgs']]:
         """
@@ -456,6 +472,7 @@ class _OceanNpVirtualNodeGroupState:
                  os_sku: pulumi.Input[Optional[_builtins.str]] = None,
                  os_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 restrict_scale_down: pulumi.Input[Optional[_builtins.bool]] = None,
                  scheduling: pulumi.Input[Optional['OceanNpVirtualNodeGroupSchedulingArgs']] = None,
                  should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
                  spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
@@ -485,6 +502,7 @@ class _OceanNpVirtualNodeGroupState:
         :param pulumi.Input[_builtins.str] os_sku: The OS SKU of the OS type. Must correlate with the os type.
         :param pulumi.Input[_builtins.str] os_type: The OS type of the OS disk. Can't be modified once set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_subnet_ids: The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+        :param pulumi.Input[_builtins.bool] restrict_scale_down: When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
         :param pulumi.Input['OceanNpVirtualNodeGroupSchedulingArgs'] scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         :param pulumi.Input[_builtins.bool] should_utilize_commitments: Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
         :param pulumi.Input[_builtins.int] spot_percentage: Percentage of spot VMs to maintain.
@@ -529,6 +547,8 @@ class _OceanNpVirtualNodeGroupState:
             pulumi.set(__self__, "os_type", os_type)
         if pod_subnet_ids is not None:
             pulumi.set(__self__, "pod_subnet_ids", pod_subnet_ids)
+        if restrict_scale_down is not None:
+            pulumi.set(__self__, "restrict_scale_down", restrict_scale_down)
         if scheduling is not None:
             pulumi.set(__self__, "scheduling", scheduling)
         if should_utilize_commitments is not None:
@@ -773,6 +793,18 @@ class _OceanNpVirtualNodeGroupState:
         pulumi.set(self, "pod_subnet_ids", value)
 
     @_builtins.property
+    @pulumi.getter(name="restrictScaleDown")
+    def restrict_scale_down(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
+        """
+        return pulumi.get(self, "restrict_scale_down")
+
+    @restrict_scale_down.setter
+    def restrict_scale_down(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "restrict_scale_down", value)
+
+    @_builtins.property
     @pulumi.getter
     def scheduling(self) -> pulumi.Input[Optional['OceanNpVirtualNodeGroupSchedulingArgs']]:
         """
@@ -876,6 +908,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  os_sku: pulumi.Input[Optional[_builtins.str]] = None,
                  os_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 restrict_scale_down: pulumi.Input[Optional[_builtins.bool]] = None,
                  scheduling: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']]] = None,
                  should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
                  spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
@@ -931,6 +964,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             fallback_to_ondemand=True,
             draining_timeout=600,
             should_utilize_commitments=True,
+            restrict_scale_down=True,
             taints=[{
                 "key": "taintKey",
                 "value": "taintValue",
@@ -1006,6 +1040,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] os_sku: The OS SKU of the OS type. Must correlate with the os type.
         :param pulumi.Input[_builtins.str] os_type: The OS type of the OS disk. Can't be modified once set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_subnet_ids: The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+        :param pulumi.Input[_builtins.bool] restrict_scale_down: When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
         :param pulumi.Input[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']] scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         :param pulumi.Input[_builtins.bool] should_utilize_commitments: Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
         :param pulumi.Input[_builtins.int] spot_percentage: Percentage of spot VMs to maintain.
@@ -1065,6 +1100,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             fallback_to_ondemand=True,
             draining_timeout=600,
             should_utilize_commitments=True,
+            restrict_scale_down=True,
             taints=[{
                 "key": "taintKey",
                 "value": "taintValue",
@@ -1153,6 +1189,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  os_sku: pulumi.Input[Optional[_builtins.str]] = None,
                  os_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 restrict_scale_down: pulumi.Input[Optional[_builtins.bool]] = None,
                  scheduling: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']]] = None,
                  should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
                  spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1190,6 +1227,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             __props__.__dict__["os_sku"] = os_sku
             __props__.__dict__["os_type"] = os_type
             __props__.__dict__["pod_subnet_ids"] = pod_subnet_ids
+            __props__.__dict__["restrict_scale_down"] = restrict_scale_down
             __props__.__dict__["scheduling"] = scheduling
             __props__.__dict__["should_utilize_commitments"] = should_utilize_commitments
             __props__.__dict__["spot_percentage"] = spot_percentage
@@ -1226,6 +1264,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             os_sku: pulumi.Input[Optional[_builtins.str]] = None,
             os_type: pulumi.Input[Optional[_builtins.str]] = None,
             pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            restrict_scale_down: pulumi.Input[Optional[_builtins.bool]] = None,
             scheduling: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']]] = None,
             should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
             spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1259,6 +1298,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] os_sku: The OS SKU of the OS type. Must correlate with the os type.
         :param pulumi.Input[_builtins.str] os_type: The OS type of the OS disk. Can't be modified once set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_subnet_ids: The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+        :param pulumi.Input[_builtins.bool] restrict_scale_down: When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
         :param pulumi.Input[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']] scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         :param pulumi.Input[_builtins.bool] should_utilize_commitments: Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
         :param pulumi.Input[_builtins.int] spot_percentage: Percentage of spot VMs to maintain.
@@ -1288,6 +1328,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         __props__.__dict__["os_sku"] = os_sku
         __props__.__dict__["os_type"] = os_type
         __props__.__dict__["pod_subnet_ids"] = pod_subnet_ids
+        __props__.__dict__["restrict_scale_down"] = restrict_scale_down
         __props__.__dict__["scheduling"] = scheduling
         __props__.__dict__["should_utilize_commitments"] = should_utilize_commitments
         __props__.__dict__["spot_percentage"] = spot_percentage
@@ -1448,6 +1489,14 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
         """
         return pulumi.get(self, "pod_subnet_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="restrictScaleDown")
+    def restrict_scale_down(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
+        """
+        return pulumi.get(self, "restrict_scale_down")
 
     @_builtins.property
     @pulumi.getter
