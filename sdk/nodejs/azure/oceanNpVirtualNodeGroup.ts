@@ -53,6 +53,7 @@ import * as utilities from "../utilities";
  *     fallbackToOndemand: true,
  *     drainingTimeout: 600,
  *     shouldUtilizeCommitments: true,
+ *     restrictScaleDown: true,
  *     taints: [{
  *         key: "taintKey",
  *         value: "taintValue",
@@ -212,6 +213,10 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
      */
     declare public readonly podSubnetIds: pulumi.Output<string[] | undefined>;
     /**
+     * When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
+     */
+    declare public readonly restrictScaleDown: pulumi.Output<boolean | undefined>;
+    /**
      * An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
      */
     declare public readonly scheduling: pulumi.Output<outputs.azure.OceanNpVirtualNodeGroupScheduling | undefined>;
@@ -266,6 +271,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
             resourceInputs["osSku"] = state?.osSku;
             resourceInputs["osType"] = state?.osType;
             resourceInputs["podSubnetIds"] = state?.podSubnetIds;
+            resourceInputs["restrictScaleDown"] = state?.restrictScaleDown;
             resourceInputs["scheduling"] = state?.scheduling;
             resourceInputs["shouldUtilizeCommitments"] = state?.shouldUtilizeCommitments;
             resourceInputs["spotPercentage"] = state?.spotPercentage;
@@ -297,6 +303,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
             resourceInputs["osSku"] = args?.osSku;
             resourceInputs["osType"] = args?.osType;
             resourceInputs["podSubnetIds"] = args?.podSubnetIds;
+            resourceInputs["restrictScaleDown"] = args?.restrictScaleDown;
             resourceInputs["scheduling"] = args?.scheduling;
             resourceInputs["shouldUtilizeCommitments"] = args?.shouldUtilizeCommitments;
             resourceInputs["spotPercentage"] = args?.spotPercentage;
@@ -390,6 +397,10 @@ export interface OceanNpVirtualNodeGroupState {
      * The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
      */
     podSubnetIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
+     */
+    restrictScaleDown?: pulumi.Input<boolean | undefined>;
     /**
      * An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
      */
@@ -494,6 +505,10 @@ export interface OceanNpVirtualNodeGroupArgs {
      * The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
      */
     podSubnetIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
+     */
+    restrictScaleDown?: pulumi.Input<boolean | undefined>;
     /**
      * An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
      */

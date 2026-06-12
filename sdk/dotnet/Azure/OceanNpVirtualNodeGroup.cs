@@ -81,6 +81,7 @@ namespace Pulumi.SpotInst.Azure
     ///         FallbackToOndemand = true,
     ///         DrainingTimeout = 600,
     ///         ShouldUtilizeCommitments = true,
+    ///         RestrictScaleDown = true,
     ///         Taints = new[]
     ///         {
     ///             new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupTaintArgs
@@ -269,6 +270,12 @@ namespace Pulumi.SpotInst.Azure
         /// </summary>
         [Output("podSubnetIds")]
         public Output<ImmutableArray<string>> PodSubnetIds { get; private set; } = null!;
+
+        /// <summary>
+        /// When set to `True`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
+        /// </summary>
+        [Output("restrictScaleDown")]
+        public Output<bool?> RestrictScaleDown { get; private set; } = null!;
 
         /// <summary>
         /// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
@@ -497,6 +504,12 @@ namespace Pulumi.SpotInst.Azure
         }
 
         /// <summary>
+        /// When set to `True`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
+        /// </summary>
+        [Input("restrictScaleDown")]
+        public Input<bool>? RestrictScaleDown { get; set; }
+
+        /// <summary>
         /// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         /// </summary>
         [Input("scheduling")]
@@ -700,6 +713,12 @@ namespace Pulumi.SpotInst.Azure
             get => _podSubnetIds ?? (_podSubnetIds = new InputList<string>());
             set => _podSubnetIds = value;
         }
+
+        /// <summary>
+        /// When set to `True`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
+        /// </summary>
+        [Input("restrictScaleDown")]
+        public Input<bool>? RestrictScaleDown { get; set; }
 
         /// <summary>
         /// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.

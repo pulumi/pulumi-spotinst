@@ -94,6 +94,7 @@ import javax.annotation.Nullable;
  *             .fallbackToOndemand(true)
  *             .drainingTimeout(600)
  *             .shouldUtilizeCommitments(true)
+ *             .restrictScaleDown(true)
  *             .taints(OceanNpVirtualNodeGroupTaintArgs.builder()
  *                 .key("taintKey")
  *                 .value("taintValue")
@@ -415,6 +416,20 @@ public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource
      */
     public Output<Optional<List<String>>> podSubnetIds() {
         return Codegen.optional(this.podSubnetIds);
+    }
+    /**
+     * When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
+     * 
+     */
+    @Export(name="restrictScaleDown", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> restrictScaleDown;
+
+    /**
+     * @return When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
+     * 
+     */
+    public Output<Optional<Boolean>> restrictScaleDown() {
+        return Codegen.optional(this.restrictScaleDown);
     }
     /**
      * An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.

@@ -312,6 +312,21 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
+     * 
+     */
+    @Import(name="restrictScaleDown")
+    private @Nullable Output<Boolean> restrictScaleDown;
+
+    /**
+     * @return When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
+     * 
+     */
+    public Optional<Output<Boolean>> restrictScaleDown() {
+        return Optional.ofNullable(this.restrictScaleDown);
+    }
+
+    /**
      * An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
      * 
      */
@@ -422,6 +437,7 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
         this.osSku = $.osSku;
         this.osType = $.osType;
         this.podSubnetIds = $.podSubnetIds;
+        this.restrictScaleDown = $.restrictScaleDown;
         this.scheduling = $.scheduling;
         this.shouldUtilizeCommitments = $.shouldUtilizeCommitments;
         this.spotPercentage = $.spotPercentage;
@@ -886,6 +902,27 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
          */
         public Builder podSubnetIds(String... podSubnetIds) {
             return podSubnetIds(List.of(podSubnetIds));
+        }
+
+        /**
+         * @param restrictScaleDown When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restrictScaleDown(@Nullable Output<Boolean> restrictScaleDown) {
+            $.restrictScaleDown = restrictScaleDown;
+            return this;
+        }
+
+        /**
+         * @param restrictScaleDown When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restrictScaleDown(Boolean restrictScaleDown) {
+            return restrictScaleDown(Output.of(restrictScaleDown));
         }
 
         /**
