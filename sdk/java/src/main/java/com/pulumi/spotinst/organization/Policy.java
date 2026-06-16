@@ -31,6 +31,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.organization.Policy;
  * import com.pulumi.spotinst.organization.PolicyArgs;
  * import com.pulumi.spotinst.organization.inputs.PolicyPolicyContentArgs;
+ * import com.pulumi.spotinst.organization.inputs.PolicyPolicyContentStatementArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

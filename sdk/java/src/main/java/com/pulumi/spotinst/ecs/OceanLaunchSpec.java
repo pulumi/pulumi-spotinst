@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecTagArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecImageArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecSchedulingTaskArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

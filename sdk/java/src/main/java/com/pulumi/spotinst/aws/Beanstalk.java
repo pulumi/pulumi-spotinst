@@ -34,6 +34,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.aws.Beanstalk;
  * import com.pulumi.spotinst.aws.BeanstalkArgs;
  * import com.pulumi.spotinst.aws.inputs.BeanstalkDeploymentPreferencesArgs;
+ * import com.pulumi.spotinst.aws.inputs.BeanstalkDeploymentPreferencesStrategyArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -69,8 +70,8 @@ import javax.annotation.Nullable;
  *                     .shouldDrainInstances(true)
  *                     .build())
  *                 .build())
- *             .managedActions(BeanstalkManagedActionsArgs.builder()
- *                 .platformUpdate(BeanstalkManagedActionsPlatformUpdateArgs.builder()
+ *             .managedActions(com.pulumi.spotinst.aws.inputs.BeanstalkManagedActionsArgs.builder()
+ *                 .platformUpdate(com.pulumi.spotinst.aws.inputs.BeanstalkManagedActionsPlatformUpdateArgs.builder()
  *                     .performAt("timeWindow")
  *                     .timeWindow("Mon:23:50-Tue:00:20")
  *                     .updateLevel("minorAndPatch")

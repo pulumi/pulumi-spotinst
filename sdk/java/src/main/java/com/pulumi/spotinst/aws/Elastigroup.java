@@ -75,6 +75,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupResourceTagSpecificationArgs;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupLoggingArgs;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupLoggingExportArgs;
+ * import com.pulumi.spotinst.aws.inputs.ElastigroupLoggingExportS3Args;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

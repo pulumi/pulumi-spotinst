@@ -40,6 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.azure.OceanNpVirtualNodeGroupArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupHeadroomArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupLinuxOsConfigArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupTaintArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupFiltersArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupSchedulingArgs;

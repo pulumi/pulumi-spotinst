@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.ecs.inputs.OceanTagArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanLoggingArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanLoggingExportArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanLoggingExportS3Args;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

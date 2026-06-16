@@ -42,6 +42,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.gke.inputs.OceanImportAutoUpdateArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanImportFiltersArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanImportBackendServiceArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanImportBackendServiceNamedPortArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanImportShieldedInstanceConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
