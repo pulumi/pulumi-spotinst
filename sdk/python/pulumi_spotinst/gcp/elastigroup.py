@@ -71,7 +71,7 @@ class ElastigroupArgs:
         :param pulumi.Input[_builtins.str] description: The region your GCP group will be created in.
         :param pulumi.Input[_builtins.int] draining_timeout: Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
-        :param pulumi.Input[_builtins.str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        :param pulumi.Input[_builtins.str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
                * A maximal length of 25 characters.
                * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
@@ -303,7 +303,7 @@ class ElastigroupArgs:
     @pulumi.getter(name="instanceNamePrefix")
     def instance_name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
         * A maximal length of 25 characters.
         * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         """
@@ -701,7 +701,7 @@ class _ElastigroupState:
         :param pulumi.Input[_builtins.int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[_builtins.int] draining_timeout: Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
-        :param pulumi.Input[_builtins.str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        :param pulumi.Input[_builtins.str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
                * A maximal length of 25 characters.
                * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
@@ -934,7 +934,7 @@ class _ElastigroupState:
     @pulumi.getter(name="instanceNamePrefix")
     def instance_name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
         * A maximal length of 25 characters.
         * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         """
@@ -1447,7 +1447,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[_builtins.int] draining_timeout: Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
-        :param pulumi.Input[_builtins.str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        :param pulumi.Input[_builtins.str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
                * A maximal length of 25 characters.
                * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesCustomArgs', 'ElastigroupInstanceTypesCustomArgsDict']]]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
@@ -1765,7 +1765,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[_builtins.int] draining_timeout: Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
-        :param pulumi.Input[_builtins.str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        :param pulumi.Input[_builtins.str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
                * A maximal length of 25 characters.
                * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupInstanceTypesCustomArgs', 'ElastigroupInstanceTypesCustomArgsDict']]]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
@@ -1914,7 +1914,7 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter(name="instanceNamePrefix")
     def instance_name_prefix(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
         * A maximal length of 25 characters.
         * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         """

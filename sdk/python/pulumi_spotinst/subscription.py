@@ -40,7 +40,7 @@ class SubscriptionArgs:
                `"AWS_EC2_MANAGED_INSTANCE_RECYCLING"`,`"AWS_EC2_MANAGED_INSTANCE_DELETING"`.
                Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`,`"OCEAN_CANT_SCALE_UP_MAX_RESOURCES"`
                `"OCEAN_LAUNCH_SPEC_CANT_SCALE_UP_MAX_INSTANCES"`,`"OCEAN_K8S_NODE_REMOVED"`.
-        :param pulumi.Input[_builtins.str] protocol: The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
+        :param pulumi.Input[_builtins.str] protocol: The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
                The following values are deprecated: `"http"` , `"https"`
                You can use the generic `"web"` protocol instead.
                `"aws-sns"` is only supported with AWS provider
@@ -95,7 +95,7 @@ class SubscriptionArgs:
     @pulumi.getter
     def protocol(self) -> pulumi.Input[_builtins.str]:
         """
-        The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
+        The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
         The following values are deprecated: `"http"` , `"https"`
         You can use the generic `"web"` protocol instead.
         `"aws-sns"` is only supported with AWS provider
@@ -160,7 +160,7 @@ class _SubscriptionState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] format: The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
                Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
                Default: {`"event"`: `"<event>"`, `"instanceId"`: `"<instance-id>"`, `"resourceId"`: `"<resource-id>"`, `"resourceName"`: `"<resource-name>"` }.
-        :param pulumi.Input[_builtins.str] protocol: The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
+        :param pulumi.Input[_builtins.str] protocol: The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
                The following values are deprecated: `"http"` , `"https"`
                You can use the generic `"web"` protocol instead.
                `"aws-sns"` is only supported with AWS provider
@@ -230,7 +230,7 @@ class _SubscriptionState:
     @pulumi.getter
     def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
+        The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
         The following values are deprecated: `"http"` , `"https"`
         You can use the generic `"web"` protocol instead.
         `"aws-sns"` is only supported with AWS provider
@@ -309,7 +309,7 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] format: The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
                Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
                Default: {`"event"`: `"<event>"`, `"instanceId"`: `"<instance-id>"`, `"resourceId"`: `"<resource-id>"`, `"resourceName"`: `"<resource-name>"` }.
-        :param pulumi.Input[_builtins.str] protocol: The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
+        :param pulumi.Input[_builtins.str] protocol: The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
                The following values are deprecated: `"http"` , `"https"`
                You can use the generic `"web"` protocol instead.
                `"aws-sns"` is only supported with AWS provider
@@ -426,7 +426,7 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] format: The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
                Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
                Default: {`"event"`: `"<event>"`, `"instanceId"`: `"<instance-id>"`, `"resourceId"`: `"<resource-id>"`, `"resourceName"`: `"<resource-name>"` }.
-        :param pulumi.Input[_builtins.str] protocol: The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
+        :param pulumi.Input[_builtins.str] protocol: The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
                The following values are deprecated: `"http"` , `"https"`
                You can use the generic `"web"` protocol instead.
                `"aws-sns"` is only supported with AWS provider
@@ -484,7 +484,7 @@ class Subscription(pulumi.CustomResource):
     @pulumi.getter
     def protocol(self) -> pulumi.Output[_builtins.str]:
         """
-        The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
+        The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
         The following values are deprecated: `"http"` , `"https"`
         You can use the generic `"web"` protocol instead.
         `"aws-sns"` is only supported with AWS provider
