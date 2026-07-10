@@ -111,7 +111,7 @@ class ElastigroupArgs:
 
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
         :param pulumi.Input[_builtins.str] orientation: Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
-        :param pulumi.Input[_builtins.str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+        :param pulumi.Input[_builtins.str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
                For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: A list of associated security group IDS.
         :param pulumi.Input[_builtins.bool] auto_healing: Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
@@ -132,7 +132,7 @@ class ElastigroupArgs:
         :param pulumi.Input[_builtins.int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
         :param pulumi.Input[_builtins.str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[_builtins.str] image_id: The ID of the AMI used to launch the instance.
-        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupImageArgs']]] images: An array of image objects. 
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupImageArgs']]] images: An array of image objects.
                Note: Elastigroup can be configured with either imageId or images, but not both.
         :param pulumi.Input[_builtins.str] instance_types_ondemand: The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types_preferred_spots: Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
@@ -149,7 +149,7 @@ class ElastigroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] on_demand_types: Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
         :param pulumi.Input[_builtins.int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
         :param pulumi.Input[_builtins.str] placement_tenancy: Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         :param pulumi.Input[_builtins.str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
@@ -366,7 +366,7 @@ class ElastigroupArgs:
     @pulumi.getter
     def product(self) -> pulumi.Input[_builtins.str]:
         """
-        Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+        Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
         For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         """
         return pulumi.get(self, "product")
@@ -630,7 +630,7 @@ class ElastigroupArgs:
     @pulumi.getter
     def images(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupImageArgs']]]]:
         """
-        An array of image objects. 
+        An array of image objects.
         Note: Elastigroup can be configured with either imageId or images, but not both.
         """
         return pulumi.get(self, "images")
@@ -985,7 +985,7 @@ class ElastigroupArgs:
     @pulumi.getter(name="preferredAvailabilityZones")
     def preferred_availability_zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+        The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
         Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         """
         return pulumi.get(self, "preferred_availability_zones")
@@ -1375,7 +1375,7 @@ class _ElastigroupState:
         :param pulumi.Input[_builtins.int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
         :param pulumi.Input[_builtins.str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[_builtins.str] image_id: The ID of the AMI used to launch the instance.
-        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupImageArgs']]] images: An array of image objects. 
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupImageArgs']]] images: An array of image objects.
                Note: Elastigroup can be configured with either imageId or images, but not both.
         :param pulumi.Input[_builtins.str] instance_types_ondemand: The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types_preferred_spots: Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
@@ -1393,9 +1393,9 @@ class _ElastigroupState:
         :param pulumi.Input[_builtins.int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
         :param pulumi.Input[_builtins.str] orientation: Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         :param pulumi.Input[_builtins.str] placement_tenancy: Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
-        :param pulumi.Input[_builtins.str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+        :param pulumi.Input[_builtins.str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
                For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[_builtins.str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
@@ -1844,7 +1844,7 @@ class _ElastigroupState:
     @pulumi.getter
     def images(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupImageArgs']]]]:
         """
-        An array of image objects. 
+        An array of image objects.
         Note: Elastigroup can be configured with either imageId or images, but not both.
         """
         return pulumi.get(self, "images")
@@ -2211,7 +2211,7 @@ class _ElastigroupState:
     @pulumi.getter(name="preferredAvailabilityZones")
     def preferred_availability_zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+        The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
         Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         """
         return pulumi.get(self, "preferred_availability_zones")
@@ -2233,7 +2233,7 @@ class _ElastigroupState:
     @pulumi.getter
     def product(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+        Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
         For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         """
         return pulumi.get(self, "product")
@@ -2767,7 +2767,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
         :param pulumi.Input[_builtins.str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[_builtins.str] image_id: The ID of the AMI used to launch the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupImageArgs', 'ElastigroupImageArgsDict']]]] images: An array of image objects. 
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupImageArgs', 'ElastigroupImageArgsDict']]]] images: An array of image objects.
                Note: Elastigroup can be configured with either imageId or images, but not both.
         :param pulumi.Input[_builtins.str] instance_types_ondemand: The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types_preferred_spots: Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
@@ -2785,9 +2785,9 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
         :param pulumi.Input[_builtins.str] orientation: Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         :param pulumi.Input[_builtins.str] placement_tenancy: Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
-        :param pulumi.Input[_builtins.str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+        :param pulumi.Input[_builtins.str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
                For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[_builtins.str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
@@ -3274,7 +3274,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
         :param pulumi.Input[_builtins.str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[_builtins.str] image_id: The ID of the AMI used to launch the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupImageArgs', 'ElastigroupImageArgsDict']]]] images: An array of image objects. 
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ElastigroupImageArgs', 'ElastigroupImageArgsDict']]]] images: An array of image objects.
                Note: Elastigroup can be configured with either imageId or images, but not both.
         :param pulumi.Input[_builtins.str] instance_types_ondemand: The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types_preferred_spots: Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
@@ -3292,9 +3292,9 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
         :param pulumi.Input[_builtins.str] orientation: Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         :param pulumi.Input[_builtins.str] placement_tenancy: Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
-        :param pulumi.Input[_builtins.str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+        :param pulumi.Input[_builtins.str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
                For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[_builtins.str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
@@ -3572,7 +3572,7 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter
     def images(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupImage']]]:
         """
-        An array of image objects. 
+        An array of image objects.
         Note: Elastigroup can be configured with either imageId or images, but not both.
         """
         return pulumi.get(self, "images")
@@ -3799,7 +3799,7 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter(name="preferredAvailabilityZones")
     def preferred_availability_zones(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
+        The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
         Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         """
         return pulumi.get(self, "preferred_availability_zones")
@@ -3813,7 +3813,7 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter
     def product(self) -> pulumi.Output[_builtins.str]:
         """
-        Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
+        Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
         For EC2 Classic instances: `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         """
         return pulumi.get(self, "product")
