@@ -68,7 +68,6 @@ import * as gcp from "./gcp";
 import * as gke from "./gke";
 import * as oceancd from "./oceancd";
 import * as organization from "./organization";
-import * as spark from "./spark";
 import * as types from "./types";
 
 export {
@@ -80,7 +79,6 @@ export {
     gke,
     oceancd,
     organization,
-    spark,
     types,
 };
 
