@@ -38,8 +38,6 @@ if typing.TYPE_CHECKING:
     oceancd = __oceancd
     import pulumi_spotinst.organization as __organization
     organization = __organization
-    import pulumi_spotinst.spark as __spark
-    spark = __spark
 else:
     aws = _utilities.lazy_import('pulumi_spotinst.aws')
     azure = _utilities.lazy_import('pulumi_spotinst.azure')
@@ -49,7 +47,6 @@ else:
     gke = _utilities.lazy_import('pulumi_spotinst.gke')
     oceancd = _utilities.lazy_import('pulumi_spotinst.oceancd')
     organization = _utilities.lazy_import('pulumi_spotinst.organization')
-    spark = _utilities.lazy_import('pulumi_spotinst.spark')
 
 _utilities.register(
     resource_modules="""
@@ -348,22 +345,6 @@ _utilities.register(
   "fqn": "pulumi_spotinst.organization",
   "classes": {
    "spotinst:organization/userGroup:UserGroup": "UserGroup"
-  }
- },
- {
-  "pkg": "spotinst",
-  "mod": "spark/ocean",
-  "fqn": "pulumi_spotinst.spark",
-  "classes": {
-   "spotinst:spark/ocean:Ocean": "Ocean"
-  }
- },
- {
-  "pkg": "spotinst",
-  "mod": "spark/oceanVirtualNodeGroup",
-  "fqn": "pulumi_spotinst.spark",
-  "classes": {
-   "spotinst:spark/oceanVirtualNodeGroup:OceanVirtualNodeGroup": "OceanVirtualNodeGroup"
   }
  }
 ]
