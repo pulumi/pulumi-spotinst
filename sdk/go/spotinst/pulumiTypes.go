@@ -5897,6 +5897,200 @@ func (o NotificationCenterSubscriptionArrayOutput) Index(i pulumi.IntInput) Noti
 	}).(NotificationCenterSubscriptionOutput)
 }
 
+type OceanRightSizingClusterConfigConfig struct {
+	// When set to `true`, the limit will be adjusted when downscale recommendations are applied.
+	AdjustLimitOnDownsize *bool `pulumi:"adjustLimitOnDownsize"`
+	// When set to `true`, only downscale recommendations will be applied.
+	DownsideOnly *bool `pulumi:"downsideOnly"`
+	// Change the CPU percentile that the right-sizing recommendations calculation will take into account. Valid values: `85`, `90`, `95`, `99`.
+	RecommendationsCpuPercentile *int `pulumi:"recommendationsCpuPercentile"`
+	// Change the memory percentile that the right-sizing recommendations calculation will take into account. Valid values: `85`, `90`, `95`, `100`.
+	RecommendationsMemoryPercentile *int `pulumi:"recommendationsMemoryPercentile"`
+}
+
+// OceanRightSizingClusterConfigConfigInput is an input type that accepts OceanRightSizingClusterConfigConfigArgs and OceanRightSizingClusterConfigConfigOutput values.
+// You can construct a concrete instance of `OceanRightSizingClusterConfigConfigInput` via:
+//
+//	OceanRightSizingClusterConfigConfigArgs{...}
+type OceanRightSizingClusterConfigConfigInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingClusterConfigConfigOutput() OceanRightSizingClusterConfigConfigOutput
+	ToOceanRightSizingClusterConfigConfigOutputWithContext(context.Context) OceanRightSizingClusterConfigConfigOutput
+}
+
+type OceanRightSizingClusterConfigConfigArgs struct {
+	// When set to `true`, the limit will be adjusted when downscale recommendations are applied.
+	AdjustLimitOnDownsize pulumi.BoolPtrInput `pulumi:"adjustLimitOnDownsize"`
+	// When set to `true`, only downscale recommendations will be applied.
+	DownsideOnly pulumi.BoolPtrInput `pulumi:"downsideOnly"`
+	// Change the CPU percentile that the right-sizing recommendations calculation will take into account. Valid values: `85`, `90`, `95`, `99`.
+	RecommendationsCpuPercentile pulumi.IntPtrInput `pulumi:"recommendationsCpuPercentile"`
+	// Change the memory percentile that the right-sizing recommendations calculation will take into account. Valid values: `85`, `90`, `95`, `100`.
+	RecommendationsMemoryPercentile pulumi.IntPtrInput `pulumi:"recommendationsMemoryPercentile"`
+}
+
+func (OceanRightSizingClusterConfigConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingClusterConfigConfig)(nil)).Elem()
+}
+
+func (i OceanRightSizingClusterConfigConfigArgs) ToOceanRightSizingClusterConfigConfigOutput() OceanRightSizingClusterConfigConfigOutput {
+	return i.ToOceanRightSizingClusterConfigConfigOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingClusterConfigConfigArgs) ToOceanRightSizingClusterConfigConfigOutputWithContext(ctx context.Context) OceanRightSizingClusterConfigConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingClusterConfigConfigOutput)
+}
+
+func (i OceanRightSizingClusterConfigConfigArgs) ToOceanRightSizingClusterConfigConfigPtrOutput() OceanRightSizingClusterConfigConfigPtrOutput {
+	return i.ToOceanRightSizingClusterConfigConfigPtrOutputWithContext(context.Background())
+}
+
+func (i OceanRightSizingClusterConfigConfigArgs) ToOceanRightSizingClusterConfigConfigPtrOutputWithContext(ctx context.Context) OceanRightSizingClusterConfigConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingClusterConfigConfigOutput).ToOceanRightSizingClusterConfigConfigPtrOutputWithContext(ctx)
+}
+
+// OceanRightSizingClusterConfigConfigPtrInput is an input type that accepts OceanRightSizingClusterConfigConfigArgs, OceanRightSizingClusterConfigConfigPtr and OceanRightSizingClusterConfigConfigPtrOutput values.
+// You can construct a concrete instance of `OceanRightSizingClusterConfigConfigPtrInput` via:
+//
+//	        OceanRightSizingClusterConfigConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanRightSizingClusterConfigConfigPtrInput interface {
+	pulumi.Input
+
+	ToOceanRightSizingClusterConfigConfigPtrOutput() OceanRightSizingClusterConfigConfigPtrOutput
+	ToOceanRightSizingClusterConfigConfigPtrOutputWithContext(context.Context) OceanRightSizingClusterConfigConfigPtrOutput
+}
+
+type oceanRightSizingClusterConfigConfigPtrType OceanRightSizingClusterConfigConfigArgs
+
+func OceanRightSizingClusterConfigConfigPtr(v *OceanRightSizingClusterConfigConfigArgs) OceanRightSizingClusterConfigConfigPtrInput {
+	return (*oceanRightSizingClusterConfigConfigPtrType)(v)
+}
+
+func (*oceanRightSizingClusterConfigConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanRightSizingClusterConfigConfig)(nil)).Elem()
+}
+
+func (i *oceanRightSizingClusterConfigConfigPtrType) ToOceanRightSizingClusterConfigConfigPtrOutput() OceanRightSizingClusterConfigConfigPtrOutput {
+	return i.ToOceanRightSizingClusterConfigConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanRightSizingClusterConfigConfigPtrType) ToOceanRightSizingClusterConfigConfigPtrOutputWithContext(ctx context.Context) OceanRightSizingClusterConfigConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanRightSizingClusterConfigConfigPtrOutput)
+}
+
+type OceanRightSizingClusterConfigConfigOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingClusterConfigConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanRightSizingClusterConfigConfig)(nil)).Elem()
+}
+
+func (o OceanRightSizingClusterConfigConfigOutput) ToOceanRightSizingClusterConfigConfigOutput() OceanRightSizingClusterConfigConfigOutput {
+	return o
+}
+
+func (o OceanRightSizingClusterConfigConfigOutput) ToOceanRightSizingClusterConfigConfigOutputWithContext(ctx context.Context) OceanRightSizingClusterConfigConfigOutput {
+	return o
+}
+
+func (o OceanRightSizingClusterConfigConfigOutput) ToOceanRightSizingClusterConfigConfigPtrOutput() OceanRightSizingClusterConfigConfigPtrOutput {
+	return o.ToOceanRightSizingClusterConfigConfigPtrOutputWithContext(context.Background())
+}
+
+func (o OceanRightSizingClusterConfigConfigOutput) ToOceanRightSizingClusterConfigConfigPtrOutputWithContext(ctx context.Context) OceanRightSizingClusterConfigConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanRightSizingClusterConfigConfig) *OceanRightSizingClusterConfigConfig {
+		return &v
+	}).(OceanRightSizingClusterConfigConfigPtrOutput)
+}
+
+// When set to `true`, the limit will be adjusted when downscale recommendations are applied.
+func (o OceanRightSizingClusterConfigConfigOutput) AdjustLimitOnDownsize() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanRightSizingClusterConfigConfig) *bool { return v.AdjustLimitOnDownsize }).(pulumi.BoolPtrOutput)
+}
+
+// When set to `true`, only downscale recommendations will be applied.
+func (o OceanRightSizingClusterConfigConfigOutput) DownsideOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanRightSizingClusterConfigConfig) *bool { return v.DownsideOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Change the CPU percentile that the right-sizing recommendations calculation will take into account. Valid values: `85`, `90`, `95`, `99`.
+func (o OceanRightSizingClusterConfigConfigOutput) RecommendationsCpuPercentile() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanRightSizingClusterConfigConfig) *int { return v.RecommendationsCpuPercentile }).(pulumi.IntPtrOutput)
+}
+
+// Change the memory percentile that the right-sizing recommendations calculation will take into account. Valid values: `85`, `90`, `95`, `100`.
+func (o OceanRightSizingClusterConfigConfigOutput) RecommendationsMemoryPercentile() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanRightSizingClusterConfigConfig) *int { return v.RecommendationsMemoryPercentile }).(pulumi.IntPtrOutput)
+}
+
+type OceanRightSizingClusterConfigConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanRightSizingClusterConfigConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanRightSizingClusterConfigConfig)(nil)).Elem()
+}
+
+func (o OceanRightSizingClusterConfigConfigPtrOutput) ToOceanRightSizingClusterConfigConfigPtrOutput() OceanRightSizingClusterConfigConfigPtrOutput {
+	return o
+}
+
+func (o OceanRightSizingClusterConfigConfigPtrOutput) ToOceanRightSizingClusterConfigConfigPtrOutputWithContext(ctx context.Context) OceanRightSizingClusterConfigConfigPtrOutput {
+	return o
+}
+
+func (o OceanRightSizingClusterConfigConfigPtrOutput) Elem() OceanRightSizingClusterConfigConfigOutput {
+	return o.ApplyT(func(v *OceanRightSizingClusterConfigConfig) OceanRightSizingClusterConfigConfig {
+		if v != nil {
+			return *v
+		}
+		var ret OceanRightSizingClusterConfigConfig
+		return ret
+	}).(OceanRightSizingClusterConfigConfigOutput)
+}
+
+// When set to `true`, the limit will be adjusted when downscale recommendations are applied.
+func (o OceanRightSizingClusterConfigConfigPtrOutput) AdjustLimitOnDownsize() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanRightSizingClusterConfigConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AdjustLimitOnDownsize
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When set to `true`, only downscale recommendations will be applied.
+func (o OceanRightSizingClusterConfigConfigPtrOutput) DownsideOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanRightSizingClusterConfigConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DownsideOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Change the CPU percentile that the right-sizing recommendations calculation will take into account. Valid values: `85`, `90`, `95`, `99`.
+func (o OceanRightSizingClusterConfigConfigPtrOutput) RecommendationsCpuPercentile() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanRightSizingClusterConfigConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RecommendationsCpuPercentile
+	}).(pulumi.IntPtrOutput)
+}
+
+// Change the memory percentile that the right-sizing recommendations calculation will take into account. Valid values: `85`, `90`, `95`, `100`.
+func (o OceanRightSizingClusterConfigConfigPtrOutput) RecommendationsMemoryPercentile() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanRightSizingClusterConfigConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RecommendationsMemoryPercentile
+	}).(pulumi.IntPtrOutput)
+}
+
 type OceanRightSizingRuleAttachWorkload struct {
 	// List of namespaces that match the auto-apply rule.
 	Namespaces []OceanRightSizingRuleAttachWorkloadNamespace `pulumi:"namespaces"`
@@ -12859,6 +13053,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationCenterRegisteredUserArrayInput)(nil)).Elem(), NotificationCenterRegisteredUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationCenterSubscriptionInput)(nil)).Elem(), NotificationCenterSubscriptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationCenterSubscriptionArrayInput)(nil)).Elem(), NotificationCenterSubscriptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingClusterConfigConfigInput)(nil)).Elem(), OceanRightSizingClusterConfigConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingClusterConfigConfigPtrInput)(nil)).Elem(), OceanRightSizingClusterConfigConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadInput)(nil)).Elem(), OceanRightSizingRuleAttachWorkloadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadArrayInput)(nil)).Elem(), OceanRightSizingRuleAttachWorkloadArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanRightSizingRuleAttachWorkloadNamespaceInput)(nil)).Elem(), OceanRightSizingRuleAttachWorkloadNamespaceArgs{})
@@ -13057,6 +13253,8 @@ func init() {
 	pulumi.RegisterOutputType(NotificationCenterRegisteredUserArrayOutput{})
 	pulumi.RegisterOutputType(NotificationCenterSubscriptionOutput{})
 	pulumi.RegisterOutputType(NotificationCenterSubscriptionArrayOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingClusterConfigConfigOutput{})
+	pulumi.RegisterOutputType(OceanRightSizingClusterConfigConfigPtrOutput{})
 	pulumi.RegisterOutputType(OceanRightSizingRuleAttachWorkloadOutput{})
 	pulumi.RegisterOutputType(OceanRightSizingRuleAttachWorkloadArrayOutput{})
 	pulumi.RegisterOutputType(OceanRightSizingRuleAttachWorkloadNamespaceOutput{})

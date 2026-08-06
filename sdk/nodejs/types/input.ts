@@ -341,6 +341,25 @@ export interface NotificationCenterSubscription {
     subscriptionType?: pulumi.Input<string | undefined>;
 }
 
+export interface OceanRightSizingClusterConfigConfig {
+    /**
+     * When set to `true`, the limit will be adjusted when downscale recommendations are applied.
+     */
+    adjustLimitOnDownsize?: pulumi.Input<boolean | undefined>;
+    /**
+     * When set to `true`, only downscale recommendations will be applied.
+     */
+    downsideOnly?: pulumi.Input<boolean | undefined>;
+    /**
+     * Change the CPU percentile that the right-sizing recommendations calculation will take into account. Valid values: `85`, `90`, `95`, `99`.
+     */
+    recommendationsCpuPercentile?: pulumi.Input<number | undefined>;
+    /**
+     * Change the memory percentile that the right-sizing recommendations calculation will take into account. Valid values: `85`, `90`, `95`, `100`.
+     */
+    recommendationsMemoryPercentile?: pulumi.Input<number | undefined>;
+}
+
 export interface OceanRightSizingRuleAttachWorkload {
     /**
      * List of namespaces that match the auto-apply rule.

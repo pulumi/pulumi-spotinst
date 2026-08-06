@@ -2238,6 +2238,14 @@
             "spotinst_ocean_gke_launch_spec_import": {
                 "current": "spotinst:gke/oceanLaunchSpecImport:OceanLaunchSpecImport"
             },
+            "spotinst_ocean_right_sizing_cluster_config": {
+                "current": "spotinst:index/oceanRightSizingClusterConfig:OceanRightSizingClusterConfig",
+                "fields": {
+                    "config": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "spotinst_ocean_right_sizing_rule": {
                 "current": "spotinst:index/oceanRightSizingRule:OceanRightSizingRule",
                 "fields": {
