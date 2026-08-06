@@ -8688,6 +8688,27 @@
             },
             "type": "object"
         },
+        "spotinst:index/OceanRightSizingClusterConfigConfig:OceanRightSizingClusterConfigConfig": {
+            "properties": {
+                "adjustLimitOnDownsize": {
+                    "type": "boolean",
+                    "description": "When set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e, the limit will be adjusted when downscale recommendations are applied.\n"
+                },
+                "downsideOnly": {
+                    "type": "boolean",
+                    "description": "When set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e, only downscale recommendations will be applied.\n"
+                },
+                "recommendationsCpuPercentile": {
+                    "type": "integer",
+                    "description": "Change the CPU percentile that the right-sizing recommendations calculation will take into account. Valid values: \u003cspan pulumi-lang-nodejs=\"`85`\" pulumi-lang-dotnet=\"`85`\" pulumi-lang-go=\"`85`\" pulumi-lang-python=\"`85`\" pulumi-lang-yaml=\"`85`\" pulumi-lang-java=\"`85`\" pulumi-lang-hcl=\"`85`\"\u003e`85`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`90`\" pulumi-lang-dotnet=\"`90`\" pulumi-lang-go=\"`90`\" pulumi-lang-python=\"`90`\" pulumi-lang-yaml=\"`90`\" pulumi-lang-java=\"`90`\" pulumi-lang-hcl=\"`90`\"\u003e`90`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`95`\" pulumi-lang-dotnet=\"`95`\" pulumi-lang-go=\"`95`\" pulumi-lang-python=\"`95`\" pulumi-lang-yaml=\"`95`\" pulumi-lang-java=\"`95`\" pulumi-lang-hcl=\"`95`\"\u003e`95`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`99`\" pulumi-lang-dotnet=\"`99`\" pulumi-lang-go=\"`99`\" pulumi-lang-python=\"`99`\" pulumi-lang-yaml=\"`99`\" pulumi-lang-java=\"`99`\" pulumi-lang-hcl=\"`99`\"\u003e`99`\u003c/span\u003e.\n"
+                },
+                "recommendationsMemoryPercentile": {
+                    "type": "integer",
+                    "description": "Change the memory percentile that the right-sizing recommendations calculation will take into account. Valid values: \u003cspan pulumi-lang-nodejs=\"`85`\" pulumi-lang-dotnet=\"`85`\" pulumi-lang-go=\"`85`\" pulumi-lang-python=\"`85`\" pulumi-lang-yaml=\"`85`\" pulumi-lang-java=\"`85`\" pulumi-lang-hcl=\"`85`\"\u003e`85`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`90`\" pulumi-lang-dotnet=\"`90`\" pulumi-lang-go=\"`90`\" pulumi-lang-python=\"`90`\" pulumi-lang-yaml=\"`90`\" pulumi-lang-java=\"`90`\" pulumi-lang-hcl=\"`90`\"\u003e`90`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`95`\" pulumi-lang-dotnet=\"`95`\" pulumi-lang-go=\"`95`\" pulumi-lang-python=\"`95`\" pulumi-lang-yaml=\"`95`\" pulumi-lang-java=\"`95`\" pulumi-lang-hcl=\"`95`\"\u003e`95`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`100`\" pulumi-lang-dotnet=\"`100`\" pulumi-lang-go=\"`100`\" pulumi-lang-python=\"`100`\" pulumi-lang-yaml=\"`100`\" pulumi-lang-java=\"`100`\" pulumi-lang-hcl=\"`100`\"\u003e`100`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object"
+        },
         "spotinst:index/OceanRightSizingRuleAttachWorkload:OceanRightSizingRuleAttachWorkload": {
             "properties": {
                 "namespaces": {
@@ -20223,6 +20244,65 @@
                         "items": {
                             "$ref": "#/types/spotinst:index/NotificationCenterSubscription:NotificationCenterSubscription"
                         }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "spotinst:index/oceanRightSizingClusterConfig:OceanRightSizingClusterConfig": {
+            "description": "Manages a Spotinst Ocean right sizing cluster configuration resource. This resource allows you to configure cluster-level right sizing settings.\n\n**NOTE:**\n* This resource supports `POST`, `PUT` and `READ` operations only. `Delete` operation is not supported through Terraform.\n* `POST` and `PUT` operations can take a few minutes to complete.\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.OceanRightSizingClusterConfig(\"example\", {\n    oceanId: \"o-abcd1234\",\n    clusterIdentifier: \"dev-cluster\",\n    config: {\n        adjustLimitOnDownsize: true,\n        downsideOnly: false,\n        recommendationsCpuPercentile: 85,\n        recommendationsMemoryPercentile: 85,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nexample = spotinst.OceanRightSizingClusterConfig(\"example\",\n    ocean_id=\"o-abcd1234\",\n    cluster_identifier=\"dev-cluster\",\n    config={\n        \"adjust_limit_on_downsize\": True,\n        \"downside_only\": False,\n        \"recommendations_cpu_percentile\": 85,\n        \"recommendations_memory_percentile\": 85,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new SpotInst.OceanRightSizingClusterConfig(\"example\", new()\n    {\n        OceanId = \"o-abcd1234\",\n        ClusterIdentifier = \"dev-cluster\",\n        Config = new SpotInst.Inputs.OceanRightSizingClusterConfigConfigArgs\n        {\n            AdjustLimitOnDownsize = true,\n            DownsideOnly = false,\n            RecommendationsCpuPercentile = 85,\n            RecommendationsMemoryPercentile = 85,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := spotinst.NewOceanRightSizingClusterConfig(ctx, \"example\", \u0026spotinst.OceanRightSizingClusterConfigArgs{\n\t\t\tOceanId:           pulumi.String(\"o-abcd1234\"),\n\t\t\tClusterIdentifier: pulumi.String(\"dev-cluster\"),\n\t\t\tConfig: \u0026spotinst.OceanRightSizingClusterConfigConfigArgs{\n\t\t\t\tAdjustLimitOnDownsize:           pulumi.Bool(true),\n\t\t\t\tDownsideOnly:                    pulumi.Bool(false),\n\t\t\t\tRecommendationsCpuPercentile:    pulumi.Int(85),\n\t\t\t\tRecommendationsMemoryPercentile: pulumi.Int(85),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    spotinst = {\n      source = \"pulumi/spotinst\"\n    }\n  }\n}\n\nresource \"spotinst_oceanrightsizingclusterconfig\" \"example\" {\n  ocean_id           = \"o-abcd1234\"\n  cluster_identifier = \"dev-cluster\"\n  config = {\n    adjust_limit_on_downsize          = true\n    downside_only                     = false\n    recommendations_cpu_percentile    = 85\n    recommendations_memory_percentile = 85\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.OceanRightSizingClusterConfig;\nimport com.pulumi.spotinst.OceanRightSizingClusterConfigArgs;\nimport com.pulumi.spotinst.inputs.OceanRightSizingClusterConfigConfigArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new OceanRightSizingClusterConfig(\"example\", OceanRightSizingClusterConfigArgs.builder()\n            .oceanId(\"o-abcd1234\")\n            .clusterIdentifier(\"dev-cluster\")\n            .config(OceanRightSizingClusterConfigConfigArgs.builder()\n                .adjustLimitOnDownsize(true)\n                .downsideOnly(false)\n                .recommendationsCpuPercentile(85)\n                .recommendationsMemoryPercentile(85)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: spotinst:OceanRightSizingClusterConfig\n    properties:\n      oceanId: o-abcd1234\n      clusterIdentifier: dev-cluster\n      config:\n        adjustLimitOnDownsize: true\n        downsideOnly: false\n        recommendationsCpuPercentile: 85\n        recommendationsMemoryPercentile: 85\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "clusterIdentifier": {
+                    "type": "string",
+                    "description": "Identifier of the cluster. Example: `dev-cluster`\n"
+                },
+                "config": {
+                    "$ref": "#/types/spotinst:index/OceanRightSizingClusterConfigConfig:OceanRightSizingClusterConfigConfig",
+                    "description": "The Ocean right sizing cluster configuration. The \u003cspan pulumi-lang-nodejs=\"`config`\" pulumi-lang-dotnet=\"`Config`\" pulumi-lang-go=\"`config`\" pulumi-lang-python=\"`config`\" pulumi-lang-yaml=\"`config`\" pulumi-lang-java=\"`config`\" pulumi-lang-hcl=\"`config`\"\u003e`config`\u003c/span\u003e block supports:\n"
+                },
+                "oceanId": {
+                    "type": "string",
+                    "description": "Identifier of the Ocean cluster. Example: `o-abcd1234`\n"
+                }
+            },
+            "required": [
+                "clusterIdentifier",
+                "config",
+                "oceanId"
+            ],
+            "inputProperties": {
+                "clusterIdentifier": {
+                    "type": "string",
+                    "description": "Identifier of the cluster. Example: `dev-cluster`\n"
+                },
+                "config": {
+                    "$ref": "#/types/spotinst:index/OceanRightSizingClusterConfigConfig:OceanRightSizingClusterConfigConfig",
+                    "description": "The Ocean right sizing cluster configuration. The \u003cspan pulumi-lang-nodejs=\"`config`\" pulumi-lang-dotnet=\"`Config`\" pulumi-lang-go=\"`config`\" pulumi-lang-python=\"`config`\" pulumi-lang-yaml=\"`config`\" pulumi-lang-java=\"`config`\" pulumi-lang-hcl=\"`config`\"\u003e`config`\u003c/span\u003e block supports:\n"
+                },
+                "oceanId": {
+                    "type": "string",
+                    "description": "Identifier of the Ocean cluster. Example: `o-abcd1234`\n"
+                }
+            },
+            "requiredInputs": [
+                "clusterIdentifier",
+                "config",
+                "oceanId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering OceanRightSizingClusterConfig resources.\n",
+                "properties": {
+                    "clusterIdentifier": {
+                        "type": "string",
+                        "description": "Identifier of the cluster. Example: `dev-cluster`\n"
+                    },
+                    "config": {
+                        "$ref": "#/types/spotinst:index/OceanRightSizingClusterConfigConfig:OceanRightSizingClusterConfigConfig",
+                        "description": "The Ocean right sizing cluster configuration. The \u003cspan pulumi-lang-nodejs=\"`config`\" pulumi-lang-dotnet=\"`Config`\" pulumi-lang-go=\"`config`\" pulumi-lang-python=\"`config`\" pulumi-lang-yaml=\"`config`\" pulumi-lang-java=\"`config`\" pulumi-lang-hcl=\"`config`\"\u003e`config`\u003c/span\u003e block supports:\n"
+                    },
+                    "oceanId": {
+                        "type": "string",
+                        "description": "Identifier of the Ocean cluster. Example: `o-abcd1234`\n"
                     }
                 },
                 "type": "object"
