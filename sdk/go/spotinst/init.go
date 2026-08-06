@@ -35,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HealthCheck{}
 	case "spotinst:index/notificationCenter:NotificationCenter":
 		r = &NotificationCenter{}
+	case "spotinst:index/oceanRightSizingClusterConfig:OceanRightSizingClusterConfig":
+		r = &OceanRightSizingClusterConfig{}
 	case "spotinst:index/oceanRightSizingRule:OceanRightSizingRule":
 		r = &OceanRightSizingRule{}
 	case "spotinst:index/statefulNodeAzure:StatefulNodeAzure":
@@ -105,6 +107,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"spotinst",
 		"index/notificationCenter",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"spotinst",
+		"index/oceanRightSizingClusterConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

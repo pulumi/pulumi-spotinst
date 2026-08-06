@@ -61,6 +61,7 @@ __all__ = [
     'NotificationCenterComputePolicyConfigEvent',
     'NotificationCenterRegisteredUser',
     'NotificationCenterSubscription',
+    'OceanRightSizingClusterConfigConfig',
     'OceanRightSizingRuleAttachWorkload',
     'OceanRightSizingRuleAttachWorkloadNamespace',
     'OceanRightSizingRuleAttachWorkloadNamespaceLabel',
@@ -2460,6 +2461,84 @@ class NotificationCenterSubscription(dict):
     @pulumi.getter(name="subscriptionType")
     def subscription_type(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "subscription_type")
+
+
+@pulumi.output_type
+class OceanRightSizingClusterConfigConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adjustLimitOnDownsize":
+            suggest = "adjust_limit_on_downsize"
+        elif key == "downsideOnly":
+            suggest = "downside_only"
+        elif key == "recommendationsCpuPercentile":
+            suggest = "recommendations_cpu_percentile"
+        elif key == "recommendationsMemoryPercentile":
+            suggest = "recommendations_memory_percentile"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanRightSizingClusterConfigConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanRightSizingClusterConfigConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanRightSizingClusterConfigConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 adjust_limit_on_downsize: Optional[_builtins.bool] = None,
+                 downside_only: Optional[_builtins.bool] = None,
+                 recommendations_cpu_percentile: Optional[_builtins.int] = None,
+                 recommendations_memory_percentile: Optional[_builtins.int] = None):
+        """
+        :param _builtins.bool adjust_limit_on_downsize: When set to `true`, the limit will be adjusted when downscale recommendations are applied.
+        :param _builtins.bool downside_only: When set to `true`, only downscale recommendations will be applied.
+        :param _builtins.int recommendations_cpu_percentile: Change the CPU percentile that the right-sizing recommendations calculation will take into account. Valid values: `85`, `90`, `95`, `99`.
+        :param _builtins.int recommendations_memory_percentile: Change the memory percentile that the right-sizing recommendations calculation will take into account. Valid values: `85`, `90`, `95`, `100`.
+        """
+        if adjust_limit_on_downsize is not None:
+            pulumi.set(__self__, "adjust_limit_on_downsize", adjust_limit_on_downsize)
+        if downside_only is not None:
+            pulumi.set(__self__, "downside_only", downside_only)
+        if recommendations_cpu_percentile is not None:
+            pulumi.set(__self__, "recommendations_cpu_percentile", recommendations_cpu_percentile)
+        if recommendations_memory_percentile is not None:
+            pulumi.set(__self__, "recommendations_memory_percentile", recommendations_memory_percentile)
+
+    @_builtins.property
+    @pulumi.getter(name="adjustLimitOnDownsize")
+    def adjust_limit_on_downsize(self) -> Optional[_builtins.bool]:
+        """
+        When set to `true`, the limit will be adjusted when downscale recommendations are applied.
+        """
+        return pulumi.get(self, "adjust_limit_on_downsize")
+
+    @_builtins.property
+    @pulumi.getter(name="downsideOnly")
+    def downside_only(self) -> Optional[_builtins.bool]:
+        """
+        When set to `true`, only downscale recommendations will be applied.
+        """
+        return pulumi.get(self, "downside_only")
+
+    @_builtins.property
+    @pulumi.getter(name="recommendationsCpuPercentile")
+    def recommendations_cpu_percentile(self) -> Optional[_builtins.int]:
+        """
+        Change the CPU percentile that the right-sizing recommendations calculation will take into account. Valid values: `85`, `90`, `95`, `99`.
+        """
+        return pulumi.get(self, "recommendations_cpu_percentile")
+
+    @_builtins.property
+    @pulumi.getter(name="recommendationsMemoryPercentile")
+    def recommendations_memory_percentile(self) -> Optional[_builtins.int]:
+        """
+        Change the memory percentile that the right-sizing recommendations calculation will take into account. Valid values: `85`, `90`, `95`, `100`.
+        """
+        return pulumi.get(self, "recommendations_memory_percentile")
 
 
 @pulumi.output_type

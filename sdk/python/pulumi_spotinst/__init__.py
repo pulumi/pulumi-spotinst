@@ -13,6 +13,7 @@ from .data_integration import *
 from .elastigroup_azure_v3 import *
 from .health_check import *
 from .notification_center import *
+from .ocean_right_sizing_cluster_config import *
 from .ocean_right_sizing_rule import *
 from .provider import *
 from .stateful_node_azure import *
@@ -257,6 +258,14 @@ _utilities.register(
   "fqn": "pulumi_spotinst",
   "classes": {
    "spotinst:index/notificationCenter:NotificationCenter": "NotificationCenter"
+  }
+ },
+ {
+  "pkg": "spotinst",
+  "mod": "index/oceanRightSizingClusterConfig",
+  "fqn": "pulumi_spotinst",
+  "classes": {
+   "spotinst:index/oceanRightSizingClusterConfig:OceanRightSizingClusterConfig": "OceanRightSizingClusterConfig"
   }
  },
  {

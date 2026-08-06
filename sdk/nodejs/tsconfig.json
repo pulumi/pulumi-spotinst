@@ -53,6 +53,7 @@
         "healthCheck.ts",
         "index.ts",
         "notificationCenter.ts",
+        "oceanRightSizingClusterConfig.ts",
         "oceanRightSizingRule.ts",
         "oceancd/index.ts",
         "oceancd/rolloutSpec.ts",
