@@ -53,8 +53,8 @@ import (
 //						},
 //					},
 //				},
-//				ManagedActions: map[string]interface{}{
-//					"platformUpdate": map[string]interface{}{
+//				ManagedActions: map[string]map[string]string{
+//					"platformUpdate": map[string]string{
 //						"performAt":   "timeWindow",
 //						"timeWindow":  "Mon:23:50-Tue:00:20",
 //						"updateLevel": "minorAndPatch",
