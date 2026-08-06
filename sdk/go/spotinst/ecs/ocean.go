@@ -38,8 +38,8 @@ import (
 //				SubnetIds: pulumi.StringArray{
 //					pulumi.String("subnet-12345"),
 //				},
-//				InstanceTypes: []map[string]interface{}{
-//					map[string]interface{}{
+//				InstanceTypes: []map[string][]map[string]interface{}{
+//					map[string][]map[string]interface{}{
 //						"filters": []map[string]interface{}{
 //							map[string]interface{}{
 //								"architectures": []string{
