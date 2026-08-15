@@ -132,6 +132,15 @@ namespace Pulumi.SpotInst.Gke
     ///                 },
     ///             },
     ///         },
+    ///         SchedulingShutdownHours = new SpotInst.Gke.Inputs.OceanLaunchSpecSchedulingShutdownHoursArgs
+    ///         {
+    ///             IsEnabled = true,
+    ///             TimeWindows = new[]
+    ///             {
+    ///                 "Mon:00:30-Mon:23:00",
+    ///                 "Tue:06:30-Tue:23:00",
+    ///             },
+    ///         },
     ///         NetworkInterfaces = new[]
     ///         {
     ///             new SpotInst.Gke.Inputs.OceanLaunchSpecNetworkInterfaceArgs
@@ -266,6 +275,12 @@ namespace Pulumi.SpotInst.Gke
         /// </summary>
         [Output("rootVolumeType")]
         public Output<string> RootVolumeType { get; private set; } = null!;
+
+        /// <summary>
+        /// An object used to specify times that the nodes in the virtual node group will be taken down.
+        /// </summary>
+        [Output("schedulingShutdownHours")]
+        public Output<Outputs.OceanLaunchSpecSchedulingShutdownHours?> SchedulingShutdownHours { get; private set; } = null!;
 
         /// <summary>
         /// Used to define scheduled tasks such as a manual headroom update.
@@ -487,6 +502,12 @@ namespace Pulumi.SpotInst.Gke
         [Input("rootVolumeType")]
         public Input<string>? RootVolumeType { get; set; }
 
+        /// <summary>
+        /// An object used to specify times that the nodes in the virtual node group will be taken down.
+        /// </summary>
+        [Input("schedulingShutdownHours")]
+        public Input<Inputs.OceanLaunchSpecSchedulingShutdownHoursArgs>? SchedulingShutdownHours { get; set; }
+
         [Input("schedulingTasks")]
         private InputList<Inputs.OceanLaunchSpecSchedulingTaskArgs>? _schedulingTasks;
 
@@ -692,6 +713,12 @@ namespace Pulumi.SpotInst.Gke
         /// </summary>
         [Input("rootVolumeType")]
         public Input<string>? RootVolumeType { get; set; }
+
+        /// <summary>
+        /// An object used to specify times that the nodes in the virtual node group will be taken down.
+        /// </summary>
+        [Input("schedulingShutdownHours")]
+        public Input<Inputs.OceanLaunchSpecSchedulingShutdownHoursGetArgs>? SchedulingShutdownHours { get; set; }
 
         [Input("schedulingTasks")]
         private InputList<Inputs.OceanLaunchSpecSchedulingTaskGetArgs>? _schedulingTasks;

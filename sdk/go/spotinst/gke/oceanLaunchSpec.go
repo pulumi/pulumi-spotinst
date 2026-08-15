@@ -115,6 +115,13 @@ import (
 //						},
 //					},
 //				},
+//				SchedulingShutdownHours: &gke.OceanLaunchSpecSchedulingShutdownHoursArgs{
+//					IsEnabled: pulumi.Bool(true),
+//					TimeWindows: pulumi.StringArray{
+//						pulumi.String("Mon:00:30-Mon:23:00"),
+//						pulumi.String("Tue:06:30-Tue:23:00"),
+//					},
+//				},
 //				NetworkInterfaces: gke.OceanLaunchSpecNetworkInterfaceArray{
 //					&gke.OceanLaunchSpecNetworkInterfaceArgs{
 //						Network:   pulumi.String("test-vng-network"),
@@ -187,6 +194,8 @@ type OceanLaunchSpec struct {
 	RootVolumeSize pulumi.IntOutput `pulumi:"rootVolumeSize"`
 	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
 	RootVolumeType pulumi.StringOutput `pulumi:"rootVolumeType"`
+	// An object used to specify times that the nodes in the virtual node group will be taken down.
+	SchedulingShutdownHours OceanLaunchSpecSchedulingShutdownHoursPtrOutput `pulumi:"schedulingShutdownHours"`
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayOutput `pulumi:"schedulingTasks"`
 	// The account used by applications running on the VM to call GCP APIs.
@@ -268,6 +277,8 @@ type oceanLaunchSpecState struct {
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
 	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
 	RootVolumeType *string `pulumi:"rootVolumeType"`
+	// An object used to specify times that the nodes in the virtual node group will be taken down.
+	SchedulingShutdownHours *OceanLaunchSpecSchedulingShutdownHours `pulumi:"schedulingShutdownHours"`
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks []OceanLaunchSpecSchedulingTask `pulumi:"schedulingTasks"`
 	// The account used by applications running on the VM to call GCP APIs.
@@ -317,6 +328,8 @@ type OceanLaunchSpecState struct {
 	RootVolumeSize pulumi.IntPtrInput
 	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
 	RootVolumeType pulumi.StringPtrInput
+	// An object used to specify times that the nodes in the virtual node group will be taken down.
+	SchedulingShutdownHours OceanLaunchSpecSchedulingShutdownHoursPtrInput
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayInput
 	// The account used by applications running on the VM to call GCP APIs.
@@ -370,6 +383,8 @@ type oceanLaunchSpecArgs struct {
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
 	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
 	RootVolumeType *string `pulumi:"rootVolumeType"`
+	// An object used to specify times that the nodes in the virtual node group will be taken down.
+	SchedulingShutdownHours *OceanLaunchSpecSchedulingShutdownHours `pulumi:"schedulingShutdownHours"`
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks []OceanLaunchSpecSchedulingTask `pulumi:"schedulingTasks"`
 	// The account used by applications running on the VM to call GCP APIs.
@@ -420,6 +435,8 @@ type OceanLaunchSpecArgs struct {
 	RootVolumeSize pulumi.IntPtrInput
 	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
 	RootVolumeType pulumi.StringPtrInput
+	// An object used to specify times that the nodes in the virtual node group will be taken down.
+	SchedulingShutdownHours OceanLaunchSpecSchedulingShutdownHoursPtrInput
 	// Used to define scheduled tasks such as a manual headroom update.
 	SchedulingTasks OceanLaunchSpecSchedulingTaskArrayInput
 	// The account used by applications running on the VM to call GCP APIs.
@@ -600,6 +617,13 @@ func (o OceanLaunchSpecOutput) RootVolumeSize() pulumi.IntOutput {
 // Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
 func (o OceanLaunchSpecOutput) RootVolumeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringOutput { return v.RootVolumeType }).(pulumi.StringOutput)
+}
+
+// An object used to specify times that the nodes in the virtual node group will be taken down.
+func (o OceanLaunchSpecOutput) SchedulingShutdownHours() OceanLaunchSpecSchedulingShutdownHoursPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecSchedulingShutdownHoursPtrOutput {
+		return v.SchedulingShutdownHours
+	}).(OceanLaunchSpecSchedulingShutdownHoursPtrOutput)
 }
 
 // Used to define scheduled tasks such as a manual headroom update.

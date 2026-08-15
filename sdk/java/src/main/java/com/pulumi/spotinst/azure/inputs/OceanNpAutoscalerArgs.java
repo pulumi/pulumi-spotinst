@@ -64,6 +64,21 @@ public final class OceanNpAutoscalerArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Enable mixed mode for manual and automatic headroom. Relevant only when `autoscale_headroom.automatic.is_enabled` is set to `true`. If `false`, Ocean manages headroom automatically without combining with manual VNG headrooms.
+     * 
+     */
+    @Import(name="enableAutomaticAndManualHeadroom")
+    private @Nullable Output<Boolean> enableAutomaticAndManualHeadroom;
+
+    /**
+     * @return Enable mixed mode for manual and automatic headroom. Relevant only when `autoscale_headroom.automatic.is_enabled` is set to `true`. If `false`, Ocean manages headroom automatically without combining with manual VNG headrooms.
+     * 
+     */
+    public Optional<Output<Boolean>> enableAutomaticAndManualHeadroom() {
+        return Optional.ofNullable(this.enableAutomaticAndManualHeadroom);
+    }
+
+    /**
      * Optionally set upper and lower bounds on the resource usage of the cluster.
      * 
      */
@@ -84,6 +99,7 @@ public final class OceanNpAutoscalerArgs extends com.pulumi.resources.ResourceAr
         this.autoscaleDown = $.autoscaleDown;
         this.autoscaleHeadroom = $.autoscaleHeadroom;
         this.autoscaleIsEnabled = $.autoscaleIsEnabled;
+        this.enableAutomaticAndManualHeadroom = $.enableAutomaticAndManualHeadroom;
         this.resourceLimits = $.resourceLimits;
     }
 
@@ -166,6 +182,27 @@ public final class OceanNpAutoscalerArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder autoscaleIsEnabled(Boolean autoscaleIsEnabled) {
             return autoscaleIsEnabled(Output.of(autoscaleIsEnabled));
+        }
+
+        /**
+         * @param enableAutomaticAndManualHeadroom Enable mixed mode for manual and automatic headroom. Relevant only when `autoscale_headroom.automatic.is_enabled` is set to `true`. If `false`, Ocean manages headroom automatically without combining with manual VNG headrooms.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAutomaticAndManualHeadroom(@Nullable Output<Boolean> enableAutomaticAndManualHeadroom) {
+            $.enableAutomaticAndManualHeadroom = enableAutomaticAndManualHeadroom;
+            return this;
+        }
+
+        /**
+         * @param enableAutomaticAndManualHeadroom Enable mixed mode for manual and automatic headroom. Relevant only when `autoscale_headroom.automatic.is_enabled` is set to `true`. If `false`, Ocean manages headroom automatically without combining with manual VNG headrooms.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAutomaticAndManualHeadroom(Boolean enableAutomaticAndManualHeadroom) {
+            return enableAutomaticAndManualHeadroom(Output.of(enableAutomaticAndManualHeadroom));
         }
 
         /**

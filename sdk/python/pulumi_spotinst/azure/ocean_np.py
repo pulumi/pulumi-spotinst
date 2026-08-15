@@ -27,6 +27,7 @@ class OceanNpArgs:
                  aks_resource_group_name: pulumi.Input[_builtins.str],
                  availability_zones: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  controller_cluster_id: pulumi.Input[_builtins.str],
+                 auto_headroom_percentage: pulumi.Input[Optional[_builtins.int]] = None,
                  autoscaler: pulumi.Input[Optional['OceanNpAutoscalerArgs']] = None,
                  draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -62,6 +63,7 @@ class OceanNpArgs:
                Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
                In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
         :param pulumi.Input[_builtins.str] controller_cluster_id: Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.
+        :param pulumi.Input[_builtins.int] auto_headroom_percentage: Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
         :param pulumi.Input['OceanNpAutoscalerArgs'] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[_builtins.int] draining_timeout: Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
@@ -94,6 +96,8 @@ class OceanNpArgs:
         pulumi.set(__self__, "aks_resource_group_name", aks_resource_group_name)
         pulumi.set(__self__, "availability_zones", availability_zones)
         pulumi.set(__self__, "controller_cluster_id", controller_cluster_id)
+        if auto_headroom_percentage is not None:
+            pulumi.set(__self__, "auto_headroom_percentage", auto_headroom_percentage)
         if autoscaler is not None:
             pulumi.set(__self__, "autoscaler", autoscaler)
         if draining_timeout is not None:
@@ -212,6 +216,18 @@ class OceanNpArgs:
     @controller_cluster_id.setter
     def controller_cluster_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "controller_cluster_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoHeadroomPercentage")
+    def auto_headroom_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+        """
+        return pulumi.get(self, "auto_headroom_percentage")
+
+    @auto_headroom_percentage.setter
+    def auto_headroom_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "auto_headroom_percentage", value)
 
     @_builtins.property
     @pulumi.getter
@@ -548,6 +564,7 @@ class _OceanNpState:
                  aks_infrastructure_resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  aks_region: pulumi.Input[Optional[_builtins.str]] = None,
                  aks_resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_headroom_percentage: pulumi.Input[Optional[_builtins.int]] = None,
                  autoscaler: pulumi.Input[Optional['OceanNpAutoscalerArgs']] = None,
                  availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  controller_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -581,6 +598,7 @@ class _OceanNpState:
         """
         Input properties used for looking up and filtering OceanNp resources.
 
+        :param pulumi.Input[_builtins.int] auto_headroom_percentage: Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
         :param pulumi.Input['OceanNpAutoscalerArgs'] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
                Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
@@ -619,6 +637,8 @@ class _OceanNpState:
             pulumi.set(__self__, "aks_region", aks_region)
         if aks_resource_group_name is not None:
             pulumi.set(__self__, "aks_resource_group_name", aks_resource_group_name)
+        if auto_headroom_percentage is not None:
+            pulumi.set(__self__, "auto_headroom_percentage", auto_headroom_percentage)
         if autoscaler is not None:
             pulumi.set(__self__, "autoscaler", autoscaler)
         if availability_zones is not None:
@@ -715,6 +735,18 @@ class _OceanNpState:
     @aks_resource_group_name.setter
     def aks_resource_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aks_resource_group_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoHeadroomPercentage")
+    def auto_headroom_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+        """
+        return pulumi.get(self, "auto_headroom_percentage")
+
+    @auto_headroom_percentage.setter
+    def auto_headroom_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "auto_headroom_percentage", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1080,6 +1112,7 @@ class OceanNp(pulumi.CustomResource):
                  aks_infrastructure_resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  aks_region: pulumi.Input[Optional[_builtins.str]] = None,
                  aks_resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_headroom_percentage: pulumi.Input[Optional[_builtins.int]] = None,
                  autoscaler: pulumi.Input[Optional[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict']]] = None,
                  availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  controller_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1149,6 +1182,7 @@ class OceanNp(pulumi.CustomResource):
             controller_cluster_id="test-123124",
             autoscaler={
                 "autoscale_is_enabled": True,
+                "enable_automatic_and_manual_headroom": True,
                 "resource_limits": {
                     "max_vcpu": 750,
                     "max_memory_gib": 1500,
@@ -1175,6 +1209,7 @@ class OceanNp(pulumi.CustomResource):
                     }],
                 },
             },
+            auto_headroom_percentage=5,
             headrooms=[{
                 "cpu_per_unit": 1024,
                 "memory_per_unit": 512,
@@ -1266,6 +1301,7 @@ class OceanNp(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.int] auto_headroom_percentage: Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
         :param pulumi.Input[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict']] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
                Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
@@ -1340,6 +1376,7 @@ class OceanNp(pulumi.CustomResource):
             controller_cluster_id="test-123124",
             autoscaler={
                 "autoscale_is_enabled": True,
+                "enable_automatic_and_manual_headroom": True,
                 "resource_limits": {
                     "max_vcpu": 750,
                     "max_memory_gib": 1500,
@@ -1366,6 +1403,7 @@ class OceanNp(pulumi.CustomResource):
                     }],
                 },
             },
+            auto_headroom_percentage=5,
             headrooms=[{
                 "cpu_per_unit": 1024,
                 "memory_per_unit": 512,
@@ -1474,6 +1512,7 @@ class OceanNp(pulumi.CustomResource):
                  aks_infrastructure_resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  aks_region: pulumi.Input[Optional[_builtins.str]] = None,
                  aks_resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_headroom_percentage: pulumi.Input[Optional[_builtins.int]] = None,
                  autoscaler: pulumi.Input[Optional[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict']]] = None,
                  availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  controller_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1525,6 +1564,7 @@ class OceanNp(pulumi.CustomResource):
             if aks_resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'aks_resource_group_name'")
             __props__.__dict__["aks_resource_group_name"] = aks_resource_group_name
+            __props__.__dict__["auto_headroom_percentage"] = auto_headroom_percentage
             __props__.__dict__["autoscaler"] = autoscaler
             if availability_zones is None and not opts.urn:
                 raise TypeError("Missing required property 'availability_zones'")
@@ -1573,6 +1613,7 @@ class OceanNp(pulumi.CustomResource):
             aks_infrastructure_resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
             aks_region: pulumi.Input[Optional[_builtins.str]] = None,
             aks_resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_headroom_percentage: pulumi.Input[Optional[_builtins.int]] = None,
             autoscaler: pulumi.Input[Optional[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict']]] = None,
             availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             controller_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1610,6 +1651,7 @@ class OceanNp(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.int] auto_headroom_percentage: Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
         :param pulumi.Input[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict']] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
                Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
@@ -1648,6 +1690,7 @@ class OceanNp(pulumi.CustomResource):
         __props__.__dict__["aks_infrastructure_resource_group_name"] = aks_infrastructure_resource_group_name
         __props__.__dict__["aks_region"] = aks_region
         __props__.__dict__["aks_resource_group_name"] = aks_resource_group_name
+        __props__.__dict__["auto_headroom_percentage"] = auto_headroom_percentage
         __props__.__dict__["autoscaler"] = autoscaler
         __props__.__dict__["availability_zones"] = availability_zones
         __props__.__dict__["controller_cluster_id"] = controller_cluster_id
@@ -1699,6 +1742,14 @@ class OceanNp(pulumi.CustomResource):
     @pulumi.getter(name="aksResourceGroupName")
     def aks_resource_group_name(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "aks_resource_group_name")
+
+    @_builtins.property
+    @pulumi.getter(name="autoHeadroomPercentage")
+    def auto_headroom_percentage(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+        """
+        return pulumi.get(self, "auto_headroom_percentage")
 
     @_builtins.property
     @pulumi.getter

@@ -6996,6 +6996,162 @@ func (o OceanLaunchSpecResourceLimitsPtrOutput) MinInstanceCount() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
+type OceanLaunchSpecSchedulingShutdownHours struct {
+	// Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node group remains in its current state.
+	IsEnabled *bool `pulumi:"isEnabled"`
+	// The times that the shutdown hours will apply.
+	TimeWindows []string `pulumi:"timeWindows"`
+}
+
+// OceanLaunchSpecSchedulingShutdownHoursInput is an input type that accepts OceanLaunchSpecSchedulingShutdownHoursArgs and OceanLaunchSpecSchedulingShutdownHoursOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecSchedulingShutdownHoursInput` via:
+//
+//	OceanLaunchSpecSchedulingShutdownHoursArgs{...}
+type OceanLaunchSpecSchedulingShutdownHoursInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecSchedulingShutdownHoursOutput() OceanLaunchSpecSchedulingShutdownHoursOutput
+	ToOceanLaunchSpecSchedulingShutdownHoursOutputWithContext(context.Context) OceanLaunchSpecSchedulingShutdownHoursOutput
+}
+
+type OceanLaunchSpecSchedulingShutdownHoursArgs struct {
+	// Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node group remains in its current state.
+	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+	// The times that the shutdown hours will apply.
+	TimeWindows pulumi.StringArrayInput `pulumi:"timeWindows"`
+}
+
+func (OceanLaunchSpecSchedulingShutdownHoursArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecSchedulingShutdownHours)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecSchedulingShutdownHoursArgs) ToOceanLaunchSpecSchedulingShutdownHoursOutput() OceanLaunchSpecSchedulingShutdownHoursOutput {
+	return i.ToOceanLaunchSpecSchedulingShutdownHoursOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecSchedulingShutdownHoursArgs) ToOceanLaunchSpecSchedulingShutdownHoursOutputWithContext(ctx context.Context) OceanLaunchSpecSchedulingShutdownHoursOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecSchedulingShutdownHoursOutput)
+}
+
+func (i OceanLaunchSpecSchedulingShutdownHoursArgs) ToOceanLaunchSpecSchedulingShutdownHoursPtrOutput() OceanLaunchSpecSchedulingShutdownHoursPtrOutput {
+	return i.ToOceanLaunchSpecSchedulingShutdownHoursPtrOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecSchedulingShutdownHoursArgs) ToOceanLaunchSpecSchedulingShutdownHoursPtrOutputWithContext(ctx context.Context) OceanLaunchSpecSchedulingShutdownHoursPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecSchedulingShutdownHoursOutput).ToOceanLaunchSpecSchedulingShutdownHoursPtrOutputWithContext(ctx)
+}
+
+// OceanLaunchSpecSchedulingShutdownHoursPtrInput is an input type that accepts OceanLaunchSpecSchedulingShutdownHoursArgs, OceanLaunchSpecSchedulingShutdownHoursPtr and OceanLaunchSpecSchedulingShutdownHoursPtrOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecSchedulingShutdownHoursPtrInput` via:
+//
+//	        OceanLaunchSpecSchedulingShutdownHoursArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanLaunchSpecSchedulingShutdownHoursPtrInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecSchedulingShutdownHoursPtrOutput() OceanLaunchSpecSchedulingShutdownHoursPtrOutput
+	ToOceanLaunchSpecSchedulingShutdownHoursPtrOutputWithContext(context.Context) OceanLaunchSpecSchedulingShutdownHoursPtrOutput
+}
+
+type oceanLaunchSpecSchedulingShutdownHoursPtrType OceanLaunchSpecSchedulingShutdownHoursArgs
+
+func OceanLaunchSpecSchedulingShutdownHoursPtr(v *OceanLaunchSpecSchedulingShutdownHoursArgs) OceanLaunchSpecSchedulingShutdownHoursPtrInput {
+	return (*oceanLaunchSpecSchedulingShutdownHoursPtrType)(v)
+}
+
+func (*oceanLaunchSpecSchedulingShutdownHoursPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecSchedulingShutdownHours)(nil)).Elem()
+}
+
+func (i *oceanLaunchSpecSchedulingShutdownHoursPtrType) ToOceanLaunchSpecSchedulingShutdownHoursPtrOutput() OceanLaunchSpecSchedulingShutdownHoursPtrOutput {
+	return i.ToOceanLaunchSpecSchedulingShutdownHoursPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLaunchSpecSchedulingShutdownHoursPtrType) ToOceanLaunchSpecSchedulingShutdownHoursPtrOutputWithContext(ctx context.Context) OceanLaunchSpecSchedulingShutdownHoursPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecSchedulingShutdownHoursPtrOutput)
+}
+
+type OceanLaunchSpecSchedulingShutdownHoursOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecSchedulingShutdownHoursOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecSchedulingShutdownHours)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecSchedulingShutdownHoursOutput) ToOceanLaunchSpecSchedulingShutdownHoursOutput() OceanLaunchSpecSchedulingShutdownHoursOutput {
+	return o
+}
+
+func (o OceanLaunchSpecSchedulingShutdownHoursOutput) ToOceanLaunchSpecSchedulingShutdownHoursOutputWithContext(ctx context.Context) OceanLaunchSpecSchedulingShutdownHoursOutput {
+	return o
+}
+
+func (o OceanLaunchSpecSchedulingShutdownHoursOutput) ToOceanLaunchSpecSchedulingShutdownHoursPtrOutput() OceanLaunchSpecSchedulingShutdownHoursPtrOutput {
+	return o.ToOceanLaunchSpecSchedulingShutdownHoursPtrOutputWithContext(context.Background())
+}
+
+func (o OceanLaunchSpecSchedulingShutdownHoursOutput) ToOceanLaunchSpecSchedulingShutdownHoursPtrOutputWithContext(ctx context.Context) OceanLaunchSpecSchedulingShutdownHoursPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecSchedulingShutdownHours) *OceanLaunchSpecSchedulingShutdownHours {
+		return &v
+	}).(OceanLaunchSpecSchedulingShutdownHoursPtrOutput)
+}
+
+// Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node group remains in its current state.
+func (o OceanLaunchSpecSchedulingShutdownHoursOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecSchedulingShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The times that the shutdown hours will apply.
+func (o OceanLaunchSpecSchedulingShutdownHoursOutput) TimeWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanLaunchSpecSchedulingShutdownHours) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
+}
+
+type OceanLaunchSpecSchedulingShutdownHoursPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecSchedulingShutdownHoursPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecSchedulingShutdownHours)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecSchedulingShutdownHoursPtrOutput) ToOceanLaunchSpecSchedulingShutdownHoursPtrOutput() OceanLaunchSpecSchedulingShutdownHoursPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecSchedulingShutdownHoursPtrOutput) ToOceanLaunchSpecSchedulingShutdownHoursPtrOutputWithContext(ctx context.Context) OceanLaunchSpecSchedulingShutdownHoursPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecSchedulingShutdownHoursPtrOutput) Elem() OceanLaunchSpecSchedulingShutdownHoursOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecSchedulingShutdownHours) OceanLaunchSpecSchedulingShutdownHours {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecSchedulingShutdownHours
+		return ret
+	}).(OceanLaunchSpecSchedulingShutdownHoursOutput)
+}
+
+// Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node group remains in its current state.
+func (o OceanLaunchSpecSchedulingShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecSchedulingShutdownHours) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The times that the shutdown hours will apply.
+func (o OceanLaunchSpecSchedulingShutdownHoursPtrOutput) TimeWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecSchedulingShutdownHours) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeWindows
+	}).(pulumi.StringArrayOutput)
+}
+
 type OceanLaunchSpecSchedulingTask struct {
 	// A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
 	CronExpression string `pulumi:"cronExpression"`
@@ -8192,6 +8348,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayInput)(nil)).Elem(), OceanLaunchSpecNetworkInterfaceAliasIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecResourceLimitsInput)(nil)).Elem(), OceanLaunchSpecResourceLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecResourceLimitsPtrInput)(nil)).Elem(), OceanLaunchSpecResourceLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingShutdownHoursInput)(nil)).Elem(), OceanLaunchSpecSchedulingShutdownHoursArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingShutdownHoursPtrInput)(nil)).Elem(), OceanLaunchSpecSchedulingShutdownHoursArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingTaskInput)(nil)).Elem(), OceanLaunchSpecSchedulingTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingTaskArrayInput)(nil)).Elem(), OceanLaunchSpecSchedulingTaskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingTaskTaskHeadroomInput)(nil)).Elem(), OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{})
@@ -8308,6 +8466,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecResourceLimitsOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecResourceLimitsPtrOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingShutdownHoursOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingShutdownHoursPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingTaskOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingTaskArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingTaskTaskHeadroomOutput{})

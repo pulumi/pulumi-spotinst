@@ -45,6 +45,7 @@ import * as utilities from "../utilities";
  *     controllerClusterId: "test-123124",
  *     autoscaler: {
  *         autoscaleIsEnabled: true,
+ *         enableAutomaticAndManualHeadroom: true,
  *         resourceLimits: {
  *             maxVcpu: 750,
  *             maxMemoryGib: 1500,
@@ -71,6 +72,7 @@ import * as utilities from "../utilities";
  *             }],
  *         },
  *     },
+ *     autoHeadroomPercentage: 5,
  *     headrooms: [{
  *         cpuPerUnit: 1024,
  *         memoryPerUnit: 512,
@@ -192,6 +194,10 @@ export class OceanNp extends pulumi.CustomResource {
     declare public readonly aksInfrastructureResourceGroupName: pulumi.Output<string>;
     declare public readonly aksRegion: pulumi.Output<string>;
     declare public readonly aksResourceGroupName: pulumi.Output<string>;
+    /**
+     * Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+     */
+    declare public readonly autoHeadroomPercentage: pulumi.Output<number | undefined>;
     /**
      * The Ocean Kubernetes Autoscaler object.
      */
@@ -323,6 +329,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["aksInfrastructureResourceGroupName"] = state?.aksInfrastructureResourceGroupName;
             resourceInputs["aksRegion"] = state?.aksRegion;
             resourceInputs["aksResourceGroupName"] = state?.aksResourceGroupName;
+            resourceInputs["autoHeadroomPercentage"] = state?.autoHeadroomPercentage;
             resourceInputs["autoscaler"] = state?.autoscaler;
             resourceInputs["availabilityZones"] = state?.availabilityZones;
             resourceInputs["controllerClusterId"] = state?.controllerClusterId;
@@ -377,6 +384,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["aksInfrastructureResourceGroupName"] = args?.aksInfrastructureResourceGroupName;
             resourceInputs["aksRegion"] = args?.aksRegion;
             resourceInputs["aksResourceGroupName"] = args?.aksResourceGroupName;
+            resourceInputs["autoHeadroomPercentage"] = args?.autoHeadroomPercentage;
             resourceInputs["autoscaler"] = args?.autoscaler;
             resourceInputs["availabilityZones"] = args?.availabilityZones;
             resourceInputs["controllerClusterId"] = args?.controllerClusterId;
@@ -421,6 +429,10 @@ export interface OceanNpState {
     aksInfrastructureResourceGroupName?: pulumi.Input<string | undefined>;
     aksRegion?: pulumi.Input<string | undefined>;
     aksResourceGroupName?: pulumi.Input<string | undefined>;
+    /**
+     * Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+     */
+    autoHeadroomPercentage?: pulumi.Input<number | undefined>;
     /**
      * The Ocean Kubernetes Autoscaler object.
      */
@@ -544,6 +556,10 @@ export interface OceanNpArgs {
     aksInfrastructureResourceGroupName: pulumi.Input<string>;
     aksRegion: pulumi.Input<string>;
     aksResourceGroupName: pulumi.Input<string>;
+    /**
+     * Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+     */
+    autoHeadroomPercentage?: pulumi.Input<number | undefined>;
     /**
      * The Ocean Kubernetes Autoscaler object.
      */

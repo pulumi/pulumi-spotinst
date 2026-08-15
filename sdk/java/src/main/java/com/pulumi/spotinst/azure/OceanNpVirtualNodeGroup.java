@@ -61,6 +61,7 @@ import javax.annotation.Nullable;
  *         var example = new OceanNpVirtualNodeGroup("example", OceanNpVirtualNodeGroupArgs.builder()
  *             .name("testVng")
  *             .oceanId("o-134abcd")
+ *             .autoHeadroomPercentage(5)
  *             .headrooms(OceanNpVirtualNodeGroupHeadroomArgs.builder()
  *                 .cpuPerUnit(1024)
  *                 .memoryPerUnit(512)
@@ -152,6 +153,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="spotinst:azure/oceanNpVirtualNodeGroup:OceanNpVirtualNodeGroup")
 public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource {
+    /**
+     * Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+     * 
+     */
+    @Export(name="autoHeadroomPercentage", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> autoHeadroomPercentage;
+
+    /**
+     * @return Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+     * 
+     */
+    public Output<Optional<Integer>> autoHeadroomPercentage() {
+        return Codegen.optional(this.autoHeadroomPercentage);
+    }
     /**
      * An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
      * 

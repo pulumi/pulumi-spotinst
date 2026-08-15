@@ -22,6 +22,7 @@ __all__ = ['OceanNpVirtualNodeGroupArgs', 'OceanNpVirtualNodeGroup']
 class OceanNpVirtualNodeGroupArgs:
     def __init__(__self__, *,
                  ocean_id: pulumi.Input[_builtins.str],
+                 auto_headroom_percentage: pulumi.Input[Optional[_builtins.int]] = None,
                  availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -52,6 +53,7 @@ class OceanNpVirtualNodeGroupArgs:
         The set of arguments for constructing a OceanNpVirtualNodeGroup resource.
 
         :param pulumi.Input[_builtins.str] ocean_id: The Ocean cluster identifier. Required for Launch Spec creation.
+        :param pulumi.Input[_builtins.int] auto_headroom_percentage: Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
         :param pulumi.Input[_builtins.int] draining_timeout: Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
@@ -78,6 +80,8 @@ class OceanNpVirtualNodeGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vnet_subnet_ids: The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
         """
         pulumi.set(__self__, "ocean_id", ocean_id)
+        if auto_headroom_percentage is not None:
+            pulumi.set(__self__, "auto_headroom_percentage", auto_headroom_percentage)
         if availability_zones is not None:
             pulumi.set(__self__, "availability_zones", availability_zones)
         if draining_timeout is not None:
@@ -142,6 +146,18 @@ class OceanNpVirtualNodeGroupArgs:
     @ocean_id.setter
     def ocean_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "ocean_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoHeadroomPercentage")
+    def auto_headroom_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+        """
+        return pulumi.get(self, "auto_headroom_percentage")
+
+    @auto_headroom_percentage.setter
+    def auto_headroom_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "auto_headroom_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZones")
@@ -453,6 +469,7 @@ class OceanNpVirtualNodeGroupArgs:
 @pulumi.input_type
 class _OceanNpVirtualNodeGroupState:
     def __init__(__self__, *,
+                 auto_headroom_percentage: pulumi.Input[Optional[_builtins.int]] = None,
                  availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -483,6 +500,7 @@ class _OceanNpVirtualNodeGroupState:
         """
         Input properties used for looking up and filtering OceanNpVirtualNodeGroup resources.
 
+        :param pulumi.Input[_builtins.int] auto_headroom_percentage: Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
         :param pulumi.Input[_builtins.int] draining_timeout: Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
@@ -509,6 +527,8 @@ class _OceanNpVirtualNodeGroupState:
         :param pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]] taints: Add taints to a virtual node group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vnet_subnet_ids: The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
         """
+        if auto_headroom_percentage is not None:
+            pulumi.set(__self__, "auto_headroom_percentage", auto_headroom_percentage)
         if availability_zones is not None:
             pulumi.set(__self__, "availability_zones", availability_zones)
         if draining_timeout is not None:
@@ -563,6 +583,18 @@ class _OceanNpVirtualNodeGroupState:
             pulumi.set(__self__, "update_policy", update_policy)
         if vnet_subnet_ids is not None:
             pulumi.set(__self__, "vnet_subnet_ids", vnet_subnet_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="autoHeadroomPercentage")
+    def auto_headroom_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+        """
+        return pulumi.get(self, "auto_headroom_percentage")
+
+    @auto_headroom_percentage.setter
+    def auto_headroom_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "auto_headroom_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZones")
@@ -889,6 +921,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_headroom_percentage: pulumi.Input[Optional[_builtins.int]] = None,
                  availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -929,6 +962,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         example = spotinst.azure.OceanNpVirtualNodeGroup("example",
             name="testVng",
             ocean_id="o-134abcd",
+            auto_headroom_percentage=5,
             headrooms=[{
                 "cpu_per_unit": 1024,
                 "memory_per_unit": 512,
@@ -1021,6 +1055,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.int] auto_headroom_percentage: Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
         :param pulumi.Input[_builtins.int] draining_timeout: Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
@@ -1065,6 +1100,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         example = spotinst.azure.OceanNpVirtualNodeGroup("example",
             name="testVng",
             ocean_id="o-134abcd",
+            auto_headroom_percentage=5,
             headrooms=[{
                 "cpu_per_unit": 1024,
                 "memory_per_unit": 512,
@@ -1170,6 +1206,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_headroom_percentage: pulumi.Input[Optional[_builtins.int]] = None,
                  availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1206,6 +1243,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OceanNpVirtualNodeGroupArgs.__new__(OceanNpVirtualNodeGroupArgs)
 
+            __props__.__dict__["auto_headroom_percentage"] = auto_headroom_percentage
             __props__.__dict__["availability_zones"] = availability_zones
             __props__.__dict__["draining_timeout"] = draining_timeout
             __props__.__dict__["enable_node_public_ip"] = enable_node_public_ip
@@ -1245,6 +1283,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_headroom_percentage: pulumi.Input[Optional[_builtins.int]] = None,
             availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
             enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1279,6 +1318,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.int] auto_headroom_percentage: Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
         :param pulumi.Input[_builtins.int] draining_timeout: Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
@@ -1309,6 +1349,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
 
         __props__ = _OceanNpVirtualNodeGroupState.__new__(_OceanNpVirtualNodeGroupState)
 
+        __props__.__dict__["auto_headroom_percentage"] = auto_headroom_percentage
         __props__.__dict__["availability_zones"] = availability_zones
         __props__.__dict__["draining_timeout"] = draining_timeout
         __props__.__dict__["enable_node_public_ip"] = enable_node_public_ip
@@ -1337,6 +1378,14 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         __props__.__dict__["update_policy"] = update_policy
         __props__.__dict__["vnet_subnet_ids"] = vnet_subnet_ids
         return OceanNpVirtualNodeGroup(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="autoHeadroomPercentage")
+    def auto_headroom_percentage(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+        """
+        return pulumi.get(self, "auto_headroom_percentage")
 
     @_builtins.property
     @pulumi.getter(name="availabilityZones")

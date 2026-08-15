@@ -18,6 +18,7 @@ import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecLabel;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecMetadata;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecNetworkInterface;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecResourceLimits;
+import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecSchedulingShutdownHours;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecSchedulingTask;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecShieldedInstanceConfig;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecStorage;
@@ -59,6 +60,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecStrategyArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecSchedulingTaskArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecSchedulingShutdownHoursArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecNetworkInterfaceArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecNetworkInterfaceAccessConfigArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs;
@@ -141,6 +143,12 @@ import javax.annotation.Nullable;
  *                     .gpuPerUnit(0)
  *                     .memoryPerUnit(2048)
  *                     .build())
+ *                 .build())
+ *             .schedulingShutdownHours(OceanLaunchSpecSchedulingShutdownHoursArgs.builder()
+ *                 .isEnabled(true)
+ *                 .timeWindows(                
+ *                     "Mon:00:30-Mon:23:00",
+ *                     "Tue:06:30-Tue:23:00")
  *                 .build())
  *             .networkInterfaces(OceanLaunchSpecNetworkInterfaceArgs.builder()
  *                 .network("test-vng-network")
@@ -375,6 +383,20 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      */
     public Output<String> rootVolumeType() {
         return this.rootVolumeType;
+    }
+    /**
+     * An object used to specify times that the nodes in the virtual node group will be taken down.
+     * 
+     */
+    @Export(name="schedulingShutdownHours", refs={OceanLaunchSpecSchedulingShutdownHours.class}, tree="[0]")
+    private Output</* @Nullable */ OceanLaunchSpecSchedulingShutdownHours> schedulingShutdownHours;
+
+    /**
+     * @return An object used to specify times that the nodes in the virtual node group will be taken down.
+     * 
+     */
+    public Output<Optional<OceanLaunchSpecSchedulingShutdownHours>> schedulingShutdownHours() {
+        return Codegen.optional(this.schedulingShutdownHours);
     }
     /**
      * Used to define scheduled tasks such as a manual headroom update.

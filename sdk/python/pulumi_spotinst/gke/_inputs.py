@@ -115,6 +115,8 @@ __all__ = [
     'OceanLaunchSpecNetworkInterfaceAliasIpRangeArgsDict',
     'OceanLaunchSpecResourceLimitsArgs',
     'OceanLaunchSpecResourceLimitsArgsDict',
+    'OceanLaunchSpecSchedulingShutdownHoursArgs',
+    'OceanLaunchSpecSchedulingShutdownHoursArgsDict',
     'OceanLaunchSpecSchedulingTaskArgs',
     'OceanLaunchSpecSchedulingTaskArgsDict',
     'OceanLaunchSpecSchedulingTaskTaskHeadroomArgs',
@@ -3370,6 +3372,54 @@ class OceanLaunchSpecResourceLimitsArgs:
     @min_instance_count.setter
     def min_instance_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_instance_count", value)
+
+
+class OceanLaunchSpecSchedulingShutdownHoursArgsDict(TypedDict):
+    time_windows: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The times that the shutdown hours will apply.
+    """
+    is_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node group remains in its current state.
+    """
+
+@pulumi.input_type
+class OceanLaunchSpecSchedulingShutdownHoursArgs:
+    def __init__(__self__, *,
+                 time_windows: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] time_windows: The times that the shutdown hours will apply.
+        :param pulumi.Input[_builtins.bool] is_enabled: Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node group remains in its current state.
+        """
+        pulumi.set(__self__, "time_windows", time_windows)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="timeWindows")
+    def time_windows(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        The times that the shutdown hours will apply.
+        """
+        return pulumi.get(self, "time_windows")
+
+    @time_windows.setter
+    def time_windows(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "time_windows", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node group remains in its current state.
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "is_enabled", value)
 
 
 class OceanLaunchSpecSchedulingTaskArgsDict(TypedDict):

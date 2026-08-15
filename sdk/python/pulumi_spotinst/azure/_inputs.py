@@ -100,6 +100,10 @@ class OceanNpAutoscalerArgsDict(TypedDict):
     """
     Enable the Ocean Kubernetes Autoscaler.
     """
+    enable_automatic_and_manual_headroom: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Enable mixed mode for manual and automatic headroom. Relevant only when `autoscale_headroom.automatic.is_enabled` is set to `true`. If `false`, Ocean manages headroom automatically without combining with manual VNG headrooms.
+    """
     resource_limits: NotRequired[pulumi.Input[Optional['OceanNpAutoscalerResourceLimitsArgsDict']]]
     """
     Optionally set upper and lower bounds on the resource usage of the cluster.
@@ -111,11 +115,13 @@ class OceanNpAutoscalerArgs:
                  autoscale_down: pulumi.Input[Optional['OceanNpAutoscalerAutoscaleDownArgs']] = None,
                  autoscale_headroom: pulumi.Input[Optional['OceanNpAutoscalerAutoscaleHeadroomArgs']] = None,
                  autoscale_is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_automatic_and_manual_headroom: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_limits: pulumi.Input[Optional['OceanNpAutoscalerResourceLimitsArgs']] = None):
         """
         :param pulumi.Input['OceanNpAutoscalerAutoscaleDownArgs'] autoscale_down: Auto Scaling scale down operations.
         :param pulumi.Input['OceanNpAutoscalerAutoscaleHeadroomArgs'] autoscale_headroom: Spare resource capacity management enabling fast assignment of pods without waiting for new resources to launch.
         :param pulumi.Input[_builtins.bool] autoscale_is_enabled: Enable the Ocean Kubernetes Autoscaler.
+        :param pulumi.Input[_builtins.bool] enable_automatic_and_manual_headroom: Enable mixed mode for manual and automatic headroom. Relevant only when `autoscale_headroom.automatic.is_enabled` is set to `true`. If `false`, Ocean manages headroom automatically without combining with manual VNG headrooms.
         :param pulumi.Input['OceanNpAutoscalerResourceLimitsArgs'] resource_limits: Optionally set upper and lower bounds on the resource usage of the cluster.
         """
         if autoscale_down is not None:
@@ -124,6 +130,8 @@ class OceanNpAutoscalerArgs:
             pulumi.set(__self__, "autoscale_headroom", autoscale_headroom)
         if autoscale_is_enabled is not None:
             pulumi.set(__self__, "autoscale_is_enabled", autoscale_is_enabled)
+        if enable_automatic_and_manual_headroom is not None:
+            pulumi.set(__self__, "enable_automatic_and_manual_headroom", enable_automatic_and_manual_headroom)
         if resource_limits is not None:
             pulumi.set(__self__, "resource_limits", resource_limits)
 
@@ -162,6 +170,18 @@ class OceanNpAutoscalerArgs:
     @autoscale_is_enabled.setter
     def autoscale_is_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "autoscale_is_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableAutomaticAndManualHeadroom")
+    def enable_automatic_and_manual_headroom(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable mixed mode for manual and automatic headroom. Relevant only when `autoscale_headroom.automatic.is_enabled` is set to `true`. If `false`, Ocean manages headroom automatically without combining with manual VNG headrooms.
+        """
+        return pulumi.get(self, "enable_automatic_and_manual_headroom")
+
+    @enable_automatic_and_manual_headroom.setter
+    def enable_automatic_and_manual_headroom(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_automatic_and_manual_headroom", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceLimits")

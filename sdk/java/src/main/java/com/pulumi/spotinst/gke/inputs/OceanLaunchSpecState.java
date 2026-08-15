@@ -13,6 +13,7 @@ import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecLabelArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecMetadataArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecNetworkInterfaceArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecResourceLimitsArgs;
+import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecSchedulingShutdownHoursArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecSchedulingTaskArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecShieldedInstanceConfigArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecStorageArgs;
@@ -250,6 +251,21 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * An object used to specify times that the nodes in the virtual node group will be taken down.
+     * 
+     */
+    @Import(name="schedulingShutdownHours")
+    private @Nullable Output<OceanLaunchSpecSchedulingShutdownHoursArgs> schedulingShutdownHours;
+
+    /**
+     * @return An object used to specify times that the nodes in the virtual node group will be taken down.
+     * 
+     */
+    public Optional<Output<OceanLaunchSpecSchedulingShutdownHoursArgs>> schedulingShutdownHours() {
+        return Optional.ofNullable(this.schedulingShutdownHours);
+    }
+
+    /**
      * Used to define scheduled tasks such as a manual headroom update.
      * 
      */
@@ -394,6 +410,7 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
         this.restrictScaleDown = $.restrictScaleDown;
         this.rootVolumeSize = $.rootVolumeSize;
         this.rootVolumeType = $.rootVolumeType;
+        this.schedulingShutdownHours = $.schedulingShutdownHours;
         this.schedulingTasks = $.schedulingTasks;
         this.serviceAccount = $.serviceAccount;
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
@@ -784,6 +801,27 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
          */
         public Builder rootVolumeType(String rootVolumeType) {
             return rootVolumeType(Output.of(rootVolumeType));
+        }
+
+        /**
+         * @param schedulingShutdownHours An object used to specify times that the nodes in the virtual node group will be taken down.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedulingShutdownHours(@Nullable Output<OceanLaunchSpecSchedulingShutdownHoursArgs> schedulingShutdownHours) {
+            $.schedulingShutdownHours = schedulingShutdownHours;
+            return this;
+        }
+
+        /**
+         * @param schedulingShutdownHours An object used to specify times that the nodes in the virtual node group will be taken down.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedulingShutdownHours(OceanLaunchSpecSchedulingShutdownHoursArgs schedulingShutdownHours) {
+            return schedulingShutdownHours(Output.of(schedulingShutdownHours));
         }
 
         /**
