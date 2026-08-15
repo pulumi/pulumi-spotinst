@@ -2198,6 +2198,16 @@
                     "resource_limits": {
                         "maxItemsOne": true
                     },
+                    "scheduling_shutdown_hours": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "time_windows": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "scheduling_task": {
                         "maxItemsOne": false,
                         "elem": {
