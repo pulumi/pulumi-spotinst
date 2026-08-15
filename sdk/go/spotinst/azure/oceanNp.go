@@ -72,7 +72,8 @@ import (
 //				AksResourceGroupName:               pulumi.String("TestResourceGroup"),
 //				ControllerClusterId:                pulumi.String("test-123124"),
 //				Autoscaler: &azure.OceanNpAutoscalerArgs{
-//					AutoscaleIsEnabled: pulumi.Bool(true),
+//					AutoscaleIsEnabled:               pulumi.Bool(true),
+//					EnableAutomaticAndManualHeadroom: pulumi.Bool(true),
 //					ResourceLimits: &azure.OceanNpAutoscalerResourceLimitsArgs{
 //						MaxVcpu:      pulumi.Int(750),
 //						MaxMemoryGib: pulumi.Int(1500),
@@ -101,6 +102,7 @@ import (
 //						},
 //					},
 //				},
+//				AutoHeadroomPercentage: pulumi.Int(5),
 //				Headrooms: azure.OceanNpHeadroomArray{
 //					&azure.OceanNpHeadroomArgs{
 //						CpuPerUnit:    pulumi.Int(1024),
@@ -217,6 +219,8 @@ type OceanNp struct {
 	AksInfrastructureResourceGroupName pulumi.StringOutput `pulumi:"aksInfrastructureResourceGroupName"`
 	AksRegion                          pulumi.StringOutput `pulumi:"aksRegion"`
 	AksResourceGroupName               pulumi.StringOutput `pulumi:"aksResourceGroupName"`
+	// Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+	AutoHeadroomPercentage pulumi.IntPtrOutput `pulumi:"autoHeadroomPercentage"`
 	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler OceanNpAutoscalerPtrOutput `pulumi:"autoscaler"`
 	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
@@ -330,6 +334,8 @@ type oceanNpState struct {
 	AksInfrastructureResourceGroupName *string `pulumi:"aksInfrastructureResourceGroupName"`
 	AksRegion                          *string `pulumi:"aksRegion"`
 	AksResourceGroupName               *string `pulumi:"aksResourceGroupName"`
+	// Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+	AutoHeadroomPercentage *int `pulumi:"autoHeadroomPercentage"`
 	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler *OceanNpAutoscaler `pulumi:"autoscaler"`
 	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
@@ -396,6 +402,8 @@ type OceanNpState struct {
 	AksInfrastructureResourceGroupName pulumi.StringPtrInput
 	AksRegion                          pulumi.StringPtrInput
 	AksResourceGroupName               pulumi.StringPtrInput
+	// Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+	AutoHeadroomPercentage pulumi.IntPtrInput
 	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler OceanNpAutoscalerPtrInput
 	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
@@ -466,6 +474,8 @@ type oceanNpArgs struct {
 	AksInfrastructureResourceGroupName string `pulumi:"aksInfrastructureResourceGroupName"`
 	AksRegion                          string `pulumi:"aksRegion"`
 	AksResourceGroupName               string `pulumi:"aksResourceGroupName"`
+	// Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+	AutoHeadroomPercentage *int `pulumi:"autoHeadroomPercentage"`
 	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler *OceanNpAutoscaler `pulumi:"autoscaler"`
 	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
@@ -533,6 +543,8 @@ type OceanNpArgs struct {
 	AksInfrastructureResourceGroupName pulumi.StringInput
 	AksRegion                          pulumi.StringInput
 	AksResourceGroupName               pulumi.StringInput
+	// Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+	AutoHeadroomPercentage pulumi.IntPtrInput
 	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler OceanNpAutoscalerPtrInput
 	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
@@ -695,6 +707,11 @@ func (o OceanNpOutput) AksRegion() pulumi.StringOutput {
 
 func (o OceanNpOutput) AksResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.StringOutput { return v.AksResourceGroupName }).(pulumi.StringOutput)
+}
+
+// Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+func (o OceanNpOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanNp) pulumi.IntPtrOutput { return v.AutoHeadroomPercentage }).(pulumi.IntPtrOutput)
 }
 
 // The Ocean Kubernetes Autoscaler object.

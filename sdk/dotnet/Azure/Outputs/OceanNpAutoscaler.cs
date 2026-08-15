@@ -26,6 +26,10 @@ namespace Pulumi.SpotInst.Azure.Outputs
         /// </summary>
         public readonly bool? AutoscaleIsEnabled;
         /// <summary>
+        /// Enable mixed mode for manual and automatic headroom. Relevant only when `autoscale_headroom.automatic.is_enabled` is set to `True`. If `False`, Ocean manages headroom automatically without combining with manual VNG headrooms.
+        /// </summary>
+        public readonly bool? EnableAutomaticAndManualHeadroom;
+        /// <summary>
         /// Optionally set upper and lower bounds on the resource usage of the cluster.
         /// </summary>
         public readonly Outputs.OceanNpAutoscalerResourceLimits? ResourceLimits;
@@ -38,11 +42,14 @@ namespace Pulumi.SpotInst.Azure.Outputs
 
             bool? autoscaleIsEnabled,
 
+            bool? enableAutomaticAndManualHeadroom,
+
             Outputs.OceanNpAutoscalerResourceLimits? resourceLimits)
         {
             AutoscaleDown = autoscaleDown;
             AutoscaleHeadroom = autoscaleHeadroom;
             AutoscaleIsEnabled = autoscaleIsEnabled;
+            EnableAutomaticAndManualHeadroom = enableAutomaticAndManualHeadroom;
             ResourceLimits = resourceLimits;
         }
     }

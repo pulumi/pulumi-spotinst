@@ -26,6 +26,7 @@ namespace Pulumi.SpotInst.Azure
     ///     {
     ///         Name = "testVng",
     ///         OceanId = "o-134abcd",
+    ///         AutoHeadroomPercentage = 5,
     ///         Headrooms = new[]
     ///         {
     ///             new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupHeadroomArgs
@@ -157,6 +158,12 @@ namespace Pulumi.SpotInst.Azure
     [SpotInstResourceType("spotinst:azure/oceanNpVirtualNodeGroup:OceanNpVirtualNodeGroup")]
     public partial class OceanNpVirtualNodeGroup : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+        /// </summary>
+        [Output("autoHeadroomPercentage")]
+        public Output<int?> AutoHeadroomPercentage { get; private set; } = null!;
+
         /// <summary>
         /// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
         /// </summary>
@@ -359,6 +366,12 @@ namespace Pulumi.SpotInst.Azure
 
     public sealed class OceanNpVirtualNodeGroupArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+        /// </summary>
+        [Input("autoHeadroomPercentage")]
+        public Input<int>? AutoHeadroomPercentage { get; set; }
+
         [Input("availabilityZones")]
         private InputList<string>? _availabilityZones;
 
@@ -570,6 +583,12 @@ namespace Pulumi.SpotInst.Azure
 
     public sealed class OceanNpVirtualNodeGroupState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+        /// </summary>
+        [Input("autoHeadroomPercentage")]
+        public Input<int>? AutoHeadroomPercentage { get; set; }
+
         [Input("availabilityZones")]
         private InputList<string>? _availabilityZones;
 

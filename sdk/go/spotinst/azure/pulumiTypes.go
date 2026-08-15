@@ -20,6 +20,8 @@ type OceanNpAutoscaler struct {
 	AutoscaleHeadroom *OceanNpAutoscalerAutoscaleHeadroom `pulumi:"autoscaleHeadroom"`
 	// Enable the Ocean Kubernetes Autoscaler.
 	AutoscaleIsEnabled *bool `pulumi:"autoscaleIsEnabled"`
+	// Enable mixed mode for manual and automatic headroom. Relevant only when `autoscale_headroom.automatic.is_enabled` is set to `true`. If `false`, Ocean manages headroom automatically without combining with manual VNG headrooms.
+	EnableAutomaticAndManualHeadroom *bool `pulumi:"enableAutomaticAndManualHeadroom"`
 	// Optionally set upper and lower bounds on the resource usage of the cluster.
 	ResourceLimits *OceanNpAutoscalerResourceLimits `pulumi:"resourceLimits"`
 }
@@ -42,6 +44,8 @@ type OceanNpAutoscalerArgs struct {
 	AutoscaleHeadroom OceanNpAutoscalerAutoscaleHeadroomPtrInput `pulumi:"autoscaleHeadroom"`
 	// Enable the Ocean Kubernetes Autoscaler.
 	AutoscaleIsEnabled pulumi.BoolPtrInput `pulumi:"autoscaleIsEnabled"`
+	// Enable mixed mode for manual and automatic headroom. Relevant only when `autoscale_headroom.automatic.is_enabled` is set to `true`. If `false`, Ocean manages headroom automatically without combining with manual VNG headrooms.
+	EnableAutomaticAndManualHeadroom pulumi.BoolPtrInput `pulumi:"enableAutomaticAndManualHeadroom"`
 	// Optionally set upper and lower bounds on the resource usage of the cluster.
 	ResourceLimits OceanNpAutoscalerResourceLimitsPtrInput `pulumi:"resourceLimits"`
 }
@@ -138,6 +142,11 @@ func (o OceanNpAutoscalerOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanNpAutoscaler) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Enable mixed mode for manual and automatic headroom. Relevant only when `autoscale_headroom.automatic.is_enabled` is set to `true`. If `false`, Ocean manages headroom automatically without combining with manual VNG headrooms.
+func (o OceanNpAutoscalerOutput) EnableAutomaticAndManualHeadroom() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanNpAutoscaler) *bool { return v.EnableAutomaticAndManualHeadroom }).(pulumi.BoolPtrOutput)
+}
+
 // Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanNpAutoscalerOutput) ResourceLimits() OceanNpAutoscalerResourceLimitsPtrOutput {
 	return o.ApplyT(func(v OceanNpAutoscaler) *OceanNpAutoscalerResourceLimits { return v.ResourceLimits }).(OceanNpAutoscalerResourceLimitsPtrOutput)
@@ -194,6 +203,16 @@ func (o OceanNpAutoscalerPtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.AutoscaleIsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable mixed mode for manual and automatic headroom. Relevant only when `autoscale_headroom.automatic.is_enabled` is set to `true`. If `false`, Ocean manages headroom automatically without combining with manual VNG headrooms.
+func (o OceanNpAutoscalerPtrOutput) EnableAutomaticAndManualHeadroom() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanNpAutoscaler) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAutomaticAndManualHeadroom
 	}).(pulumi.BoolPtrOutput)
 }
 

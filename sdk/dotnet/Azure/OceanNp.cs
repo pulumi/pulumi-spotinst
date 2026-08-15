@@ -62,6 +62,7 @@ namespace Pulumi.SpotInst.Azure
     ///         Autoscaler = new SpotInst.Azure.Inputs.OceanNpAutoscalerArgs
     ///         {
     ///             AutoscaleIsEnabled = true,
+    ///             EnableAutomaticAndManualHeadroom = true,
     ///             ResourceLimits = new SpotInst.Azure.Inputs.OceanNpAutoscalerResourceLimitsArgs
     ///             {
     ///                 MaxVcpu = 750,
@@ -99,6 +100,7 @@ namespace Pulumi.SpotInst.Azure
     ///                 },
     ///             },
     ///         },
+    ///         AutoHeadroomPercentage = 5,
     ///         Headrooms = new[]
     ///         {
     ///             new SpotInst.Azure.Inputs.OceanNpHeadroomArgs
@@ -240,6 +242,12 @@ namespace Pulumi.SpotInst.Azure
 
         [Output("aksResourceGroupName")]
         public Output<string> AksResourceGroupName { get; private set; } = null!;
+
+        /// <summary>
+        /// Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+        /// </summary>
+        [Output("autoHeadroomPercentage")]
+        public Output<int?> AutoHeadroomPercentage { get; private set; } = null!;
 
         /// <summary>
         /// The Ocean Kubernetes Autoscaler object.
@@ -471,6 +479,12 @@ namespace Pulumi.SpotInst.Azure
 
         [Input("aksResourceGroupName", required: true)]
         public Input<string> AksResourceGroupName { get; set; } = null!;
+
+        /// <summary>
+        /// Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+        /// </summary>
+        [Input("autoHeadroomPercentage")]
+        public Input<int>? AutoHeadroomPercentage { get; set; }
 
         /// <summary>
         /// The Ocean Kubernetes Autoscaler object.
@@ -711,6 +725,12 @@ namespace Pulumi.SpotInst.Azure
 
         [Input("aksResourceGroupName")]
         public Input<string>? AksResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+        /// </summary>
+        [Input("autoHeadroomPercentage")]
+        public Input<int>? AutoHeadroomPercentage { get; set; }
 
         /// <summary>
         /// The Ocean Kubernetes Autoscaler object.

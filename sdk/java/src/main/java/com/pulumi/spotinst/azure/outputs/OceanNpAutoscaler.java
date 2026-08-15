@@ -30,6 +30,11 @@ public final class OceanNpAutoscaler {
      */
     private @Nullable Boolean autoscaleIsEnabled;
     /**
+     * @return Enable mixed mode for manual and automatic headroom. Relevant only when `autoscale_headroom.automatic.is_enabled` is set to `true`. If `false`, Ocean manages headroom automatically without combining with manual VNG headrooms.
+     * 
+     */
+    private @Nullable Boolean enableAutomaticAndManualHeadroom;
+    /**
      * @return Optionally set upper and lower bounds on the resource usage of the cluster.
      * 
      */
@@ -58,6 +63,13 @@ public final class OceanNpAutoscaler {
         return Optional.ofNullable(this.autoscaleIsEnabled);
     }
     /**
+     * @return Enable mixed mode for manual and automatic headroom. Relevant only when `autoscale_headroom.automatic.is_enabled` is set to `true`. If `false`, Ocean manages headroom automatically without combining with manual VNG headrooms.
+     * 
+     */
+    public Optional<Boolean> enableAutomaticAndManualHeadroom() {
+        return Optional.ofNullable(this.enableAutomaticAndManualHeadroom);
+    }
+    /**
      * @return Optionally set upper and lower bounds on the resource usage of the cluster.
      * 
      */
@@ -77,6 +89,7 @@ public final class OceanNpAutoscaler {
         private @Nullable OceanNpAutoscalerAutoscaleDown autoscaleDown;
         private @Nullable OceanNpAutoscalerAutoscaleHeadroom autoscaleHeadroom;
         private @Nullable Boolean autoscaleIsEnabled;
+        private @Nullable Boolean enableAutomaticAndManualHeadroom;
         private @Nullable OceanNpAutoscalerResourceLimits resourceLimits;
         public Builder() {}
         public Builder(OceanNpAutoscaler defaults) {
@@ -84,6 +97,7 @@ public final class OceanNpAutoscaler {
     	      this.autoscaleDown = defaults.autoscaleDown;
     	      this.autoscaleHeadroom = defaults.autoscaleHeadroom;
     	      this.autoscaleIsEnabled = defaults.autoscaleIsEnabled;
+    	      this.enableAutomaticAndManualHeadroom = defaults.enableAutomaticAndManualHeadroom;
     	      this.resourceLimits = defaults.resourceLimits;
         }
 
@@ -106,6 +120,12 @@ public final class OceanNpAutoscaler {
             return this;
         }
         @CustomType.Setter
+        public Builder enableAutomaticAndManualHeadroom(@Nullable Boolean enableAutomaticAndManualHeadroom) {
+
+            this.enableAutomaticAndManualHeadroom = enableAutomaticAndManualHeadroom;
+            return this;
+        }
+        @CustomType.Setter
         public Builder resourceLimits(@Nullable OceanNpAutoscalerResourceLimits resourceLimits) {
 
             this.resourceLimits = resourceLimits;
@@ -116,6 +136,7 @@ public final class OceanNpAutoscaler {
             _resultValue.autoscaleDown = autoscaleDown;
             _resultValue.autoscaleHeadroom = autoscaleHeadroom;
             _resultValue.autoscaleIsEnabled = autoscaleIsEnabled;
+            _resultValue.enableAutomaticAndManualHeadroom = enableAutomaticAndManualHeadroom;
             _resultValue.resourceLimits = resourceLimits;
             return _resultValue;
         }

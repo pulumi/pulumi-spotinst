@@ -66,6 +66,7 @@ __all__ = [
     'OceanLaunchSpecNetworkInterfaceAccessConfig',
     'OceanLaunchSpecNetworkInterfaceAliasIpRange',
     'OceanLaunchSpecResourceLimits',
+    'OceanLaunchSpecSchedulingShutdownHours',
     'OceanLaunchSpecSchedulingTask',
     'OceanLaunchSpecSchedulingTaskTaskHeadroom',
     'OceanLaunchSpecShieldedInstanceConfig',
@@ -2871,6 +2872,55 @@ class OceanLaunchSpecResourceLimits(dict):
         Option to set a minimum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
         """
         return pulumi.get(self, "min_instance_count")
+
+
+@pulumi.output_type
+class OceanLaunchSpecSchedulingShutdownHours(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeWindows":
+            suggest = "time_windows"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecSchedulingShutdownHours. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecSchedulingShutdownHours.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecSchedulingShutdownHours.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 time_windows: Sequence[_builtins.str],
+                 is_enabled: Optional[_builtins.bool] = None):
+        """
+        :param Sequence[_builtins.str] time_windows: The times that the shutdown hours will apply.
+        :param _builtins.bool is_enabled: Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node group remains in its current state.
+        """
+        pulumi.set(__self__, "time_windows", time_windows)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="timeWindows")
+    def time_windows(self) -> Sequence[_builtins.str]:
+        """
+        The times that the shutdown hours will apply.
+        """
+        return pulumi.get(self, "time_windows")
+
+    @_builtins.property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node group remains in its current state.
+        """
+        return pulumi.get(self, "is_enabled")
 
 
 @pulumi.output_type

@@ -84,6 +84,13 @@ import * as utilities from "../utilities";
  *             memoryPerUnit: 2048,
  *         }],
  *     }],
+ *     schedulingShutdownHours: {
+ *         isEnabled: true,
+ *         timeWindows: [
+ *             "Mon:00:30-Mon:23:00",
+ *             "Tue:06:30-Tue:23:00",
+ *         ],
+ *     },
  *     networkInterfaces: [{
  *         network: "test-vng-network",
  *         projectId: "test-vng-network-project",
@@ -196,6 +203,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     declare public readonly rootVolumeType: pulumi.Output<string>;
     /**
+     * An object used to specify times that the nodes in the virtual node group will be taken down.
+     */
+    declare public readonly schedulingShutdownHours: pulumi.Output<outputs.gke.OceanLaunchSpecSchedulingShutdownHours | undefined>;
+    /**
      * Used to define scheduled tasks such as a manual headroom update.
      */
     declare public readonly schedulingTasks: pulumi.Output<outputs.gke.OceanLaunchSpecSchedulingTask[] | undefined>;
@@ -257,6 +268,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["restrictScaleDown"] = state?.restrictScaleDown;
             resourceInputs["rootVolumeSize"] = state?.rootVolumeSize;
             resourceInputs["rootVolumeType"] = state?.rootVolumeType;
+            resourceInputs["schedulingShutdownHours"] = state?.schedulingShutdownHours;
             resourceInputs["schedulingTasks"] = state?.schedulingTasks;
             resourceInputs["serviceAccount"] = state?.serviceAccount;
             resourceInputs["shieldedInstanceConfig"] = state?.shieldedInstanceConfig;
@@ -286,6 +298,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["restrictScaleDown"] = args?.restrictScaleDown;
             resourceInputs["rootVolumeSize"] = args?.rootVolumeSize;
             resourceInputs["rootVolumeType"] = args?.rootVolumeType;
+            resourceInputs["schedulingShutdownHours"] = args?.schedulingShutdownHours;
             resourceInputs["schedulingTasks"] = args?.schedulingTasks;
             resourceInputs["serviceAccount"] = args?.serviceAccount;
             resourceInputs["shieldedInstanceConfig"] = args?.shieldedInstanceConfig;
@@ -362,6 +375,10 @@ export interface OceanLaunchSpecState {
      * Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
      */
     rootVolumeType?: pulumi.Input<string | undefined>;
+    /**
+     * An object used to specify times that the nodes in the virtual node group will be taken down.
+     */
+    schedulingShutdownHours?: pulumi.Input<inputs.gke.OceanLaunchSpecSchedulingShutdownHours | undefined>;
     /**
      * Used to define scheduled tasks such as a manual headroom update.
      */
@@ -458,6 +475,10 @@ export interface OceanLaunchSpecArgs {
      * Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
      */
     rootVolumeType?: pulumi.Input<string | undefined>;
+    /**
+     * An object used to specify times that the nodes in the virtual node group will be taken down.
+     */
+    schedulingShutdownHours?: pulumi.Input<inputs.gke.OceanLaunchSpecSchedulingShutdownHours | undefined>;
     /**
      * Used to define scheduled tasks such as a manual headroom update.
      */

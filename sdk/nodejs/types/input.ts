@@ -3561,6 +3561,10 @@ export namespace azure {
          */
         autoscaleIsEnabled?: pulumi.Input<boolean | undefined>;
         /**
+         * Enable mixed mode for manual and automatic headroom. Relevant only when `autoscale_headroom.automatic.is_enabled` is set to `true`. If `false`, Ocean manages headroom automatically without combining with manual VNG headrooms.
+         */
+        enableAutomaticAndManualHeadroom?: pulumi.Input<boolean | undefined>;
+        /**
          * Optionally set upper and lower bounds on the resource usage of the cluster.
          */
         resourceLimits?: pulumi.Input<inputs.azure.OceanNpAutoscalerResourceLimits | undefined>;
@@ -5595,6 +5599,17 @@ export namespace gke {
          * Option to set a minimum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
          */
         minInstanceCount?: pulumi.Input<number | undefined>;
+    }
+
+    export interface OceanLaunchSpecSchedulingShutdownHours {
+        /**
+         * Flag to enable or disable the shutdown hours mechanism. When `false`, the mechanism is deactivated, and the virtual node group remains in its current state.
+         */
+        isEnabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * The times that the shutdown hours will apply.
+         */
+        timeWindows: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface OceanLaunchSpecSchedulingTask {

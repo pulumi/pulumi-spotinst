@@ -29,8 +29,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := azure.NewOceanNpVirtualNodeGroup(ctx, "example", &azure.OceanNpVirtualNodeGroupArgs{
-//				Name:    pulumi.String("testVng"),
-//				OceanId: pulumi.String("o-134abcd"),
+//				Name:                   pulumi.String("testVng"),
+//				OceanId:                pulumi.String("o-134abcd"),
+//				AutoHeadroomPercentage: pulumi.Int(5),
 //				Headrooms: azure.OceanNpVirtualNodeGroupHeadroomArray{
 //					&azure.OceanNpVirtualNodeGroupHeadroomArgs{
 //						CpuPerUnit:    pulumi.Int(1024),
@@ -144,6 +145,8 @@ import (
 type OceanNpVirtualNodeGroup struct {
 	pulumi.CustomResourceState
 
+	// Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+	AutoHeadroomPercentage pulumi.IntPtrOutput `pulumi:"autoHeadroomPercentage"`
 	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
 	AvailabilityZones pulumi.StringArrayOutput `pulumi:"availabilityZones"`
 	// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
@@ -231,6 +234,8 @@ func GetOceanNpVirtualNodeGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OceanNpVirtualNodeGroup resources.
 type oceanNpVirtualNodeGroupState struct {
+	// Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+	AutoHeadroomPercentage *int `pulumi:"autoHeadroomPercentage"`
 	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
@@ -286,6 +291,8 @@ type oceanNpVirtualNodeGroupState struct {
 }
 
 type OceanNpVirtualNodeGroupState struct {
+	// Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+	AutoHeadroomPercentage pulumi.IntPtrInput
 	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
 	AvailabilityZones pulumi.StringArrayInput
 	// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
@@ -345,6 +352,8 @@ func (OceanNpVirtualNodeGroupState) ElementType() reflect.Type {
 }
 
 type oceanNpVirtualNodeGroupArgs struct {
+	// Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+	AutoHeadroomPercentage *int `pulumi:"autoHeadroomPercentage"`
 	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
@@ -401,6 +410,8 @@ type oceanNpVirtualNodeGroupArgs struct {
 
 // The set of arguments for constructing a OceanNpVirtualNodeGroup resource.
 type OceanNpVirtualNodeGroupArgs struct {
+	// Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+	AutoHeadroomPercentage pulumi.IntPtrInput
 	// An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
 	AvailabilityZones pulumi.StringArrayInput
 	// Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
@@ -540,6 +551,11 @@ func (o OceanNpVirtualNodeGroupOutput) ToOceanNpVirtualNodeGroupOutput() OceanNp
 
 func (o OceanNpVirtualNodeGroupOutput) ToOceanNpVirtualNodeGroupOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupOutput {
 	return o
+}
+
+// Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+func (o OceanNpVirtualNodeGroupOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.IntPtrOutput { return v.AutoHeadroomPercentage }).(pulumi.IntPtrOutput)
 }
 
 // An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.

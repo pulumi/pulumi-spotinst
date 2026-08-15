@@ -122,6 +122,7 @@ import javax.annotation.Nullable;
  *             .controllerClusterId("test-123124")
  *             .autoscaler(OceanNpAutoscalerArgs.builder()
  *                 .autoscaleIsEnabled(true)
+ *                 .enableAutomaticAndManualHeadroom(true)
  *                 .resourceLimits(OceanNpAutoscalerResourceLimitsArgs.builder()
  *                     .maxVcpu(750)
  *                     .maxMemoryGib(1500)
@@ -148,6 +149,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
+ *             .autoHeadroomPercentage(5)
  *             .headrooms(OceanNpHeadroomArgs.builder()
  *                 .cpuPerUnit(1024)
  *                 .memoryPerUnit(512)
@@ -261,6 +263,20 @@ public class OceanNp extends com.pulumi.resources.CustomResource {
 
     public Output<String> aksResourceGroupName() {
         return this.aksResourceGroupName;
+    }
+    /**
+     * Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+     * 
+     */
+    @Export(name="autoHeadroomPercentage", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> autoHeadroomPercentage;
+
+    /**
+     * @return Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+     * 
+     */
+    public Output<Optional<Integer>> autoHeadroomPercentage() {
+        return Codegen.optional(this.autoHeadroomPercentage);
     }
     /**
      * The Ocean Kubernetes Autoscaler object.

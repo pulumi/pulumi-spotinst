@@ -58,6 +58,21 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+     * 
+     */
+    @Import(name="autoHeadroomPercentage")
+    private @Nullable Output<Integer> autoHeadroomPercentage;
+
+    /**
+     * @return Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+     * 
+     */
+    public Optional<Output<Integer>> autoHeadroomPercentage() {
+        return Optional.ofNullable(this.autoHeadroomPercentage);
+    }
+
+    /**
      * The Ocean Kubernetes Autoscaler object.
      * 
      */
@@ -494,6 +509,7 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         this.aksInfrastructureResourceGroupName = $.aksInfrastructureResourceGroupName;
         this.aksRegion = $.aksRegion;
         this.aksResourceGroupName = $.aksResourceGroupName;
+        this.autoHeadroomPercentage = $.autoHeadroomPercentage;
         this.autoscaler = $.autoscaler;
         this.availabilityZones = $.availabilityZones;
         this.controllerClusterId = $.controllerClusterId;
@@ -578,6 +594,27 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
 
         public Builder aksResourceGroupName(String aksResourceGroupName) {
             return aksResourceGroupName(Output.of(aksResourceGroupName));
+        }
+
+        /**
+         * @param autoHeadroomPercentage Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoHeadroomPercentage(@Nullable Output<Integer> autoHeadroomPercentage) {
+            $.autoHeadroomPercentage = autoHeadroomPercentage;
+            return this;
+        }
+
+        /**
+         * @param autoHeadroomPercentage Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoHeadroomPercentage(Integer autoHeadroomPercentage) {
+            return autoHeadroomPercentage(Output.of(autoHeadroomPercentage));
         }
 
         /**

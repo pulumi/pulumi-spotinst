@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * const example = new spotinst.azure.OceanNpVirtualNodeGroup("example", {
  *     name: "testVng",
  *     oceanId: "o-134abcd",
+ *     autoHeadroomPercentage: 5,
  *     headrooms: [{
  *         cpuPerUnit: 1024,
  *         memoryPerUnit: 512,
@@ -137,6 +138,10 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
     }
 
     /**
+     * Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+     */
+    declare public readonly autoHeadroomPercentage: pulumi.Output<number | undefined>;
+    /**
      * An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
      */
     declare public readonly availabilityZones: pulumi.Output<string[] | undefined>;
@@ -252,6 +257,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OceanNpVirtualNodeGroupState | undefined;
+            resourceInputs["autoHeadroomPercentage"] = state?.autoHeadroomPercentage;
             resourceInputs["availabilityZones"] = state?.availabilityZones;
             resourceInputs["drainingTimeout"] = state?.drainingTimeout;
             resourceInputs["enableNodePublicIp"] = state?.enableNodePublicIp;
@@ -284,6 +290,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
             if (args?.oceanId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'oceanId'");
             }
+            resourceInputs["autoHeadroomPercentage"] = args?.autoHeadroomPercentage;
             resourceInputs["availabilityZones"] = args?.availabilityZones;
             resourceInputs["drainingTimeout"] = args?.drainingTimeout;
             resourceInputs["enableNodePublicIp"] = args?.enableNodePublicIp;
@@ -321,6 +328,10 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OceanNpVirtualNodeGroup resources.
  */
 export interface OceanNpVirtualNodeGroupState {
+    /**
+     * Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+     */
+    autoHeadroomPercentage?: pulumi.Input<number | undefined>;
     /**
      * An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
      */
@@ -429,6 +440,10 @@ export interface OceanNpVirtualNodeGroupState {
  * The set of arguments for constructing a OceanNpVirtualNodeGroup resource.
  */
 export interface OceanNpVirtualNodeGroupArgs {
+    /**
+     * Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
+     */
+    autoHeadroomPercentage?: pulumi.Input<number | undefined>;
     /**
      * An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
      */
