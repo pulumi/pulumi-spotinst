@@ -52,6 +52,7 @@ namespace Pulumi.SpotInst.Azure
     ///         MaxCount = 100,
     ///         MaxPodsPerNode = 30,
     ///         EnableNodePublicIp = true,
+    ///         EncryptionAtHost = true,
     ///         OsDiskSizeGb = 30,
     ///         OsDiskType = "Managed",
     ///         OsType = "Linux",
@@ -74,6 +75,67 @@ namespace Pulumi.SpotInst.Azure
     ///                     new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs
     ///                     {
     ///                         VmMaxMapCount = 79550,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         LocalDnsProfiles = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupLocalDnsProfileArgs
+    ///             {
+    ///                 Mode = "Required",
+    ///                 VnetDnsOverrides = new[]
+    ///                 {
+    ///                     new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgs
+    ///                     {
+    ///                         Zone = ".",
+    ///                         QueryLogging = "Error",
+    ///                         Protocol = "PreferUDP",
+    ///                         ForwardDestination = "VnetDNS",
+    ///                         ForwardPolicy = "Sequential",
+    ///                         MaxConcurrent = 1000,
+    ///                         CacheDurationInSeconds = 3600,
+    ///                         ServeStaleDurationInSeconds = 3600,
+    ///                         ServeStale = "Immediate",
+    ///                     },
+    ///                     new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgs
+    ///                     {
+    ///                         Zone = "cluster.local",
+    ///                         QueryLogging = "Error",
+    ///                         Protocol = "ForceTCP",
+    ///                         ForwardDestination = "ClusterCoreDNS",
+    ///                         ForwardPolicy = "Sequential",
+    ///                         MaxConcurrent = 1000,
+    ///                         CacheDurationInSeconds = 3600,
+    ///                         ServeStaleDurationInSeconds = 3600,
+    ///                         ServeStale = "Immediate",
+    ///                     },
+    ///                 },
+    ///                 KubeDnsOverrides = new[]
+    ///                 {
+    ///                     new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgs
+    ///                     {
+    ///                         Zone = ".",
+    ///                         QueryLogging = "Error",
+    ///                         Protocol = "PreferUDP",
+    ///                         ForwardDestination = "ClusterCoreDNS",
+    ///                         ForwardPolicy = "Sequential",
+    ///                         MaxConcurrent = 1000,
+    ///                         CacheDurationInSeconds = 3600,
+    ///                         ServeStaleDurationInSeconds = 3600,
+    ///                         ServeStale = "Immediate",
+    ///                     },
+    ///                     new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgs
+    ///                     {
+    ///                         Zone = "cluster.local",
+    ///                         QueryLogging = "Error",
+    ///                         Protocol = "ForceTCP",
+    ///                         ForwardDestination = "ClusterCoreDNS",
+    ///                         ForwardPolicy = "Sequential",
+    ///                         MaxConcurrent = 1000,
+    ///                         CacheDurationInSeconds = 3600,
+    ///                         ServeStaleDurationInSeconds = 3600,
+    ///                         ServeStale = "Immediate",
     ///                     },
     ///                 },
     ///             },
@@ -138,6 +200,11 @@ namespace Pulumi.SpotInst.Azure
     ///                 "nvidia-tesla-t4",
     ///             },
     ///         },
+    ///         PreferredVmSizes = new[]
+    ///         {
+    ///             "Standard_D4s_v3",
+    ///             "Standard_D8s_v3",
+    ///         },
     ///         Scheduling = new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupSchedulingArgs
     ///         {
     ///             ShutdownHours = new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs
@@ -183,6 +250,12 @@ namespace Pulumi.SpotInst.Azure
         public Output<bool?> EnableNodePublicIp { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to enable host-based encryption for nodes. When set to `True`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+        /// </summary>
+        [Output("encryptionAtHost")]
+        public Output<bool?> EncryptionAtHost { get; private set; } = null!;
+
+        /// <summary>
         /// If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
         /// </summary>
         [Output("fallbackToOndemand")]
@@ -217,6 +290,12 @@ namespace Pulumi.SpotInst.Azure
         /// </summary>
         [Output("linuxOsConfigs")]
         public Output<ImmutableArray<Outputs.OceanNpVirtualNodeGroupLinuxOsConfig>> LinuxOsConfigs { get; private set; } = null!;
+
+        /// <summary>
+        /// Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+        /// </summary>
+        [Output("localDnsProfiles")]
+        public Output<ImmutableArray<Outputs.OceanNpVirtualNodeGroupLocalDnsProfile>> LocalDnsProfiles { get; private set; } = null!;
 
         /// <summary>
         /// Maximum node count limit.
@@ -277,6 +356,12 @@ namespace Pulumi.SpotInst.Azure
         /// </summary>
         [Output("podSubnetIds")]
         public Output<ImmutableArray<string>> PodSubnetIds { get; private set; } = null!;
+
+        /// <summary>
+        /// Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+        /// </summary>
+        [Output("preferredVmSizes")]
+        public Output<ImmutableArray<string>> PreferredVmSizes { get; private set; } = null!;
 
         /// <summary>
         /// When set to `True`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
@@ -397,6 +482,12 @@ namespace Pulumi.SpotInst.Azure
         public Input<bool>? EnableNodePublicIp { get; set; }
 
         /// <summary>
+        /// Whether to enable host-based encryption for nodes. When set to `True`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+        /// </summary>
+        [Input("encryptionAtHost")]
+        public Input<bool>? EncryptionAtHost { get; set; }
+
+        /// <summary>
         /// If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
         /// </summary>
         [Input("fallbackToOndemand")]
@@ -448,6 +539,18 @@ namespace Pulumi.SpotInst.Azure
         {
             get => _linuxOsConfigs ?? (_linuxOsConfigs = new InputList<Inputs.OceanNpVirtualNodeGroupLinuxOsConfigArgs>());
             set => _linuxOsConfigs = value;
+        }
+
+        [Input("localDnsProfiles")]
+        private InputList<Inputs.OceanNpVirtualNodeGroupLocalDnsProfileArgs>? _localDnsProfiles;
+
+        /// <summary>
+        /// Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+        /// </summary>
+        public InputList<Inputs.OceanNpVirtualNodeGroupLocalDnsProfileArgs> LocalDnsProfiles
+        {
+            get => _localDnsProfiles ?? (_localDnsProfiles = new InputList<Inputs.OceanNpVirtualNodeGroupLocalDnsProfileArgs>());
+            set => _localDnsProfiles = value;
         }
 
         /// <summary>
@@ -514,6 +617,18 @@ namespace Pulumi.SpotInst.Azure
         {
             get => _podSubnetIds ?? (_podSubnetIds = new InputList<string>());
             set => _podSubnetIds = value;
+        }
+
+        [Input("preferredVmSizes")]
+        private InputList<string>? _preferredVmSizes;
+
+        /// <summary>
+        /// Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+        /// </summary>
+        public InputList<string> PreferredVmSizes
+        {
+            get => _preferredVmSizes ?? (_preferredVmSizes = new InputList<string>());
+            set => _preferredVmSizes = value;
         }
 
         /// <summary>
@@ -614,6 +729,12 @@ namespace Pulumi.SpotInst.Azure
         public Input<bool>? EnableNodePublicIp { get; set; }
 
         /// <summary>
+        /// Whether to enable host-based encryption for nodes. When set to `True`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+        /// </summary>
+        [Input("encryptionAtHost")]
+        public Input<bool>? EncryptionAtHost { get; set; }
+
+        /// <summary>
         /// If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
         /// </summary>
         [Input("fallbackToOndemand")]
@@ -665,6 +786,18 @@ namespace Pulumi.SpotInst.Azure
         {
             get => _linuxOsConfigs ?? (_linuxOsConfigs = new InputList<Inputs.OceanNpVirtualNodeGroupLinuxOsConfigGetArgs>());
             set => _linuxOsConfigs = value;
+        }
+
+        [Input("localDnsProfiles")]
+        private InputList<Inputs.OceanNpVirtualNodeGroupLocalDnsProfileGetArgs>? _localDnsProfiles;
+
+        /// <summary>
+        /// Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+        /// </summary>
+        public InputList<Inputs.OceanNpVirtualNodeGroupLocalDnsProfileGetArgs> LocalDnsProfiles
+        {
+            get => _localDnsProfiles ?? (_localDnsProfiles = new InputList<Inputs.OceanNpVirtualNodeGroupLocalDnsProfileGetArgs>());
+            set => _localDnsProfiles = value;
         }
 
         /// <summary>
@@ -731,6 +864,18 @@ namespace Pulumi.SpotInst.Azure
         {
             get => _podSubnetIds ?? (_podSubnetIds = new InputList<string>());
             set => _podSubnetIds = value;
+        }
+
+        [Input("preferredVmSizes")]
+        private InputList<string>? _preferredVmSizes;
+
+        /// <summary>
+        /// Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+        /// </summary>
+        public InputList<string> PreferredVmSizes
+        {
+            get => _preferredVmSizes ?? (_preferredVmSizes = new InputList<string>());
+            set => _preferredVmSizes = value;
         }
 
         /// <summary>

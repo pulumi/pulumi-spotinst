@@ -20,6 +20,8 @@ import * as utilities from "./utilities";
  *     ruleName: "test-rule",
  *     excludePreliminaryRecommendations: true,
  *     restartReplicas: "ALL_MANIFEST",
+ *     cpuPercentile: 95,
+ *     memoryPercentile: 90,
  *     recommendationApplicationHpas: [{
  *         allowHpaRecommendations: true,
  *     }],
@@ -116,12 +118,20 @@ export class OceanRightSizingRule extends pulumi.CustomResource {
      * Ocean Rightsizing Rule Auto Apply Configuration.
      */
     declare public readonly autoApplyDefinitions: pulumi.Output<outputs.OceanRightSizingRuleAutoApplyDefinition[] | undefined>;
+    /**
+     * vCPU percentile for calculating recommendations.
+     */
+    declare public readonly cpuPercentile: pulumi.Output<number | undefined>;
     declare public readonly detachWorkloads: pulumi.Output<outputs.OceanRightSizingRuleDetachWorkload[] | undefined>;
     declare public readonly downsideOnly: pulumi.Output<boolean | undefined>;
     /**
      * Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
      */
     declare public readonly excludePreliminaryRecommendations: pulumi.Output<boolean | undefined>;
+    /**
+     * Memory percentile for calculating recommendations.
+     */
+    declare public readonly memoryPercentile: pulumi.Output<number | undefined>;
     /**
      * Identifier of the Ocean cluster.
      */
@@ -170,9 +180,11 @@ export class OceanRightSizingRule extends pulumi.CustomResource {
             const state = argsOrState as OceanRightSizingRuleState | undefined;
             resourceInputs["attachWorkloads"] = state?.attachWorkloads;
             resourceInputs["autoApplyDefinitions"] = state?.autoApplyDefinitions;
+            resourceInputs["cpuPercentile"] = state?.cpuPercentile;
             resourceInputs["detachWorkloads"] = state?.detachWorkloads;
             resourceInputs["downsideOnly"] = state?.downsideOnly;
             resourceInputs["excludePreliminaryRecommendations"] = state?.excludePreliminaryRecommendations;
+            resourceInputs["memoryPercentile"] = state?.memoryPercentile;
             resourceInputs["oceanId"] = state?.oceanId;
             resourceInputs["recommendationApplicationBoundaries"] = state?.recommendationApplicationBoundaries;
             resourceInputs["recommendationApplicationHpas"] = state?.recommendationApplicationHpas;
@@ -191,9 +203,11 @@ export class OceanRightSizingRule extends pulumi.CustomResource {
             }
             resourceInputs["attachWorkloads"] = args?.attachWorkloads;
             resourceInputs["autoApplyDefinitions"] = args?.autoApplyDefinitions;
+            resourceInputs["cpuPercentile"] = args?.cpuPercentile;
             resourceInputs["detachWorkloads"] = args?.detachWorkloads;
             resourceInputs["downsideOnly"] = args?.downsideOnly;
             resourceInputs["excludePreliminaryRecommendations"] = args?.excludePreliminaryRecommendations;
+            resourceInputs["memoryPercentile"] = args?.memoryPercentile;
             resourceInputs["oceanId"] = args?.oceanId;
             resourceInputs["recommendationApplicationBoundaries"] = args?.recommendationApplicationBoundaries;
             resourceInputs["recommendationApplicationHpas"] = args?.recommendationApplicationHpas;
@@ -217,12 +231,20 @@ export interface OceanRightSizingRuleState {
      * Ocean Rightsizing Rule Auto Apply Configuration.
      */
     autoApplyDefinitions?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAutoApplyDefinition>[] | undefined>;
+    /**
+     * vCPU percentile for calculating recommendations.
+     */
+    cpuPercentile?: pulumi.Input<number | undefined>;
     detachWorkloads?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleDetachWorkload>[] | undefined>;
     downsideOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
      */
     excludePreliminaryRecommendations?: pulumi.Input<boolean | undefined>;
+    /**
+     * Memory percentile for calculating recommendations.
+     */
+    memoryPercentile?: pulumi.Input<number | undefined>;
     /**
      * Identifier of the Ocean cluster.
      */
@@ -266,12 +288,20 @@ export interface OceanRightSizingRuleArgs {
      * Ocean Rightsizing Rule Auto Apply Configuration.
      */
     autoApplyDefinitions?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleAutoApplyDefinition>[] | undefined>;
+    /**
+     * vCPU percentile for calculating recommendations.
+     */
+    cpuPercentile?: pulumi.Input<number | undefined>;
     detachWorkloads?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleDetachWorkload>[] | undefined>;
     downsideOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
      */
     excludePreliminaryRecommendations?: pulumi.Input<boolean | undefined>;
+    /**
+     * Memory percentile for calculating recommendations.
+     */
+    memoryPercentile?: pulumi.Input<number | undefined>;
     /**
      * Identifier of the Ocean cluster.
      */

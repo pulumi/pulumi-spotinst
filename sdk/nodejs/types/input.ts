@@ -3717,6 +3717,99 @@ export namespace azure {
         vmMaxMapCount?: pulumi.Input<number | undefined>;
     }
 
+    export interface OceanNpLocalDnsProfile {
+        /**
+         * Per-zone DNS override configuration for kube-dns/CoreDNS resolution. Keys are DNS zone names (e.g. `"."` or `"cluster.local"`) and all values are same as `vnetDnsOverrides`.
+         */
+        kubeDnsOverrides?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpLocalDnsProfileKubeDnsOverride>[] | undefined>;
+        /**
+         * The LocalDNS mode. Required when localDnsProfile is configured. Allowed values: `"Required"`, `"Preferred"`, `"Disabled"`.
+         */
+        mode: pulumi.Input<string>;
+        /**
+         * Per-zone DNS override configuration for VNet DNS resolution. Keys are DNS zone names (`"."` or `"cluster.local"`).
+         */
+        vnetDnsOverrides?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpLocalDnsProfileVnetDnsOverride>[] | undefined>;
+    }
+
+    export interface OceanNpLocalDnsProfileKubeDnsOverride {
+        /**
+         * Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+         */
+        cacheDurationInSeconds?: pulumi.Input<number | undefined>;
+        /**
+         * Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+         */
+        forwardDestination?: pulumi.Input<string | undefined>;
+        /**
+         * Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+         */
+        forwardPolicy?: pulumi.Input<string | undefined>;
+        /**
+         * Maximum number of concurrent DNS queries handled by LocalDNS.
+         */
+        maxConcurrent?: pulumi.Input<number | undefined>;
+        /**
+         * Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+         */
+        protocol?: pulumi.Input<string | undefined>;
+        /**
+         * Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+         */
+        queryLogging?: pulumi.Input<string | undefined>;
+        /**
+         * Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+         */
+        serveStale?: pulumi.Input<string | undefined>;
+        /**
+         * Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+         */
+        serveStaleDurationInSeconds?: pulumi.Input<number | undefined>;
+        /**
+         * The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+         */
+        zone: pulumi.Input<string>;
+    }
+
+    export interface OceanNpLocalDnsProfileVnetDnsOverride {
+        /**
+         * Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+         */
+        cacheDurationInSeconds?: pulumi.Input<number | undefined>;
+        /**
+         * Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+         */
+        forwardDestination?: pulumi.Input<string | undefined>;
+        /**
+         * Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+         */
+        forwardPolicy?: pulumi.Input<string | undefined>;
+        /**
+         * Maximum number of concurrent DNS queries handled by LocalDNS.
+         */
+        maxConcurrent?: pulumi.Input<number | undefined>;
+        /**
+         * Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+         */
+        protocol?: pulumi.Input<string | undefined>;
+        /**
+         * Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+         */
+        queryLogging?: pulumi.Input<string | undefined>;
+        /**
+         * Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+         */
+        serveStale?: pulumi.Input<string | undefined>;
+        /**
+         * Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+         */
+        serveStaleDurationInSeconds?: pulumi.Input<number | undefined>;
+        /**
+         * The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+         */
+        zone: pulumi.Input<string>;
+    }
+
     export interface OceanNpLogging {
         /**
          * The Ocean AKS Logging Export object.
@@ -3990,6 +4083,99 @@ export namespace azure {
          * Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
          */
         vmMaxMapCount?: pulumi.Input<number | undefined>;
+    }
+
+    export interface OceanNpVirtualNodeGroupLocalDnsProfile {
+        /**
+         * Per-zone DNS override configuration for kube-dns/CoreDNS resolution. Keys are DNS zone names (e.g. `"."` or `"cluster.local"`) and all values are same as `vnetDnsOverrides`.
+         */
+        kubeDnsOverrides?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverride>[] | undefined>;
+        /**
+         * The LocalDNS mode. Required when localDnsProfile is configured. Allowed values: `"Required"`, `"Preferred"`, `"Disabled"`.
+         */
+        mode: pulumi.Input<string>;
+        /**
+         * Per-zone DNS override configuration for VNet DNS resolution. Keys are DNS zone names (`"."` or `"cluster.local"`).
+         */
+        vnetDnsOverrides?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverride>[] | undefined>;
+    }
+
+    export interface OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverride {
+        /**
+         * Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+         */
+        cacheDurationInSeconds?: pulumi.Input<number | undefined>;
+        /**
+         * Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+         */
+        forwardDestination?: pulumi.Input<string | undefined>;
+        /**
+         * Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+         */
+        forwardPolicy?: pulumi.Input<string | undefined>;
+        /**
+         * Maximum number of concurrent DNS queries handled by LocalDNS.
+         */
+        maxConcurrent?: pulumi.Input<number | undefined>;
+        /**
+         * Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+         */
+        protocol?: pulumi.Input<string | undefined>;
+        /**
+         * Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+         */
+        queryLogging?: pulumi.Input<string | undefined>;
+        /**
+         * Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+         */
+        serveStale?: pulumi.Input<string | undefined>;
+        /**
+         * Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+         */
+        serveStaleDurationInSeconds?: pulumi.Input<number | undefined>;
+        /**
+         * The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+         */
+        zone: pulumi.Input<string>;
+    }
+
+    export interface OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverride {
+        /**
+         * Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+         */
+        cacheDurationInSeconds?: pulumi.Input<number | undefined>;
+        /**
+         * Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+         */
+        forwardDestination?: pulumi.Input<string | undefined>;
+        /**
+         * Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+         */
+        forwardPolicy?: pulumi.Input<string | undefined>;
+        /**
+         * Maximum number of concurrent DNS queries handled by LocalDNS.
+         */
+        maxConcurrent?: pulumi.Input<number | undefined>;
+        /**
+         * Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+         */
+        protocol?: pulumi.Input<string | undefined>;
+        /**
+         * Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+         */
+        queryLogging?: pulumi.Input<string | undefined>;
+        /**
+         * Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+         */
+        serveStale?: pulumi.Input<string | undefined>;
+        /**
+         * Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+         */
+        serveStaleDurationInSeconds?: pulumi.Input<number | undefined>;
+        /**
+         * The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+         */
+        zone: pulumi.Input<string>;
     }
 
     export interface OceanNpVirtualNodeGroupScheduling {

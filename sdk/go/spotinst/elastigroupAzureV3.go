@@ -27,6 +27,7 @@ type ElastigroupAzureV3 struct {
 	FallbackToOnDemand       pulumi.BoolOutput                                    `pulumi:"fallbackToOnDemand"`
 	Health                   ElastigroupAzureV3HealthPtrOutput                    `pulumi:"health"`
 	Images                   ElastigroupAzureV3ImageArrayOutput                   `pulumi:"images"`
+	LicenseType              pulumi.StringPtrOutput                               `pulumi:"licenseType"`
 	LoadBalancers            ElastigroupAzureV3LoadBalancerArrayOutput            `pulumi:"loadBalancers"`
 	Login                    ElastigroupAzureV3LoginPtrOutput                     `pulumi:"login"`
 	ManagedServiceIdentities ElastigroupAzureV3ManagedServiceIdentityArrayOutput  `pulumi:"managedServiceIdentities"`
@@ -118,6 +119,7 @@ type elastigroupAzureV3State struct {
 	FallbackToOnDemand       *bool                                       `pulumi:"fallbackToOnDemand"`
 	Health                   *ElastigroupAzureV3Health                   `pulumi:"health"`
 	Images                   []ElastigroupAzureV3Image                   `pulumi:"images"`
+	LicenseType              *string                                     `pulumi:"licenseType"`
 	LoadBalancers            []ElastigroupAzureV3LoadBalancer            `pulumi:"loadBalancers"`
 	Login                    *ElastigroupAzureV3Login                    `pulumi:"login"`
 	ManagedServiceIdentities []ElastigroupAzureV3ManagedServiceIdentity  `pulumi:"managedServiceIdentities"`
@@ -162,6 +164,7 @@ type ElastigroupAzureV3State struct {
 	FallbackToOnDemand       pulumi.BoolPtrInput
 	Health                   ElastigroupAzureV3HealthPtrInput
 	Images                   ElastigroupAzureV3ImageArrayInput
+	LicenseType              pulumi.StringPtrInput
 	LoadBalancers            ElastigroupAzureV3LoadBalancerArrayInput
 	Login                    ElastigroupAzureV3LoginPtrInput
 	ManagedServiceIdentities ElastigroupAzureV3ManagedServiceIdentityArrayInput
@@ -210,6 +213,7 @@ type elastigroupAzureV3Args struct {
 	FallbackToOnDemand       bool                                        `pulumi:"fallbackToOnDemand"`
 	Health                   *ElastigroupAzureV3Health                   `pulumi:"health"`
 	Images                   []ElastigroupAzureV3Image                   `pulumi:"images"`
+	LicenseType              *string                                     `pulumi:"licenseType"`
 	LoadBalancers            []ElastigroupAzureV3LoadBalancer            `pulumi:"loadBalancers"`
 	Login                    *ElastigroupAzureV3Login                    `pulumi:"login"`
 	ManagedServiceIdentities []ElastigroupAzureV3ManagedServiceIdentity  `pulumi:"managedServiceIdentities"`
@@ -255,6 +259,7 @@ type ElastigroupAzureV3Args struct {
 	FallbackToOnDemand       pulumi.BoolInput
 	Health                   ElastigroupAzureV3HealthPtrInput
 	Images                   ElastigroupAzureV3ImageArrayInput
+	LicenseType              pulumi.StringPtrInput
 	LoadBalancers            ElastigroupAzureV3LoadBalancerArrayInput
 	Login                    ElastigroupAzureV3LoginPtrInput
 	ManagedServiceIdentities ElastigroupAzureV3ManagedServiceIdentityArrayInput
@@ -421,6 +426,10 @@ func (o ElastigroupAzureV3Output) Health() ElastigroupAzureV3HealthPtrOutput {
 
 func (o ElastigroupAzureV3Output) Images() ElastigroupAzureV3ImageArrayOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3ImageArrayOutput { return v.Images }).(ElastigroupAzureV3ImageArrayOutput)
+}
+
+func (o ElastigroupAzureV3Output) LicenseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringPtrOutput { return v.LicenseType }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupAzureV3Output) LoadBalancers() ElastigroupAzureV3LoadBalancerArrayOutput {

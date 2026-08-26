@@ -35,6 +35,12 @@ __all__ = [
     'OceanNpLinuxOsConfigArgsDict',
     'OceanNpLinuxOsConfigSysctlArgs',
     'OceanNpLinuxOsConfigSysctlArgsDict',
+    'OceanNpLocalDnsProfileArgs',
+    'OceanNpLocalDnsProfileArgsDict',
+    'OceanNpLocalDnsProfileKubeDnsOverrideArgs',
+    'OceanNpLocalDnsProfileKubeDnsOverrideArgsDict',
+    'OceanNpLocalDnsProfileVnetDnsOverrideArgs',
+    'OceanNpLocalDnsProfileVnetDnsOverrideArgsDict',
     'OceanNpLoggingArgs',
     'OceanNpLoggingArgsDict',
     'OceanNpLoggingExportArgs',
@@ -71,6 +77,12 @@ __all__ = [
     'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict',
     'OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs',
     'OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgsDict',
+    'OceanNpVirtualNodeGroupLocalDnsProfileArgs',
+    'OceanNpVirtualNodeGroupLocalDnsProfileArgsDict',
+    'OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgs',
+    'OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgsDict',
+    'OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgs',
+    'OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgsDict',
     'OceanNpVirtualNodeGroupSchedulingArgs',
     'OceanNpVirtualNodeGroupSchedulingArgsDict',
     'OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs',
@@ -875,6 +887,450 @@ class OceanNpLinuxOsConfigSysctlArgs:
     @vm_max_map_count.setter
     def vm_max_map_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vm_max_map_count", value)
+
+
+class OceanNpLocalDnsProfileArgsDict(TypedDict):
+    mode: pulumi.Input[_builtins.str]
+    """
+    The LocalDNS mode. Required when localDnsProfile is configured. Allowed values: `"Required"`, `"Preferred"`, `"Disabled"`.
+    """
+    kube_dns_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpLocalDnsProfileKubeDnsOverrideArgsDict']]]]]
+    """
+    Per-zone DNS override configuration for kube-dns/CoreDNS resolution. Keys are DNS zone names (e.g. `"."` or `"cluster.local"`) and all values are same as `vnet_dns_overrides`.
+    """
+    vnet_dns_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpLocalDnsProfileVnetDnsOverrideArgsDict']]]]]
+    """
+    Per-zone DNS override configuration for VNet DNS resolution. Keys are DNS zone names (`"."` or `"cluster.local"`).
+    """
+
+@pulumi.input_type
+class OceanNpLocalDnsProfileArgs:
+    def __init__(__self__, *,
+                 mode: pulumi.Input[_builtins.str],
+                 kube_dns_overrides: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpLocalDnsProfileKubeDnsOverrideArgs']]]] = None,
+                 vnet_dns_overrides: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpLocalDnsProfileVnetDnsOverrideArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] mode: The LocalDNS mode. Required when localDnsProfile is configured. Allowed values: `"Required"`, `"Preferred"`, `"Disabled"`.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanNpLocalDnsProfileKubeDnsOverrideArgs']]] kube_dns_overrides: Per-zone DNS override configuration for kube-dns/CoreDNS resolution. Keys are DNS zone names (e.g. `"."` or `"cluster.local"`) and all values are same as `vnet_dns_overrides`.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanNpLocalDnsProfileVnetDnsOverrideArgs']]] vnet_dns_overrides: Per-zone DNS override configuration for VNet DNS resolution. Keys are DNS zone names (`"."` or `"cluster.local"`).
+        """
+        pulumi.set(__self__, "mode", mode)
+        if kube_dns_overrides is not None:
+            pulumi.set(__self__, "kube_dns_overrides", kube_dns_overrides)
+        if vnet_dns_overrides is not None:
+            pulumi.set(__self__, "vnet_dns_overrides", vnet_dns_overrides)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[_builtins.str]:
+        """
+        The LocalDNS mode. Required when localDnsProfile is configured. Allowed values: `"Required"`, `"Preferred"`, `"Disabled"`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kubeDnsOverrides")
+    def kube_dns_overrides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpLocalDnsProfileKubeDnsOverrideArgs']]]]:
+        """
+        Per-zone DNS override configuration for kube-dns/CoreDNS resolution. Keys are DNS zone names (e.g. `"."` or `"cluster.local"`) and all values are same as `vnet_dns_overrides`.
+        """
+        return pulumi.get(self, "kube_dns_overrides")
+
+    @kube_dns_overrides.setter
+    def kube_dns_overrides(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpLocalDnsProfileKubeDnsOverrideArgs']]]]):
+        pulumi.set(self, "kube_dns_overrides", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vnetDnsOverrides")
+    def vnet_dns_overrides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpLocalDnsProfileVnetDnsOverrideArgs']]]]:
+        """
+        Per-zone DNS override configuration for VNet DNS resolution. Keys are DNS zone names (`"."` or `"cluster.local"`).
+        """
+        return pulumi.get(self, "vnet_dns_overrides")
+
+    @vnet_dns_overrides.setter
+    def vnet_dns_overrides(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpLocalDnsProfileVnetDnsOverrideArgs']]]]):
+        pulumi.set(self, "vnet_dns_overrides", value)
+
+
+class OceanNpLocalDnsProfileKubeDnsOverrideArgsDict(TypedDict):
+    zone: pulumi.Input[_builtins.str]
+    """
+    The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+    """
+    cache_duration_in_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+    """
+    forward_destination: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+    """
+    forward_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+    """
+    max_concurrent: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Maximum number of concurrent DNS queries handled by LocalDNS.
+    """
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+    """
+    query_logging: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+    """
+    serve_stale: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+    """
+    serve_stale_duration_in_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+    """
+
+@pulumi.input_type
+class OceanNpLocalDnsProfileKubeDnsOverrideArgs:
+    def __init__(__self__, *,
+                 zone: pulumi.Input[_builtins.str],
+                 cache_duration_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 forward_destination: pulumi.Input[Optional[_builtins.str]] = None,
+                 forward_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_concurrent: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_logging: pulumi.Input[Optional[_builtins.str]] = None,
+                 serve_stale: pulumi.Input[Optional[_builtins.str]] = None,
+                 serve_stale_duration_in_seconds: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] zone: The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+        :param pulumi.Input[_builtins.int] cache_duration_in_seconds: Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+        :param pulumi.Input[_builtins.str] forward_destination: Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+        :param pulumi.Input[_builtins.str] forward_policy: Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+        :param pulumi.Input[_builtins.int] max_concurrent: Maximum number of concurrent DNS queries handled by LocalDNS.
+        :param pulumi.Input[_builtins.str] protocol: Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+        :param pulumi.Input[_builtins.str] query_logging: Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+        :param pulumi.Input[_builtins.str] serve_stale: Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+        :param pulumi.Input[_builtins.int] serve_stale_duration_in_seconds: Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+        """
+        pulumi.set(__self__, "zone", zone)
+        if cache_duration_in_seconds is not None:
+            pulumi.set(__self__, "cache_duration_in_seconds", cache_duration_in_seconds)
+        if forward_destination is not None:
+            pulumi.set(__self__, "forward_destination", forward_destination)
+        if forward_policy is not None:
+            pulumi.set(__self__, "forward_policy", forward_policy)
+        if max_concurrent is not None:
+            pulumi.set(__self__, "max_concurrent", max_concurrent)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if query_logging is not None:
+            pulumi.set(__self__, "query_logging", query_logging)
+        if serve_stale is not None:
+            pulumi.set(__self__, "serve_stale", serve_stale)
+        if serve_stale_duration_in_seconds is not None:
+            pulumi.set(__self__, "serve_stale_duration_in_seconds", serve_stale_duration_in_seconds)
+
+    @_builtins.property
+    @pulumi.getter
+    def zone(self) -> pulumi.Input[_builtins.str]:
+        """
+        The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cacheDurationInSeconds")
+    def cache_duration_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+        """
+        return pulumi.get(self, "cache_duration_in_seconds")
+
+    @cache_duration_in_seconds.setter
+    def cache_duration_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "cache_duration_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardDestination")
+    def forward_destination(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+        """
+        return pulumi.get(self, "forward_destination")
+
+    @forward_destination.setter
+    def forward_destination(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "forward_destination", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardPolicy")
+    def forward_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+        """
+        return pulumi.get(self, "forward_policy")
+
+    @forward_policy.setter
+    def forward_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "forward_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxConcurrent")
+    def max_concurrent(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of concurrent DNS queries handled by LocalDNS.
+        """
+        return pulumi.get(self, "max_concurrent")
+
+    @max_concurrent.setter
+    def max_concurrent(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_concurrent", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protocol", value)
+
+    @_builtins.property
+    @pulumi.getter(name="queryLogging")
+    def query_logging(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+        """
+        return pulumi.get(self, "query_logging")
+
+    @query_logging.setter
+    def query_logging(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "query_logging", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serveStale")
+    def serve_stale(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+        """
+        return pulumi.get(self, "serve_stale")
+
+    @serve_stale.setter
+    def serve_stale(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "serve_stale", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serveStaleDurationInSeconds")
+    def serve_stale_duration_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+        """
+        return pulumi.get(self, "serve_stale_duration_in_seconds")
+
+    @serve_stale_duration_in_seconds.setter
+    def serve_stale_duration_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "serve_stale_duration_in_seconds", value)
+
+
+class OceanNpLocalDnsProfileVnetDnsOverrideArgsDict(TypedDict):
+    zone: pulumi.Input[_builtins.str]
+    """
+    The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+    """
+    cache_duration_in_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+    """
+    forward_destination: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+    """
+    forward_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+    """
+    max_concurrent: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Maximum number of concurrent DNS queries handled by LocalDNS.
+    """
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+    """
+    query_logging: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+    """
+    serve_stale: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+    """
+    serve_stale_duration_in_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+    """
+
+@pulumi.input_type
+class OceanNpLocalDnsProfileVnetDnsOverrideArgs:
+    def __init__(__self__, *,
+                 zone: pulumi.Input[_builtins.str],
+                 cache_duration_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 forward_destination: pulumi.Input[Optional[_builtins.str]] = None,
+                 forward_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_concurrent: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_logging: pulumi.Input[Optional[_builtins.str]] = None,
+                 serve_stale: pulumi.Input[Optional[_builtins.str]] = None,
+                 serve_stale_duration_in_seconds: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] zone: The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+        :param pulumi.Input[_builtins.int] cache_duration_in_seconds: Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+        :param pulumi.Input[_builtins.str] forward_destination: Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+        :param pulumi.Input[_builtins.str] forward_policy: Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+        :param pulumi.Input[_builtins.int] max_concurrent: Maximum number of concurrent DNS queries handled by LocalDNS.
+        :param pulumi.Input[_builtins.str] protocol: Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+        :param pulumi.Input[_builtins.str] query_logging: Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+        :param pulumi.Input[_builtins.str] serve_stale: Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+        :param pulumi.Input[_builtins.int] serve_stale_duration_in_seconds: Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+        """
+        pulumi.set(__self__, "zone", zone)
+        if cache_duration_in_seconds is not None:
+            pulumi.set(__self__, "cache_duration_in_seconds", cache_duration_in_seconds)
+        if forward_destination is not None:
+            pulumi.set(__self__, "forward_destination", forward_destination)
+        if forward_policy is not None:
+            pulumi.set(__self__, "forward_policy", forward_policy)
+        if max_concurrent is not None:
+            pulumi.set(__self__, "max_concurrent", max_concurrent)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if query_logging is not None:
+            pulumi.set(__self__, "query_logging", query_logging)
+        if serve_stale is not None:
+            pulumi.set(__self__, "serve_stale", serve_stale)
+        if serve_stale_duration_in_seconds is not None:
+            pulumi.set(__self__, "serve_stale_duration_in_seconds", serve_stale_duration_in_seconds)
+
+    @_builtins.property
+    @pulumi.getter
+    def zone(self) -> pulumi.Input[_builtins.str]:
+        """
+        The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cacheDurationInSeconds")
+    def cache_duration_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+        """
+        return pulumi.get(self, "cache_duration_in_seconds")
+
+    @cache_duration_in_seconds.setter
+    def cache_duration_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "cache_duration_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardDestination")
+    def forward_destination(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+        """
+        return pulumi.get(self, "forward_destination")
+
+    @forward_destination.setter
+    def forward_destination(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "forward_destination", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardPolicy")
+    def forward_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+        """
+        return pulumi.get(self, "forward_policy")
+
+    @forward_policy.setter
+    def forward_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "forward_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxConcurrent")
+    def max_concurrent(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of concurrent DNS queries handled by LocalDNS.
+        """
+        return pulumi.get(self, "max_concurrent")
+
+    @max_concurrent.setter
+    def max_concurrent(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_concurrent", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protocol", value)
+
+    @_builtins.property
+    @pulumi.getter(name="queryLogging")
+    def query_logging(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+        """
+        return pulumi.get(self, "query_logging")
+
+    @query_logging.setter
+    def query_logging(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "query_logging", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serveStale")
+    def serve_stale(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+        """
+        return pulumi.get(self, "serve_stale")
+
+    @serve_stale.setter
+    def serve_stale(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "serve_stale", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serveStaleDurationInSeconds")
+    def serve_stale_duration_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+        """
+        return pulumi.get(self, "serve_stale_duration_in_seconds")
+
+    @serve_stale_duration_in_seconds.setter
+    def serve_stale_duration_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "serve_stale_duration_in_seconds", value)
 
 
 class OceanNpLoggingArgsDict(TypedDict):
@@ -2233,6 +2689,450 @@ class OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs:
     @vm_max_map_count.setter
     def vm_max_map_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vm_max_map_count", value)
+
+
+class OceanNpVirtualNodeGroupLocalDnsProfileArgsDict(TypedDict):
+    mode: pulumi.Input[_builtins.str]
+    """
+    The LocalDNS mode. Required when localDnsProfile is configured. Allowed values: `"Required"`, `"Preferred"`, `"Disabled"`.
+    """
+    kube_dns_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgsDict']]]]]
+    """
+    Per-zone DNS override configuration for kube-dns/CoreDNS resolution. Keys are DNS zone names (e.g. `"."` or `"cluster.local"`) and all values are same as `vnet_dns_overrides`.
+    """
+    vnet_dns_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgsDict']]]]]
+    """
+    Per-zone DNS override configuration for VNet DNS resolution. Keys are DNS zone names (`"."` or `"cluster.local"`).
+    """
+
+@pulumi.input_type
+class OceanNpVirtualNodeGroupLocalDnsProfileArgs:
+    def __init__(__self__, *,
+                 mode: pulumi.Input[_builtins.str],
+                 kube_dns_overrides: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgs']]]] = None,
+                 vnet_dns_overrides: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] mode: The LocalDNS mode. Required when localDnsProfile is configured. Allowed values: `"Required"`, `"Preferred"`, `"Disabled"`.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgs']]] kube_dns_overrides: Per-zone DNS override configuration for kube-dns/CoreDNS resolution. Keys are DNS zone names (e.g. `"."` or `"cluster.local"`) and all values are same as `vnet_dns_overrides`.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgs']]] vnet_dns_overrides: Per-zone DNS override configuration for VNet DNS resolution. Keys are DNS zone names (`"."` or `"cluster.local"`).
+        """
+        pulumi.set(__self__, "mode", mode)
+        if kube_dns_overrides is not None:
+            pulumi.set(__self__, "kube_dns_overrides", kube_dns_overrides)
+        if vnet_dns_overrides is not None:
+            pulumi.set(__self__, "vnet_dns_overrides", vnet_dns_overrides)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[_builtins.str]:
+        """
+        The LocalDNS mode. Required when localDnsProfile is configured. Allowed values: `"Required"`, `"Preferred"`, `"Disabled"`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kubeDnsOverrides")
+    def kube_dns_overrides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgs']]]]:
+        """
+        Per-zone DNS override configuration for kube-dns/CoreDNS resolution. Keys are DNS zone names (e.g. `"."` or `"cluster.local"`) and all values are same as `vnet_dns_overrides`.
+        """
+        return pulumi.get(self, "kube_dns_overrides")
+
+    @kube_dns_overrides.setter
+    def kube_dns_overrides(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgs']]]]):
+        pulumi.set(self, "kube_dns_overrides", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vnetDnsOverrides")
+    def vnet_dns_overrides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgs']]]]:
+        """
+        Per-zone DNS override configuration for VNet DNS resolution. Keys are DNS zone names (`"."` or `"cluster.local"`).
+        """
+        return pulumi.get(self, "vnet_dns_overrides")
+
+    @vnet_dns_overrides.setter
+    def vnet_dns_overrides(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgs']]]]):
+        pulumi.set(self, "vnet_dns_overrides", value)
+
+
+class OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgsDict(TypedDict):
+    zone: pulumi.Input[_builtins.str]
+    """
+    The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+    """
+    cache_duration_in_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+    """
+    forward_destination: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+    """
+    forward_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+    """
+    max_concurrent: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Maximum number of concurrent DNS queries handled by LocalDNS.
+    """
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+    """
+    query_logging: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+    """
+    serve_stale: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+    """
+    serve_stale_duration_in_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+    """
+
+@pulumi.input_type
+class OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgs:
+    def __init__(__self__, *,
+                 zone: pulumi.Input[_builtins.str],
+                 cache_duration_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 forward_destination: pulumi.Input[Optional[_builtins.str]] = None,
+                 forward_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_concurrent: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_logging: pulumi.Input[Optional[_builtins.str]] = None,
+                 serve_stale: pulumi.Input[Optional[_builtins.str]] = None,
+                 serve_stale_duration_in_seconds: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] zone: The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+        :param pulumi.Input[_builtins.int] cache_duration_in_seconds: Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+        :param pulumi.Input[_builtins.str] forward_destination: Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+        :param pulumi.Input[_builtins.str] forward_policy: Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+        :param pulumi.Input[_builtins.int] max_concurrent: Maximum number of concurrent DNS queries handled by LocalDNS.
+        :param pulumi.Input[_builtins.str] protocol: Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+        :param pulumi.Input[_builtins.str] query_logging: Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+        :param pulumi.Input[_builtins.str] serve_stale: Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+        :param pulumi.Input[_builtins.int] serve_stale_duration_in_seconds: Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+        """
+        pulumi.set(__self__, "zone", zone)
+        if cache_duration_in_seconds is not None:
+            pulumi.set(__self__, "cache_duration_in_seconds", cache_duration_in_seconds)
+        if forward_destination is not None:
+            pulumi.set(__self__, "forward_destination", forward_destination)
+        if forward_policy is not None:
+            pulumi.set(__self__, "forward_policy", forward_policy)
+        if max_concurrent is not None:
+            pulumi.set(__self__, "max_concurrent", max_concurrent)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if query_logging is not None:
+            pulumi.set(__self__, "query_logging", query_logging)
+        if serve_stale is not None:
+            pulumi.set(__self__, "serve_stale", serve_stale)
+        if serve_stale_duration_in_seconds is not None:
+            pulumi.set(__self__, "serve_stale_duration_in_seconds", serve_stale_duration_in_seconds)
+
+    @_builtins.property
+    @pulumi.getter
+    def zone(self) -> pulumi.Input[_builtins.str]:
+        """
+        The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cacheDurationInSeconds")
+    def cache_duration_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+        """
+        return pulumi.get(self, "cache_duration_in_seconds")
+
+    @cache_duration_in_seconds.setter
+    def cache_duration_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "cache_duration_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardDestination")
+    def forward_destination(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+        """
+        return pulumi.get(self, "forward_destination")
+
+    @forward_destination.setter
+    def forward_destination(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "forward_destination", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardPolicy")
+    def forward_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+        """
+        return pulumi.get(self, "forward_policy")
+
+    @forward_policy.setter
+    def forward_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "forward_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxConcurrent")
+    def max_concurrent(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of concurrent DNS queries handled by LocalDNS.
+        """
+        return pulumi.get(self, "max_concurrent")
+
+    @max_concurrent.setter
+    def max_concurrent(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_concurrent", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protocol", value)
+
+    @_builtins.property
+    @pulumi.getter(name="queryLogging")
+    def query_logging(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+        """
+        return pulumi.get(self, "query_logging")
+
+    @query_logging.setter
+    def query_logging(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "query_logging", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serveStale")
+    def serve_stale(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+        """
+        return pulumi.get(self, "serve_stale")
+
+    @serve_stale.setter
+    def serve_stale(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "serve_stale", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serveStaleDurationInSeconds")
+    def serve_stale_duration_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+        """
+        return pulumi.get(self, "serve_stale_duration_in_seconds")
+
+    @serve_stale_duration_in_seconds.setter
+    def serve_stale_duration_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "serve_stale_duration_in_seconds", value)
+
+
+class OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgsDict(TypedDict):
+    zone: pulumi.Input[_builtins.str]
+    """
+    The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+    """
+    cache_duration_in_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+    """
+    forward_destination: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+    """
+    forward_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+    """
+    max_concurrent: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Maximum number of concurrent DNS queries handled by LocalDNS.
+    """
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+    """
+    query_logging: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+    """
+    serve_stale: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+    """
+    serve_stale_duration_in_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+    """
+
+@pulumi.input_type
+class OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgs:
+    def __init__(__self__, *,
+                 zone: pulumi.Input[_builtins.str],
+                 cache_duration_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 forward_destination: pulumi.Input[Optional[_builtins.str]] = None,
+                 forward_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_concurrent: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_logging: pulumi.Input[Optional[_builtins.str]] = None,
+                 serve_stale: pulumi.Input[Optional[_builtins.str]] = None,
+                 serve_stale_duration_in_seconds: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] zone: The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+        :param pulumi.Input[_builtins.int] cache_duration_in_seconds: Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+        :param pulumi.Input[_builtins.str] forward_destination: Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+        :param pulumi.Input[_builtins.str] forward_policy: Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+        :param pulumi.Input[_builtins.int] max_concurrent: Maximum number of concurrent DNS queries handled by LocalDNS.
+        :param pulumi.Input[_builtins.str] protocol: Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+        :param pulumi.Input[_builtins.str] query_logging: Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+        :param pulumi.Input[_builtins.str] serve_stale: Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+        :param pulumi.Input[_builtins.int] serve_stale_duration_in_seconds: Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+        """
+        pulumi.set(__self__, "zone", zone)
+        if cache_duration_in_seconds is not None:
+            pulumi.set(__self__, "cache_duration_in_seconds", cache_duration_in_seconds)
+        if forward_destination is not None:
+            pulumi.set(__self__, "forward_destination", forward_destination)
+        if forward_policy is not None:
+            pulumi.set(__self__, "forward_policy", forward_policy)
+        if max_concurrent is not None:
+            pulumi.set(__self__, "max_concurrent", max_concurrent)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if query_logging is not None:
+            pulumi.set(__self__, "query_logging", query_logging)
+        if serve_stale is not None:
+            pulumi.set(__self__, "serve_stale", serve_stale)
+        if serve_stale_duration_in_seconds is not None:
+            pulumi.set(__self__, "serve_stale_duration_in_seconds", serve_stale_duration_in_seconds)
+
+    @_builtins.property
+    @pulumi.getter
+    def zone(self) -> pulumi.Input[_builtins.str]:
+        """
+        The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cacheDurationInSeconds")
+    def cache_duration_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+        """
+        return pulumi.get(self, "cache_duration_in_seconds")
+
+    @cache_duration_in_seconds.setter
+    def cache_duration_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "cache_duration_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardDestination")
+    def forward_destination(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+        """
+        return pulumi.get(self, "forward_destination")
+
+    @forward_destination.setter
+    def forward_destination(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "forward_destination", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardPolicy")
+    def forward_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+        """
+        return pulumi.get(self, "forward_policy")
+
+    @forward_policy.setter
+    def forward_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "forward_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxConcurrent")
+    def max_concurrent(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of concurrent DNS queries handled by LocalDNS.
+        """
+        return pulumi.get(self, "max_concurrent")
+
+    @max_concurrent.setter
+    def max_concurrent(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_concurrent", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protocol", value)
+
+    @_builtins.property
+    @pulumi.getter(name="queryLogging")
+    def query_logging(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+        """
+        return pulumi.get(self, "query_logging")
+
+    @query_logging.setter
+    def query_logging(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "query_logging", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serveStale")
+    def serve_stale(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+        """
+        return pulumi.get(self, "serve_stale")
+
+    @serve_stale.setter
+    def serve_stale(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "serve_stale", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serveStaleDurationInSeconds")
+    def serve_stale_duration_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+        """
+        return pulumi.get(self, "serve_stale_duration_in_seconds")
+
+    @serve_stale_duration_in_seconds.setter
+    def serve_stale_duration_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "serve_stale_duration_in_seconds", value)
 
 
 class OceanNpVirtualNodeGroupSchedulingArgsDict(TypedDict):

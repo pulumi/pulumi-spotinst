@@ -112,6 +112,12 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<ElastigroupAzureV3Image>>> images() {
         return Codegen.optional(this.images);
     }
+    @Export(name="licenseType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> licenseType;
+
+    public Output<Optional<String>> licenseType() {
+        return Codegen.optional(this.licenseType);
+    }
     @Export(name="loadBalancers", refs={List.class,ElastigroupAzureV3LoadBalancer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupAzureV3LoadBalancer>> loadBalancers;
 

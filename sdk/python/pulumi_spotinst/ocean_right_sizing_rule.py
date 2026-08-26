@@ -25,9 +25,11 @@ class OceanRightSizingRuleArgs:
                  rule_name: pulumi.Input[_builtins.str],
                  attach_workloads: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadArgs']]]] = None,
                  auto_apply_definitions: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]]] = None,
+                 cpu_percentile: pulumi.Input[Optional[_builtins.int]] = None,
                  detach_workloads: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadArgs']]]] = None,
                  downside_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  exclude_preliminary_recommendations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 memory_percentile: pulumi.Input[Optional[_builtins.int]] = None,
                  ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
                  recommendation_application_boundaries: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationBoundaryArgs']]]] = None,
                  recommendation_application_hpas: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationHpaArgs']]]] = None,
@@ -40,7 +42,9 @@ class OceanRightSizingRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalArgs']]] recommendation_application_intervals: Determines the Ocean Rightsizing rule recommendation application intervals.
         :param pulumi.Input[_builtins.str] rule_name: The unique name of the rule.
         :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]] auto_apply_definitions: Ocean Rightsizing Rule Auto Apply Configuration.
+        :param pulumi.Input[_builtins.int] cpu_percentile: vCPU percentile for calculating recommendations.
         :param pulumi.Input[_builtins.bool] exclude_preliminary_recommendations: Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
+        :param pulumi.Input[_builtins.int] memory_percentile: Memory percentile for calculating recommendations.
         :param pulumi.Input[_builtins.str] ocean_id: Identifier of the Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationBoundaryArgs']]] recommendation_application_boundaries: Determines the Ocean Rightsizing rule recommendation application boundaries.
         :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationHpaArgs']]] recommendation_application_hpas: HPA Rightsizing Rule Recommendation Configuration
@@ -54,12 +58,16 @@ class OceanRightSizingRuleArgs:
             pulumi.set(__self__, "attach_workloads", attach_workloads)
         if auto_apply_definitions is not None:
             pulumi.set(__self__, "auto_apply_definitions", auto_apply_definitions)
+        if cpu_percentile is not None:
+            pulumi.set(__self__, "cpu_percentile", cpu_percentile)
         if detach_workloads is not None:
             pulumi.set(__self__, "detach_workloads", detach_workloads)
         if downside_only is not None:
             pulumi.set(__self__, "downside_only", downside_only)
         if exclude_preliminary_recommendations is not None:
             pulumi.set(__self__, "exclude_preliminary_recommendations", exclude_preliminary_recommendations)
+        if memory_percentile is not None:
+            pulumi.set(__self__, "memory_percentile", memory_percentile)
         if ocean_id is not None:
             pulumi.set(__self__, "ocean_id", ocean_id)
         if recommendation_application_boundaries is not None:
@@ -119,6 +127,18 @@ class OceanRightSizingRuleArgs:
         pulumi.set(self, "auto_apply_definitions", value)
 
     @_builtins.property
+    @pulumi.getter(name="cpuPercentile")
+    def cpu_percentile(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        vCPU percentile for calculating recommendations.
+        """
+        return pulumi.get(self, "cpu_percentile")
+
+    @cpu_percentile.setter
+    def cpu_percentile(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "cpu_percentile", value)
+
+    @_builtins.property
     @pulumi.getter(name="detachWorkloads")
     def detach_workloads(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadArgs']]]]:
         return pulumi.get(self, "detach_workloads")
@@ -147,6 +167,18 @@ class OceanRightSizingRuleArgs:
     @exclude_preliminary_recommendations.setter
     def exclude_preliminary_recommendations(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "exclude_preliminary_recommendations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="memoryPercentile")
+    def memory_percentile(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Memory percentile for calculating recommendations.
+        """
+        return pulumi.get(self, "memory_percentile")
+
+    @memory_percentile.setter
+    def memory_percentile(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "memory_percentile", value)
 
     @_builtins.property
     @pulumi.getter(name="oceanId")
@@ -226,9 +258,11 @@ class _OceanRightSizingRuleState:
     def __init__(__self__, *,
                  attach_workloads: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAttachWorkloadArgs']]]] = None,
                  auto_apply_definitions: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]]] = None,
+                 cpu_percentile: pulumi.Input[Optional[_builtins.int]] = None,
                  detach_workloads: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadArgs']]]] = None,
                  downside_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  exclude_preliminary_recommendations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 memory_percentile: pulumi.Input[Optional[_builtins.int]] = None,
                  ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
                  recommendation_application_boundaries: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationBoundaryArgs']]]] = None,
                  recommendation_application_hpas: pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationHpaArgs']]]] = None,
@@ -241,7 +275,9 @@ class _OceanRightSizingRuleState:
         Input properties used for looking up and filtering OceanRightSizingRule resources.
 
         :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleAutoApplyDefinitionArgs']]] auto_apply_definitions: Ocean Rightsizing Rule Auto Apply Configuration.
+        :param pulumi.Input[_builtins.int] cpu_percentile: vCPU percentile for calculating recommendations.
         :param pulumi.Input[_builtins.bool] exclude_preliminary_recommendations: Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
+        :param pulumi.Input[_builtins.int] memory_percentile: Memory percentile for calculating recommendations.
         :param pulumi.Input[_builtins.str] ocean_id: Identifier of the Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationBoundaryArgs']]] recommendation_application_boundaries: Determines the Ocean Rightsizing rule recommendation application boundaries.
         :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationHpaArgs']]] recommendation_application_hpas: HPA Rightsizing Rule Recommendation Configuration
@@ -255,12 +291,16 @@ class _OceanRightSizingRuleState:
             pulumi.set(__self__, "attach_workloads", attach_workloads)
         if auto_apply_definitions is not None:
             pulumi.set(__self__, "auto_apply_definitions", auto_apply_definitions)
+        if cpu_percentile is not None:
+            pulumi.set(__self__, "cpu_percentile", cpu_percentile)
         if detach_workloads is not None:
             pulumi.set(__self__, "detach_workloads", detach_workloads)
         if downside_only is not None:
             pulumi.set(__self__, "downside_only", downside_only)
         if exclude_preliminary_recommendations is not None:
             pulumi.set(__self__, "exclude_preliminary_recommendations", exclude_preliminary_recommendations)
+        if memory_percentile is not None:
+            pulumi.set(__self__, "memory_percentile", memory_percentile)
         if ocean_id is not None:
             pulumi.set(__self__, "ocean_id", ocean_id)
         if recommendation_application_boundaries is not None:
@@ -300,6 +340,18 @@ class _OceanRightSizingRuleState:
         pulumi.set(self, "auto_apply_definitions", value)
 
     @_builtins.property
+    @pulumi.getter(name="cpuPercentile")
+    def cpu_percentile(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        vCPU percentile for calculating recommendations.
+        """
+        return pulumi.get(self, "cpu_percentile")
+
+    @cpu_percentile.setter
+    def cpu_percentile(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "cpu_percentile", value)
+
+    @_builtins.property
     @pulumi.getter(name="detachWorkloads")
     def detach_workloads(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanRightSizingRuleDetachWorkloadArgs']]]]:
         return pulumi.get(self, "detach_workloads")
@@ -328,6 +380,18 @@ class _OceanRightSizingRuleState:
     @exclude_preliminary_recommendations.setter
     def exclude_preliminary_recommendations(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "exclude_preliminary_recommendations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="memoryPercentile")
+    def memory_percentile(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Memory percentile for calculating recommendations.
+        """
+        return pulumi.get(self, "memory_percentile")
+
+    @memory_percentile.setter
+    def memory_percentile(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "memory_percentile", value)
 
     @_builtins.property
     @pulumi.getter(name="oceanId")
@@ -434,9 +498,11 @@ class OceanRightSizingRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attach_workloads: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleAttachWorkloadArgs', 'OceanRightSizingRuleAttachWorkloadArgsDict']]]]] = None,
                  auto_apply_definitions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleAutoApplyDefinitionArgs', 'OceanRightSizingRuleAutoApplyDefinitionArgsDict']]]]] = None,
+                 cpu_percentile: pulumi.Input[Optional[_builtins.int]] = None,
                  detach_workloads: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleDetachWorkloadArgs', 'OceanRightSizingRuleDetachWorkloadArgsDict']]]]] = None,
                  downside_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  exclude_preliminary_recommendations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 memory_percentile: pulumi.Input[Optional[_builtins.int]] = None,
                  ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
                  recommendation_application_boundaries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationBoundaryArgs', 'OceanRightSizingRuleRecommendationApplicationBoundaryArgsDict']]]]] = None,
                  recommendation_application_hpas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationHpaArgs', 'OceanRightSizingRuleRecommendationApplicationHpaArgsDict']]]]] = None,
@@ -460,6 +526,8 @@ class OceanRightSizingRule(pulumi.CustomResource):
             rule_name="test-rule",
             exclude_preliminary_recommendations=True,
             restart_replicas="ALL_MANIFEST",
+            cpu_percentile=95,
+            memory_percentile=90,
             recommendation_application_hpas=[{
                 "allow_hpa_recommendations": True,
             }],
@@ -526,7 +594,9 @@ class OceanRightSizingRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleAutoApplyDefinitionArgs', 'OceanRightSizingRuleAutoApplyDefinitionArgsDict']]]] auto_apply_definitions: Ocean Rightsizing Rule Auto Apply Configuration.
+        :param pulumi.Input[_builtins.int] cpu_percentile: vCPU percentile for calculating recommendations.
         :param pulumi.Input[_builtins.bool] exclude_preliminary_recommendations: Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
+        :param pulumi.Input[_builtins.int] memory_percentile: Memory percentile for calculating recommendations.
         :param pulumi.Input[_builtins.str] ocean_id: Identifier of the Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationBoundaryArgs', 'OceanRightSizingRuleRecommendationApplicationBoundaryArgsDict']]]] recommendation_application_boundaries: Determines the Ocean Rightsizing rule recommendation application boundaries.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationHpaArgs', 'OceanRightSizingRuleRecommendationApplicationHpaArgsDict']]]] recommendation_application_hpas: HPA Rightsizing Rule Recommendation Configuration
@@ -556,6 +626,8 @@ class OceanRightSizingRule(pulumi.CustomResource):
             rule_name="test-rule",
             exclude_preliminary_recommendations=True,
             restart_replicas="ALL_MANIFEST",
+            cpu_percentile=95,
+            memory_percentile=90,
             recommendation_application_hpas=[{
                 "allow_hpa_recommendations": True,
             }],
@@ -636,9 +708,11 @@ class OceanRightSizingRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attach_workloads: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleAttachWorkloadArgs', 'OceanRightSizingRuleAttachWorkloadArgsDict']]]]] = None,
                  auto_apply_definitions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleAutoApplyDefinitionArgs', 'OceanRightSizingRuleAutoApplyDefinitionArgsDict']]]]] = None,
+                 cpu_percentile: pulumi.Input[Optional[_builtins.int]] = None,
                  detach_workloads: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleDetachWorkloadArgs', 'OceanRightSizingRuleDetachWorkloadArgsDict']]]]] = None,
                  downside_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  exclude_preliminary_recommendations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 memory_percentile: pulumi.Input[Optional[_builtins.int]] = None,
                  ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
                  recommendation_application_boundaries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationBoundaryArgs', 'OceanRightSizingRuleRecommendationApplicationBoundaryArgsDict']]]]] = None,
                  recommendation_application_hpas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationHpaArgs', 'OceanRightSizingRuleRecommendationApplicationHpaArgsDict']]]]] = None,
@@ -658,9 +732,11 @@ class OceanRightSizingRule(pulumi.CustomResource):
 
             __props__.__dict__["attach_workloads"] = attach_workloads
             __props__.__dict__["auto_apply_definitions"] = auto_apply_definitions
+            __props__.__dict__["cpu_percentile"] = cpu_percentile
             __props__.__dict__["detach_workloads"] = detach_workloads
             __props__.__dict__["downside_only"] = downside_only
             __props__.__dict__["exclude_preliminary_recommendations"] = exclude_preliminary_recommendations
+            __props__.__dict__["memory_percentile"] = memory_percentile
             __props__.__dict__["ocean_id"] = ocean_id
             __props__.__dict__["recommendation_application_boundaries"] = recommendation_application_boundaries
             __props__.__dict__["recommendation_application_hpas"] = recommendation_application_hpas
@@ -685,9 +761,11 @@ class OceanRightSizingRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             attach_workloads: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleAttachWorkloadArgs', 'OceanRightSizingRuleAttachWorkloadArgsDict']]]]] = None,
             auto_apply_definitions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleAutoApplyDefinitionArgs', 'OceanRightSizingRuleAutoApplyDefinitionArgsDict']]]]] = None,
+            cpu_percentile: pulumi.Input[Optional[_builtins.int]] = None,
             detach_workloads: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleDetachWorkloadArgs', 'OceanRightSizingRuleDetachWorkloadArgsDict']]]]] = None,
             downside_only: pulumi.Input[Optional[_builtins.bool]] = None,
             exclude_preliminary_recommendations: pulumi.Input[Optional[_builtins.bool]] = None,
+            memory_percentile: pulumi.Input[Optional[_builtins.int]] = None,
             ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
             recommendation_application_boundaries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationBoundaryArgs', 'OceanRightSizingRuleRecommendationApplicationBoundaryArgsDict']]]]] = None,
             recommendation_application_hpas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationHpaArgs', 'OceanRightSizingRuleRecommendationApplicationHpaArgsDict']]]]] = None,
@@ -704,7 +782,9 @@ class OceanRightSizingRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleAutoApplyDefinitionArgs', 'OceanRightSizingRuleAutoApplyDefinitionArgsDict']]]] auto_apply_definitions: Ocean Rightsizing Rule Auto Apply Configuration.
+        :param pulumi.Input[_builtins.int] cpu_percentile: vCPU percentile for calculating recommendations.
         :param pulumi.Input[_builtins.bool] exclude_preliminary_recommendations: Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
+        :param pulumi.Input[_builtins.int] memory_percentile: Memory percentile for calculating recommendations.
         :param pulumi.Input[_builtins.str] ocean_id: Identifier of the Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationBoundaryArgs', 'OceanRightSizingRuleRecommendationApplicationBoundaryArgsDict']]]] recommendation_application_boundaries: Determines the Ocean Rightsizing rule recommendation application boundaries.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationHpaArgs', 'OceanRightSizingRuleRecommendationApplicationHpaArgsDict']]]] recommendation_application_hpas: HPA Rightsizing Rule Recommendation Configuration
@@ -720,9 +800,11 @@ class OceanRightSizingRule(pulumi.CustomResource):
 
         __props__.__dict__["attach_workloads"] = attach_workloads
         __props__.__dict__["auto_apply_definitions"] = auto_apply_definitions
+        __props__.__dict__["cpu_percentile"] = cpu_percentile
         __props__.__dict__["detach_workloads"] = detach_workloads
         __props__.__dict__["downside_only"] = downside_only
         __props__.__dict__["exclude_preliminary_recommendations"] = exclude_preliminary_recommendations
+        __props__.__dict__["memory_percentile"] = memory_percentile
         __props__.__dict__["ocean_id"] = ocean_id
         __props__.__dict__["recommendation_application_boundaries"] = recommendation_application_boundaries
         __props__.__dict__["recommendation_application_hpas"] = recommendation_application_hpas
@@ -747,6 +829,14 @@ class OceanRightSizingRule(pulumi.CustomResource):
         return pulumi.get(self, "auto_apply_definitions")
 
     @_builtins.property
+    @pulumi.getter(name="cpuPercentile")
+    def cpu_percentile(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        vCPU percentile for calculating recommendations.
+        """
+        return pulumi.get(self, "cpu_percentile")
+
+    @_builtins.property
     @pulumi.getter(name="detachWorkloads")
     def detach_workloads(self) -> pulumi.Output[Optional[Sequence['outputs.OceanRightSizingRuleDetachWorkload']]]:
         return pulumi.get(self, "detach_workloads")
@@ -763,6 +853,14 @@ class OceanRightSizingRule(pulumi.CustomResource):
         Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
         """
         return pulumi.get(self, "exclude_preliminary_recommendations")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryPercentile")
+    def memory_percentile(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Memory percentile for calculating recommendations.
+        """
+        return pulumi.get(self, "memory_percentile")
 
     @_builtins.property
     @pulumi.getter(name="oceanId")

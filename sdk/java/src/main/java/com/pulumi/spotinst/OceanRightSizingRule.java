@@ -19,6 +19,7 @@ import com.pulumi.spotinst.outputs.OceanRightSizingRuleRecommendationApplication
 import com.pulumi.spotinst.outputs.OceanRightSizingRuleRecommendationApplicationMinThreshold;
 import com.pulumi.spotinst.outputs.OceanRightSizingRuleRecommendationApplicationOverheadValue;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -65,6 +66,8 @@ import javax.annotation.Nullable;
  *             .ruleName("test-rule")
  *             .excludePreliminaryRecommendations(true)
  *             .restartReplicas("ALL_MANIFEST")
+ *             .cpuPercentile(95)
+ *             .memoryPercentile(90)
  *             .recommendationApplicationHpas(OceanRightSizingRuleRecommendationApplicationHpaArgs.builder()
  *                 .allowHpaRecommendations(true)
  *                 .build())
@@ -150,6 +153,20 @@ public class OceanRightSizingRule extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<OceanRightSizingRuleAutoApplyDefinition>>> autoApplyDefinitions() {
         return Codegen.optional(this.autoApplyDefinitions);
     }
+    /**
+     * vCPU percentile for calculating recommendations.
+     * 
+     */
+    @Export(name="cpuPercentile", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> cpuPercentile;
+
+    /**
+     * @return vCPU percentile for calculating recommendations.
+     * 
+     */
+    public Output<Optional<Integer>> cpuPercentile() {
+        return Codegen.optional(this.cpuPercentile);
+    }
     @Export(name="detachWorkloads", refs={List.class,OceanRightSizingRuleDetachWorkload.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanRightSizingRuleDetachWorkload>> detachWorkloads;
 
@@ -175,6 +192,20 @@ public class OceanRightSizingRule extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> excludePreliminaryRecommendations() {
         return Codegen.optional(this.excludePreliminaryRecommendations);
+    }
+    /**
+     * Memory percentile for calculating recommendations.
+     * 
+     */
+    @Export(name="memoryPercentile", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> memoryPercentile;
+
+    /**
+     * @return Memory percentile for calculating recommendations.
+     * 
+     */
+    public Output<Optional<Integer>> memoryPercentile() {
+        return Codegen.optional(this.memoryPercentile);
     }
     /**
      * Identifier of the Ocean cluster.
