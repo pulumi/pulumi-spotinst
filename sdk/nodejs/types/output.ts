@@ -3719,6 +3719,99 @@ export namespace azure {
         vmMaxMapCount?: number;
     }
 
+    export interface OceanNpLocalDnsProfile {
+        /**
+         * Per-zone DNS override configuration for kube-dns/CoreDNS resolution. Keys are DNS zone names (e.g. `"."` or `"cluster.local"`) and all values are same as `vnetDnsOverrides`.
+         */
+        kubeDnsOverrides?: outputs.azure.OceanNpLocalDnsProfileKubeDnsOverride[];
+        /**
+         * The LocalDNS mode. Required when localDnsProfile is configured. Allowed values: `"Required"`, `"Preferred"`, `"Disabled"`.
+         */
+        mode: string;
+        /**
+         * Per-zone DNS override configuration for VNet DNS resolution. Keys are DNS zone names (`"."` or `"cluster.local"`).
+         */
+        vnetDnsOverrides?: outputs.azure.OceanNpLocalDnsProfileVnetDnsOverride[];
+    }
+
+    export interface OceanNpLocalDnsProfileKubeDnsOverride {
+        /**
+         * Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+         */
+        cacheDurationInSeconds?: number;
+        /**
+         * Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+         */
+        forwardDestination?: string;
+        /**
+         * Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+         */
+        forwardPolicy?: string;
+        /**
+         * Maximum number of concurrent DNS queries handled by LocalDNS.
+         */
+        maxConcurrent?: number;
+        /**
+         * Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+         */
+        protocol?: string;
+        /**
+         * Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+         */
+        queryLogging?: string;
+        /**
+         * Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+         */
+        serveStale?: string;
+        /**
+         * Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+         */
+        serveStaleDurationInSeconds?: number;
+        /**
+         * The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+         */
+        zone: string;
+    }
+
+    export interface OceanNpLocalDnsProfileVnetDnsOverride {
+        /**
+         * Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+         */
+        cacheDurationInSeconds?: number;
+        /**
+         * Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+         */
+        forwardDestination?: string;
+        /**
+         * Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+         */
+        forwardPolicy?: string;
+        /**
+         * Maximum number of concurrent DNS queries handled by LocalDNS.
+         */
+        maxConcurrent?: number;
+        /**
+         * Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+         */
+        protocol?: string;
+        /**
+         * Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+         */
+        queryLogging?: string;
+        /**
+         * Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+         */
+        serveStale?: string;
+        /**
+         * Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+         */
+        serveStaleDurationInSeconds?: number;
+        /**
+         * The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+         */
+        zone: string;
+    }
+
     export interface OceanNpLogging {
         /**
          * The Ocean AKS Logging Export object.
@@ -3992,6 +4085,99 @@ export namespace azure {
          * Maximum number of memory map areas a process may have. Can be configured only if OS type is Linux.
          */
         vmMaxMapCount?: number;
+    }
+
+    export interface OceanNpVirtualNodeGroupLocalDnsProfile {
+        /**
+         * Per-zone DNS override configuration for kube-dns/CoreDNS resolution. Keys are DNS zone names (e.g. `"."` or `"cluster.local"`) and all values are same as `vnetDnsOverrides`.
+         */
+        kubeDnsOverrides?: outputs.azure.OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverride[];
+        /**
+         * The LocalDNS mode. Required when localDnsProfile is configured. Allowed values: `"Required"`, `"Preferred"`, `"Disabled"`.
+         */
+        mode: string;
+        /**
+         * Per-zone DNS override configuration for VNet DNS resolution. Keys are DNS zone names (`"."` or `"cluster.local"`).
+         */
+        vnetDnsOverrides?: outputs.azure.OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverride[];
+    }
+
+    export interface OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverride {
+        /**
+         * Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+         */
+        cacheDurationInSeconds?: number;
+        /**
+         * Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+         */
+        forwardDestination?: string;
+        /**
+         * Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+         */
+        forwardPolicy?: string;
+        /**
+         * Maximum number of concurrent DNS queries handled by LocalDNS.
+         */
+        maxConcurrent?: number;
+        /**
+         * Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+         */
+        protocol?: string;
+        /**
+         * Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+         */
+        queryLogging?: string;
+        /**
+         * Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+         */
+        serveStale?: string;
+        /**
+         * Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+         */
+        serveStaleDurationInSeconds?: number;
+        /**
+         * The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+         */
+        zone: string;
+    }
+
+    export interface OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverride {
+        /**
+         * Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+         */
+        cacheDurationInSeconds?: number;
+        /**
+         * Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+         */
+        forwardDestination?: string;
+        /**
+         * Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+         */
+        forwardPolicy?: string;
+        /**
+         * Maximum number of concurrent DNS queries handled by LocalDNS.
+         */
+        maxConcurrent?: number;
+        /**
+         * Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+         */
+        protocol?: string;
+        /**
+         * Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+         */
+        queryLogging?: string;
+        /**
+         * Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+         */
+        serveStale?: string;
+        /**
+         * Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+         */
+        serveStaleDurationInSeconds?: number;
+        /**
+         * The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+         */
+        zone: string;
     }
 
     export interface OceanNpVirtualNodeGroupScheduling {

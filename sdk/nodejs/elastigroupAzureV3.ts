@@ -46,6 +46,7 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
     declare public readonly fallbackToOnDemand: pulumi.Output<boolean>;
     declare public readonly health: pulumi.Output<outputs.ElastigroupAzureV3Health | undefined>;
     declare public readonly images: pulumi.Output<outputs.ElastigroupAzureV3Image[] | undefined>;
+    declare public readonly licenseType: pulumi.Output<string | undefined>;
     declare public readonly loadBalancers: pulumi.Output<outputs.ElastigroupAzureV3LoadBalancer[] | undefined>;
     declare public readonly login: pulumi.Output<outputs.ElastigroupAzureV3Login | undefined>;
     declare public readonly managedServiceIdentities: pulumi.Output<outputs.ElastigroupAzureV3ManagedServiceIdentity[] | undefined>;
@@ -101,6 +102,7 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
             resourceInputs["fallbackToOnDemand"] = state?.fallbackToOnDemand;
             resourceInputs["health"] = state?.health;
             resourceInputs["images"] = state?.images;
+            resourceInputs["licenseType"] = state?.licenseType;
             resourceInputs["loadBalancers"] = state?.loadBalancers;
             resourceInputs["login"] = state?.login;
             resourceInputs["managedServiceIdentities"] = state?.managedServiceIdentities;
@@ -162,6 +164,7 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
             resourceInputs["fallbackToOnDemand"] = args?.fallbackToOnDemand;
             resourceInputs["health"] = args?.health;
             resourceInputs["images"] = args?.images;
+            resourceInputs["licenseType"] = args?.licenseType;
             resourceInputs["loadBalancers"] = args?.loadBalancers;
             resourceInputs["login"] = args?.login;
             resourceInputs["managedServiceIdentities"] = args?.managedServiceIdentities;
@@ -213,6 +216,7 @@ export interface ElastigroupAzureV3State {
     fallbackToOnDemand?: pulumi.Input<boolean | undefined>;
     health?: pulumi.Input<inputs.ElastigroupAzureV3Health | undefined>;
     images?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3Image>[] | undefined>;
+    licenseType?: pulumi.Input<string | undefined>;
     loadBalancers?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3LoadBalancer>[] | undefined>;
     login?: pulumi.Input<inputs.ElastigroupAzureV3Login | undefined>;
     managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ManagedServiceIdentity>[] | undefined>;
@@ -260,6 +264,7 @@ export interface ElastigroupAzureV3Args {
     fallbackToOnDemand: pulumi.Input<boolean>;
     health?: pulumi.Input<inputs.ElastigroupAzureV3Health | undefined>;
     images?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3Image>[] | undefined>;
+    licenseType?: pulumi.Input<string | undefined>;
     loadBalancers?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3LoadBalancer>[] | undefined>;
     login?: pulumi.Input<inputs.ElastigroupAzureV3Login | undefined>;
     managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3ManagedServiceIdentity>[] | undefined>;

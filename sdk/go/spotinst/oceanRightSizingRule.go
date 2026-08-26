@@ -33,6 +33,8 @@ import (
 //				RuleName:                          pulumi.String("test-rule"),
 //				ExcludePreliminaryRecommendations: pulumi.Bool(true),
 //				RestartReplicas:                   pulumi.String("ALL_MANIFEST"),
+//				CpuPercentile:                     pulumi.Int(95),
+//				MemoryPercentile:                  pulumi.Int(90),
 //				RecommendationApplicationHpas: spotinst.OceanRightSizingRuleRecommendationApplicationHpaArray{
 //					&spotinst.OceanRightSizingRuleRecommendationApplicationHpaArgs{
 //						AllowHpaRecommendations: pulumi.Bool(true),
@@ -126,10 +128,14 @@ type OceanRightSizingRule struct {
 	AttachWorkloads OceanRightSizingRuleAttachWorkloadArrayOutput `pulumi:"attachWorkloads"`
 	// Ocean Rightsizing Rule Auto Apply Configuration.
 	AutoApplyDefinitions OceanRightSizingRuleAutoApplyDefinitionArrayOutput `pulumi:"autoApplyDefinitions"`
-	DetachWorkloads      OceanRightSizingRuleDetachWorkloadArrayOutput      `pulumi:"detachWorkloads"`
-	DownsideOnly         pulumi.BoolPtrOutput                               `pulumi:"downsideOnly"`
+	// vCPU percentile for calculating recommendations.
+	CpuPercentile   pulumi.IntPtrOutput                           `pulumi:"cpuPercentile"`
+	DetachWorkloads OceanRightSizingRuleDetachWorkloadArrayOutput `pulumi:"detachWorkloads"`
+	DownsideOnly    pulumi.BoolPtrOutput                          `pulumi:"downsideOnly"`
 	// Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
 	ExcludePreliminaryRecommendations pulumi.BoolPtrOutput `pulumi:"excludePreliminaryRecommendations"`
+	// Memory percentile for calculating recommendations.
+	MemoryPercentile pulumi.IntPtrOutput `pulumi:"memoryPercentile"`
 	// Identifier of the Ocean cluster.
 	OceanId pulumi.StringPtrOutput `pulumi:"oceanId"`
 	// Determines the Ocean Rightsizing rule recommendation application boundaries.
@@ -187,10 +193,14 @@ type oceanRightSizingRuleState struct {
 	AttachWorkloads []OceanRightSizingRuleAttachWorkload `pulumi:"attachWorkloads"`
 	// Ocean Rightsizing Rule Auto Apply Configuration.
 	AutoApplyDefinitions []OceanRightSizingRuleAutoApplyDefinition `pulumi:"autoApplyDefinitions"`
-	DetachWorkloads      []OceanRightSizingRuleDetachWorkload      `pulumi:"detachWorkloads"`
-	DownsideOnly         *bool                                     `pulumi:"downsideOnly"`
+	// vCPU percentile for calculating recommendations.
+	CpuPercentile   *int                                 `pulumi:"cpuPercentile"`
+	DetachWorkloads []OceanRightSizingRuleDetachWorkload `pulumi:"detachWorkloads"`
+	DownsideOnly    *bool                                `pulumi:"downsideOnly"`
 	// Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
 	ExcludePreliminaryRecommendations *bool `pulumi:"excludePreliminaryRecommendations"`
+	// Memory percentile for calculating recommendations.
+	MemoryPercentile *int `pulumi:"memoryPercentile"`
 	// Identifier of the Ocean cluster.
 	OceanId *string `pulumi:"oceanId"`
 	// Determines the Ocean Rightsizing rule recommendation application boundaries.
@@ -213,10 +223,14 @@ type OceanRightSizingRuleState struct {
 	AttachWorkloads OceanRightSizingRuleAttachWorkloadArrayInput
 	// Ocean Rightsizing Rule Auto Apply Configuration.
 	AutoApplyDefinitions OceanRightSizingRuleAutoApplyDefinitionArrayInput
-	DetachWorkloads      OceanRightSizingRuleDetachWorkloadArrayInput
-	DownsideOnly         pulumi.BoolPtrInput
+	// vCPU percentile for calculating recommendations.
+	CpuPercentile   pulumi.IntPtrInput
+	DetachWorkloads OceanRightSizingRuleDetachWorkloadArrayInput
+	DownsideOnly    pulumi.BoolPtrInput
 	// Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
 	ExcludePreliminaryRecommendations pulumi.BoolPtrInput
+	// Memory percentile for calculating recommendations.
+	MemoryPercentile pulumi.IntPtrInput
 	// Identifier of the Ocean cluster.
 	OceanId pulumi.StringPtrInput
 	// Determines the Ocean Rightsizing rule recommendation application boundaries.
@@ -243,10 +257,14 @@ type oceanRightSizingRuleArgs struct {
 	AttachWorkloads []OceanRightSizingRuleAttachWorkload `pulumi:"attachWorkloads"`
 	// Ocean Rightsizing Rule Auto Apply Configuration.
 	AutoApplyDefinitions []OceanRightSizingRuleAutoApplyDefinition `pulumi:"autoApplyDefinitions"`
-	DetachWorkloads      []OceanRightSizingRuleDetachWorkload      `pulumi:"detachWorkloads"`
-	DownsideOnly         *bool                                     `pulumi:"downsideOnly"`
+	// vCPU percentile for calculating recommendations.
+	CpuPercentile   *int                                 `pulumi:"cpuPercentile"`
+	DetachWorkloads []OceanRightSizingRuleDetachWorkload `pulumi:"detachWorkloads"`
+	DownsideOnly    *bool                                `pulumi:"downsideOnly"`
 	// Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
 	ExcludePreliminaryRecommendations *bool `pulumi:"excludePreliminaryRecommendations"`
+	// Memory percentile for calculating recommendations.
+	MemoryPercentile *int `pulumi:"memoryPercentile"`
 	// Identifier of the Ocean cluster.
 	OceanId *string `pulumi:"oceanId"`
 	// Determines the Ocean Rightsizing rule recommendation application boundaries.
@@ -270,10 +288,14 @@ type OceanRightSizingRuleArgs struct {
 	AttachWorkloads OceanRightSizingRuleAttachWorkloadArrayInput
 	// Ocean Rightsizing Rule Auto Apply Configuration.
 	AutoApplyDefinitions OceanRightSizingRuleAutoApplyDefinitionArrayInput
-	DetachWorkloads      OceanRightSizingRuleDetachWorkloadArrayInput
-	DownsideOnly         pulumi.BoolPtrInput
+	// vCPU percentile for calculating recommendations.
+	CpuPercentile   pulumi.IntPtrInput
+	DetachWorkloads OceanRightSizingRuleDetachWorkloadArrayInput
+	DownsideOnly    pulumi.BoolPtrInput
 	// Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
 	ExcludePreliminaryRecommendations pulumi.BoolPtrInput
+	// Memory percentile for calculating recommendations.
+	MemoryPercentile pulumi.IntPtrInput
 	// Identifier of the Ocean cluster.
 	OceanId pulumi.StringPtrInput
 	// Determines the Ocean Rightsizing rule recommendation application boundaries.
@@ -390,6 +412,11 @@ func (o OceanRightSizingRuleOutput) AutoApplyDefinitions() OceanRightSizingRuleA
 	}).(OceanRightSizingRuleAutoApplyDefinitionArrayOutput)
 }
 
+// vCPU percentile for calculating recommendations.
+func (o OceanRightSizingRuleOutput) CpuPercentile() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanRightSizingRule) pulumi.IntPtrOutput { return v.CpuPercentile }).(pulumi.IntPtrOutput)
+}
+
 func (o OceanRightSizingRuleOutput) DetachWorkloads() OceanRightSizingRuleDetachWorkloadArrayOutput {
 	return o.ApplyT(func(v *OceanRightSizingRule) OceanRightSizingRuleDetachWorkloadArrayOutput { return v.DetachWorkloads }).(OceanRightSizingRuleDetachWorkloadArrayOutput)
 }
@@ -401,6 +428,11 @@ func (o OceanRightSizingRuleOutput) DownsideOnly() pulumi.BoolPtrOutput {
 // Exclude preliminary recommendations (recommendations based on less than 4 full days of data).
 func (o OceanRightSizingRuleOutput) ExcludePreliminaryRecommendations() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanRightSizingRule) pulumi.BoolPtrOutput { return v.ExcludePreliminaryRecommendations }).(pulumi.BoolPtrOutput)
+}
+
+// Memory percentile for calculating recommendations.
+func (o OceanRightSizingRuleOutput) MemoryPercentile() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanRightSizingRule) pulumi.IntPtrOutput { return v.MemoryPercentile }).(pulumi.IntPtrOutput)
 }
 
 // Identifier of the Ocean cluster.

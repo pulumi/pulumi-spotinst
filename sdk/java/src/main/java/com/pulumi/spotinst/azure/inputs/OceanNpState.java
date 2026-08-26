@@ -10,6 +10,7 @@ import com.pulumi.spotinst.azure.inputs.OceanNpFiltersArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpHeadroomArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpHealthArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpLinuxOsConfigArgs;
+import com.pulumi.spotinst.azure.inputs.OceanNpLocalDnsProfileArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpLoggingArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpSchedulingArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpTaintArgs;
@@ -152,6 +153,21 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+     * 
+     */
+    @Import(name="encryptionAtHost")
+    private @Nullable Output<Boolean> encryptionAtHost;
+
+    /**
+     * @return Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+     * 
+     */
+    public Optional<Output<Boolean>> encryptionAtHost() {
+        return Optional.ofNullable(this.encryptionAtHost);
+    }
+
+    /**
      * If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
      * 
      */
@@ -254,6 +270,21 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<OceanNpLinuxOsConfigArgs>>> linuxOsConfigs() {
         return Optional.ofNullable(this.linuxOsConfigs);
+    }
+
+    /**
+     * Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+     * 
+     */
+    @Import(name="localDnsProfiles")
+    private @Nullable Output<List<OceanNpLocalDnsProfileArgs>> localDnsProfiles;
+
+    /**
+     * @return Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+     * 
+     */
+    public Optional<Output<List<OceanNpLocalDnsProfileArgs>>> localDnsProfiles() {
+        return Optional.ofNullable(this.localDnsProfiles);
     }
 
     /**
@@ -406,6 +437,21 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.podSubnetIds);
     }
 
+    /**
+     * Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+     * 
+     */
+    @Import(name="preferredVmSizes")
+    private @Nullable Output<List<String>> preferredVmSizes;
+
+    /**
+     * @return Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+     * 
+     */
+    public Optional<Output<List<String>>> preferredVmSizes() {
+        return Optional.ofNullable(this.preferredVmSizes);
+    }
+
     @Import(name="scheduling")
     private @Nullable Output<OceanNpSchedulingArgs> scheduling;
 
@@ -515,6 +561,7 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         this.controllerClusterId = $.controllerClusterId;
         this.drainingTimeout = $.drainingTimeout;
         this.enableNodePublicIp = $.enableNodePublicIp;
+        this.encryptionAtHost = $.encryptionAtHost;
         this.fallbackToOndemand = $.fallbackToOndemand;
         this.filters = $.filters;
         this.headrooms = $.headrooms;
@@ -522,6 +569,7 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         this.kubernetesVersion = $.kubernetesVersion;
         this.labels = $.labels;
         this.linuxOsConfigs = $.linuxOsConfigs;
+        this.localDnsProfiles = $.localDnsProfiles;
         this.logging = $.logging;
         this.maxCount = $.maxCount;
         this.maxPodsPerNode = $.maxPodsPerNode;
@@ -532,6 +580,7 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         this.osSku = $.osSku;
         this.osType = $.osType;
         this.podSubnetIds = $.podSubnetIds;
+        this.preferredVmSizes = $.preferredVmSizes;
         this.scheduling = $.scheduling;
         this.shouldUtilizeCommitments = $.shouldUtilizeCommitments;
         this.spotPercentage = $.spotPercentage;
@@ -739,6 +788,27 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param encryptionAtHost Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionAtHost(@Nullable Output<Boolean> encryptionAtHost) {
+            $.encryptionAtHost = encryptionAtHost;
+            return this;
+        }
+
+        /**
+         * @param encryptionAtHost Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionAtHost(Boolean encryptionAtHost) {
+            return encryptionAtHost(Output.of(encryptionAtHost));
+        }
+
+        /**
          * @param fallbackToOndemand If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
          * 
          * @return builder
@@ -903,6 +973,37 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder linuxOsConfigs(OceanNpLinuxOsConfigArgs... linuxOsConfigs) {
             return linuxOsConfigs(List.of(linuxOsConfigs));
+        }
+
+        /**
+         * @param localDnsProfiles Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localDnsProfiles(@Nullable Output<List<OceanNpLocalDnsProfileArgs>> localDnsProfiles) {
+            $.localDnsProfiles = localDnsProfiles;
+            return this;
+        }
+
+        /**
+         * @param localDnsProfiles Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localDnsProfiles(List<OceanNpLocalDnsProfileArgs> localDnsProfiles) {
+            return localDnsProfiles(Output.of(localDnsProfiles));
+        }
+
+        /**
+         * @param localDnsProfiles Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localDnsProfiles(OceanNpLocalDnsProfileArgs... localDnsProfiles) {
+            return localDnsProfiles(List.of(localDnsProfiles));
         }
 
         /**
@@ -1123,6 +1224,37 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder podSubnetIds(String... podSubnetIds) {
             return podSubnetIds(List.of(podSubnetIds));
+        }
+
+        /**
+         * @param preferredVmSizes Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferredVmSizes(@Nullable Output<List<String>> preferredVmSizes) {
+            $.preferredVmSizes = preferredVmSizes;
+            return this;
+        }
+
+        /**
+         * @param preferredVmSizes Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferredVmSizes(List<String> preferredVmSizes) {
+            return preferredVmSizes(Output.of(preferredVmSizes));
+        }
+
+        /**
+         * @param preferredVmSizes Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferredVmSizes(String... preferredVmSizes) {
+            return preferredVmSizes(List.of(preferredVmSizes));
         }
 
         public Builder scheduling(@Nullable Output<OceanNpSchedulingArgs> scheduling) {

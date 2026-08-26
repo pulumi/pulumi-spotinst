@@ -92,6 +92,7 @@ import * as utilities from "../utilities";
  *     maxCount: 100,
  *     maxPodsPerNode: 30,
  *     enableNodePublicIp: true,
+ *     encryptionAtHost: true,
  *     osDiskSizeGb: 30,
  *     osDiskType: "Managed",
  *     osType: "Windows",
@@ -103,6 +104,57 @@ import * as utilities from "../utilities";
  *         sysctls: [{
  *             vmMaxMapCount: 79550,
  *         }],
+ *     }],
+ *     localDnsProfiles: [{
+ *         mode: "Required",
+ *         vnetDnsOverrides: [
+ *             {
+ *                 zone: ".",
+ *                 queryLogging: "Error",
+ *                 protocol: "PreferUDP",
+ *                 forwardDestination: "VnetDNS",
+ *                 forwardPolicy: "Sequential",
+ *                 maxConcurrent: 1000,
+ *                 cacheDurationInSeconds: 3600,
+ *                 serveStaleDurationInSeconds: 3600,
+ *                 serveStale: "Immediate",
+ *             },
+ *             {
+ *                 zone: "cluster.local",
+ *                 queryLogging: "Error",
+ *                 protocol: "ForceTCP",
+ *                 forwardDestination: "ClusterCoreDNS",
+ *                 forwardPolicy: "Sequential",
+ *                 maxConcurrent: 1000,
+ *                 cacheDurationInSeconds: 3600,
+ *                 serveStaleDurationInSeconds: 3600,
+ *                 serveStale: "Immediate",
+ *             },
+ *         ],
+ *         kubeDnsOverrides: [
+ *             {
+ *                 zone: ".",
+ *                 queryLogging: "Error",
+ *                 protocol: "PreferUDP",
+ *                 forwardDestination: "ClusterCoreDNS",
+ *                 forwardPolicy: "Sequential",
+ *                 maxConcurrent: 1000,
+ *                 cacheDurationInSeconds: 3600,
+ *                 serveStaleDurationInSeconds: 3600,
+ *                 serveStale: "Immediate",
+ *             },
+ *             {
+ *                 zone: "cluster.local",
+ *                 queryLogging: "Error",
+ *                 protocol: "ForceTCP",
+ *                 forwardDestination: "ClusterCoreDNS",
+ *                 forwardPolicy: "Sequential",
+ *                 maxConcurrent: 1000,
+ *                 cacheDurationInSeconds: 3600,
+ *                 serveStaleDurationInSeconds: 3600,
+ *                 serveStale: "Immediate",
+ *             },
+ *         ],
  *     }],
  *     spotPercentage: 50,
  *     fallbackToOndemand: true,
@@ -159,6 +211,10 @@ import * as utilities from "../utilities";
  *         minDisk: 1,
  *         gpuTypes: ["nvidia-tesla-t4"],
  *     },
+ *     preferredVmSizes: [
+ *         "Standard_D4s_v3",
+ *         "Standard_D8s_v3",
+ *     ],
  * });
  * ```
  */
@@ -221,6 +277,10 @@ export class OceanNp extends pulumi.CustomResource {
      */
     declare public readonly enableNodePublicIp: pulumi.Output<boolean | undefined>;
     /**
+     * Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+     */
+    declare public readonly encryptionAtHost: pulumi.Output<boolean | undefined>;
+    /**
      * If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
      */
     declare public readonly fallbackToOndemand: pulumi.Output<boolean | undefined>;
@@ -248,6 +308,10 @@ export class OceanNp extends pulumi.CustomResource {
      * Custom Linux OS configuration.
      */
     declare public readonly linuxOsConfigs: pulumi.Output<outputs.azure.OceanNpLinuxOsConfig[] | undefined>;
+    /**
+     * Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+     */
+    declare public readonly localDnsProfiles: pulumi.Output<outputs.azure.OceanNpLocalDnsProfile[] | undefined>;
     /**
      * The Ocean AKS Logging Object.
      */
@@ -288,6 +352,10 @@ export class OceanNp extends pulumi.CustomResource {
      * The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
      */
     declare public readonly podSubnetIds: pulumi.Output<string[] | undefined>;
+    /**
+     * Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+     */
+    declare public readonly preferredVmSizes: pulumi.Output<string[] | undefined>;
     declare public readonly scheduling: pulumi.Output<outputs.azure.OceanNpScheduling | undefined>;
     /**
      * Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
@@ -335,6 +403,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["controllerClusterId"] = state?.controllerClusterId;
             resourceInputs["drainingTimeout"] = state?.drainingTimeout;
             resourceInputs["enableNodePublicIp"] = state?.enableNodePublicIp;
+            resourceInputs["encryptionAtHost"] = state?.encryptionAtHost;
             resourceInputs["fallbackToOndemand"] = state?.fallbackToOndemand;
             resourceInputs["filters"] = state?.filters;
             resourceInputs["headrooms"] = state?.headrooms;
@@ -342,6 +411,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["kubernetesVersion"] = state?.kubernetesVersion;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["linuxOsConfigs"] = state?.linuxOsConfigs;
+            resourceInputs["localDnsProfiles"] = state?.localDnsProfiles;
             resourceInputs["logging"] = state?.logging;
             resourceInputs["maxCount"] = state?.maxCount;
             resourceInputs["maxPodsPerNode"] = state?.maxPodsPerNode;
@@ -352,6 +422,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["osSku"] = state?.osSku;
             resourceInputs["osType"] = state?.osType;
             resourceInputs["podSubnetIds"] = state?.podSubnetIds;
+            resourceInputs["preferredVmSizes"] = state?.preferredVmSizes;
             resourceInputs["scheduling"] = state?.scheduling;
             resourceInputs["shouldUtilizeCommitments"] = state?.shouldUtilizeCommitments;
             resourceInputs["spotPercentage"] = state?.spotPercentage;
@@ -390,6 +461,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["controllerClusterId"] = args?.controllerClusterId;
             resourceInputs["drainingTimeout"] = args?.drainingTimeout;
             resourceInputs["enableNodePublicIp"] = args?.enableNodePublicIp;
+            resourceInputs["encryptionAtHost"] = args?.encryptionAtHost;
             resourceInputs["fallbackToOndemand"] = args?.fallbackToOndemand;
             resourceInputs["filters"] = args?.filters;
             resourceInputs["headrooms"] = args?.headrooms;
@@ -397,6 +469,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["kubernetesVersion"] = args?.kubernetesVersion;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["linuxOsConfigs"] = args?.linuxOsConfigs;
+            resourceInputs["localDnsProfiles"] = args?.localDnsProfiles;
             resourceInputs["logging"] = args?.logging;
             resourceInputs["maxCount"] = args?.maxCount;
             resourceInputs["maxPodsPerNode"] = args?.maxPodsPerNode;
@@ -407,6 +480,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["osSku"] = args?.osSku;
             resourceInputs["osType"] = args?.osType;
             resourceInputs["podSubnetIds"] = args?.podSubnetIds;
+            resourceInputs["preferredVmSizes"] = args?.preferredVmSizes;
             resourceInputs["scheduling"] = args?.scheduling;
             resourceInputs["shouldUtilizeCommitments"] = args?.shouldUtilizeCommitments;
             resourceInputs["spotPercentage"] = args?.spotPercentage;
@@ -456,6 +530,10 @@ export interface OceanNpState {
      */
     enableNodePublicIp?: pulumi.Input<boolean | undefined>;
     /**
+     * Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+     */
+    encryptionAtHost?: pulumi.Input<boolean | undefined>;
+    /**
      * If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
      */
     fallbackToOndemand?: pulumi.Input<boolean | undefined>;
@@ -483,6 +561,10 @@ export interface OceanNpState {
      * Custom Linux OS configuration.
      */
     linuxOsConfigs?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpLinuxOsConfig>[] | undefined>;
+    /**
+     * Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+     */
+    localDnsProfiles?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpLocalDnsProfile>[] | undefined>;
     /**
      * The Ocean AKS Logging Object.
      */
@@ -523,6 +605,10 @@ export interface OceanNpState {
      * The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
      */
     podSubnetIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+     */
+    preferredVmSizes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     scheduling?: pulumi.Input<inputs.azure.OceanNpScheduling | undefined>;
     /**
      * Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
@@ -583,6 +669,10 @@ export interface OceanNpArgs {
      */
     enableNodePublicIp?: pulumi.Input<boolean | undefined>;
     /**
+     * Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+     */
+    encryptionAtHost?: pulumi.Input<boolean | undefined>;
+    /**
      * If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
      */
     fallbackToOndemand?: pulumi.Input<boolean | undefined>;
@@ -610,6 +700,10 @@ export interface OceanNpArgs {
      * Custom Linux OS configuration.
      */
     linuxOsConfigs?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpLinuxOsConfig>[] | undefined>;
+    /**
+     * Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+     */
+    localDnsProfiles?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpLocalDnsProfile>[] | undefined>;
     /**
      * The Ocean AKS Logging Object.
      */
@@ -650,6 +744,10 @@ export interface OceanNpArgs {
      * The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
      */
     podSubnetIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+     */
+    preferredVmSizes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     scheduling?: pulumi.Input<inputs.azure.OceanNpScheduling | undefined>;
     /**
      * Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.

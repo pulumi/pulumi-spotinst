@@ -38,6 +38,7 @@ class ElastigroupAzureV3Args:
                  extensions: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ExtensionArgs']]]] = None,
                  health: pulumi.Input[Optional['ElastigroupAzureV3HealthArgs']] = None,
                  images: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]] = None,
+                 license_type: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3LoadBalancerArgs']]]] = None,
                  login: pulumi.Input[Optional['ElastigroupAzureV3LoginArgs']] = None,
                  managed_service_identities: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]] = None,
@@ -93,6 +94,8 @@ class ElastigroupAzureV3Args:
             pulumi.set(__self__, "health", health)
         if images is not None:
             pulumi.set(__self__, "images", images)
+        if license_type is not None:
+            pulumi.set(__self__, "license_type", license_type)
         if load_balancers is not None:
             pulumi.set(__self__, "load_balancers", load_balancers)
         if login is not None:
@@ -294,6 +297,15 @@ class ElastigroupAzureV3Args:
     @images.setter
     def images(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]]):
         pulumi.set(self, "images", value)
+
+    @_builtins.property
+    @pulumi.getter(name="licenseType")
+    def license_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "license_type")
+
+    @license_type.setter
+    def license_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "license_type", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancers")
@@ -527,6 +539,7 @@ class _ElastigroupAzureV3State:
                  fallback_to_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
                  health: pulumi.Input[Optional['ElastigroupAzureV3HealthArgs']] = None,
                  images: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]] = None,
+                 license_type: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3LoadBalancerArgs']]]] = None,
                  login: pulumi.Input[Optional['ElastigroupAzureV3LoginArgs']] = None,
                  managed_service_identities: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]] = None,
@@ -583,6 +596,8 @@ class _ElastigroupAzureV3State:
             pulumi.set(__self__, "health", health)
         if images is not None:
             pulumi.set(__self__, "images", images)
+        if license_type is not None:
+            pulumi.set(__self__, "license_type", license_type)
         if load_balancers is not None:
             pulumi.set(__self__, "load_balancers", load_balancers)
         if login is not None:
@@ -749,6 +764,15 @@ class _ElastigroupAzureV3State:
     @images.setter
     def images(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]]):
         pulumi.set(self, "images", value)
+
+    @_builtins.property
+    @pulumi.getter(name="licenseType")
+    def license_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "license_type")
+
+    @license_type.setter
+    def license_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "license_type", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancers")
@@ -1030,6 +1054,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                  fallback_to_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
                  health: pulumi.Input[Optional[Union['ElastigroupAzureV3HealthArgs', 'ElastigroupAzureV3HealthArgsDict']]] = None,
                  images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ImageArgs', 'ElastigroupAzureV3ImageArgsDict']]]]] = None,
+                 license_type: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3LoadBalancerArgs', 'ElastigroupAzureV3LoadBalancerArgsDict']]]]] = None,
                  login: pulumi.Input[Optional[Union['ElastigroupAzureV3LoginArgs', 'ElastigroupAzureV3LoginArgsDict']]] = None,
                  managed_service_identities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ManagedServiceIdentityArgs', 'ElastigroupAzureV3ManagedServiceIdentityArgsDict']]]]] = None,
@@ -1102,6 +1127,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                  fallback_to_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
                  health: pulumi.Input[Optional[Union['ElastigroupAzureV3HealthArgs', 'ElastigroupAzureV3HealthArgsDict']]] = None,
                  images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ImageArgs', 'ElastigroupAzureV3ImageArgsDict']]]]] = None,
+                 license_type: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3LoadBalancerArgs', 'ElastigroupAzureV3LoadBalancerArgsDict']]]]] = None,
                  login: pulumi.Input[Optional[Union['ElastigroupAzureV3LoginArgs', 'ElastigroupAzureV3LoginArgsDict']]] = None,
                  managed_service_identities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ManagedServiceIdentityArgs', 'ElastigroupAzureV3ManagedServiceIdentityArgsDict']]]]] = None,
@@ -1154,6 +1180,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
             __props__.__dict__["fallback_to_on_demand"] = fallback_to_on_demand
             __props__.__dict__["health"] = health
             __props__.__dict__["images"] = images
+            __props__.__dict__["license_type"] = license_type
             __props__.__dict__["load_balancers"] = load_balancers
             __props__.__dict__["login"] = login
             __props__.__dict__["managed_service_identities"] = managed_service_identities
@@ -1215,6 +1242,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
             fallback_to_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
             health: pulumi.Input[Optional[Union['ElastigroupAzureV3HealthArgs', 'ElastigroupAzureV3HealthArgsDict']]] = None,
             images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ImageArgs', 'ElastigroupAzureV3ImageArgsDict']]]]] = None,
+            license_type: pulumi.Input[Optional[_builtins.str]] = None,
             load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3LoadBalancerArgs', 'ElastigroupAzureV3LoadBalancerArgsDict']]]]] = None,
             login: pulumi.Input[Optional[Union['ElastigroupAzureV3LoginArgs', 'ElastigroupAzureV3LoginArgsDict']]] = None,
             managed_service_identities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ManagedServiceIdentityArgs', 'ElastigroupAzureV3ManagedServiceIdentityArgsDict']]]]] = None,
@@ -1268,6 +1296,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         __props__.__dict__["fallback_to_on_demand"] = fallback_to_on_demand
         __props__.__dict__["health"] = health
         __props__.__dict__["images"] = images
+        __props__.__dict__["license_type"] = license_type
         __props__.__dict__["load_balancers"] = load_balancers
         __props__.__dict__["login"] = login
         __props__.__dict__["managed_service_identities"] = managed_service_identities
@@ -1358,6 +1387,11 @@ class ElastigroupAzureV3(pulumi.CustomResource):
     @pulumi.getter
     def images(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupAzureV3Image']]]:
         return pulumi.get(self, "images")
+
+    @_builtins.property
+    @pulumi.getter(name="licenseType")
+    def license_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "license_type")
 
     @_builtins.property
     @pulumi.getter(name="loadBalancers")

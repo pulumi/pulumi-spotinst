@@ -53,6 +53,7 @@ import (
 //				MaxCount:           pulumi.Int(100),
 //				MaxPodsPerNode:     pulumi.Int(30),
 //				EnableNodePublicIp: pulumi.Bool(true),
+//				EncryptionAtHost:   pulumi.Bool(true),
 //				OsDiskSizeGb:       pulumi.Int(30),
 //				OsDiskType:         pulumi.String("Managed"),
 //				OsType:             pulumi.String("Linux"),
@@ -69,6 +70,59 @@ import (
 //						Sysctls: azure.OceanNpVirtualNodeGroupLinuxOsConfigSysctlArray{
 //							&azure.OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs{
 //								VmMaxMapCount: pulumi.Int(79550),
+//							},
+//						},
+//					},
+//				},
+//				LocalDnsProfiles: azure.OceanNpVirtualNodeGroupLocalDnsProfileArray{
+//					&azure.OceanNpVirtualNodeGroupLocalDnsProfileArgs{
+//						Mode: pulumi.String("Required"),
+//						VnetDnsOverrides: azure.OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArray{
+//							&azure.OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgs{
+//								Zone:                        pulumi.String("."),
+//								QueryLogging:                pulumi.String("Error"),
+//								Protocol:                    pulumi.String("PreferUDP"),
+//								ForwardDestination:          pulumi.String("VnetDNS"),
+//								ForwardPolicy:               pulumi.String("Sequential"),
+//								MaxConcurrent:               pulumi.Int(1000),
+//								CacheDurationInSeconds:      pulumi.Int(3600),
+//								ServeStaleDurationInSeconds: pulumi.Int(3600),
+//								ServeStale:                  pulumi.String("Immediate"),
+//							},
+//							&azure.OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgs{
+//								Zone:                        pulumi.String("cluster.local"),
+//								QueryLogging:                pulumi.String("Error"),
+//								Protocol:                    pulumi.String("ForceTCP"),
+//								ForwardDestination:          pulumi.String("ClusterCoreDNS"),
+//								ForwardPolicy:               pulumi.String("Sequential"),
+//								MaxConcurrent:               pulumi.Int(1000),
+//								CacheDurationInSeconds:      pulumi.Int(3600),
+//								ServeStaleDurationInSeconds: pulumi.Int(3600),
+//								ServeStale:                  pulumi.String("Immediate"),
+//							},
+//						},
+//						KubeDnsOverrides: azure.OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArray{
+//							&azure.OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgs{
+//								Zone:                        pulumi.String("."),
+//								QueryLogging:                pulumi.String("Error"),
+//								Protocol:                    pulumi.String("PreferUDP"),
+//								ForwardDestination:          pulumi.String("ClusterCoreDNS"),
+//								ForwardPolicy:               pulumi.String("Sequential"),
+//								MaxConcurrent:               pulumi.Int(1000),
+//								CacheDurationInSeconds:      pulumi.Int(3600),
+//								ServeStaleDurationInSeconds: pulumi.Int(3600),
+//								ServeStale:                  pulumi.String("Immediate"),
+//							},
+//							&azure.OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgs{
+//								Zone:                        pulumi.String("cluster.local"),
+//								QueryLogging:                pulumi.String("Error"),
+//								Protocol:                    pulumi.String("ForceTCP"),
+//								ForwardDestination:          pulumi.String("ClusterCoreDNS"),
+//								ForwardPolicy:               pulumi.String("Sequential"),
+//								MaxConcurrent:               pulumi.Int(1000),
+//								CacheDurationInSeconds:      pulumi.Int(3600),
+//								ServeStaleDurationInSeconds: pulumi.Int(3600),
+//								ServeStale:                  pulumi.String("Immediate"),
 //							},
 //						},
 //					},
@@ -124,6 +178,10 @@ import (
 //						pulumi.String("nvidia-tesla-t4"),
 //					},
 //				},
+//				PreferredVmSizes: pulumi.StringArray{
+//					pulumi.String("Standard_D4s_v3"),
+//					pulumi.String("Standard_D8s_v3"),
+//				},
 //				Scheduling: &azure.OceanNpVirtualNodeGroupSchedulingArgs{
 //					ShutdownHours: &azure.OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs{
 //						IsEnabled: pulumi.Bool(true),
@@ -153,6 +211,8 @@ type OceanNpVirtualNodeGroup struct {
 	DrainingTimeout pulumi.IntPtrOutput `pulumi:"drainingTimeout"`
 	// Enable node public IP.
 	EnableNodePublicIp pulumi.BoolPtrOutput `pulumi:"enableNodePublicIp"`
+	// Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+	EncryptionAtHost pulumi.BoolPtrOutput `pulumi:"encryptionAtHost"`
 	// If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
 	FallbackToOndemand pulumi.BoolPtrOutput `pulumi:"fallbackToOndemand"`
 	// Filters for the VM sizes that can be launched from the virtual node group.
@@ -165,6 +225,8 @@ type OceanNpVirtualNodeGroup struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Custom Linux OS configuration.
 	LinuxOsConfigs OceanNpVirtualNodeGroupLinuxOsConfigArrayOutput `pulumi:"linuxOsConfigs"`
+	// Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+	LocalDnsProfiles OceanNpVirtualNodeGroupLocalDnsProfileArrayOutput `pulumi:"localDnsProfiles"`
 	// Maximum node count limit.
 	MaxCount pulumi.IntPtrOutput `pulumi:"maxCount"`
 	// The maximum number of pods per node in the node pools.
@@ -185,6 +247,8 @@ type OceanNpVirtualNodeGroup struct {
 	OsType pulumi.StringPtrOutput `pulumi:"osType"`
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 	PodSubnetIds pulumi.StringArrayOutput `pulumi:"podSubnetIds"`
+	// Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+	PreferredVmSizes pulumi.StringArrayOutput `pulumi:"preferredVmSizes"`
 	// When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
 	RestrictScaleDown pulumi.BoolPtrOutput `pulumi:"restrictScaleDown"`
 	// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
@@ -242,6 +306,8 @@ type oceanNpVirtualNodeGroupState struct {
 	DrainingTimeout *int `pulumi:"drainingTimeout"`
 	// Enable node public IP.
 	EnableNodePublicIp *bool `pulumi:"enableNodePublicIp"`
+	// Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+	EncryptionAtHost *bool `pulumi:"encryptionAtHost"`
 	// If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
 	FallbackToOndemand *bool `pulumi:"fallbackToOndemand"`
 	// Filters for the VM sizes that can be launched from the virtual node group.
@@ -254,6 +320,8 @@ type oceanNpVirtualNodeGroupState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Custom Linux OS configuration.
 	LinuxOsConfigs []OceanNpVirtualNodeGroupLinuxOsConfig `pulumi:"linuxOsConfigs"`
+	// Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+	LocalDnsProfiles []OceanNpVirtualNodeGroupLocalDnsProfile `pulumi:"localDnsProfiles"`
 	// Maximum node count limit.
 	MaxCount *int `pulumi:"maxCount"`
 	// The maximum number of pods per node in the node pools.
@@ -274,6 +342,8 @@ type oceanNpVirtualNodeGroupState struct {
 	OsType *string `pulumi:"osType"`
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 	PodSubnetIds []string `pulumi:"podSubnetIds"`
+	// Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+	PreferredVmSizes []string `pulumi:"preferredVmSizes"`
 	// When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
@@ -299,6 +369,8 @@ type OceanNpVirtualNodeGroupState struct {
 	DrainingTimeout pulumi.IntPtrInput
 	// Enable node public IP.
 	EnableNodePublicIp pulumi.BoolPtrInput
+	// Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+	EncryptionAtHost pulumi.BoolPtrInput
 	// If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
 	FallbackToOndemand pulumi.BoolPtrInput
 	// Filters for the VM sizes that can be launched from the virtual node group.
@@ -311,6 +383,8 @@ type OceanNpVirtualNodeGroupState struct {
 	Labels pulumi.StringMapInput
 	// Custom Linux OS configuration.
 	LinuxOsConfigs OceanNpVirtualNodeGroupLinuxOsConfigArrayInput
+	// Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+	LocalDnsProfiles OceanNpVirtualNodeGroupLocalDnsProfileArrayInput
 	// Maximum node count limit.
 	MaxCount pulumi.IntPtrInput
 	// The maximum number of pods per node in the node pools.
@@ -331,6 +405,8 @@ type OceanNpVirtualNodeGroupState struct {
 	OsType pulumi.StringPtrInput
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 	PodSubnetIds pulumi.StringArrayInput
+	// Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+	PreferredVmSizes pulumi.StringArrayInput
 	// When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
 	RestrictScaleDown pulumi.BoolPtrInput
 	// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
@@ -360,6 +436,8 @@ type oceanNpVirtualNodeGroupArgs struct {
 	DrainingTimeout *int `pulumi:"drainingTimeout"`
 	// Enable node public IP.
 	EnableNodePublicIp *bool `pulumi:"enableNodePublicIp"`
+	// Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+	EncryptionAtHost *bool `pulumi:"encryptionAtHost"`
 	// If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
 	FallbackToOndemand *bool `pulumi:"fallbackToOndemand"`
 	// Filters for the VM sizes that can be launched from the virtual node group.
@@ -372,6 +450,8 @@ type oceanNpVirtualNodeGroupArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Custom Linux OS configuration.
 	LinuxOsConfigs []OceanNpVirtualNodeGroupLinuxOsConfig `pulumi:"linuxOsConfigs"`
+	// Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+	LocalDnsProfiles []OceanNpVirtualNodeGroupLocalDnsProfile `pulumi:"localDnsProfiles"`
 	// Maximum node count limit.
 	MaxCount *int `pulumi:"maxCount"`
 	// The maximum number of pods per node in the node pools.
@@ -392,6 +472,8 @@ type oceanNpVirtualNodeGroupArgs struct {
 	OsType *string `pulumi:"osType"`
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 	PodSubnetIds []string `pulumi:"podSubnetIds"`
+	// Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+	PreferredVmSizes []string `pulumi:"preferredVmSizes"`
 	// When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
 	// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
@@ -418,6 +500,8 @@ type OceanNpVirtualNodeGroupArgs struct {
 	DrainingTimeout pulumi.IntPtrInput
 	// Enable node public IP.
 	EnableNodePublicIp pulumi.BoolPtrInput
+	// Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+	EncryptionAtHost pulumi.BoolPtrInput
 	// If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
 	FallbackToOndemand pulumi.BoolPtrInput
 	// Filters for the VM sizes that can be launched from the virtual node group.
@@ -430,6 +514,8 @@ type OceanNpVirtualNodeGroupArgs struct {
 	Labels pulumi.StringMapInput
 	// Custom Linux OS configuration.
 	LinuxOsConfigs OceanNpVirtualNodeGroupLinuxOsConfigArrayInput
+	// Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+	LocalDnsProfiles OceanNpVirtualNodeGroupLocalDnsProfileArrayInput
 	// Maximum node count limit.
 	MaxCount pulumi.IntPtrInput
 	// The maximum number of pods per node in the node pools.
@@ -450,6 +536,8 @@ type OceanNpVirtualNodeGroupArgs struct {
 	OsType pulumi.StringPtrInput
 	// The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 	PodSubnetIds pulumi.StringArrayInput
+	// Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+	PreferredVmSizes pulumi.StringArrayInput
 	// When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
 	RestrictScaleDown pulumi.BoolPtrInput
 	// An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
@@ -573,6 +661,11 @@ func (o OceanNpVirtualNodeGroupOutput) EnableNodePublicIp() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.BoolPtrOutput { return v.EnableNodePublicIp }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+func (o OceanNpVirtualNodeGroupOutput) EncryptionAtHost() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.BoolPtrOutput { return v.EncryptionAtHost }).(pulumi.BoolPtrOutput)
+}
+
 // If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
 func (o OceanNpVirtualNodeGroupOutput) FallbackToOndemand() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.BoolPtrOutput { return v.FallbackToOndemand }).(pulumi.BoolPtrOutput)
@@ -603,6 +696,13 @@ func (o OceanNpVirtualNodeGroupOutput) LinuxOsConfigs() OceanNpVirtualNodeGroupL
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) OceanNpVirtualNodeGroupLinuxOsConfigArrayOutput {
 		return v.LinuxOsConfigs
 	}).(OceanNpVirtualNodeGroupLinuxOsConfigArrayOutput)
+}
+
+// Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+func (o OceanNpVirtualNodeGroupOutput) LocalDnsProfiles() OceanNpVirtualNodeGroupLocalDnsProfileArrayOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) OceanNpVirtualNodeGroupLocalDnsProfileArrayOutput {
+		return v.LocalDnsProfiles
+	}).(OceanNpVirtualNodeGroupLocalDnsProfileArrayOutput)
 }
 
 // Maximum node count limit.
@@ -653,6 +753,11 @@ func (o OceanNpVirtualNodeGroupOutput) OsType() pulumi.StringPtrOutput {
 // The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
 func (o OceanNpVirtualNodeGroupOutput) PodSubnetIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.StringArrayOutput { return v.PodSubnetIds }).(pulumi.StringArrayOutput)
+}
+
+// Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+func (o OceanNpVirtualNodeGroupOutput) PreferredVmSizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.StringArrayOutput { return v.PreferredVmSizes }).(pulumi.StringArrayOutput)
 }
 
 // When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.

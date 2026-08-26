@@ -48,6 +48,9 @@ namespace Pulumi.SpotInst
         [Output("images")]
         public Output<ImmutableArray<Outputs.ElastigroupAzureV3Image>> Images { get; private set; } = null!;
 
+        [Output("licenseType")]
+        public Output<string?> LicenseType { get; private set; } = null!;
+
         [Output("loadBalancers")]
         public Output<ImmutableArray<Outputs.ElastigroupAzureV3LoadBalancer>> LoadBalancers { get; private set; } = null!;
 
@@ -236,6 +239,9 @@ namespace Pulumi.SpotInst
             get => _images ?? (_images = new InputList<Inputs.ElastigroupAzureV3ImageArgs>());
             set => _images = value;
         }
+
+        [Input("licenseType")]
+        public Input<string>? LicenseType { get; set; }
 
         [Input("loadBalancers")]
         private InputList<Inputs.ElastigroupAzureV3LoadBalancerArgs>? _loadBalancers;
@@ -447,6 +453,9 @@ namespace Pulumi.SpotInst
             get => _images ?? (_images = new InputList<Inputs.ElastigroupAzureV3ImageGetArgs>());
             set => _images = value;
         }
+
+        [Input("licenseType")]
+        public Input<string>? LicenseType { get; set; }
 
         [Input("loadBalancers")]
         private InputList<Inputs.ElastigroupAzureV3LoadBalancerGetArgs>? _loadBalancers;

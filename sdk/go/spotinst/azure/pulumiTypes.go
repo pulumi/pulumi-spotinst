@@ -1710,6 +1710,459 @@ func (o OceanNpLinuxOsConfigSysctlArrayOutput) Index(i pulumi.IntInput) OceanNpL
 	}).(OceanNpLinuxOsConfigSysctlOutput)
 }
 
+type OceanNpLocalDnsProfile struct {
+	// Per-zone DNS override configuration for kube-dns/CoreDNS resolution. Keys are DNS zone names (e.g. `"."` or `"cluster.local"`) and all values are same as `vnetDnsOverrides`.
+	KubeDnsOverrides []OceanNpLocalDnsProfileKubeDnsOverride `pulumi:"kubeDnsOverrides"`
+	// The LocalDNS mode. Required when localDnsProfile is configured. Allowed values: `"Required"`, `"Preferred"`, `"Disabled"`.
+	Mode string `pulumi:"mode"`
+	// Per-zone DNS override configuration for VNet DNS resolution. Keys are DNS zone names (`"."` or `"cluster.local"`).
+	VnetDnsOverrides []OceanNpLocalDnsProfileVnetDnsOverride `pulumi:"vnetDnsOverrides"`
+}
+
+// OceanNpLocalDnsProfileInput is an input type that accepts OceanNpLocalDnsProfileArgs and OceanNpLocalDnsProfileOutput values.
+// You can construct a concrete instance of `OceanNpLocalDnsProfileInput` via:
+//
+//	OceanNpLocalDnsProfileArgs{...}
+type OceanNpLocalDnsProfileInput interface {
+	pulumi.Input
+
+	ToOceanNpLocalDnsProfileOutput() OceanNpLocalDnsProfileOutput
+	ToOceanNpLocalDnsProfileOutputWithContext(context.Context) OceanNpLocalDnsProfileOutput
+}
+
+type OceanNpLocalDnsProfileArgs struct {
+	// Per-zone DNS override configuration for kube-dns/CoreDNS resolution. Keys are DNS zone names (e.g. `"."` or `"cluster.local"`) and all values are same as `vnetDnsOverrides`.
+	KubeDnsOverrides OceanNpLocalDnsProfileKubeDnsOverrideArrayInput `pulumi:"kubeDnsOverrides"`
+	// The LocalDNS mode. Required when localDnsProfile is configured. Allowed values: `"Required"`, `"Preferred"`, `"Disabled"`.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Per-zone DNS override configuration for VNet DNS resolution. Keys are DNS zone names (`"."` or `"cluster.local"`).
+	VnetDnsOverrides OceanNpLocalDnsProfileVnetDnsOverrideArrayInput `pulumi:"vnetDnsOverrides"`
+}
+
+func (OceanNpLocalDnsProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpLocalDnsProfile)(nil)).Elem()
+}
+
+func (i OceanNpLocalDnsProfileArgs) ToOceanNpLocalDnsProfileOutput() OceanNpLocalDnsProfileOutput {
+	return i.ToOceanNpLocalDnsProfileOutputWithContext(context.Background())
+}
+
+func (i OceanNpLocalDnsProfileArgs) ToOceanNpLocalDnsProfileOutputWithContext(ctx context.Context) OceanNpLocalDnsProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpLocalDnsProfileOutput)
+}
+
+// OceanNpLocalDnsProfileArrayInput is an input type that accepts OceanNpLocalDnsProfileArray and OceanNpLocalDnsProfileArrayOutput values.
+// You can construct a concrete instance of `OceanNpLocalDnsProfileArrayInput` via:
+//
+//	OceanNpLocalDnsProfileArray{ OceanNpLocalDnsProfileArgs{...} }
+type OceanNpLocalDnsProfileArrayInput interface {
+	pulumi.Input
+
+	ToOceanNpLocalDnsProfileArrayOutput() OceanNpLocalDnsProfileArrayOutput
+	ToOceanNpLocalDnsProfileArrayOutputWithContext(context.Context) OceanNpLocalDnsProfileArrayOutput
+}
+
+type OceanNpLocalDnsProfileArray []OceanNpLocalDnsProfileInput
+
+func (OceanNpLocalDnsProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNpLocalDnsProfile)(nil)).Elem()
+}
+
+func (i OceanNpLocalDnsProfileArray) ToOceanNpLocalDnsProfileArrayOutput() OceanNpLocalDnsProfileArrayOutput {
+	return i.ToOceanNpLocalDnsProfileArrayOutputWithContext(context.Background())
+}
+
+func (i OceanNpLocalDnsProfileArray) ToOceanNpLocalDnsProfileArrayOutputWithContext(ctx context.Context) OceanNpLocalDnsProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpLocalDnsProfileArrayOutput)
+}
+
+type OceanNpLocalDnsProfileOutput struct{ *pulumi.OutputState }
+
+func (OceanNpLocalDnsProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpLocalDnsProfile)(nil)).Elem()
+}
+
+func (o OceanNpLocalDnsProfileOutput) ToOceanNpLocalDnsProfileOutput() OceanNpLocalDnsProfileOutput {
+	return o
+}
+
+func (o OceanNpLocalDnsProfileOutput) ToOceanNpLocalDnsProfileOutputWithContext(ctx context.Context) OceanNpLocalDnsProfileOutput {
+	return o
+}
+
+// Per-zone DNS override configuration for kube-dns/CoreDNS resolution. Keys are DNS zone names (e.g. `"."` or `"cluster.local"`) and all values are same as `vnetDnsOverrides`.
+func (o OceanNpLocalDnsProfileOutput) KubeDnsOverrides() OceanNpLocalDnsProfileKubeDnsOverrideArrayOutput {
+	return o.ApplyT(func(v OceanNpLocalDnsProfile) []OceanNpLocalDnsProfileKubeDnsOverride { return v.KubeDnsOverrides }).(OceanNpLocalDnsProfileKubeDnsOverrideArrayOutput)
+}
+
+// The LocalDNS mode. Required when localDnsProfile is configured. Allowed values: `"Required"`, `"Preferred"`, `"Disabled"`.
+func (o OceanNpLocalDnsProfileOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanNpLocalDnsProfile) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Per-zone DNS override configuration for VNet DNS resolution. Keys are DNS zone names (`"."` or `"cluster.local"`).
+func (o OceanNpLocalDnsProfileOutput) VnetDnsOverrides() OceanNpLocalDnsProfileVnetDnsOverrideArrayOutput {
+	return o.ApplyT(func(v OceanNpLocalDnsProfile) []OceanNpLocalDnsProfileVnetDnsOverride { return v.VnetDnsOverrides }).(OceanNpLocalDnsProfileVnetDnsOverrideArrayOutput)
+}
+
+type OceanNpLocalDnsProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanNpLocalDnsProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNpLocalDnsProfile)(nil)).Elem()
+}
+
+func (o OceanNpLocalDnsProfileArrayOutput) ToOceanNpLocalDnsProfileArrayOutput() OceanNpLocalDnsProfileArrayOutput {
+	return o
+}
+
+func (o OceanNpLocalDnsProfileArrayOutput) ToOceanNpLocalDnsProfileArrayOutputWithContext(ctx context.Context) OceanNpLocalDnsProfileArrayOutput {
+	return o
+}
+
+func (o OceanNpLocalDnsProfileArrayOutput) Index(i pulumi.IntInput) OceanNpLocalDnsProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanNpLocalDnsProfile {
+		return vs[0].([]OceanNpLocalDnsProfile)[vs[1].(int)]
+	}).(OceanNpLocalDnsProfileOutput)
+}
+
+type OceanNpLocalDnsProfileKubeDnsOverride struct {
+	// Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+	CacheDurationInSeconds *int `pulumi:"cacheDurationInSeconds"`
+	// Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+	ForwardDestination *string `pulumi:"forwardDestination"`
+	// Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+	ForwardPolicy *string `pulumi:"forwardPolicy"`
+	// Maximum number of concurrent DNS queries handled by LocalDNS.
+	MaxConcurrent *int `pulumi:"maxConcurrent"`
+	// Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+	Protocol *string `pulumi:"protocol"`
+	// Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+	QueryLogging *string `pulumi:"queryLogging"`
+	// Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+	ServeStale *string `pulumi:"serveStale"`
+	// Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+	ServeStaleDurationInSeconds *int `pulumi:"serveStaleDurationInSeconds"`
+	// The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+	Zone string `pulumi:"zone"`
+}
+
+// OceanNpLocalDnsProfileKubeDnsOverrideInput is an input type that accepts OceanNpLocalDnsProfileKubeDnsOverrideArgs and OceanNpLocalDnsProfileKubeDnsOverrideOutput values.
+// You can construct a concrete instance of `OceanNpLocalDnsProfileKubeDnsOverrideInput` via:
+//
+//	OceanNpLocalDnsProfileKubeDnsOverrideArgs{...}
+type OceanNpLocalDnsProfileKubeDnsOverrideInput interface {
+	pulumi.Input
+
+	ToOceanNpLocalDnsProfileKubeDnsOverrideOutput() OceanNpLocalDnsProfileKubeDnsOverrideOutput
+	ToOceanNpLocalDnsProfileKubeDnsOverrideOutputWithContext(context.Context) OceanNpLocalDnsProfileKubeDnsOverrideOutput
+}
+
+type OceanNpLocalDnsProfileKubeDnsOverrideArgs struct {
+	// Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+	CacheDurationInSeconds pulumi.IntPtrInput `pulumi:"cacheDurationInSeconds"`
+	// Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+	ForwardDestination pulumi.StringPtrInput `pulumi:"forwardDestination"`
+	// Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+	ForwardPolicy pulumi.StringPtrInput `pulumi:"forwardPolicy"`
+	// Maximum number of concurrent DNS queries handled by LocalDNS.
+	MaxConcurrent pulumi.IntPtrInput `pulumi:"maxConcurrent"`
+	// Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+	QueryLogging pulumi.StringPtrInput `pulumi:"queryLogging"`
+	// Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+	ServeStale pulumi.StringPtrInput `pulumi:"serveStale"`
+	// Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+	ServeStaleDurationInSeconds pulumi.IntPtrInput `pulumi:"serveStaleDurationInSeconds"`
+	// The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+	Zone pulumi.StringInput `pulumi:"zone"`
+}
+
+func (OceanNpLocalDnsProfileKubeDnsOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpLocalDnsProfileKubeDnsOverride)(nil)).Elem()
+}
+
+func (i OceanNpLocalDnsProfileKubeDnsOverrideArgs) ToOceanNpLocalDnsProfileKubeDnsOverrideOutput() OceanNpLocalDnsProfileKubeDnsOverrideOutput {
+	return i.ToOceanNpLocalDnsProfileKubeDnsOverrideOutputWithContext(context.Background())
+}
+
+func (i OceanNpLocalDnsProfileKubeDnsOverrideArgs) ToOceanNpLocalDnsProfileKubeDnsOverrideOutputWithContext(ctx context.Context) OceanNpLocalDnsProfileKubeDnsOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpLocalDnsProfileKubeDnsOverrideOutput)
+}
+
+// OceanNpLocalDnsProfileKubeDnsOverrideArrayInput is an input type that accepts OceanNpLocalDnsProfileKubeDnsOverrideArray and OceanNpLocalDnsProfileKubeDnsOverrideArrayOutput values.
+// You can construct a concrete instance of `OceanNpLocalDnsProfileKubeDnsOverrideArrayInput` via:
+//
+//	OceanNpLocalDnsProfileKubeDnsOverrideArray{ OceanNpLocalDnsProfileKubeDnsOverrideArgs{...} }
+type OceanNpLocalDnsProfileKubeDnsOverrideArrayInput interface {
+	pulumi.Input
+
+	ToOceanNpLocalDnsProfileKubeDnsOverrideArrayOutput() OceanNpLocalDnsProfileKubeDnsOverrideArrayOutput
+	ToOceanNpLocalDnsProfileKubeDnsOverrideArrayOutputWithContext(context.Context) OceanNpLocalDnsProfileKubeDnsOverrideArrayOutput
+}
+
+type OceanNpLocalDnsProfileKubeDnsOverrideArray []OceanNpLocalDnsProfileKubeDnsOverrideInput
+
+func (OceanNpLocalDnsProfileKubeDnsOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNpLocalDnsProfileKubeDnsOverride)(nil)).Elem()
+}
+
+func (i OceanNpLocalDnsProfileKubeDnsOverrideArray) ToOceanNpLocalDnsProfileKubeDnsOverrideArrayOutput() OceanNpLocalDnsProfileKubeDnsOverrideArrayOutput {
+	return i.ToOceanNpLocalDnsProfileKubeDnsOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i OceanNpLocalDnsProfileKubeDnsOverrideArray) ToOceanNpLocalDnsProfileKubeDnsOverrideArrayOutputWithContext(ctx context.Context) OceanNpLocalDnsProfileKubeDnsOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpLocalDnsProfileKubeDnsOverrideArrayOutput)
+}
+
+type OceanNpLocalDnsProfileKubeDnsOverrideOutput struct{ *pulumi.OutputState }
+
+func (OceanNpLocalDnsProfileKubeDnsOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpLocalDnsProfileKubeDnsOverride)(nil)).Elem()
+}
+
+func (o OceanNpLocalDnsProfileKubeDnsOverrideOutput) ToOceanNpLocalDnsProfileKubeDnsOverrideOutput() OceanNpLocalDnsProfileKubeDnsOverrideOutput {
+	return o
+}
+
+func (o OceanNpLocalDnsProfileKubeDnsOverrideOutput) ToOceanNpLocalDnsProfileKubeDnsOverrideOutputWithContext(ctx context.Context) OceanNpLocalDnsProfileKubeDnsOverrideOutput {
+	return o
+}
+
+// Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+func (o OceanNpLocalDnsProfileKubeDnsOverrideOutput) CacheDurationInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpLocalDnsProfileKubeDnsOverride) *int { return v.CacheDurationInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+func (o OceanNpLocalDnsProfileKubeDnsOverrideOutput) ForwardDestination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpLocalDnsProfileKubeDnsOverride) *string { return v.ForwardDestination }).(pulumi.StringPtrOutput)
+}
+
+// Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+func (o OceanNpLocalDnsProfileKubeDnsOverrideOutput) ForwardPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpLocalDnsProfileKubeDnsOverride) *string { return v.ForwardPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of concurrent DNS queries handled by LocalDNS.
+func (o OceanNpLocalDnsProfileKubeDnsOverrideOutput) MaxConcurrent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpLocalDnsProfileKubeDnsOverride) *int { return v.MaxConcurrent }).(pulumi.IntPtrOutput)
+}
+
+// Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+func (o OceanNpLocalDnsProfileKubeDnsOverrideOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpLocalDnsProfileKubeDnsOverride) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+func (o OceanNpLocalDnsProfileKubeDnsOverrideOutput) QueryLogging() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpLocalDnsProfileKubeDnsOverride) *string { return v.QueryLogging }).(pulumi.StringPtrOutput)
+}
+
+// Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+func (o OceanNpLocalDnsProfileKubeDnsOverrideOutput) ServeStale() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpLocalDnsProfileKubeDnsOverride) *string { return v.ServeStale }).(pulumi.StringPtrOutput)
+}
+
+// Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+func (o OceanNpLocalDnsProfileKubeDnsOverrideOutput) ServeStaleDurationInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpLocalDnsProfileKubeDnsOverride) *int { return v.ServeStaleDurationInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+func (o OceanNpLocalDnsProfileKubeDnsOverrideOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanNpLocalDnsProfileKubeDnsOverride) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type OceanNpLocalDnsProfileKubeDnsOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanNpLocalDnsProfileKubeDnsOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNpLocalDnsProfileKubeDnsOverride)(nil)).Elem()
+}
+
+func (o OceanNpLocalDnsProfileKubeDnsOverrideArrayOutput) ToOceanNpLocalDnsProfileKubeDnsOverrideArrayOutput() OceanNpLocalDnsProfileKubeDnsOverrideArrayOutput {
+	return o
+}
+
+func (o OceanNpLocalDnsProfileKubeDnsOverrideArrayOutput) ToOceanNpLocalDnsProfileKubeDnsOverrideArrayOutputWithContext(ctx context.Context) OceanNpLocalDnsProfileKubeDnsOverrideArrayOutput {
+	return o
+}
+
+func (o OceanNpLocalDnsProfileKubeDnsOverrideArrayOutput) Index(i pulumi.IntInput) OceanNpLocalDnsProfileKubeDnsOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanNpLocalDnsProfileKubeDnsOverride {
+		return vs[0].([]OceanNpLocalDnsProfileKubeDnsOverride)[vs[1].(int)]
+	}).(OceanNpLocalDnsProfileKubeDnsOverrideOutput)
+}
+
+type OceanNpLocalDnsProfileVnetDnsOverride struct {
+	// Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+	CacheDurationInSeconds *int `pulumi:"cacheDurationInSeconds"`
+	// Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+	ForwardDestination *string `pulumi:"forwardDestination"`
+	// Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+	ForwardPolicy *string `pulumi:"forwardPolicy"`
+	// Maximum number of concurrent DNS queries handled by LocalDNS.
+	MaxConcurrent *int `pulumi:"maxConcurrent"`
+	// Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+	Protocol *string `pulumi:"protocol"`
+	// Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+	QueryLogging *string `pulumi:"queryLogging"`
+	// Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+	ServeStale *string `pulumi:"serveStale"`
+	// Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+	ServeStaleDurationInSeconds *int `pulumi:"serveStaleDurationInSeconds"`
+	// The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+	Zone string `pulumi:"zone"`
+}
+
+// OceanNpLocalDnsProfileVnetDnsOverrideInput is an input type that accepts OceanNpLocalDnsProfileVnetDnsOverrideArgs and OceanNpLocalDnsProfileVnetDnsOverrideOutput values.
+// You can construct a concrete instance of `OceanNpLocalDnsProfileVnetDnsOverrideInput` via:
+//
+//	OceanNpLocalDnsProfileVnetDnsOverrideArgs{...}
+type OceanNpLocalDnsProfileVnetDnsOverrideInput interface {
+	pulumi.Input
+
+	ToOceanNpLocalDnsProfileVnetDnsOverrideOutput() OceanNpLocalDnsProfileVnetDnsOverrideOutput
+	ToOceanNpLocalDnsProfileVnetDnsOverrideOutputWithContext(context.Context) OceanNpLocalDnsProfileVnetDnsOverrideOutput
+}
+
+type OceanNpLocalDnsProfileVnetDnsOverrideArgs struct {
+	// Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+	CacheDurationInSeconds pulumi.IntPtrInput `pulumi:"cacheDurationInSeconds"`
+	// Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+	ForwardDestination pulumi.StringPtrInput `pulumi:"forwardDestination"`
+	// Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+	ForwardPolicy pulumi.StringPtrInput `pulumi:"forwardPolicy"`
+	// Maximum number of concurrent DNS queries handled by LocalDNS.
+	MaxConcurrent pulumi.IntPtrInput `pulumi:"maxConcurrent"`
+	// Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+	QueryLogging pulumi.StringPtrInput `pulumi:"queryLogging"`
+	// Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+	ServeStale pulumi.StringPtrInput `pulumi:"serveStale"`
+	// Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+	ServeStaleDurationInSeconds pulumi.IntPtrInput `pulumi:"serveStaleDurationInSeconds"`
+	// The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+	Zone pulumi.StringInput `pulumi:"zone"`
+}
+
+func (OceanNpLocalDnsProfileVnetDnsOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpLocalDnsProfileVnetDnsOverride)(nil)).Elem()
+}
+
+func (i OceanNpLocalDnsProfileVnetDnsOverrideArgs) ToOceanNpLocalDnsProfileVnetDnsOverrideOutput() OceanNpLocalDnsProfileVnetDnsOverrideOutput {
+	return i.ToOceanNpLocalDnsProfileVnetDnsOverrideOutputWithContext(context.Background())
+}
+
+func (i OceanNpLocalDnsProfileVnetDnsOverrideArgs) ToOceanNpLocalDnsProfileVnetDnsOverrideOutputWithContext(ctx context.Context) OceanNpLocalDnsProfileVnetDnsOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpLocalDnsProfileVnetDnsOverrideOutput)
+}
+
+// OceanNpLocalDnsProfileVnetDnsOverrideArrayInput is an input type that accepts OceanNpLocalDnsProfileVnetDnsOverrideArray and OceanNpLocalDnsProfileVnetDnsOverrideArrayOutput values.
+// You can construct a concrete instance of `OceanNpLocalDnsProfileVnetDnsOverrideArrayInput` via:
+//
+//	OceanNpLocalDnsProfileVnetDnsOverrideArray{ OceanNpLocalDnsProfileVnetDnsOverrideArgs{...} }
+type OceanNpLocalDnsProfileVnetDnsOverrideArrayInput interface {
+	pulumi.Input
+
+	ToOceanNpLocalDnsProfileVnetDnsOverrideArrayOutput() OceanNpLocalDnsProfileVnetDnsOverrideArrayOutput
+	ToOceanNpLocalDnsProfileVnetDnsOverrideArrayOutputWithContext(context.Context) OceanNpLocalDnsProfileVnetDnsOverrideArrayOutput
+}
+
+type OceanNpLocalDnsProfileVnetDnsOverrideArray []OceanNpLocalDnsProfileVnetDnsOverrideInput
+
+func (OceanNpLocalDnsProfileVnetDnsOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNpLocalDnsProfileVnetDnsOverride)(nil)).Elem()
+}
+
+func (i OceanNpLocalDnsProfileVnetDnsOverrideArray) ToOceanNpLocalDnsProfileVnetDnsOverrideArrayOutput() OceanNpLocalDnsProfileVnetDnsOverrideArrayOutput {
+	return i.ToOceanNpLocalDnsProfileVnetDnsOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i OceanNpLocalDnsProfileVnetDnsOverrideArray) ToOceanNpLocalDnsProfileVnetDnsOverrideArrayOutputWithContext(ctx context.Context) OceanNpLocalDnsProfileVnetDnsOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpLocalDnsProfileVnetDnsOverrideArrayOutput)
+}
+
+type OceanNpLocalDnsProfileVnetDnsOverrideOutput struct{ *pulumi.OutputState }
+
+func (OceanNpLocalDnsProfileVnetDnsOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpLocalDnsProfileVnetDnsOverride)(nil)).Elem()
+}
+
+func (o OceanNpLocalDnsProfileVnetDnsOverrideOutput) ToOceanNpLocalDnsProfileVnetDnsOverrideOutput() OceanNpLocalDnsProfileVnetDnsOverrideOutput {
+	return o
+}
+
+func (o OceanNpLocalDnsProfileVnetDnsOverrideOutput) ToOceanNpLocalDnsProfileVnetDnsOverrideOutputWithContext(ctx context.Context) OceanNpLocalDnsProfileVnetDnsOverrideOutput {
+	return o
+}
+
+// Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+func (o OceanNpLocalDnsProfileVnetDnsOverrideOutput) CacheDurationInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpLocalDnsProfileVnetDnsOverride) *int { return v.CacheDurationInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+func (o OceanNpLocalDnsProfileVnetDnsOverrideOutput) ForwardDestination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpLocalDnsProfileVnetDnsOverride) *string { return v.ForwardDestination }).(pulumi.StringPtrOutput)
+}
+
+// Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+func (o OceanNpLocalDnsProfileVnetDnsOverrideOutput) ForwardPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpLocalDnsProfileVnetDnsOverride) *string { return v.ForwardPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of concurrent DNS queries handled by LocalDNS.
+func (o OceanNpLocalDnsProfileVnetDnsOverrideOutput) MaxConcurrent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpLocalDnsProfileVnetDnsOverride) *int { return v.MaxConcurrent }).(pulumi.IntPtrOutput)
+}
+
+// Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+func (o OceanNpLocalDnsProfileVnetDnsOverrideOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpLocalDnsProfileVnetDnsOverride) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+func (o OceanNpLocalDnsProfileVnetDnsOverrideOutput) QueryLogging() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpLocalDnsProfileVnetDnsOverride) *string { return v.QueryLogging }).(pulumi.StringPtrOutput)
+}
+
+// Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+func (o OceanNpLocalDnsProfileVnetDnsOverrideOutput) ServeStale() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpLocalDnsProfileVnetDnsOverride) *string { return v.ServeStale }).(pulumi.StringPtrOutput)
+}
+
+// Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+func (o OceanNpLocalDnsProfileVnetDnsOverrideOutput) ServeStaleDurationInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpLocalDnsProfileVnetDnsOverride) *int { return v.ServeStaleDurationInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+func (o OceanNpLocalDnsProfileVnetDnsOverrideOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanNpLocalDnsProfileVnetDnsOverride) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type OceanNpLocalDnsProfileVnetDnsOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanNpLocalDnsProfileVnetDnsOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNpLocalDnsProfileVnetDnsOverride)(nil)).Elem()
+}
+
+func (o OceanNpLocalDnsProfileVnetDnsOverrideArrayOutput) ToOceanNpLocalDnsProfileVnetDnsOverrideArrayOutput() OceanNpLocalDnsProfileVnetDnsOverrideArrayOutput {
+	return o
+}
+
+func (o OceanNpLocalDnsProfileVnetDnsOverrideArrayOutput) ToOceanNpLocalDnsProfileVnetDnsOverrideArrayOutputWithContext(ctx context.Context) OceanNpLocalDnsProfileVnetDnsOverrideArrayOutput {
+	return o
+}
+
+func (o OceanNpLocalDnsProfileVnetDnsOverrideArrayOutput) Index(i pulumi.IntInput) OceanNpLocalDnsProfileVnetDnsOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanNpLocalDnsProfileVnetDnsOverride {
+		return vs[0].([]OceanNpLocalDnsProfileVnetDnsOverride)[vs[1].(int)]
+	}).(OceanNpLocalDnsProfileVnetDnsOverrideOutput)
+}
+
 type OceanNpLogging struct {
 	// The Ocean AKS Logging Export object.
 	Export *OceanNpLoggingExport `pulumi:"export"`
@@ -4717,6 +5170,467 @@ func (o OceanNpVirtualNodeGroupLinuxOsConfigSysctlArrayOutput) Index(i pulumi.In
 	}).(OceanNpVirtualNodeGroupLinuxOsConfigSysctlOutput)
 }
 
+type OceanNpVirtualNodeGroupLocalDnsProfile struct {
+	// Per-zone DNS override configuration for kube-dns/CoreDNS resolution. Keys are DNS zone names (e.g. `"."` or `"cluster.local"`) and all values are same as `vnetDnsOverrides`.
+	KubeDnsOverrides []OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverride `pulumi:"kubeDnsOverrides"`
+	// The LocalDNS mode. Required when localDnsProfile is configured. Allowed values: `"Required"`, `"Preferred"`, `"Disabled"`.
+	Mode string `pulumi:"mode"`
+	// Per-zone DNS override configuration for VNet DNS resolution. Keys are DNS zone names (`"."` or `"cluster.local"`).
+	VnetDnsOverrides []OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverride `pulumi:"vnetDnsOverrides"`
+}
+
+// OceanNpVirtualNodeGroupLocalDnsProfileInput is an input type that accepts OceanNpVirtualNodeGroupLocalDnsProfileArgs and OceanNpVirtualNodeGroupLocalDnsProfileOutput values.
+// You can construct a concrete instance of `OceanNpVirtualNodeGroupLocalDnsProfileInput` via:
+//
+//	OceanNpVirtualNodeGroupLocalDnsProfileArgs{...}
+type OceanNpVirtualNodeGroupLocalDnsProfileInput interface {
+	pulumi.Input
+
+	ToOceanNpVirtualNodeGroupLocalDnsProfileOutput() OceanNpVirtualNodeGroupLocalDnsProfileOutput
+	ToOceanNpVirtualNodeGroupLocalDnsProfileOutputWithContext(context.Context) OceanNpVirtualNodeGroupLocalDnsProfileOutput
+}
+
+type OceanNpVirtualNodeGroupLocalDnsProfileArgs struct {
+	// Per-zone DNS override configuration for kube-dns/CoreDNS resolution. Keys are DNS zone names (e.g. `"."` or `"cluster.local"`) and all values are same as `vnetDnsOverrides`.
+	KubeDnsOverrides OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayInput `pulumi:"kubeDnsOverrides"`
+	// The LocalDNS mode. Required when localDnsProfile is configured. Allowed values: `"Required"`, `"Preferred"`, `"Disabled"`.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Per-zone DNS override configuration for VNet DNS resolution. Keys are DNS zone names (`"."` or `"cluster.local"`).
+	VnetDnsOverrides OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayInput `pulumi:"vnetDnsOverrides"`
+}
+
+func (OceanNpVirtualNodeGroupLocalDnsProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVirtualNodeGroupLocalDnsProfile)(nil)).Elem()
+}
+
+func (i OceanNpVirtualNodeGroupLocalDnsProfileArgs) ToOceanNpVirtualNodeGroupLocalDnsProfileOutput() OceanNpVirtualNodeGroupLocalDnsProfileOutput {
+	return i.ToOceanNpVirtualNodeGroupLocalDnsProfileOutputWithContext(context.Background())
+}
+
+func (i OceanNpVirtualNodeGroupLocalDnsProfileArgs) ToOceanNpVirtualNodeGroupLocalDnsProfileOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupLocalDnsProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupLocalDnsProfileOutput)
+}
+
+// OceanNpVirtualNodeGroupLocalDnsProfileArrayInput is an input type that accepts OceanNpVirtualNodeGroupLocalDnsProfileArray and OceanNpVirtualNodeGroupLocalDnsProfileArrayOutput values.
+// You can construct a concrete instance of `OceanNpVirtualNodeGroupLocalDnsProfileArrayInput` via:
+//
+//	OceanNpVirtualNodeGroupLocalDnsProfileArray{ OceanNpVirtualNodeGroupLocalDnsProfileArgs{...} }
+type OceanNpVirtualNodeGroupLocalDnsProfileArrayInput interface {
+	pulumi.Input
+
+	ToOceanNpVirtualNodeGroupLocalDnsProfileArrayOutput() OceanNpVirtualNodeGroupLocalDnsProfileArrayOutput
+	ToOceanNpVirtualNodeGroupLocalDnsProfileArrayOutputWithContext(context.Context) OceanNpVirtualNodeGroupLocalDnsProfileArrayOutput
+}
+
+type OceanNpVirtualNodeGroupLocalDnsProfileArray []OceanNpVirtualNodeGroupLocalDnsProfileInput
+
+func (OceanNpVirtualNodeGroupLocalDnsProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNpVirtualNodeGroupLocalDnsProfile)(nil)).Elem()
+}
+
+func (i OceanNpVirtualNodeGroupLocalDnsProfileArray) ToOceanNpVirtualNodeGroupLocalDnsProfileArrayOutput() OceanNpVirtualNodeGroupLocalDnsProfileArrayOutput {
+	return i.ToOceanNpVirtualNodeGroupLocalDnsProfileArrayOutputWithContext(context.Background())
+}
+
+func (i OceanNpVirtualNodeGroupLocalDnsProfileArray) ToOceanNpVirtualNodeGroupLocalDnsProfileArrayOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupLocalDnsProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupLocalDnsProfileArrayOutput)
+}
+
+type OceanNpVirtualNodeGroupLocalDnsProfileOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVirtualNodeGroupLocalDnsProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVirtualNodeGroupLocalDnsProfile)(nil)).Elem()
+}
+
+func (o OceanNpVirtualNodeGroupLocalDnsProfileOutput) ToOceanNpVirtualNodeGroupLocalDnsProfileOutput() OceanNpVirtualNodeGroupLocalDnsProfileOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupLocalDnsProfileOutput) ToOceanNpVirtualNodeGroupLocalDnsProfileOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupLocalDnsProfileOutput {
+	return o
+}
+
+// Per-zone DNS override configuration for kube-dns/CoreDNS resolution. Keys are DNS zone names (e.g. `"."` or `"cluster.local"`) and all values are same as `vnetDnsOverrides`.
+func (o OceanNpVirtualNodeGroupLocalDnsProfileOutput) KubeDnsOverrides() OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupLocalDnsProfile) []OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverride {
+		return v.KubeDnsOverrides
+	}).(OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutput)
+}
+
+// The LocalDNS mode. Required when localDnsProfile is configured. Allowed values: `"Required"`, `"Preferred"`, `"Disabled"`.
+func (o OceanNpVirtualNodeGroupLocalDnsProfileOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupLocalDnsProfile) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Per-zone DNS override configuration for VNet DNS resolution. Keys are DNS zone names (`"."` or `"cluster.local"`).
+func (o OceanNpVirtualNodeGroupLocalDnsProfileOutput) VnetDnsOverrides() OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupLocalDnsProfile) []OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverride {
+		return v.VnetDnsOverrides
+	}).(OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutput)
+}
+
+type OceanNpVirtualNodeGroupLocalDnsProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVirtualNodeGroupLocalDnsProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNpVirtualNodeGroupLocalDnsProfile)(nil)).Elem()
+}
+
+func (o OceanNpVirtualNodeGroupLocalDnsProfileArrayOutput) ToOceanNpVirtualNodeGroupLocalDnsProfileArrayOutput() OceanNpVirtualNodeGroupLocalDnsProfileArrayOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupLocalDnsProfileArrayOutput) ToOceanNpVirtualNodeGroupLocalDnsProfileArrayOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupLocalDnsProfileArrayOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupLocalDnsProfileArrayOutput) Index(i pulumi.IntInput) OceanNpVirtualNodeGroupLocalDnsProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanNpVirtualNodeGroupLocalDnsProfile {
+		return vs[0].([]OceanNpVirtualNodeGroupLocalDnsProfile)[vs[1].(int)]
+	}).(OceanNpVirtualNodeGroupLocalDnsProfileOutput)
+}
+
+type OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverride struct {
+	// Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+	CacheDurationInSeconds *int `pulumi:"cacheDurationInSeconds"`
+	// Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+	ForwardDestination *string `pulumi:"forwardDestination"`
+	// Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+	ForwardPolicy *string `pulumi:"forwardPolicy"`
+	// Maximum number of concurrent DNS queries handled by LocalDNS.
+	MaxConcurrent *int `pulumi:"maxConcurrent"`
+	// Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+	Protocol *string `pulumi:"protocol"`
+	// Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+	QueryLogging *string `pulumi:"queryLogging"`
+	// Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+	ServeStale *string `pulumi:"serveStale"`
+	// Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+	ServeStaleDurationInSeconds *int `pulumi:"serveStaleDurationInSeconds"`
+	// The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+	Zone string `pulumi:"zone"`
+}
+
+// OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideInput is an input type that accepts OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgs and OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput values.
+// You can construct a concrete instance of `OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideInput` via:
+//
+//	OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgs{...}
+type OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideInput interface {
+	pulumi.Input
+
+	ToOceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput() OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput
+	ToOceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutputWithContext(context.Context) OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput
+}
+
+type OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgs struct {
+	// Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+	CacheDurationInSeconds pulumi.IntPtrInput `pulumi:"cacheDurationInSeconds"`
+	// Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+	ForwardDestination pulumi.StringPtrInput `pulumi:"forwardDestination"`
+	// Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+	ForwardPolicy pulumi.StringPtrInput `pulumi:"forwardPolicy"`
+	// Maximum number of concurrent DNS queries handled by LocalDNS.
+	MaxConcurrent pulumi.IntPtrInput `pulumi:"maxConcurrent"`
+	// Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+	QueryLogging pulumi.StringPtrInput `pulumi:"queryLogging"`
+	// Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+	ServeStale pulumi.StringPtrInput `pulumi:"serveStale"`
+	// Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+	ServeStaleDurationInSeconds pulumi.IntPtrInput `pulumi:"serveStaleDurationInSeconds"`
+	// The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+	Zone pulumi.StringInput `pulumi:"zone"`
+}
+
+func (OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverride)(nil)).Elem()
+}
+
+func (i OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgs) ToOceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput() OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput {
+	return i.ToOceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutputWithContext(context.Background())
+}
+
+func (i OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgs) ToOceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput)
+}
+
+// OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayInput is an input type that accepts OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArray and OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutput values.
+// You can construct a concrete instance of `OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayInput` via:
+//
+//	OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArray{ OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgs{...} }
+type OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayInput interface {
+	pulumi.Input
+
+	ToOceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutput() OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutput
+	ToOceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutputWithContext(context.Context) OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutput
+}
+
+type OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArray []OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideInput
+
+func (OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverride)(nil)).Elem()
+}
+
+func (i OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArray) ToOceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutput() OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutput {
+	return i.ToOceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArray) ToOceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutput)
+}
+
+type OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverride)(nil)).Elem()
+}
+
+func (o OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput) ToOceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput() OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput) ToOceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput {
+	return o
+}
+
+// Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+func (o OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput) CacheDurationInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverride) *int { return v.CacheDurationInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+func (o OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput) ForwardDestination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverride) *string { return v.ForwardDestination }).(pulumi.StringPtrOutput)
+}
+
+// Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+func (o OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput) ForwardPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverride) *string { return v.ForwardPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of concurrent DNS queries handled by LocalDNS.
+func (o OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput) MaxConcurrent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverride) *int { return v.MaxConcurrent }).(pulumi.IntPtrOutput)
+}
+
+// Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+func (o OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverride) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+func (o OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput) QueryLogging() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverride) *string { return v.QueryLogging }).(pulumi.StringPtrOutput)
+}
+
+// Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+func (o OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput) ServeStale() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverride) *string { return v.ServeStale }).(pulumi.StringPtrOutput)
+}
+
+// Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+func (o OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput) ServeStaleDurationInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverride) *int {
+		return v.ServeStaleDurationInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+func (o OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverride) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverride)(nil)).Elem()
+}
+
+func (o OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutput) ToOceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutput() OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutput) ToOceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutput) Index(i pulumi.IntInput) OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverride {
+		return vs[0].([]OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverride)[vs[1].(int)]
+	}).(OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput)
+}
+
+type OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverride struct {
+	// Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+	CacheDurationInSeconds *int `pulumi:"cacheDurationInSeconds"`
+	// Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+	ForwardDestination *string `pulumi:"forwardDestination"`
+	// Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+	ForwardPolicy *string `pulumi:"forwardPolicy"`
+	// Maximum number of concurrent DNS queries handled by LocalDNS.
+	MaxConcurrent *int `pulumi:"maxConcurrent"`
+	// Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+	Protocol *string `pulumi:"protocol"`
+	// Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+	QueryLogging *string `pulumi:"queryLogging"`
+	// Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+	ServeStale *string `pulumi:"serveStale"`
+	// Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+	ServeStaleDurationInSeconds *int `pulumi:"serveStaleDurationInSeconds"`
+	// The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+	Zone string `pulumi:"zone"`
+}
+
+// OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideInput is an input type that accepts OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgs and OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput values.
+// You can construct a concrete instance of `OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideInput` via:
+//
+//	OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgs{...}
+type OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideInput interface {
+	pulumi.Input
+
+	ToOceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput() OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput
+	ToOceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutputWithContext(context.Context) OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput
+}
+
+type OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgs struct {
+	// Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+	CacheDurationInSeconds pulumi.IntPtrInput `pulumi:"cacheDurationInSeconds"`
+	// Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+	ForwardDestination pulumi.StringPtrInput `pulumi:"forwardDestination"`
+	// Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+	ForwardPolicy pulumi.StringPtrInput `pulumi:"forwardPolicy"`
+	// Maximum number of concurrent DNS queries handled by LocalDNS.
+	MaxConcurrent pulumi.IntPtrInput `pulumi:"maxConcurrent"`
+	// Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+	QueryLogging pulumi.StringPtrInput `pulumi:"queryLogging"`
+	// Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+	ServeStale pulumi.StringPtrInput `pulumi:"serveStale"`
+	// Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+	ServeStaleDurationInSeconds pulumi.IntPtrInput `pulumi:"serveStaleDurationInSeconds"`
+	// The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+	Zone pulumi.StringInput `pulumi:"zone"`
+}
+
+func (OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverride)(nil)).Elem()
+}
+
+func (i OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgs) ToOceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput() OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput {
+	return i.ToOceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutputWithContext(context.Background())
+}
+
+func (i OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgs) ToOceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput)
+}
+
+// OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayInput is an input type that accepts OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArray and OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutput values.
+// You can construct a concrete instance of `OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayInput` via:
+//
+//	OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArray{ OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgs{...} }
+type OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayInput interface {
+	pulumi.Input
+
+	ToOceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutput() OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutput
+	ToOceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutputWithContext(context.Context) OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutput
+}
+
+type OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArray []OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideInput
+
+func (OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverride)(nil)).Elem()
+}
+
+func (i OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArray) ToOceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutput() OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutput {
+	return i.ToOceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArray) ToOceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutput)
+}
+
+type OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverride)(nil)).Elem()
+}
+
+func (o OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput) ToOceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput() OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput) ToOceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput {
+	return o
+}
+
+// Maximum TTL (Time To Live) in seconds for which DNS responses are cached.
+func (o OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput) CacheDurationInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverride) *int { return v.CacheDurationInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the DNS server to forward queries to. Allowed values:  `"VnetDNS"`, `"ClusterCoreDNS"`.
+func (o OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput) ForwardDestination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverride) *string { return v.ForwardDestination }).(pulumi.StringPtrOutput)
+}
+
+// Determines the policy to use when selecting the upstream DNS server. Allowed values:  `"Sequential"`, `"RoundRobin"`, `"Random"`.
+func (o OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput) ForwardPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverride) *string { return v.ForwardPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of concurrent DNS queries handled by LocalDNS.
+func (o OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput) MaxConcurrent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverride) *int { return v.MaxConcurrent }).(pulumi.IntPtrOutput)
+}
+
+// Sets the protocol used for DNS queries (UDP/TCP preference). Allowed values: `"PreferUDP"`, `"ForceTCP"`.
+func (o OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverride) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Define the logging level for DNS queries. Allowed values: `"Error"`, `"Log"`.
+func (o OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput) QueryLogging() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverride) *string { return v.QueryLogging }).(pulumi.StringPtrOutput)
+}
+
+// Policy for serving stale DNS responses during upstream failures. Allowed values: `"Immediate"`, `"Verify"`, `"Disabled"`.
+func (o OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput) ServeStale() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverride) *string { return v.ServeStale }).(pulumi.StringPtrOutput)
+}
+
+// Duration (in seconds) to serve stale DNS responses if upstream is unavailable.
+func (o OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput) ServeStaleDurationInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverride) *int {
+		return v.ServeStaleDurationInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The DNS zone name this override applies to (`"."`, `"cluster.local"`).
+func (o OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverride) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverride)(nil)).Elem()
+}
+
+func (o OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutput) ToOceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutput() OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutput) ToOceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutput) Index(i pulumi.IntInput) OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverride {
+		return vs[0].([]OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverride)[vs[1].(int)]
+	}).(OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput)
+}
+
 type OceanNpVirtualNodeGroupScheduling struct {
 	// An object used to specify times that the nodes in the virtual node group will be stopped.
 	ShutdownHours *OceanNpVirtualNodeGroupSchedulingShutdownHours `pulumi:"shutdownHours"`
@@ -5882,6 +6796,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpLinuxOsConfigArrayInput)(nil)).Elem(), OceanNpLinuxOsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpLinuxOsConfigSysctlInput)(nil)).Elem(), OceanNpLinuxOsConfigSysctlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpLinuxOsConfigSysctlArrayInput)(nil)).Elem(), OceanNpLinuxOsConfigSysctlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpLocalDnsProfileInput)(nil)).Elem(), OceanNpLocalDnsProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpLocalDnsProfileArrayInput)(nil)).Elem(), OceanNpLocalDnsProfileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpLocalDnsProfileKubeDnsOverrideInput)(nil)).Elem(), OceanNpLocalDnsProfileKubeDnsOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpLocalDnsProfileKubeDnsOverrideArrayInput)(nil)).Elem(), OceanNpLocalDnsProfileKubeDnsOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpLocalDnsProfileVnetDnsOverrideInput)(nil)).Elem(), OceanNpLocalDnsProfileVnetDnsOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpLocalDnsProfileVnetDnsOverrideArrayInput)(nil)).Elem(), OceanNpLocalDnsProfileVnetDnsOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpLoggingInput)(nil)).Elem(), OceanNpLoggingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpLoggingPtrInput)(nil)).Elem(), OceanNpLoggingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpLoggingExportInput)(nil)).Elem(), OceanNpLoggingExportArgs{})
@@ -5918,6 +6838,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupLinuxOsConfigArrayInput)(nil)).Elem(), OceanNpVirtualNodeGroupLinuxOsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupLinuxOsConfigSysctlInput)(nil)).Elem(), OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupLinuxOsConfigSysctlArrayInput)(nil)).Elem(), OceanNpVirtualNodeGroupLinuxOsConfigSysctlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupLocalDnsProfileInput)(nil)).Elem(), OceanNpVirtualNodeGroupLocalDnsProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupLocalDnsProfileArrayInput)(nil)).Elem(), OceanNpVirtualNodeGroupLocalDnsProfileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideInput)(nil)).Elem(), OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayInput)(nil)).Elem(), OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideInput)(nil)).Elem(), OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayInput)(nil)).Elem(), OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupSchedulingInput)(nil)).Elem(), OceanNpVirtualNodeGroupSchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupSchedulingPtrInput)(nil)).Elem(), OceanNpVirtualNodeGroupSchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupSchedulingShutdownHoursInput)(nil)).Elem(), OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs{})
@@ -5952,6 +6878,12 @@ func init() {
 	pulumi.RegisterOutputType(OceanNpLinuxOsConfigArrayOutput{})
 	pulumi.RegisterOutputType(OceanNpLinuxOsConfigSysctlOutput{})
 	pulumi.RegisterOutputType(OceanNpLinuxOsConfigSysctlArrayOutput{})
+	pulumi.RegisterOutputType(OceanNpLocalDnsProfileOutput{})
+	pulumi.RegisterOutputType(OceanNpLocalDnsProfileArrayOutput{})
+	pulumi.RegisterOutputType(OceanNpLocalDnsProfileKubeDnsOverrideOutput{})
+	pulumi.RegisterOutputType(OceanNpLocalDnsProfileKubeDnsOverrideArrayOutput{})
+	pulumi.RegisterOutputType(OceanNpLocalDnsProfileVnetDnsOverrideOutput{})
+	pulumi.RegisterOutputType(OceanNpLocalDnsProfileVnetDnsOverrideArrayOutput{})
 	pulumi.RegisterOutputType(OceanNpLoggingOutput{})
 	pulumi.RegisterOutputType(OceanNpLoggingPtrOutput{})
 	pulumi.RegisterOutputType(OceanNpLoggingExportOutput{})
@@ -5988,6 +6920,12 @@ func init() {
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupLinuxOsConfigArrayOutput{})
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupLinuxOsConfigSysctlOutput{})
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupLinuxOsConfigSysctlArrayOutput{})
+	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupLocalDnsProfileOutput{})
+	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupLocalDnsProfileArrayOutput{})
+	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideOutput{})
+	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArrayOutput{})
+	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideOutput{})
+	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArrayOutput{})
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupSchedulingOutput{})
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupSchedulingPtrOutput{})
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupSchedulingShutdownHoursOutput{})

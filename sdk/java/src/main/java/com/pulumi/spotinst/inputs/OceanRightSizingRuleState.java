@@ -14,6 +14,7 @@ import com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationI
 import com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationMinThresholdArgs;
 import com.pulumi.spotinst.inputs.OceanRightSizingRuleRecommendationApplicationOverheadValueArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -47,6 +48,21 @@ public final class OceanRightSizingRuleState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.autoApplyDefinitions);
     }
 
+    /**
+     * vCPU percentile for calculating recommendations.
+     * 
+     */
+    @Import(name="cpuPercentile")
+    private @Nullable Output<Integer> cpuPercentile;
+
+    /**
+     * @return vCPU percentile for calculating recommendations.
+     * 
+     */
+    public Optional<Output<Integer>> cpuPercentile() {
+        return Optional.ofNullable(this.cpuPercentile);
+    }
+
     @Import(name="detachWorkloads")
     private @Nullable Output<List<OceanRightSizingRuleDetachWorkloadArgs>> detachWorkloads;
 
@@ -74,6 +90,21 @@ public final class OceanRightSizingRuleState extends com.pulumi.resources.Resour
      */
     public Optional<Output<Boolean>> excludePreliminaryRecommendations() {
         return Optional.ofNullable(this.excludePreliminaryRecommendations);
+    }
+
+    /**
+     * Memory percentile for calculating recommendations.
+     * 
+     */
+    @Import(name="memoryPercentile")
+    private @Nullable Output<Integer> memoryPercentile;
+
+    /**
+     * @return Memory percentile for calculating recommendations.
+     * 
+     */
+    public Optional<Output<Integer>> memoryPercentile() {
+        return Optional.ofNullable(this.memoryPercentile);
     }
 
     /**
@@ -201,9 +232,11 @@ public final class OceanRightSizingRuleState extends com.pulumi.resources.Resour
     private OceanRightSizingRuleState(OceanRightSizingRuleState $) {
         this.attachWorkloads = $.attachWorkloads;
         this.autoApplyDefinitions = $.autoApplyDefinitions;
+        this.cpuPercentile = $.cpuPercentile;
         this.detachWorkloads = $.detachWorkloads;
         this.downsideOnly = $.downsideOnly;
         this.excludePreliminaryRecommendations = $.excludePreliminaryRecommendations;
+        this.memoryPercentile = $.memoryPercentile;
         this.oceanId = $.oceanId;
         this.recommendationApplicationBoundaries = $.recommendationApplicationBoundaries;
         this.recommendationApplicationHpas = $.recommendationApplicationHpas;
@@ -276,6 +309,27 @@ public final class OceanRightSizingRuleState extends com.pulumi.resources.Resour
             return autoApplyDefinitions(List.of(autoApplyDefinitions));
         }
 
+        /**
+         * @param cpuPercentile vCPU percentile for calculating recommendations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpuPercentile(@Nullable Output<Integer> cpuPercentile) {
+            $.cpuPercentile = cpuPercentile;
+            return this;
+        }
+
+        /**
+         * @param cpuPercentile vCPU percentile for calculating recommendations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpuPercentile(Integer cpuPercentile) {
+            return cpuPercentile(Output.of(cpuPercentile));
+        }
+
         public Builder detachWorkloads(@Nullable Output<List<OceanRightSizingRuleDetachWorkloadArgs>> detachWorkloads) {
             $.detachWorkloads = detachWorkloads;
             return this;
@@ -317,6 +371,27 @@ public final class OceanRightSizingRuleState extends com.pulumi.resources.Resour
          */
         public Builder excludePreliminaryRecommendations(Boolean excludePreliminaryRecommendations) {
             return excludePreliminaryRecommendations(Output.of(excludePreliminaryRecommendations));
+        }
+
+        /**
+         * @param memoryPercentile Memory percentile for calculating recommendations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memoryPercentile(@Nullable Output<Integer> memoryPercentile) {
+            $.memoryPercentile = memoryPercentile;
+            return this;
+        }
+
+        /**
+         * @param memoryPercentile Memory percentile for calculating recommendations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memoryPercentile(Integer memoryPercentile) {
+            return memoryPercentile(Output.of(memoryPercentile));
         }
 
         /**

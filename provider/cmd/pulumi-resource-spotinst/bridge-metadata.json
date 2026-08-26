@@ -1206,6 +1206,19 @@
                             }
                         }
                     },
+                    "local_dns_profile": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "kube_dns_overrides": {
+                                    "maxItemsOne": false
+                                },
+                                "vnet_dns_overrides": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "logging": {
                         "maxItemsOne": true,
                         "elem": {
@@ -1224,6 +1237,9 @@
                         }
                     },
                     "pod_subnet_ids": {
+                        "maxItemsOne": false
+                    },
+                    "preferred_vm_sizes": {
                         "maxItemsOne": false
                     },
                     "scheduling": {
@@ -1376,7 +1392,23 @@
                             }
                         }
                     },
+                    "local_dns_profile": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "kube_dns_overrides": {
+                                    "maxItemsOne": false
+                                },
+                                "vnet_dns_overrides": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "pod_subnet_ids": {
+                        "maxItemsOne": false
+                    },
+                    "preferred_vm_sizes": {
                         "maxItemsOne": false
                     },
                     "scheduling": {

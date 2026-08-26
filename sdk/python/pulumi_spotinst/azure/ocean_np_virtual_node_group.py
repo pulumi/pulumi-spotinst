@@ -26,12 +26,14 @@ class OceanNpVirtualNodeGroupArgs:
                  availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_at_host: pulumi.Input[Optional[_builtins.bool]] = None,
                  fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
                  filters: pulumi.Input[Optional['OceanNpVirtualNodeGroupFiltersArgs']] = None,
                  headrooms: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]] = None,
                  kubernetes_version: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]] = None,
+                 local_dns_profiles: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLocalDnsProfileArgs']]]] = None,
                  max_count: pulumi.Input[Optional[_builtins.int]] = None,
                  max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  min_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -41,6 +43,7 @@ class OceanNpVirtualNodeGroupArgs:
                  os_sku: pulumi.Input[Optional[_builtins.str]] = None,
                  os_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preferred_vm_sizes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  restrict_scale_down: pulumi.Input[Optional[_builtins.bool]] = None,
                  scheduling: pulumi.Input[Optional['OceanNpVirtualNodeGroupSchedulingArgs']] = None,
                  should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -57,12 +60,14 @@ class OceanNpVirtualNodeGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
         :param pulumi.Input[_builtins.int] draining_timeout: Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
+        :param pulumi.Input[_builtins.bool] encryption_at_host: Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
         :param pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs'] filters: Filters for the VM sizes that can be launched from the virtual node group.
         :param pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
         :param pulumi.Input[_builtins.str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
         :param pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]] linux_os_configs: Custom Linux OS configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLocalDnsProfileArgs']]] local_dns_profiles: Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
         :param pulumi.Input[_builtins.int] max_count: Maximum node count limit.
         :param pulumi.Input[_builtins.int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[_builtins.int] min_count: Minimum node count limit.
@@ -72,6 +77,7 @@ class OceanNpVirtualNodeGroupArgs:
         :param pulumi.Input[_builtins.str] os_sku: The OS SKU of the OS type. Must correlate with the os type.
         :param pulumi.Input[_builtins.str] os_type: The OS type of the OS disk. Can't be modified once set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_subnet_ids: The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_vm_sizes: Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
         :param pulumi.Input[_builtins.bool] restrict_scale_down: When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
         :param pulumi.Input['OceanNpVirtualNodeGroupSchedulingArgs'] scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         :param pulumi.Input[_builtins.bool] should_utilize_commitments: Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
@@ -88,6 +94,8 @@ class OceanNpVirtualNodeGroupArgs:
             pulumi.set(__self__, "draining_timeout", draining_timeout)
         if enable_node_public_ip is not None:
             pulumi.set(__self__, "enable_node_public_ip", enable_node_public_ip)
+        if encryption_at_host is not None:
+            pulumi.set(__self__, "encryption_at_host", encryption_at_host)
         if fallback_to_ondemand is not None:
             pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
         if filters is not None:
@@ -100,6 +108,8 @@ class OceanNpVirtualNodeGroupArgs:
             pulumi.set(__self__, "labels", labels)
         if linux_os_configs is not None:
             pulumi.set(__self__, "linux_os_configs", linux_os_configs)
+        if local_dns_profiles is not None:
+            pulumi.set(__self__, "local_dns_profiles", local_dns_profiles)
         if max_count is not None:
             pulumi.set(__self__, "max_count", max_count)
         if max_pods_per_node is not None:
@@ -118,6 +128,8 @@ class OceanNpVirtualNodeGroupArgs:
             pulumi.set(__self__, "os_type", os_type)
         if pod_subnet_ids is not None:
             pulumi.set(__self__, "pod_subnet_ids", pod_subnet_ids)
+        if preferred_vm_sizes is not None:
+            pulumi.set(__self__, "preferred_vm_sizes", preferred_vm_sizes)
         if restrict_scale_down is not None:
             pulumi.set(__self__, "restrict_scale_down", restrict_scale_down)
         if scheduling is not None:
@@ -196,6 +208,18 @@ class OceanNpVirtualNodeGroupArgs:
         pulumi.set(self, "enable_node_public_ip", value)
 
     @_builtins.property
+    @pulumi.getter(name="encryptionAtHost")
+    def encryption_at_host(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+        """
+        return pulumi.get(self, "encryption_at_host")
+
+    @encryption_at_host.setter
+    def encryption_at_host(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "encryption_at_host", value)
+
+    @_builtins.property
     @pulumi.getter(name="fallbackToOndemand")
     def fallback_to_ondemand(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -266,6 +290,18 @@ class OceanNpVirtualNodeGroupArgs:
     @linux_os_configs.setter
     def linux_os_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]]):
         pulumi.set(self, "linux_os_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="localDnsProfiles")
+    def local_dns_profiles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLocalDnsProfileArgs']]]]:
+        """
+        Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+        """
+        return pulumi.get(self, "local_dns_profiles")
+
+    @local_dns_profiles.setter
+    def local_dns_profiles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLocalDnsProfileArgs']]]]):
+        pulumi.set(self, "local_dns_profiles", value)
 
     @_builtins.property
     @pulumi.getter(name="maxCount")
@@ -376,6 +412,18 @@ class OceanNpVirtualNodeGroupArgs:
         pulumi.set(self, "pod_subnet_ids", value)
 
     @_builtins.property
+    @pulumi.getter(name="preferredVmSizes")
+    def preferred_vm_sizes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+        """
+        return pulumi.get(self, "preferred_vm_sizes")
+
+    @preferred_vm_sizes.setter
+    def preferred_vm_sizes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "preferred_vm_sizes", value)
+
+    @_builtins.property
     @pulumi.getter(name="restrictScaleDown")
     def restrict_scale_down(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -473,12 +521,14 @@ class _OceanNpVirtualNodeGroupState:
                  availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_at_host: pulumi.Input[Optional[_builtins.bool]] = None,
                  fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
                  filters: pulumi.Input[Optional['OceanNpVirtualNodeGroupFiltersArgs']] = None,
                  headrooms: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]] = None,
                  kubernetes_version: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]] = None,
+                 local_dns_profiles: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLocalDnsProfileArgs']]]] = None,
                  max_count: pulumi.Input[Optional[_builtins.int]] = None,
                  max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  min_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -489,6 +539,7 @@ class _OceanNpVirtualNodeGroupState:
                  os_sku: pulumi.Input[Optional[_builtins.str]] = None,
                  os_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preferred_vm_sizes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  restrict_scale_down: pulumi.Input[Optional[_builtins.bool]] = None,
                  scheduling: pulumi.Input[Optional['OceanNpVirtualNodeGroupSchedulingArgs']] = None,
                  should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -504,12 +555,14 @@ class _OceanNpVirtualNodeGroupState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
         :param pulumi.Input[_builtins.int] draining_timeout: Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
+        :param pulumi.Input[_builtins.bool] encryption_at_host: Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
         :param pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs'] filters: Filters for the VM sizes that can be launched from the virtual node group.
         :param pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
         :param pulumi.Input[_builtins.str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
         :param pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]] linux_os_configs: Custom Linux OS configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLocalDnsProfileArgs']]] local_dns_profiles: Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
         :param pulumi.Input[_builtins.int] max_count: Maximum node count limit.
         :param pulumi.Input[_builtins.int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[_builtins.int] min_count: Minimum node count limit.
@@ -520,6 +573,7 @@ class _OceanNpVirtualNodeGroupState:
         :param pulumi.Input[_builtins.str] os_sku: The OS SKU of the OS type. Must correlate with the os type.
         :param pulumi.Input[_builtins.str] os_type: The OS type of the OS disk. Can't be modified once set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_subnet_ids: The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_vm_sizes: Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
         :param pulumi.Input[_builtins.bool] restrict_scale_down: When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
         :param pulumi.Input['OceanNpVirtualNodeGroupSchedulingArgs'] scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         :param pulumi.Input[_builtins.bool] should_utilize_commitments: Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
@@ -535,6 +589,8 @@ class _OceanNpVirtualNodeGroupState:
             pulumi.set(__self__, "draining_timeout", draining_timeout)
         if enable_node_public_ip is not None:
             pulumi.set(__self__, "enable_node_public_ip", enable_node_public_ip)
+        if encryption_at_host is not None:
+            pulumi.set(__self__, "encryption_at_host", encryption_at_host)
         if fallback_to_ondemand is not None:
             pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
         if filters is not None:
@@ -547,6 +603,8 @@ class _OceanNpVirtualNodeGroupState:
             pulumi.set(__self__, "labels", labels)
         if linux_os_configs is not None:
             pulumi.set(__self__, "linux_os_configs", linux_os_configs)
+        if local_dns_profiles is not None:
+            pulumi.set(__self__, "local_dns_profiles", local_dns_profiles)
         if max_count is not None:
             pulumi.set(__self__, "max_count", max_count)
         if max_pods_per_node is not None:
@@ -567,6 +625,8 @@ class _OceanNpVirtualNodeGroupState:
             pulumi.set(__self__, "os_type", os_type)
         if pod_subnet_ids is not None:
             pulumi.set(__self__, "pod_subnet_ids", pod_subnet_ids)
+        if preferred_vm_sizes is not None:
+            pulumi.set(__self__, "preferred_vm_sizes", preferred_vm_sizes)
         if restrict_scale_down is not None:
             pulumi.set(__self__, "restrict_scale_down", restrict_scale_down)
         if scheduling is not None:
@@ -631,6 +691,18 @@ class _OceanNpVirtualNodeGroupState:
     @enable_node_public_ip.setter
     def enable_node_public_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_node_public_ip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionAtHost")
+    def encryption_at_host(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+        """
+        return pulumi.get(self, "encryption_at_host")
+
+    @encryption_at_host.setter
+    def encryption_at_host(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "encryption_at_host", value)
 
     @_builtins.property
     @pulumi.getter(name="fallbackToOndemand")
@@ -703,6 +775,18 @@ class _OceanNpVirtualNodeGroupState:
     @linux_os_configs.setter
     def linux_os_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLinuxOsConfigArgs']]]]):
         pulumi.set(self, "linux_os_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="localDnsProfiles")
+    def local_dns_profiles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLocalDnsProfileArgs']]]]:
+        """
+        Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+        """
+        return pulumi.get(self, "local_dns_profiles")
+
+    @local_dns_profiles.setter
+    def local_dns_profiles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanNpVirtualNodeGroupLocalDnsProfileArgs']]]]):
+        pulumi.set(self, "local_dns_profiles", value)
 
     @_builtins.property
     @pulumi.getter(name="maxCount")
@@ -825,6 +909,18 @@ class _OceanNpVirtualNodeGroupState:
         pulumi.set(self, "pod_subnet_ids", value)
 
     @_builtins.property
+    @pulumi.getter(name="preferredVmSizes")
+    def preferred_vm_sizes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+        """
+        return pulumi.get(self, "preferred_vm_sizes")
+
+    @preferred_vm_sizes.setter
+    def preferred_vm_sizes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "preferred_vm_sizes", value)
+
+    @_builtins.property
     @pulumi.getter(name="restrictScaleDown")
     def restrict_scale_down(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -925,12 +1021,14 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_at_host: pulumi.Input[Optional[_builtins.bool]] = None,
                  fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
                  filters: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict']]] = None,
                  headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupHeadroomArgs', 'OceanNpVirtualNodeGroupHeadroomArgsDict']]]]] = None,
                  kubernetes_version: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLinuxOsConfigArgs', 'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict']]]]] = None,
+                 local_dns_profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLocalDnsProfileArgs', 'OceanNpVirtualNodeGroupLocalDnsProfileArgsDict']]]]] = None,
                  max_count: pulumi.Input[Optional[_builtins.int]] = None,
                  max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  min_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -941,6 +1039,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  os_sku: pulumi.Input[Optional[_builtins.str]] = None,
                  os_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preferred_vm_sizes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  restrict_scale_down: pulumi.Input[Optional[_builtins.bool]] = None,
                  scheduling: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']]] = None,
                  should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -982,6 +1081,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             max_count=100,
             max_pods_per_node=30,
             enable_node_public_ip=True,
+            encryption_at_host=True,
             os_disk_size_gb=30,
             os_disk_type="Managed",
             os_type="Linux",
@@ -993,6 +1093,57 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                 "sysctls": [{
                     "vm_max_map_count": 79550,
                 }],
+            }],
+            local_dns_profiles=[{
+                "mode": "Required",
+                "vnet_dns_overrides": [
+                    {
+                        "zone": ".",
+                        "query_logging": "Error",
+                        "protocol": "PreferUDP",
+                        "forward_destination": "VnetDNS",
+                        "forward_policy": "Sequential",
+                        "max_concurrent": 1000,
+                        "cache_duration_in_seconds": 3600,
+                        "serve_stale_duration_in_seconds": 3600,
+                        "serve_stale": "Immediate",
+                    },
+                    {
+                        "zone": "cluster.local",
+                        "query_logging": "Error",
+                        "protocol": "ForceTCP",
+                        "forward_destination": "ClusterCoreDNS",
+                        "forward_policy": "Sequential",
+                        "max_concurrent": 1000,
+                        "cache_duration_in_seconds": 3600,
+                        "serve_stale_duration_in_seconds": 3600,
+                        "serve_stale": "Immediate",
+                    },
+                ],
+                "kube_dns_overrides": [
+                    {
+                        "zone": ".",
+                        "query_logging": "Error",
+                        "protocol": "PreferUDP",
+                        "forward_destination": "ClusterCoreDNS",
+                        "forward_policy": "Sequential",
+                        "max_concurrent": 1000,
+                        "cache_duration_in_seconds": 3600,
+                        "serve_stale_duration_in_seconds": 3600,
+                        "serve_stale": "Immediate",
+                    },
+                    {
+                        "zone": "cluster.local",
+                        "query_logging": "Error",
+                        "protocol": "ForceTCP",
+                        "forward_destination": "ClusterCoreDNS",
+                        "forward_policy": "Sequential",
+                        "max_concurrent": 1000,
+                        "cache_duration_in_seconds": 3600,
+                        "serve_stale_duration_in_seconds": 3600,
+                        "serve_stale": "Immediate",
+                    },
+                ],
             }],
             spot_percentage=50,
             fallback_to_ondemand=True,
@@ -1041,6 +1192,10 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                 "min_disk": 1,
                 "gpu_types": ["nvidia-tesla-t4"],
             },
+            preferred_vm_sizes=[
+                "Standard_D4s_v3",
+                "Standard_D8s_v3",
+            ],
             scheduling={
                 "shutdown_hours": {
                     "is_enabled": True,
@@ -1059,12 +1214,14 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
         :param pulumi.Input[_builtins.int] draining_timeout: Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
+        :param pulumi.Input[_builtins.bool] encryption_at_host: Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
         :param pulumi.Input[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict']] filters: Filters for the VM sizes that can be launched from the virtual node group.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupHeadroomArgs', 'OceanNpVirtualNodeGroupHeadroomArgsDict']]]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
         :param pulumi.Input[_builtins.str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLinuxOsConfigArgs', 'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict']]]] linux_os_configs: Custom Linux OS configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLocalDnsProfileArgs', 'OceanNpVirtualNodeGroupLocalDnsProfileArgsDict']]]] local_dns_profiles: Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
         :param pulumi.Input[_builtins.int] max_count: Maximum node count limit.
         :param pulumi.Input[_builtins.int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[_builtins.int] min_count: Minimum node count limit.
@@ -1075,6 +1232,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] os_sku: The OS SKU of the OS type. Must correlate with the os type.
         :param pulumi.Input[_builtins.str] os_type: The OS type of the OS disk. Can't be modified once set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_subnet_ids: The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_vm_sizes: Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
         :param pulumi.Input[_builtins.bool] restrict_scale_down: When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
         :param pulumi.Input[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']] scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         :param pulumi.Input[_builtins.bool] should_utilize_commitments: Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
@@ -1120,6 +1278,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             max_count=100,
             max_pods_per_node=30,
             enable_node_public_ip=True,
+            encryption_at_host=True,
             os_disk_size_gb=30,
             os_disk_type="Managed",
             os_type="Linux",
@@ -1131,6 +1290,57 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                 "sysctls": [{
                     "vm_max_map_count": 79550,
                 }],
+            }],
+            local_dns_profiles=[{
+                "mode": "Required",
+                "vnet_dns_overrides": [
+                    {
+                        "zone": ".",
+                        "query_logging": "Error",
+                        "protocol": "PreferUDP",
+                        "forward_destination": "VnetDNS",
+                        "forward_policy": "Sequential",
+                        "max_concurrent": 1000,
+                        "cache_duration_in_seconds": 3600,
+                        "serve_stale_duration_in_seconds": 3600,
+                        "serve_stale": "Immediate",
+                    },
+                    {
+                        "zone": "cluster.local",
+                        "query_logging": "Error",
+                        "protocol": "ForceTCP",
+                        "forward_destination": "ClusterCoreDNS",
+                        "forward_policy": "Sequential",
+                        "max_concurrent": 1000,
+                        "cache_duration_in_seconds": 3600,
+                        "serve_stale_duration_in_seconds": 3600,
+                        "serve_stale": "Immediate",
+                    },
+                ],
+                "kube_dns_overrides": [
+                    {
+                        "zone": ".",
+                        "query_logging": "Error",
+                        "protocol": "PreferUDP",
+                        "forward_destination": "ClusterCoreDNS",
+                        "forward_policy": "Sequential",
+                        "max_concurrent": 1000,
+                        "cache_duration_in_seconds": 3600,
+                        "serve_stale_duration_in_seconds": 3600,
+                        "serve_stale": "Immediate",
+                    },
+                    {
+                        "zone": "cluster.local",
+                        "query_logging": "Error",
+                        "protocol": "ForceTCP",
+                        "forward_destination": "ClusterCoreDNS",
+                        "forward_policy": "Sequential",
+                        "max_concurrent": 1000,
+                        "cache_duration_in_seconds": 3600,
+                        "serve_stale_duration_in_seconds": 3600,
+                        "serve_stale": "Immediate",
+                    },
+                ],
             }],
             spot_percentage=50,
             fallback_to_ondemand=True,
@@ -1179,6 +1389,10 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                 "min_disk": 1,
                 "gpu_types": ["nvidia-tesla-t4"],
             },
+            preferred_vm_sizes=[
+                "Standard_D4s_v3",
+                "Standard_D8s_v3",
+            ],
             scheduling={
                 "shutdown_hours": {
                     "is_enabled": True,
@@ -1210,12 +1424,14 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_at_host: pulumi.Input[Optional[_builtins.bool]] = None,
                  fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
                  filters: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict']]] = None,
                  headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupHeadroomArgs', 'OceanNpVirtualNodeGroupHeadroomArgsDict']]]]] = None,
                  kubernetes_version: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLinuxOsConfigArgs', 'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict']]]]] = None,
+                 local_dns_profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLocalDnsProfileArgs', 'OceanNpVirtualNodeGroupLocalDnsProfileArgsDict']]]]] = None,
                  max_count: pulumi.Input[Optional[_builtins.int]] = None,
                  max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  min_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1226,6 +1442,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  os_sku: pulumi.Input[Optional[_builtins.str]] = None,
                  os_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preferred_vm_sizes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  restrict_scale_down: pulumi.Input[Optional[_builtins.bool]] = None,
                  scheduling: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']]] = None,
                  should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1247,12 +1464,14 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             __props__.__dict__["availability_zones"] = availability_zones
             __props__.__dict__["draining_timeout"] = draining_timeout
             __props__.__dict__["enable_node_public_ip"] = enable_node_public_ip
+            __props__.__dict__["encryption_at_host"] = encryption_at_host
             __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
             __props__.__dict__["filters"] = filters
             __props__.__dict__["headrooms"] = headrooms
             __props__.__dict__["kubernetes_version"] = kubernetes_version
             __props__.__dict__["labels"] = labels
             __props__.__dict__["linux_os_configs"] = linux_os_configs
+            __props__.__dict__["local_dns_profiles"] = local_dns_profiles
             __props__.__dict__["max_count"] = max_count
             __props__.__dict__["max_pods_per_node"] = max_pods_per_node
             __props__.__dict__["min_count"] = min_count
@@ -1265,6 +1484,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             __props__.__dict__["os_sku"] = os_sku
             __props__.__dict__["os_type"] = os_type
             __props__.__dict__["pod_subnet_ids"] = pod_subnet_ids
+            __props__.__dict__["preferred_vm_sizes"] = preferred_vm_sizes
             __props__.__dict__["restrict_scale_down"] = restrict_scale_down
             __props__.__dict__["scheduling"] = scheduling
             __props__.__dict__["should_utilize_commitments"] = should_utilize_commitments
@@ -1287,12 +1507,14 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
             enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption_at_host: pulumi.Input[Optional[_builtins.bool]] = None,
             fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
             filters: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict']]] = None,
             headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupHeadroomArgs', 'OceanNpVirtualNodeGroupHeadroomArgsDict']]]]] = None,
             kubernetes_version: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLinuxOsConfigArgs', 'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict']]]]] = None,
+            local_dns_profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLocalDnsProfileArgs', 'OceanNpVirtualNodeGroupLocalDnsProfileArgsDict']]]]] = None,
             max_count: pulumi.Input[Optional[_builtins.int]] = None,
             max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
             min_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1303,6 +1525,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             os_sku: pulumi.Input[Optional[_builtins.str]] = None,
             os_type: pulumi.Input[Optional[_builtins.str]] = None,
             pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            preferred_vm_sizes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             restrict_scale_down: pulumi.Input[Optional[_builtins.bool]] = None,
             scheduling: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']]] = None,
             should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1322,12 +1545,14 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
         :param pulumi.Input[_builtins.int] draining_timeout: Time in seconds to allow the node to drain before it is terminated. The parameter value will be in range `[300-3600]`.
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
+        :param pulumi.Input[_builtins.bool] encryption_at_host: Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
         :param pulumi.Input[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict']] filters: Filters for the VM sizes that can be launched from the virtual node group.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupHeadroomArgs', 'OceanNpVirtualNodeGroupHeadroomArgsDict']]]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
         :param pulumi.Input[_builtins.str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLinuxOsConfigArgs', 'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict']]]] linux_os_configs: Custom Linux OS configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLocalDnsProfileArgs', 'OceanNpVirtualNodeGroupLocalDnsProfileArgsDict']]]] local_dns_profiles: Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
         :param pulumi.Input[_builtins.int] max_count: Maximum node count limit.
         :param pulumi.Input[_builtins.int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[_builtins.int] min_count: Minimum node count limit.
@@ -1338,6 +1563,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] os_sku: The OS SKU of the OS type. Must correlate with the os type.
         :param pulumi.Input[_builtins.str] os_type: The OS type of the OS disk. Can't be modified once set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_subnet_ids: The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_vm_sizes: Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
         :param pulumi.Input[_builtins.bool] restrict_scale_down: When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
         :param pulumi.Input[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']] scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         :param pulumi.Input[_builtins.bool] should_utilize_commitments: Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
@@ -1353,12 +1579,14 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         __props__.__dict__["availability_zones"] = availability_zones
         __props__.__dict__["draining_timeout"] = draining_timeout
         __props__.__dict__["enable_node_public_ip"] = enable_node_public_ip
+        __props__.__dict__["encryption_at_host"] = encryption_at_host
         __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
         __props__.__dict__["filters"] = filters
         __props__.__dict__["headrooms"] = headrooms
         __props__.__dict__["kubernetes_version"] = kubernetes_version
         __props__.__dict__["labels"] = labels
         __props__.__dict__["linux_os_configs"] = linux_os_configs
+        __props__.__dict__["local_dns_profiles"] = local_dns_profiles
         __props__.__dict__["max_count"] = max_count
         __props__.__dict__["max_pods_per_node"] = max_pods_per_node
         __props__.__dict__["min_count"] = min_count
@@ -1369,6 +1597,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         __props__.__dict__["os_sku"] = os_sku
         __props__.__dict__["os_type"] = os_type
         __props__.__dict__["pod_subnet_ids"] = pod_subnet_ids
+        __props__.__dict__["preferred_vm_sizes"] = preferred_vm_sizes
         __props__.__dict__["restrict_scale_down"] = restrict_scale_down
         __props__.__dict__["scheduling"] = scheduling
         __props__.__dict__["should_utilize_commitments"] = should_utilize_commitments
@@ -1410,6 +1639,14 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         Enable node public IP.
         """
         return pulumi.get(self, "enable_node_public_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionAtHost")
+    def encryption_at_host(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+        """
+        return pulumi.get(self, "encryption_at_host")
 
     @_builtins.property
     @pulumi.getter(name="fallbackToOndemand")
@@ -1458,6 +1695,14 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         Custom Linux OS configuration.
         """
         return pulumi.get(self, "linux_os_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="localDnsProfiles")
+    def local_dns_profiles(self) -> pulumi.Output[Optional[Sequence['outputs.OceanNpVirtualNodeGroupLocalDnsProfile']]]:
+        """
+        Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+        """
+        return pulumi.get(self, "local_dns_profiles")
 
     @_builtins.property
     @pulumi.getter(name="maxCount")
@@ -1538,6 +1783,14 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
         """
         return pulumi.get(self, "pod_subnet_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="preferredVmSizes")
+    def preferred_vm_sizes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+        """
+        return pulumi.get(self, "preferred_vm_sizes")
 
     @_builtins.property
     @pulumi.getter(name="restrictScaleDown")

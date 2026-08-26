@@ -15,6 +15,7 @@ import com.pulumi.spotinst.azure.outputs.OceanNpFilters;
 import com.pulumi.spotinst.azure.outputs.OceanNpHeadroom;
 import com.pulumi.spotinst.azure.outputs.OceanNpHealth;
 import com.pulumi.spotinst.azure.outputs.OceanNpLinuxOsConfig;
+import com.pulumi.spotinst.azure.outputs.OceanNpLocalDnsProfile;
 import com.pulumi.spotinst.azure.outputs.OceanNpLogging;
 import com.pulumi.spotinst.azure.outputs.OceanNpScheduling;
 import com.pulumi.spotinst.azure.outputs.OceanNpTaint;
@@ -96,6 +97,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.azure.inputs.OceanNpHeadroomArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanNpLinuxOsConfigArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanNpLinuxOsConfigSysctlArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpLocalDnsProfileArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpLocalDnsProfileVnetDnsOverrideArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpLocalDnsProfileKubeDnsOverrideArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanNpTaintArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanNpVngTemplateSchedulingArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanNpVngTemplateSchedulingVngTemplateShutdownHoursArgs;
@@ -168,6 +172,7 @@ import javax.annotation.Nullable;
  *             .maxCount(100)
  *             .maxPodsPerNode(30)
  *             .enableNodePublicIp(true)
+ *             .encryptionAtHost(true)
  *             .osDiskSizeGb(30)
  *             .osDiskType("Managed")
  *             .osType("Windows")
@@ -179,6 +184,55 @@ import javax.annotation.Nullable;
  *                 .sysctls(OceanNpLinuxOsConfigSysctlArgs.builder()
  *                     .vmMaxMapCount(79550)
  *                     .build())
+ *                 .build())
+ *             .localDnsProfiles(OceanNpLocalDnsProfileArgs.builder()
+ *                 .mode("Required")
+ *                 .vnetDnsOverrides(                
+ *                     OceanNpLocalDnsProfileVnetDnsOverrideArgs.builder()
+ *                         .zone(".")
+ *                         .queryLogging("Error")
+ *                         .protocol("PreferUDP")
+ *                         .forwardDestination("VnetDNS")
+ *                         .forwardPolicy("Sequential")
+ *                         .maxConcurrent(1000)
+ *                         .cacheDurationInSeconds(3600)
+ *                         .serveStaleDurationInSeconds(3600)
+ *                         .serveStale("Immediate")
+ *                         .build(),
+ *                     OceanNpLocalDnsProfileVnetDnsOverrideArgs.builder()
+ *                         .zone("cluster.local")
+ *                         .queryLogging("Error")
+ *                         .protocol("ForceTCP")
+ *                         .forwardDestination("ClusterCoreDNS")
+ *                         .forwardPolicy("Sequential")
+ *                         .maxConcurrent(1000)
+ *                         .cacheDurationInSeconds(3600)
+ *                         .serveStaleDurationInSeconds(3600)
+ *                         .serveStale("Immediate")
+ *                         .build())
+ *                 .kubeDnsOverrides(                
+ *                     OceanNpLocalDnsProfileKubeDnsOverrideArgs.builder()
+ *                         .zone(".")
+ *                         .queryLogging("Error")
+ *                         .protocol("PreferUDP")
+ *                         .forwardDestination("ClusterCoreDNS")
+ *                         .forwardPolicy("Sequential")
+ *                         .maxConcurrent(1000)
+ *                         .cacheDurationInSeconds(3600)
+ *                         .serveStaleDurationInSeconds(3600)
+ *                         .serveStale("Immediate")
+ *                         .build(),
+ *                     OceanNpLocalDnsProfileKubeDnsOverrideArgs.builder()
+ *                         .zone("cluster.local")
+ *                         .queryLogging("Error")
+ *                         .protocol("ForceTCP")
+ *                         .forwardDestination("ClusterCoreDNS")
+ *                         .forwardPolicy("Sequential")
+ *                         .maxConcurrent(1000)
+ *                         .cacheDurationInSeconds(3600)
+ *                         .serveStaleDurationInSeconds(3600)
+ *                         .serveStale("Immediate")
+ *                         .build())
  *                 .build())
  *             .spotPercentage(50)
  *             .fallbackToOndemand(true)
@@ -230,6 +284,9 @@ import javax.annotation.Nullable;
  *                 .minDisk(1)
  *                 .gpuTypes("nvidia-tesla-t4")
  *                 .build())
+ *             .preferredVmSizes(            
+ *                 "Standard_D4s_v3",
+ *                 "Standard_D8s_v3")
  *             .build());
  * 
  *     }
@@ -353,6 +410,20 @@ public class OceanNp extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableNodePublicIp);
     }
     /**
+     * Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+     * 
+     */
+    @Export(name="encryptionAtHost", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> encryptionAtHost;
+
+    /**
+     * @return Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+     * 
+     */
+    public Output<Optional<Boolean>> encryptionAtHost() {
+        return Codegen.optional(this.encryptionAtHost);
+    }
+    /**
      * If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
      * 
      */
@@ -449,6 +520,20 @@ public class OceanNp extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<OceanNpLinuxOsConfig>>> linuxOsConfigs() {
         return Codegen.optional(this.linuxOsConfigs);
+    }
+    /**
+     * Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+     * 
+     */
+    @Export(name="localDnsProfiles", refs={List.class,OceanNpLocalDnsProfile.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<OceanNpLocalDnsProfile>> localDnsProfiles;
+
+    /**
+     * @return Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+     * 
+     */
+    public Output<Optional<List<OceanNpLocalDnsProfile>>> localDnsProfiles() {
+        return Codegen.optional(this.localDnsProfiles);
     }
     /**
      * The Ocean AKS Logging Object.
@@ -589,6 +674,20 @@ public class OceanNp extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> podSubnetIds() {
         return Codegen.optional(this.podSubnetIds);
+    }
+    /**
+     * Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+     * 
+     */
+    @Export(name="preferredVmSizes", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> preferredVmSizes;
+
+    /**
+     * @return Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+     * 
+     */
+    public Output<Optional<List<String>>> preferredVmSizes() {
+        return Codegen.optional(this.preferredVmSizes);
     }
     @Export(name="scheduling", refs={OceanNpScheduling.class}, tree="[0]")
     private Output</* @Nullable */ OceanNpScheduling> scheduling;

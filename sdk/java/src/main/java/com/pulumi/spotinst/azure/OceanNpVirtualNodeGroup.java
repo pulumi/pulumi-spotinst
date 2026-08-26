@@ -13,6 +13,7 @@ import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupState;
 import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupFilters;
 import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupHeadroom;
 import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupLinuxOsConfig;
+import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupLocalDnsProfile;
 import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupScheduling;
 import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupTaint;
 import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupUpdatePolicy;
@@ -41,6 +42,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupHeadroomArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupLinuxOsConfigArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupLocalDnsProfileArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupTaintArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupFiltersArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupSchedulingArgs;
@@ -80,6 +84,7 @@ import javax.annotation.Nullable;
  *             .maxCount(100)
  *             .maxPodsPerNode(30)
  *             .enableNodePublicIp(true)
+ *             .encryptionAtHost(true)
  *             .osDiskSizeGb(30)
  *             .osDiskType("Managed")
  *             .osType("Linux")
@@ -91,6 +96,55 @@ import javax.annotation.Nullable;
  *                 .sysctls(OceanNpVirtualNodeGroupLinuxOsConfigSysctlArgs.builder()
  *                     .vmMaxMapCount(79550)
  *                     .build())
+ *                 .build())
+ *             .localDnsProfiles(OceanNpVirtualNodeGroupLocalDnsProfileArgs.builder()
+ *                 .mode("Required")
+ *                 .vnetDnsOverrides(                
+ *                     OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgs.builder()
+ *                         .zone(".")
+ *                         .queryLogging("Error")
+ *                         .protocol("PreferUDP")
+ *                         .forwardDestination("VnetDNS")
+ *                         .forwardPolicy("Sequential")
+ *                         .maxConcurrent(1000)
+ *                         .cacheDurationInSeconds(3600)
+ *                         .serveStaleDurationInSeconds(3600)
+ *                         .serveStale("Immediate")
+ *                         .build(),
+ *                     OceanNpVirtualNodeGroupLocalDnsProfileVnetDnsOverrideArgs.builder()
+ *                         .zone("cluster.local")
+ *                         .queryLogging("Error")
+ *                         .protocol("ForceTCP")
+ *                         .forwardDestination("ClusterCoreDNS")
+ *                         .forwardPolicy("Sequential")
+ *                         .maxConcurrent(1000)
+ *                         .cacheDurationInSeconds(3600)
+ *                         .serveStaleDurationInSeconds(3600)
+ *                         .serveStale("Immediate")
+ *                         .build())
+ *                 .kubeDnsOverrides(                
+ *                     OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgs.builder()
+ *                         .zone(".")
+ *                         .queryLogging("Error")
+ *                         .protocol("PreferUDP")
+ *                         .forwardDestination("ClusterCoreDNS")
+ *                         .forwardPolicy("Sequential")
+ *                         .maxConcurrent(1000)
+ *                         .cacheDurationInSeconds(3600)
+ *                         .serveStaleDurationInSeconds(3600)
+ *                         .serveStale("Immediate")
+ *                         .build(),
+ *                     OceanNpVirtualNodeGroupLocalDnsProfileKubeDnsOverrideArgs.builder()
+ *                         .zone("cluster.local")
+ *                         .queryLogging("Error")
+ *                         .protocol("ForceTCP")
+ *                         .forwardDestination("ClusterCoreDNS")
+ *                         .forwardPolicy("Sequential")
+ *                         .maxConcurrent(1000)
+ *                         .cacheDurationInSeconds(3600)
+ *                         .serveStaleDurationInSeconds(3600)
+ *                         .serveStale("Immediate")
+ *                         .build())
  *                 .build())
  *             .spotPercentage(50)
  *             .fallbackToOndemand(true)
@@ -135,6 +189,9 @@ import javax.annotation.Nullable;
  *                 .minDisk(1)
  *                 .gpuTypes("nvidia-tesla-t4")
  *                 .build())
+ *             .preferredVmSizes(            
+ *                 "Standard_D4s_v3",
+ *                 "Standard_D8s_v3")
  *             .scheduling(OceanNpVirtualNodeGroupSchedulingArgs.builder()
  *                 .shutdownHours(OceanNpVirtualNodeGroupSchedulingShutdownHoursArgs.builder()
  *                     .isEnabled(true)
@@ -208,6 +265,20 @@ public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource
      */
     public Output<Optional<Boolean>> enableNodePublicIp() {
         return Codegen.optional(this.enableNodePublicIp);
+    }
+    /**
+     * Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+     * 
+     */
+    @Export(name="encryptionAtHost", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> encryptionAtHost;
+
+    /**
+     * @return Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
+     * 
+     */
+    public Output<Optional<Boolean>> encryptionAtHost() {
+        return Codegen.optional(this.encryptionAtHost);
     }
     /**
      * If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
@@ -292,6 +363,20 @@ public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource
      */
     public Output<Optional<List<OceanNpVirtualNodeGroupLinuxOsConfig>>> linuxOsConfigs() {
         return Codegen.optional(this.linuxOsConfigs);
+    }
+    /**
+     * Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+     * 
+     */
+    @Export(name="localDnsProfiles", refs={List.class,OceanNpVirtualNodeGroupLocalDnsProfile.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<OceanNpVirtualNodeGroupLocalDnsProfile>> localDnsProfiles;
+
+    /**
+     * @return Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+     * 
+     */
+    public Output<Optional<List<OceanNpVirtualNodeGroupLocalDnsProfile>>> localDnsProfiles() {
+        return Codegen.optional(this.localDnsProfiles);
     }
     /**
      * Maximum node count limit.
@@ -432,6 +517,20 @@ public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource
      */
     public Output<Optional<List<String>>> podSubnetIds() {
         return Codegen.optional(this.podSubnetIds);
+    }
+    /**
+     * Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+     * 
+     */
+    @Export(name="preferredVmSizes", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> preferredVmSizes;
+
+    /**
+     * @return Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
+     * 
+     */
+    public Output<Optional<List<String>>> preferredVmSizes() {
+        return Codegen.optional(this.preferredVmSizes);
     }
     /**
      * When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.

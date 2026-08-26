@@ -124,6 +124,13 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.images);
     }
 
+    @Import(name="licenseType")
+    private @Nullable Output<String> licenseType;
+
+    public Optional<Output<String>> licenseType() {
+        return Optional.ofNullable(this.licenseType);
+    }
+
     @Import(name="loadBalancers")
     private @Nullable Output<List<ElastigroupAzureV3LoadBalancerArgs>> loadBalancers;
 
@@ -342,6 +349,7 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
         this.fallbackToOnDemand = $.fallbackToOnDemand;
         this.health = $.health;
         this.images = $.images;
+        this.licenseType = $.licenseType;
         this.loadBalancers = $.loadBalancers;
         this.login = $.login;
         this.managedServiceIdentities = $.managedServiceIdentities;
@@ -513,6 +521,15 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
 
         public Builder images(ElastigroupAzureV3ImageArgs... images) {
             return images(List.of(images));
+        }
+
+        public Builder licenseType(@Nullable Output<String> licenseType) {
+            $.licenseType = licenseType;
+            return this;
+        }
+
+        public Builder licenseType(String licenseType) {
+            return licenseType(Output.of(licenseType));
         }
 
         public Builder loadBalancers(@Nullable Output<List<ElastigroupAzureV3LoadBalancerArgs>> loadBalancers) {

@@ -28,6 +28,8 @@ namespace Pulumi.SpotInst
     ///         RuleName = "test-rule",
     ///         ExcludePreliminaryRecommendations = true,
     ///         RestartReplicas = "ALL_MANIFEST",
+    ///         CpuPercentile = 95,
+    ///         MemoryPercentile = 90,
     ///         RecommendationApplicationHpas = new[]
     ///         {
     ///             new SpotInst.Inputs.OceanRightSizingRuleRecommendationApplicationHpaArgs
@@ -148,6 +150,12 @@ namespace Pulumi.SpotInst
         [Output("autoApplyDefinitions")]
         public Output<ImmutableArray<Outputs.OceanRightSizingRuleAutoApplyDefinition>> AutoApplyDefinitions { get; private set; } = null!;
 
+        /// <summary>
+        /// vCPU percentile for calculating recommendations.
+        /// </summary>
+        [Output("cpuPercentile")]
+        public Output<int?> CpuPercentile { get; private set; } = null!;
+
         [Output("detachWorkloads")]
         public Output<ImmutableArray<Outputs.OceanRightSizingRuleDetachWorkload>> DetachWorkloads { get; private set; } = null!;
 
@@ -159,6 +167,12 @@ namespace Pulumi.SpotInst
         /// </summary>
         [Output("excludePreliminaryRecommendations")]
         public Output<bool?> ExcludePreliminaryRecommendations { get; private set; } = null!;
+
+        /// <summary>
+        /// Memory percentile for calculating recommendations.
+        /// </summary>
+        [Output("memoryPercentile")]
+        public Output<int?> MemoryPercentile { get; private set; } = null!;
 
         /// <summary>
         /// Identifier of the Ocean cluster.
@@ -274,6 +288,12 @@ namespace Pulumi.SpotInst
             set => _autoApplyDefinitions = value;
         }
 
+        /// <summary>
+        /// vCPU percentile for calculating recommendations.
+        /// </summary>
+        [Input("cpuPercentile")]
+        public Input<int>? CpuPercentile { get; set; }
+
         [Input("detachWorkloads")]
         private InputList<Inputs.OceanRightSizingRuleDetachWorkloadArgs>? _detachWorkloads;
         public InputList<Inputs.OceanRightSizingRuleDetachWorkloadArgs> DetachWorkloads
@@ -290,6 +310,12 @@ namespace Pulumi.SpotInst
         /// </summary>
         [Input("excludePreliminaryRecommendations")]
         public Input<bool>? ExcludePreliminaryRecommendations { get; set; }
+
+        /// <summary>
+        /// Memory percentile for calculating recommendations.
+        /// </summary>
+        [Input("memoryPercentile")]
+        public Input<int>? MemoryPercentile { get; set; }
 
         /// <summary>
         /// Identifier of the Ocean cluster.
@@ -397,6 +423,12 @@ namespace Pulumi.SpotInst
             set => _autoApplyDefinitions = value;
         }
 
+        /// <summary>
+        /// vCPU percentile for calculating recommendations.
+        /// </summary>
+        [Input("cpuPercentile")]
+        public Input<int>? CpuPercentile { get; set; }
+
         [Input("detachWorkloads")]
         private InputList<Inputs.OceanRightSizingRuleDetachWorkloadGetArgs>? _detachWorkloads;
         public InputList<Inputs.OceanRightSizingRuleDetachWorkloadGetArgs> DetachWorkloads
@@ -413,6 +445,12 @@ namespace Pulumi.SpotInst
         /// </summary>
         [Input("excludePreliminaryRecommendations")]
         public Input<bool>? ExcludePreliminaryRecommendations { get; set; }
+
+        /// <summary>
+        /// Memory percentile for calculating recommendations.
+        /// </summary>
+        [Input("memoryPercentile")]
+        public Input<int>? MemoryPercentile { get; set; }
 
         /// <summary>
         /// Identifier of the Ocean cluster.
