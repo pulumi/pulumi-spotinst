@@ -129,8 +129,8 @@ class Strategy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 canary: pulumi.Input[Optional[Union['StrategyCanaryArgs', 'StrategyCanaryArgsDict']]] = None,
-                 rolling: pulumi.Input[Optional[Union['StrategyRollingArgs', 'StrategyRollingArgsDict']]] = None,
+                 canary: pulumi.Input[Optional[Union['StrategyCanaryArgs', 'StrategyCanaryArgsDict', 'outputs.StrategyCanary']]] = None,
+                 rolling: pulumi.Input[Optional[Union['StrategyRollingArgs', 'StrategyRollingArgsDict', 'outputs.StrategyRolling']]] = None,
                  strategy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -139,8 +139,8 @@ class Strategy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['StrategyCanaryArgs', 'StrategyCanaryArgsDict']] canary: Represents Canary strategy. Cannot be defined when Rolling object is defined.
-        :param pulumi.Input[Union['StrategyRollingArgs', 'StrategyRollingArgsDict']] rolling: Represents Rolling Update strategy. Cannot be defined when Canary object is defined.
+        :param pulumi.Input[Union['StrategyCanaryArgs', 'StrategyCanaryArgsDict', 'outputs.StrategyCanary']] canary: Represents Canary strategy. Cannot be defined when Rolling object is defined.
+        :param pulumi.Input[Union['StrategyRollingArgs', 'StrategyRollingArgsDict', 'outputs.StrategyRolling']] rolling: Represents Rolling Update strategy. Cannot be defined when Canary object is defined.
         """
         ...
     @overload
@@ -167,8 +167,8 @@ class Strategy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 canary: pulumi.Input[Optional[Union['StrategyCanaryArgs', 'StrategyCanaryArgsDict']]] = None,
-                 rolling: pulumi.Input[Optional[Union['StrategyRollingArgs', 'StrategyRollingArgsDict']]] = None,
+                 canary: pulumi.Input[Optional[Union['StrategyCanaryArgs', 'StrategyCanaryArgsDict', 'outputs.StrategyCanary']]] = None,
+                 rolling: pulumi.Input[Optional[Union['StrategyRollingArgs', 'StrategyRollingArgsDict', 'outputs.StrategyRolling']]] = None,
                  strategy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -194,8 +194,8 @@ class Strategy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            canary: pulumi.Input[Optional[Union['StrategyCanaryArgs', 'StrategyCanaryArgsDict']]] = None,
-            rolling: pulumi.Input[Optional[Union['StrategyRollingArgs', 'StrategyRollingArgsDict']]] = None,
+            canary: pulumi.Input[Optional[Union['StrategyCanaryArgs', 'StrategyCanaryArgsDict', 'outputs.StrategyCanary']]] = None,
+            rolling: pulumi.Input[Optional[Union['StrategyRollingArgs', 'StrategyRollingArgsDict', 'outputs.StrategyRolling']]] = None,
             strategy_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Strategy':
         """
         Get an existing Strategy resource's state with the given name, id, and optional extra
@@ -204,8 +204,8 @@ class Strategy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['StrategyCanaryArgs', 'StrategyCanaryArgsDict']] canary: Represents Canary strategy. Cannot be defined when Rolling object is defined.
-        :param pulumi.Input[Union['StrategyRollingArgs', 'StrategyRollingArgsDict']] rolling: Represents Rolling Update strategy. Cannot be defined when Canary object is defined.
+        :param pulumi.Input[Union['StrategyCanaryArgs', 'StrategyCanaryArgsDict', 'outputs.StrategyCanary']] canary: Represents Canary strategy. Cannot be defined when Rolling object is defined.
+        :param pulumi.Input[Union['StrategyRollingArgs', 'StrategyRollingArgsDict', 'outputs.StrategyRolling']] rolling: Represents Rolling Update strategy. Cannot be defined when Canary object is defined.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

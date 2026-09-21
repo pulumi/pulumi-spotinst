@@ -180,7 +180,7 @@ class UserGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict']]]]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict', 'outputs.UserGroupPolicy']]]]] = None,
                  user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -207,7 +207,7 @@ class UserGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: User group description.
         :param pulumi.Input[_builtins.str] name: User group name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict']]]] policies: The policies to register under the given group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict', 'outputs.UserGroupPolicy']]]] policies: The policies to register under the given group
                (should be existing policies only).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_ids: The users to register under the created group
                (should be existing users only).
@@ -255,7 +255,7 @@ class UserGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict']]]]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict', 'outputs.UserGroupPolicy']]]]] = None,
                  user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -282,7 +282,7 @@ class UserGroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict']]]]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict', 'outputs.UserGroupPolicy']]]]] = None,
             user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'UserGroup':
         """
         Get an existing UserGroup resource's state with the given name, id, and optional extra
@@ -293,7 +293,7 @@ class UserGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: User group description.
         :param pulumi.Input[_builtins.str] name: User group name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict']]]] policies: The policies to register under the given group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserGroupPolicyArgs', 'UserGroupPolicyArgsDict', 'outputs.UserGroupPolicy']]]] policies: The policies to register under the given group
                (should be existing policies only).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_ids: The users to register under the created group
                (should be existing users only).

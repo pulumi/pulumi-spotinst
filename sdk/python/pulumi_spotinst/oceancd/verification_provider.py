@@ -265,13 +265,13 @@ class VerificationProvider(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_watch: pulumi.Input[Optional[Union['VerificationProviderCloudWatchArgs', 'VerificationProviderCloudWatchArgsDict']]] = None,
+                 cloud_watch: pulumi.Input[Optional[Union['VerificationProviderCloudWatchArgs', 'VerificationProviderCloudWatchArgsDict', 'outputs.VerificationProviderCloudWatch']]] = None,
                  cluster_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 datadog: pulumi.Input[Optional[Union['VerificationProviderDatadogArgs', 'VerificationProviderDatadogArgsDict']]] = None,
-                 jenkins: pulumi.Input[Optional[Union['VerificationProviderJenkinsArgs', 'VerificationProviderJenkinsArgsDict']]] = None,
+                 datadog: pulumi.Input[Optional[Union['VerificationProviderDatadogArgs', 'VerificationProviderDatadogArgsDict', 'outputs.VerificationProviderDatadog']]] = None,
+                 jenkins: pulumi.Input[Optional[Union['VerificationProviderJenkinsArgs', 'VerificationProviderJenkinsArgsDict', 'outputs.VerificationProviderJenkins']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 new_relic: pulumi.Input[Optional[Union['VerificationProviderNewRelicArgs', 'VerificationProviderNewRelicArgsDict']]] = None,
-                 prometheus: pulumi.Input[Optional[Union['VerificationProviderPrometheusArgs', 'VerificationProviderPrometheusArgsDict']]] = None,
+                 new_relic: pulumi.Input[Optional[Union['VerificationProviderNewRelicArgs', 'VerificationProviderNewRelicArgsDict', 'outputs.VerificationProviderNewRelic']]] = None,
+                 prometheus: pulumi.Input[Optional[Union['VerificationProviderPrometheusArgs', 'VerificationProviderPrometheusArgsDict', 'outputs.VerificationProviderPrometheus']]] = None,
                  __props__=None):
         """
         Manages a Spotinst OceanCD Verfification Provider resource.
@@ -317,13 +317,13 @@ class VerificationProvider(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['VerificationProviderCloudWatchArgs', 'VerificationProviderCloudWatchArgsDict']] cloud_watch: Specify the credentials for CloudWatch verification provider.
+        :param pulumi.Input[Union['VerificationProviderCloudWatchArgs', 'VerificationProviderCloudWatchArgsDict', 'outputs.VerificationProviderCloudWatch']] cloud_watch: Specify the credentials for CloudWatch verification provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cluster_ids: List of cluster IDs that this Verification Provider will be applied to.
-        :param pulumi.Input[Union['VerificationProviderDatadogArgs', 'VerificationProviderDatadogArgsDict']] datadog: Specify the credentials for datadog verification provider.
-        :param pulumi.Input[Union['VerificationProviderJenkinsArgs', 'VerificationProviderJenkinsArgsDict']] jenkins: Specify the credentials for Jenkins verification provider.
+        :param pulumi.Input[Union['VerificationProviderDatadogArgs', 'VerificationProviderDatadogArgsDict', 'outputs.VerificationProviderDatadog']] datadog: Specify the credentials for datadog verification provider.
+        :param pulumi.Input[Union['VerificationProviderJenkinsArgs', 'VerificationProviderJenkinsArgsDict', 'outputs.VerificationProviderJenkins']] jenkins: Specify the credentials for Jenkins verification provider.
         :param pulumi.Input[_builtins.str] name: Identifier name for Ocean CD Verification Provider. Must be unique.
-        :param pulumi.Input[Union['VerificationProviderNewRelicArgs', 'VerificationProviderNewRelicArgsDict']] new_relic: Specify the credentials for New Relic verification provider.
-        :param pulumi.Input[Union['VerificationProviderPrometheusArgs', 'VerificationProviderPrometheusArgsDict']] prometheus: Specify the credentials for prometheus verification provider.
+        :param pulumi.Input[Union['VerificationProviderNewRelicArgs', 'VerificationProviderNewRelicArgsDict', 'outputs.VerificationProviderNewRelic']] new_relic: Specify the credentials for New Relic verification provider.
+        :param pulumi.Input[Union['VerificationProviderPrometheusArgs', 'VerificationProviderPrometheusArgsDict', 'outputs.VerificationProviderPrometheus']] prometheus: Specify the credentials for prometheus verification provider.
         """
         ...
     @overload
@@ -388,13 +388,13 @@ class VerificationProvider(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_watch: pulumi.Input[Optional[Union['VerificationProviderCloudWatchArgs', 'VerificationProviderCloudWatchArgsDict']]] = None,
+                 cloud_watch: pulumi.Input[Optional[Union['VerificationProviderCloudWatchArgs', 'VerificationProviderCloudWatchArgsDict', 'outputs.VerificationProviderCloudWatch']]] = None,
                  cluster_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 datadog: pulumi.Input[Optional[Union['VerificationProviderDatadogArgs', 'VerificationProviderDatadogArgsDict']]] = None,
-                 jenkins: pulumi.Input[Optional[Union['VerificationProviderJenkinsArgs', 'VerificationProviderJenkinsArgsDict']]] = None,
+                 datadog: pulumi.Input[Optional[Union['VerificationProviderDatadogArgs', 'VerificationProviderDatadogArgsDict', 'outputs.VerificationProviderDatadog']]] = None,
+                 jenkins: pulumi.Input[Optional[Union['VerificationProviderJenkinsArgs', 'VerificationProviderJenkinsArgsDict', 'outputs.VerificationProviderJenkins']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 new_relic: pulumi.Input[Optional[Union['VerificationProviderNewRelicArgs', 'VerificationProviderNewRelicArgsDict']]] = None,
-                 prometheus: pulumi.Input[Optional[Union['VerificationProviderPrometheusArgs', 'VerificationProviderPrometheusArgsDict']]] = None,
+                 new_relic: pulumi.Input[Optional[Union['VerificationProviderNewRelicArgs', 'VerificationProviderNewRelicArgsDict', 'outputs.VerificationProviderNewRelic']]] = None,
+                 prometheus: pulumi.Input[Optional[Union['VerificationProviderPrometheusArgs', 'VerificationProviderPrometheusArgsDict', 'outputs.VerificationProviderPrometheus']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -423,13 +423,13 @@ class VerificationProvider(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cloud_watch: pulumi.Input[Optional[Union['VerificationProviderCloudWatchArgs', 'VerificationProviderCloudWatchArgsDict']]] = None,
+            cloud_watch: pulumi.Input[Optional[Union['VerificationProviderCloudWatchArgs', 'VerificationProviderCloudWatchArgsDict', 'outputs.VerificationProviderCloudWatch']]] = None,
             cluster_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            datadog: pulumi.Input[Optional[Union['VerificationProviderDatadogArgs', 'VerificationProviderDatadogArgsDict']]] = None,
-            jenkins: pulumi.Input[Optional[Union['VerificationProviderJenkinsArgs', 'VerificationProviderJenkinsArgsDict']]] = None,
+            datadog: pulumi.Input[Optional[Union['VerificationProviderDatadogArgs', 'VerificationProviderDatadogArgsDict', 'outputs.VerificationProviderDatadog']]] = None,
+            jenkins: pulumi.Input[Optional[Union['VerificationProviderJenkinsArgs', 'VerificationProviderJenkinsArgsDict', 'outputs.VerificationProviderJenkins']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            new_relic: pulumi.Input[Optional[Union['VerificationProviderNewRelicArgs', 'VerificationProviderNewRelicArgsDict']]] = None,
-            prometheus: pulumi.Input[Optional[Union['VerificationProviderPrometheusArgs', 'VerificationProviderPrometheusArgsDict']]] = None) -> 'VerificationProvider':
+            new_relic: pulumi.Input[Optional[Union['VerificationProviderNewRelicArgs', 'VerificationProviderNewRelicArgsDict', 'outputs.VerificationProviderNewRelic']]] = None,
+            prometheus: pulumi.Input[Optional[Union['VerificationProviderPrometheusArgs', 'VerificationProviderPrometheusArgsDict', 'outputs.VerificationProviderPrometheus']]] = None) -> 'VerificationProvider':
         """
         Get an existing VerificationProvider resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -437,13 +437,13 @@ class VerificationProvider(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['VerificationProviderCloudWatchArgs', 'VerificationProviderCloudWatchArgsDict']] cloud_watch: Specify the credentials for CloudWatch verification provider.
+        :param pulumi.Input[Union['VerificationProviderCloudWatchArgs', 'VerificationProviderCloudWatchArgsDict', 'outputs.VerificationProviderCloudWatch']] cloud_watch: Specify the credentials for CloudWatch verification provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cluster_ids: List of cluster IDs that this Verification Provider will be applied to.
-        :param pulumi.Input[Union['VerificationProviderDatadogArgs', 'VerificationProviderDatadogArgsDict']] datadog: Specify the credentials for datadog verification provider.
-        :param pulumi.Input[Union['VerificationProviderJenkinsArgs', 'VerificationProviderJenkinsArgsDict']] jenkins: Specify the credentials for Jenkins verification provider.
+        :param pulumi.Input[Union['VerificationProviderDatadogArgs', 'VerificationProviderDatadogArgsDict', 'outputs.VerificationProviderDatadog']] datadog: Specify the credentials for datadog verification provider.
+        :param pulumi.Input[Union['VerificationProviderJenkinsArgs', 'VerificationProviderJenkinsArgsDict', 'outputs.VerificationProviderJenkins']] jenkins: Specify the credentials for Jenkins verification provider.
         :param pulumi.Input[_builtins.str] name: Identifier name for Ocean CD Verification Provider. Must be unique.
-        :param pulumi.Input[Union['VerificationProviderNewRelicArgs', 'VerificationProviderNewRelicArgsDict']] new_relic: Specify the credentials for New Relic verification provider.
-        :param pulumi.Input[Union['VerificationProviderPrometheusArgs', 'VerificationProviderPrometheusArgsDict']] prometheus: Specify the credentials for prometheus verification provider.
+        :param pulumi.Input[Union['VerificationProviderNewRelicArgs', 'VerificationProviderNewRelicArgsDict', 'outputs.VerificationProviderNewRelic']] new_relic: Specify the credentials for New Relic verification provider.
+        :param pulumi.Input[Union['VerificationProviderPrometheusArgs', 'VerificationProviderPrometheusArgsDict', 'outputs.VerificationProviderPrometheus']] prometheus: Specify the credentials for prometheus verification provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
