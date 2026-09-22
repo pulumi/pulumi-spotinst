@@ -138,8 +138,8 @@ class VerificationTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 args: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict']]]]] = None,
-                 metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VerificationTemplateMetricArgs', 'VerificationTemplateMetricArgsDict']]]]] = None,
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict', 'outputs.VerificationTemplateArg']]]]] = None,
+                 metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VerificationTemplateMetricArgs', 'VerificationTemplateMetricArgsDict', 'outputs.VerificationTemplateMetric']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -273,8 +273,8 @@ class VerificationTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict']]]] args: List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateMetricArgs', 'VerificationTemplateMetricArgsDict']]]] metrics: List of verification metrics.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict', 'outputs.VerificationTemplateArg']]]] args: List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateMetricArgs', 'VerificationTemplateMetricArgsDict', 'outputs.VerificationTemplateMetric']]]] metrics: List of verification metrics.
         :param pulumi.Input[_builtins.str] name: Identifier name for Ocean CD Verification Template. Must be unique.
         """
         ...
@@ -427,8 +427,8 @@ class VerificationTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 args: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict']]]]] = None,
-                 metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VerificationTemplateMetricArgs', 'VerificationTemplateMetricArgsDict']]]]] = None,
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict', 'outputs.VerificationTemplateArg']]]]] = None,
+                 metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VerificationTemplateMetricArgs', 'VerificationTemplateMetricArgsDict', 'outputs.VerificationTemplateMetric']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -452,8 +452,8 @@ class VerificationTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            args: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict']]]]] = None,
-            metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VerificationTemplateMetricArgs', 'VerificationTemplateMetricArgsDict']]]]] = None,
+            args: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict', 'outputs.VerificationTemplateArg']]]]] = None,
+            metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VerificationTemplateMetricArgs', 'VerificationTemplateMetricArgsDict', 'outputs.VerificationTemplateMetric']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None) -> 'VerificationTemplate':
         """
         Get an existing VerificationTemplate resource's state with the given name, id, and optional extra
@@ -462,8 +462,8 @@ class VerificationTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict']]]] args: List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateMetricArgs', 'VerificationTemplateMetricArgsDict']]]] metrics: List of verification metrics.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict', 'outputs.VerificationTemplateArg']]]] args: List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VerificationTemplateMetricArgs', 'VerificationTemplateMetricArgsDict', 'outputs.VerificationTemplateMetric']]]] metrics: List of verification metrics.
         :param pulumi.Input[_builtins.str] name: Identifier name for Ocean CD Verification Template. Must be unique.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

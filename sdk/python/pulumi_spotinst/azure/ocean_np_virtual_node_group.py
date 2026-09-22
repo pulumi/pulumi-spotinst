@@ -1023,12 +1023,12 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption_at_host: pulumi.Input[Optional[_builtins.bool]] = None,
                  fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
-                 filters: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict']]] = None,
-                 headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupHeadroomArgs', 'OceanNpVirtualNodeGroupHeadroomArgsDict']]]]] = None,
+                 filters: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict', 'outputs.OceanNpVirtualNodeGroupFilters']]] = None,
+                 headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupHeadroomArgs', 'OceanNpVirtualNodeGroupHeadroomArgsDict', 'outputs.OceanNpVirtualNodeGroupHeadroom']]]]] = None,
                  kubernetes_version: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLinuxOsConfigArgs', 'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict']]]]] = None,
-                 local_dns_profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLocalDnsProfileArgs', 'OceanNpVirtualNodeGroupLocalDnsProfileArgsDict']]]]] = None,
+                 linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLinuxOsConfigArgs', 'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict', 'outputs.OceanNpVirtualNodeGroupLinuxOsConfig']]]]] = None,
+                 local_dns_profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLocalDnsProfileArgs', 'OceanNpVirtualNodeGroupLocalDnsProfileArgsDict', 'outputs.OceanNpVirtualNodeGroupLocalDnsProfile']]]]] = None,
                  max_count: pulumi.Input[Optional[_builtins.int]] = None,
                  max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  min_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1041,12 +1041,12 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  preferred_vm_sizes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  restrict_scale_down: pulumi.Input[Optional[_builtins.bool]] = None,
-                 scheduling: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']]] = None,
+                 scheduling: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict', 'outputs.OceanNpVirtualNodeGroupScheduling']]] = None,
                  should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
                  spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict']]]]] = None,
-                 update_policy: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupUpdatePolicyArgs', 'OceanNpVirtualNodeGroupUpdatePolicyArgsDict']]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict', 'outputs.OceanNpVirtualNodeGroupTaint']]]]] = None,
+                 update_policy: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupUpdatePolicyArgs', 'OceanNpVirtualNodeGroupUpdatePolicyArgsDict', 'outputs.OceanNpVirtualNodeGroupUpdatePolicy']]] = None,
                  vnet_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -1216,12 +1216,12 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
         :param pulumi.Input[_builtins.bool] encryption_at_host: Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
-        :param pulumi.Input[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict']] filters: Filters for the VM sizes that can be launched from the virtual node group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupHeadroomArgs', 'OceanNpVirtualNodeGroupHeadroomArgsDict']]]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
+        :param pulumi.Input[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict', 'outputs.OceanNpVirtualNodeGroupFilters']] filters: Filters for the VM sizes that can be launched from the virtual node group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupHeadroomArgs', 'OceanNpVirtualNodeGroupHeadroomArgsDict', 'outputs.OceanNpVirtualNodeGroupHeadroom']]]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
         :param pulumi.Input[_builtins.str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLinuxOsConfigArgs', 'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict']]]] linux_os_configs: Custom Linux OS configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLocalDnsProfileArgs', 'OceanNpVirtualNodeGroupLocalDnsProfileArgsDict']]]] local_dns_profiles: Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLinuxOsConfigArgs', 'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict', 'outputs.OceanNpVirtualNodeGroupLinuxOsConfig']]]] linux_os_configs: Custom Linux OS configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLocalDnsProfileArgs', 'OceanNpVirtualNodeGroupLocalDnsProfileArgsDict', 'outputs.OceanNpVirtualNodeGroupLocalDnsProfile']]]] local_dns_profiles: Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
         :param pulumi.Input[_builtins.int] max_count: Maximum node count limit.
         :param pulumi.Input[_builtins.int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[_builtins.int] min_count: Minimum node count limit.
@@ -1234,10 +1234,10 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_subnet_ids: The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_vm_sizes: Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
         :param pulumi.Input[_builtins.bool] restrict_scale_down: When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
-        :param pulumi.Input[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']] scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+        :param pulumi.Input[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict', 'outputs.OceanNpVirtualNodeGroupScheduling']] scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         :param pulumi.Input[_builtins.bool] should_utilize_commitments: Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
         :param pulumi.Input[_builtins.int] spot_percentage: Percentage of spot VMs to maintain.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict']]]] taints: Add taints to a virtual node group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict', 'outputs.OceanNpVirtualNodeGroupTaint']]]] taints: Add taints to a virtual node group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vnet_subnet_ids: The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
         """
         ...
@@ -1426,12 +1426,12 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption_at_host: pulumi.Input[Optional[_builtins.bool]] = None,
                  fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
-                 filters: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict']]] = None,
-                 headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupHeadroomArgs', 'OceanNpVirtualNodeGroupHeadroomArgsDict']]]]] = None,
+                 filters: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict', 'outputs.OceanNpVirtualNodeGroupFilters']]] = None,
+                 headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupHeadroomArgs', 'OceanNpVirtualNodeGroupHeadroomArgsDict', 'outputs.OceanNpVirtualNodeGroupHeadroom']]]]] = None,
                  kubernetes_version: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLinuxOsConfigArgs', 'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict']]]]] = None,
-                 local_dns_profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLocalDnsProfileArgs', 'OceanNpVirtualNodeGroupLocalDnsProfileArgsDict']]]]] = None,
+                 linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLinuxOsConfigArgs', 'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict', 'outputs.OceanNpVirtualNodeGroupLinuxOsConfig']]]]] = None,
+                 local_dns_profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLocalDnsProfileArgs', 'OceanNpVirtualNodeGroupLocalDnsProfileArgsDict', 'outputs.OceanNpVirtualNodeGroupLocalDnsProfile']]]]] = None,
                  max_count: pulumi.Input[Optional[_builtins.int]] = None,
                  max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  min_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1444,12 +1444,12 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  preferred_vm_sizes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  restrict_scale_down: pulumi.Input[Optional[_builtins.bool]] = None,
-                 scheduling: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']]] = None,
+                 scheduling: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict', 'outputs.OceanNpVirtualNodeGroupScheduling']]] = None,
                  should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
                  spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict']]]]] = None,
-                 update_policy: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupUpdatePolicyArgs', 'OceanNpVirtualNodeGroupUpdatePolicyArgsDict']]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict', 'outputs.OceanNpVirtualNodeGroupTaint']]]]] = None,
+                 update_policy: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupUpdatePolicyArgs', 'OceanNpVirtualNodeGroupUpdatePolicyArgsDict', 'outputs.OceanNpVirtualNodeGroupUpdatePolicy']]] = None,
                  vnet_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1509,12 +1509,12 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
             encryption_at_host: pulumi.Input[Optional[_builtins.bool]] = None,
             fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
-            filters: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict']]] = None,
-            headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupHeadroomArgs', 'OceanNpVirtualNodeGroupHeadroomArgsDict']]]]] = None,
+            filters: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict', 'outputs.OceanNpVirtualNodeGroupFilters']]] = None,
+            headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupHeadroomArgs', 'OceanNpVirtualNodeGroupHeadroomArgsDict', 'outputs.OceanNpVirtualNodeGroupHeadroom']]]]] = None,
             kubernetes_version: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLinuxOsConfigArgs', 'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict']]]]] = None,
-            local_dns_profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLocalDnsProfileArgs', 'OceanNpVirtualNodeGroupLocalDnsProfileArgsDict']]]]] = None,
+            linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLinuxOsConfigArgs', 'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict', 'outputs.OceanNpVirtualNodeGroupLinuxOsConfig']]]]] = None,
+            local_dns_profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLocalDnsProfileArgs', 'OceanNpVirtualNodeGroupLocalDnsProfileArgsDict', 'outputs.OceanNpVirtualNodeGroupLocalDnsProfile']]]]] = None,
             max_count: pulumi.Input[Optional[_builtins.int]] = None,
             max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
             min_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1527,12 +1527,12 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             preferred_vm_sizes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             restrict_scale_down: pulumi.Input[Optional[_builtins.bool]] = None,
-            scheduling: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']]] = None,
+            scheduling: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict', 'outputs.OceanNpVirtualNodeGroupScheduling']]] = None,
             should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
             spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict']]]]] = None,
-            update_policy: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupUpdatePolicyArgs', 'OceanNpVirtualNodeGroupUpdatePolicyArgsDict']]] = None,
+            taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict', 'outputs.OceanNpVirtualNodeGroupTaint']]]]] = None,
+            update_policy: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupUpdatePolicyArgs', 'OceanNpVirtualNodeGroupUpdatePolicyArgsDict', 'outputs.OceanNpVirtualNodeGroupUpdatePolicy']]] = None,
             vnet_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'OceanNpVirtualNodeGroup':
         """
         Get an existing OceanNpVirtualNodeGroup resource's state with the given name, id, and optional extra
@@ -1547,12 +1547,12 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
         :param pulumi.Input[_builtins.bool] encryption_at_host: Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
-        :param pulumi.Input[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict']] filters: Filters for the VM sizes that can be launched from the virtual node group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupHeadroomArgs', 'OceanNpVirtualNodeGroupHeadroomArgsDict']]]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
+        :param pulumi.Input[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict', 'outputs.OceanNpVirtualNodeGroupFilters']] filters: Filters for the VM sizes that can be launched from the virtual node group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupHeadroomArgs', 'OceanNpVirtualNodeGroupHeadroomArgsDict', 'outputs.OceanNpVirtualNodeGroupHeadroom']]]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
         :param pulumi.Input[_builtins.str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLinuxOsConfigArgs', 'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict']]]] linux_os_configs: Custom Linux OS configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLocalDnsProfileArgs', 'OceanNpVirtualNodeGroupLocalDnsProfileArgsDict']]]] local_dns_profiles: Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLinuxOsConfigArgs', 'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict', 'outputs.OceanNpVirtualNodeGroupLinuxOsConfig']]]] linux_os_configs: Custom Linux OS configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLocalDnsProfileArgs', 'OceanNpVirtualNodeGroupLocalDnsProfileArgsDict', 'outputs.OceanNpVirtualNodeGroupLocalDnsProfile']]]] local_dns_profiles: Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
         :param pulumi.Input[_builtins.int] max_count: Maximum node count limit.
         :param pulumi.Input[_builtins.int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[_builtins.int] min_count: Minimum node count limit.
@@ -1565,10 +1565,10 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_subnet_ids: The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_vm_sizes: Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
         :param pulumi.Input[_builtins.bool] restrict_scale_down: When set to `true`, nodes in this VNG will be protected from scale-down as long as they have reschedulable workloads running.
-        :param pulumi.Input[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict']] scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+        :param pulumi.Input[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict', 'outputs.OceanNpVirtualNodeGroupScheduling']] scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         :param pulumi.Input[_builtins.bool] should_utilize_commitments: Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
         :param pulumi.Input[_builtins.int] spot_percentage: Percentage of spot VMs to maintain.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict']]]] taints: Add taints to a virtual node group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict', 'outputs.OceanNpVirtualNodeGroupTaint']]]] taints: Add taints to a virtual node group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vnet_subnet_ids: The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

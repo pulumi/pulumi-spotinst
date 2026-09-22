@@ -210,10 +210,10 @@ class ProgrammaticUser(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict']]]]] = None,
+                 accounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict', 'outputs.ProgrammaticUserAccount']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProgrammaticUserPolicyArgs', 'ProgrammaticUserPolicyArgsDict']]]]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProgrammaticUserPolicyArgs', 'ProgrammaticUserPolicyArgsDict', 'outputs.ProgrammaticUserPolicy']]]]] = None,
                  user_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -241,11 +241,11 @@ class ProgrammaticUser(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict']]]] accounts: All the accounts the programmatic user will have access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict', 'outputs.ProgrammaticUserAccount']]]] accounts: All the accounts the programmatic user will have access to.
                If used - Cannot be empty.
         :param pulumi.Input[_builtins.str] description: Brief description of the user.
         :param pulumi.Input[_builtins.str] name: Name of the programmatic user.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserPolicyArgs', 'ProgrammaticUserPolicyArgsDict']]]] policies: All the policies the programmatic user will have access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserPolicyArgs', 'ProgrammaticUserPolicyArgsDict', 'outputs.ProgrammaticUserPolicy']]]] policies: All the policies the programmatic user will have access to.
                If used - Cannot be empty.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_group_ids: A list of the user groups to register the given user to (should be existing user groups only)
         """
@@ -293,10 +293,10 @@ class ProgrammaticUser(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict']]]]] = None,
+                 accounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict', 'outputs.ProgrammaticUserAccount']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProgrammaticUserPolicyArgs', 'ProgrammaticUserPolicyArgsDict']]]]] = None,
+                 policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProgrammaticUserPolicyArgs', 'ProgrammaticUserPolicyArgsDict', 'outputs.ProgrammaticUserPolicy']]]]] = None,
                  user_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -322,10 +322,10 @@ class ProgrammaticUser(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict']]]]] = None,
+            accounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict', 'outputs.ProgrammaticUserAccount']]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProgrammaticUserPolicyArgs', 'ProgrammaticUserPolicyArgsDict']]]]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProgrammaticUserPolicyArgs', 'ProgrammaticUserPolicyArgsDict', 'outputs.ProgrammaticUserPolicy']]]]] = None,
             user_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ProgrammaticUser':
         """
         Get an existing ProgrammaticUser resource's state with the given name, id, and optional extra
@@ -334,11 +334,11 @@ class ProgrammaticUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict']]]] accounts: All the accounts the programmatic user will have access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict', 'outputs.ProgrammaticUserAccount']]]] accounts: All the accounts the programmatic user will have access to.
                If used - Cannot be empty.
         :param pulumi.Input[_builtins.str] description: Brief description of the user.
         :param pulumi.Input[_builtins.str] name: Name of the programmatic user.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserPolicyArgs', 'ProgrammaticUserPolicyArgsDict']]]] policies: All the policies the programmatic user will have access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProgrammaticUserPolicyArgs', 'ProgrammaticUserPolicyArgsDict', 'outputs.ProgrammaticUserPolicy']]]] policies: All the policies the programmatic user will have access to.
                If used - Cannot be empty.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_group_ids: A list of the user groups to register the given user to (should be existing user groups only)
         """

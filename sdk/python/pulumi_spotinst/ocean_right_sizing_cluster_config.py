@@ -136,7 +136,7 @@ class OceanRightSizingClusterConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_identifier: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['OceanRightSizingClusterConfigConfigArgs', 'OceanRightSizingClusterConfigConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['OceanRightSizingClusterConfigConfigArgs', 'OceanRightSizingClusterConfigConfigArgsDict', 'outputs.OceanRightSizingClusterConfigConfig']]] = None,
                  ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -167,7 +167,7 @@ class OceanRightSizingClusterConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_identifier: Identifier of the cluster. Example: `dev-cluster`
-        :param pulumi.Input[Union['OceanRightSizingClusterConfigConfigArgs', 'OceanRightSizingClusterConfigConfigArgsDict']] config: The Ocean right sizing cluster configuration. The `config` block supports:
+        :param pulumi.Input[Union['OceanRightSizingClusterConfigConfigArgs', 'OceanRightSizingClusterConfigConfigArgsDict', 'outputs.OceanRightSizingClusterConfigConfig']] config: The Ocean right sizing cluster configuration. The `config` block supports:
         :param pulumi.Input[_builtins.str] ocean_id: Identifier of the Ocean cluster. Example: `o-abcd1234`
         """
         ...
@@ -217,7 +217,7 @@ class OceanRightSizingClusterConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_identifier: pulumi.Input[Optional[_builtins.str]] = None,
-                 config: pulumi.Input[Optional[Union['OceanRightSizingClusterConfigConfigArgs', 'OceanRightSizingClusterConfigConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['OceanRightSizingClusterConfigConfigArgs', 'OceanRightSizingClusterConfigConfigArgsDict', 'outputs.OceanRightSizingClusterConfigConfig']]] = None,
                  ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -248,7 +248,7 @@ class OceanRightSizingClusterConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_identifier: pulumi.Input[Optional[_builtins.str]] = None,
-            config: pulumi.Input[Optional[Union['OceanRightSizingClusterConfigConfigArgs', 'OceanRightSizingClusterConfigConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['OceanRightSizingClusterConfigConfigArgs', 'OceanRightSizingClusterConfigConfigArgsDict', 'outputs.OceanRightSizingClusterConfigConfig']]] = None,
             ocean_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OceanRightSizingClusterConfig':
         """
         Get an existing OceanRightSizingClusterConfig resource's state with the given name, id, and optional extra
@@ -258,7 +258,7 @@ class OceanRightSizingClusterConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_identifier: Identifier of the cluster. Example: `dev-cluster`
-        :param pulumi.Input[Union['OceanRightSizingClusterConfigConfigArgs', 'OceanRightSizingClusterConfigConfigArgsDict']] config: The Ocean right sizing cluster configuration. The `config` block supports:
+        :param pulumi.Input[Union['OceanRightSizingClusterConfigConfigArgs', 'OceanRightSizingClusterConfigConfigArgsDict', 'outputs.OceanRightSizingClusterConfigConfig']] config: The Ocean right sizing cluster configuration. The `config` block supports:
         :param pulumi.Input[_builtins.str] ocean_id: Identifier of the Ocean cluster. Example: `o-abcd1234`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

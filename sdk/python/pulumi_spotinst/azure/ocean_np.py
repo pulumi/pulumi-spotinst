@@ -1209,21 +1209,21 @@ class OceanNp(pulumi.CustomResource):
                  aks_region: pulumi.Input[Optional[_builtins.str]] = None,
                  aks_resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_headroom_percentage: pulumi.Input[Optional[_builtins.int]] = None,
-                 autoscaler: pulumi.Input[Optional[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict']]] = None,
+                 autoscaler: pulumi.Input[Optional[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict', 'outputs.OceanNpAutoscaler']]] = None,
                  availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  controller_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption_at_host: pulumi.Input[Optional[_builtins.bool]] = None,
                  fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
-                 filters: pulumi.Input[Optional[Union['OceanNpFiltersArgs', 'OceanNpFiltersArgsDict']]] = None,
-                 headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpHeadroomArgs', 'OceanNpHeadroomArgsDict']]]]] = None,
-                 health: pulumi.Input[Optional[Union['OceanNpHealthArgs', 'OceanNpHealthArgsDict']]] = None,
+                 filters: pulumi.Input[Optional[Union['OceanNpFiltersArgs', 'OceanNpFiltersArgsDict', 'outputs.OceanNpFilters']]] = None,
+                 headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpHeadroomArgs', 'OceanNpHeadroomArgsDict', 'outputs.OceanNpHeadroom']]]]] = None,
+                 health: pulumi.Input[Optional[Union['OceanNpHealthArgs', 'OceanNpHealthArgsDict', 'outputs.OceanNpHealth']]] = None,
                  kubernetes_version: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict']]]]] = None,
-                 local_dns_profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpLocalDnsProfileArgs', 'OceanNpLocalDnsProfileArgsDict']]]]] = None,
-                 logging: pulumi.Input[Optional[Union['OceanNpLoggingArgs', 'OceanNpLoggingArgsDict']]] = None,
+                 linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict', 'outputs.OceanNpLinuxOsConfig']]]]] = None,
+                 local_dns_profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpLocalDnsProfileArgs', 'OceanNpLocalDnsProfileArgsDict', 'outputs.OceanNpLocalDnsProfile']]]]] = None,
+                 logging: pulumi.Input[Optional[Union['OceanNpLoggingArgs', 'OceanNpLoggingArgsDict', 'outputs.OceanNpLogging']]] = None,
                  max_count: pulumi.Input[Optional[_builtins.int]] = None,
                  max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  min_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1234,14 +1234,14 @@ class OceanNp(pulumi.CustomResource):
                  os_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  preferred_vm_sizes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 scheduling: pulumi.Input[Optional[Union['OceanNpSchedulingArgs', 'OceanNpSchedulingArgsDict']]] = None,
+                 scheduling: pulumi.Input[Optional[Union['OceanNpSchedulingArgs', 'OceanNpSchedulingArgsDict', 'outputs.OceanNpScheduling']]] = None,
                  should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
                  spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpTaintArgs', 'OceanNpTaintArgsDict']]]]] = None,
-                 update_policy: pulumi.Input[Optional[Union['OceanNpUpdatePolicyArgs', 'OceanNpUpdatePolicyArgsDict']]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpTaintArgs', 'OceanNpTaintArgsDict', 'outputs.OceanNpTaint']]]]] = None,
+                 update_policy: pulumi.Input[Optional[Union['OceanNpUpdatePolicyArgs', 'OceanNpUpdatePolicyArgsDict', 'outputs.OceanNpUpdatePolicy']]] = None,
                  vnet_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vng_template_scheduling: pulumi.Input[Optional[Union['OceanNpVngTemplateSchedulingArgs', 'OceanNpVngTemplateSchedulingArgsDict']]] = None,
+                 vng_template_scheduling: pulumi.Input[Optional[Union['OceanNpVngTemplateSchedulingArgs', 'OceanNpVngTemplateSchedulingArgsDict', 'outputs.OceanNpVngTemplateScheduling']]] = None,
                  __props__=None):
         """
         Manages a Spotinst Ocean AKS resource.
@@ -1457,7 +1457,7 @@ class OceanNp(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] auto_headroom_percentage: Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
-        :param pulumi.Input[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict']] autoscaler: The Ocean Kubernetes Autoscaler object.
+        :param pulumi.Input[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict', 'outputs.OceanNpAutoscaler']] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
                Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
                In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
@@ -1466,14 +1466,14 @@ class OceanNp(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
         :param pulumi.Input[_builtins.bool] encryption_at_host: Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
-        :param pulumi.Input[Union['OceanNpFiltersArgs', 'OceanNpFiltersArgsDict']] filters: Filters for the VM sizes that can be launched from the virtual node group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpHeadroomArgs', 'OceanNpHeadroomArgsDict']]]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
-        :param pulumi.Input[Union['OceanNpHealthArgs', 'OceanNpHealthArgsDict']] health: The Ocean AKS Health object.
+        :param pulumi.Input[Union['OceanNpFiltersArgs', 'OceanNpFiltersArgsDict', 'outputs.OceanNpFilters']] filters: Filters for the VM sizes that can be launched from the virtual node group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpHeadroomArgs', 'OceanNpHeadroomArgsDict', 'outputs.OceanNpHeadroom']]]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
+        :param pulumi.Input[Union['OceanNpHealthArgs', 'OceanNpHealthArgsDict', 'outputs.OceanNpHealth']] health: The Ocean AKS Health object.
         :param pulumi.Input[_builtins.str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict']]]] linux_os_configs: Custom Linux OS configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpLocalDnsProfileArgs', 'OceanNpLocalDnsProfileArgsDict']]]] local_dns_profiles: Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
-        :param pulumi.Input[Union['OceanNpLoggingArgs', 'OceanNpLoggingArgsDict']] logging: The Ocean AKS Logging Object.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict', 'outputs.OceanNpLinuxOsConfig']]]] linux_os_configs: Custom Linux OS configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpLocalDnsProfileArgs', 'OceanNpLocalDnsProfileArgsDict', 'outputs.OceanNpLocalDnsProfile']]]] local_dns_profiles: Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+        :param pulumi.Input[Union['OceanNpLoggingArgs', 'OceanNpLoggingArgsDict', 'outputs.OceanNpLogging']] logging: The Ocean AKS Logging Object.
         :param pulumi.Input[_builtins.int] max_count: Maximum node count limit.
         :param pulumi.Input[_builtins.int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[_builtins.int] min_count: Minimum node count limit.
@@ -1486,9 +1486,9 @@ class OceanNp(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_vm_sizes: Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
         :param pulumi.Input[_builtins.bool] should_utilize_commitments: Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
         :param pulumi.Input[_builtins.int] spot_percentage: Percentage of spot VMs to maintain.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpTaintArgs', 'OceanNpTaintArgsDict']]]] taints: Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpTaintArgs', 'OceanNpTaintArgsDict', 'outputs.OceanNpTaint']]]] taints: Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vnet_subnet_ids: The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
-        :param pulumi.Input[Union['OceanNpVngTemplateSchedulingArgs', 'OceanNpVngTemplateSchedulingArgsDict']] vng_template_scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+        :param pulumi.Input[Union['OceanNpVngTemplateSchedulingArgs', 'OceanNpVngTemplateSchedulingArgsDict', 'outputs.OceanNpVngTemplateScheduling']] vng_template_scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         """
         ...
     @overload
@@ -1727,21 +1727,21 @@ class OceanNp(pulumi.CustomResource):
                  aks_region: pulumi.Input[Optional[_builtins.str]] = None,
                  aks_resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_headroom_percentage: pulumi.Input[Optional[_builtins.int]] = None,
-                 autoscaler: pulumi.Input[Optional[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict']]] = None,
+                 autoscaler: pulumi.Input[Optional[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict', 'outputs.OceanNpAutoscaler']]] = None,
                  availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  controller_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption_at_host: pulumi.Input[Optional[_builtins.bool]] = None,
                  fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
-                 filters: pulumi.Input[Optional[Union['OceanNpFiltersArgs', 'OceanNpFiltersArgsDict']]] = None,
-                 headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpHeadroomArgs', 'OceanNpHeadroomArgsDict']]]]] = None,
-                 health: pulumi.Input[Optional[Union['OceanNpHealthArgs', 'OceanNpHealthArgsDict']]] = None,
+                 filters: pulumi.Input[Optional[Union['OceanNpFiltersArgs', 'OceanNpFiltersArgsDict', 'outputs.OceanNpFilters']]] = None,
+                 headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpHeadroomArgs', 'OceanNpHeadroomArgsDict', 'outputs.OceanNpHeadroom']]]]] = None,
+                 health: pulumi.Input[Optional[Union['OceanNpHealthArgs', 'OceanNpHealthArgsDict', 'outputs.OceanNpHealth']]] = None,
                  kubernetes_version: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict']]]]] = None,
-                 local_dns_profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpLocalDnsProfileArgs', 'OceanNpLocalDnsProfileArgsDict']]]]] = None,
-                 logging: pulumi.Input[Optional[Union['OceanNpLoggingArgs', 'OceanNpLoggingArgsDict']]] = None,
+                 linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict', 'outputs.OceanNpLinuxOsConfig']]]]] = None,
+                 local_dns_profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpLocalDnsProfileArgs', 'OceanNpLocalDnsProfileArgsDict', 'outputs.OceanNpLocalDnsProfile']]]]] = None,
+                 logging: pulumi.Input[Optional[Union['OceanNpLoggingArgs', 'OceanNpLoggingArgsDict', 'outputs.OceanNpLogging']]] = None,
                  max_count: pulumi.Input[Optional[_builtins.int]] = None,
                  max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  min_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1752,14 +1752,14 @@ class OceanNp(pulumi.CustomResource):
                  os_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  preferred_vm_sizes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 scheduling: pulumi.Input[Optional[Union['OceanNpSchedulingArgs', 'OceanNpSchedulingArgsDict']]] = None,
+                 scheduling: pulumi.Input[Optional[Union['OceanNpSchedulingArgs', 'OceanNpSchedulingArgsDict', 'outputs.OceanNpScheduling']]] = None,
                  should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
                  spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpTaintArgs', 'OceanNpTaintArgsDict']]]]] = None,
-                 update_policy: pulumi.Input[Optional[Union['OceanNpUpdatePolicyArgs', 'OceanNpUpdatePolicyArgsDict']]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpTaintArgs', 'OceanNpTaintArgsDict', 'outputs.OceanNpTaint']]]]] = None,
+                 update_policy: pulumi.Input[Optional[Union['OceanNpUpdatePolicyArgs', 'OceanNpUpdatePolicyArgsDict', 'outputs.OceanNpUpdatePolicy']]] = None,
                  vnet_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vng_template_scheduling: pulumi.Input[Optional[Union['OceanNpVngTemplateSchedulingArgs', 'OceanNpVngTemplateSchedulingArgsDict']]] = None,
+                 vng_template_scheduling: pulumi.Input[Optional[Union['OceanNpVngTemplateSchedulingArgs', 'OceanNpVngTemplateSchedulingArgsDict', 'outputs.OceanNpVngTemplateScheduling']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1834,21 +1834,21 @@ class OceanNp(pulumi.CustomResource):
             aks_region: pulumi.Input[Optional[_builtins.str]] = None,
             aks_resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
             auto_headroom_percentage: pulumi.Input[Optional[_builtins.int]] = None,
-            autoscaler: pulumi.Input[Optional[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict']]] = None,
+            autoscaler: pulumi.Input[Optional[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict', 'outputs.OceanNpAutoscaler']]] = None,
             availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             controller_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
             enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
             encryption_at_host: pulumi.Input[Optional[_builtins.bool]] = None,
             fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
-            filters: pulumi.Input[Optional[Union['OceanNpFiltersArgs', 'OceanNpFiltersArgsDict']]] = None,
-            headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpHeadroomArgs', 'OceanNpHeadroomArgsDict']]]]] = None,
-            health: pulumi.Input[Optional[Union['OceanNpHealthArgs', 'OceanNpHealthArgsDict']]] = None,
+            filters: pulumi.Input[Optional[Union['OceanNpFiltersArgs', 'OceanNpFiltersArgsDict', 'outputs.OceanNpFilters']]] = None,
+            headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpHeadroomArgs', 'OceanNpHeadroomArgsDict', 'outputs.OceanNpHeadroom']]]]] = None,
+            health: pulumi.Input[Optional[Union['OceanNpHealthArgs', 'OceanNpHealthArgsDict', 'outputs.OceanNpHealth']]] = None,
             kubernetes_version: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict']]]]] = None,
-            local_dns_profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpLocalDnsProfileArgs', 'OceanNpLocalDnsProfileArgsDict']]]]] = None,
-            logging: pulumi.Input[Optional[Union['OceanNpLoggingArgs', 'OceanNpLoggingArgsDict']]] = None,
+            linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict', 'outputs.OceanNpLinuxOsConfig']]]]] = None,
+            local_dns_profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpLocalDnsProfileArgs', 'OceanNpLocalDnsProfileArgsDict', 'outputs.OceanNpLocalDnsProfile']]]]] = None,
+            logging: pulumi.Input[Optional[Union['OceanNpLoggingArgs', 'OceanNpLoggingArgsDict', 'outputs.OceanNpLogging']]] = None,
             max_count: pulumi.Input[Optional[_builtins.int]] = None,
             max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
             min_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1859,14 +1859,14 @@ class OceanNp(pulumi.CustomResource):
             os_type: pulumi.Input[Optional[_builtins.str]] = None,
             pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             preferred_vm_sizes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            scheduling: pulumi.Input[Optional[Union['OceanNpSchedulingArgs', 'OceanNpSchedulingArgsDict']]] = None,
+            scheduling: pulumi.Input[Optional[Union['OceanNpSchedulingArgs', 'OceanNpSchedulingArgsDict', 'outputs.OceanNpScheduling']]] = None,
             should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
             spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpTaintArgs', 'OceanNpTaintArgsDict']]]]] = None,
-            update_policy: pulumi.Input[Optional[Union['OceanNpUpdatePolicyArgs', 'OceanNpUpdatePolicyArgsDict']]] = None,
+            taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpTaintArgs', 'OceanNpTaintArgsDict', 'outputs.OceanNpTaint']]]]] = None,
+            update_policy: pulumi.Input[Optional[Union['OceanNpUpdatePolicyArgs', 'OceanNpUpdatePolicyArgsDict', 'outputs.OceanNpUpdatePolicy']]] = None,
             vnet_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            vng_template_scheduling: pulumi.Input[Optional[Union['OceanNpVngTemplateSchedulingArgs', 'OceanNpVngTemplateSchedulingArgsDict']]] = None) -> 'OceanNp':
+            vng_template_scheduling: pulumi.Input[Optional[Union['OceanNpVngTemplateSchedulingArgs', 'OceanNpVngTemplateSchedulingArgsDict', 'outputs.OceanNpVngTemplateScheduling']]] = None) -> 'OceanNp':
         """
         Get an existing OceanNp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1875,7 +1875,7 @@ class OceanNp(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] auto_headroom_percentage: Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
-        :param pulumi.Input[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict']] autoscaler: The Ocean Kubernetes Autoscaler object.
+        :param pulumi.Input[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict', 'outputs.OceanNpAutoscaler']] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch nodes in per VNG.
                Select zone 0 if you have a workload that requires no availability zone redundancy (AZ=null). You can select this option either alone or together with other availability zones.
                In case zone 0 is selected together with other availability zones, nodes of zone 0 will be scaled only for workloads that demand it.
@@ -1884,14 +1884,14 @@ class OceanNp(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_node_public_ip: Enable node public IP.
         :param pulumi.Input[_builtins.bool] encryption_at_host: Whether to enable host-based encryption for nodes. When set to `true`, use `vmSizes.preferredVmSizes` to provide compatible VM sizes. **Important:** This setting is immutable at the Azure infrastructure level once nodes are launched. Changing this value requires a roll operation for new nodes to reflect the updated configuration.
         :param pulumi.Input[_builtins.bool] fallback_to_ondemand: If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.
-        :param pulumi.Input[Union['OceanNpFiltersArgs', 'OceanNpFiltersArgsDict']] filters: Filters for the VM sizes that can be launched from the virtual node group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpHeadroomArgs', 'OceanNpHeadroomArgsDict']]]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
-        :param pulumi.Input[Union['OceanNpHealthArgs', 'OceanNpHealthArgsDict']] health: The Ocean AKS Health object.
+        :param pulumi.Input[Union['OceanNpFiltersArgs', 'OceanNpFiltersArgsDict', 'outputs.OceanNpFilters']] filters: Filters for the VM sizes that can be launched from the virtual node group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpHeadroomArgs', 'OceanNpHeadroomArgsDict', 'outputs.OceanNpHeadroom']]]] headrooms: Specify the custom headroom per VNG. Provide a list of headroom objects.
+        :param pulumi.Input[Union['OceanNpHealthArgs', 'OceanNpHealthArgsDict', 'outputs.OceanNpHealth']] health: The Ocean AKS Health object.
         :param pulumi.Input[_builtins.str] kubernetes_version: The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict']]]] linux_os_configs: Custom Linux OS configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpLocalDnsProfileArgs', 'OceanNpLocalDnsProfileArgsDict']]]] local_dns_profiles: Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
-        :param pulumi.Input[Union['OceanNpLoggingArgs', 'OceanNpLoggingArgsDict']] logging: The Ocean AKS Logging Object.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict', 'outputs.OceanNpLinuxOsConfig']]]] linux_os_configs: Custom Linux OS configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpLocalDnsProfileArgs', 'OceanNpLocalDnsProfileArgsDict', 'outputs.OceanNpLocalDnsProfile']]]] local_dns_profiles: Local DNS profile configuration for the node pool. Requires VM sizes with at least 4 vCPUs and Linux (Ubuntu 22.04+ or Azure Linux) OS. See: [AKS Local DNS Custom Field](https://learn.microsoft.com/en-us/azure/aks/localdns-custom).
+        :param pulumi.Input[Union['OceanNpLoggingArgs', 'OceanNpLoggingArgsDict', 'outputs.OceanNpLogging']] logging: The Ocean AKS Logging Object.
         :param pulumi.Input[_builtins.int] max_count: Maximum node count limit.
         :param pulumi.Input[_builtins.int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[_builtins.int] min_count: Minimum node count limit.
@@ -1904,9 +1904,9 @@ class OceanNp(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_vm_sizes: Preferred VM sizes for this virtual node group. Used when nodePoolProperties.encryptionAtHost is true to constrain launches to compatible sizes.
         :param pulumi.Input[_builtins.bool] should_utilize_commitments: Determines whether to utilize any existing Azure Savings Plans or Reserved Instances associated with the subscription for On-Demand VMs.
         :param pulumi.Input[_builtins.int] spot_percentage: Percentage of spot VMs to maintain.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpTaintArgs', 'OceanNpTaintArgsDict']]]] taints: Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanNpTaintArgs', 'OceanNpTaintArgsDict', 'outputs.OceanNpTaint']]]] taints: Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vnet_subnet_ids: The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).
-        :param pulumi.Input[Union['OceanNpVngTemplateSchedulingArgs', 'OceanNpVngTemplateSchedulingArgsDict']] vng_template_scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
+        :param pulumi.Input[Union['OceanNpVngTemplateSchedulingArgs', 'OceanNpVngTemplateSchedulingArgsDict', 'outputs.OceanNpVngTemplateScheduling']] vng_template_scheduling: An object used to specify times when the virtual node group will turn off all its node pools. Once the shutdown time will be over, the virtual node group will return to its previous state.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

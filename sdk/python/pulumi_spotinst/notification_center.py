@@ -206,13 +206,13 @@ class NotificationCenter(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute_policy_config: pulumi.Input[Optional[Union['NotificationCenterComputePolicyConfigArgs', 'NotificationCenterComputePolicyConfigArgsDict']]] = None,
+                 compute_policy_config: pulumi.Input[Optional[Union['NotificationCenterComputePolicyConfigArgs', 'NotificationCenterComputePolicyConfigArgsDict', 'outputs.NotificationCenterComputePolicyConfig']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  is_active: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  privacy_level: pulumi.Input[Optional[_builtins.str]] = None,
-                 registered_users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NotificationCenterRegisteredUserArgs', 'NotificationCenterRegisteredUserArgsDict']]]]] = None,
-                 subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NotificationCenterSubscriptionArgs', 'NotificationCenterSubscriptionArgsDict']]]]] = None,
+                 registered_users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NotificationCenterRegisteredUserArgs', 'NotificationCenterRegisteredUserArgsDict', 'outputs.NotificationCenterRegisteredUser']]]]] = None,
+                 subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NotificationCenterSubscriptionArgs', 'NotificationCenterSubscriptionArgsDict', 'outputs.NotificationCenterSubscription']]]]] = None,
                  __props__=None):
         """
         Create a NotificationCenter resource with the given unique name, props, and options.
@@ -244,13 +244,13 @@ class NotificationCenter(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute_policy_config: pulumi.Input[Optional[Union['NotificationCenterComputePolicyConfigArgs', 'NotificationCenterComputePolicyConfigArgsDict']]] = None,
+                 compute_policy_config: pulumi.Input[Optional[Union['NotificationCenterComputePolicyConfigArgs', 'NotificationCenterComputePolicyConfigArgsDict', 'outputs.NotificationCenterComputePolicyConfig']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  is_active: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  privacy_level: pulumi.Input[Optional[_builtins.str]] = None,
-                 registered_users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NotificationCenterRegisteredUserArgs', 'NotificationCenterRegisteredUserArgsDict']]]]] = None,
-                 subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NotificationCenterSubscriptionArgs', 'NotificationCenterSubscriptionArgsDict']]]]] = None,
+                 registered_users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NotificationCenterRegisteredUserArgs', 'NotificationCenterRegisteredUserArgsDict', 'outputs.NotificationCenterRegisteredUser']]]]] = None,
+                 subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NotificationCenterSubscriptionArgs', 'NotificationCenterSubscriptionArgsDict', 'outputs.NotificationCenterSubscription']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -281,13 +281,13 @@ class NotificationCenter(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            compute_policy_config: pulumi.Input[Optional[Union['NotificationCenterComputePolicyConfigArgs', 'NotificationCenterComputePolicyConfigArgsDict']]] = None,
+            compute_policy_config: pulumi.Input[Optional[Union['NotificationCenterComputePolicyConfigArgs', 'NotificationCenterComputePolicyConfigArgsDict', 'outputs.NotificationCenterComputePolicyConfig']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             is_active: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             privacy_level: pulumi.Input[Optional[_builtins.str]] = None,
-            registered_users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NotificationCenterRegisteredUserArgs', 'NotificationCenterRegisteredUserArgsDict']]]]] = None,
-            subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NotificationCenterSubscriptionArgs', 'NotificationCenterSubscriptionArgsDict']]]]] = None) -> 'NotificationCenter':
+            registered_users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NotificationCenterRegisteredUserArgs', 'NotificationCenterRegisteredUserArgsDict', 'outputs.NotificationCenterRegisteredUser']]]]] = None,
+            subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NotificationCenterSubscriptionArgs', 'NotificationCenterSubscriptionArgsDict', 'outputs.NotificationCenterSubscription']]]]] = None) -> 'NotificationCenter':
         """
         Get an existing NotificationCenter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

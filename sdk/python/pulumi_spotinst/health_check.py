@@ -184,7 +184,7 @@ class HealthCheck(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 check: pulumi.Input[Optional[Union['HealthCheckCheckArgs', 'HealthCheckCheckArgsDict']]] = None,
+                 check: pulumi.Input[Optional[Union['HealthCheckCheckArgs', 'HealthCheckCheckArgsDict', 'outputs.HealthCheckCheck']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy_address: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy_port: pulumi.Input[Optional[_builtins.int]] = None,
@@ -218,7 +218,7 @@ class HealthCheck(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['HealthCheckCheckArgs', 'HealthCheckCheckArgsDict']] check: Describes the check to execute.
+        :param pulumi.Input[Union['HealthCheckCheckArgs', 'HealthCheckCheckArgsDict', 'outputs.HealthCheckCheck']] check: Describes the check to execute.
         :param pulumi.Input[_builtins.str] name: The name of the health check.
         :param pulumi.Input[_builtins.str] resource_id: The ID of the resource to check.
         """
@@ -269,7 +269,7 @@ class HealthCheck(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 check: pulumi.Input[Optional[Union['HealthCheckCheckArgs', 'HealthCheckCheckArgsDict']]] = None,
+                 check: pulumi.Input[Optional[Union['HealthCheckCheckArgs', 'HealthCheckCheckArgsDict', 'outputs.HealthCheckCheck']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy_address: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy_port: pulumi.Input[Optional[_builtins.int]] = None,
@@ -302,7 +302,7 @@ class HealthCheck(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            check: pulumi.Input[Optional[Union['HealthCheckCheckArgs', 'HealthCheckCheckArgsDict']]] = None,
+            check: pulumi.Input[Optional[Union['HealthCheckCheckArgs', 'HealthCheckCheckArgsDict', 'outputs.HealthCheckCheck']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             proxy_address: pulumi.Input[Optional[_builtins.str]] = None,
             proxy_port: pulumi.Input[Optional[_builtins.int]] = None,
@@ -314,7 +314,7 @@ class HealthCheck(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['HealthCheckCheckArgs', 'HealthCheckCheckArgsDict']] check: Describes the check to execute.
+        :param pulumi.Input[Union['HealthCheckCheckArgs', 'HealthCheckCheckArgsDict', 'outputs.HealthCheckCheck']] check: Describes the check to execute.
         :param pulumi.Input[_builtins.str] name: The name of the health check.
         :param pulumi.Input[_builtins.str] resource_id: The ID of the resource to check.
         """

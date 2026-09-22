@@ -71,7 +71,7 @@ var fixUpElastigroup = tfbridge.DocsEdit{
 				"### Signals\n\nEach `signal` supports the following:\n",
 			},
 
-			{"## Scheduled Tasks",
+			{scheduledTasksHeader,
 				"### Scheduled Tasks\n\nEach `scheduled_task` supports the following:\n",
 			},
 			{
@@ -124,8 +124,8 @@ var fixUpElastigroup = tfbridge.DocsEdit{
 				"### Diff-suppressed Parameters",
 			},
 			{
-				"description = \"created by Terraform\"",
-				"description = \"created by Pulumi\"",
+				terraformDescriptionExample,
+				pulumiDescriptionExample,
 			},
 			{
 				"terraform-acc-test-cluster",
@@ -180,8 +180,8 @@ var fixupMrScaler = tfbridge.DocsEdit{
 				"### Wrap Strategy",
 			},
 			{
-				"description = \"created by Terraform\"",
-				"description = \"created by Pulumi\"",
+				terraformDescriptionExample,
+				pulumiDescriptionExample,
 			},
 			{
 				"`expose_cluster_id` - (Optional) Allow the `cluster_id` to set a Terraform output variable.",
@@ -236,7 +236,7 @@ var fixupMrScaler = tfbridge.DocsEdit{
 				"### Scaling Policies",
 			},
 			{
-				"## Scheduled Tasks",
+				scheduledTasksHeader,
 				"### Scheduled Tasks",
 			},
 			{
@@ -264,8 +264,8 @@ var fixUpStatefulNode = tfbridge.DocsEdit{
 	Edit: func(_ string, content []byte) ([]byte, error) {
 		replaces := []replace{
 			{
-				"description = \"created by Terraform\"",
-				"description = \"created by Pulumi\"",
+				terraformDescriptionExample,
+				pulumiDescriptionExample,
 			},
 			{
 				"## Block Device Mapping",
@@ -280,7 +280,7 @@ var fixUpStatefulNode = tfbridge.DocsEdit{
 				"### Network Interface",
 			},
 			{
-				"## Scheduled Tasks",
+				scheduledTasksHeader,
 				"### Scheduled Tasks",
 			},
 			{
@@ -317,6 +317,12 @@ var fixupHealthCheck = tfbridge.DocsEdit{
 		return content, nil
 	},
 }
+
+const (
+	scheduledTasksHeader        = "## Scheduled Tasks"
+	terraformDescriptionExample = `description = "created by Terraform"`
+	pulumiDescriptionExample    = `description = "created by Pulumi"`
+)
 
 func docEditRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 	return append(defaults,

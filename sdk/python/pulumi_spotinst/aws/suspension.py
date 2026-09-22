@@ -105,7 +105,7 @@ class Suspension(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 suspensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SuspensionSuspensionArgs', 'SuspensionSuspensionArgsDict']]]]] = None,
+                 suspensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SuspensionSuspensionArgs', 'SuspensionSuspensionArgsDict', 'outputs.SuspensionSuspension']]]]] = None,
                  __props__=None):
         """
         Suspend AWS Elastigroup processes. This resource provide the capability of
@@ -138,7 +138,7 @@ class Suspension(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_id: Elastigroup ID to apply the suspensions on.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SuspensionSuspensionArgs', 'SuspensionSuspensionArgsDict']]]] suspensions: block of single process to suspend.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SuspensionSuspensionArgs', 'SuspensionSuspensionArgsDict', 'outputs.SuspensionSuspension']]]] suspensions: block of single process to suspend.
         """
         ...
     @overload
@@ -190,7 +190,7 @@ class Suspension(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 suspensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SuspensionSuspensionArgs', 'SuspensionSuspensionArgsDict']]]]] = None,
+                 suspensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SuspensionSuspensionArgs', 'SuspensionSuspensionArgsDict', 'outputs.SuspensionSuspension']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -217,7 +217,7 @@ class Suspension(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             group_id: pulumi.Input[Optional[_builtins.str]] = None,
-            suspensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SuspensionSuspensionArgs', 'SuspensionSuspensionArgsDict']]]]] = None) -> 'Suspension':
+            suspensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SuspensionSuspensionArgs', 'SuspensionSuspensionArgsDict', 'outputs.SuspensionSuspension']]]]] = None) -> 'Suspension':
         """
         Get an existing Suspension resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -226,7 +226,7 @@ class Suspension(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_id: Elastigroup ID to apply the suspensions on.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SuspensionSuspensionArgs', 'SuspensionSuspensionArgsDict']]]] suspensions: block of single process to suspend.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SuspensionSuspensionArgs', 'SuspensionSuspensionArgsDict', 'outputs.SuspensionSuspension']]]] suspensions: block of single process to suspend.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

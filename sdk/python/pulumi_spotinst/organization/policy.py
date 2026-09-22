@@ -139,7 +139,7 @@ class Policy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 policy_contents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyPolicyContentArgs', 'PolicyPolicyContentArgsDict']]]]] = None,
+                 policy_contents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyPolicyContentArgs', 'PolicyPolicyContentArgsDict', 'outputs.PolicyPolicyContent']]]]] = None,
                  __props__=None):
         """
         Provides a Spotinst access policy.
@@ -180,7 +180,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Short description of policy.
         :param pulumi.Input[_builtins.str] name: Name of the Policy.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyPolicyContentArgs', 'PolicyPolicyContentArgsDict']]]] policy_contents: Set permissions objects list.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyPolicyContentArgs', 'PolicyPolicyContentArgsDict', 'outputs.PolicyPolicyContent']]]] policy_contents: Set permissions objects list.
         """
         ...
     @overload
@@ -240,7 +240,7 @@ class Policy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 policy_contents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyPolicyContentArgs', 'PolicyPolicyContentArgsDict']]]]] = None,
+                 policy_contents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyPolicyContentArgs', 'PolicyPolicyContentArgsDict', 'outputs.PolicyPolicyContent']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -267,7 +267,7 @@ class Policy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            policy_contents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyPolicyContentArgs', 'PolicyPolicyContentArgsDict']]]]] = None) -> 'Policy':
+            policy_contents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyPolicyContentArgs', 'PolicyPolicyContentArgsDict', 'outputs.PolicyPolicyContent']]]]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -277,7 +277,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Short description of policy.
         :param pulumi.Input[_builtins.str] name: Name of the Policy.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyPolicyContentArgs', 'PolicyPolicyContentArgsDict']]]] policy_contents: Set permissions objects list.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyPolicyContentArgs', 'PolicyPolicyContentArgsDict', 'outputs.PolicyPolicyContent']]]] policy_contents: Set permissions objects list.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

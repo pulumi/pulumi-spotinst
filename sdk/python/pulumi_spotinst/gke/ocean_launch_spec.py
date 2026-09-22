@@ -825,31 +825,31 @@ class OceanLaunchSpec(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscale_headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict']]]]] = None,
-                 autoscale_headrooms_automatics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict']]]]] = None,
-                 create_options: pulumi.Input[Optional[Union['OceanLaunchSpecCreateOptionsArgs', 'OceanLaunchSpecCreateOptionsArgsDict']]] = None,
-                 filters: pulumi.Input[Optional[Union['OceanLaunchSpecFiltersArgs', 'OceanLaunchSpecFiltersArgsDict']]] = None,
+                 autoscale_headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroom']]]]] = None,
+                 autoscale_headrooms_automatics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic']]]]] = None,
+                 create_options: pulumi.Input[Optional[Union['OceanLaunchSpecCreateOptionsArgs', 'OceanLaunchSpecCreateOptionsArgsDict', 'outputs.OceanLaunchSpecCreateOptions']]] = None,
+                 filters: pulumi.Input[Optional[Union['OceanLaunchSpecFiltersArgs', 'OceanLaunchSpecFiltersArgsDict', 'outputs.OceanLaunchSpecFilters']]] = None,
                  instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict']]]]] = None,
-                 metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecMetadataArgs', 'OceanLaunchSpecMetadataArgsDict']]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict', 'outputs.OceanLaunchSpecLabel']]]]] = None,
+                 metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecMetadataArgs', 'OceanLaunchSpecMetadataArgsDict', 'outputs.OceanLaunchSpecMetadata']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecNetworkInterfaceArgs', 'OceanLaunchSpecNetworkInterfaceArgsDict']]]]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecNetworkInterfaceArgs', 'OceanLaunchSpecNetworkInterfaceArgsDict', 'outputs.OceanLaunchSpecNetworkInterface']]]]] = None,
                  node_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 resource_limits: pulumi.Input[Optional[Union['OceanLaunchSpecResourceLimitsArgs', 'OceanLaunchSpecResourceLimitsArgsDict']]] = None,
+                 resource_limits: pulumi.Input[Optional[Union['OceanLaunchSpecResourceLimitsArgs', 'OceanLaunchSpecResourceLimitsArgsDict', 'outputs.OceanLaunchSpecResourceLimits']]] = None,
                  restrict_scale_down: pulumi.Input[Optional[_builtins.bool]] = None,
                  root_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
                  root_volume_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 scheduling_shutdown_hours: pulumi.Input[Optional[Union['OceanLaunchSpecSchedulingShutdownHoursArgs', 'OceanLaunchSpecSchedulingShutdownHoursArgsDict']]] = None,
-                 scheduling_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict']]]]] = None,
+                 scheduling_shutdown_hours: pulumi.Input[Optional[Union['OceanLaunchSpecSchedulingShutdownHoursArgs', 'OceanLaunchSpecSchedulingShutdownHoursArgsDict', 'outputs.OceanLaunchSpecSchedulingShutdownHours']]] = None,
+                 scheduling_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict', 'outputs.OceanLaunchSpecSchedulingTask']]]]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
-                 shielded_instance_config: pulumi.Input[Optional[Union['OceanLaunchSpecShieldedInstanceConfigArgs', 'OceanLaunchSpecShieldedInstanceConfigArgsDict']]] = None,
+                 shielded_instance_config: pulumi.Input[Optional[Union['OceanLaunchSpecShieldedInstanceConfigArgs', 'OceanLaunchSpecShieldedInstanceConfigArgsDict', 'outputs.OceanLaunchSpecShieldedInstanceConfig']]] = None,
                  source_image: pulumi.Input[Optional[_builtins.str]] = None,
-                 storage: pulumi.Input[Optional[Union['OceanLaunchSpecStorageArgs', 'OceanLaunchSpecStorageArgsDict']]] = None,
-                 strategies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecStrategyArgs', 'OceanLaunchSpecStrategyArgsDict']]]]] = None,
+                 storage: pulumi.Input[Optional[Union['OceanLaunchSpecStorageArgs', 'OceanLaunchSpecStorageArgsDict', 'outputs.OceanLaunchSpecStorage']]] = None,
+                 strategies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecStrategyArgs', 'OceanLaunchSpecStrategyArgsDict', 'outputs.OceanLaunchSpecStrategy']]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecTaintArgs', 'OceanLaunchSpecTaintArgsDict']]]]] = None,
-                 update_policy: pulumi.Input[Optional[Union['OceanLaunchSpecUpdatePolicyArgs', 'OceanLaunchSpecUpdatePolicyArgsDict']]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecTaintArgs', 'OceanLaunchSpecTaintArgsDict', 'outputs.OceanLaunchSpecTaint']]]]] = None,
+                 update_policy: pulumi.Input[Optional[Union['OceanLaunchSpecUpdatePolicyArgs', 'OceanLaunchSpecUpdatePolicyArgsDict', 'outputs.OceanLaunchSpecUpdatePolicy']]] = None,
                  __props__=None):
         """
         Manages a custom Spotinst Ocean GKE Launch Spec resource.
@@ -964,29 +964,29 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict']]]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
-        :param pulumi.Input[Union['OceanLaunchSpecFiltersArgs', 'OceanLaunchSpecFiltersArgsDict']] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instance_types` is configured.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroom']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic']]]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
+        :param pulumi.Input[Union['OceanLaunchSpecFiltersArgs', 'OceanLaunchSpecFiltersArgsDict', 'outputs.OceanLaunchSpecFilters']] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instance_types` is configured.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: List of supported machine types for the Launch Spec.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecMetadataArgs', 'OceanLaunchSpecMetadataArgsDict']]]] metadatas: Cluster's metadata.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict', 'outputs.OceanLaunchSpecLabel']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecMetadataArgs', 'OceanLaunchSpecMetadataArgsDict', 'outputs.OceanLaunchSpecMetadata']]]] metadatas: Cluster's metadata.
         :param pulumi.Input[_builtins.str] name: The launch specification name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecNetworkInterfaceArgs', 'OceanLaunchSpecNetworkInterfaceArgsDict']]]] network_interfaces: Settings for network interfaces.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecNetworkInterfaceArgs', 'OceanLaunchSpecNetworkInterfaceArgsDict', 'outputs.OceanLaunchSpecNetworkInterface']]]] network_interfaces: Settings for network interfaces.
         :param pulumi.Input[_builtins.str] node_pool_name: The node pool you wish to use in your Launch Spec.
         :param pulumi.Input[_builtins.str] ocean_id: The Ocean cluster ID.
-        :param pulumi.Input[Union['OceanLaunchSpecResourceLimitsArgs', 'OceanLaunchSpecResourceLimitsArgsDict']] resource_limits: The Ocean virtual node group resource limits object.
+        :param pulumi.Input[Union['OceanLaunchSpecResourceLimitsArgs', 'OceanLaunchSpecResourceLimitsArgsDict', 'outputs.OceanLaunchSpecResourceLimits']] resource_limits: The Ocean virtual node group resource limits object.
         :param pulumi.Input[_builtins.bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[_builtins.int] root_volume_size: Root volume size (in GB).
         :param pulumi.Input[_builtins.str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
-        :param pulumi.Input[Union['OceanLaunchSpecSchedulingShutdownHoursArgs', 'OceanLaunchSpecSchedulingShutdownHoursArgsDict']] scheduling_shutdown_hours: An object used to specify times that the nodes in the virtual node group will be taken down.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict']]]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
+        :param pulumi.Input[Union['OceanLaunchSpecSchedulingShutdownHoursArgs', 'OceanLaunchSpecSchedulingShutdownHoursArgsDict', 'outputs.OceanLaunchSpecSchedulingShutdownHours']] scheduling_shutdown_hours: An object used to specify times that the nodes in the virtual node group will be taken down.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict', 'outputs.OceanLaunchSpecSchedulingTask']]]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[_builtins.str] service_account: The account used by applications running on the VM to call GCP APIs.
-        :param pulumi.Input[Union['OceanLaunchSpecShieldedInstanceConfigArgs', 'OceanLaunchSpecShieldedInstanceConfigArgsDict']] shielded_instance_config: The Ocean shielded instance configuration object.
+        :param pulumi.Input[Union['OceanLaunchSpecShieldedInstanceConfigArgs', 'OceanLaunchSpecShieldedInstanceConfigArgsDict', 'outputs.OceanLaunchSpecShieldedInstanceConfig']] shielded_instance_config: The Ocean shielded instance configuration object.
         :param pulumi.Input[_builtins.str] source_image: Image URL.
-        :param pulumi.Input[Union['OceanLaunchSpecStorageArgs', 'OceanLaunchSpecStorageArgsDict']] storage: The Ocean virtual node group storage object.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecStrategyArgs', 'OceanLaunchSpecStrategyArgsDict']]]] strategies: The Ocean Launch Spec Strategy object.
+        :param pulumi.Input[Union['OceanLaunchSpecStorageArgs', 'OceanLaunchSpecStorageArgsDict', 'outputs.OceanLaunchSpecStorage']] storage: The Ocean virtual node group storage object.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecStrategyArgs', 'OceanLaunchSpecStrategyArgsDict', 'outputs.OceanLaunchSpecStrategy']]]] strategies: The Ocean Launch Spec Strategy object.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Every node launched from this configuration will be tagged with those tags. Note: during creation some tags are automatically imported to the state file, it is required to manually add it to the template configuration
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecTaintArgs', 'OceanLaunchSpecTaintArgsDict']]]] taints: Optionally adds labels to instances launched in an Ocean cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecTaintArgs', 'OceanLaunchSpecTaintArgsDict', 'outputs.OceanLaunchSpecTaint']]]] taints: Optionally adds labels to instances launched in an Ocean cluster.
         """
         ...
     @overload
@@ -1120,31 +1120,31 @@ class OceanLaunchSpec(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscale_headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict']]]]] = None,
-                 autoscale_headrooms_automatics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict']]]]] = None,
-                 create_options: pulumi.Input[Optional[Union['OceanLaunchSpecCreateOptionsArgs', 'OceanLaunchSpecCreateOptionsArgsDict']]] = None,
-                 filters: pulumi.Input[Optional[Union['OceanLaunchSpecFiltersArgs', 'OceanLaunchSpecFiltersArgsDict']]] = None,
+                 autoscale_headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroom']]]]] = None,
+                 autoscale_headrooms_automatics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic']]]]] = None,
+                 create_options: pulumi.Input[Optional[Union['OceanLaunchSpecCreateOptionsArgs', 'OceanLaunchSpecCreateOptionsArgsDict', 'outputs.OceanLaunchSpecCreateOptions']]] = None,
+                 filters: pulumi.Input[Optional[Union['OceanLaunchSpecFiltersArgs', 'OceanLaunchSpecFiltersArgsDict', 'outputs.OceanLaunchSpecFilters']]] = None,
                  instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict']]]]] = None,
-                 metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecMetadataArgs', 'OceanLaunchSpecMetadataArgsDict']]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict', 'outputs.OceanLaunchSpecLabel']]]]] = None,
+                 metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecMetadataArgs', 'OceanLaunchSpecMetadataArgsDict', 'outputs.OceanLaunchSpecMetadata']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecNetworkInterfaceArgs', 'OceanLaunchSpecNetworkInterfaceArgsDict']]]]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecNetworkInterfaceArgs', 'OceanLaunchSpecNetworkInterfaceArgsDict', 'outputs.OceanLaunchSpecNetworkInterface']]]]] = None,
                  node_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 resource_limits: pulumi.Input[Optional[Union['OceanLaunchSpecResourceLimitsArgs', 'OceanLaunchSpecResourceLimitsArgsDict']]] = None,
+                 resource_limits: pulumi.Input[Optional[Union['OceanLaunchSpecResourceLimitsArgs', 'OceanLaunchSpecResourceLimitsArgsDict', 'outputs.OceanLaunchSpecResourceLimits']]] = None,
                  restrict_scale_down: pulumi.Input[Optional[_builtins.bool]] = None,
                  root_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
                  root_volume_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 scheduling_shutdown_hours: pulumi.Input[Optional[Union['OceanLaunchSpecSchedulingShutdownHoursArgs', 'OceanLaunchSpecSchedulingShutdownHoursArgsDict']]] = None,
-                 scheduling_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict']]]]] = None,
+                 scheduling_shutdown_hours: pulumi.Input[Optional[Union['OceanLaunchSpecSchedulingShutdownHoursArgs', 'OceanLaunchSpecSchedulingShutdownHoursArgsDict', 'outputs.OceanLaunchSpecSchedulingShutdownHours']]] = None,
+                 scheduling_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict', 'outputs.OceanLaunchSpecSchedulingTask']]]]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
-                 shielded_instance_config: pulumi.Input[Optional[Union['OceanLaunchSpecShieldedInstanceConfigArgs', 'OceanLaunchSpecShieldedInstanceConfigArgsDict']]] = None,
+                 shielded_instance_config: pulumi.Input[Optional[Union['OceanLaunchSpecShieldedInstanceConfigArgs', 'OceanLaunchSpecShieldedInstanceConfigArgsDict', 'outputs.OceanLaunchSpecShieldedInstanceConfig']]] = None,
                  source_image: pulumi.Input[Optional[_builtins.str]] = None,
-                 storage: pulumi.Input[Optional[Union['OceanLaunchSpecStorageArgs', 'OceanLaunchSpecStorageArgsDict']]] = None,
-                 strategies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecStrategyArgs', 'OceanLaunchSpecStrategyArgsDict']]]]] = None,
+                 storage: pulumi.Input[Optional[Union['OceanLaunchSpecStorageArgs', 'OceanLaunchSpecStorageArgsDict', 'outputs.OceanLaunchSpecStorage']]] = None,
+                 strategies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecStrategyArgs', 'OceanLaunchSpecStrategyArgsDict', 'outputs.OceanLaunchSpecStrategy']]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecTaintArgs', 'OceanLaunchSpecTaintArgsDict']]]]] = None,
-                 update_policy: pulumi.Input[Optional[Union['OceanLaunchSpecUpdatePolicyArgs', 'OceanLaunchSpecUpdatePolicyArgsDict']]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecTaintArgs', 'OceanLaunchSpecTaintArgsDict', 'outputs.OceanLaunchSpecTaint']]]]] = None,
+                 update_policy: pulumi.Input[Optional[Union['OceanLaunchSpecUpdatePolicyArgs', 'OceanLaunchSpecUpdatePolicyArgsDict', 'outputs.OceanLaunchSpecUpdatePolicy']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1191,31 +1191,31 @@ class OceanLaunchSpec(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            autoscale_headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict']]]]] = None,
-            autoscale_headrooms_automatics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict']]]]] = None,
-            create_options: pulumi.Input[Optional[Union['OceanLaunchSpecCreateOptionsArgs', 'OceanLaunchSpecCreateOptionsArgsDict']]] = None,
-            filters: pulumi.Input[Optional[Union['OceanLaunchSpecFiltersArgs', 'OceanLaunchSpecFiltersArgsDict']]] = None,
+            autoscale_headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroom']]]]] = None,
+            autoscale_headrooms_automatics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic']]]]] = None,
+            create_options: pulumi.Input[Optional[Union['OceanLaunchSpecCreateOptionsArgs', 'OceanLaunchSpecCreateOptionsArgsDict', 'outputs.OceanLaunchSpecCreateOptions']]] = None,
+            filters: pulumi.Input[Optional[Union['OceanLaunchSpecFiltersArgs', 'OceanLaunchSpecFiltersArgsDict', 'outputs.OceanLaunchSpecFilters']]] = None,
             instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict']]]]] = None,
-            metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecMetadataArgs', 'OceanLaunchSpecMetadataArgsDict']]]]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict', 'outputs.OceanLaunchSpecLabel']]]]] = None,
+            metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecMetadataArgs', 'OceanLaunchSpecMetadataArgsDict', 'outputs.OceanLaunchSpecMetadata']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecNetworkInterfaceArgs', 'OceanLaunchSpecNetworkInterfaceArgsDict']]]]] = None,
+            network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecNetworkInterfaceArgs', 'OceanLaunchSpecNetworkInterfaceArgsDict', 'outputs.OceanLaunchSpecNetworkInterface']]]]] = None,
             node_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
             ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
-            resource_limits: pulumi.Input[Optional[Union['OceanLaunchSpecResourceLimitsArgs', 'OceanLaunchSpecResourceLimitsArgsDict']]] = None,
+            resource_limits: pulumi.Input[Optional[Union['OceanLaunchSpecResourceLimitsArgs', 'OceanLaunchSpecResourceLimitsArgsDict', 'outputs.OceanLaunchSpecResourceLimits']]] = None,
             restrict_scale_down: pulumi.Input[Optional[_builtins.bool]] = None,
             root_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
             root_volume_type: pulumi.Input[Optional[_builtins.str]] = None,
-            scheduling_shutdown_hours: pulumi.Input[Optional[Union['OceanLaunchSpecSchedulingShutdownHoursArgs', 'OceanLaunchSpecSchedulingShutdownHoursArgsDict']]] = None,
-            scheduling_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict']]]]] = None,
+            scheduling_shutdown_hours: pulumi.Input[Optional[Union['OceanLaunchSpecSchedulingShutdownHoursArgs', 'OceanLaunchSpecSchedulingShutdownHoursArgsDict', 'outputs.OceanLaunchSpecSchedulingShutdownHours']]] = None,
+            scheduling_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict', 'outputs.OceanLaunchSpecSchedulingTask']]]]] = None,
             service_account: pulumi.Input[Optional[_builtins.str]] = None,
-            shielded_instance_config: pulumi.Input[Optional[Union['OceanLaunchSpecShieldedInstanceConfigArgs', 'OceanLaunchSpecShieldedInstanceConfigArgsDict']]] = None,
+            shielded_instance_config: pulumi.Input[Optional[Union['OceanLaunchSpecShieldedInstanceConfigArgs', 'OceanLaunchSpecShieldedInstanceConfigArgsDict', 'outputs.OceanLaunchSpecShieldedInstanceConfig']]] = None,
             source_image: pulumi.Input[Optional[_builtins.str]] = None,
-            storage: pulumi.Input[Optional[Union['OceanLaunchSpecStorageArgs', 'OceanLaunchSpecStorageArgsDict']]] = None,
-            strategies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecStrategyArgs', 'OceanLaunchSpecStrategyArgsDict']]]]] = None,
+            storage: pulumi.Input[Optional[Union['OceanLaunchSpecStorageArgs', 'OceanLaunchSpecStorageArgsDict', 'outputs.OceanLaunchSpecStorage']]] = None,
+            strategies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecStrategyArgs', 'OceanLaunchSpecStrategyArgsDict', 'outputs.OceanLaunchSpecStrategy']]]]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecTaintArgs', 'OceanLaunchSpecTaintArgsDict']]]]] = None,
-            update_policy: pulumi.Input[Optional[Union['OceanLaunchSpecUpdatePolicyArgs', 'OceanLaunchSpecUpdatePolicyArgsDict']]] = None) -> 'OceanLaunchSpec':
+            taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecTaintArgs', 'OceanLaunchSpecTaintArgsDict', 'outputs.OceanLaunchSpecTaint']]]]] = None,
+            update_policy: pulumi.Input[Optional[Union['OceanLaunchSpecUpdatePolicyArgs', 'OceanLaunchSpecUpdatePolicyArgsDict', 'outputs.OceanLaunchSpecUpdatePolicy']]] = None) -> 'OceanLaunchSpec':
         """
         Get an existing OceanLaunchSpec resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1223,29 +1223,29 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict']]]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
-        :param pulumi.Input[Union['OceanLaunchSpecFiltersArgs', 'OceanLaunchSpecFiltersArgsDict']] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instance_types` is configured.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroom']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic']]]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
+        :param pulumi.Input[Union['OceanLaunchSpecFiltersArgs', 'OceanLaunchSpecFiltersArgsDict', 'outputs.OceanLaunchSpecFilters']] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instance_types` is configured.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: List of supported machine types for the Launch Spec.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecMetadataArgs', 'OceanLaunchSpecMetadataArgsDict']]]] metadatas: Cluster's metadata.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict', 'outputs.OceanLaunchSpecLabel']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecMetadataArgs', 'OceanLaunchSpecMetadataArgsDict', 'outputs.OceanLaunchSpecMetadata']]]] metadatas: Cluster's metadata.
         :param pulumi.Input[_builtins.str] name: The launch specification name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecNetworkInterfaceArgs', 'OceanLaunchSpecNetworkInterfaceArgsDict']]]] network_interfaces: Settings for network interfaces.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecNetworkInterfaceArgs', 'OceanLaunchSpecNetworkInterfaceArgsDict', 'outputs.OceanLaunchSpecNetworkInterface']]]] network_interfaces: Settings for network interfaces.
         :param pulumi.Input[_builtins.str] node_pool_name: The node pool you wish to use in your Launch Spec.
         :param pulumi.Input[_builtins.str] ocean_id: The Ocean cluster ID.
-        :param pulumi.Input[Union['OceanLaunchSpecResourceLimitsArgs', 'OceanLaunchSpecResourceLimitsArgsDict']] resource_limits: The Ocean virtual node group resource limits object.
+        :param pulumi.Input[Union['OceanLaunchSpecResourceLimitsArgs', 'OceanLaunchSpecResourceLimitsArgsDict', 'outputs.OceanLaunchSpecResourceLimits']] resource_limits: The Ocean virtual node group resource limits object.
         :param pulumi.Input[_builtins.bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[_builtins.int] root_volume_size: Root volume size (in GB).
         :param pulumi.Input[_builtins.str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
-        :param pulumi.Input[Union['OceanLaunchSpecSchedulingShutdownHoursArgs', 'OceanLaunchSpecSchedulingShutdownHoursArgsDict']] scheduling_shutdown_hours: An object used to specify times that the nodes in the virtual node group will be taken down.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict']]]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
+        :param pulumi.Input[Union['OceanLaunchSpecSchedulingShutdownHoursArgs', 'OceanLaunchSpecSchedulingShutdownHoursArgsDict', 'outputs.OceanLaunchSpecSchedulingShutdownHours']] scheduling_shutdown_hours: An object used to specify times that the nodes in the virtual node group will be taken down.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict', 'outputs.OceanLaunchSpecSchedulingTask']]]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
         :param pulumi.Input[_builtins.str] service_account: The account used by applications running on the VM to call GCP APIs.
-        :param pulumi.Input[Union['OceanLaunchSpecShieldedInstanceConfigArgs', 'OceanLaunchSpecShieldedInstanceConfigArgsDict']] shielded_instance_config: The Ocean shielded instance configuration object.
+        :param pulumi.Input[Union['OceanLaunchSpecShieldedInstanceConfigArgs', 'OceanLaunchSpecShieldedInstanceConfigArgsDict', 'outputs.OceanLaunchSpecShieldedInstanceConfig']] shielded_instance_config: The Ocean shielded instance configuration object.
         :param pulumi.Input[_builtins.str] source_image: Image URL.
-        :param pulumi.Input[Union['OceanLaunchSpecStorageArgs', 'OceanLaunchSpecStorageArgsDict']] storage: The Ocean virtual node group storage object.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecStrategyArgs', 'OceanLaunchSpecStrategyArgsDict']]]] strategies: The Ocean Launch Spec Strategy object.
+        :param pulumi.Input[Union['OceanLaunchSpecStorageArgs', 'OceanLaunchSpecStorageArgsDict', 'outputs.OceanLaunchSpecStorage']] storage: The Ocean virtual node group storage object.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecStrategyArgs', 'OceanLaunchSpecStrategyArgsDict', 'outputs.OceanLaunchSpecStrategy']]]] strategies: The Ocean Launch Spec Strategy object.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Every node launched from this configuration will be tagged with those tags. Note: during creation some tags are automatically imported to the state file, it is required to manually add it to the template configuration
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecTaintArgs', 'OceanLaunchSpecTaintArgsDict']]]] taints: Optionally adds labels to instances launched in an Ocean cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecTaintArgs', 'OceanLaunchSpecTaintArgsDict', 'outputs.OceanLaunchSpecTaint']]]] taints: Optionally adds labels to instances launched in an Ocean cluster.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
