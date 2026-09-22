@@ -51,11 +51,15 @@ const (
 )
 
 var namespaceMap = map[string]string{
-	"spotinst": "SpotInst",
+	mainPkg: "SpotInst",
 }
 
 // makeMember manufactures a type token for the OpenStack package and the given module and type.  It automatically
 // uses the SpotInst package and names the file by simply lower casing the resource's first character.
+const (
+	gpuProperty = "gpu"
+)
+
 func makeMember(moduleTitle string, mem string) tokens.ModuleMember {
 	moduleName := strings.ToLower(moduleTitle)
 	namespaceMap[moduleName] = moduleTitle
@@ -82,12 +86,12 @@ func Provider() tfbridge.ProviderInfo {
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
 		P:           p,
-		Name:        "spotinst",
+		Name:        mainPkg,
 		Description: "A Pulumi package for creating and managing spotinst cloud resources.",
-		Keywords:    []string{"pulumi", "spotinst"},
+		Keywords:    []string{"pulumi", mainPkg},
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
-		GitHubOrg:   "spotinst",
+		GitHubOrg:   mainPkg,
 		Repository:  "https://github.com/pulumi/pulumi-spotinst",
 		Config:      map[string]*tfbridge.SchemaInfo{},
 		DocRules:    &tfbridge.DocRuleInfo{EditRules: docEditRules},
@@ -112,13 +116,13 @@ func Provider() tfbridge.ProviderInfo {
 			"spotinst_elastigroup_gcp": {
 				Tok: makeResource(gcpMod, "Elastigroup"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"gpu": {Name: "gpu"},
+					gpuProperty: {Name: gpuProperty},
 				},
 			},
 			"spotinst_elastigroup_gke": {
 				Tok: makeResource(gkeMod, "Elastigroup"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"gpu": {Name: "gpu"},
+					gpuProperty: {Name: gpuProperty},
 				},
 			},
 			"spotinst_mrscaler_aws": {Tok: makeResource(awsMod, "MrScalar")},
