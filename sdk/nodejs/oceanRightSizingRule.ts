@@ -157,7 +157,7 @@ export class OceanRightSizingRule extends pulumi.CustomResource {
      */
     declare public readonly recommendationApplicationOverheadValues: pulumi.Output<outputs.OceanRightSizingRuleRecommendationApplicationOverheadValue[] | undefined>;
     /**
-     * Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+     * Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART" "IN_PLACE_OR_RECREATE". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
      */
     declare public readonly restartReplicas: pulumi.Output<string | undefined>;
     /**
@@ -270,7 +270,7 @@ export interface OceanRightSizingRuleState {
      */
     recommendationApplicationOverheadValues?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationOverheadValue>[] | undefined>;
     /**
-     * Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+     * Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART" "IN_PLACE_OR_RECREATE". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
      */
     restartReplicas?: pulumi.Input<string | undefined>;
     /**
@@ -327,7 +327,7 @@ export interface OceanRightSizingRuleArgs {
      */
     recommendationApplicationOverheadValues?: pulumi.Input<pulumi.Input<inputs.OceanRightSizingRuleRecommendationApplicationOverheadValue>[] | undefined>;
     /**
-     * Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+     * Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART" "IN_PLACE_OR_RECREATE". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
      */
     restartReplicas?: pulumi.Input<string | undefined>;
     /**

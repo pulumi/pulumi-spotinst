@@ -50,7 +50,7 @@ class OceanRightSizingRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationHpaArgs']]] recommendation_application_hpas: HPA Rightsizing Rule Recommendation Configuration
         :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs']]] recommendation_application_min_thresholds: Determines the extent of difference between current request and recommendation to trigger a change in percentage.
         :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs']]] recommendation_application_overhead_values: Determines the Ocean Rightsizing rule recommendation application overhead values.
-        :param pulumi.Input[_builtins.str] restart_replicas: Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+        :param pulumi.Input[_builtins.str] restart_replicas: Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART" "IN_PLACE_OR_RECREATE". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
         """
         pulumi.set(__self__, "recommendation_application_intervals", recommendation_application_intervals)
         pulumi.set(__self__, "rule_name", rule_name)
@@ -244,7 +244,7 @@ class OceanRightSizingRuleArgs:
     @pulumi.getter(name="restartReplicas")
     def restart_replicas(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+        Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART" "IN_PLACE_OR_RECREATE". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
         """
         return pulumi.get(self, "restart_replicas")
 
@@ -284,7 +284,7 @@ class _OceanRightSizingRuleState:
         :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationIntervalArgs']]] recommendation_application_intervals: Determines the Ocean Rightsizing rule recommendation application intervals.
         :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs']]] recommendation_application_min_thresholds: Determines the extent of difference between current request and recommendation to trigger a change in percentage.
         :param pulumi.Input[Sequence[pulumi.Input['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs']]] recommendation_application_overhead_values: Determines the Ocean Rightsizing rule recommendation application overhead values.
-        :param pulumi.Input[_builtins.str] restart_replicas: Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+        :param pulumi.Input[_builtins.str] restart_replicas: Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART" "IN_PLACE_OR_RECREATE". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
         :param pulumi.Input[_builtins.str] rule_name: The unique name of the rule.
         """
         if attach_workloads is not None:
@@ -469,7 +469,7 @@ class _OceanRightSizingRuleState:
     @pulumi.getter(name="restartReplicas")
     def restart_replicas(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+        Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART" "IN_PLACE_OR_RECREATE". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
         """
         return pulumi.get(self, "restart_replicas")
 
@@ -603,7 +603,7 @@ class OceanRightSizingRule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationIntervalArgs', 'OceanRightSizingRuleRecommendationApplicationIntervalArgsDict', 'outputs.OceanRightSizingRuleRecommendationApplicationInterval']]]] recommendation_application_intervals: Determines the Ocean Rightsizing rule recommendation application intervals.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs', 'OceanRightSizingRuleRecommendationApplicationMinThresholdArgsDict', 'outputs.OceanRightSizingRuleRecommendationApplicationMinThreshold']]]] recommendation_application_min_thresholds: Determines the extent of difference between current request and recommendation to trigger a change in percentage.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs', 'OceanRightSizingRuleRecommendationApplicationOverheadValueArgsDict', 'outputs.OceanRightSizingRuleRecommendationApplicationOverheadValue']]]] recommendation_application_overhead_values: Determines the Ocean Rightsizing rule recommendation application overhead values.
-        :param pulumi.Input[_builtins.str] restart_replicas: Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+        :param pulumi.Input[_builtins.str] restart_replicas: Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART" "IN_PLACE_OR_RECREATE". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
         :param pulumi.Input[_builtins.str] rule_name: The unique name of the rule.
         """
         ...
@@ -791,7 +791,7 @@ class OceanRightSizingRule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationIntervalArgs', 'OceanRightSizingRuleRecommendationApplicationIntervalArgsDict', 'outputs.OceanRightSizingRuleRecommendationApplicationInterval']]]] recommendation_application_intervals: Determines the Ocean Rightsizing rule recommendation application intervals.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationMinThresholdArgs', 'OceanRightSizingRuleRecommendationApplicationMinThresholdArgsDict', 'outputs.OceanRightSizingRuleRecommendationApplicationMinThreshold']]]] recommendation_application_min_thresholds: Determines the extent of difference between current request and recommendation to trigger a change in percentage.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanRightSizingRuleRecommendationApplicationOverheadValueArgs', 'OceanRightSizingRuleRecommendationApplicationOverheadValueArgsDict', 'outputs.OceanRightSizingRuleRecommendationApplicationOverheadValue']]]] recommendation_application_overhead_values: Determines the Ocean Rightsizing rule recommendation application overhead values.
-        :param pulumi.Input[_builtins.str] restart_replicas: Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+        :param pulumi.Input[_builtins.str] restart_replicas: Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART" "IN_PLACE_OR_RECREATE". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
         :param pulumi.Input[_builtins.str] rule_name: The unique name of the rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -914,7 +914,7 @@ class OceanRightSizingRule(pulumi.CustomResource):
     @pulumi.getter(name="restartReplicas")
     def restart_replicas(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+        Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART" "IN_PLACE_OR_RECREATE". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
         """
         return pulumi.get(self, "restart_replicas")
 

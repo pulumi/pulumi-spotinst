@@ -148,7 +148,7 @@ type OceanRightSizingRule struct {
 	RecommendationApplicationMinThresholds OceanRightSizingRuleRecommendationApplicationMinThresholdArrayOutput `pulumi:"recommendationApplicationMinThresholds"`
 	// Determines the Ocean Rightsizing rule recommendation application overhead values.
 	RecommendationApplicationOverheadValues OceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput `pulumi:"recommendationApplicationOverheadValues"`
-	// Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+	// Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART" "IN_PLACE_OR_RECREATE". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
 	RestartReplicas pulumi.StringPtrOutput `pulumi:"restartReplicas"`
 	// The unique name of the rule.
 	RuleName pulumi.StringOutput `pulumi:"ruleName"`
@@ -213,7 +213,7 @@ type oceanRightSizingRuleState struct {
 	RecommendationApplicationMinThresholds []OceanRightSizingRuleRecommendationApplicationMinThreshold `pulumi:"recommendationApplicationMinThresholds"`
 	// Determines the Ocean Rightsizing rule recommendation application overhead values.
 	RecommendationApplicationOverheadValues []OceanRightSizingRuleRecommendationApplicationOverheadValue `pulumi:"recommendationApplicationOverheadValues"`
-	// Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+	// Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART" "IN_PLACE_OR_RECREATE". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
 	RestartReplicas *string `pulumi:"restartReplicas"`
 	// The unique name of the rule.
 	RuleName *string `pulumi:"ruleName"`
@@ -243,7 +243,7 @@ type OceanRightSizingRuleState struct {
 	RecommendationApplicationMinThresholds OceanRightSizingRuleRecommendationApplicationMinThresholdArrayInput
 	// Determines the Ocean Rightsizing rule recommendation application overhead values.
 	RecommendationApplicationOverheadValues OceanRightSizingRuleRecommendationApplicationOverheadValueArrayInput
-	// Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+	// Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART" "IN_PLACE_OR_RECREATE". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
 	RestartReplicas pulumi.StringPtrInput
 	// The unique name of the rule.
 	RuleName pulumi.StringPtrInput
@@ -277,7 +277,7 @@ type oceanRightSizingRuleArgs struct {
 	RecommendationApplicationMinThresholds []OceanRightSizingRuleRecommendationApplicationMinThreshold `pulumi:"recommendationApplicationMinThresholds"`
 	// Determines the Ocean Rightsizing rule recommendation application overhead values.
 	RecommendationApplicationOverheadValues []OceanRightSizingRuleRecommendationApplicationOverheadValue `pulumi:"recommendationApplicationOverheadValues"`
-	// Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+	// Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART" "IN_PLACE_OR_RECREATE". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
 	RestartReplicas *string `pulumi:"restartReplicas"`
 	// The unique name of the rule.
 	RuleName string `pulumi:"ruleName"`
@@ -308,7 +308,7 @@ type OceanRightSizingRuleArgs struct {
 	RecommendationApplicationMinThresholds OceanRightSizingRuleRecommendationApplicationMinThresholdArrayInput
 	// Determines the Ocean Rightsizing rule recommendation application overhead values.
 	RecommendationApplicationOverheadValues OceanRightSizingRuleRecommendationApplicationOverheadValueArrayInput
-	// Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+	// Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART" "IN_PLACE_OR_RECREATE". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
 	RestartReplicas pulumi.StringPtrInput
 	// The unique name of the rule.
 	RuleName pulumi.StringInput
@@ -475,7 +475,7 @@ func (o OceanRightSizingRuleOutput) RecommendationApplicationOverheadValues() Oc
 	}).(OceanRightSizingRuleRecommendationApplicationOverheadValueArrayOutput)
 }
 
-// Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+// Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART" "IN_PLACE_OR_RECREATE". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
 func (o OceanRightSizingRuleOutput) RestartReplicas() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanRightSizingRule) pulumi.StringPtrOutput { return v.RestartReplicas }).(pulumi.StringPtrOutput)
 }

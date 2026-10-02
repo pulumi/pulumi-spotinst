@@ -57,6 +57,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
      */
     declare public readonly blockDeviceMappings: pulumi.Output<outputs.aws.OceanLaunchSpecBlockDeviceMapping[] | undefined>;
+    /**
+     * Configuration for targeting AWS Capacity Reservations.
+     */
+    declare public readonly capacityReservations: pulumi.Output<outputs.aws.OceanLaunchSpecCapacityReservations | undefined>;
     declare public readonly createOptions: pulumi.Output<outputs.aws.OceanLaunchSpecCreateOptions | undefined>;
     declare public readonly deleteOptions: pulumi.Output<outputs.aws.OceanLaunchSpecDeleteOptions | undefined>;
     /**
@@ -188,6 +192,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["autoscaleHeadrooms"] = state?.autoscaleHeadrooms;
             resourceInputs["autoscaleHeadroomsAutomatics"] = state?.autoscaleHeadroomsAutomatics;
             resourceInputs["blockDeviceMappings"] = state?.blockDeviceMappings;
+            resourceInputs["capacityReservations"] = state?.capacityReservations;
             resourceInputs["createOptions"] = state?.createOptions;
             resourceInputs["deleteOptions"] = state?.deleteOptions;
             resourceInputs["elasticIpPools"] = state?.elasticIpPools;
@@ -230,6 +235,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["autoscaleHeadrooms"] = args?.autoscaleHeadrooms;
             resourceInputs["autoscaleHeadroomsAutomatics"] = args?.autoscaleHeadroomsAutomatics;
             resourceInputs["blockDeviceMappings"] = args?.blockDeviceMappings;
+            resourceInputs["capacityReservations"] = args?.capacityReservations;
             resourceInputs["createOptions"] = args?.createOptions;
             resourceInputs["deleteOptions"] = args?.deleteOptions;
             resourceInputs["elasticIpPools"] = args?.elasticIpPools;
@@ -292,6 +298,10 @@ export interface OceanLaunchSpecState {
      * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
      */
     blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMapping>[] | undefined>;
+    /**
+     * Configuration for targeting AWS Capacity Reservations.
+     */
+    capacityReservations?: pulumi.Input<inputs.aws.OceanLaunchSpecCapacityReservations | undefined>;
     createOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecCreateOptions | undefined>;
     deleteOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecDeleteOptions | undefined>;
     /**
@@ -430,6 +440,10 @@ export interface OceanLaunchSpecArgs {
      * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
      */
     blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecBlockDeviceMapping>[] | undefined>;
+    /**
+     * Configuration for targeting AWS Capacity Reservations.
+     */
+    capacityReservations?: pulumi.Input<inputs.aws.OceanLaunchSpecCapacityReservations | undefined>;
     createOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecCreateOptions | undefined>;
     deleteOptions?: pulumi.Input<inputs.aws.OceanLaunchSpecDeleteOptions | undefined>;
     /**

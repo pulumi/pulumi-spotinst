@@ -27,6 +27,7 @@ class OceanLaunchSpecArgs:
                  autoscale_headrooms: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
                  autoscale_headrooms_automatics: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]] = None,
                  block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]] = None,
+                 capacity_reservations: pulumi.Input[Optional['OceanLaunchSpecCapacityReservationsArgs']] = None,
                  create_options: pulumi.Input[Optional['OceanLaunchSpecCreateOptionsArgs']] = None,
                  delete_options: pulumi.Input[Optional['OceanLaunchSpecDeleteOptionsArgs']] = None,
                  elastic_ip_pools: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]]] = None,
@@ -67,6 +68,7 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        :param pulumi.Input['OceanLaunchSpecCapacityReservationsArgs'] capacity_reservations: Configuration for targeting AWS Capacity Reservations.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]] elastic_ip_pools: Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
         :param pulumi.Input[_builtins.str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[_builtins.str] image_id: ID of the image used to launch the instances.
@@ -106,6 +108,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "autoscale_headrooms_automatics", autoscale_headrooms_automatics)
         if block_device_mappings is not None:
             pulumi.set(__self__, "block_device_mappings", block_device_mappings)
+        if capacity_reservations is not None:
+            pulumi.set(__self__, "capacity_reservations", capacity_reservations)
         if create_options is not None:
             pulumi.set(__self__, "create_options", create_options)
         if delete_options is not None:
@@ -240,6 +244,18 @@ class OceanLaunchSpecArgs:
     @block_device_mappings.setter
     def block_device_mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]]):
         pulumi.set(self, "block_device_mappings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="capacityReservations")
+    def capacity_reservations(self) -> pulumi.Input[Optional['OceanLaunchSpecCapacityReservationsArgs']]:
+        """
+        Configuration for targeting AWS Capacity Reservations.
+        """
+        return pulumi.get(self, "capacity_reservations")
+
+    @capacity_reservations.setter
+    def capacity_reservations(self, value: pulumi.Input[Optional['OceanLaunchSpecCapacityReservationsArgs']]):
+        pulumi.set(self, "capacity_reservations", value)
 
     @_builtins.property
     @pulumi.getter(name="createOptions")
@@ -606,6 +622,7 @@ class _OceanLaunchSpecState:
                  autoscale_headrooms: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
                  autoscale_headrooms_automatics: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]] = None,
                  block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]] = None,
+                 capacity_reservations: pulumi.Input[Optional['OceanLaunchSpecCapacityReservationsArgs']] = None,
                  create_options: pulumi.Input[Optional['OceanLaunchSpecCreateOptionsArgs']] = None,
                  delete_options: pulumi.Input[Optional['OceanLaunchSpecDeleteOptionsArgs']] = None,
                  elastic_ip_pools: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]]] = None,
@@ -646,6 +663,7 @@ class _OceanLaunchSpecState:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        :param pulumi.Input['OceanLaunchSpecCapacityReservationsArgs'] capacity_reservations: Configuration for targeting AWS Capacity Reservations.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]] elastic_ip_pools: Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
         :param pulumi.Input[_builtins.str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[_builtins.str] image_id: ID of the image used to launch the instances.
@@ -685,6 +703,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "autoscale_headrooms_automatics", autoscale_headrooms_automatics)
         if block_device_mappings is not None:
             pulumi.set(__self__, "block_device_mappings", block_device_mappings)
+        if capacity_reservations is not None:
+            pulumi.set(__self__, "capacity_reservations", capacity_reservations)
         if create_options is not None:
             pulumi.set(__self__, "create_options", create_options)
         if delete_options is not None:
@@ -809,6 +829,18 @@ class _OceanLaunchSpecState:
     @block_device_mappings.setter
     def block_device_mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]]):
         pulumi.set(self, "block_device_mappings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="capacityReservations")
+    def capacity_reservations(self) -> pulumi.Input[Optional['OceanLaunchSpecCapacityReservationsArgs']]:
+        """
+        Configuration for targeting AWS Capacity Reservations.
+        """
+        return pulumi.get(self, "capacity_reservations")
+
+    @capacity_reservations.setter
+    def capacity_reservations(self, value: pulumi.Input[Optional['OceanLaunchSpecCapacityReservationsArgs']]):
+        pulumi.set(self, "capacity_reservations", value)
 
     @_builtins.property
     @pulumi.getter(name="createOptions")
@@ -1190,6 +1222,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  autoscale_headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroom']]]]] = None,
                  autoscale_headrooms_automatics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic']]]]] = None,
                  block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecBlockDeviceMappingArgs', 'OceanLaunchSpecBlockDeviceMappingArgsDict', 'outputs.OceanLaunchSpecBlockDeviceMapping']]]]] = None,
+                 capacity_reservations: pulumi.Input[Optional[Union['OceanLaunchSpecCapacityReservationsArgs', 'OceanLaunchSpecCapacityReservationsArgsDict', 'outputs.OceanLaunchSpecCapacityReservations']]] = None,
                  create_options: pulumi.Input[Optional[Union['OceanLaunchSpecCreateOptionsArgs', 'OceanLaunchSpecCreateOptionsArgsDict', 'outputs.OceanLaunchSpecCreateOptions']]] = None,
                  delete_options: pulumi.Input[Optional[Union['OceanLaunchSpecDeleteOptionsArgs', 'OceanLaunchSpecDeleteOptionsArgsDict', 'outputs.OceanLaunchSpecDeleteOptions']]] = None,
                  elastic_ip_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecElasticIpPoolArgs', 'OceanLaunchSpecElasticIpPoolArgsDict', 'outputs.OceanLaunchSpecElasticIpPool']]]]] = None,
@@ -1234,6 +1267,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroom']]]] autoscale_headrooms: Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic']]]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecBlockDeviceMappingArgs', 'OceanLaunchSpecBlockDeviceMappingArgsDict', 'outputs.OceanLaunchSpecBlockDeviceMapping']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        :param pulumi.Input[Union['OceanLaunchSpecCapacityReservationsArgs', 'OceanLaunchSpecCapacityReservationsArgsDict', 'outputs.OceanLaunchSpecCapacityReservations']] capacity_reservations: Configuration for targeting AWS Capacity Reservations.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecElasticIpPoolArgs', 'OceanLaunchSpecElasticIpPoolArgsDict', 'outputs.OceanLaunchSpecElasticIpPool']]]] elastic_ip_pools: Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
         :param pulumi.Input[_builtins.str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[_builtins.str] image_id: ID of the image used to launch the instances.
@@ -1293,6 +1327,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  autoscale_headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroom']]]]] = None,
                  autoscale_headrooms_automatics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic']]]]] = None,
                  block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecBlockDeviceMappingArgs', 'OceanLaunchSpecBlockDeviceMappingArgsDict', 'outputs.OceanLaunchSpecBlockDeviceMapping']]]]] = None,
+                 capacity_reservations: pulumi.Input[Optional[Union['OceanLaunchSpecCapacityReservationsArgs', 'OceanLaunchSpecCapacityReservationsArgsDict', 'outputs.OceanLaunchSpecCapacityReservations']]] = None,
                  create_options: pulumi.Input[Optional[Union['OceanLaunchSpecCreateOptionsArgs', 'OceanLaunchSpecCreateOptionsArgsDict', 'outputs.OceanLaunchSpecCreateOptions']]] = None,
                  delete_options: pulumi.Input[Optional[Union['OceanLaunchSpecDeleteOptionsArgs', 'OceanLaunchSpecDeleteOptionsArgsDict', 'outputs.OceanLaunchSpecDeleteOptions']]] = None,
                  elastic_ip_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecElasticIpPoolArgs', 'OceanLaunchSpecElasticIpPoolArgsDict', 'outputs.OceanLaunchSpecElasticIpPool']]]]] = None,
@@ -1339,6 +1374,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["autoscale_headrooms"] = autoscale_headrooms
             __props__.__dict__["autoscale_headrooms_automatics"] = autoscale_headrooms_automatics
             __props__.__dict__["block_device_mappings"] = block_device_mappings
+            __props__.__dict__["capacity_reservations"] = capacity_reservations
             __props__.__dict__["create_options"] = create_options
             __props__.__dict__["delete_options"] = delete_options
             __props__.__dict__["elastic_ip_pools"] = elastic_ip_pools
@@ -1388,6 +1424,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             autoscale_headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroom']]]]] = None,
             autoscale_headrooms_automatics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic']]]]] = None,
             block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecBlockDeviceMappingArgs', 'OceanLaunchSpecBlockDeviceMappingArgsDict', 'outputs.OceanLaunchSpecBlockDeviceMapping']]]]] = None,
+            capacity_reservations: pulumi.Input[Optional[Union['OceanLaunchSpecCapacityReservationsArgs', 'OceanLaunchSpecCapacityReservationsArgsDict', 'outputs.OceanLaunchSpecCapacityReservations']]] = None,
             create_options: pulumi.Input[Optional[Union['OceanLaunchSpecCreateOptionsArgs', 'OceanLaunchSpecCreateOptionsArgsDict', 'outputs.OceanLaunchSpecCreateOptions']]] = None,
             delete_options: pulumi.Input[Optional[Union['OceanLaunchSpecDeleteOptionsArgs', 'OceanLaunchSpecDeleteOptionsArgsDict', 'outputs.OceanLaunchSpecDeleteOptions']]] = None,
             elastic_ip_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecElasticIpPoolArgs', 'OceanLaunchSpecElasticIpPoolArgsDict', 'outputs.OceanLaunchSpecElasticIpPool']]]]] = None,
@@ -1432,6 +1469,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroom']]]] autoscale_headrooms: Set custom headroom per Virtual Node Group. Provide a list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic']]]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecBlockDeviceMappingArgs', 'OceanLaunchSpecBlockDeviceMappingArgsDict', 'outputs.OceanLaunchSpecBlockDeviceMapping']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        :param pulumi.Input[Union['OceanLaunchSpecCapacityReservationsArgs', 'OceanLaunchSpecCapacityReservationsArgsDict', 'outputs.OceanLaunchSpecCapacityReservations']] capacity_reservations: Configuration for targeting AWS Capacity Reservations.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecElasticIpPoolArgs', 'OceanLaunchSpecElasticIpPoolArgsDict', 'outputs.OceanLaunchSpecElasticIpPool']]]] elastic_ip_pools: Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
         :param pulumi.Input[_builtins.str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[_builtins.str] image_id: ID of the image used to launch the instances.
@@ -1470,6 +1508,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["autoscale_headrooms"] = autoscale_headrooms
         __props__.__dict__["autoscale_headrooms_automatics"] = autoscale_headrooms_automatics
         __props__.__dict__["block_device_mappings"] = block_device_mappings
+        __props__.__dict__["capacity_reservations"] = capacity_reservations
         __props__.__dict__["create_options"] = create_options
         __props__.__dict__["delete_options"] = delete_options
         __props__.__dict__["elastic_ip_pools"] = elastic_ip_pools
@@ -1543,6 +1582,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
         Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         """
         return pulumi.get(self, "block_device_mappings")
+
+    @_builtins.property
+    @pulumi.getter(name="capacityReservations")
+    def capacity_reservations(self) -> pulumi.Output[Optional['outputs.OceanLaunchSpecCapacityReservations']]:
+        """
+        Configuration for targeting AWS Capacity Reservations.
+        """
+        return pulumi.get(self, "capacity_reservations")
 
     @_builtins.property
     @pulumi.getter(name="createOptions")

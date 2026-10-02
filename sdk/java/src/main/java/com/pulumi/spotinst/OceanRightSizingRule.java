@@ -292,14 +292,14 @@ public class OceanRightSizingRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.recommendationApplicationOverheadValues);
     }
     /**
-     * Valid values: &#34;MORE_THAN_ONE_REPLICA&#34; &#34;ALL_MANIFEST&#34; &#34;NO_RESTART&#34;. Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+     * Valid values: &#34;MORE_THAN_ONE_REPLICA&#34; &#34;ALL_MANIFEST&#34; &#34;NO_RESTART&#34; &#34;IN_PLACE_OR_RECREATE&#34;. Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
      * 
      */
     @Export(name="restartReplicas", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> restartReplicas;
 
     /**
-     * @return Valid values: &#34;MORE_THAN_ONE_REPLICA&#34; &#34;ALL_MANIFEST&#34; &#34;NO_RESTART&#34;. Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+     * @return Valid values: &#34;MORE_THAN_ONE_REPLICA&#34; &#34;ALL_MANIFEST&#34; &#34;NO_RESTART&#34; &#34;IN_PLACE_OR_RECREATE&#34;. Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
      * 
      */
     public Output<Optional<String>> restartReplicas() {

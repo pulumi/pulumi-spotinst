@@ -14,6 +14,7 @@ import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecAutoscaleDown;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecAutoscaleHeadroom;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecBlockDeviceMapping;
+import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecCapacityReservations;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecCreateOptions;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecDeleteOptions;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecElasticIpPool;
@@ -115,6 +116,20 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<OceanLaunchSpecBlockDeviceMapping>>> blockDeviceMappings() {
         return Codegen.optional(this.blockDeviceMappings);
+    }
+    /**
+     * Configuration for targeting AWS Capacity Reservations.
+     * 
+     */
+    @Export(name="capacityReservations", refs={OceanLaunchSpecCapacityReservations.class}, tree="[0]")
+    private Output</* @Nullable */ OceanLaunchSpecCapacityReservations> capacityReservations;
+
+    /**
+     * @return Configuration for targeting AWS Capacity Reservations.
+     * 
+     */
+    public Output<Optional<OceanLaunchSpecCapacityReservations>> capacityReservations() {
+        return Codegen.optional(this.capacityReservations);
     }
     @Export(name="createOptions", refs={OceanLaunchSpecCreateOptions.class}, tree="[0]")
     private Output</* @Nullable */ OceanLaunchSpecCreateOptions> createOptions;

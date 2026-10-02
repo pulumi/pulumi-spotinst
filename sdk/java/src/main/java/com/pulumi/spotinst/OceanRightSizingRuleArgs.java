@@ -199,14 +199,14 @@ public final class OceanRightSizingRuleArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Valid values: &#34;MORE_THAN_ONE_REPLICA&#34; &#34;ALL_MANIFEST&#34; &#34;NO_RESTART&#34;. Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+     * Valid values: &#34;MORE_THAN_ONE_REPLICA&#34; &#34;ALL_MANIFEST&#34; &#34;NO_RESTART&#34; &#34;IN_PLACE_OR_RECREATE&#34;. Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
      * 
      */
     @Import(name="restartReplicas")
     private @Nullable Output<String> restartReplicas;
 
     /**
-     * @return Valid values: &#34;MORE_THAN_ONE_REPLICA&#34; &#34;ALL_MANIFEST&#34; &#34;NO_RESTART&#34;. Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+     * @return Valid values: &#34;MORE_THAN_ONE_REPLICA&#34; &#34;ALL_MANIFEST&#34; &#34;NO_RESTART&#34; &#34;IN_PLACE_OR_RECREATE&#34;. Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
      * 
      */
     public Optional<Output<String>> restartReplicas() {
@@ -572,7 +572,7 @@ public final class OceanRightSizingRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param restartReplicas Valid values: &#34;MORE_THAN_ONE_REPLICA&#34; &#34;ALL_MANIFEST&#34; &#34;NO_RESTART&#34;. Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+         * @param restartReplicas Valid values: &#34;MORE_THAN_ONE_REPLICA&#34; &#34;ALL_MANIFEST&#34; &#34;NO_RESTART&#34; &#34;IN_PLACE_OR_RECREATE&#34;. Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
          * 
          * @return builder
          * 
@@ -583,7 +583,7 @@ public final class OceanRightSizingRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param restartReplicas Valid values: &#34;MORE_THAN_ONE_REPLICA&#34; &#34;ALL_MANIFEST&#34; &#34;NO_RESTART&#34;. Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+         * @param restartReplicas Valid values: &#34;MORE_THAN_ONE_REPLICA&#34; &#34;ALL_MANIFEST&#34; &#34;NO_RESTART&#34; &#34;IN_PLACE_OR_RECREATE&#34;. Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
          * 
          * @return builder
          * 

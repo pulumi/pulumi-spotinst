@@ -287,6 +287,8 @@ __all__ = [
     'OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgsDict',
     'OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs',
     'OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgsDict',
+    'OceanLaunchSpecCapacityReservationsArgs',
+    'OceanLaunchSpecCapacityReservationsArgsDict',
     'OceanLaunchSpecCreateOptionsArgs',
     'OceanLaunchSpecCreateOptionsArgsDict',
     'OceanLaunchSpecDeleteOptionsArgs',
@@ -11824,6 +11826,55 @@ class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs:
     @size_per_resource_unit.setter
     def size_per_resource_unit(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "size_per_resource_unit", value)
+
+
+class OceanLaunchSpecCapacityReservationsArgsDict(TypedDict):
+    fallback: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Determines behavior when reservations are exhausted or unavailable.
+    """
+    ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    List of AWS Capacity Reservation IDs to target.
+    """
+
+@pulumi.input_type
+class OceanLaunchSpecCapacityReservationsArgs:
+    def __init__(__self__, *,
+                 fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] fallback: Determines behavior when reservations are exhausted or unavailable.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ids: List of AWS Capacity Reservation IDs to target.
+        """
+        if fallback is not None:
+            pulumi.set(__self__, "fallback", fallback)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter
+    def fallback(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Determines behavior when reservations are exhausted or unavailable.
+        """
+        return pulumi.get(self, "fallback")
+
+    @fallback.setter
+    def fallback(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "fallback", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of AWS Capacity Reservation IDs to target.
+        """
+        return pulumi.get(self, "ids")
+
+    @ids.setter
+    def ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ids", value)
 
 
 class OceanLaunchSpecCreateOptionsArgsDict(TypedDict):

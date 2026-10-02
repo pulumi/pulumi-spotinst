@@ -152,6 +152,7 @@ __all__ = [
     'OceanLaunchSpecBlockDeviceMappingEbs',
     'OceanLaunchSpecBlockDeviceMappingEbsDynamicIops',
     'OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize',
+    'OceanLaunchSpecCapacityReservations',
     'OceanLaunchSpecCreateOptions',
     'OceanLaunchSpecDeleteOptions',
     'OceanLaunchSpecElasticIpPool',
@@ -9528,6 +9529,37 @@ class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize(dict):
         Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB)
         """
         return pulumi.get(self, "size_per_resource_unit")
+
+
+@pulumi.output_type
+class OceanLaunchSpecCapacityReservations(dict):
+    def __init__(__self__, *,
+                 fallback: Optional[_builtins.bool] = None,
+                 ids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.bool fallback: Determines behavior when reservations are exhausted or unavailable.
+        :param Sequence[_builtins.str] ids: List of AWS Capacity Reservation IDs to target.
+        """
+        if fallback is not None:
+            pulumi.set(__self__, "fallback", fallback)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
+
+    @_builtins.property
+    @pulumi.getter
+    def fallback(self) -> Optional[_builtins.bool]:
+        """
+        Determines behavior when reservations are exhausted or unavailable.
+        """
+        return pulumi.get(self, "fallback")
+
+    @_builtins.property
+    @pulumi.getter
+    def ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of AWS Capacity Reservation IDs to target.
+        """
+        return pulumi.get(self, "ids")
 
 
 @pulumi.output_type

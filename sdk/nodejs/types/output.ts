@@ -2950,6 +2950,17 @@ export namespace aws {
         sizePerResourceUnit: number;
     }
 
+    export interface OceanLaunchSpecCapacityReservations {
+        /**
+         * Determines behavior when reservations are exhausted or unavailable.
+         */
+        fallback?: boolean;
+        /**
+         * List of AWS Capacity Reservation IDs to target.
+         */
+        ids?: string[];
+    }
+
     export interface OceanLaunchSpecCreateOptions {
         /**
          * When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group. The parameter is recommended in case the useAsTemplateOnly (in spotinst.aws.Ocean resource) is set to true during Ocean resource creation.

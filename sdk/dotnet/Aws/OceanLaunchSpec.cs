@@ -45,6 +45,12 @@ namespace Pulumi.SpotInst.Aws
         [Output("blockDeviceMappings")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecBlockDeviceMapping>> BlockDeviceMappings { get; private set; } = null!;
 
+        /// <summary>
+        /// Configuration for targeting AWS Capacity Reservations.
+        /// </summary>
+        [Output("capacityReservations")]
+        public Output<Outputs.OceanLaunchSpecCapacityReservations?> CapacityReservations { get; private set; } = null!;
+
         [Output("createOptions")]
         public Output<Outputs.OceanLaunchSpecCreateOptions?> CreateOptions { get; private set; } = null!;
 
@@ -320,6 +326,12 @@ namespace Pulumi.SpotInst.Aws
             get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.OceanLaunchSpecBlockDeviceMappingArgs>());
             set => _blockDeviceMappings = value;
         }
+
+        /// <summary>
+        /// Configuration for targeting AWS Capacity Reservations.
+        /// </summary>
+        [Input("capacityReservations")]
+        public Input<Inputs.OceanLaunchSpecCapacityReservationsArgs>? CapacityReservations { get; set; }
 
         [Input("createOptions")]
         public Input<Inputs.OceanLaunchSpecCreateOptionsArgs>? CreateOptions { get; set; }
@@ -651,6 +663,12 @@ namespace Pulumi.SpotInst.Aws
             get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.OceanLaunchSpecBlockDeviceMappingGetArgs>());
             set => _blockDeviceMappings = value;
         }
+
+        /// <summary>
+        /// Configuration for targeting AWS Capacity Reservations.
+        /// </summary>
+        [Input("capacityReservations")]
+        public Input<Inputs.OceanLaunchSpecCapacityReservationsGetArgs>? CapacityReservations { get; set; }
 
         [Input("createOptions")]
         public Input<Inputs.OceanLaunchSpecCreateOptionsGetArgs>? CreateOptions { get; set; }
