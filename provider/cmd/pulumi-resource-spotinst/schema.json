@@ -3550,6 +3550,22 @@
                 "sizePerResourceUnit"
             ]
         },
+        "spotinst:aws/OceanLaunchSpecCapacityReservations:OceanLaunchSpecCapacityReservations": {
+            "properties": {
+                "fallback": {
+                    "type": "boolean",
+                    "description": "Determines behavior when reservations are exhausted or unavailable.\n"
+                },
+                "ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of AWS Capacity Reservation IDs to target.\n"
+                }
+            },
+            "type": "object"
+        },
         "spotinst:aws/OceanLaunchSpecCreateOptions:OceanLaunchSpecCreateOptions": {
             "properties": {
                 "initialNodes": {
@@ -15163,6 +15179,10 @@
                     },
                     "description": "Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.\n"
                 },
+                "capacityReservations": {
+                    "$ref": "#/types/spotinst:aws/OceanLaunchSpecCapacityReservations:OceanLaunchSpecCapacityReservations",
+                    "description": "Configuration for targeting AWS Capacity Reservations.\n"
+                },
                 "createOptions": {
                     "$ref": "#/types/spotinst:aws/OceanLaunchSpecCreateOptions:OceanLaunchSpecCreateOptions"
                 },
@@ -15370,6 +15390,10 @@
                         "$ref": "#/types/spotinst:aws/OceanLaunchSpecBlockDeviceMapping:OceanLaunchSpecBlockDeviceMapping"
                     },
                     "description": "Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.\n"
+                },
+                "capacityReservations": {
+                    "$ref": "#/types/spotinst:aws/OceanLaunchSpecCapacityReservations:OceanLaunchSpecCapacityReservations",
+                    "description": "Configuration for targeting AWS Capacity Reservations.\n"
                 },
                 "createOptions": {
                     "$ref": "#/types/spotinst:aws/OceanLaunchSpecCreateOptions:OceanLaunchSpecCreateOptions"
@@ -15580,6 +15604,10 @@
                             "$ref": "#/types/spotinst:aws/OceanLaunchSpecBlockDeviceMapping:OceanLaunchSpecBlockDeviceMapping"
                         },
                         "description": "Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.\n"
+                    },
+                    "capacityReservations": {
+                        "$ref": "#/types/spotinst:aws/OceanLaunchSpecCapacityReservations:OceanLaunchSpecCapacityReservations",
+                        "description": "Configuration for targeting AWS Capacity Reservations.\n"
                     },
                     "createOptions": {
                         "$ref": "#/types/spotinst:aws/OceanLaunchSpecCreateOptions:OceanLaunchSpecCreateOptions"
@@ -20790,7 +20818,7 @@
                 },
                 "restartReplicas": {
                     "type": "string",
-                    "description": "Valid values: \"MORE_THAN_ONE_REPLICA\" \"ALL_MANIFEST\" \"NO_RESTART\". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.\n"
+                    "description": "Valid values: \"MORE_THAN_ONE_REPLICA\" \"ALL_MANIFEST\" \"NO_RESTART\" \"IN_PLACE_OR_RECREATE\". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.\n"
                 },
                 "ruleName": {
                     "type": "string",
@@ -20877,7 +20905,7 @@
                 },
                 "restartReplicas": {
                     "type": "string",
-                    "description": "Valid values: \"MORE_THAN_ONE_REPLICA\" \"ALL_MANIFEST\" \"NO_RESTART\". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.\n"
+                    "description": "Valid values: \"MORE_THAN_ONE_REPLICA\" \"ALL_MANIFEST\" \"NO_RESTART\" \"IN_PLACE_OR_RECREATE\". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.\n"
                 },
                 "ruleName": {
                     "type": "string",
@@ -20966,7 +20994,7 @@
                     },
                     "restartReplicas": {
                         "type": "string",
-                        "description": "Valid values: \"MORE_THAN_ONE_REPLICA\" \"ALL_MANIFEST\" \"NO_RESTART\". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.\n"
+                        "description": "Valid values: \"MORE_THAN_ONE_REPLICA\" \"ALL_MANIFEST\" \"NO_RESTART\" \"IN_PLACE_OR_RECREATE\". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.\n"
                     },
                     "ruleName": {
                         "type": "string",

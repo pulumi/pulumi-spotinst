@@ -211,7 +211,7 @@ namespace Pulumi.SpotInst
         public Output<ImmutableArray<Outputs.OceanRightSizingRuleRecommendationApplicationOverheadValue>> RecommendationApplicationOverheadValues { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+        /// Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART" "IN_PLACE_OR_RECREATE". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
         /// </summary>
         [Output("restartReplicas")]
         public Output<string?> RestartReplicas { get; private set; } = null!;
@@ -384,7 +384,7 @@ namespace Pulumi.SpotInst
         }
 
         /// <summary>
-        /// Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+        /// Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART" "IN_PLACE_OR_RECREATE". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
         /// </summary>
         [Input("restartReplicas")]
         public Input<string>? RestartReplicas { get; set; }
@@ -519,7 +519,7 @@ namespace Pulumi.SpotInst
         }
 
         /// <summary>
-        /// Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
+        /// Valid values: "MORE_THAN_ONE_REPLICA" "ALL_MANIFEST" "NO_RESTART" "IN_PLACE_OR_RECREATE". Enable to sequentially restart pod batches according to recommendations, for all pods, only more than 1 replica, or not any pod.
         /// </summary>
         [Input("restartReplicas")]
         public Input<string>? RestartReplicas { get; set; }

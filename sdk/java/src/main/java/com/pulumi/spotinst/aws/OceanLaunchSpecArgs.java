@@ -10,6 +10,7 @@ import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecAutoscaleDownArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecAutoscaleHeadroomArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecBlockDeviceMappingArgs;
+import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecCapacityReservationsArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecCreateOptionsArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecDeleteOptionsArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecElasticIpPoolArgs;
@@ -115,6 +116,21 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<List<OceanLaunchSpecBlockDeviceMappingArgs>>> blockDeviceMappings() {
         return Optional.ofNullable(this.blockDeviceMappings);
+    }
+
+    /**
+     * Configuration for targeting AWS Capacity Reservations.
+     * 
+     */
+    @Import(name="capacityReservations")
+    private @Nullable Output<OceanLaunchSpecCapacityReservationsArgs> capacityReservations;
+
+    /**
+     * @return Configuration for targeting AWS Capacity Reservations.
+     * 
+     */
+    public Optional<Output<OceanLaunchSpecCapacityReservationsArgs>> capacityReservations() {
+        return Optional.ofNullable(this.capacityReservations);
     }
 
     @Import(name="createOptions")
@@ -561,6 +577,7 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
         this.autoscaleHeadrooms = $.autoscaleHeadrooms;
         this.autoscaleHeadroomsAutomatics = $.autoscaleHeadroomsAutomatics;
         this.blockDeviceMappings = $.blockDeviceMappings;
+        this.capacityReservations = $.capacityReservations;
         this.createOptions = $.createOptions;
         this.deleteOptions = $.deleteOptions;
         this.elasticIpPools = $.elasticIpPools;
@@ -756,6 +773,27 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder blockDeviceMappings(OceanLaunchSpecBlockDeviceMappingArgs... blockDeviceMappings) {
             return blockDeviceMappings(List.of(blockDeviceMappings));
+        }
+
+        /**
+         * @param capacityReservations Configuration for targeting AWS Capacity Reservations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capacityReservations(@Nullable Output<OceanLaunchSpecCapacityReservationsArgs> capacityReservations) {
+            $.capacityReservations = capacityReservations;
+            return this;
+        }
+
+        /**
+         * @param capacityReservations Configuration for targeting AWS Capacity Reservations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capacityReservations(OceanLaunchSpecCapacityReservationsArgs capacityReservations) {
+            return capacityReservations(Output.of(capacityReservations));
         }
 
         public Builder createOptions(@Nullable Output<OceanLaunchSpecCreateOptionsArgs> createOptions) {

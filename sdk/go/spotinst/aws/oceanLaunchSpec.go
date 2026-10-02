@@ -26,8 +26,10 @@ type OceanLaunchSpec struct {
 	AutoscaleHeadroomsAutomatics OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput `pulumi:"autoscaleHeadroomsAutomatics"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanLaunchSpecBlockDeviceMappingArrayOutput `pulumi:"blockDeviceMappings"`
-	CreateOptions       OceanLaunchSpecCreateOptionsPtrOutput        `pulumi:"createOptions"`
-	DeleteOptions       OceanLaunchSpecDeleteOptionsPtrOutput        `pulumi:"deleteOptions"`
+	// Configuration for targeting AWS Capacity Reservations.
+	CapacityReservations OceanLaunchSpecCapacityReservationsPtrOutput `pulumi:"capacityReservations"`
+	CreateOptions        OceanLaunchSpecCreateOptionsPtrOutput        `pulumi:"createOptions"`
+	DeleteOptions        OceanLaunchSpecDeleteOptionsPtrOutput        `pulumi:"deleteOptions"`
 	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
 	ElasticIpPools    OceanLaunchSpecElasticIpPoolArrayOutput    `pulumi:"elasticIpPools"`
 	EphemeralStorages OceanLaunchSpecEphemeralStorageArrayOutput `pulumi:"ephemeralStorages"`
@@ -131,8 +133,10 @@ type oceanLaunchSpecState struct {
 	AutoscaleHeadroomsAutomatics []OceanLaunchSpecAutoscaleHeadroomsAutomatic `pulumi:"autoscaleHeadroomsAutomatics"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings []OceanLaunchSpecBlockDeviceMapping `pulumi:"blockDeviceMappings"`
-	CreateOptions       *OceanLaunchSpecCreateOptions       `pulumi:"createOptions"`
-	DeleteOptions       *OceanLaunchSpecDeleteOptions       `pulumi:"deleteOptions"`
+	// Configuration for targeting AWS Capacity Reservations.
+	CapacityReservations *OceanLaunchSpecCapacityReservations `pulumi:"capacityReservations"`
+	CreateOptions        *OceanLaunchSpecCreateOptions        `pulumi:"createOptions"`
+	DeleteOptions        *OceanLaunchSpecDeleteOptions        `pulumi:"deleteOptions"`
 	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
 	ElasticIpPools    []OceanLaunchSpecElasticIpPool    `pulumi:"elasticIpPools"`
 	EphemeralStorages []OceanLaunchSpecEphemeralStorage `pulumi:"ephemeralStorages"`
@@ -204,8 +208,10 @@ type OceanLaunchSpecState struct {
 	AutoscaleHeadroomsAutomatics OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanLaunchSpecBlockDeviceMappingArrayInput
-	CreateOptions       OceanLaunchSpecCreateOptionsPtrInput
-	DeleteOptions       OceanLaunchSpecDeleteOptionsPtrInput
+	// Configuration for targeting AWS Capacity Reservations.
+	CapacityReservations OceanLaunchSpecCapacityReservationsPtrInput
+	CreateOptions        OceanLaunchSpecCreateOptionsPtrInput
+	DeleteOptions        OceanLaunchSpecDeleteOptionsPtrInput
 	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
 	ElasticIpPools    OceanLaunchSpecElasticIpPoolArrayInput
 	EphemeralStorages OceanLaunchSpecEphemeralStorageArrayInput
@@ -281,8 +287,10 @@ type oceanLaunchSpecArgs struct {
 	AutoscaleHeadroomsAutomatics []OceanLaunchSpecAutoscaleHeadroomsAutomatic `pulumi:"autoscaleHeadroomsAutomatics"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings []OceanLaunchSpecBlockDeviceMapping `pulumi:"blockDeviceMappings"`
-	CreateOptions       *OceanLaunchSpecCreateOptions       `pulumi:"createOptions"`
-	DeleteOptions       *OceanLaunchSpecDeleteOptions       `pulumi:"deleteOptions"`
+	// Configuration for targeting AWS Capacity Reservations.
+	CapacityReservations *OceanLaunchSpecCapacityReservations `pulumi:"capacityReservations"`
+	CreateOptions        *OceanLaunchSpecCreateOptions        `pulumi:"createOptions"`
+	DeleteOptions        *OceanLaunchSpecDeleteOptions        `pulumi:"deleteOptions"`
 	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
 	ElasticIpPools    []OceanLaunchSpecElasticIpPool    `pulumi:"elasticIpPools"`
 	EphemeralStorages []OceanLaunchSpecEphemeralStorage `pulumi:"ephemeralStorages"`
@@ -355,8 +363,10 @@ type OceanLaunchSpecArgs struct {
 	AutoscaleHeadroomsAutomatics OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanLaunchSpecBlockDeviceMappingArrayInput
-	CreateOptions       OceanLaunchSpecCreateOptionsPtrInput
-	DeleteOptions       OceanLaunchSpecDeleteOptionsPtrInput
+	// Configuration for targeting AWS Capacity Reservations.
+	CapacityReservations OceanLaunchSpecCapacityReservationsPtrInput
+	CreateOptions        OceanLaunchSpecCreateOptionsPtrInput
+	DeleteOptions        OceanLaunchSpecDeleteOptionsPtrInput
 	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
 	ElasticIpPools    OceanLaunchSpecElasticIpPoolArrayInput
 	EphemeralStorages OceanLaunchSpecEphemeralStorageArrayInput
@@ -529,6 +539,11 @@ func (o OceanLaunchSpecOutput) AutoscaleHeadroomsAutomatics() OceanLaunchSpecAut
 // Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 func (o OceanLaunchSpecOutput) BlockDeviceMappings() OceanLaunchSpecBlockDeviceMappingArrayOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecBlockDeviceMappingArrayOutput { return v.BlockDeviceMappings }).(OceanLaunchSpecBlockDeviceMappingArrayOutput)
+}
+
+// Configuration for targeting AWS Capacity Reservations.
+func (o OceanLaunchSpecOutput) CapacityReservations() OceanLaunchSpecCapacityReservationsPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecCapacityReservationsPtrOutput { return v.CapacityReservations }).(OceanLaunchSpecCapacityReservationsPtrOutput)
 }
 
 func (o OceanLaunchSpecOutput) CreateOptions() OceanLaunchSpecCreateOptionsPtrOutput {

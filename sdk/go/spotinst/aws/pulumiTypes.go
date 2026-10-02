@@ -20700,6 +20700,162 @@ func (o OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) SizePerR
 	}).(pulumi.IntPtrOutput)
 }
 
+type OceanLaunchSpecCapacityReservations struct {
+	// Determines behavior when reservations are exhausted or unavailable.
+	Fallback *bool `pulumi:"fallback"`
+	// List of AWS Capacity Reservation IDs to target.
+	Ids []string `pulumi:"ids"`
+}
+
+// OceanLaunchSpecCapacityReservationsInput is an input type that accepts OceanLaunchSpecCapacityReservationsArgs and OceanLaunchSpecCapacityReservationsOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecCapacityReservationsInput` via:
+//
+//	OceanLaunchSpecCapacityReservationsArgs{...}
+type OceanLaunchSpecCapacityReservationsInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecCapacityReservationsOutput() OceanLaunchSpecCapacityReservationsOutput
+	ToOceanLaunchSpecCapacityReservationsOutputWithContext(context.Context) OceanLaunchSpecCapacityReservationsOutput
+}
+
+type OceanLaunchSpecCapacityReservationsArgs struct {
+	// Determines behavior when reservations are exhausted or unavailable.
+	Fallback pulumi.BoolPtrInput `pulumi:"fallback"`
+	// List of AWS Capacity Reservation IDs to target.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (OceanLaunchSpecCapacityReservationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecCapacityReservations)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecCapacityReservationsArgs) ToOceanLaunchSpecCapacityReservationsOutput() OceanLaunchSpecCapacityReservationsOutput {
+	return i.ToOceanLaunchSpecCapacityReservationsOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecCapacityReservationsArgs) ToOceanLaunchSpecCapacityReservationsOutputWithContext(ctx context.Context) OceanLaunchSpecCapacityReservationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecCapacityReservationsOutput)
+}
+
+func (i OceanLaunchSpecCapacityReservationsArgs) ToOceanLaunchSpecCapacityReservationsPtrOutput() OceanLaunchSpecCapacityReservationsPtrOutput {
+	return i.ToOceanLaunchSpecCapacityReservationsPtrOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecCapacityReservationsArgs) ToOceanLaunchSpecCapacityReservationsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecCapacityReservationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecCapacityReservationsOutput).ToOceanLaunchSpecCapacityReservationsPtrOutputWithContext(ctx)
+}
+
+// OceanLaunchSpecCapacityReservationsPtrInput is an input type that accepts OceanLaunchSpecCapacityReservationsArgs, OceanLaunchSpecCapacityReservationsPtr and OceanLaunchSpecCapacityReservationsPtrOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecCapacityReservationsPtrInput` via:
+//
+//	        OceanLaunchSpecCapacityReservationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanLaunchSpecCapacityReservationsPtrInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecCapacityReservationsPtrOutput() OceanLaunchSpecCapacityReservationsPtrOutput
+	ToOceanLaunchSpecCapacityReservationsPtrOutputWithContext(context.Context) OceanLaunchSpecCapacityReservationsPtrOutput
+}
+
+type oceanLaunchSpecCapacityReservationsPtrType OceanLaunchSpecCapacityReservationsArgs
+
+func OceanLaunchSpecCapacityReservationsPtr(v *OceanLaunchSpecCapacityReservationsArgs) OceanLaunchSpecCapacityReservationsPtrInput {
+	return (*oceanLaunchSpecCapacityReservationsPtrType)(v)
+}
+
+func (*oceanLaunchSpecCapacityReservationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecCapacityReservations)(nil)).Elem()
+}
+
+func (i *oceanLaunchSpecCapacityReservationsPtrType) ToOceanLaunchSpecCapacityReservationsPtrOutput() OceanLaunchSpecCapacityReservationsPtrOutput {
+	return i.ToOceanLaunchSpecCapacityReservationsPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLaunchSpecCapacityReservationsPtrType) ToOceanLaunchSpecCapacityReservationsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecCapacityReservationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecCapacityReservationsPtrOutput)
+}
+
+type OceanLaunchSpecCapacityReservationsOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecCapacityReservationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecCapacityReservations)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecCapacityReservationsOutput) ToOceanLaunchSpecCapacityReservationsOutput() OceanLaunchSpecCapacityReservationsOutput {
+	return o
+}
+
+func (o OceanLaunchSpecCapacityReservationsOutput) ToOceanLaunchSpecCapacityReservationsOutputWithContext(ctx context.Context) OceanLaunchSpecCapacityReservationsOutput {
+	return o
+}
+
+func (o OceanLaunchSpecCapacityReservationsOutput) ToOceanLaunchSpecCapacityReservationsPtrOutput() OceanLaunchSpecCapacityReservationsPtrOutput {
+	return o.ToOceanLaunchSpecCapacityReservationsPtrOutputWithContext(context.Background())
+}
+
+func (o OceanLaunchSpecCapacityReservationsOutput) ToOceanLaunchSpecCapacityReservationsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecCapacityReservationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecCapacityReservations) *OceanLaunchSpecCapacityReservations {
+		return &v
+	}).(OceanLaunchSpecCapacityReservationsPtrOutput)
+}
+
+// Determines behavior when reservations are exhausted or unavailable.
+func (o OceanLaunchSpecCapacityReservationsOutput) Fallback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecCapacityReservations) *bool { return v.Fallback }).(pulumi.BoolPtrOutput)
+}
+
+// List of AWS Capacity Reservation IDs to target.
+func (o OceanLaunchSpecCapacityReservationsOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanLaunchSpecCapacityReservations) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type OceanLaunchSpecCapacityReservationsPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecCapacityReservationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecCapacityReservations)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecCapacityReservationsPtrOutput) ToOceanLaunchSpecCapacityReservationsPtrOutput() OceanLaunchSpecCapacityReservationsPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecCapacityReservationsPtrOutput) ToOceanLaunchSpecCapacityReservationsPtrOutputWithContext(ctx context.Context) OceanLaunchSpecCapacityReservationsPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecCapacityReservationsPtrOutput) Elem() OceanLaunchSpecCapacityReservationsOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecCapacityReservations) OceanLaunchSpecCapacityReservations {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecCapacityReservations
+		return ret
+	}).(OceanLaunchSpecCapacityReservationsOutput)
+}
+
+// Determines behavior when reservations are exhausted or unavailable.
+func (o OceanLaunchSpecCapacityReservationsPtrOutput) Fallback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecCapacityReservations) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Fallback
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of AWS Capacity Reservation IDs to target.
+func (o OceanLaunchSpecCapacityReservationsPtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecCapacityReservations) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
 type OceanLaunchSpecCreateOptions struct {
 	// When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group. The parameter is recommended in case the useAsTemplateOnly (in aws.Ocean resource) is set to true during Ocean resource creation.
 	InitialNodes *int `pulumi:"initialNodes"`
@@ -27107,6 +27263,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrInput)(nil)).Elem(), OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecCapacityReservationsInput)(nil)).Elem(), OceanLaunchSpecCapacityReservationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecCapacityReservationsPtrInput)(nil)).Elem(), OceanLaunchSpecCapacityReservationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecCreateOptionsInput)(nil)).Elem(), OceanLaunchSpecCreateOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecCreateOptionsPtrInput)(nil)).Elem(), OceanLaunchSpecCreateOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecDeleteOptionsInput)(nil)).Elem(), OceanLaunchSpecDeleteOptionsArgs{})
@@ -27463,6 +27621,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecBlockDeviceMappingEbsDynamicIopsPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizePtrOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecCapacityReservationsOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecCapacityReservationsPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecCreateOptionsOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecCreateOptionsPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecDeleteOptionsOutput{})
