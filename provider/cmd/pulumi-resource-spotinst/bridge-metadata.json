@@ -1706,6 +1706,16 @@
                             }
                         }
                     },
+                    "capacity_reservations": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "create_options": {
                         "maxItemsOne": true
                     },
