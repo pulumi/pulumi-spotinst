@@ -165,7 +165,7 @@ namespace Pulumi.SpotInst.Gcp
     ///                 Namespace = "compute",
     ///                 Statistic = "average",
     ///                 Unit = "percent",
-    ///                 Threshold = 10000,
+    ///                 Threshold = 10000.0,
     ///                 Period = 300,
     ///                 Cooldown = 300,
     ///                 Operator = "gte",

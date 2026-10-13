@@ -94,8 +94,8 @@ namespace Pulumi.SpotInst
     ///         {
     ///             new SpotInst.Inputs.OceanRightSizingRuleRecommendationApplicationBoundaryArgs
     ///             {
-    ///                 CpuMin = 120,
-    ///                 CpuMax = 190,
+    ///                 CpuMin = 120.0,
+    ///                 CpuMax = 190.0,
     ///                 MemoryMin = 160,
     ///                 MemoryMax = 190,
     ///             },

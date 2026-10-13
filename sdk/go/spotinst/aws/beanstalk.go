@@ -59,7 +59,7 @@ import (
 //						"timeWindow":  "Mon:23:50-Tue:00:20",
 //						"updateLevel": "minorAndPatch",
 //					},
-//				}[0],
+//				}[0].(aws.BeanstalkManagedActionsArgs),
 //			})
 //			if err != nil {
 //				return err
