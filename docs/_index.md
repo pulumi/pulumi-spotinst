@@ -196,7 +196,7 @@ public class App {
 {{% /choosable %}}
 {{% choosable language hcl %}}
 ```hcl
-pulumi {
+terraform {
   required_providers {
     spotinst = {
       source = "pulumi/spotinst"
@@ -206,6 +206,9 @@ pulumi {
 
 # Create an Elastigroup
 resource "spotinst_aws_elastigroup" "foo" {
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 ```
 

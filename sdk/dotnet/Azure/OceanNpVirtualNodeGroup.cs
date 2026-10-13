@@ -163,8 +163,8 @@ namespace Pulumi.SpotInst.Azure
     ///         {
     ///             MinVcpu = 2,
     ///             MaxVcpu = 16,
-    ///             MinMemoryGib = 8,
-    ///             MaxMemoryGib = 128,
+    ///             MinMemoryGib = 8.0,
+    ///             MaxMemoryGib = 128.0,
     ///             Architectures = new[]
     ///             {
     ///                 "x86_64",
@@ -186,8 +186,8 @@ namespace Pulumi.SpotInst.Azure
     ///             },
     ///             AcceleratedNetworking = "Enabled",
     ///             DiskPerformance = "Premium",
-    ///             MinGpu = 1,
-    ///             MaxGpu = 2,
+    ///             MinGpu = 1.0,
+    ///             MaxGpu = 2.0,
     ///             MinNics = 1,
     ///             VmTypes = new[]
     ///             {
