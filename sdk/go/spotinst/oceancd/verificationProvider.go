@@ -156,6 +156,12 @@ func (VerificationProviderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*verificationProviderState)(nil)).Elem()
 }
 
+// VerificationProviderExists checks whether an existing VerificationProvider resource with the given ID exists.
+func VerificationProviderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VerificationProviderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:oceancd/verificationProvider:VerificationProvider", id, state, "", opts...)
+}
+
 type verificationProviderArgs struct {
 	// Specify the credentials for CloudWatch verification provider.
 	CloudWatch *VerificationProviderCloudWatch `pulumi:"cloudWatch"`

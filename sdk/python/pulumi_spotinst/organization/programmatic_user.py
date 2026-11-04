@@ -353,6 +353,22 @@ class ProgrammaticUser(pulumi.CustomResource):
         __props__.__dict__["user_group_ids"] = user_group_ids
         return ProgrammaticUser(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProgrammaticUserAccountArgs', 'ProgrammaticUserAccountArgsDict', 'outputs.ProgrammaticUserAccount']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProgrammaticUserPolicyArgs', 'ProgrammaticUserPolicyArgsDict', 'outputs.ProgrammaticUserPolicy']]]]] = None,
+            user_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accounts"] = accounts
+        __props__["description"] = description
+        __props__["name"] = name
+        __props__["policies"] = policies
+        __props__["userGroupIds"] = user_group_ids
+        return pulumi.runtime.exists_resource(None, 'spotinst:organization/programmaticUser:ProgrammaticUser', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def accounts(self) -> pulumi.Output[Optional[Sequence['outputs.ProgrammaticUserAccount']]]:

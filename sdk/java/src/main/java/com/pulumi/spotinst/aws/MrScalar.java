@@ -657,11 +657,10 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.terminationProtected);
     }
     /**
-     * @deprecated
-     * This field has been removed from our API and is no longer functional.
+     * @deprecated This field has been removed from our API and is no longer functional.
      * 
      */
-    @Deprecated /* This field has been removed from our API and is no longer functional. */
+    @Deprecated
     @Export(name="visibleToAllUsers", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> visibleToAllUsers;
 

@@ -473,6 +473,12 @@ func (MrScalarState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mrScalarState)(nil)).Elem()
 }
 
+// MrScalarExists checks whether an existing MrScalar resource with the given ID exists.
+func MrScalarExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MrScalarState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:aws/mrScalar:MrScalar", id, state, "", opts...)
+}
+
 type mrScalarArgs struct {
 	AdditionalInfo                  *string                        `pulumi:"additionalInfo"`
 	AdditionalPrimarySecurityGroups []string                       `pulumi:"additionalPrimarySecurityGroups"`

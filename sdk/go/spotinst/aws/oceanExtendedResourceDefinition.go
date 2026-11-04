@@ -105,6 +105,12 @@ func (OceanExtendedResourceDefinitionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oceanExtendedResourceDefinitionState)(nil)).Elem()
 }
 
+// OceanExtendedResourceDefinitionExists checks whether an existing OceanExtendedResourceDefinition resource with the given ID exists.
+func OceanExtendedResourceDefinitionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OceanExtendedResourceDefinitionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:aws/oceanExtendedResourceDefinition:OceanExtendedResourceDefinition", id, state, "", opts...)
+}
+
 type oceanExtendedResourceDefinitionArgs struct {
 	// The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
 	// The name should be a valid Kubernetes extended resource name.

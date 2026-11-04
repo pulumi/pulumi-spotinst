@@ -108,6 +108,12 @@ func (DataIntegrationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataIntegrationState)(nil)).Elem()
 }
 
+// DataIntegrationExists checks whether an existing DataIntegration resource with the given ID exists.
+func DataIntegrationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DataIntegrationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:index/dataIntegration:DataIntegration", id, state, "", opts...)
+}
+
 type dataIntegrationArgs struct {
 	// The name of the data integration.
 	Name *string `pulumi:"name"`

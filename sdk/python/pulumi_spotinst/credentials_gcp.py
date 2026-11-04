@@ -546,6 +546,34 @@ class CredentialsGcp(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return CredentialsGcp(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_provider_x509_cert_url: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            client_email: pulumi.Input[Optional[_builtins.str]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_x509_cert_url: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            token_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["authProviderX509CertUrl"] = auth_provider_x509_cert_url
+        __props__["authUri"] = auth_uri
+        __props__["clientEmail"] = client_email
+        __props__["clientId"] = client_id
+        __props__["clientX509CertUrl"] = client_x509_cert_url
+        __props__["privateKey"] = private_key
+        __props__["privateKeyId"] = private_key_id
+        __props__["projectId"] = project_id
+        __props__["tokenUri"] = token_uri
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'spotinst:index/credentialsGcp:CredentialsGcp', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

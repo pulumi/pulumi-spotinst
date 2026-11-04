@@ -216,6 +216,18 @@ class Strategy(pulumi.CustomResource):
         __props__.__dict__["strategy_name"] = strategy_name
         return Strategy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            canary: pulumi.Input[Optional[Union['StrategyCanaryArgs', 'StrategyCanaryArgsDict', 'outputs.StrategyCanary']]] = None,
+            rolling: pulumi.Input[Optional[Union['StrategyRollingArgs', 'StrategyRollingArgsDict', 'outputs.StrategyRolling']]] = None,
+            strategy_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["canary"] = canary
+        __props__["rolling"] = rolling
+        __props__["strategyName"] = strategy_name
+        return pulumi.runtime.exists_resource(None, 'spotinst:oceancd/strategy:Strategy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def canary(self) -> pulumi.Output[Optional['outputs.StrategyCanary']]:

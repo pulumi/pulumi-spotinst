@@ -427,6 +427,12 @@ func (OceanNpVirtualNodeGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oceanNpVirtualNodeGroupState)(nil)).Elem()
 }
 
+// OceanNpVirtualNodeGroupExists checks whether an existing OceanNpVirtualNodeGroup resource with the given ID exists.
+func OceanNpVirtualNodeGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OceanNpVirtualNodeGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:azure/oceanNpVirtualNodeGroup:OceanNpVirtualNodeGroup", id, state, "", opts...)
+}
+
 type oceanNpVirtualNodeGroupArgs struct {
 	// Optionally set a number between `[0 .. 200]` to control the percentage of VNG resources dedicated to automatic headroom.
 	AutoHeadroomPercentage *int `pulumi:"autoHeadroomPercentage"`

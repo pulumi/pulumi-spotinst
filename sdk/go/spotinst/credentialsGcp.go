@@ -156,6 +156,12 @@ func (CredentialsGcpState) ElementType() reflect.Type {
 	return reflect.TypeOf((*credentialsGcpState)(nil)).Elem()
 }
 
+// CredentialsGcpExists checks whether an existing CredentialsGcp resource with the given ID exists.
+func CredentialsGcpExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CredentialsGcpState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:index/credentialsGcp:CredentialsGcp", id, state, "", opts...)
+}
+
 type credentialsGcpArgs struct {
 	// The ID of the account associated with your token.
 	AccountId string `pulumi:"accountId"`

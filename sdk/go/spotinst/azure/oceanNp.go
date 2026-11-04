@@ -545,6 +545,12 @@ func (OceanNpState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oceanNpState)(nil)).Elem()
 }
 
+// OceanNpExists checks whether an existing OceanNp resource with the given ID exists.
+func OceanNpExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OceanNpState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:azure/oceanNp:OceanNp", id, state, "", opts...)
+}
+
 type oceanNpArgs struct {
 	AksClusterName                     string `pulumi:"aksClusterName"`
 	AksInfrastructureResourceGroupName string `pulumi:"aksInfrastructureResourceGroupName"`

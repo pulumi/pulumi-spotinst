@@ -121,6 +121,12 @@ func (OceanRightSizingClusterConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oceanRightSizingClusterConfigState)(nil)).Elem()
 }
 
+// OceanRightSizingClusterConfigExists checks whether an existing OceanRightSizingClusterConfig resource with the given ID exists.
+func OceanRightSizingClusterConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OceanRightSizingClusterConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:index/oceanRightSizingClusterConfig:OceanRightSizingClusterConfig", id, state, "", opts...)
+}
+
 type oceanRightSizingClusterConfigArgs struct {
 	// Identifier of the cluster. Example: `dev-cluster`
 	ClusterIdentifier string `pulumi:"clusterIdentifier"`

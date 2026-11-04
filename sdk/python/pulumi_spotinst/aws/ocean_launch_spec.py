@@ -1543,6 +1543,88 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["user_data"] = user_data
         return OceanLaunchSpec(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            associate_public_ip_address: pulumi.Input[Optional[_builtins.bool]] = None,
+            autoscale_downs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleDownArgs', 'OceanLaunchSpecAutoscaleDownArgsDict', 'outputs.OceanLaunchSpecAutoscaleDown']]]]] = None,
+            autoscale_headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroom']]]]] = None,
+            autoscale_headrooms_automatics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic']]]]] = None,
+            block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecBlockDeviceMappingArgs', 'OceanLaunchSpecBlockDeviceMappingArgsDict', 'outputs.OceanLaunchSpecBlockDeviceMapping']]]]] = None,
+            capacity_reservations: pulumi.Input[Optional[Union['OceanLaunchSpecCapacityReservationsArgs', 'OceanLaunchSpecCapacityReservationsArgsDict', 'outputs.OceanLaunchSpecCapacityReservations']]] = None,
+            create_options: pulumi.Input[Optional[Union['OceanLaunchSpecCreateOptionsArgs', 'OceanLaunchSpecCreateOptionsArgsDict', 'outputs.OceanLaunchSpecCreateOptions']]] = None,
+            delete_options: pulumi.Input[Optional[Union['OceanLaunchSpecDeleteOptionsArgs', 'OceanLaunchSpecDeleteOptionsArgsDict', 'outputs.OceanLaunchSpecDeleteOptions']]] = None,
+            elastic_ip_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecElasticIpPoolArgs', 'OceanLaunchSpecElasticIpPoolArgsDict', 'outputs.OceanLaunchSpecElasticIpPool']]]]] = None,
+            ephemeral_storages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecEphemeralStorageArgs', 'OceanLaunchSpecEphemeralStorageArgsDict', 'outputs.OceanLaunchSpecEphemeralStorage']]]]] = None,
+            iam_instance_profile: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecImageArgs', 'OceanLaunchSpecImageArgsDict', 'outputs.OceanLaunchSpecImage']]]]] = None,
+            instance_metadata_options: pulumi.Input[Optional[Union['OceanLaunchSpecInstanceMetadataOptionsArgs', 'OceanLaunchSpecInstanceMetadataOptionsArgsDict', 'outputs.OceanLaunchSpecInstanceMetadataOptions']]] = None,
+            instance_store_policy: pulumi.Input[Optional[Union['OceanLaunchSpecInstanceStorePolicyArgs', 'OceanLaunchSpecInstanceStorePolicyArgsDict', 'outputs.OceanLaunchSpecInstanceStorePolicy']]] = None,
+            instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            instance_types_filters: pulumi.Input[Optional[Union['OceanLaunchSpecInstanceTypesFiltersArgs', 'OceanLaunchSpecInstanceTypesFiltersArgsDict', 'outputs.OceanLaunchSpecInstanceTypesFilters']]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict', 'outputs.OceanLaunchSpecLabel']]]]] = None,
+            load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecLoadBalancerArgs', 'OceanLaunchSpecLoadBalancerArgsDict', 'outputs.OceanLaunchSpecLoadBalancer']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
+            optimization_windows: pulumi.Input[Optional[Union['OceanLaunchSpecOptimizationWindowsArgs', 'OceanLaunchSpecOptimizationWindowsArgsDict', 'outputs.OceanLaunchSpecOptimizationWindows']]] = None,
+            preferred_od_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            preferred_spot_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            reserved_enis: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecResourceLimitArgs', 'OceanLaunchSpecResourceLimitArgsDict', 'outputs.OceanLaunchSpecResourceLimit']]]]] = None,
+            restrict_scale_down: pulumi.Input[Optional[_builtins.bool]] = None,
+            root_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+            scheduling_shutdown_hours: pulumi.Input[Optional[Union['OceanLaunchSpecSchedulingShutdownHoursArgs', 'OceanLaunchSpecSchedulingShutdownHoursArgsDict', 'outputs.OceanLaunchSpecSchedulingShutdownHours']]] = None,
+            scheduling_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict', 'outputs.OceanLaunchSpecSchedulingTask']]]]] = None,
+            security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            startup_taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecStartupTaintArgs', 'OceanLaunchSpecStartupTaintArgsDict', 'outputs.OceanLaunchSpecStartupTaint']]]]] = None,
+            strategies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecStrategyArgs', 'OceanLaunchSpecStrategyArgsDict', 'outputs.OceanLaunchSpecStrategy']]]]] = None,
+            subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecTagArgs', 'OceanLaunchSpecTagArgsDict', 'outputs.OceanLaunchSpecTag']]]]] = None,
+            taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecTaintArgs', 'OceanLaunchSpecTaintArgsDict', 'outputs.OceanLaunchSpecTaint']]]]] = None,
+            update_policy: pulumi.Input[Optional[Union['OceanLaunchSpecUpdatePolicyArgs', 'OceanLaunchSpecUpdatePolicyArgsDict', 'outputs.OceanLaunchSpecUpdatePolicy']]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["associatePublicIpAddress"] = associate_public_ip_address
+        __props__["autoscaleDowns"] = autoscale_downs
+        __props__["autoscaleHeadrooms"] = autoscale_headrooms
+        __props__["autoscaleHeadroomsAutomatics"] = autoscale_headrooms_automatics
+        __props__["blockDeviceMappings"] = block_device_mappings
+        __props__["capacityReservations"] = capacity_reservations
+        __props__["createOptions"] = create_options
+        __props__["deleteOptions"] = delete_options
+        __props__["elasticIpPools"] = elastic_ip_pools
+        __props__["ephemeralStorages"] = ephemeral_storages
+        __props__["iamInstanceProfile"] = iam_instance_profile
+        __props__["imageId"] = image_id
+        __props__["images"] = images
+        __props__["instanceMetadataOptions"] = instance_metadata_options
+        __props__["instanceStorePolicy"] = instance_store_policy
+        __props__["instanceTypes"] = instance_types
+        __props__["instanceTypesFilters"] = instance_types_filters
+        __props__["labels"] = labels
+        __props__["loadBalancers"] = load_balancers
+        __props__["name"] = name
+        __props__["oceanId"] = ocean_id
+        __props__["optimizationWindows"] = optimization_windows
+        __props__["preferredOdTypes"] = preferred_od_types
+        __props__["preferredSpotTypes"] = preferred_spot_types
+        __props__["reservedEnis"] = reserved_enis
+        __props__["resourceLimits"] = resource_limits
+        __props__["restrictScaleDown"] = restrict_scale_down
+        __props__["rootVolumeSize"] = root_volume_size
+        __props__["schedulingShutdownHours"] = scheduling_shutdown_hours
+        __props__["schedulingTasks"] = scheduling_tasks
+        __props__["securityGroups"] = security_groups
+        __props__["startupTaints"] = startup_taints
+        __props__["strategies"] = strategies
+        __props__["subnetIds"] = subnet_ids
+        __props__["tags"] = tags
+        __props__["taints"] = taints
+        __props__["updatePolicy"] = update_policy
+        __props__["userData"] = user_data
+        return pulumi.runtime.exists_resource(None, 'spotinst:aws/oceanLaunchSpec:OceanLaunchSpec', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="associatePublicIpAddress")
     def associate_public_ip_address(self) -> pulumi.Output[Optional[_builtins.bool]]:

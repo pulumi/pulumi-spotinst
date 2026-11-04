@@ -115,6 +115,12 @@ func (SuspensionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*suspensionState)(nil)).Elem()
 }
 
+// SuspensionExists checks whether an existing Suspension resource with the given ID exists.
+func SuspensionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SuspensionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:aws/suspension:Suspension", id, state, "", opts...)
+}
+
 type suspensionArgs struct {
 	// Elastigroup ID to apply the suspensions on.
 	GroupId string `pulumi:"groupId"`

@@ -128,11 +128,10 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.backendServices);
     }
     /**
-     * @deprecated
-     * Please define clusterId under integration_gke
+     * @deprecated Please define clusterId under integration_gke
      * 
      */
-    @Deprecated /* Please define clusterId under integration_gke */
+    @Deprecated
     @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterId;
 

@@ -329,6 +329,22 @@ class HealthCheck(pulumi.CustomResource):
         __props__.__dict__["resource_id"] = resource_id
         return HealthCheck(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            check: pulumi.Input[Optional[Union['HealthCheckCheckArgs', 'HealthCheckCheckArgsDict', 'outputs.HealthCheckCheck']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_address: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_port: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["check"] = check
+        __props__["name"] = name
+        __props__["proxyAddress"] = proxy_address
+        __props__["proxyPort"] = proxy_port
+        __props__["resourceId"] = resource_id
+        return pulumi.runtime.exists_resource(None, 'spotinst:index/healthCheck:HealthCheck', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def check(self) -> pulumi.Output[Optional['outputs.HealthCheckCheck']]:

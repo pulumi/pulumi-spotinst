@@ -443,6 +443,22 @@ class Subscription(pulumi.CustomResource):
         __props__.__dict__["resource_id"] = resource_id
         return Subscription(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            event_type: pulumi.Input[Optional[_builtins.str]] = None,
+            format: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["endpoint"] = endpoint
+        __props__["eventType"] = event_type
+        __props__["format"] = format
+        __props__["protocol"] = protocol
+        __props__["resourceId"] = resource_id
+        return pulumi.runtime.exists_resource(None, 'spotinst:index/subscription:Subscription', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def endpoint(self) -> pulumi.Output[_builtins.str]:

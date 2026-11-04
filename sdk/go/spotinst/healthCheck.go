@@ -125,6 +125,12 @@ func (HealthCheckState) ElementType() reflect.Type {
 	return reflect.TypeOf((*healthCheckState)(nil)).Elem()
 }
 
+// HealthCheckExists checks whether an existing HealthCheck resource with the given ID exists.
+func HealthCheckExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HealthCheckState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:index/healthCheck:HealthCheck", id, state, "", opts...)
+}
+
 type healthCheckArgs struct {
 	// Describes the check to execute.
 	Check *HealthCheckCheck `pulumi:"check"`

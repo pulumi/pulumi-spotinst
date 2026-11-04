@@ -40,20 +40,18 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * Please define clusterId under integration_gke
+     * @deprecated Please define clusterId under integration_gke
      * 
      */
-    @Deprecated /* Please define clusterId under integration_gke */
+    @Deprecated
     @Import(name="clusterId")
     private @Nullable Output<String> clusterId;
 
     /**
-     * @deprecated
-     * Please define clusterId under integration_gke
+     * @deprecated Please define clusterId under integration_gke
      * 
      */
-    @Deprecated /* Please define clusterId under integration_gke */
+    @Deprecated
     public Optional<Output<String>> clusterId() {
         return Optional.ofNullable(this.clusterId);
     }
@@ -371,11 +369,10 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Please define clusterId under integration_gke
+         * @deprecated Please define clusterId under integration_gke
          * 
          */
-        @Deprecated /* Please define clusterId under integration_gke */
+        @Deprecated
         public Builder clusterId(@Nullable Output<String> clusterId) {
             $.clusterId = clusterId;
             return this;
@@ -384,11 +381,10 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * Please define clusterId under integration_gke
+         * @deprecated Please define clusterId under integration_gke
          * 
          */
-        @Deprecated /* Please define clusterId under integration_gke */
+        @Deprecated
         public Builder clusterId(String clusterId) {
             return clusterId(Output.of(clusterId));
         }

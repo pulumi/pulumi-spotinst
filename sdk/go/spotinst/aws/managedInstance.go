@@ -215,6 +215,12 @@ func (ManagedInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*managedInstanceState)(nil)).Elem()
 }
 
+// ManagedInstanceExists checks whether an existing ManagedInstance resource with the given ID exists.
+func ManagedInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ManagedInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:aws/managedInstance:ManagedInstance", id, state, "", opts...)
+}
+
 type managedInstanceArgs struct {
 	AutoHealing               *bool                                     `pulumi:"autoHealing"`
 	BlockDeviceMappings       []ManagedInstanceBlockDeviceMapping       `pulumi:"blockDeviceMappings"`

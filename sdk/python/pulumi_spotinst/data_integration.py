@@ -261,6 +261,18 @@ class DataIntegration(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return DataIntegration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            s3: pulumi.Input[Optional[Union['DataIntegrationS3Args', 'DataIntegrationS3ArgsDict', 'outputs.DataIntegrationS3']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["name"] = name
+        __props__["s3"] = s3
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'spotinst:index/dataIntegration:DataIntegration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:

@@ -808,6 +808,12 @@ func (StatefulNodeAzureState) ElementType() reflect.Type {
 	return reflect.TypeOf((*statefulNodeAzureState)(nil)).Elem()
 }
 
+// StatefulNodeAzureExists checks whether an existing StatefulNodeAzure resource with the given ID exists.
+func StatefulNodeAzureExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StatefulNodeAzureState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:index/statefulNodeAzure:StatefulNodeAzure", id, state, "", opts...)
+}
+
 type statefulNodeAzureArgs struct {
 	AttachDataDisks          []StatefulNodeAzureAttachDataDisk          `pulumi:"attachDataDisks"`
 	BootDiagnostics          []StatefulNodeAzureBootDiagnostic          `pulumi:"bootDiagnostics"`

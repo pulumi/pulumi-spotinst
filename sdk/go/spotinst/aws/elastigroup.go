@@ -674,6 +674,12 @@ func (ElastigroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*elastigroupState)(nil)).Elem()
 }
 
+// ElastigroupExists checks whether an existing Elastigroup resource with the given ID exists.
+func ElastigroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ElastigroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:aws/elastigroup:Elastigroup", id, state, "", opts...)
+}
+
 type elastigroupArgs struct {
 	// Auto-healing replacement won't be triggered if this parameter value is "false". In a case of a stateful group - no recycling will start if this parameter value is "false".
 	AutoHealing *bool `pulumi:"autoHealing"`

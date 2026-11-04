@@ -77,7 +77,7 @@ namespace Pulumi.SpotInst
         public Output<ImmutableDictionary<string, string>?> Format { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
+        /// The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
         /// The following values are deprecated: `"http"` , `"https"`
         /// You can use the generic `"web"` protocol instead.
         /// `"aws-sns"` is only supported with AWS provider
@@ -175,7 +175,7 @@ namespace Pulumi.SpotInst
         }
 
         /// <summary>
-        /// The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
+        /// The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
         /// The following values are deprecated: `"http"` , `"https"`
         /// You can use the generic `"web"` protocol instead.
         /// `"aws-sns"` is only supported with AWS provider
@@ -235,7 +235,7 @@ namespace Pulumi.SpotInst
         }
 
         /// <summary>
-        /// The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`. 
+        /// The protocol to send the notification. Valid values: `"email"`, `"email-json"`, `"aws-sns"`, `"web"`.
         /// The following values are deprecated: `"http"` , `"https"`
         /// You can use the generic `"web"` protocol instead.
         /// `"aws-sns"` is only supported with AWS provider

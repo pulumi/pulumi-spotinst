@@ -65,12 +65,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var test = new VerificationTemplate("test", VerificationTemplateArgs.builder()
  *             .name("test-verification-template-tes")
  *             .args(VerificationTemplateArgArgs.builder()
@@ -135,7 +135,7 @@ import javax.annotation.Nullable;
  *                             .webHeaderKey("Autorization")
  *                             .webHeaderValue("Bearer=args.token")
  *                             .build())
- *                         .body("{\"key\": \"test\"}")
+ *                         .body("}{&#92;{@code "key}&#92;{@code ": }&#92;{@code "test}&#92;{@code "}}{@code ")
  *                         .timeoutSeconds(20)
  *                         .jsonPath("$.data")
  *                         .insecure(false)
@@ -189,8 +189,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

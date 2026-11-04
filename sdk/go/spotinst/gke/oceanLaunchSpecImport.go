@@ -102,6 +102,12 @@ func (OceanLaunchSpecImportState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oceanLaunchSpecImportState)(nil)).Elem()
 }
 
+// OceanLaunchSpecImportExists checks whether an existing OceanLaunchSpecImport resource with the given ID exists.
+func OceanLaunchSpecImportExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OceanLaunchSpecImportState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:gke/oceanLaunchSpecImport:OceanLaunchSpecImport", id, state, "", opts...)
+}
+
 type oceanLaunchSpecImportArgs struct {
 	// The node pool you wish to use in your launchSpec.
 	NodePoolName string `pulumi:"nodePoolName"`

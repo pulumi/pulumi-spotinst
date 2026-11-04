@@ -353,6 +353,12 @@ func (OceanLaunchSpecState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oceanLaunchSpecState)(nil)).Elem()
 }
 
+// OceanLaunchSpecExists checks whether an existing OceanLaunchSpec resource with the given ID exists.
+func OceanLaunchSpecExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OceanLaunchSpecState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:gke/oceanLaunchSpec:OceanLaunchSpec", id, state, "", opts...)
+}
+
 type oceanLaunchSpecArgs struct {
 	// Set custom headroom per launch spec. provide list of headrooms object.
 	AutoscaleHeadrooms []OceanLaunchSpecAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`

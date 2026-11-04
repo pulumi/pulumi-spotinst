@@ -254,6 +254,12 @@ func (ElastigroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*elastigroupState)(nil)).Elem()
 }
 
+// ElastigroupExists checks whether an existing Elastigroup resource with the given ID exists.
+func ElastigroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ElastigroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:gke/elastigroup:Elastigroup", id, state, "", opts...)
+}
+
 type elastigroupArgs struct {
 	BackendServices []ElastigroupBackendService `pulumi:"backendServices"`
 	// Deprecated: Please define clusterId under integration_gke

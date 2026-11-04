@@ -1572,6 +1572,78 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["whitelists"] = whitelists
         return Ocean(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            associate_public_ip_address: pulumi.Input[Optional[_builtins.bool]] = None,
+            autoscaler: pulumi.Input[Optional[Union['OceanAutoscalerArgs', 'OceanAutoscalerArgsDict', 'outputs.OceanAutoscaler']]] = None,
+            blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            block_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanBlockDeviceMappingArgs', 'OceanBlockDeviceMappingArgsDict', 'outputs.OceanBlockDeviceMapping']]]]] = None,
+            cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_orientations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanClusterOrientationArgs', 'OceanClusterOrientationArgsDict', 'outputs.OceanClusterOrientation']]]]] = None,
+            desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            ebs_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
+            fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+            filters: pulumi.Input[Optional[Union['OceanFiltersArgs', 'OceanFiltersArgsDict', 'outputs.OceanFilters']]] = None,
+            iam_instance_profile: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_metadata_options: pulumi.Input[Optional[Union['OceanInstanceMetadataOptionsArgs', 'OceanInstanceMetadataOptionsArgsDict', 'outputs.OceanInstanceMetadataOptions']]] = None,
+            key_pair: pulumi.Input[Optional[_builtins.str]] = None,
+            logging: pulumi.Input[Optional[Union['OceanLoggingArgs', 'OceanLoggingArgsDict', 'outputs.OceanLogging']]] = None,
+            max_size: pulumi.Input[Optional[_builtins.int]] = None,
+            min_size: pulumi.Input[Optional[_builtins.int]] = None,
+            monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            optimize_images: pulumi.Input[Optional[Union['OceanOptimizeImagesArgs', 'OceanOptimizeImagesArgsDict', 'outputs.OceanOptimizeImages']]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanScheduledTaskArgs', 'OceanScheduledTaskArgsDict', 'outputs.OceanScheduledTask']]]]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+            subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanTagArgs', 'OceanTagArgsDict', 'outputs.OceanTag']]]]] = None,
+            update_policy: pulumi.Input[Optional[Union['OceanUpdatePolicyArgs', 'OceanUpdatePolicyArgsDict', 'outputs.OceanUpdatePolicy']]] = None,
+            use_as_template_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None,
+            utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
+            utilize_reserved_instances: pulumi.Input[Optional[_builtins.bool]] = None,
+            whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["associatePublicIpAddress"] = associate_public_ip_address
+        __props__["autoscaler"] = autoscaler
+        __props__["blacklists"] = blacklists
+        __props__["blockDeviceMappings"] = block_device_mappings
+        __props__["clusterName"] = cluster_name
+        __props__["clusterOrientations"] = cluster_orientations
+        __props__["desiredCapacity"] = desired_capacity
+        __props__["drainingTimeout"] = draining_timeout
+        __props__["ebsOptimized"] = ebs_optimized
+        __props__["fallbackToOndemand"] = fallback_to_ondemand
+        __props__["filters"] = filters
+        __props__["iamInstanceProfile"] = iam_instance_profile
+        __props__["imageId"] = image_id
+        __props__["instanceMetadataOptions"] = instance_metadata_options
+        __props__["keyPair"] = key_pair
+        __props__["logging"] = logging
+        __props__["maxSize"] = max_size
+        __props__["minSize"] = min_size
+        __props__["monitoring"] = monitoring
+        __props__["name"] = name
+        __props__["optimizeImages"] = optimize_images
+        __props__["region"] = region
+        __props__["scheduledTasks"] = scheduled_tasks
+        __props__["securityGroupIds"] = security_group_ids
+        __props__["spotPercentage"] = spot_percentage
+        __props__["subnetIds"] = subnet_ids
+        __props__["tags"] = tags
+        __props__["updatePolicy"] = update_policy
+        __props__["useAsTemplateOnly"] = use_as_template_only
+        __props__["userData"] = user_data
+        __props__["utilizeCommitments"] = utilize_commitments
+        __props__["utilizeReservedInstances"] = utilize_reserved_instances
+        __props__["whitelists"] = whitelists
+        return pulumi.runtime.exists_resource(None, 'spotinst:ecs/ocean:Ocean', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="associatePublicIpAddress")
     def associate_public_ip_address(self) -> pulumi.Output[Optional[_builtins.bool]]:
