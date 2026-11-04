@@ -309,6 +309,26 @@ class NotificationCenter(pulumi.CustomResource):
         __props__.__dict__["subscriptions"] = subscriptions
         return NotificationCenter(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            compute_policy_config: pulumi.Input[Optional[Union['NotificationCenterComputePolicyConfigArgs', 'NotificationCenterComputePolicyConfigArgsDict', 'outputs.NotificationCenterComputePolicyConfig']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            is_active: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            privacy_level: pulumi.Input[Optional[_builtins.str]] = None,
+            registered_users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NotificationCenterRegisteredUserArgs', 'NotificationCenterRegisteredUserArgsDict', 'outputs.NotificationCenterRegisteredUser']]]]] = None,
+            subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NotificationCenterSubscriptionArgs', 'NotificationCenterSubscriptionArgsDict', 'outputs.NotificationCenterSubscription']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["computePolicyConfig"] = compute_policy_config
+        __props__["description"] = description
+        __props__["isActive"] = is_active
+        __props__["name"] = name
+        __props__["privacyLevel"] = privacy_level
+        __props__["registeredUsers"] = registered_users
+        __props__["subscriptions"] = subscriptions
+        return pulumi.runtime.exists_resource(None, 'spotinst:index/notificationCenter:NotificationCenter', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="computePolicyConfig")
     def compute_policy_config(self) -> pulumi.Output['outputs.NotificationCenterComputePolicyConfig']:

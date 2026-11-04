@@ -1952,6 +1952,88 @@ class OceanNp(pulumi.CustomResource):
         __props__.__dict__["vng_template_scheduling"] = vng_template_scheduling
         return OceanNp(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aks_cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            aks_infrastructure_resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            aks_region: pulumi.Input[Optional[_builtins.str]] = None,
+            aks_resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_headroom_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+            autoscaler: pulumi.Input[Optional[Union['OceanNpAutoscalerArgs', 'OceanNpAutoscalerArgsDict', 'outputs.OceanNpAutoscaler']]] = None,
+            availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            controller_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption_at_host: pulumi.Input[Optional[_builtins.bool]] = None,
+            fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+            filters: pulumi.Input[Optional[Union['OceanNpFiltersArgs', 'OceanNpFiltersArgsDict', 'outputs.OceanNpFilters']]] = None,
+            headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpHeadroomArgs', 'OceanNpHeadroomArgsDict', 'outputs.OceanNpHeadroom']]]]] = None,
+            health: pulumi.Input[Optional[Union['OceanNpHealthArgs', 'OceanNpHealthArgsDict', 'outputs.OceanNpHealth']]] = None,
+            kubernetes_version: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpLinuxOsConfigArgs', 'OceanNpLinuxOsConfigArgsDict', 'outputs.OceanNpLinuxOsConfig']]]]] = None,
+            local_dns_profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpLocalDnsProfileArgs', 'OceanNpLocalDnsProfileArgsDict', 'outputs.OceanNpLocalDnsProfile']]]]] = None,
+            logging: pulumi.Input[Optional[Union['OceanNpLoggingArgs', 'OceanNpLoggingArgsDict', 'outputs.OceanNpLogging']]] = None,
+            max_count: pulumi.Input[Optional[_builtins.int]] = None,
+            max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+            min_count: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            os_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+            os_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+            os_sku: pulumi.Input[Optional[_builtins.str]] = None,
+            os_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            preferred_vm_sizes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            scheduling: pulumi.Input[Optional[Union['OceanNpSchedulingArgs', 'OceanNpSchedulingArgsDict', 'outputs.OceanNpScheduling']]] = None,
+            should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
+            spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpTaintArgs', 'OceanNpTaintArgsDict', 'outputs.OceanNpTaint']]]]] = None,
+            update_policy: pulumi.Input[Optional[Union['OceanNpUpdatePolicyArgs', 'OceanNpUpdatePolicyArgsDict', 'outputs.OceanNpUpdatePolicy']]] = None,
+            vnet_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vng_template_scheduling: pulumi.Input[Optional[Union['OceanNpVngTemplateSchedulingArgs', 'OceanNpVngTemplateSchedulingArgsDict', 'outputs.OceanNpVngTemplateScheduling']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aksClusterName"] = aks_cluster_name
+        __props__["aksInfrastructureResourceGroupName"] = aks_infrastructure_resource_group_name
+        __props__["aksRegion"] = aks_region
+        __props__["aksResourceGroupName"] = aks_resource_group_name
+        __props__["autoHeadroomPercentage"] = auto_headroom_percentage
+        __props__["autoscaler"] = autoscaler
+        __props__["availabilityZones"] = availability_zones
+        __props__["controllerClusterId"] = controller_cluster_id
+        __props__["drainingTimeout"] = draining_timeout
+        __props__["enableNodePublicIp"] = enable_node_public_ip
+        __props__["encryptionAtHost"] = encryption_at_host
+        __props__["fallbackToOndemand"] = fallback_to_ondemand
+        __props__["filters"] = filters
+        __props__["headrooms"] = headrooms
+        __props__["health"] = health
+        __props__["kubernetesVersion"] = kubernetes_version
+        __props__["labels"] = labels
+        __props__["linuxOsConfigs"] = linux_os_configs
+        __props__["localDnsProfiles"] = local_dns_profiles
+        __props__["logging"] = logging
+        __props__["maxCount"] = max_count
+        __props__["maxPodsPerNode"] = max_pods_per_node
+        __props__["minCount"] = min_count
+        __props__["name"] = name
+        __props__["osDiskSizeGb"] = os_disk_size_gb
+        __props__["osDiskType"] = os_disk_type
+        __props__["osSku"] = os_sku
+        __props__["osType"] = os_type
+        __props__["podSubnetIds"] = pod_subnet_ids
+        __props__["preferredVmSizes"] = preferred_vm_sizes
+        __props__["scheduling"] = scheduling
+        __props__["shouldUtilizeCommitments"] = should_utilize_commitments
+        __props__["spotPercentage"] = spot_percentage
+        __props__["tags"] = tags
+        __props__["taints"] = taints
+        __props__["updatePolicy"] = update_policy
+        __props__["vnetSubnetIds"] = vnet_subnet_ids
+        __props__["vngTemplateScheduling"] = vng_template_scheduling
+        return pulumi.runtime.exists_resource(None, 'spotinst:azure/oceanNp:OceanNp', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aksClusterName")
     def aks_cluster_name(self) -> pulumi.Output[_builtins.str]:

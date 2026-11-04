@@ -237,6 +237,12 @@ func (VerificationTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*verificationTemplateState)(nil)).Elem()
 }
 
+// VerificationTemplateExists checks whether an existing VerificationTemplate resource with the given ID exists.
+func VerificationTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VerificationTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:oceancd/verificationTemplate:VerificationTemplate", id, state, "", opts...)
+}
+
 type verificationTemplateArgs struct {
 	// List of verification arguments. You may specify either `value` OR `valueFrom` but not both.In case `args`:`value` is already defined in the RolloutSpec entity, there is no need to also specify it in the VerificationTemplate entity.
 	Args []VerificationTemplateArg `pulumi:"args"`

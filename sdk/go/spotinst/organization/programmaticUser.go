@@ -131,6 +131,12 @@ func (ProgrammaticUserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*programmaticUserState)(nil)).Elem()
 }
 
+// ProgrammaticUserExists checks whether an existing ProgrammaticUser resource with the given ID exists.
+func ProgrammaticUserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProgrammaticUserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:organization/programmaticUser:ProgrammaticUser", id, state, "", opts...)
+}
+
 type programmaticUserArgs struct {
 	// All the accounts the programmatic user will have access to.
 	// If used - Cannot be empty.

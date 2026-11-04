@@ -140,6 +140,12 @@ func (CredentialsAzureState) ElementType() reflect.Type {
 	return reflect.TypeOf((*credentialsAzureState)(nil)).Elem()
 }
 
+// CredentialsAzureExists checks whether an existing CredentialsAzure resource with the given ID exists.
+func CredentialsAzureExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CredentialsAzureState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:index/credentialsAzure:CredentialsAzure", id, state, "", opts...)
+}
+
 type credentialsAzureArgs struct {
 	// The ID of the account associated with your token.
 	AccountId string `pulumi:"accountId"`

@@ -206,6 +206,12 @@ func (BeanstalkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*beanstalkState)(nil)).Elem()
 }
 
+// BeanstalkExists checks whether an existing Beanstalk resource with the given ID exists.
+func BeanstalkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BeanstalkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:aws/beanstalk:Beanstalk", id, state, "", opts...)
+}
+
 type beanstalkArgs struct {
 	// The id of an existing Beanstalk environment.
 	BeanstalkEnvironmentId *string `pulumi:"beanstalkEnvironmentId"`

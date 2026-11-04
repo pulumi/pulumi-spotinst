@@ -99,6 +99,12 @@ func (RolloutSpecState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rolloutSpecState)(nil)).Elem()
 }
 
+// RolloutSpecExists checks whether an existing RolloutSpec resource with the given ID exists.
+func RolloutSpecExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RolloutSpecState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:oceancd/rolloutSpec:RolloutSpec", id, state, "", opts...)
+}
+
 type rolloutSpecArgs struct {
 	// Holds information on how to react when failure happens.
 	FailurePolicy *RolloutSpecFailurePolicy `pulumi:"failurePolicy"`

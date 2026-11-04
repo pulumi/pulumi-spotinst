@@ -103,6 +103,12 @@ func (CredentialsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*credentialsState)(nil)).Elem()
 }
 
+// CredentialsExists checks whether an existing Credentials resource with the given ID exists.
+func CredentialsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CredentialsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:aws/credentials:Credentials", id, state, "", opts...)
+}
+
 type credentialsArgs struct {
 	// The ID of the account associated with your token.
 	AccountId string `pulumi:"accountId"`

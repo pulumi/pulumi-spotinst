@@ -458,6 +458,26 @@ class VerificationProvider(pulumi.CustomResource):
         __props__.__dict__["prometheus"] = prometheus
         return VerificationProvider(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cloud_watch: pulumi.Input[Optional[Union['VerificationProviderCloudWatchArgs', 'VerificationProviderCloudWatchArgsDict', 'outputs.VerificationProviderCloudWatch']]] = None,
+            cluster_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            datadog: pulumi.Input[Optional[Union['VerificationProviderDatadogArgs', 'VerificationProviderDatadogArgsDict', 'outputs.VerificationProviderDatadog']]] = None,
+            jenkins: pulumi.Input[Optional[Union['VerificationProviderJenkinsArgs', 'VerificationProviderJenkinsArgsDict', 'outputs.VerificationProviderJenkins']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            new_relic: pulumi.Input[Optional[Union['VerificationProviderNewRelicArgs', 'VerificationProviderNewRelicArgsDict', 'outputs.VerificationProviderNewRelic']]] = None,
+            prometheus: pulumi.Input[Optional[Union['VerificationProviderPrometheusArgs', 'VerificationProviderPrometheusArgsDict', 'outputs.VerificationProviderPrometheus']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cloudWatch"] = cloud_watch
+        __props__["clusterIds"] = cluster_ids
+        __props__["datadog"] = datadog
+        __props__["jenkins"] = jenkins
+        __props__["name"] = name
+        __props__["newRelic"] = new_relic
+        __props__["prometheus"] = prometheus
+        return pulumi.runtime.exists_resource(None, 'spotinst:oceancd/verificationProvider:VerificationProvider', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cloudWatch")
     def cloud_watch(self) -> pulumi.Output[Optional['outputs.VerificationProviderCloudWatch']]:

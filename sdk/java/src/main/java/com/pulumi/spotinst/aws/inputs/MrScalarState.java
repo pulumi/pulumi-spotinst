@@ -511,20 +511,18 @@ public final class MrScalarState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * This field has been removed from our API and is no longer functional.
+     * @deprecated This field has been removed from our API and is no longer functional.
      * 
      */
-    @Deprecated /* This field has been removed from our API and is no longer functional. */
+    @Deprecated
     @Import(name="visibleToAllUsers")
     private @Nullable Output<Boolean> visibleToAllUsers;
 
     /**
-     * @deprecated
-     * This field has been removed from our API and is no longer functional.
+     * @deprecated This field has been removed from our API and is no longer functional.
      * 
      */
-    @Deprecated /* This field has been removed from our API and is no longer functional. */
+    @Deprecated
     public Optional<Output<Boolean>> visibleToAllUsers() {
         return Optional.ofNullable(this.visibleToAllUsers);
     }
@@ -1330,11 +1328,10 @@ public final class MrScalarState extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * This field has been removed from our API and is no longer functional.
+         * @deprecated This field has been removed from our API and is no longer functional.
          * 
          */
-        @Deprecated /* This field has been removed from our API and is no longer functional. */
+        @Deprecated
         public Builder visibleToAllUsers(@Nullable Output<Boolean> visibleToAllUsers) {
             $.visibleToAllUsers = visibleToAllUsers;
             return this;
@@ -1343,11 +1340,10 @@ public final class MrScalarState extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * This field has been removed from our API and is no longer functional.
+         * @deprecated This field has been removed from our API and is no longer functional.
          * 
          */
-        @Deprecated /* This field has been removed from our API and is no longer functional. */
+        @Deprecated
         public Builder visibleToAllUsers(Boolean visibleToAllUsers) {
             return visibleToAllUsers(Output.of(visibleToAllUsers));
         }

@@ -404,6 +404,12 @@ func (OceanState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oceanState)(nil)).Elem()
 }
 
+// OceanExists checks whether an existing Ocean resource with the given ID exists.
+func OceanExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OceanState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:ecs/ocean:Ocean", id, state, "", opts...)
+}
+
 type oceanArgs struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`

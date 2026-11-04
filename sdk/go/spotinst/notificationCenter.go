@@ -83,6 +83,12 @@ func (NotificationCenterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*notificationCenterState)(nil)).Elem()
 }
 
+// NotificationCenterExists checks whether an existing NotificationCenter resource with the given ID exists.
+func NotificationCenterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NotificationCenterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:index/notificationCenter:NotificationCenter", id, state, "", opts...)
+}
+
 type notificationCenterArgs struct {
 	ComputePolicyConfig NotificationCenterComputePolicyConfig `pulumi:"computePolicyConfig"`
 	Description         *string                               `pulumi:"description"`

@@ -43,22 +43,20 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
     /**
      * List of availability zones for the group.
      * 
-     * @deprecated
-     * This field will soon be handled by Region in Subnets
+     * @deprecated This field will soon be handled by Region in Subnets
      * 
      */
-    @Deprecated /* This field will soon be handled by Region in Subnets */
+    @Deprecated
     @Import(name="availabilityZones")
     private @Nullable Output<List<String>> availabilityZones;
 
     /**
      * @return List of availability zones for the group.
      * 
-     * @deprecated
-     * This field will soon be handled by Region in Subnets
+     * @deprecated This field will soon be handled by Region in Subnets
      * 
      */
-    @Deprecated /* This field will soon be handled by Region in Subnets */
+    @Deprecated
     public Optional<Output<List<String>>> availabilityZones() {
         return Optional.ofNullable(this.availabilityZones);
     }
@@ -636,11 +634,10 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field will soon be handled by Region in Subnets
+         * @deprecated This field will soon be handled by Region in Subnets
          * 
          */
-        @Deprecated /* This field will soon be handled by Region in Subnets */
+        @Deprecated
         public Builder availabilityZones(@Nullable Output<List<String>> availabilityZones) {
             $.availabilityZones = availabilityZones;
             return this;
@@ -651,11 +648,10 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field will soon be handled by Region in Subnets
+         * @deprecated This field will soon be handled by Region in Subnets
          * 
          */
-        @Deprecated /* This field will soon be handled by Region in Subnets */
+        @Deprecated
         public Builder availabilityZones(List<String> availabilityZones) {
             return availabilityZones(Output.of(availabilityZones));
         }
@@ -665,11 +661,10 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field will soon be handled by Region in Subnets
+         * @deprecated This field will soon be handled by Region in Subnets
          * 
          */
-        @Deprecated /* This field will soon be handled by Region in Subnets */
+        @Deprecated
         public Builder availabilityZones(String... availabilityZones) {
             return availabilityZones(List.of(availabilityZones));
         }

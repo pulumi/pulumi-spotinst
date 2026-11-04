@@ -344,6 +344,24 @@ class RolloutSpec(pulumi.CustomResource):
         __props__.__dict__["traffic"] = traffic
         return RolloutSpec(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            failure_policy: pulumi.Input[Optional[Union['RolloutSpecFailurePolicyArgs', 'RolloutSpecFailurePolicyArgsDict', 'outputs.RolloutSpecFailurePolicy']]] = None,
+            rollout_spec_name: pulumi.Input[Optional[_builtins.str]] = None,
+            spot_deployment: pulumi.Input[Optional[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict', 'outputs.RolloutSpecSpotDeployment']]] = None,
+            spot_deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutSpecSpotDeploymentArgs', 'RolloutSpecSpotDeploymentArgsDict', 'outputs.RolloutSpecSpotDeployment']]]]] = None,
+            strategy: pulumi.Input[Optional[Union['RolloutSpecStrategyArgs', 'RolloutSpecStrategyArgsDict', 'outputs.RolloutSpecStrategy']]] = None,
+            traffic: pulumi.Input[Optional[Union['RolloutSpecTrafficArgs', 'RolloutSpecTrafficArgsDict', 'outputs.RolloutSpecTraffic']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["failurePolicy"] = failure_policy
+        __props__["rolloutSpecName"] = rollout_spec_name
+        __props__["spotDeployment"] = spot_deployment
+        __props__["spotDeployments"] = spot_deployments
+        __props__["strategy"] = strategy
+        __props__["traffic"] = traffic
+        return pulumi.runtime.exists_resource(None, 'spotinst:oceancd/rolloutSpec:RolloutSpec', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="failurePolicy")
     def failure_policy(self) -> pulumi.Output[Optional['outputs.RolloutSpecFailurePolicy']]:

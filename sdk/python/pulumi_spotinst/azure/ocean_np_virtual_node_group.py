@@ -1608,6 +1608,74 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         __props__.__dict__["vnet_subnet_ids"] = vnet_subnet_ids
         return OceanNpVirtualNodeGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_headroom_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+            availability_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            enable_node_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption_at_host: pulumi.Input[Optional[_builtins.bool]] = None,
+            fallback_to_ondemand: pulumi.Input[Optional[_builtins.bool]] = None,
+            filters: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupFiltersArgs', 'OceanNpVirtualNodeGroupFiltersArgsDict', 'outputs.OceanNpVirtualNodeGroupFilters']]] = None,
+            headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupHeadroomArgs', 'OceanNpVirtualNodeGroupHeadroomArgsDict', 'outputs.OceanNpVirtualNodeGroupHeadroom']]]]] = None,
+            kubernetes_version: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            linux_os_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLinuxOsConfigArgs', 'OceanNpVirtualNodeGroupLinuxOsConfigArgsDict', 'outputs.OceanNpVirtualNodeGroupLinuxOsConfig']]]]] = None,
+            local_dns_profiles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupLocalDnsProfileArgs', 'OceanNpVirtualNodeGroupLocalDnsProfileArgsDict', 'outputs.OceanNpVirtualNodeGroupLocalDnsProfile']]]]] = None,
+            max_count: pulumi.Input[Optional[_builtins.int]] = None,
+            max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+            min_count: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ocean_id: pulumi.Input[Optional[_builtins.str]] = None,
+            os_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+            os_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+            os_sku: pulumi.Input[Optional[_builtins.str]] = None,
+            os_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pod_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            preferred_vm_sizes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            restrict_scale_down: pulumi.Input[Optional[_builtins.bool]] = None,
+            scheduling: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupSchedulingArgs', 'OceanNpVirtualNodeGroupSchedulingArgsDict', 'outputs.OceanNpVirtualNodeGroupScheduling']]] = None,
+            should_utilize_commitments: pulumi.Input[Optional[_builtins.bool]] = None,
+            spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanNpVirtualNodeGroupTaintArgs', 'OceanNpVirtualNodeGroupTaintArgsDict', 'outputs.OceanNpVirtualNodeGroupTaint']]]]] = None,
+            update_policy: pulumi.Input[Optional[Union['OceanNpVirtualNodeGroupUpdatePolicyArgs', 'OceanNpVirtualNodeGroupUpdatePolicyArgsDict', 'outputs.OceanNpVirtualNodeGroupUpdatePolicy']]] = None,
+            vnet_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoHeadroomPercentage"] = auto_headroom_percentage
+        __props__["availabilityZones"] = availability_zones
+        __props__["drainingTimeout"] = draining_timeout
+        __props__["enableNodePublicIp"] = enable_node_public_ip
+        __props__["encryptionAtHost"] = encryption_at_host
+        __props__["fallbackToOndemand"] = fallback_to_ondemand
+        __props__["filters"] = filters
+        __props__["headrooms"] = headrooms
+        __props__["kubernetesVersion"] = kubernetes_version
+        __props__["labels"] = labels
+        __props__["linuxOsConfigs"] = linux_os_configs
+        __props__["localDnsProfiles"] = local_dns_profiles
+        __props__["maxCount"] = max_count
+        __props__["maxPodsPerNode"] = max_pods_per_node
+        __props__["minCount"] = min_count
+        __props__["name"] = name
+        __props__["oceanId"] = ocean_id
+        __props__["osDiskSizeGb"] = os_disk_size_gb
+        __props__["osDiskType"] = os_disk_type
+        __props__["osSku"] = os_sku
+        __props__["osType"] = os_type
+        __props__["podSubnetIds"] = pod_subnet_ids
+        __props__["preferredVmSizes"] = preferred_vm_sizes
+        __props__["restrictScaleDown"] = restrict_scale_down
+        __props__["scheduling"] = scheduling
+        __props__["shouldUtilizeCommitments"] = should_utilize_commitments
+        __props__["spotPercentage"] = spot_percentage
+        __props__["tags"] = tags
+        __props__["taints"] = taints
+        __props__["updatePolicy"] = update_policy
+        __props__["vnetSubnetIds"] = vnet_subnet_ids
+        return pulumi.runtime.exists_resource(None, 'spotinst:azure/oceanNpVirtualNodeGroup:OceanNpVirtualNodeGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoHeadroomPercentage")
     def auto_headroom_percentage(self) -> pulumi.Output[Optional[_builtins.int]]:

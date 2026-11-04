@@ -475,6 +475,18 @@ class VerificationTemplate(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         return VerificationTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            args: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VerificationTemplateArgArgs', 'VerificationTemplateArgArgsDict', 'outputs.VerificationTemplateArg']]]]] = None,
+            metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VerificationTemplateMetricArgs', 'VerificationTemplateMetricArgsDict', 'outputs.VerificationTemplateMetric']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["args"] = args
+        __props__["metrics"] = metrics
+        __props__["name"] = name
+        return pulumi.runtime.exists_resource(None, 'spotinst:oceancd/verificationTemplate:VerificationTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def args(self) -> pulumi.Output[Optional[Sequence['outputs.VerificationTemplateArg']]]:

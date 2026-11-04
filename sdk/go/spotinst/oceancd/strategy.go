@@ -75,6 +75,12 @@ func (StrategyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*strategyState)(nil)).Elem()
 }
 
+// StrategyExists checks whether an existing Strategy resource with the given ID exists.
+func StrategyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StrategyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:oceancd/strategy:Strategy", id, state, "", opts...)
+}
+
 type strategyArgs struct {
 	// Represents Canary strategy. Cannot be defined when Rolling object is defined.
 	Canary *StrategyCanary `pulumi:"canary"`

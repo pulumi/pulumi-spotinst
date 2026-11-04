@@ -187,11 +187,10 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     /**
      * List of availability zones for the group.
      * 
-     * @deprecated
-     * This field will soon be handled by Region in Subnets
+     * @deprecated This field will soon be handled by Region in Subnets
      * 
      */
-    @Deprecated /* This field will soon be handled by Region in Subnets */
+    @Deprecated
     @Export(name="availabilityZones", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> availabilityZones;
 

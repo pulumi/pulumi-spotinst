@@ -200,6 +200,12 @@ func (ElastigroupAzureV3State) ElementType() reflect.Type {
 	return reflect.TypeOf((*elastigroupAzureV3State)(nil)).Elem()
 }
 
+// ElastigroupAzureV3Exists checks whether an existing ElastigroupAzureV3 resource with the given ID exists.
+func ElastigroupAzureV3Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ElastigroupAzureV3State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:index/elastigroupAzureV3:ElastigroupAzureV3", id, state, "", opts...)
+}
+
 type elastigroupAzureV3Args struct {
 	AvailabilityVsCost       *int                                        `pulumi:"availabilityVsCost"`
 	BootDiagnostics          []ElastigroupAzureV3BootDiagnostic          `pulumi:"bootDiagnostics"`

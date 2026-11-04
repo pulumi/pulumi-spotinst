@@ -208,6 +208,16 @@ class OceanLaunchSpecImport(pulumi.CustomResource):
         __props__.__dict__["ocean_id"] = ocean_id
         return OceanLaunchSpecImport(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            node_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ocean_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["nodePoolName"] = node_pool_name
+        __props__["oceanId"] = ocean_id
+        return pulumi.runtime.exists_resource(None, 'spotinst:gke/oceanLaunchSpecImport:OceanLaunchSpecImport', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="nodePoolName")
     def node_pool_name(self) -> pulumi.Output[_builtins.str]:

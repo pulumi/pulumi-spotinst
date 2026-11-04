@@ -1328,6 +1328,96 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         __props__.__dict__["zones"] = zones
         return ElastigroupAzureV3(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            availability_vs_cost: pulumi.Input[Optional[_builtins.int]] = None,
+            boot_diagnostics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3BootDiagnosticArgs', 'ElastigroupAzureV3BootDiagnosticArgsDict', 'outputs.ElastigroupAzureV3BootDiagnostic']]]]] = None,
+            capacity_reservation: pulumi.Input[Optional[Union['ElastigroupAzureV3CapacityReservationArgs', 'ElastigroupAzureV3CapacityReservationArgsDict', 'outputs.ElastigroupAzureV3CapacityReservation']]] = None,
+            custom_data: pulumi.Input[Optional[_builtins.str]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3DataDiskArgs', 'ElastigroupAzureV3DataDiskArgsDict', 'outputs.ElastigroupAzureV3DataDisk']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            draining_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            extensions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ExtensionArgs', 'ElastigroupAzureV3ExtensionArgsDict', 'outputs.ElastigroupAzureV3Extension']]]]] = None,
+            fallback_to_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+            health: pulumi.Input[Optional[Union['ElastigroupAzureV3HealthArgs', 'ElastigroupAzureV3HealthArgsDict', 'outputs.ElastigroupAzureV3Health']]] = None,
+            images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ImageArgs', 'ElastigroupAzureV3ImageArgsDict', 'outputs.ElastigroupAzureV3Image']]]]] = None,
+            license_type: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3LoadBalancerArgs', 'ElastigroupAzureV3LoadBalancerArgsDict', 'outputs.ElastigroupAzureV3LoadBalancer']]]]] = None,
+            login: pulumi.Input[Optional[Union['ElastigroupAzureV3LoginArgs', 'ElastigroupAzureV3LoginArgsDict', 'outputs.ElastigroupAzureV3Login']]] = None,
+            managed_service_identities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ManagedServiceIdentityArgs', 'ElastigroupAzureV3ManagedServiceIdentityArgsDict', 'outputs.ElastigroupAzureV3ManagedServiceIdentity']]]]] = None,
+            max_size: pulumi.Input[Optional[_builtins.int]] = None,
+            min_size: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[Union['ElastigroupAzureV3NetworkArgs', 'ElastigroupAzureV3NetworkArgsDict', 'outputs.ElastigroupAzureV3Network']]] = None,
+            on_demand_count: pulumi.Input[Optional[_builtins.int]] = None,
+            optimization_windows: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            os: pulumi.Input[Optional[_builtins.str]] = None,
+            os_disk: pulumi.Input[Optional[Union['ElastigroupAzureV3OsDiskArgs', 'ElastigroupAzureV3OsDiskArgsDict', 'outputs.ElastigroupAzureV3OsDisk']]] = None,
+            preferred_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            proximity_placement_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ProximityPlacementGroupArgs', 'ElastigroupAzureV3ProximityPlacementGroupArgsDict', 'outputs.ElastigroupAzureV3ProximityPlacementGroup']]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            revert_to_spot: pulumi.Input[Optional[Union['ElastigroupAzureV3RevertToSpotArgs', 'ElastigroupAzureV3RevertToSpotArgsDict', 'outputs.ElastigroupAzureV3RevertToSpot']]] = None,
+            scaling_down_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ScalingDownPolicyArgs', 'ElastigroupAzureV3ScalingDownPolicyArgsDict', 'outputs.ElastigroupAzureV3ScalingDownPolicy']]]]] = None,
+            scaling_up_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3ScalingUpPolicyArgs', 'ElastigroupAzureV3ScalingUpPolicyArgsDict', 'outputs.ElastigroupAzureV3ScalingUpPolicy']]]]] = None,
+            scheduling_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3SchedulingTaskArgs', 'ElastigroupAzureV3SchedulingTaskArgsDict', 'outputs.ElastigroupAzureV3SchedulingTask']]]]] = None,
+            secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3SecretArgs', 'ElastigroupAzureV3SecretArgsDict', 'outputs.ElastigroupAzureV3Secret']]]]] = None,
+            security: pulumi.Input[Optional[Union['ElastigroupAzureV3SecurityArgs', 'ElastigroupAzureV3SecurityArgsDict', 'outputs.ElastigroupAzureV3Security']]] = None,
+            shutdown_script: pulumi.Input[Optional[_builtins.str]] = None,
+            signals: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3SignalArgs', 'ElastigroupAzureV3SignalArgsDict', 'outputs.ElastigroupAzureV3Signal']]]]] = None,
+            spot_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ElastigroupAzureV3TagArgs', 'ElastigroupAzureV3TagArgsDict', 'outputs.ElastigroupAzureV3Tag']]]]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_sizes: pulumi.Input[Optional[Union['ElastigroupAzureV3VmSizesArgs', 'ElastigroupAzureV3VmSizesArgsDict', 'outputs.ElastigroupAzureV3VmSizes']]] = None,
+            zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["availabilityVsCost"] = availability_vs_cost
+        __props__["bootDiagnostics"] = boot_diagnostics
+        __props__["capacityReservation"] = capacity_reservation
+        __props__["customData"] = custom_data
+        __props__["dataDisks"] = data_disks
+        __props__["description"] = description
+        __props__["desiredCapacity"] = desired_capacity
+        __props__["drainingTimeout"] = draining_timeout
+        __props__["extensions"] = extensions
+        __props__["fallbackToOnDemand"] = fallback_to_on_demand
+        __props__["health"] = health
+        __props__["images"] = images
+        __props__["licenseType"] = license_type
+        __props__["loadBalancers"] = load_balancers
+        __props__["login"] = login
+        __props__["managedServiceIdentities"] = managed_service_identities
+        __props__["maxSize"] = max_size
+        __props__["minSize"] = min_size
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["onDemandCount"] = on_demand_count
+        __props__["optimizationWindows"] = optimization_windows
+        __props__["os"] = os
+        __props__["osDisk"] = os_disk
+        __props__["preferredZones"] = preferred_zones
+        __props__["proximityPlacementGroups"] = proximity_placement_groups
+        __props__["region"] = region
+        __props__["resourceGroupName"] = resource_group_name
+        __props__["revertToSpot"] = revert_to_spot
+        __props__["scalingDownPolicies"] = scaling_down_policies
+        __props__["scalingUpPolicies"] = scaling_up_policies
+        __props__["schedulingTasks"] = scheduling_tasks
+        __props__["secrets"] = secrets
+        __props__["security"] = security
+        __props__["shutdownScript"] = shutdown_script
+        __props__["signals"] = signals
+        __props__["spotPercentage"] = spot_percentage
+        __props__["tags"] = tags
+        __props__["userData"] = user_data
+        __props__["vmNamePrefix"] = vm_name_prefix
+        __props__["vmSizes"] = vm_sizes
+        __props__["zones"] = zones
+        return pulumi.runtime.exists_resource(None, 'spotinst:index/elastigroupAzureV3:ElastigroupAzureV3', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="availabilityVsCost")
     def availability_vs_cost(self) -> pulumi.Output[Optional[_builtins.int]]:

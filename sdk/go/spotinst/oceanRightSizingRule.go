@@ -253,6 +253,12 @@ func (OceanRightSizingRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oceanRightSizingRuleState)(nil)).Elem()
 }
 
+// OceanRightSizingRuleExists checks whether an existing OceanRightSizingRule resource with the given ID exists.
+func OceanRightSizingRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OceanRightSizingRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:index/oceanRightSizingRule:OceanRightSizingRule", id, state, "", opts...)
+}
+
 type oceanRightSizingRuleArgs struct {
 	AttachWorkloads []OceanRightSizingRuleAttachWorkload `pulumi:"attachWorkloads"`
 	// Ocean Rightsizing Rule Auto Apply Configuration.

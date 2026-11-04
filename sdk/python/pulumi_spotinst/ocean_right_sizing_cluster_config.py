@@ -270,6 +270,18 @@ class OceanRightSizingClusterConfig(pulumi.CustomResource):
         __props__.__dict__["ocean_id"] = ocean_id
         return OceanRightSizingClusterConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            config: pulumi.Input[Optional[Union['OceanRightSizingClusterConfigConfigArgs', 'OceanRightSizingClusterConfigConfigArgsDict', 'outputs.OceanRightSizingClusterConfigConfig']]] = None,
+            ocean_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterIdentifier"] = cluster_identifier
+        __props__["config"] = config
+        __props__["oceanId"] = ocean_id
+        return pulumi.runtime.exists_resource(None, 'spotinst:index/oceanRightSizingClusterConfig:OceanRightSizingClusterConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterIdentifier")
     def cluster_identifier(self) -> pulumi.Output[_builtins.str]:

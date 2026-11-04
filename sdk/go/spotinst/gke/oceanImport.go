@@ -246,6 +246,12 @@ func (OceanImportState) ElementType() reflect.Type {
 	return reflect.TypeOf((*oceanImportState)(nil)).Elem()
 }
 
+// OceanImportExists checks whether an existing OceanImport resource with the given ID exists.
+func OceanImportExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OceanImportState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("spotinst:gke/oceanImport:OceanImport", id, state, "", opts...)
+}
+
 type oceanImportArgs struct {
 	// The Ocean Kubernetes AutoUpdate object. If set to 'true', Ocean will ensure that your clusters have an up-to-date configuration according to the respective GKE cluster.
 	AutoUpdates []OceanImportAutoUpdate `pulumi:"autoUpdates"`

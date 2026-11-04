@@ -683,6 +683,38 @@ class Beanstalk(pulumi.CustomResource):
         __props__.__dict__["scheduled_tasks"] = scheduled_tasks
         return Beanstalk(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            beanstalk_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            beanstalk_environment_name: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_preferences: pulumi.Input[Optional[Union['BeanstalkDeploymentPreferencesArgs', 'BeanstalkDeploymentPreferencesArgsDict', 'outputs.BeanstalkDeploymentPreferences']]] = None,
+            desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_types_spots: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            maintenance: pulumi.Input[Optional[_builtins.str]] = None,
+            managed_actions: pulumi.Input[Optional[Union['BeanstalkManagedActionsArgs', 'BeanstalkManagedActionsArgsDict', 'outputs.BeanstalkManagedActions']]] = None,
+            max_size: pulumi.Input[Optional[_builtins.int]] = None,
+            min_size: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            product: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduled_tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BeanstalkScheduledTaskArgs', 'BeanstalkScheduledTaskArgsDict', 'outputs.BeanstalkScheduledTask']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["beanstalkEnvironmentId"] = beanstalk_environment_id
+        __props__["beanstalkEnvironmentName"] = beanstalk_environment_name
+        __props__["deploymentPreferences"] = deployment_preferences
+        __props__["desiredCapacity"] = desired_capacity
+        __props__["instanceTypesSpots"] = instance_types_spots
+        __props__["maintenance"] = maintenance
+        __props__["managedActions"] = managed_actions
+        __props__["maxSize"] = max_size
+        __props__["minSize"] = min_size
+        __props__["name"] = name
+        __props__["product"] = product
+        __props__["region"] = region
+        __props__["scheduledTasks"] = scheduled_tasks
+        return pulumi.runtime.exists_resource(None, 'spotinst:aws/beanstalk:Beanstalk', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="beanstalkEnvironmentId")
     def beanstalk_environment_id(self) -> pulumi.Output[Optional[_builtins.str]]:
