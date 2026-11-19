@@ -2115,6 +2115,9 @@
                     "blacklist": {
                         "maxItemsOne": false
                     },
+                    "dynamic_volume_size": {
+                        "maxItemsOne": true
+                    },
                     "filters": {
                         "maxItemsOne": true,
                         "elem": {
@@ -2200,6 +2203,9 @@
                         "maxItemsOne": false
                     },
                     "create_options": {
+                        "maxItemsOne": true
+                    },
+                    "dynamic_volume_size": {
                         "maxItemsOne": true
                     },
                     "filters": {

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecAutoscaleHeadroomArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecCreateOptionsArgs;
+import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecDynamicVolumeSizeArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecFiltersArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecLabelArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecMetadataArgs;
@@ -68,6 +69,21 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
 
     public Optional<Output<OceanLaunchSpecCreateOptionsArgs>> createOptions() {
         return Optional.ofNullable(this.createOptions);
+    }
+
+    /**
+     * Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+     * 
+     */
+    @Import(name="dynamicVolumeSize")
+    private @Nullable Output<OceanLaunchSpecDynamicVolumeSizeArgs> dynamicVolumeSize;
+
+    /**
+     * @return Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+     * 
+     */
+    public Optional<Output<OceanLaunchSpecDynamicVolumeSizeArgs>> dynamicVolumeSize() {
+        return Optional.ofNullable(this.dynamicVolumeSize);
     }
 
     /**
@@ -221,14 +237,14 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Root volume size (in GB).
+     * Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
      * 
      */
     @Import(name="rootVolumeSize")
     private @Nullable Output<Integer> rootVolumeSize;
 
     /**
-     * @return Root volume size (in GB).
+     * @return Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
      * 
      */
     public Optional<Output<Integer>> rootVolumeSize() {
@@ -398,6 +414,7 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
         this.autoscaleHeadrooms = $.autoscaleHeadrooms;
         this.autoscaleHeadroomsAutomatics = $.autoscaleHeadroomsAutomatics;
         this.createOptions = $.createOptions;
+        this.dynamicVolumeSize = $.dynamicVolumeSize;
         this.filters = $.filters;
         this.instanceTypes = $.instanceTypes;
         this.labels = $.labels;
@@ -509,6 +526,27 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
 
         public Builder createOptions(OceanLaunchSpecCreateOptionsArgs createOptions) {
             return createOptions(Output.of(createOptions));
+        }
+
+        /**
+         * @param dynamicVolumeSize Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicVolumeSize(@Nullable Output<OceanLaunchSpecDynamicVolumeSizeArgs> dynamicVolumeSize) {
+            $.dynamicVolumeSize = dynamicVolumeSize;
+            return this;
+        }
+
+        /**
+         * @param dynamicVolumeSize Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicVolumeSize(OceanLaunchSpecDynamicVolumeSizeArgs dynamicVolumeSize) {
+            return dynamicVolumeSize(Output.of(dynamicVolumeSize));
         }
 
         /**
@@ -762,7 +800,7 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param rootVolumeSize Root volume size (in GB).
+         * @param rootVolumeSize Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
          * 
          * @return builder
          * 
@@ -773,7 +811,7 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param rootVolumeSize Root volume size (in GB).
+         * @param rootVolumeSize Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
          * 
          * @return builder
          * 

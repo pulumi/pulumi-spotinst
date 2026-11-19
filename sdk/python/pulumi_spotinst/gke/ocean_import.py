@@ -29,6 +29,7 @@ class OceanImportArgs:
                  blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  controller_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 dynamic_volume_size: pulumi.Input[Optional['OceanImportDynamicVolumeSizeArgs']] = None,
                  filters: pulumi.Input[Optional['OceanImportFiltersArgs']] = None,
                  max_size: pulumi.Input[Optional[_builtins.int]] = None,
                  min_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -50,6 +51,7 @@ class OceanImportArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blacklists: Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
         :param pulumi.Input[_builtins.str] controller_cluster_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[_builtins.int] desired_capacity: The number of instances to launch and maintain in the cluster.
+        :param pulumi.Input['OceanImportDynamicVolumeSizeArgs'] dynamic_volume_size: Set dynamic volume size properties. When using this object, you cannot use `root_volume_size`. You must use one or the other. When `dynamic_volume_size` is configured, `root_volume_type` is optional and defaults to `pd-standard`.
         :param pulumi.Input['OceanImportFiltersArgs'] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
         :param pulumi.Input[_builtins.int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[_builtins.int] min_size: The lower limit of instances the cluster can scale down to.
@@ -74,6 +76,8 @@ class OceanImportArgs:
             pulumi.set(__self__, "controller_cluster_id", controller_cluster_id)
         if desired_capacity is not None:
             pulumi.set(__self__, "desired_capacity", desired_capacity)
+        if dynamic_volume_size is not None:
+            pulumi.set(__self__, "dynamic_volume_size", dynamic_volume_size)
         if filters is not None:
             pulumi.set(__self__, "filters", filters)
         if max_size is not None:
@@ -190,6 +194,18 @@ class OceanImportArgs:
     @desired_capacity.setter
     def desired_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "desired_capacity", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dynamicVolumeSize")
+    def dynamic_volume_size(self) -> pulumi.Input[Optional['OceanImportDynamicVolumeSizeArgs']]:
+        """
+        Set dynamic volume size properties. When using this object, you cannot use `root_volume_size`. You must use one or the other. When `dynamic_volume_size` is configured, `root_volume_type` is optional and defaults to `pd-standard`.
+        """
+        return pulumi.get(self, "dynamic_volume_size")
+
+    @dynamic_volume_size.setter
+    def dynamic_volume_size(self, value: pulumi.Input[Optional['OceanImportDynamicVolumeSizeArgs']]):
+        pulumi.set(self, "dynamic_volume_size", value)
 
     @_builtins.property
     @pulumi.getter
@@ -320,6 +336,7 @@ class _OceanImportState:
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
                  controller_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 dynamic_volume_size: pulumi.Input[Optional['OceanImportDynamicVolumeSizeArgs']] = None,
                  filters: pulumi.Input[Optional['OceanImportFiltersArgs']] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  max_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -341,6 +358,7 @@ class _OceanImportState:
         :param pulumi.Input[_builtins.str] cluster_name: The GKE cluster name.
         :param pulumi.Input[_builtins.str] controller_cluster_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[_builtins.int] desired_capacity: The number of instances to launch and maintain in the cluster.
+        :param pulumi.Input['OceanImportDynamicVolumeSizeArgs'] dynamic_volume_size: Set dynamic volume size properties. When using this object, you cannot use `root_volume_size`. You must use one or the other. When `dynamic_volume_size` is configured, `root_volume_type` is optional and defaults to `pd-standard`.
         :param pulumi.Input['OceanImportFiltersArgs'] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
         :param pulumi.Input[_builtins.str] location: The zone the master cluster is located in.
         :param pulumi.Input[_builtins.int] max_size: The upper limit of instances the cluster can scale up to.
@@ -368,6 +386,8 @@ class _OceanImportState:
             pulumi.set(__self__, "controller_cluster_id", controller_cluster_id)
         if desired_capacity is not None:
             pulumi.set(__self__, "desired_capacity", desired_capacity)
+        if dynamic_volume_size is not None:
+            pulumi.set(__self__, "dynamic_volume_size", dynamic_volume_size)
         if filters is not None:
             pulumi.set(__self__, "filters", filters)
         if location is not None:
@@ -483,6 +503,18 @@ class _OceanImportState:
     @desired_capacity.setter
     def desired_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "desired_capacity", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dynamicVolumeSize")
+    def dynamic_volume_size(self) -> pulumi.Input[Optional['OceanImportDynamicVolumeSizeArgs']]:
+        """
+        Set dynamic volume size properties. When using this object, you cannot use `root_volume_size`. You must use one or the other. When `dynamic_volume_size` is configured, `root_volume_type` is optional and defaults to `pd-standard`.
+        """
+        return pulumi.get(self, "dynamic_volume_size")
+
+    @dynamic_volume_size.setter
+    def dynamic_volume_size(self, value: pulumi.Input[Optional['OceanImportDynamicVolumeSizeArgs']]):
+        pulumi.set(self, "dynamic_volume_size", value)
 
     @_builtins.property
     @pulumi.getter
@@ -627,6 +659,7 @@ class OceanImport(pulumi.CustomResource):
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
                  controller_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 dynamic_volume_size: pulumi.Input[Optional[Union['OceanImportDynamicVolumeSizeArgs', 'OceanImportDynamicVolumeSizeArgsDict', 'outputs.OceanImportDynamicVolumeSize']]] = None,
                  filters: pulumi.Input[Optional[Union['OceanImportFiltersArgs', 'OceanImportFiltersArgsDict', 'outputs.OceanImportFilters']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  max_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -690,6 +723,11 @@ class OceanImport(pulumi.CustomResource):
                 "enable_secure_boot": True,
                 "enable_integrity_monitoring": True,
             },
+            dynamic_volume_size={
+                "base_size": 50,
+                "resource": "CPU",
+                "size_per_resource_unit": 20,
+            },
             use_as_template_only=False)
         ```
 
@@ -703,6 +741,7 @@ class OceanImport(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_name: The GKE cluster name.
         :param pulumi.Input[_builtins.str] controller_cluster_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[_builtins.int] desired_capacity: The number of instances to launch and maintain in the cluster.
+        :param pulumi.Input[Union['OceanImportDynamicVolumeSizeArgs', 'OceanImportDynamicVolumeSizeArgsDict', 'outputs.OceanImportDynamicVolumeSize']] dynamic_volume_size: Set dynamic volume size properties. When using this object, you cannot use `root_volume_size`. You must use one or the other. When `dynamic_volume_size` is configured, `root_volume_type` is optional and defaults to `pd-standard`.
         :param pulumi.Input[Union['OceanImportFiltersArgs', 'OceanImportFiltersArgsDict', 'outputs.OceanImportFilters']] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
         :param pulumi.Input[_builtins.str] location: The zone the master cluster is located in.
         :param pulumi.Input[_builtins.int] max_size: The upper limit of instances the cluster can scale up to.
@@ -771,6 +810,11 @@ class OceanImport(pulumi.CustomResource):
                 "enable_secure_boot": True,
                 "enable_integrity_monitoring": True,
             },
+            dynamic_volume_size={
+                "base_size": 50,
+                "resource": "CPU",
+                "size_per_resource_unit": 20,
+            },
             use_as_template_only=False)
         ```
 
@@ -797,6 +841,7 @@ class OceanImport(pulumi.CustomResource):
                  cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
                  controller_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 dynamic_volume_size: pulumi.Input[Optional[Union['OceanImportDynamicVolumeSizeArgs', 'OceanImportDynamicVolumeSizeArgsDict', 'outputs.OceanImportDynamicVolumeSize']]] = None,
                  filters: pulumi.Input[Optional[Union['OceanImportFiltersArgs', 'OceanImportFiltersArgsDict', 'outputs.OceanImportFilters']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  max_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -826,6 +871,7 @@ class OceanImport(pulumi.CustomResource):
             __props__.__dict__["cluster_name"] = cluster_name
             __props__.__dict__["controller_cluster_id"] = controller_cluster_id
             __props__.__dict__["desired_capacity"] = desired_capacity
+            __props__.__dict__["dynamic_volume_size"] = dynamic_volume_size
             __props__.__dict__["filters"] = filters
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -858,6 +904,7 @@ class OceanImport(pulumi.CustomResource):
             cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
             controller_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            dynamic_volume_size: pulumi.Input[Optional[Union['OceanImportDynamicVolumeSizeArgs', 'OceanImportDynamicVolumeSizeArgsDict', 'outputs.OceanImportDynamicVolumeSize']]] = None,
             filters: pulumi.Input[Optional[Union['OceanImportFiltersArgs', 'OceanImportFiltersArgsDict', 'outputs.OceanImportFilters']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             max_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -883,6 +930,7 @@ class OceanImport(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_name: The GKE cluster name.
         :param pulumi.Input[_builtins.str] controller_cluster_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[_builtins.int] desired_capacity: The number of instances to launch and maintain in the cluster.
+        :param pulumi.Input[Union['OceanImportDynamicVolumeSizeArgs', 'OceanImportDynamicVolumeSizeArgsDict', 'outputs.OceanImportDynamicVolumeSize']] dynamic_volume_size: Set dynamic volume size properties. When using this object, you cannot use `root_volume_size`. You must use one or the other. When `dynamic_volume_size` is configured, `root_volume_type` is optional and defaults to `pd-standard`.
         :param pulumi.Input[Union['OceanImportFiltersArgs', 'OceanImportFiltersArgsDict', 'outputs.OceanImportFilters']] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
         :param pulumi.Input[_builtins.str] location: The zone the master cluster is located in.
         :param pulumi.Input[_builtins.int] max_size: The upper limit of instances the cluster can scale up to.
@@ -906,6 +954,7 @@ class OceanImport(pulumi.CustomResource):
         __props__.__dict__["cluster_name"] = cluster_name
         __props__.__dict__["controller_cluster_id"] = controller_cluster_id
         __props__.__dict__["desired_capacity"] = desired_capacity
+        __props__.__dict__["dynamic_volume_size"] = dynamic_volume_size
         __props__.__dict__["filters"] = filters
         __props__.__dict__["location"] = location
         __props__.__dict__["max_size"] = max_size
@@ -930,6 +979,7 @@ class OceanImport(pulumi.CustomResource):
             cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
             controller_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            dynamic_volume_size: pulumi.Input[Optional[Union['OceanImportDynamicVolumeSizeArgs', 'OceanImportDynamicVolumeSizeArgsDict', 'outputs.OceanImportDynamicVolumeSize']]] = None,
             filters: pulumi.Input[Optional[Union['OceanImportFiltersArgs', 'OceanImportFiltersArgsDict', 'outputs.OceanImportFilters']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             max_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -950,6 +1000,7 @@ class OceanImport(pulumi.CustomResource):
         __props__["clusterName"] = cluster_name
         __props__["controllerClusterId"] = controller_cluster_id
         __props__["desiredCapacity"] = desired_capacity
+        __props__["dynamicVolumeSize"] = dynamic_volume_size
         __props__["filters"] = filters
         __props__["location"] = location
         __props__["maxSize"] = max_size
@@ -1023,6 +1074,14 @@ class OceanImport(pulumi.CustomResource):
         The number of instances to launch and maintain in the cluster.
         """
         return pulumi.get(self, "desired_capacity")
+
+    @_builtins.property
+    @pulumi.getter(name="dynamicVolumeSize")
+    def dynamic_volume_size(self) -> pulumi.Output[Optional['outputs.OceanImportDynamicVolumeSize']]:
+        """
+        Set dynamic volume size properties. When using this object, you cannot use `root_volume_size`. You must use one or the other. When `dynamic_volume_size` is configured, `root_volume_type` is optional and defaults to `pd-standard`.
+        """
+        return pulumi.get(self, "dynamic_volume_size")
 
     @_builtins.property
     @pulumi.getter

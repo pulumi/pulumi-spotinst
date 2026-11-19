@@ -5504,6 +5504,21 @@ export namespace gke {
         ports: string[];
     }
 
+    export interface OceanImportDynamicVolumeSize {
+        /**
+         * Initial size per volume (in GB). Must be `>= 1`, and must meet the minimum size for the selected GCP boot disk type and source image, whichever is greater. For example, `pd-standard`, `pd-ssd`, and `pd-balanced` require at least 10 GB; `pd-extreme` requires 500 GB; and `hyperdisk-balanced` requires 4 GB.
+         */
+        baseSize: number;
+        /**
+         * Resource used to calculate the volume size. Valid value: `"CPU"`.
+         */
+        resource: string;
+        /**
+         * Additional size per resource unit (in GB). Must be `>= 1`. For example: if `baseSize` = 50, `sizePerResourceUnit` = 20, and an instance with 2 CPU is launched, its disk size will be 90 GB.
+         */
+        sizePerResourceUnit: number;
+    }
+
     export interface OceanImportFilters {
         /**
          * Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
@@ -5700,6 +5715,21 @@ export namespace gke {
          * When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group.
          */
         initialNodes?: number;
+    }
+
+    export interface OceanLaunchSpecDynamicVolumeSize {
+        /**
+         * Initial size per volume (in GB). Must be `>= 1`, and must meet the minimum size for the selected GCP boot disk type and source image, whichever is greater. For example, `pd-standard`, `pd-ssd`, and `pd-balanced` require at least 10 GB; `pd-extreme` requires 500 GB; and `hyperdisk-balanced` requires 4 GB.
+         */
+        baseSize: number;
+        /**
+         * Resource used to calculate the volume size. Valid value: `"CPU"`.
+         */
+        resource: string;
+        /**
+         * Additional size per resource unit (in GB). Must be `>= 1`. For example: if `baseSize` = 50, `sizePerResourceUnit` = 20, and an instance with 2 CPU is launched, its disk size will be 90 GB.
+         */
+        sizePerResourceUnit: number;
     }
 
     export interface OceanLaunchSpecFilters {

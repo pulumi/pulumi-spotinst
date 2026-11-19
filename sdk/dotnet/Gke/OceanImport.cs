@@ -85,6 +85,12 @@ namespace Pulumi.SpotInst.Gke
     ///             EnableSecureBoot = true,
     ///             EnableIntegrityMonitoring = true,
     ///         },
+    ///         DynamicVolumeSize = new SpotInst.Gke.Inputs.OceanImportDynamicVolumeSizeArgs
+    ///         {
+    ///             BaseSize = 50,
+    ///             Resource = "CPU",
+    ///             SizePerResourceUnit = 20,
+    ///         },
     ///         UseAsTemplateOnly = false,
     ///     });
     /// 
@@ -138,6 +144,12 @@ namespace Pulumi.SpotInst.Gke
         /// </summary>
         [Output("desiredCapacity")]
         public Output<int?> DesiredCapacity { get; private set; } = null!;
+
+        /// <summary>
+        /// Set dynamic volume size properties. When using this object, you cannot use `RootVolumeSize`. You must use one or the other. When `DynamicVolumeSize` is configured, `RootVolumeType` is optional and defaults to `pd-standard`.
+        /// </summary>
+        [Output("dynamicVolumeSize")]
+        public Output<Outputs.OceanImportDynamicVolumeSize?> DynamicVolumeSize { get; private set; } = null!;
 
         /// <summary>
         /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
@@ -309,6 +321,12 @@ namespace Pulumi.SpotInst.Gke
         public Input<int>? DesiredCapacity { get; set; }
 
         /// <summary>
+        /// Set dynamic volume size properties. When using this object, you cannot use `RootVolumeSize`. You must use one or the other. When `DynamicVolumeSize` is configured, `RootVolumeType` is optional and defaults to `pd-standard`.
+        /// </summary>
+        [Input("dynamicVolumeSize")]
+        public Input<Inputs.OceanImportDynamicVolumeSizeArgs>? DynamicVolumeSize { get; set; }
+
+        /// <summary>
         /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
         /// </summary>
         [Input("filters")]
@@ -459,6 +477,12 @@ namespace Pulumi.SpotInst.Gke
         /// </summary>
         [Input("desiredCapacity")]
         public Input<int>? DesiredCapacity { get; set; }
+
+        /// <summary>
+        /// Set dynamic volume size properties. When using this object, you cannot use `RootVolumeSize`. You must use one or the other. When `DynamicVolumeSize` is configured, `RootVolumeType` is optional and defaults to `pd-standard`.
+        /// </summary>
+        [Input("dynamicVolumeSize")]
+        public Input<Inputs.OceanImportDynamicVolumeSizeGetArgs>? DynamicVolumeSize { get; set; }
 
         /// <summary>
         /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
