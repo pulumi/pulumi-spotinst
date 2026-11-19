@@ -4076,6 +4076,181 @@ func (o OceanImportBackendServiceNamedPortArrayOutput) Index(i pulumi.IntInput) 
 	}).(OceanImportBackendServiceNamedPortOutput)
 }
 
+type OceanImportDynamicVolumeSize struct {
+	// Initial size per volume (in GB). Must be `>= 1`, and must meet the minimum size for the selected GCP boot disk type and source image, whichever is greater. For example, `pd-standard`, `pd-ssd`, and `pd-balanced` require at least 10 GB; `pd-extreme` requires 500 GB; and `hyperdisk-balanced` requires 4 GB.
+	BaseSize int `pulumi:"baseSize"`
+	// Resource used to calculate the volume size. Valid value: `"CPU"`.
+	Resource string `pulumi:"resource"`
+	// Additional size per resource unit (in GB). Must be `>= 1`. For example: if `baseSize` = 50, `sizePerResourceUnit` = 20, and an instance with 2 CPU is launched, its disk size will be 90 GB.
+	SizePerResourceUnit int `pulumi:"sizePerResourceUnit"`
+}
+
+// OceanImportDynamicVolumeSizeInput is an input type that accepts OceanImportDynamicVolumeSizeArgs and OceanImportDynamicVolumeSizeOutput values.
+// You can construct a concrete instance of `OceanImportDynamicVolumeSizeInput` via:
+//
+//	OceanImportDynamicVolumeSizeArgs{...}
+type OceanImportDynamicVolumeSizeInput interface {
+	pulumi.Input
+
+	ToOceanImportDynamicVolumeSizeOutput() OceanImportDynamicVolumeSizeOutput
+	ToOceanImportDynamicVolumeSizeOutputWithContext(context.Context) OceanImportDynamicVolumeSizeOutput
+}
+
+type OceanImportDynamicVolumeSizeArgs struct {
+	// Initial size per volume (in GB). Must be `>= 1`, and must meet the minimum size for the selected GCP boot disk type and source image, whichever is greater. For example, `pd-standard`, `pd-ssd`, and `pd-balanced` require at least 10 GB; `pd-extreme` requires 500 GB; and `hyperdisk-balanced` requires 4 GB.
+	BaseSize pulumi.IntInput `pulumi:"baseSize"`
+	// Resource used to calculate the volume size. Valid value: `"CPU"`.
+	Resource pulumi.StringInput `pulumi:"resource"`
+	// Additional size per resource unit (in GB). Must be `>= 1`. For example: if `baseSize` = 50, `sizePerResourceUnit` = 20, and an instance with 2 CPU is launched, its disk size will be 90 GB.
+	SizePerResourceUnit pulumi.IntInput `pulumi:"sizePerResourceUnit"`
+}
+
+func (OceanImportDynamicVolumeSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportDynamicVolumeSize)(nil)).Elem()
+}
+
+func (i OceanImportDynamicVolumeSizeArgs) ToOceanImportDynamicVolumeSizeOutput() OceanImportDynamicVolumeSizeOutput {
+	return i.ToOceanImportDynamicVolumeSizeOutputWithContext(context.Background())
+}
+
+func (i OceanImportDynamicVolumeSizeArgs) ToOceanImportDynamicVolumeSizeOutputWithContext(ctx context.Context) OceanImportDynamicVolumeSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportDynamicVolumeSizeOutput)
+}
+
+func (i OceanImportDynamicVolumeSizeArgs) ToOceanImportDynamicVolumeSizePtrOutput() OceanImportDynamicVolumeSizePtrOutput {
+	return i.ToOceanImportDynamicVolumeSizePtrOutputWithContext(context.Background())
+}
+
+func (i OceanImportDynamicVolumeSizeArgs) ToOceanImportDynamicVolumeSizePtrOutputWithContext(ctx context.Context) OceanImportDynamicVolumeSizePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportDynamicVolumeSizeOutput).ToOceanImportDynamicVolumeSizePtrOutputWithContext(ctx)
+}
+
+// OceanImportDynamicVolumeSizePtrInput is an input type that accepts OceanImportDynamicVolumeSizeArgs, OceanImportDynamicVolumeSizePtr and OceanImportDynamicVolumeSizePtrOutput values.
+// You can construct a concrete instance of `OceanImportDynamicVolumeSizePtrInput` via:
+//
+//	        OceanImportDynamicVolumeSizeArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanImportDynamicVolumeSizePtrInput interface {
+	pulumi.Input
+
+	ToOceanImportDynamicVolumeSizePtrOutput() OceanImportDynamicVolumeSizePtrOutput
+	ToOceanImportDynamicVolumeSizePtrOutputWithContext(context.Context) OceanImportDynamicVolumeSizePtrOutput
+}
+
+type oceanImportDynamicVolumeSizePtrType OceanImportDynamicVolumeSizeArgs
+
+func OceanImportDynamicVolumeSizePtr(v *OceanImportDynamicVolumeSizeArgs) OceanImportDynamicVolumeSizePtrInput {
+	return (*oceanImportDynamicVolumeSizePtrType)(v)
+}
+
+func (*oceanImportDynamicVolumeSizePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanImportDynamicVolumeSize)(nil)).Elem()
+}
+
+func (i *oceanImportDynamicVolumeSizePtrType) ToOceanImportDynamicVolumeSizePtrOutput() OceanImportDynamicVolumeSizePtrOutput {
+	return i.ToOceanImportDynamicVolumeSizePtrOutputWithContext(context.Background())
+}
+
+func (i *oceanImportDynamicVolumeSizePtrType) ToOceanImportDynamicVolumeSizePtrOutputWithContext(ctx context.Context) OceanImportDynamicVolumeSizePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportDynamicVolumeSizePtrOutput)
+}
+
+type OceanImportDynamicVolumeSizeOutput struct{ *pulumi.OutputState }
+
+func (OceanImportDynamicVolumeSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportDynamicVolumeSize)(nil)).Elem()
+}
+
+func (o OceanImportDynamicVolumeSizeOutput) ToOceanImportDynamicVolumeSizeOutput() OceanImportDynamicVolumeSizeOutput {
+	return o
+}
+
+func (o OceanImportDynamicVolumeSizeOutput) ToOceanImportDynamicVolumeSizeOutputWithContext(ctx context.Context) OceanImportDynamicVolumeSizeOutput {
+	return o
+}
+
+func (o OceanImportDynamicVolumeSizeOutput) ToOceanImportDynamicVolumeSizePtrOutput() OceanImportDynamicVolumeSizePtrOutput {
+	return o.ToOceanImportDynamicVolumeSizePtrOutputWithContext(context.Background())
+}
+
+func (o OceanImportDynamicVolumeSizeOutput) ToOceanImportDynamicVolumeSizePtrOutputWithContext(ctx context.Context) OceanImportDynamicVolumeSizePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanImportDynamicVolumeSize) *OceanImportDynamicVolumeSize {
+		return &v
+	}).(OceanImportDynamicVolumeSizePtrOutput)
+}
+
+// Initial size per volume (in GB). Must be `>= 1`, and must meet the minimum size for the selected GCP boot disk type and source image, whichever is greater. For example, `pd-standard`, `pd-ssd`, and `pd-balanced` require at least 10 GB; `pd-extreme` requires 500 GB; and `hyperdisk-balanced` requires 4 GB.
+func (o OceanImportDynamicVolumeSizeOutput) BaseSize() pulumi.IntOutput {
+	return o.ApplyT(func(v OceanImportDynamicVolumeSize) int { return v.BaseSize }).(pulumi.IntOutput)
+}
+
+// Resource used to calculate the volume size. Valid value: `"CPU"`.
+func (o OceanImportDynamicVolumeSizeOutput) Resource() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanImportDynamicVolumeSize) string { return v.Resource }).(pulumi.StringOutput)
+}
+
+// Additional size per resource unit (in GB). Must be `>= 1`. For example: if `baseSize` = 50, `sizePerResourceUnit` = 20, and an instance with 2 CPU is launched, its disk size will be 90 GB.
+func (o OceanImportDynamicVolumeSizeOutput) SizePerResourceUnit() pulumi.IntOutput {
+	return o.ApplyT(func(v OceanImportDynamicVolumeSize) int { return v.SizePerResourceUnit }).(pulumi.IntOutput)
+}
+
+type OceanImportDynamicVolumeSizePtrOutput struct{ *pulumi.OutputState }
+
+func (OceanImportDynamicVolumeSizePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanImportDynamicVolumeSize)(nil)).Elem()
+}
+
+func (o OceanImportDynamicVolumeSizePtrOutput) ToOceanImportDynamicVolumeSizePtrOutput() OceanImportDynamicVolumeSizePtrOutput {
+	return o
+}
+
+func (o OceanImportDynamicVolumeSizePtrOutput) ToOceanImportDynamicVolumeSizePtrOutputWithContext(ctx context.Context) OceanImportDynamicVolumeSizePtrOutput {
+	return o
+}
+
+func (o OceanImportDynamicVolumeSizePtrOutput) Elem() OceanImportDynamicVolumeSizeOutput {
+	return o.ApplyT(func(v *OceanImportDynamicVolumeSize) OceanImportDynamicVolumeSize {
+		if v != nil {
+			return *v
+		}
+		var ret OceanImportDynamicVolumeSize
+		return ret
+	}).(OceanImportDynamicVolumeSizeOutput)
+}
+
+// Initial size per volume (in GB). Must be `>= 1`, and must meet the minimum size for the selected GCP boot disk type and source image, whichever is greater. For example, `pd-standard`, `pd-ssd`, and `pd-balanced` require at least 10 GB; `pd-extreme` requires 500 GB; and `hyperdisk-balanced` requires 4 GB.
+func (o OceanImportDynamicVolumeSizePtrOutput) BaseSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanImportDynamicVolumeSize) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.BaseSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Resource used to calculate the volume size. Valid value: `"CPU"`.
+func (o OceanImportDynamicVolumeSizePtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanImportDynamicVolumeSize) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional size per resource unit (in GB). Must be `>= 1`. For example: if `baseSize` = 50, `sizePerResourceUnit` = 20, and an instance with 2 CPU is launched, its disk size will be 90 GB.
+func (o OceanImportDynamicVolumeSizePtrOutput) SizePerResourceUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanImportDynamicVolumeSize) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SizePerResourceUnit
+	}).(pulumi.IntPtrOutput)
+}
+
 type OceanImportFilters struct {
 	// Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
 	ExcludeFamilies []string `pulumi:"excludeFamilies"`
@@ -6053,6 +6228,181 @@ func (o OceanLaunchSpecCreateOptionsPtrOutput) InitialNodes() pulumi.IntPtrOutpu
 			return nil
 		}
 		return v.InitialNodes
+	}).(pulumi.IntPtrOutput)
+}
+
+type OceanLaunchSpecDynamicVolumeSize struct {
+	// Initial size per volume (in GB). Must be `>= 1`, and must meet the minimum size for the selected GCP boot disk type and source image, whichever is greater. For example, `pd-standard`, `pd-ssd`, and `pd-balanced` require at least 10 GB; `pd-extreme` requires 500 GB; and `hyperdisk-balanced` requires 4 GB.
+	BaseSize int `pulumi:"baseSize"`
+	// Resource used to calculate the volume size. Valid value: `"CPU"`.
+	Resource string `pulumi:"resource"`
+	// Additional size per resource unit (in GB). Must be `>= 1`. For example: if `baseSize` = 50, `sizePerResourceUnit` = 20, and an instance with 2 CPU is launched, its disk size will be 90 GB.
+	SizePerResourceUnit int `pulumi:"sizePerResourceUnit"`
+}
+
+// OceanLaunchSpecDynamicVolumeSizeInput is an input type that accepts OceanLaunchSpecDynamicVolumeSizeArgs and OceanLaunchSpecDynamicVolumeSizeOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecDynamicVolumeSizeInput` via:
+//
+//	OceanLaunchSpecDynamicVolumeSizeArgs{...}
+type OceanLaunchSpecDynamicVolumeSizeInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecDynamicVolumeSizeOutput() OceanLaunchSpecDynamicVolumeSizeOutput
+	ToOceanLaunchSpecDynamicVolumeSizeOutputWithContext(context.Context) OceanLaunchSpecDynamicVolumeSizeOutput
+}
+
+type OceanLaunchSpecDynamicVolumeSizeArgs struct {
+	// Initial size per volume (in GB). Must be `>= 1`, and must meet the minimum size for the selected GCP boot disk type and source image, whichever is greater. For example, `pd-standard`, `pd-ssd`, and `pd-balanced` require at least 10 GB; `pd-extreme` requires 500 GB; and `hyperdisk-balanced` requires 4 GB.
+	BaseSize pulumi.IntInput `pulumi:"baseSize"`
+	// Resource used to calculate the volume size. Valid value: `"CPU"`.
+	Resource pulumi.StringInput `pulumi:"resource"`
+	// Additional size per resource unit (in GB). Must be `>= 1`. For example: if `baseSize` = 50, `sizePerResourceUnit` = 20, and an instance with 2 CPU is launched, its disk size will be 90 GB.
+	SizePerResourceUnit pulumi.IntInput `pulumi:"sizePerResourceUnit"`
+}
+
+func (OceanLaunchSpecDynamicVolumeSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecDynamicVolumeSize)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecDynamicVolumeSizeArgs) ToOceanLaunchSpecDynamicVolumeSizeOutput() OceanLaunchSpecDynamicVolumeSizeOutput {
+	return i.ToOceanLaunchSpecDynamicVolumeSizeOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecDynamicVolumeSizeArgs) ToOceanLaunchSpecDynamicVolumeSizeOutputWithContext(ctx context.Context) OceanLaunchSpecDynamicVolumeSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecDynamicVolumeSizeOutput)
+}
+
+func (i OceanLaunchSpecDynamicVolumeSizeArgs) ToOceanLaunchSpecDynamicVolumeSizePtrOutput() OceanLaunchSpecDynamicVolumeSizePtrOutput {
+	return i.ToOceanLaunchSpecDynamicVolumeSizePtrOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecDynamicVolumeSizeArgs) ToOceanLaunchSpecDynamicVolumeSizePtrOutputWithContext(ctx context.Context) OceanLaunchSpecDynamicVolumeSizePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecDynamicVolumeSizeOutput).ToOceanLaunchSpecDynamicVolumeSizePtrOutputWithContext(ctx)
+}
+
+// OceanLaunchSpecDynamicVolumeSizePtrInput is an input type that accepts OceanLaunchSpecDynamicVolumeSizeArgs, OceanLaunchSpecDynamicVolumeSizePtr and OceanLaunchSpecDynamicVolumeSizePtrOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecDynamicVolumeSizePtrInput` via:
+//
+//	        OceanLaunchSpecDynamicVolumeSizeArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanLaunchSpecDynamicVolumeSizePtrInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecDynamicVolumeSizePtrOutput() OceanLaunchSpecDynamicVolumeSizePtrOutput
+	ToOceanLaunchSpecDynamicVolumeSizePtrOutputWithContext(context.Context) OceanLaunchSpecDynamicVolumeSizePtrOutput
+}
+
+type oceanLaunchSpecDynamicVolumeSizePtrType OceanLaunchSpecDynamicVolumeSizeArgs
+
+func OceanLaunchSpecDynamicVolumeSizePtr(v *OceanLaunchSpecDynamicVolumeSizeArgs) OceanLaunchSpecDynamicVolumeSizePtrInput {
+	return (*oceanLaunchSpecDynamicVolumeSizePtrType)(v)
+}
+
+func (*oceanLaunchSpecDynamicVolumeSizePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecDynamicVolumeSize)(nil)).Elem()
+}
+
+func (i *oceanLaunchSpecDynamicVolumeSizePtrType) ToOceanLaunchSpecDynamicVolumeSizePtrOutput() OceanLaunchSpecDynamicVolumeSizePtrOutput {
+	return i.ToOceanLaunchSpecDynamicVolumeSizePtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLaunchSpecDynamicVolumeSizePtrType) ToOceanLaunchSpecDynamicVolumeSizePtrOutputWithContext(ctx context.Context) OceanLaunchSpecDynamicVolumeSizePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecDynamicVolumeSizePtrOutput)
+}
+
+type OceanLaunchSpecDynamicVolumeSizeOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecDynamicVolumeSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecDynamicVolumeSize)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecDynamicVolumeSizeOutput) ToOceanLaunchSpecDynamicVolumeSizeOutput() OceanLaunchSpecDynamicVolumeSizeOutput {
+	return o
+}
+
+func (o OceanLaunchSpecDynamicVolumeSizeOutput) ToOceanLaunchSpecDynamicVolumeSizeOutputWithContext(ctx context.Context) OceanLaunchSpecDynamicVolumeSizeOutput {
+	return o
+}
+
+func (o OceanLaunchSpecDynamicVolumeSizeOutput) ToOceanLaunchSpecDynamicVolumeSizePtrOutput() OceanLaunchSpecDynamicVolumeSizePtrOutput {
+	return o.ToOceanLaunchSpecDynamicVolumeSizePtrOutputWithContext(context.Background())
+}
+
+func (o OceanLaunchSpecDynamicVolumeSizeOutput) ToOceanLaunchSpecDynamicVolumeSizePtrOutputWithContext(ctx context.Context) OceanLaunchSpecDynamicVolumeSizePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecDynamicVolumeSize) *OceanLaunchSpecDynamicVolumeSize {
+		return &v
+	}).(OceanLaunchSpecDynamicVolumeSizePtrOutput)
+}
+
+// Initial size per volume (in GB). Must be `>= 1`, and must meet the minimum size for the selected GCP boot disk type and source image, whichever is greater. For example, `pd-standard`, `pd-ssd`, and `pd-balanced` require at least 10 GB; `pd-extreme` requires 500 GB; and `hyperdisk-balanced` requires 4 GB.
+func (o OceanLaunchSpecDynamicVolumeSizeOutput) BaseSize() pulumi.IntOutput {
+	return o.ApplyT(func(v OceanLaunchSpecDynamicVolumeSize) int { return v.BaseSize }).(pulumi.IntOutput)
+}
+
+// Resource used to calculate the volume size. Valid value: `"CPU"`.
+func (o OceanLaunchSpecDynamicVolumeSizeOutput) Resource() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanLaunchSpecDynamicVolumeSize) string { return v.Resource }).(pulumi.StringOutput)
+}
+
+// Additional size per resource unit (in GB). Must be `>= 1`. For example: if `baseSize` = 50, `sizePerResourceUnit` = 20, and an instance with 2 CPU is launched, its disk size will be 90 GB.
+func (o OceanLaunchSpecDynamicVolumeSizeOutput) SizePerResourceUnit() pulumi.IntOutput {
+	return o.ApplyT(func(v OceanLaunchSpecDynamicVolumeSize) int { return v.SizePerResourceUnit }).(pulumi.IntOutput)
+}
+
+type OceanLaunchSpecDynamicVolumeSizePtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecDynamicVolumeSizePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecDynamicVolumeSize)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecDynamicVolumeSizePtrOutput) ToOceanLaunchSpecDynamicVolumeSizePtrOutput() OceanLaunchSpecDynamicVolumeSizePtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecDynamicVolumeSizePtrOutput) ToOceanLaunchSpecDynamicVolumeSizePtrOutputWithContext(ctx context.Context) OceanLaunchSpecDynamicVolumeSizePtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecDynamicVolumeSizePtrOutput) Elem() OceanLaunchSpecDynamicVolumeSizeOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecDynamicVolumeSize) OceanLaunchSpecDynamicVolumeSize {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecDynamicVolumeSize
+		return ret
+	}).(OceanLaunchSpecDynamicVolumeSizeOutput)
+}
+
+// Initial size per volume (in GB). Must be `>= 1`, and must meet the minimum size for the selected GCP boot disk type and source image, whichever is greater. For example, `pd-standard`, `pd-ssd`, and `pd-balanced` require at least 10 GB; `pd-extreme` requires 500 GB; and `hyperdisk-balanced` requires 4 GB.
+func (o OceanLaunchSpecDynamicVolumeSizePtrOutput) BaseSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecDynamicVolumeSize) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.BaseSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Resource used to calculate the volume size. Valid value: `"CPU"`.
+func (o OceanLaunchSpecDynamicVolumeSizePtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecDynamicVolumeSize) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional size per resource unit (in GB). Must be `>= 1`. For example: if `baseSize` = 50, `sizePerResourceUnit` = 20, and an instance with 2 CPU is launched, its disk size will be 90 GB.
+func (o OceanLaunchSpecDynamicVolumeSizePtrOutput) SizePerResourceUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecDynamicVolumeSize) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SizePerResourceUnit
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -8308,6 +8658,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportBackendServiceArrayInput)(nil)).Elem(), OceanImportBackendServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportBackendServiceNamedPortInput)(nil)).Elem(), OceanImportBackendServiceNamedPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportBackendServiceNamedPortArrayInput)(nil)).Elem(), OceanImportBackendServiceNamedPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportDynamicVolumeSizeInput)(nil)).Elem(), OceanImportDynamicVolumeSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportDynamicVolumeSizePtrInput)(nil)).Elem(), OceanImportDynamicVolumeSizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportFiltersInput)(nil)).Elem(), OceanImportFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportFiltersPtrInput)(nil)).Elem(), OceanImportFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskInput)(nil)).Elem(), OceanImportScheduledTaskArgs{})
@@ -8334,6 +8686,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput)(nil)).Elem(), OceanLaunchSpecAutoscaleHeadroomsAutomaticArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecCreateOptionsInput)(nil)).Elem(), OceanLaunchSpecCreateOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecCreateOptionsPtrInput)(nil)).Elem(), OceanLaunchSpecCreateOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecDynamicVolumeSizeInput)(nil)).Elem(), OceanLaunchSpecDynamicVolumeSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecDynamicVolumeSizePtrInput)(nil)).Elem(), OceanLaunchSpecDynamicVolumeSizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecFiltersInput)(nil)).Elem(), OceanLaunchSpecFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecFiltersPtrInput)(nil)).Elem(), OceanLaunchSpecFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLabelInput)(nil)).Elem(), OceanLaunchSpecLabelArgs{})
@@ -8426,6 +8780,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanImportBackendServiceArrayOutput{})
 	pulumi.RegisterOutputType(OceanImportBackendServiceNamedPortOutput{})
 	pulumi.RegisterOutputType(OceanImportBackendServiceNamedPortArrayOutput{})
+	pulumi.RegisterOutputType(OceanImportDynamicVolumeSizeOutput{})
+	pulumi.RegisterOutputType(OceanImportDynamicVolumeSizePtrOutput{})
 	pulumi.RegisterOutputType(OceanImportFiltersOutput{})
 	pulumi.RegisterOutputType(OceanImportFiltersPtrOutput{})
 	pulumi.RegisterOutputType(OceanImportScheduledTaskOutput{})
@@ -8452,6 +8808,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecCreateOptionsOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecCreateOptionsPtrOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecDynamicVolumeSizeOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecDynamicVolumeSizePtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecFiltersOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecFiltersPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelOutput{})

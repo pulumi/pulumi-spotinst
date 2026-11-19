@@ -13,6 +13,7 @@ import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecState;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecAutoscaleHeadroom;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecCreateOptions;
+import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecDynamicVolumeSize;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecFilters;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecLabel;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecMetadata;
@@ -49,6 +50,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.gke.OceanLaunchSpec;
  * import com.pulumi.spotinst.gke.OceanLaunchSpecArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecCreateOptionsArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecDynamicVolumeSizeArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecShieldedInstanceConfigArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecStorageArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecResourceLimitsArgs;
@@ -92,6 +94,11 @@ import javax.annotation.Nullable;
  *                 "tag2")
  *             .createOptions(OceanLaunchSpecCreateOptionsArgs.builder()
  *                 .initialNodes(1)
+ *                 .build())
+ *             .dynamicVolumeSize(OceanLaunchSpecDynamicVolumeSizeArgs.builder()
+ *                 .baseSize(50)
+ *                 .resource("CPU")
+ *                 .sizePerResourceUnit(20)
  *                 .build())
  *             .shieldedInstanceConfig(OceanLaunchSpecShieldedInstanceConfigArgs.builder()
  *                 .enableSecureBoot(false)
@@ -215,6 +222,20 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<OceanLaunchSpecCreateOptions>> createOptions() {
         return Codegen.optional(this.createOptions);
+    }
+    /**
+     * Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+     * 
+     */
+    @Export(name="dynamicVolumeSize", refs={OceanLaunchSpecDynamicVolumeSize.class}, tree="[0]")
+    private Output</* @Nullable */ OceanLaunchSpecDynamicVolumeSize> dynamicVolumeSize;
+
+    /**
+     * @return Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+     * 
+     */
+    public Output<Optional<OceanLaunchSpecDynamicVolumeSize>> dynamicVolumeSize() {
+        return Codegen.optional(this.dynamicVolumeSize);
     }
     /**
      * List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured if cluster&#39;s `instanceTypes` is configured.
@@ -357,14 +378,14 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
         return this.restrictScaleDown;
     }
     /**
-     * Root volume size (in GB).
+     * Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
      * 
      */
     @Export(name="rootVolumeSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> rootVolumeSize;
 
     /**
-     * @return Root volume size (in GB).
+     * @return Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
      * 
      */
     public Output<Integer> rootVolumeSize() {

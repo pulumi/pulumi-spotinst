@@ -75,6 +75,8 @@ __all__ = [
     'OceanImportBackendServiceArgsDict',
     'OceanImportBackendServiceNamedPortArgs',
     'OceanImportBackendServiceNamedPortArgsDict',
+    'OceanImportDynamicVolumeSizeArgs',
+    'OceanImportDynamicVolumeSizeArgsDict',
     'OceanImportFiltersArgs',
     'OceanImportFiltersArgsDict',
     'OceanImportScheduledTaskArgs',
@@ -101,6 +103,8 @@ __all__ = [
     'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict',
     'OceanLaunchSpecCreateOptionsArgs',
     'OceanLaunchSpecCreateOptionsArgsDict',
+    'OceanLaunchSpecDynamicVolumeSizeArgs',
+    'OceanLaunchSpecDynamicVolumeSizeArgsDict',
     'OceanLaunchSpecFiltersArgs',
     'OceanLaunchSpecFiltersArgsDict',
     'OceanLaunchSpecLabelArgs',
@@ -2015,6 +2019,72 @@ class OceanImportBackendServiceNamedPortArgs:
         pulumi.set(self, "ports", value)
 
 
+class OceanImportDynamicVolumeSizeArgsDict(TypedDict):
+    base_size: pulumi.Input[_builtins.int]
+    """
+    Initial size per volume (in GB). Must be `>= 1`, and must meet the minimum size for the selected GCP boot disk type and source image, whichever is greater. For example, `pd-standard`, `pd-ssd`, and `pd-balanced` require at least 10 GB; `pd-extreme` requires 500 GB; and `hyperdisk-balanced` requires 4 GB.
+    """
+    resource: pulumi.Input[_builtins.str]
+    """
+    Resource used to calculate the volume size. Valid value: `"CPU"`.
+    """
+    size_per_resource_unit: pulumi.Input[_builtins.int]
+    """
+    Additional size per resource unit (in GB). Must be `>= 1`. For example: if `base_size` = 50, `size_per_resource_unit` = 20, and an instance with 2 CPU is launched, its disk size will be 90 GB.
+    """
+
+@pulumi.input_type
+class OceanImportDynamicVolumeSizeArgs:
+    def __init__(__self__, *,
+                 base_size: pulumi.Input[_builtins.int],
+                 resource: pulumi.Input[_builtins.str],
+                 size_per_resource_unit: pulumi.Input[_builtins.int]):
+        """
+        :param pulumi.Input[_builtins.int] base_size: Initial size per volume (in GB). Must be `>= 1`, and must meet the minimum size for the selected GCP boot disk type and source image, whichever is greater. For example, `pd-standard`, `pd-ssd`, and `pd-balanced` require at least 10 GB; `pd-extreme` requires 500 GB; and `hyperdisk-balanced` requires 4 GB.
+        :param pulumi.Input[_builtins.str] resource: Resource used to calculate the volume size. Valid value: `"CPU"`.
+        :param pulumi.Input[_builtins.int] size_per_resource_unit: Additional size per resource unit (in GB). Must be `>= 1`. For example: if `base_size` = 50, `size_per_resource_unit` = 20, and an instance with 2 CPU is launched, its disk size will be 90 GB.
+        """
+        pulumi.set(__self__, "base_size", base_size)
+        pulumi.set(__self__, "resource", resource)
+        pulumi.set(__self__, "size_per_resource_unit", size_per_resource_unit)
+
+    @_builtins.property
+    @pulumi.getter(name="baseSize")
+    def base_size(self) -> pulumi.Input[_builtins.int]:
+        """
+        Initial size per volume (in GB). Must be `>= 1`, and must meet the minimum size for the selected GCP boot disk type and source image, whichever is greater. For example, `pd-standard`, `pd-ssd`, and `pd-balanced` require at least 10 GB; `pd-extreme` requires 500 GB; and `hyperdisk-balanced` requires 4 GB.
+        """
+        return pulumi.get(self, "base_size")
+
+    @base_size.setter
+    def base_size(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "base_size", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def resource(self) -> pulumi.Input[_builtins.str]:
+        """
+        Resource used to calculate the volume size. Valid value: `"CPU"`.
+        """
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "resource", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sizePerResourceUnit")
+    def size_per_resource_unit(self) -> pulumi.Input[_builtins.int]:
+        """
+        Additional size per resource unit (in GB). Must be `>= 1`. For example: if `base_size` = 50, `size_per_resource_unit` = 20, and an instance with 2 CPU is launched, its disk size will be 90 GB.
+        """
+        return pulumi.get(self, "size_per_resource_unit")
+
+    @size_per_resource_unit.setter
+    def size_per_resource_unit(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "size_per_resource_unit", value)
+
+
 class OceanImportFiltersArgsDict(TypedDict):
     exclude_families: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -2912,6 +2982,72 @@ class OceanLaunchSpecCreateOptionsArgs:
     @initial_nodes.setter
     def initial_nodes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_nodes", value)
+
+
+class OceanLaunchSpecDynamicVolumeSizeArgsDict(TypedDict):
+    base_size: pulumi.Input[_builtins.int]
+    """
+    Initial size per volume (in GB). Must be `>= 1`, and must meet the minimum size for the selected GCP boot disk type and source image, whichever is greater. For example, `pd-standard`, `pd-ssd`, and `pd-balanced` require at least 10 GB; `pd-extreme` requires 500 GB; and `hyperdisk-balanced` requires 4 GB.
+    """
+    resource: pulumi.Input[_builtins.str]
+    """
+    Resource used to calculate the volume size. Valid value: `"CPU"`.
+    """
+    size_per_resource_unit: pulumi.Input[_builtins.int]
+    """
+    Additional size per resource unit (in GB). Must be `>= 1`. For example: if `base_size` = 50, `size_per_resource_unit` = 20, and an instance with 2 CPU is launched, its disk size will be 90 GB.
+    """
+
+@pulumi.input_type
+class OceanLaunchSpecDynamicVolumeSizeArgs:
+    def __init__(__self__, *,
+                 base_size: pulumi.Input[_builtins.int],
+                 resource: pulumi.Input[_builtins.str],
+                 size_per_resource_unit: pulumi.Input[_builtins.int]):
+        """
+        :param pulumi.Input[_builtins.int] base_size: Initial size per volume (in GB). Must be `>= 1`, and must meet the minimum size for the selected GCP boot disk type and source image, whichever is greater. For example, `pd-standard`, `pd-ssd`, and `pd-balanced` require at least 10 GB; `pd-extreme` requires 500 GB; and `hyperdisk-balanced` requires 4 GB.
+        :param pulumi.Input[_builtins.str] resource: Resource used to calculate the volume size. Valid value: `"CPU"`.
+        :param pulumi.Input[_builtins.int] size_per_resource_unit: Additional size per resource unit (in GB). Must be `>= 1`. For example: if `base_size` = 50, `size_per_resource_unit` = 20, and an instance with 2 CPU is launched, its disk size will be 90 GB.
+        """
+        pulumi.set(__self__, "base_size", base_size)
+        pulumi.set(__self__, "resource", resource)
+        pulumi.set(__self__, "size_per_resource_unit", size_per_resource_unit)
+
+    @_builtins.property
+    @pulumi.getter(name="baseSize")
+    def base_size(self) -> pulumi.Input[_builtins.int]:
+        """
+        Initial size per volume (in GB). Must be `>= 1`, and must meet the minimum size for the selected GCP boot disk type and source image, whichever is greater. For example, `pd-standard`, `pd-ssd`, and `pd-balanced` require at least 10 GB; `pd-extreme` requires 500 GB; and `hyperdisk-balanced` requires 4 GB.
+        """
+        return pulumi.get(self, "base_size")
+
+    @base_size.setter
+    def base_size(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "base_size", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def resource(self) -> pulumi.Input[_builtins.str]:
+        """
+        Resource used to calculate the volume size. Valid value: `"CPU"`.
+        """
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "resource", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sizePerResourceUnit")
+    def size_per_resource_unit(self) -> pulumi.Input[_builtins.int]:
+        """
+        Additional size per resource unit (in GB). Must be `>= 1`. For example: if `base_size` = 50, `size_per_resource_unit` = 20, and an instance with 2 CPU is launched, its disk size will be 90 GB.
+        """
+        return pulumi.get(self, "size_per_resource_unit")
+
+    @size_per_resource_unit.setter
+    def size_per_resource_unit(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "size_per_resource_unit", value)
 
 
 class OceanLaunchSpecFiltersArgsDict(TypedDict):

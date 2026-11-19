@@ -33,6 +33,11 @@ import * as utilities from "../utilities";
  *     createOptions: {
  *         initialNodes: 1,
  *     },
+ *     dynamicVolumeSize: {
+ *         baseSize: 50,
+ *         resource: "CPU",
+ *         sizePerResourceUnit: 20,
+ *     },
  *     shieldedInstanceConfig: {
  *         enableSecureBoot: false,
  *         enableIntegrityMonitoring: true,
@@ -166,6 +171,10 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
     declare public readonly autoscaleHeadroomsAutomatics: pulumi.Output<outputs.gke.OceanLaunchSpecAutoscaleHeadroomsAutomatic[] | undefined>;
     declare public readonly createOptions: pulumi.Output<outputs.gke.OceanLaunchSpecCreateOptions | undefined>;
     /**
+     * Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+     */
+    declare public readonly dynamicVolumeSize: pulumi.Output<outputs.gke.OceanLaunchSpecDynamicVolumeSize | undefined>;
+    /**
      * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instanceTypes` is configured.
      */
     declare public readonly filters: pulumi.Output<outputs.gke.OceanLaunchSpecFilters | undefined>;
@@ -206,7 +215,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     declare public readonly restrictScaleDown: pulumi.Output<boolean>;
     /**
-     * Root volume size (in GB).
+     * Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
      */
     declare public readonly rootVolumeSize: pulumi.Output<number>;
     /**
@@ -267,6 +276,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["autoscaleHeadrooms"] = state?.autoscaleHeadrooms;
             resourceInputs["autoscaleHeadroomsAutomatics"] = state?.autoscaleHeadroomsAutomatics;
             resourceInputs["createOptions"] = state?.createOptions;
+            resourceInputs["dynamicVolumeSize"] = state?.dynamicVolumeSize;
             resourceInputs["filters"] = state?.filters;
             resourceInputs["instanceTypes"] = state?.instanceTypes;
             resourceInputs["labels"] = state?.labels;
@@ -297,6 +307,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["autoscaleHeadrooms"] = args?.autoscaleHeadrooms;
             resourceInputs["autoscaleHeadroomsAutomatics"] = args?.autoscaleHeadroomsAutomatics;
             resourceInputs["createOptions"] = args?.createOptions;
+            resourceInputs["dynamicVolumeSize"] = args?.dynamicVolumeSize;
             resourceInputs["filters"] = args?.filters;
             resourceInputs["instanceTypes"] = args?.instanceTypes;
             resourceInputs["labels"] = args?.labels;
@@ -339,6 +350,10 @@ export interface OceanLaunchSpecState {
     autoscaleHeadroomsAutomatics?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecAutoscaleHeadroomsAutomatic>[] | undefined>;
     createOptions?: pulumi.Input<inputs.gke.OceanLaunchSpecCreateOptions | undefined>;
     /**
+     * Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+     */
+    dynamicVolumeSize?: pulumi.Input<inputs.gke.OceanLaunchSpecDynamicVolumeSize | undefined>;
+    /**
      * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instanceTypes` is configured.
      */
     filters?: pulumi.Input<inputs.gke.OceanLaunchSpecFilters | undefined>;
@@ -379,7 +394,7 @@ export interface OceanLaunchSpecState {
      */
     restrictScaleDown?: pulumi.Input<boolean | undefined>;
     /**
-     * Root volume size (in GB).
+     * Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
      */
     rootVolumeSize?: pulumi.Input<number | undefined>;
     /**
@@ -439,6 +454,10 @@ export interface OceanLaunchSpecArgs {
     autoscaleHeadroomsAutomatics?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecAutoscaleHeadroomsAutomatic>[] | undefined>;
     createOptions?: pulumi.Input<inputs.gke.OceanLaunchSpecCreateOptions | undefined>;
     /**
+     * Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+     */
+    dynamicVolumeSize?: pulumi.Input<inputs.gke.OceanLaunchSpecDynamicVolumeSize | undefined>;
+    /**
      * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instanceTypes` is configured.
      */
     filters?: pulumi.Input<inputs.gke.OceanLaunchSpecFilters | undefined>;
@@ -479,7 +498,7 @@ export interface OceanLaunchSpecArgs {
      */
     restrictScaleDown?: pulumi.Input<boolean | undefined>;
     /**
-     * Root volume size (in GB).
+     * Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
      */
     rootVolumeSize?: pulumi.Input<number | undefined>;
     /**

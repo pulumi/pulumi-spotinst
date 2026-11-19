@@ -48,6 +48,11 @@ import (
 //				CreateOptions: &gke.OceanLaunchSpecCreateOptionsArgs{
 //					InitialNodes: pulumi.Int(1),
 //				},
+//				DynamicVolumeSize: &gke.OceanLaunchSpecDynamicVolumeSizeArgs{
+//					BaseSize:            pulumi.Int(50),
+//					Resource:            pulumi.String("CPU"),
+//					SizePerResourceUnit: pulumi.Int(20),
+//				},
 //				ShieldedInstanceConfig: &gke.OceanLaunchSpecShieldedInstanceConfigArgs{
 //					EnableSecureBoot:          pulumi.Bool(false),
 //					EnableIntegrityMonitoring: pulumi.Bool(true),
@@ -170,6 +175,8 @@ type OceanLaunchSpec struct {
 	// Set automatic headroom per launch spec.
 	AutoscaleHeadroomsAutomatics OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayOutput `pulumi:"autoscaleHeadroomsAutomatics"`
 	CreateOptions                OceanLaunchSpecCreateOptionsPtrOutput                 `pulumi:"createOptions"`
+	// Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+	DynamicVolumeSize OceanLaunchSpecDynamicVolumeSizePtrOutput `pulumi:"dynamicVolumeSize"`
 	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instanceTypes` is configured.
 	Filters OceanLaunchSpecFiltersPtrOutput `pulumi:"filters"`
 	// List of supported machine types for the Launch Spec.
@@ -190,7 +197,7 @@ type OceanLaunchSpec struct {
 	ResourceLimits OceanLaunchSpecResourceLimitsPtrOutput `pulumi:"resourceLimits"`
 	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolOutput `pulumi:"restrictScaleDown"`
-	// Root volume size (in GB).
+	// Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
 	RootVolumeSize pulumi.IntOutput `pulumi:"rootVolumeSize"`
 	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
 	RootVolumeType pulumi.StringOutput `pulumi:"rootVolumeType"`
@@ -253,6 +260,8 @@ type oceanLaunchSpecState struct {
 	// Set automatic headroom per launch spec.
 	AutoscaleHeadroomsAutomatics []OceanLaunchSpecAutoscaleHeadroomsAutomatic `pulumi:"autoscaleHeadroomsAutomatics"`
 	CreateOptions                *OceanLaunchSpecCreateOptions                `pulumi:"createOptions"`
+	// Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+	DynamicVolumeSize *OceanLaunchSpecDynamicVolumeSize `pulumi:"dynamicVolumeSize"`
 	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instanceTypes` is configured.
 	Filters *OceanLaunchSpecFilters `pulumi:"filters"`
 	// List of supported machine types for the Launch Spec.
@@ -273,7 +282,7 @@ type oceanLaunchSpecState struct {
 	ResourceLimits *OceanLaunchSpecResourceLimits `pulumi:"resourceLimits"`
 	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
-	// Root volume size (in GB).
+	// Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
 	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
 	RootVolumeType *string `pulumi:"rootVolumeType"`
@@ -304,6 +313,8 @@ type OceanLaunchSpecState struct {
 	// Set automatic headroom per launch spec.
 	AutoscaleHeadroomsAutomatics OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput
 	CreateOptions                OceanLaunchSpecCreateOptionsPtrInput
+	// Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+	DynamicVolumeSize OceanLaunchSpecDynamicVolumeSizePtrInput
 	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instanceTypes` is configured.
 	Filters OceanLaunchSpecFiltersPtrInput
 	// List of supported machine types for the Launch Spec.
@@ -324,7 +335,7 @@ type OceanLaunchSpecState struct {
 	ResourceLimits OceanLaunchSpecResourceLimitsPtrInput
 	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrInput
-	// Root volume size (in GB).
+	// Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
 	RootVolumeSize pulumi.IntPtrInput
 	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
 	RootVolumeType pulumi.StringPtrInput
@@ -365,6 +376,8 @@ type oceanLaunchSpecArgs struct {
 	// Set automatic headroom per launch spec.
 	AutoscaleHeadroomsAutomatics []OceanLaunchSpecAutoscaleHeadroomsAutomatic `pulumi:"autoscaleHeadroomsAutomatics"`
 	CreateOptions                *OceanLaunchSpecCreateOptions                `pulumi:"createOptions"`
+	// Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+	DynamicVolumeSize *OceanLaunchSpecDynamicVolumeSize `pulumi:"dynamicVolumeSize"`
 	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instanceTypes` is configured.
 	Filters *OceanLaunchSpecFilters `pulumi:"filters"`
 	// List of supported machine types for the Launch Spec.
@@ -385,7 +398,7 @@ type oceanLaunchSpecArgs struct {
 	ResourceLimits *OceanLaunchSpecResourceLimits `pulumi:"resourceLimits"`
 	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown *bool `pulumi:"restrictScaleDown"`
-	// Root volume size (in GB).
+	// Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
 	RootVolumeSize *int `pulumi:"rootVolumeSize"`
 	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
 	RootVolumeType *string `pulumi:"rootVolumeType"`
@@ -417,6 +430,8 @@ type OceanLaunchSpecArgs struct {
 	// Set automatic headroom per launch spec.
 	AutoscaleHeadroomsAutomatics OceanLaunchSpecAutoscaleHeadroomsAutomaticArrayInput
 	CreateOptions                OceanLaunchSpecCreateOptionsPtrInput
+	// Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+	DynamicVolumeSize OceanLaunchSpecDynamicVolumeSizePtrInput
 	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instanceTypes` is configured.
 	Filters OceanLaunchSpecFiltersPtrInput
 	// List of supported machine types for the Launch Spec.
@@ -437,7 +452,7 @@ type OceanLaunchSpecArgs struct {
 	ResourceLimits OceanLaunchSpecResourceLimitsPtrInput
 	// Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
 	RestrictScaleDown pulumi.BoolPtrInput
-	// Root volume size (in GB).
+	// Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
 	RootVolumeSize pulumi.IntPtrInput
 	// Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
 	RootVolumeType pulumi.StringPtrInput
@@ -565,6 +580,11 @@ func (o OceanLaunchSpecOutput) CreateOptions() OceanLaunchSpecCreateOptionsPtrOu
 	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecCreateOptionsPtrOutput { return v.CreateOptions }).(OceanLaunchSpecCreateOptionsPtrOutput)
 }
 
+// Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+func (o OceanLaunchSpecOutput) DynamicVolumeSize() OceanLaunchSpecDynamicVolumeSizePtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecDynamicVolumeSizePtrOutput { return v.DynamicVolumeSize }).(OceanLaunchSpecDynamicVolumeSizePtrOutput)
+}
+
 // List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instanceTypes` is configured.
 func (o OceanLaunchSpecOutput) Filters() OceanLaunchSpecFiltersPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecFiltersPtrOutput { return v.Filters }).(OceanLaunchSpecFiltersPtrOutput)
@@ -615,7 +635,7 @@ func (o OceanLaunchSpecOutput) RestrictScaleDown() pulumi.BoolOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.BoolOutput { return v.RestrictScaleDown }).(pulumi.BoolOutput)
 }
 
-// Root volume size (in GB).
+// Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
 func (o OceanLaunchSpecOutput) RootVolumeSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.IntOutput { return v.RootVolumeSize }).(pulumi.IntOutput)
 }

@@ -13,6 +13,7 @@ import com.pulumi.spotinst.gke.inputs.OceanImportState;
 import com.pulumi.spotinst.gke.outputs.OceanImportAutoUpdate;
 import com.pulumi.spotinst.gke.outputs.OceanImportAutoscaler;
 import com.pulumi.spotinst.gke.outputs.OceanImportBackendService;
+import com.pulumi.spotinst.gke.outputs.OceanImportDynamicVolumeSize;
 import com.pulumi.spotinst.gke.outputs.OceanImportFilters;
 import com.pulumi.spotinst.gke.outputs.OceanImportScheduledTask;
 import com.pulumi.spotinst.gke.outputs.OceanImportShieldedInstanceConfig;
@@ -44,6 +45,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.gke.inputs.OceanImportBackendServiceArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanImportBackendServiceNamedPortArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanImportShieldedInstanceConfigArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanImportDynamicVolumeSizeArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -95,6 +97,11 @@ import javax.annotation.Nullable;
  *             .shieldedInstanceConfig(OceanImportShieldedInstanceConfigArgs.builder()
  *                 .enableSecureBoot(true)
  *                 .enableIntegrityMonitoring(true)
+ *                 .build())
+ *             .dynamicVolumeSize(OceanImportDynamicVolumeSizeArgs.builder()
+ *                 .baseSize(50)
+ *                 .resource("CPU")
+ *                 .sizePerResourceUnit(20)
  *                 .build())
  *             .useAsTemplateOnly(false)
  *             .build());
@@ -210,6 +217,20 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> desiredCapacity() {
         return Codegen.optional(this.desiredCapacity);
+    }
+    /**
+     * Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+     * 
+     */
+    @Export(name="dynamicVolumeSize", refs={OceanImportDynamicVolumeSize.class}, tree="[0]")
+    private Output</* @Nullable */ OceanImportDynamicVolumeSize> dynamicVolumeSize;
+
+    /**
+     * @return Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+     * 
+     */
+    public Output<Optional<OceanImportDynamicVolumeSize>> dynamicVolumeSize() {
+        return Codegen.optional(this.dynamicVolumeSize);
     }
     /**
      * List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with whitelist/blacklist.

@@ -46,6 +46,12 @@ namespace Pulumi.SpotInst.Gke
     ///         {
     ///             InitialNodes = 1,
     ///         },
+    ///         DynamicVolumeSize = new SpotInst.Gke.Inputs.OceanLaunchSpecDynamicVolumeSizeArgs
+    ///         {
+    ///             BaseSize = 50,
+    ///             Resource = "CPU",
+    ///             SizePerResourceUnit = 20,
+    ///         },
     ///         ShieldedInstanceConfig = new SpotInst.Gke.Inputs.OceanLaunchSpecShieldedInstanceConfigArgs
     ///         {
     ///             EnableSecureBoot = false,
@@ -205,6 +211,12 @@ namespace Pulumi.SpotInst.Gke
         public Output<Outputs.OceanLaunchSpecCreateOptions?> CreateOptions { get; private set; } = null!;
 
         /// <summary>
+        /// Set dynamic volume size properties. When using this object, you cannot use `RootVolumeSize`. You must use one or the other. When `DynamicVolumeSize` is configured, `RootVolumeType` is optional and defaults to `pd-standard`.
+        /// </summary>
+        [Output("dynamicVolumeSize")]
+        public Output<Outputs.OceanLaunchSpecDynamicVolumeSize?> DynamicVolumeSize { get; private set; } = null!;
+
+        /// <summary>
         /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `InstanceTypes` is configured.
         /// </summary>
         [Output("filters")]
@@ -265,7 +277,7 @@ namespace Pulumi.SpotInst.Gke
         public Output<bool> RestrictScaleDown { get; private set; } = null!;
 
         /// <summary>
-        /// Root volume size (in GB).
+        /// Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
         /// </summary>
         [Output("rootVolumeSize")]
         public Output<int> RootVolumeSize { get; private set; } = null!;
@@ -407,6 +419,12 @@ namespace Pulumi.SpotInst.Gke
         public Input<Inputs.OceanLaunchSpecCreateOptionsArgs>? CreateOptions { get; set; }
 
         /// <summary>
+        /// Set dynamic volume size properties. When using this object, you cannot use `RootVolumeSize`. You must use one or the other. When `DynamicVolumeSize` is configured, `RootVolumeType` is optional and defaults to `pd-standard`.
+        /// </summary>
+        [Input("dynamicVolumeSize")]
+        public Input<Inputs.OceanLaunchSpecDynamicVolumeSizeArgs>? DynamicVolumeSize { get; set; }
+
+        /// <summary>
         /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `InstanceTypes` is configured.
         /// </summary>
         [Input("filters")]
@@ -491,7 +509,7 @@ namespace Pulumi.SpotInst.Gke
         public Input<bool>? RestrictScaleDown { get; set; }
 
         /// <summary>
-        /// Root volume size (in GB).
+        /// Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
         /// </summary>
         [Input("rootVolumeSize")]
         public Input<int>? RootVolumeSize { get; set; }
@@ -619,6 +637,12 @@ namespace Pulumi.SpotInst.Gke
         public Input<Inputs.OceanLaunchSpecCreateOptionsGetArgs>? CreateOptions { get; set; }
 
         /// <summary>
+        /// Set dynamic volume size properties. When using this object, you cannot use `RootVolumeSize`. You must use one or the other. When `DynamicVolumeSize` is configured, `RootVolumeType` is optional and defaults to `pd-standard`.
+        /// </summary>
+        [Input("dynamicVolumeSize")]
+        public Input<Inputs.OceanLaunchSpecDynamicVolumeSizeGetArgs>? DynamicVolumeSize { get; set; }
+
+        /// <summary>
         /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `InstanceTypes` is configured.
         /// </summary>
         [Input("filters")]
@@ -703,7 +727,7 @@ namespace Pulumi.SpotInst.Gke
         public Input<bool>? RestrictScaleDown { get; set; }
 
         /// <summary>
-        /// Root volume size (in GB).
+        /// Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
         /// </summary>
         [Input("rootVolumeSize")]
         public Input<int>? RootVolumeSize { get; set; }

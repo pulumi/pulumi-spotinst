@@ -25,6 +25,7 @@ class OceanLaunchSpecArgs:
                  autoscale_headrooms: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
                  autoscale_headrooms_automatics: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]] = None,
                  create_options: pulumi.Input[Optional['OceanLaunchSpecCreateOptionsArgs']] = None,
+                 dynamic_volume_size: pulumi.Input[Optional['OceanLaunchSpecDynamicVolumeSizeArgs']] = None,
                  filters: pulumi.Input[Optional['OceanLaunchSpecFiltersArgs']] = None,
                  instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  labels: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
@@ -52,6 +53,7 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[_builtins.str] ocean_id: The Ocean cluster ID.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
+        :param pulumi.Input['OceanLaunchSpecDynamicVolumeSizeArgs'] dynamic_volume_size: Set dynamic volume size properties. When using this object, you cannot use `root_volume_size`. You must use one or the other. When `dynamic_volume_size` is configured, `root_volume_type` is optional and defaults to `pd-standard`.
         :param pulumi.Input['OceanLaunchSpecFiltersArgs'] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instance_types` is configured.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in an Ocean cluster.
@@ -61,7 +63,7 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[_builtins.str] node_pool_name: The node pool you wish to use in your Launch Spec.
         :param pulumi.Input['OceanLaunchSpecResourceLimitsArgs'] resource_limits: The Ocean virtual node group resource limits object.
         :param pulumi.Input[_builtins.bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
-        :param pulumi.Input[_builtins.int] root_volume_size: Root volume size (in GB).
+        :param pulumi.Input[_builtins.int] root_volume_size: Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
         :param pulumi.Input[_builtins.str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
         :param pulumi.Input['OceanLaunchSpecSchedulingShutdownHoursArgs'] scheduling_shutdown_hours: An object used to specify times that the nodes in the virtual node group will be taken down.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
@@ -80,6 +82,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "autoscale_headrooms_automatics", autoscale_headrooms_automatics)
         if create_options is not None:
             pulumi.set(__self__, "create_options", create_options)
+        if dynamic_volume_size is not None:
+            pulumi.set(__self__, "dynamic_volume_size", dynamic_volume_size)
         if filters is not None:
             pulumi.set(__self__, "filters", filters)
         if instance_types is not None:
@@ -167,6 +171,18 @@ class OceanLaunchSpecArgs:
     @create_options.setter
     def create_options(self, value: pulumi.Input[Optional['OceanLaunchSpecCreateOptionsArgs']]):
         pulumi.set(self, "create_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dynamicVolumeSize")
+    def dynamic_volume_size(self) -> pulumi.Input[Optional['OceanLaunchSpecDynamicVolumeSizeArgs']]:
+        """
+        Set dynamic volume size properties. When using this object, you cannot use `root_volume_size`. You must use one or the other. When `dynamic_volume_size` is configured, `root_volume_type` is optional and defaults to `pd-standard`.
+        """
+        return pulumi.get(self, "dynamic_volume_size")
+
+    @dynamic_volume_size.setter
+    def dynamic_volume_size(self, value: pulumi.Input[Optional['OceanLaunchSpecDynamicVolumeSizeArgs']]):
+        pulumi.set(self, "dynamic_volume_size", value)
 
     @_builtins.property
     @pulumi.getter
@@ -280,7 +296,7 @@ class OceanLaunchSpecArgs:
     @pulumi.getter(name="rootVolumeSize")
     def root_volume_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Root volume size (in GB).
+        Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
         """
         return pulumi.get(self, "root_volume_size")
 
@@ -424,6 +440,7 @@ class _OceanLaunchSpecState:
                  autoscale_headrooms: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
                  autoscale_headrooms_automatics: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]] = None,
                  create_options: pulumi.Input[Optional['OceanLaunchSpecCreateOptionsArgs']] = None,
+                 dynamic_volume_size: pulumi.Input[Optional['OceanLaunchSpecDynamicVolumeSizeArgs']] = None,
                  filters: pulumi.Input[Optional['OceanLaunchSpecFiltersArgs']] = None,
                  instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  labels: pulumi.Input[Optional[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
@@ -451,6 +468,7 @@ class _OceanLaunchSpecState:
 
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
+        :param pulumi.Input['OceanLaunchSpecDynamicVolumeSizeArgs'] dynamic_volume_size: Set dynamic volume size properties. When using this object, you cannot use `root_volume_size`. You must use one or the other. When `dynamic_volume_size` is configured, `root_volume_type` is optional and defaults to `pd-standard`.
         :param pulumi.Input['OceanLaunchSpecFiltersArgs'] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instance_types` is configured.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in an Ocean cluster.
@@ -461,7 +479,7 @@ class _OceanLaunchSpecState:
         :param pulumi.Input[_builtins.str] ocean_id: The Ocean cluster ID.
         :param pulumi.Input['OceanLaunchSpecResourceLimitsArgs'] resource_limits: The Ocean virtual node group resource limits object.
         :param pulumi.Input[_builtins.bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
-        :param pulumi.Input[_builtins.int] root_volume_size: Root volume size (in GB).
+        :param pulumi.Input[_builtins.int] root_volume_size: Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
         :param pulumi.Input[_builtins.str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
         :param pulumi.Input['OceanLaunchSpecSchedulingShutdownHoursArgs'] scheduling_shutdown_hours: An object used to specify times that the nodes in the virtual node group will be taken down.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
@@ -479,6 +497,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "autoscale_headrooms_automatics", autoscale_headrooms_automatics)
         if create_options is not None:
             pulumi.set(__self__, "create_options", create_options)
+        if dynamic_volume_size is not None:
+            pulumi.set(__self__, "dynamic_volume_size", dynamic_volume_size)
         if filters is not None:
             pulumi.set(__self__, "filters", filters)
         if instance_types is not None:
@@ -556,6 +576,18 @@ class _OceanLaunchSpecState:
     @create_options.setter
     def create_options(self, value: pulumi.Input[Optional['OceanLaunchSpecCreateOptionsArgs']]):
         pulumi.set(self, "create_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dynamicVolumeSize")
+    def dynamic_volume_size(self) -> pulumi.Input[Optional['OceanLaunchSpecDynamicVolumeSizeArgs']]:
+        """
+        Set dynamic volume size properties. When using this object, you cannot use `root_volume_size`. You must use one or the other. When `dynamic_volume_size` is configured, `root_volume_type` is optional and defaults to `pd-standard`.
+        """
+        return pulumi.get(self, "dynamic_volume_size")
+
+    @dynamic_volume_size.setter
+    def dynamic_volume_size(self, value: pulumi.Input[Optional['OceanLaunchSpecDynamicVolumeSizeArgs']]):
+        pulumi.set(self, "dynamic_volume_size", value)
 
     @_builtins.property
     @pulumi.getter
@@ -681,7 +713,7 @@ class _OceanLaunchSpecState:
     @pulumi.getter(name="rootVolumeSize")
     def root_volume_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Root volume size (in GB).
+        Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
         """
         return pulumi.get(self, "root_volume_size")
 
@@ -828,6 +860,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  autoscale_headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroom']]]]] = None,
                  autoscale_headrooms_automatics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic']]]]] = None,
                  create_options: pulumi.Input[Optional[Union['OceanLaunchSpecCreateOptionsArgs', 'OceanLaunchSpecCreateOptionsArgsDict', 'outputs.OceanLaunchSpecCreateOptions']]] = None,
+                 dynamic_volume_size: pulumi.Input[Optional[Union['OceanLaunchSpecDynamicVolumeSizeArgs', 'OceanLaunchSpecDynamicVolumeSizeArgsDict', 'outputs.OceanLaunchSpecDynamicVolumeSize']]] = None,
                  filters: pulumi.Input[Optional[Union['OceanLaunchSpecFiltersArgs', 'OceanLaunchSpecFiltersArgsDict', 'outputs.OceanLaunchSpecFilters']]] = None,
                  instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict', 'outputs.OceanLaunchSpecLabel']]]]] = None,
@@ -877,6 +910,11 @@ class OceanLaunchSpec(pulumi.CustomResource):
             ],
             create_options={
                 "initial_nodes": 1,
+            },
+            dynamic_volume_size={
+                "base_size": 50,
+                "resource": "CPU",
+                "size_per_resource_unit": 20,
             },
             shielded_instance_config={
                 "enable_secure_boot": False,
@@ -966,6 +1004,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroom']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic']]]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
+        :param pulumi.Input[Union['OceanLaunchSpecDynamicVolumeSizeArgs', 'OceanLaunchSpecDynamicVolumeSizeArgsDict', 'outputs.OceanLaunchSpecDynamicVolumeSize']] dynamic_volume_size: Set dynamic volume size properties. When using this object, you cannot use `root_volume_size`. You must use one or the other. When `dynamic_volume_size` is configured, `root_volume_type` is optional and defaults to `pd-standard`.
         :param pulumi.Input[Union['OceanLaunchSpecFiltersArgs', 'OceanLaunchSpecFiltersArgsDict', 'outputs.OceanLaunchSpecFilters']] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instance_types` is configured.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict', 'outputs.OceanLaunchSpecLabel']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
@@ -976,7 +1015,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ocean_id: The Ocean cluster ID.
         :param pulumi.Input[Union['OceanLaunchSpecResourceLimitsArgs', 'OceanLaunchSpecResourceLimitsArgsDict', 'outputs.OceanLaunchSpecResourceLimits']] resource_limits: The Ocean virtual node group resource limits object.
         :param pulumi.Input[_builtins.bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
-        :param pulumi.Input[_builtins.int] root_volume_size: Root volume size (in GB).
+        :param pulumi.Input[_builtins.int] root_volume_size: Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
         :param pulumi.Input[_builtins.str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
         :param pulumi.Input[Union['OceanLaunchSpecSchedulingShutdownHoursArgs', 'OceanLaunchSpecSchedulingShutdownHoursArgsDict', 'outputs.OceanLaunchSpecSchedulingShutdownHours']] scheduling_shutdown_hours: An object used to specify times that the nodes in the virtual node group will be taken down.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict', 'outputs.OceanLaunchSpecSchedulingTask']]]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
@@ -1020,6 +1059,11 @@ class OceanLaunchSpec(pulumi.CustomResource):
             ],
             create_options={
                 "initial_nodes": 1,
+            },
+            dynamic_volume_size={
+                "base_size": 50,
+                "resource": "CPU",
+                "size_per_resource_unit": 20,
             },
             shielded_instance_config={
                 "enable_secure_boot": False,
@@ -1123,6 +1167,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  autoscale_headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroom']]]]] = None,
                  autoscale_headrooms_automatics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic']]]]] = None,
                  create_options: pulumi.Input[Optional[Union['OceanLaunchSpecCreateOptionsArgs', 'OceanLaunchSpecCreateOptionsArgsDict', 'outputs.OceanLaunchSpecCreateOptions']]] = None,
+                 dynamic_volume_size: pulumi.Input[Optional[Union['OceanLaunchSpecDynamicVolumeSizeArgs', 'OceanLaunchSpecDynamicVolumeSizeArgsDict', 'outputs.OceanLaunchSpecDynamicVolumeSize']]] = None,
                  filters: pulumi.Input[Optional[Union['OceanLaunchSpecFiltersArgs', 'OceanLaunchSpecFiltersArgsDict', 'outputs.OceanLaunchSpecFilters']]] = None,
                  instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict', 'outputs.OceanLaunchSpecLabel']]]]] = None,
@@ -1157,6 +1202,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["autoscale_headrooms"] = autoscale_headrooms
             __props__.__dict__["autoscale_headrooms_automatics"] = autoscale_headrooms_automatics
             __props__.__dict__["create_options"] = create_options
+            __props__.__dict__["dynamic_volume_size"] = dynamic_volume_size
             __props__.__dict__["filters"] = filters
             __props__.__dict__["instance_types"] = instance_types
             __props__.__dict__["labels"] = labels
@@ -1194,6 +1240,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             autoscale_headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroom']]]]] = None,
             autoscale_headrooms_automatics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic']]]]] = None,
             create_options: pulumi.Input[Optional[Union['OceanLaunchSpecCreateOptionsArgs', 'OceanLaunchSpecCreateOptionsArgsDict', 'outputs.OceanLaunchSpecCreateOptions']]] = None,
+            dynamic_volume_size: pulumi.Input[Optional[Union['OceanLaunchSpecDynamicVolumeSizeArgs', 'OceanLaunchSpecDynamicVolumeSizeArgsDict', 'outputs.OceanLaunchSpecDynamicVolumeSize']]] = None,
             filters: pulumi.Input[Optional[Union['OceanLaunchSpecFiltersArgs', 'OceanLaunchSpecFiltersArgsDict', 'outputs.OceanLaunchSpecFilters']]] = None,
             instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict', 'outputs.OceanLaunchSpecLabel']]]]] = None,
@@ -1225,6 +1272,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroom']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic']]]] autoscale_headrooms_automatics: Set automatic headroom per launch spec.
+        :param pulumi.Input[Union['OceanLaunchSpecDynamicVolumeSizeArgs', 'OceanLaunchSpecDynamicVolumeSizeArgsDict', 'outputs.OceanLaunchSpecDynamicVolumeSize']] dynamic_volume_size: Set dynamic volume size properties. When using this object, you cannot use `root_volume_size`. You must use one or the other. When `dynamic_volume_size` is configured, `root_volume_type` is optional and defaults to `pd-standard`.
         :param pulumi.Input[Union['OceanLaunchSpecFiltersArgs', 'OceanLaunchSpecFiltersArgsDict', 'outputs.OceanLaunchSpecFilters']] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured if cluster's `instance_types` is configured.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict', 'outputs.OceanLaunchSpecLabel']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
@@ -1235,7 +1283,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ocean_id: The Ocean cluster ID.
         :param pulumi.Input[Union['OceanLaunchSpecResourceLimitsArgs', 'OceanLaunchSpecResourceLimitsArgsDict', 'outputs.OceanLaunchSpecResourceLimits']] resource_limits: The Ocean virtual node group resource limits object.
         :param pulumi.Input[_builtins.bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
-        :param pulumi.Input[_builtins.int] root_volume_size: Root volume size (in GB).
+        :param pulumi.Input[_builtins.int] root_volume_size: Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
         :param pulumi.Input[_builtins.str] root_volume_type: Root volume disk type. Valid values: `"pd-standard"`, `"pd-ssd"`, `"pd-balanced"`.
         :param pulumi.Input[Union['OceanLaunchSpecSchedulingShutdownHoursArgs', 'OceanLaunchSpecSchedulingShutdownHoursArgsDict', 'outputs.OceanLaunchSpecSchedulingShutdownHours']] scheduling_shutdown_hours: An object used to specify times that the nodes in the virtual node group will be taken down.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OceanLaunchSpecSchedulingTaskArgs', 'OceanLaunchSpecSchedulingTaskArgsDict', 'outputs.OceanLaunchSpecSchedulingTask']]]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
@@ -1254,6 +1302,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["autoscale_headrooms"] = autoscale_headrooms
         __props__.__dict__["autoscale_headrooms_automatics"] = autoscale_headrooms_automatics
         __props__.__dict__["create_options"] = create_options
+        __props__.__dict__["dynamic_volume_size"] = dynamic_volume_size
         __props__.__dict__["filters"] = filters
         __props__.__dict__["instance_types"] = instance_types
         __props__.__dict__["labels"] = labels
@@ -1284,6 +1333,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             autoscale_headrooms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomArgs', 'OceanLaunchSpecAutoscaleHeadroomArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroom']]]]] = None,
             autoscale_headrooms_automatics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs', 'OceanLaunchSpecAutoscaleHeadroomsAutomaticArgsDict', 'outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic']]]]] = None,
             create_options: pulumi.Input[Optional[Union['OceanLaunchSpecCreateOptionsArgs', 'OceanLaunchSpecCreateOptionsArgsDict', 'outputs.OceanLaunchSpecCreateOptions']]] = None,
+            dynamic_volume_size: pulumi.Input[Optional[Union['OceanLaunchSpecDynamicVolumeSizeArgs', 'OceanLaunchSpecDynamicVolumeSizeArgsDict', 'outputs.OceanLaunchSpecDynamicVolumeSize']]] = None,
             filters: pulumi.Input[Optional[Union['OceanLaunchSpecFiltersArgs', 'OceanLaunchSpecFiltersArgsDict', 'outputs.OceanLaunchSpecFilters']]] = None,
             instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OceanLaunchSpecLabelArgs', 'OceanLaunchSpecLabelArgsDict', 'outputs.OceanLaunchSpecLabel']]]]] = None,
@@ -1310,6 +1360,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__["autoscaleHeadrooms"] = autoscale_headrooms
         __props__["autoscaleHeadroomsAutomatics"] = autoscale_headrooms_automatics
         __props__["createOptions"] = create_options
+        __props__["dynamicVolumeSize"] = dynamic_volume_size
         __props__["filters"] = filters
         __props__["instanceTypes"] = instance_types
         __props__["labels"] = labels
@@ -1354,6 +1405,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
     @pulumi.getter(name="createOptions")
     def create_options(self) -> pulumi.Output[Optional['outputs.OceanLaunchSpecCreateOptions']]:
         return pulumi.get(self, "create_options")
+
+    @_builtins.property
+    @pulumi.getter(name="dynamicVolumeSize")
+    def dynamic_volume_size(self) -> pulumi.Output[Optional['outputs.OceanLaunchSpecDynamicVolumeSize']]:
+        """
+        Set dynamic volume size properties. When using this object, you cannot use `root_volume_size`. You must use one or the other. When `dynamic_volume_size` is configured, `root_volume_type` is optional and defaults to `pd-standard`.
+        """
+        return pulumi.get(self, "dynamic_volume_size")
 
     @_builtins.property
     @pulumi.getter
@@ -1439,7 +1498,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
     @pulumi.getter(name="rootVolumeSize")
     def root_volume_size(self) -> pulumi.Output[_builtins.int]:
         """
-        Root volume size (in GB).
+        Optionally set the root disk size (in GB). Configure either this field or dynamicVolumeSize, not both.
         """
         return pulumi.get(self, "root_volume_size")
 

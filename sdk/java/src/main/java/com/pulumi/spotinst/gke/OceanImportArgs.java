@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.gke.inputs.OceanImportAutoUpdateArgs;
 import com.pulumi.spotinst.gke.inputs.OceanImportAutoscalerArgs;
 import com.pulumi.spotinst.gke.inputs.OceanImportBackendServiceArgs;
+import com.pulumi.spotinst.gke.inputs.OceanImportDynamicVolumeSizeArgs;
 import com.pulumi.spotinst.gke.inputs.OceanImportFiltersArgs;
 import com.pulumi.spotinst.gke.inputs.OceanImportScheduledTaskArgs;
 import com.pulumi.spotinst.gke.inputs.OceanImportShieldedInstanceConfigArgs;
@@ -130,6 +131,21 @@ public final class OceanImportArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> desiredCapacity() {
         return Optional.ofNullable(this.desiredCapacity);
+    }
+
+    /**
+     * Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+     * 
+     */
+    @Import(name="dynamicVolumeSize")
+    private @Nullable Output<OceanImportDynamicVolumeSizeArgs> dynamicVolumeSize;
+
+    /**
+     * @return Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+     * 
+     */
+    public Optional<Output<OceanImportDynamicVolumeSizeArgs>> dynamicVolumeSize() {
+        return Optional.ofNullable(this.dynamicVolumeSize);
     }
 
     /**
@@ -299,6 +315,7 @@ public final class OceanImportArgs extends com.pulumi.resources.ResourceArgs {
         this.clusterName = $.clusterName;
         this.controllerClusterId = $.controllerClusterId;
         this.desiredCapacity = $.desiredCapacity;
+        this.dynamicVolumeSize = $.dynamicVolumeSize;
         this.filters = $.filters;
         this.location = $.location;
         this.maxSize = $.maxSize;
@@ -505,6 +522,27 @@ public final class OceanImportArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder desiredCapacity(Integer desiredCapacity) {
             return desiredCapacity(Output.of(desiredCapacity));
+        }
+
+        /**
+         * @param dynamicVolumeSize Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicVolumeSize(@Nullable Output<OceanImportDynamicVolumeSizeArgs> dynamicVolumeSize) {
+            $.dynamicVolumeSize = dynamicVolumeSize;
+            return this;
+        }
+
+        /**
+         * @param dynamicVolumeSize Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicVolumeSize(OceanImportDynamicVolumeSizeArgs dynamicVolumeSize) {
+            return dynamicVolumeSize(Output.of(dynamicVolumeSize));
         }
 
         /**

@@ -57,6 +57,11 @@ import * as utilities from "../utilities";
  *         enableSecureBoot: true,
  *         enableIntegrityMonitoring: true,
  *     },
+ *     dynamicVolumeSize: {
+ *         baseSize: 50,
+ *         resource: "CPU",
+ *         sizePerResourceUnit: 20,
+ *     },
  *     useAsTemplateOnly: false,
  * });
  * ```
@@ -130,6 +135,10 @@ export class OceanImport extends pulumi.CustomResource {
      */
     declare public readonly desiredCapacity: pulumi.Output<number | undefined>;
     /**
+     * Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+     */
+    declare public readonly dynamicVolumeSize: pulumi.Output<outputs.gke.OceanImportDynamicVolumeSize | undefined>;
+    /**
      * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
      */
     declare public readonly filters: pulumi.Output<outputs.gke.OceanImportFilters | undefined>;
@@ -192,6 +201,7 @@ export class OceanImport extends pulumi.CustomResource {
             resourceInputs["clusterName"] = state?.clusterName;
             resourceInputs["controllerClusterId"] = state?.controllerClusterId;
             resourceInputs["desiredCapacity"] = state?.desiredCapacity;
+            resourceInputs["dynamicVolumeSize"] = state?.dynamicVolumeSize;
             resourceInputs["filters"] = state?.filters;
             resourceInputs["location"] = state?.location;
             resourceInputs["maxSize"] = state?.maxSize;
@@ -218,6 +228,7 @@ export class OceanImport extends pulumi.CustomResource {
             resourceInputs["clusterName"] = args?.clusterName;
             resourceInputs["controllerClusterId"] = args?.controllerClusterId;
             resourceInputs["desiredCapacity"] = args?.desiredCapacity;
+            resourceInputs["dynamicVolumeSize"] = args?.dynamicVolumeSize;
             resourceInputs["filters"] = args?.filters;
             resourceInputs["location"] = args?.location;
             resourceInputs["maxSize"] = args?.maxSize;
@@ -269,6 +280,10 @@ export interface OceanImportState {
      * The number of instances to launch and maintain in the cluster.
      */
     desiredCapacity?: pulumi.Input<number | undefined>;
+    /**
+     * Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+     */
+    dynamicVolumeSize?: pulumi.Input<inputs.gke.OceanImportDynamicVolumeSize | undefined>;
     /**
      * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
      */
@@ -344,6 +359,10 @@ export interface OceanImportArgs {
      * The number of instances to launch and maintain in the cluster.
      */
     desiredCapacity?: pulumi.Input<number | undefined>;
+    /**
+     * Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+     */
+    dynamicVolumeSize?: pulumi.Input<inputs.gke.OceanImportDynamicVolumeSize | undefined>;
     /**
      * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
      */

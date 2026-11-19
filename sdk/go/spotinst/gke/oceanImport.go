@@ -78,6 +78,11 @@ import (
 //					EnableSecureBoot:          pulumi.Bool(true),
 //					EnableIntegrityMonitoring: pulumi.Bool(true),
 //				},
+//				DynamicVolumeSize: &gke.OceanImportDynamicVolumeSizeArgs{
+//					BaseSize:            pulumi.Int(50),
+//					Resource:            pulumi.String("CPU"),
+//					SizePerResourceUnit: pulumi.Int(20),
+//				},
 //				UseAsTemplateOnly: pulumi.Bool(false),
 //			})
 //			if err != nil {
@@ -106,6 +111,8 @@ type OceanImport struct {
 	ControllerClusterId pulumi.StringOutput `pulumi:"controllerClusterId"`
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntPtrOutput `pulumi:"desiredCapacity"`
+	// Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+	DynamicVolumeSize OceanImportDynamicVolumeSizePtrOutput `pulumi:"dynamicVolumeSize"`
 	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
 	Filters OceanImportFiltersPtrOutput `pulumi:"filters"`
 	// The zone the master cluster is located in.
@@ -180,6 +187,8 @@ type oceanImportState struct {
 	ControllerClusterId *string `pulumi:"controllerClusterId"`
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
+	// Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+	DynamicVolumeSize *OceanImportDynamicVolumeSize `pulumi:"dynamicVolumeSize"`
 	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
 	Filters *OceanImportFilters `pulumi:"filters"`
 	// The zone the master cluster is located in.
@@ -219,6 +228,8 @@ type OceanImportState struct {
 	ControllerClusterId pulumi.StringPtrInput
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntPtrInput
+	// Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+	DynamicVolumeSize OceanImportDynamicVolumeSizePtrInput
 	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
 	Filters OceanImportFiltersPtrInput
 	// The zone the master cluster is located in.
@@ -267,6 +278,8 @@ type oceanImportArgs struct {
 	ControllerClusterId *string `pulumi:"controllerClusterId"`
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
+	// Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+	DynamicVolumeSize *OceanImportDynamicVolumeSize `pulumi:"dynamicVolumeSize"`
 	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
 	Filters *OceanImportFilters `pulumi:"filters"`
 	// The zone the master cluster is located in.
@@ -306,6 +319,8 @@ type OceanImportArgs struct {
 	ControllerClusterId pulumi.StringPtrInput
 	// The number of instances to launch and maintain in the cluster.
 	DesiredCapacity pulumi.IntPtrInput
+	// Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+	DynamicVolumeSize OceanImportDynamicVolumeSizePtrInput
 	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
 	Filters OceanImportFiltersPtrInput
 	// The zone the master cluster is located in.
@@ -453,6 +468,11 @@ func (o OceanImportOutput) ControllerClusterId() pulumi.StringOutput {
 // The number of instances to launch and maintain in the cluster.
 func (o OceanImportOutput) DesiredCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImport) pulumi.IntPtrOutput { return v.DesiredCapacity }).(pulumi.IntPtrOutput)
+}
+
+// Set dynamic volume size properties. When using this object, you cannot use `rootVolumeSize`. You must use one or the other. When `dynamicVolumeSize` is configured, `rootVolumeType` is optional and defaults to `pd-standard`.
+func (o OceanImportOutput) DynamicVolumeSize() OceanImportDynamicVolumeSizePtrOutput {
+	return o.ApplyT(func(v *OceanImport) OceanImportDynamicVolumeSizePtrOutput { return v.DynamicVolumeSize }).(OceanImportDynamicVolumeSizePtrOutput)
 }
 
 // List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
