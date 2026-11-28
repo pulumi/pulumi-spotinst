@@ -202,6 +202,7 @@ import (
 //				FallbackToOndemand:       pulumi.Bool(true),
 //				DrainingTimeout:          pulumi.Int(600),
 //				ShouldUtilizeCommitments: pulumi.Bool(true),
+//				Orientation:              pulumi.String("cost"),
 //				Taints: azure.OceanNpTaintArray{
 //					&azure.OceanNpTaintArgs{
 //						Key:    pulumi.String("taintKey"),
@@ -319,6 +320,8 @@ type OceanNp struct {
 	MinCount pulumi.IntPtrOutput `pulumi:"minCount"`
 	// Add a name for the Ocean cluster.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+	Orientation pulumi.StringPtrOutput `pulumi:"orientation"`
 	// The size of the OS disk in GB.
 	OsDiskSizeGb pulumi.IntPtrOutput `pulumi:"osDiskSizeGb"`
 	// The type of the OS disk.
@@ -440,6 +443,8 @@ type oceanNpState struct {
 	MinCount *int `pulumi:"minCount"`
 	// Add a name for the Ocean cluster.
 	Name *string `pulumi:"name"`
+	// Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+	Orientation *string `pulumi:"orientation"`
 	// The size of the OS disk in GB.
 	OsDiskSizeGb *int `pulumi:"osDiskSizeGb"`
 	// The type of the OS disk.
@@ -514,6 +519,8 @@ type OceanNpState struct {
 	MinCount pulumi.IntPtrInput
 	// Add a name for the Ocean cluster.
 	Name pulumi.StringPtrInput
+	// Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+	Orientation pulumi.StringPtrInput
 	// The size of the OS disk in GB.
 	OsDiskSizeGb pulumi.IntPtrInput
 	// The type of the OS disk.
@@ -598,6 +605,8 @@ type oceanNpArgs struct {
 	MinCount *int `pulumi:"minCount"`
 	// Add a name for the Ocean cluster.
 	Name *string `pulumi:"name"`
+	// Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+	Orientation *string `pulumi:"orientation"`
 	// The size of the OS disk in GB.
 	OsDiskSizeGb *int `pulumi:"osDiskSizeGb"`
 	// The type of the OS disk.
@@ -673,6 +682,8 @@ type OceanNpArgs struct {
 	MinCount pulumi.IntPtrInput
 	// Add a name for the Ocean cluster.
 	Name pulumi.StringPtrInput
+	// Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+	Orientation pulumi.StringPtrInput
 	// The size of the OS disk in GB.
 	OsDiskSizeGb pulumi.IntPtrInput
 	// The type of the OS disk.
@@ -903,6 +914,11 @@ func (o OceanNpOutput) MinCount() pulumi.IntPtrOutput {
 // Add a name for the Ocean cluster.
 func (o OceanNpOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+func (o OceanNpOutput) Orientation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanNp) pulumi.StringPtrOutput { return v.Orientation }).(pulumi.StringPtrOutput)
 }
 
 // The size of the OS disk in GB.

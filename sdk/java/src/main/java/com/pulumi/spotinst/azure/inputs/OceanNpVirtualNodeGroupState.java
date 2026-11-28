@@ -282,6 +282,21 @@ public final class OceanNpVirtualNodeGroupState extends com.pulumi.resources.Res
     }
 
     /**
+     * Controls and manages optimization priorities. Valid values: `&#34;cost&#34;`, `&#34;availability&#34;`.
+     * 
+     */
+    @Import(name="orientation")
+    private @Nullable Output<String> orientation;
+
+    /**
+     * @return Controls and manages optimization priorities. Valid values: `&#34;cost&#34;`, `&#34;availability&#34;`.
+     * 
+     */
+    public Optional<Output<String>> orientation() {
+        return Optional.ofNullable(this.orientation);
+    }
+
+    /**
      * The size of the OS disk in GB.
      * 
      */
@@ -495,6 +510,7 @@ public final class OceanNpVirtualNodeGroupState extends com.pulumi.resources.Res
         this.minCount = $.minCount;
         this.name = $.name;
         this.oceanId = $.oceanId;
+        this.orientation = $.orientation;
         this.osDiskSizeGb = $.osDiskSizeGb;
         this.osDiskType = $.osDiskType;
         this.osSku = $.osSku;
@@ -924,6 +940,27 @@ public final class OceanNpVirtualNodeGroupState extends com.pulumi.resources.Res
          */
         public Builder oceanId(String oceanId) {
             return oceanId(Output.of(oceanId));
+        }
+
+        /**
+         * @param orientation Controls and manages optimization priorities. Valid values: `&#34;cost&#34;`, `&#34;availability&#34;`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orientation(@Nullable Output<String> orientation) {
+            $.orientation = orientation;
+            return this;
+        }
+
+        /**
+         * @param orientation Controls and manages optimization priorities. Valid values: `&#34;cost&#34;`, `&#34;availability&#34;`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orientation(String orientation) {
+            return orientation(Output.of(orientation));
         }
 
         /**

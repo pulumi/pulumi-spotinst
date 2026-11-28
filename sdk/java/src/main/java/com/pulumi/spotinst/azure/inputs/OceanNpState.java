@@ -363,6 +363,21 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Controls and manages optimization priorities. Valid values: `&#34;cost&#34;`, `&#34;availability&#34;`.
+     * 
+     */
+    @Import(name="orientation")
+    private @Nullable Output<String> orientation;
+
+    /**
+     * @return Controls and manages optimization priorities. Valid values: `&#34;cost&#34;`, `&#34;availability&#34;`.
+     * 
+     */
+    public Optional<Output<String>> orientation() {
+        return Optional.ofNullable(this.orientation);
+    }
+
+    /**
      * The size of the OS disk in GB.
      * 
      */
@@ -575,6 +590,7 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         this.maxPodsPerNode = $.maxPodsPerNode;
         this.minCount = $.minCount;
         this.name = $.name;
+        this.orientation = $.orientation;
         this.osDiskSizeGb = $.osDiskSizeGb;
         this.osDiskType = $.osDiskType;
         this.osSku = $.osSku;
@@ -1109,6 +1125,27 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param orientation Controls and manages optimization priorities. Valid values: `&#34;cost&#34;`, `&#34;availability&#34;`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orientation(@Nullable Output<String> orientation) {
+            $.orientation = orientation;
+            return this;
+        }
+
+        /**
+         * @param orientation Controls and manages optimization priorities. Valid values: `&#34;cost&#34;`, `&#34;availability&#34;`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orientation(String orientation) {
+            return orientation(Output.of(orientation));
         }
 
         /**

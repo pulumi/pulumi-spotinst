@@ -145,6 +145,7 @@ namespace Pulumi.SpotInst.Azure
     ///         DrainingTimeout = 600,
     ///         ShouldUtilizeCommitments = true,
     ///         RestrictScaleDown = true,
+    ///         Orientation = "cost",
     ///         Taints = new[]
     ///         {
     ///             new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupTaintArgs
@@ -326,6 +327,12 @@ namespace Pulumi.SpotInst.Azure
         /// </summary>
         [Output("oceanId")]
         public Output<string> OceanId { get; private set; } = null!;
+
+        /// <summary>
+        /// Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+        /// </summary>
+        [Output("orientation")]
+        public Output<string?> Orientation { get; private set; } = null!;
 
         /// <summary>
         /// The size of the OS disk in GB.
@@ -584,6 +591,12 @@ namespace Pulumi.SpotInst.Azure
         public Input<string> OceanId { get; set; } = null!;
 
         /// <summary>
+        /// Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+        /// </summary>
+        [Input("orientation")]
+        public Input<string>? Orientation { get; set; }
+
+        /// <summary>
         /// The size of the OS disk in GB.
         /// </summary>
         [Input("osDiskSizeGb")]
@@ -829,6 +842,12 @@ namespace Pulumi.SpotInst.Azure
         /// </summary>
         [Input("oceanId")]
         public Input<string>? OceanId { get; set; }
+
+        /// <summary>
+        /// Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+        /// </summary>
+        [Input("orientation")]
+        public Input<string>? Orientation { get; set; }
 
         /// <summary>
         /// The size of the OS disk in GB.

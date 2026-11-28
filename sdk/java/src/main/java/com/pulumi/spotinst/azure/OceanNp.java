@@ -238,6 +238,7 @@ import javax.annotation.Nullable;
  *             .fallbackToOndemand(true)
  *             .drainingTimeout(600)
  *             .shouldUtilizeCommitments(true)
+ *             .orientation("cost")
  *             .taints(OceanNpTaintArgs.builder()
  *                 .key("taintKey")
  *                 .value("taintValue")
@@ -604,6 +605,20 @@ public class OceanNp extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Controls and manages optimization priorities. Valid values: `&#34;cost&#34;`, `&#34;availability&#34;`.
+     * 
+     */
+    @Export(name="orientation", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> orientation;
+
+    /**
+     * @return Controls and manages optimization priorities. Valid values: `&#34;cost&#34;`, `&#34;availability&#34;`.
+     * 
+     */
+    public Output<Optional<String>> orientation() {
+        return Codegen.optional(this.orientation);
     }
     /**
      * The size of the OS disk in GB.

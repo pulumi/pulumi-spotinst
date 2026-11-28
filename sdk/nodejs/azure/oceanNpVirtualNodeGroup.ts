@@ -107,6 +107,7 @@ import * as utilities from "../utilities";
  *     drainingTimeout: 600,
  *     shouldUtilizeCommitments: true,
  *     restrictScaleDown: true,
+ *     orientation: "cost",
  *     taints: [{
  *         key: "taintKey",
  *         value: "taintValue",
@@ -273,6 +274,10 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
      */
     declare public readonly oceanId: pulumi.Output<string>;
     /**
+     * Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+     */
+    declare public readonly orientation: pulumi.Output<string | undefined>;
+    /**
      * The size of the OS disk in GB.
      */
     declare public readonly osDiskSizeGb: pulumi.Output<number | undefined>;
@@ -353,6 +358,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
             resourceInputs["minCount"] = state?.minCount;
             resourceInputs["name"] = state?.name;
             resourceInputs["oceanId"] = state?.oceanId;
+            resourceInputs["orientation"] = state?.orientation;
             resourceInputs["osDiskSizeGb"] = state?.osDiskSizeGb;
             resourceInputs["osDiskType"] = state?.osDiskType;
             resourceInputs["osSku"] = state?.osSku;
@@ -389,6 +395,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
             resourceInputs["minCount"] = args?.minCount;
             resourceInputs["name"] = args?.name;
             resourceInputs["oceanId"] = args?.oceanId;
+            resourceInputs["orientation"] = args?.orientation;
             resourceInputs["osDiskSizeGb"] = args?.osDiskSizeGb;
             resourceInputs["osDiskType"] = args?.osDiskType;
             resourceInputs["osSku"] = args?.osSku;
@@ -481,6 +488,10 @@ export interface OceanNpVirtualNodeGroupState {
      * The Ocean cluster identifier. Required for Launch Spec creation.
      */
     oceanId?: pulumi.Input<string | undefined>;
+    /**
+     * Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+     */
+    orientation?: pulumi.Input<string | undefined>;
     /**
      * The size of the OS disk in GB.
      */
@@ -605,6 +616,10 @@ export interface OceanNpVirtualNodeGroupArgs {
      * The Ocean cluster identifier. Required for Launch Spec creation.
      */
     oceanId: pulumi.Input<string>;
+    /**
+     * Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+     */
+    orientation?: pulumi.Input<string | undefined>;
     /**
      * The size of the OS disk in GB.
      */
