@@ -160,6 +160,7 @@ import * as utilities from "../utilities";
  *     fallbackToOndemand: true,
  *     drainingTimeout: 600,
  *     shouldUtilizeCommitments: true,
+ *     orientation: "cost",
  *     taints: [{
  *         key: "taintKey",
  *         value: "taintValue",
@@ -344,6 +345,10 @@ export class OceanNp extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+     */
+    declare public readonly orientation: pulumi.Output<string | undefined>;
+    /**
      * The size of the OS disk in GB.
      */
     declare public readonly osDiskSizeGb: pulumi.Output<number | undefined>;
@@ -428,6 +433,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["maxPodsPerNode"] = state?.maxPodsPerNode;
             resourceInputs["minCount"] = state?.minCount;
             resourceInputs["name"] = state?.name;
+            resourceInputs["orientation"] = state?.orientation;
             resourceInputs["osDiskSizeGb"] = state?.osDiskSizeGb;
             resourceInputs["osDiskType"] = state?.osDiskType;
             resourceInputs["osSku"] = state?.osSku;
@@ -486,6 +492,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["maxPodsPerNode"] = args?.maxPodsPerNode;
             resourceInputs["minCount"] = args?.minCount;
             resourceInputs["name"] = args?.name;
+            resourceInputs["orientation"] = args?.orientation;
             resourceInputs["osDiskSizeGb"] = args?.osDiskSizeGb;
             resourceInputs["osDiskType"] = args?.osDiskType;
             resourceInputs["osSku"] = args?.osSku;
@@ -596,6 +603,10 @@ export interface OceanNpState {
      * Add a name for the Ocean cluster.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+     */
+    orientation?: pulumi.Input<string | undefined>;
     /**
      * The size of the OS disk in GB.
      */
@@ -735,6 +746,10 @@ export interface OceanNpArgs {
      * Add a name for the Ocean cluster.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+     */
+    orientation?: pulumi.Input<string | undefined>;
     /**
      * The size of the OS disk in GB.
      */

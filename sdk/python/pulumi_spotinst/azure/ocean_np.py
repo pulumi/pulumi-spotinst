@@ -45,6 +45,7 @@ class OceanNpArgs:
                  max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  min_count: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 orientation: pulumi.Input[Optional[_builtins.str]] = None,
                  os_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  os_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
                  os_sku: pulumi.Input[Optional[_builtins.str]] = None,
@@ -84,6 +85,7 @@ class OceanNpArgs:
         :param pulumi.Input[_builtins.int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[_builtins.int] min_count: Minimum node count limit.
         :param pulumi.Input[_builtins.str] name: Add a name for the Ocean cluster.
+        :param pulumi.Input[_builtins.str] orientation: Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
         :param pulumi.Input[_builtins.int] os_disk_size_gb: The size of the OS disk in GB.
         :param pulumi.Input[_builtins.str] os_disk_type: The type of the OS disk.
         :param pulumi.Input[_builtins.str] os_sku: The OS SKU of the OS type. Must correlate with the os type.
@@ -138,6 +140,8 @@ class OceanNpArgs:
             pulumi.set(__self__, "min_count", min_count)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if orientation is not None:
+            pulumi.set(__self__, "orientation", orientation)
         if os_disk_size_gb is not None:
             pulumi.set(__self__, "os_disk_size_gb", os_disk_size_gb)
         if os_disk_type is not None:
@@ -446,6 +450,18 @@ class OceanNpArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def orientation(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+        """
+        return pulumi.get(self, "orientation")
+
+    @orientation.setter
+    def orientation(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "orientation", value)
+
+    @_builtins.property
     @pulumi.getter(name="osDiskSizeGb")
     def os_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -632,6 +648,7 @@ class _OceanNpState:
                  max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  min_count: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 orientation: pulumi.Input[Optional[_builtins.str]] = None,
                  os_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  os_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
                  os_sku: pulumi.Input[Optional[_builtins.str]] = None,
@@ -671,6 +688,7 @@ class _OceanNpState:
         :param pulumi.Input[_builtins.int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[_builtins.int] min_count: Minimum node count limit.
         :param pulumi.Input[_builtins.str] name: Add a name for the Ocean cluster.
+        :param pulumi.Input[_builtins.str] orientation: Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
         :param pulumi.Input[_builtins.int] os_disk_size_gb: The size of the OS disk in GB.
         :param pulumi.Input[_builtins.str] os_disk_type: The type of the OS disk.
         :param pulumi.Input[_builtins.str] os_sku: The OS SKU of the OS type. Must correlate with the os type.
@@ -731,6 +749,8 @@ class _OceanNpState:
             pulumi.set(__self__, "min_count", min_count)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if orientation is not None:
+            pulumi.set(__self__, "orientation", orientation)
         if os_disk_size_gb is not None:
             pulumi.set(__self__, "os_disk_size_gb", os_disk_size_gb)
         if os_disk_type is not None:
@@ -1039,6 +1059,18 @@ class _OceanNpState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def orientation(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+        """
+        return pulumi.get(self, "orientation")
+
+    @orientation.setter
+    def orientation(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "orientation", value)
+
+    @_builtins.property
     @pulumi.getter(name="osDiskSizeGb")
     def os_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -1228,6 +1260,7 @@ class OceanNp(pulumi.CustomResource):
                  max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  min_count: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 orientation: pulumi.Input[Optional[_builtins.str]] = None,
                  os_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  os_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
                  os_sku: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1396,6 +1429,7 @@ class OceanNp(pulumi.CustomResource):
             fallback_to_ondemand=True,
             draining_timeout=600,
             should_utilize_commitments=True,
+            orientation="cost",
             taints=[{
                 "key": "taintKey",
                 "value": "taintValue",
@@ -1478,6 +1512,7 @@ class OceanNp(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[_builtins.int] min_count: Minimum node count limit.
         :param pulumi.Input[_builtins.str] name: Add a name for the Ocean cluster.
+        :param pulumi.Input[_builtins.str] orientation: Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
         :param pulumi.Input[_builtins.int] os_disk_size_gb: The size of the OS disk in GB.
         :param pulumi.Input[_builtins.str] os_disk_type: The type of the OS disk.
         :param pulumi.Input[_builtins.str] os_sku: The OS SKU of the OS type. Must correlate with the os type.
@@ -1649,6 +1684,7 @@ class OceanNp(pulumi.CustomResource):
             fallback_to_ondemand=True,
             draining_timeout=600,
             should_utilize_commitments=True,
+            orientation="cost",
             taints=[{
                 "key": "taintKey",
                 "value": "taintValue",
@@ -1746,6 +1782,7 @@ class OceanNp(pulumi.CustomResource):
                  max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  min_count: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 orientation: pulumi.Input[Optional[_builtins.str]] = None,
                  os_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  os_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
                  os_sku: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1805,6 +1842,7 @@ class OceanNp(pulumi.CustomResource):
             __props__.__dict__["max_pods_per_node"] = max_pods_per_node
             __props__.__dict__["min_count"] = min_count
             __props__.__dict__["name"] = name
+            __props__.__dict__["orientation"] = orientation
             __props__.__dict__["os_disk_size_gb"] = os_disk_size_gb
             __props__.__dict__["os_disk_type"] = os_disk_type
             __props__.__dict__["os_sku"] = os_sku
@@ -1853,6 +1891,7 @@ class OceanNp(pulumi.CustomResource):
             max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
             min_count: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            orientation: pulumi.Input[Optional[_builtins.str]] = None,
             os_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
             os_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
             os_sku: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1896,6 +1935,7 @@ class OceanNp(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_pods_per_node: The maximum number of pods per node in the node pools.
         :param pulumi.Input[_builtins.int] min_count: Minimum node count limit.
         :param pulumi.Input[_builtins.str] name: Add a name for the Ocean cluster.
+        :param pulumi.Input[_builtins.str] orientation: Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
         :param pulumi.Input[_builtins.int] os_disk_size_gb: The size of the OS disk in GB.
         :param pulumi.Input[_builtins.str] os_disk_type: The type of the OS disk.
         :param pulumi.Input[_builtins.str] os_sku: The OS SKU of the OS type. Must correlate with the os type.
@@ -1936,6 +1976,7 @@ class OceanNp(pulumi.CustomResource):
         __props__.__dict__["max_pods_per_node"] = max_pods_per_node
         __props__.__dict__["min_count"] = min_count
         __props__.__dict__["name"] = name
+        __props__.__dict__["orientation"] = orientation
         __props__.__dict__["os_disk_size_gb"] = os_disk_size_gb
         __props__.__dict__["os_disk_type"] = os_disk_type
         __props__.__dict__["os_sku"] = os_sku
@@ -1979,6 +2020,7 @@ class OceanNp(pulumi.CustomResource):
             max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
             min_count: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            orientation: pulumi.Input[Optional[_builtins.str]] = None,
             os_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
             os_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
             os_sku: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2018,6 +2060,7 @@ class OceanNp(pulumi.CustomResource):
         __props__["maxPodsPerNode"] = max_pods_per_node
         __props__["minCount"] = min_count
         __props__["name"] = name
+        __props__["orientation"] = orientation
         __props__["osDiskSizeGb"] = os_disk_size_gb
         __props__["osDiskType"] = os_disk_type
         __props__["osSku"] = os_sku
@@ -2215,6 +2258,14 @@ class OceanNp(pulumi.CustomResource):
         Add a name for the Ocean cluster.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def orientation(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+        """
+        return pulumi.get(self, "orientation")
 
     @_builtins.property
     @pulumi.getter(name="osDiskSizeGb")

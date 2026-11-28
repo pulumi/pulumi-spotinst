@@ -132,6 +132,7 @@ import (
 //				DrainingTimeout:          pulumi.Int(600),
 //				ShouldUtilizeCommitments: pulumi.Bool(true),
 //				RestrictScaleDown:        pulumi.Bool(true),
+//				Orientation:              pulumi.String("cost"),
 //				Taints: azure.OceanNpVirtualNodeGroupTaintArray{
 //					&azure.OceanNpVirtualNodeGroupTaintArgs{
 //						Key:    pulumi.String("taintKey"),
@@ -237,6 +238,8 @@ type OceanNpVirtualNodeGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Ocean cluster identifier. Required for Launch Spec creation.
 	OceanId pulumi.StringOutput `pulumi:"oceanId"`
+	// Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+	Orientation pulumi.StringPtrOutput `pulumi:"orientation"`
 	// The size of the OS disk in GB.
 	OsDiskSizeGb pulumi.IntPtrOutput `pulumi:"osDiskSizeGb"`
 	// The type of the OS disk.
@@ -332,6 +335,8 @@ type oceanNpVirtualNodeGroupState struct {
 	Name *string `pulumi:"name"`
 	// The Ocean cluster identifier. Required for Launch Spec creation.
 	OceanId *string `pulumi:"oceanId"`
+	// Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+	Orientation *string `pulumi:"orientation"`
 	// The size of the OS disk in GB.
 	OsDiskSizeGb *int `pulumi:"osDiskSizeGb"`
 	// The type of the OS disk.
@@ -395,6 +400,8 @@ type OceanNpVirtualNodeGroupState struct {
 	Name pulumi.StringPtrInput
 	// The Ocean cluster identifier. Required for Launch Spec creation.
 	OceanId pulumi.StringPtrInput
+	// Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+	Orientation pulumi.StringPtrInput
 	// The size of the OS disk in GB.
 	OsDiskSizeGb pulumi.IntPtrInput
 	// The type of the OS disk.
@@ -468,6 +475,8 @@ type oceanNpVirtualNodeGroupArgs struct {
 	Name *string `pulumi:"name"`
 	// The Ocean cluster identifier. Required for Launch Spec creation.
 	OceanId string `pulumi:"oceanId"`
+	// Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+	Orientation *string `pulumi:"orientation"`
 	// The size of the OS disk in GB.
 	OsDiskSizeGb *int `pulumi:"osDiskSizeGb"`
 	// The type of the OS disk.
@@ -532,6 +541,8 @@ type OceanNpVirtualNodeGroupArgs struct {
 	Name pulumi.StringPtrInput
 	// The Ocean cluster identifier. Required for Launch Spec creation.
 	OceanId pulumi.StringInput
+	// Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+	Orientation pulumi.StringPtrInput
 	// The size of the OS disk in GB.
 	OsDiskSizeGb pulumi.IntPtrInput
 	// The type of the OS disk.
@@ -734,6 +745,11 @@ func (o OceanNpVirtualNodeGroupOutput) Name() pulumi.StringOutput {
 // The Ocean cluster identifier. Required for Launch Spec creation.
 func (o OceanNpVirtualNodeGroupOutput) OceanId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.StringOutput { return v.OceanId }).(pulumi.StringOutput)
+}
+
+// Controls and manages optimization priorities. Valid values: `"cost"`, `"availability"`.
+func (o OceanNpVirtualNodeGroupOutput) Orientation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.StringPtrOutput { return v.Orientation }).(pulumi.StringPtrOutput)
 }
 
 // The size of the OS disk in GB.
